@@ -1,0 +1,84 @@
+---
+title: "Chapter 5: Methods for Describing a Numerical Variable"
+embed-resources: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[R]{Chapter 5: Methods for Describing a Numerical Variable}
+# format: html
+# format: docx
+# format: revealjs
+bibliography: references.bib
+reference-location: section
+execute:
+  echo: false
+---
+
+In this chapter, we will consider descriptive methods appropriate for summarizing numerical variables.  
+
+## Example 5.1: Summarizing Household Income Levels in Minnesota Counties
+
+The data in the file USQuickFacts.jmp was recorded by the U.S. Census Bureau (Source: http://quickfacts.census.gov).  This file includes information on several demographic variables for all counties in the U.S.  In this example, we will consider only the counties of Minnesota.
+
+
+::: callout-note
+### Measures of location and variability
+
+**Measures of location**
+
+The quantities labeled A-F are often referred to as measures of location.  These summaries give us an idea of where a data distribution lies.  In particular, the mean and median give us an idea of the center (or middle) of the distribution.  The percentiles (called quantiles in JMP) give us an idea of what percent of the data distribution lies at or below a particular value.  What summary (or summaries) we choose to describe the entire data set depends on our objective.  If the goal is to describe where a data distribution is centered, then the mean or median may be an appropriate summary statistic.  However, if interest lies in what value is exceeded by only 5% of the data distribution, for example, then we would use the 95th percentile.  
+
+**Measures of variabiity**
+
+The quantities labeled I-L are called measures of variability.  These summaries help us quantify how much the observations in a data set tend to vary from each other.  For example, compare and contrast the variability in the following distributions.  The first is the actual data distribution of median household incomes in Minnesota; the second is a hypothetical data set created for purposes of comparison.  Which data set has more variability?  Why?
+:::
+
+## Graphical Summaries of Numerical Data
+
+In this section, we will discuss common methods for graphing numerical data.  Graphs conveniently allow us to examine both the location and the variability in a data set.  Moreover, we gain insight into the shape of a data distribution.
+
+### Dotplots
+
+
+### Histogram
+
+A histogram is created by dividing the range of the data distribution into class intervals and then counting the number of observations that fall in each interval.  A rectangular column is plotted in each interval, and the height of the column is proportional to the frequency of observations within the interval.  The y-axis can be labeled with either the count or the percentage of the observations that fall in each interval.
+
+To see this, note that we could start with our dotplot and divide the data distribution into the following classes.  Then, we can count the number of data points in each interval.
+
+
+### Boxplot
+
+The procedure for constructing a boxplot is as follows:
+
+1.	Draw horizontal lines at Q1, Q2, and Q3.  Enclose these horizontal lines in a box.
+2.	Find the lower and upper whiskers:
+
++ The endpoint of the lower whisker is the larger of the minimum and (Q1 – 1.5*IQR).
++ The endpoint of the upper whisker is the smaller of the maximum and (Q3 + 1.5*IQR).
+
+Comment:  Any measurement beyond the endpoint of either whisker is classified as a potential outlier (an extreme observation).
+
+### A Discussion of Skewness
+
+A data distribution is said to be symmetric if it has the same shape on both sides of the center.  Skewness measures the amount of asymmetry in a data distribution.
+
+The distribution is said to be positively skewed or skewed to the right if the measurements tend to trail off to the right.  Similarly, a distribution is negatively skewed or skewed to the left if the measurements trail off to the left.
+
+JMP provides a numerical measure of skewness, as well.  This measure takes on the value zero when the data distribution is perfectly symmetric; skewness measures greater than zero indicate the data are positively skewed, and skewness measures less than zero indicate the data are negatively skewed. This skewness measure can be displayed by customizing the Summary Statistics section of the output.
+
+## Z-SCORES
+
+A *Z-score*, often called a standardized value, measures the number of standard deviations an observation is away from the mean of the data distribution.  The z-score can be used to transform observations to a dimensionless scale; in addition, it can be used to measure the position of an observation.  Z-scores are calculated as shown below:
+
+Interpretation of Z-Scores:
+
++ As mentioned, the standardized values transform the data so that the data is placed on a standard, dimensionless scale that has a mean of 0 and a standard deviation of 1.
++ If a Z-Score is negative, then the observation is that many standard deviations below the mean.
++ If the Z-Score is positive, then the observation is that many standard deviations above the mean.
++ If the Z-Score is 0, then the data value is the same as the mean.
++ If the Standard Deviation is 0, then the Z-Score is not defined and thus cannot be computed.
+

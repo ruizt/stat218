@@ -1,0 +1,244 @@
+---
+title: "Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science"
+embed-resources: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science}
+          \fancyfoot[C]{\thepage}
+# format: html
+# format: docx
+# format: revealjs
+bibliography: references.bib
+reference-location: section
+execute:
+  echo: false
+---
+
+## Hello, I'm Dr. Robinson `r fontawesome::fa("hand")` Welcome to Stat 218!
+
+Data is a set of *variables* that capture various aspects of the world. It also contains *observations* over those variables.
+
+Sometimes data is collected intentionally
+
+-   The Census
+-   Pew Research surveys
+-   Science!
+-   ...and of course, many more
+
+Sometimes data is collected for one reason and used for another
+
+-   Health information about you at the doctor
+-   Emails
+-   Location information from social media posts
+-   Paying with a credit card at a gas station
+-   ...and more!
+
+1.  Make a list of all the places you left "data exhaust" this week.
+
+\vspace{0.75in}
+
+## Introduce Yourself!
+
+1.  What are you currently obsessed with? For me, it's pickleball and nectarines!
+
+## What to Expect
+
+... let's look at the syllabus together!
+
+## Working in Teams `r fontawesome::fa("people-group")`
+
+Working in teams is beneficial for every student, but only if each person meaningfully engages in the discussions being had. Each of you will work in a group of 2-3 students to discuss the course concepts and complete the course activities and labs. New groups will be randomly assigned every 3 weeks so you will serve in each of these roles once per group.
+
+To ensure the group's work is divided equitably each week, your team will be rotating through a set of group roles. This ensures one person doesn't act as the group leader for multiple sessions of class, while someone else is always the note taker. You will circulate through the following roles each week:
+
+| Role             | Responsibilities                                                                                                                                                                                                                                                                                                                                                                                                    |
+|-----------------|-------------------------------------------------------|
+| Facilitator      | Responsible for organizing the team work: making sure all roles were assigned and clear, scheduling meetings, coordinating, leading discussion of assignment problems. Additionally, responsible for making sure everyone has a chance to contribute, asking quiet team members to speak up, asking loud team members to listen to others, and bringing the conversation back to the lab assignment if it deviates. |
+| Reporter         | Responsible for collecting, organizing, and recording answers to the assignment during the discussions, compiling the summary of the answers discussed, solicits feedback on summaries from other group members, and submits the final version of the assignment.                                                                                                                                                   |
+| Resource Manager | Responsible for .... Contacts professor/TA for group questions.                                                                                                                                                                                                                                                                                                                                                     |
+|                  |                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+If you are in a group of *two*, the Facilitator also acts as the Resource Manager\*.
+
+\vspace{0.2in}
+
+1.  Please find your group and introduce yourself by sharing something about your name.
+
+\vspace{0.2in}
+
+## Class Norms
+
+\vspace{3in}
+
+## Example 0.1: Question the Arson `r fontawesome::fa("fire")`
+
+I am a detective in San Luis Obispo, California, and everyone in this room is a suspect in the three fires that have been set in the last 6 weeks. I have called all of you in for questioning. Given are 16 questions I want you to answer about these fires. Please answer all 16 questions.
+
+-   One of the fires was started using gasoline. \hfill T \hspace{0.2in} F
+-   Matches were used to set the fires. \hfill T \hspace{0.2in} F
+-   The trash was on the curb in front of the first house that caught on fire. \hfill T \hspace{0.2in} F
+-   There was a doghouse in the backyard at the scene of the second fire. \hfill T \hspace{0.2in} F
+-   The residence of the third fire had off-street parking. \hfill T \hspace{0.2in} F
+-   The second residence had a screened porch. \hfill T \hspace{0.2in} F
+-   The suspected entered the first residence through the kitchen window. \hfill T \hspace{0.2in} F
+-   The suspect left a flashlight behind at the scene of the second fire. \hfill T \hspace{0.2in} F
+-   All three fires took place on Tuesdays. \hfill T \hspace{0.2in} F
+-   The porch light was on at the residence where the first fire took place. \hfill T \hspace{0.2in} F
+-   The third fire was started in the garage. \hfill T \hspace{0.2in} F
+-   There was a dog barking at the house next door to the third fire. \hfill T \hspace{0.2in} F
+-   The suspect wore work boots at the scene of the first fire. \hfill T \hspace{0.2in} F
+-   The home security system was triggered when the suspect fled the scene \newline of the third fire. \hfill T \hspace{0.2in} F
+-   The lock on the back door at the first residence was broken. \hfill T \hspace{0.2in} F
+-   Multiple fires were set at the second residence. \hfill T \hspace{0.2in} F
+
+Before we look at results, let's discuss some predictions first! With your group, discuss the following questions.
+
+1.  If you are not the criminal, how many questions would you expect to get correct?
+
+\vspace{0.2in}
+
+2.  If you are the criminal, how many questions would you expect to get correct?
+
+\vspace{0.2in}
+
+Let's see how everyone did!
+
+The suspect convicted of the crime was found to have answered 13 of the 16 questions correct. The plot on the left displays the results from the convicted arson suspect. Sketch your results in the plot on the right.
+
+![](00-images/arson-sketch.png)
+
+3.  How do your results compare to the convicted suspect's results? How about the other suspects (i.e., your neighbor's) results?
+
+\vspace{0.2in}
+
+4.  Are you convinced the arson suspect was rightfully convicted?
+
+\vspace{0.2in}
+
+5.  How would your answer change if the convicted arson suspect answered...
+
+-   15 correct?
+
+\vspace{0.2in}
+
+-   10 correct?
+
+\vspace{0.2in}
+
+-   0 correct?
+
+## Example 0.2: Can our class speak Martian?
+
+When shown the two Martian letters, Kiki and Bouba, write down whether you think Bouba is on the left or on the right.
+
+```{r}
+#| out-width: 70%
+#| fig-align: center
+knitr::include_graphics("00-images/bouba-kiki.png")
+```
+
+1.  Were you correct or incorrect in identifying Bouba?
+
+\vspace{0.15in}
+
+2.  How many students are in class today?
+
+\vspace{0.15in}
+
+3.  How many students in the entire class were correct in identifying Bouba?
+
+\vspace{0.15in}
+
+4.  If we really don't know Martian and are just guessing which is Bouba, how many students would you *expect* to choose Bouba correctly? Explain your reasoning.
+
+\vspace{0.5in}
+
+5.  How could we use a coin to simulate each student "just guessing" which Martian letter is Bouba?
+
+\vspace{0.5in}
+
+6.  How could we use coins to simulate the entire class "just guessing" which Martian letter is Bouba?
+
+\vspace{0.5in}
+
+7.  Each student will flip a coin one time to simulate your "guess" under the assumption that we can't read Martian. (Let Heads = correct, Tails = incorrect).
+
+\vspace{0.1in}
+
+-   What was the result of your one simulation?
+
+\vspace{0.1in}
+
+-   How many students "guessed" correctly in the first class simulation? (Sketch your results in Q10)
+
+\vspace{0.1in}
+
+8.  Each student should flip their coin again. How many students "guessed" correctly in the second class simulation? (Sketch your results in Q10)
+
+\vspace{0.1in}
+
+9.  Let's flip our coins one more time. How many students "guessed" correctly in the third class simulation? (Sketch your results in Q10)
+
+\vspace{0.1in}
+
+10. Sketch the observed class results and the three simulated "guessing" class results.
+
+![](00-images/martian-sketch.png)
+
+11. How do the observed class results compare to the simulated guessing classes results?
+
+\vspace{0.6in}
+
+12. Let's display our results in a different type of graph. Create a *dot-plot* to display the results of the three simulations compared to the observed class results.
+
+```{r}
+#| fig-align: center
+#| out-width: 80%
+knitr::include_graphics("00-images/martian-dotplot.png")
+```
+
+We still only have a few simulations to compare our class data to. It would be much better to be able to see how our class compared to hundreds or thousands of "just-guessing" classes. Since we don't want to flip coins all class period, we will use a computer simulation (<http://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm>) to get 100 "random guessing" statistics.
+
+13. Carry out the applet simulation. Note that you should consider the following questions when designing your simulation study:
+
+-   What are the two possible outcomes on each of the trials?
+-   What is the probability that a Bouba is accurately identified under the assumption that we are "just-guessing"? Change your `Probability of heads` accordingly.
+
+> Probability of heads: \_\_\_\_\_
+
+-   How many students were there in this study? Keep this value in mind when setting the `Number of tosses` value.
+
+> Number of tosses: \_\_\_\_\_
+
+Carry out the simulation study 100 times overall, keeping track of the probability of employees chosen for management that were female on each of the simulated experiments. Sketch the 100 simulated "guessing" class results on the dot-plot in Q12.
+
+> Number of repetitions: \_\_\_\_\_
+
+14. Is your class particularly good or bad at Martian? Use the plot above to explain your answer.
+
+\vspace{0.5in}
+
+15. Is it *possible* that we could see our class results just by chance if everyone was just guessing? Explain your reasoning.
+
+\vspace{0.5in}
+
+16. Is it *likely* that we could see our class results just by chance if everyone was just guessing? Explain your reasoning.
+
+\vspace{0.5in}
+
+17. Does this activity provide evidence that students were not just guessing at random? If so, what do you think is going on here? Can we as class read Martian?
+
+\vspace{0.5in}
+
+::: callout
+## TED Talk: 3 Clues to Understanding Your Brain by Vilayanur Ramachandran (2007)
+
+The synesthesia part begins at roughly 17:30 minutes: <https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain>
+:::
+
+\newpage

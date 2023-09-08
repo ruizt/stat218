@@ -1,0 +1,169 @@
+---
+title: "Homework 1: Can chimpanzees solve problems?"
+subtitle: "Introduction to Thinking Statistically"
+embed-resources: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Homework 1: Can chimpanzees solve problems?}
+          \fancyfoot[C]{\thepage}
+# format: html
+# format: docx
+# format: revealjs
+execute:
+  echo: false
+---
+
+In 1978, researchers Premack and Woodru published a study in *Science magazine*, reporting an experiment where an adult chimpanzee named Sarah, was shown videotapes of eight different scenarios of a human being faced with a problem. After each videotape showing, she was presented with two
+photographs, one of which depicted a possible solution to the problem.
+
+```{r}
+#| fig-align: center
+#| out-width: 50%
+knitr::include_graphics("01-images/sarah.jpg")
+```
+
+For example, in one videotape she was shown that a human was unable to hear any sound coming out of a boombox. Of the two photographs shown to her, one was a picture of an electric plug and a power outlet. The other was a picture of man climbing a ladder.
+
+Out of the 8 problems, Sarah picked the photograph with the correct solution 7 times.
+
+1. Identify the following in the context of this example:
+
+-   Population of interest:
+
+\vspace{0.2in}
+
+-   Sample:
+
+\vspace{0.2in}
+
+-   Variable of interest:
+
+\vspace{0.2in}
+
+-   Data type:
+
+\vspace{0.2in}
+
+2. Complete a possible data set in which the information could be stored. Label the columns.
+
+
+3. Sketch a stacked bar chart to display the distribution of Sarah's answers (our observed data). Think about the two possible outcomes.
+
+
+4. What are some possible explanations for Sarah getting 7 out of 8 correct?
+
+\vspace{0.5in}
+
+5. In a well-designed study, the only two possible explanations for the observed results of a study are:
+
+A: 
+
+\vspace{0.5in}
+
+B:
+ 
+\vspace{0.5in}
+
+6. Which explanation do you think is a better (more plausible, that is, more reasonable) explanation for Sarah's observed results?
+
+Choose one: (A or B)
+
+How would you convince a skeptic that the other explanation (_____) is not a reasonable explanation for Sarah's observed results?
+
+\vspace{0.5in}
+
+7. Describe how you can use an everyday item to convince a skeptic that random chance is not a reasonable explanation of Sarah's results. 
+
+\vspace{0.5in}
+
+8. Now carry out two trials of the simulation process by doing the following:
+
++ **Trial 1:** Flip a coin _____ times, and record the number of heads = _____ 
++ **Trial 2:** Repeat. Flip a coin _____ times, and record the number of heads = _____ 
+
+9. Sketch out stacked bar plots of your two simulation trials. How do they compare to the stacked barplot of Sarah's observed answers you sketched in Question 3?
+
+\vspace{0.5in}
+
+
+10. Now translate your two simulation trials into a dotplot. Label the axes.
+
+\vspace{0.5in}
+
+
+11. What was (or do you expect to be) the most common outcome(s) for "number of heads" in 8 coin tosses? Why does that make sense?
+
+\vspace{0.5in}
+
+12. The probability of heads when we toss a coin is 0.5 or 50%. So, on 8 coin tosses, we expect to get 4 heads. Then, why didn't everyone get 4 heads on 8 coin tosses. Why the variability?
+
+\vspace{0.5in}
+
+15. Why do we need to repeat the set of 8 coin tosses? Why not just look at one set of 8 coin tosses?
+
+\vspace{0.5in}
+
+16. Carry out the simulation via <http://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm>. Note that you should consider the following questions when designing your simulation study:
+
++ What are the two possible outcomes on each of the trials?
++ What is the probability that the Sarah selects the correct solution under the assumption that Sarah cannot solve problems?  Change your `Probability of heads` accordingly.
++ How many trials were conducted in this study?  Keep this value in mind when setting the `Number of tosses` value.
+
+Carry out the simulation study 100 times overall, keeping track of the number of trials in which the correct solution was selected in each of the simulated experiments.
+
+In the space below, paste/insert/sketch the screenshot of the dotplot generated in Question 16. Be sure to that the axes labels - "Number of heads" - is visible, and the center of the dotplot, as well as the range of the outcomes on the axis are visible.
+
+\vspace{1in}
+
+17.	What does each dot on this plot represent?
+
+\vspace{0.5in}
+
+18. On the dotplot in Question 10, indicate where Sarah's actual/observed result is. Based on the dotplot that shows 100 possible results that could-happen if Sarah were just guessing/randomly choosing a photograph, does a result such as 7 correct answers out of 8 appear very surprising, somewhat surprising or not surprising by random chance alone? 
+
+\vspace{0.1in}
+
+**Circle one:** Very surprising \hspace{0.15in} Somewhat surprising \hspace{0.15in} Not surprising
+
+\vspace{0.1in}
+
+How did you decide? Choose one.
+
+\vspace{0.1in}
+
+(a) Because the overall shape of the dotplot is symmetric
+(b) Because the dotplot is centered at about 4
+(c) Because 7 seems far out in the tail, and appears rare and unlikely to happen to by chance alone
+
+\vspace{0.1in}
+
+19. Based on your findings so far, which of the following statements is accurate?
+
+\vspace{0.1in}
+
+(a) This *proves* that Sarah does better than just guess.
+(b) This provides *strong evidence* that Sarah does better than just guess.
+
+\vspace{0.1in}
+
+Explain.
+
+\vspace{0.5in}
+
+20. Suppose that Sarah had picked 5 answers correctly out of 8. Based on the above dotplot from the applet simulation, if Sarah tends to just randomly choose a photograph, would a result such as 5 correct out of 8 be very surprising, somewhat surprising, or not at all surprising? Explain how you are deciding.
+
+\vspace{0.5in}
+
+
+::: callout-caution
+## Canvas Quiz
+
+Make sure to complete the Homework Quiz on Canvas.
+
+:::
+
