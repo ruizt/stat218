@@ -14,6 +14,7 @@ format:
           \fancyfoot[C]{\thepage}
   docx:
     toc: false
+prefer-html: true
 embed-resources: true
 bibliography: references.bib
 reference-location: section

@@ -7,6 +7,7 @@ format:
     toc: true
   pdf:
     keep-tex: false
+prefer-html: true
 embed-resources: true
 fontfamily: mathpazo
 fontsize: 11pt
@@ -147,8 +148,8 @@ class_cal
 exam_days <- filter(Cal, category == "Exam") |>
   dplyr::mutate(topic = c("Midterm Exam 1",
                           "Midterm Exam 2",
-                   "Final Exam (Section 02 at 7:10 - 10am) -- if you come to class 8am - 9am", 
-                   "Final Exam (Section 01 at 7:10 - 10am) -- if you come to class 7am - 8am"),
+                   "Final Exam (Section 01 at 7:10 - 10am) -- if you come to class 8am - 9am", 
+                   "Final Exam (Section 02 at 7:10 - 10am) -- if you come to class 7am - 8am"),
          time = c("In Class", 
                   "In Class",
                   "7:10AM - 10:00AM", 
