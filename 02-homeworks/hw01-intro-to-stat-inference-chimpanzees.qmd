@@ -3,17 +3,19 @@ title: "Homework 1: Can chimpanzees solve problems?"
 subtitle: "Introduction to Thinking Statistically"
 embed-resources: true
 format:
+  html:
+    toc: true
   pdf:
+    keep-tex: false
     include-in-header:
       text: |
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Homework 1: Can chimpanzees solve problems?}
+          \fancyhead[R]{Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science}
           \fancyfoot[C]{\thepage}
-# format: html
-# format: docx
-# format: revealjs
+  docx:
+    toc: false
 execute:
   echo: false
 ---
