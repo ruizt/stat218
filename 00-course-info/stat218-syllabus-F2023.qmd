@@ -4,7 +4,6 @@ title: "Stat 218: Applied Statistics for Life Sciences"
 # date: "January 9, 2023"
 format: 
   html:
-    css: youtube_container.css
     toc: true
   pdf:
     keep-tex: false
