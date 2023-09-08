@@ -239,7 +239,7 @@ This schedule is tentative and subject to change.
 #| warning: false
 #| fig-width: 8
 #| fig-height: 8
-#| fig-pos: 'h'
+#| fig-pos: 'H'
 class_cal
 ```
 
@@ -259,6 +259,7 @@ Your grade in STAT 218 will contain the following components:
 
 ```{r}
 #| echo: false
+#| fig-loc: "H"
 library(RColorBrewer)
 pal <- brewer.pal(n = 8, name = "Purples")
 
