@@ -1,18 +1,21 @@
 ---
 title: "Chapter 1: Introduction to Statistical Thinking and Data"
 embed-resources: true
-format:
+format: 
+  html:
+    toc: true
   pdf:
+    keep-tex: false
     include-in-header:
       text: |
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Chapter 1: Introduction to Statistical Thinking and Data}
+          \fancyhead[R]{Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science}
           \fancyfoot[C]{\thepage}
-# format: html
-# format: docx
-# format: revealjs
+  docx:
+    toc: false
+prefer-html: true
 bibliography: references.bib
 reference-location: section
 execute:
