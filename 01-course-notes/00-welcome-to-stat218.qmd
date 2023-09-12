@@ -41,9 +41,15 @@ Sometimes data is collected for one reason and used for another
 -   Paying with a credit card at a gas station
 -   ...and more!
 
-1.  Make a list of all the places you left "data exhaust" this week.
+1.  Make a list of all the places you left "data exhaust" this week ([Padlet](https://padlet.com/e95robinson/stat218_data_exahust)).
 
-\vspace{0.75in}
+```{r}
+#| out-width: 10%
+#| include: false
+knitr::include_graphics("00-images/data-exhaust-padlet-qr.png")
+```
+
+\vspace{0.2in}
 
 ## Introduce Yourself!
 
@@ -55,32 +61,98 @@ Sometimes data is collected for one reason and used for another
 
 ## Working in Teams `r fontawesome::fa("people-group")`
 
-Working in teams is beneficial for every student, but only if each person meaningfully engages in the discussions being had. Each of you will work in a group of 2-3 students to discuss the course concepts and complete the course activities and labs. New groups will be randomly assigned every 3 weeks so you will serve in each of these roles once per group.
+Working in teams is beneficial for every student, but only if each person meaningfully engages in the discussions being had. Each of you will work in a group of 3-4 students to discuss the course concepts and complete the course activities and labs.
 
-To ensure the group's work is divided equitably each week, your team will be rotating through a set of group roles. This ensures one person doesn't act as the group leader for multiple sessions of class, while someone else is always the note taker. You will circulate through the following roles each week:
+To ensure the group's work is divided equitably each week, your team will be rotating through a set of group roles. This ensures one person doesn't act as the group leader for multiple class sessions, while someone else is always the note taker. You will circulate through the following roles each week:
 
-| Role             | Responsibilities                                                                                                                                                                                                                                                                                                                                                                                                    |
-|-----------------|-------------------------------------------------------|
-| Facilitator      | Responsible for organizing the team work: making sure all roles were assigned and clear, scheduling meetings, coordinating, leading discussion of assignment problems. Additionally, responsible for making sure everyone has a chance to contribute, asking quiet team members to speak up, asking loud team members to listen to others, and bringing the conversation back to the lab assignment if it deviates. |
-| Reporter         | Responsible for collecting, organizing, and recording answers to the assignment during the discussions, compiling the summary of the answers discussed, solicits feedback on summaries from other group members, and submits the final version of the assignment.                                                                                                                                                   |
-| Resource Manager | Responsible for .... Contacts professor/TA for group questions.                                                                                                                                                                                                                                                                                                                                                     |
-|                  |                                                                                                                                                                                                                                                                                                                                                                                                                     |
++---------------------------------------+-----------------------------------------------------+
+| Role                                  | Responsibilities                                    |
++=======================================+=====================================================+
+| **Facilitator**                       | Responsible for organizing the team work: making    |
+|                                       |                                                     |
+| *Manages team progress through tasks* | sure all roles were assigned and clear, scheduling  |
+|                                       |                                                     |
+|                                       | meetings, coordinating, leading discussion of       |
+|                                       |                                                     |
+|                                       | assignment problems.                                |
++---------------------------------------+-----------------------------------------------------+
+|                                       |                                                     |
++---------------------------------------+-----------------------------------------------------+
+| **Recorder**                          | Responsible to make sure everyone is recording      |
+|                                       |                                                     |
+| *Manages communications*              | ideas. In lab assignments, responsible for          |
+|                                       |                                                     |
+|                                       | collecting, organizing, and recording answers to    |
+|                                       |                                                     |
+|                                       | the assignment during the discussions, compiling    |
+|                                       |                                                     |
+|                                       | the summary of the answers discussed, soliciting    |
+|                                       |                                                     |
+|                                       | feedback on summaries from other group              |
+|                                       |                                                     |
+|                                       | members, and submitting the final version of the    |
+|                                       |                                                     |
+|                                       | lab assignment.                                     |
++---------------------------------------+-----------------------------------------------------+
+|                                       |                                                     |
++---------------------------------------+-----------------------------------------------------+
+| **Resource Manager**                  | Responsible for pulling up course notes and other   |
+|                                       |                                                     |
+| *Manages team resources*              | useful resources (e.g., R note cards, applets,      |
+|                                       |                                                     |
+|                                       | homework assignments, etc.). Contacts               |
+|                                       |                                                     |
+|                                       | professor/TA for *group questions only*. Ensures    |
+|                                       |                                                     |
+|                                       | everyone understands team questions. Collects       |
+|                                       |                                                     |
+|                                       | team supplies and organizes clean-up.               |
++---------------------------------------+-----------------------------------------------------+
+|                                       |                                                     |
++---------------------------------------+-----------------------------------------------------+
+| **Team Captain**                      | Responsible for making sure everyone has a          |
+|                                       |                                                     |
+| *Manages team participation*          | chance to contribute, asking quiet team members     |
+|                                       |                                                     |
+|                                       | to speak up, asking loud team members to listen     |
+|                                       |                                                     |
+|                                       | to others, and bringing the conversation back to    |
+|                                       |                                                     |
+|                                       | the lab assignment if it deviates.                  |
++---------------------------------------+-----------------------------------------------------+
 
-If you are in a group of *two*, the Facilitator also acts as the Resource Manager\*.
+If you are in a group of *three*, the Facilitator also acts as the Team Captain\*.
+
+1.  Please find your team members and introduce yourself by sharing something about your name.
+
+\vspace{0.1in}
+
+## Suggested Class Norms
+
+-   Share talk time
+-   Listen to understand
+-   Everyone has expertise
+-   Be present\*
+-   Critique ideas, not people
+-   Embrace discomfort
+-   Treat everyone with respect
+-   Normalize time to think / process
+-   (Others? Changes?)
 
 \vspace{0.2in}
-
-1.  Please find your group and introduce yourself by sharing something about your name.
-
-\vspace{0.2in}
-
-## Class Norms
-
-\vspace{3in}
 
 ## Example 0.1: Question the Arson `r fontawesome::fa("fire")`
 
+<!-- https://www.sanluisobispo.com/news/local/crime/article278322808.html -->
+
 I am a detective in San Luis Obispo, California, and everyone in this room is a suspect in the three fires that have been set in the last 6 weeks. I have called all of you in for questioning. Given are 16 questions I want you to answer about these fires. Please answer all 16 questions.
+
+```{r}
+#| fig-align: center
+#| out-width: 45%
+#| fig-pos: "H"
+knitr::include_graphics("00-images/star-tribune-arson.png")
+```
 
 -   One of the fires was started using gasoline. \hfill T \hspace{0.2in} F
 -   Matches were used to set the fires. \hfill T \hspace{0.2in} F
@@ -99,15 +171,16 @@ I am a detective in San Luis Obispo, California, and everyone in this room is a 
 -   The lock on the back door at the first residence was broken. \hfill T \hspace{0.2in} F
 -   Multiple fires were set at the second residence. \hfill T \hspace{0.2in} F
 
+
 Before we look at results, let's discuss some predictions first! With your group, discuss the following questions.
 
 1.  If you are not the criminal, how many questions would you expect to get correct?
 
-\vspace{0.2in}
+\vspace{0.25in}
 
 2.  If you are the criminal, how many questions would you expect to get correct?
 
-\vspace{0.2in}
+\vspace{0.25in}
 
 Let's see how everyone did!
 
@@ -117,11 +190,11 @@ The suspect convicted of the crime was found to have answered 13 of the 16 quest
 
 3.  How do your results compare to the convicted suspect's results? How about the other suspects (i.e., your neighbor's) results?
 
-\vspace{0.2in}
+\vspace{0.3in}
 
 4.  Are you convinced the arson suspect was rightfully convicted?
 
-\vspace{0.2in}
+\vspace{0.25in}
 
 5.  How would your answer change if the convicted arson suspect answered...
 
