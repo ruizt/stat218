@@ -200,7 +200,7 @@ tidyr::tibble("____________" = rep(NA, 16),
 
 Once again, the key question is how to determine whether the study’s result is surprising under the assumption that there is no real preference for one toy over the other in the population of all 10-month-old infants. To answer this, we will simulate the process of 16 infants simply choosing a toy at random, over and over again. Each time we simulate the process, we’ll keep track of how many infants out of the 16 chose the helper toy (note that you could also keep track of the number that chose the hinderer toy). Once we’ve repeated this process a large number of times, we’ll have a pretty good sense for what outcomes would be very surprising, somewhat surprising, or not so surprising if the population of all 10-month-old infants has no real preference.
 
-Carry out the simulation via <http://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm>. Note that you should consider the following questions when designing your simulation study:
+Carry out the simulation via the `Online Simulation Applets > One Proportion Inference`. Note that you should consider the following questions when designing your simulation study:
 
 + What are the two possible outcomes on each of the trials?
 + What is the probability that the helper is selected under the assumption that the population of all 10-month-old infants has no real preference for either toy?  Change your `Probability of heads` accordingly.
