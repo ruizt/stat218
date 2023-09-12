@@ -5,8 +5,7 @@ format:
   html:
     toc: true
   pdf:
-    keep-tex: false
-    include-in-header:
+    keep-tex: false    include-in-header:
       text: |
           \usepackage{fancyhdr}
           \pagestyle{fancy}

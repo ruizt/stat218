@@ -71,6 +71,7 @@ B:
  
 \vspace{0.5in}
 
+
 6. Which explanation do you think is a better (more plausible, that is, more reasonable) explanation for Sarah's observed results?
 
 Choose one: (A or B)
@@ -116,9 +117,12 @@ How would you convince a skeptic that the other explanation (_____) is not a rea
 + What is the probability that the Sarah selects the correct solution under the assumption that Sarah cannot solve problems?  Change your `Probability of heads` accordingly.
 + How many trials were conducted in this study?  Keep this value in mind when setting the `Number of tosses` value.
 
+<!-- Have them fill out the simulation inputs. -->
+
 Carry out the simulation study 100 times overall, keeping track of the number of trials in which the correct solution was selected in each of the simulated experiments.
 
 In the space below, paste/insert/sketch the screenshot of the dotplot generated in Question 16. Be sure to that the axes labels - "Number of heads" - is visible, and the center of the dotplot, as well as the range of the outcomes on the axis are visible.
+
 
 \vspace{1in}
 

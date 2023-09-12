@@ -41,7 +41,7 @@ Sometimes data is collected for one reason and used for another
 -   Paying with a credit card at a gas station
 -   ...and more!
 
-1.  Make a list of all the places you left "data exhaust" this week ([Padlet](https://padlet.com/e95robinson/stat218_data_exahust)).
+1.  Make a list of all the places you left "data exhaust" this week ([MentiMeter Poll](https://www.menti.com/al2rkt2fv58u)).
 
 ```{r}
 #| out-width: 10%
@@ -226,7 +226,7 @@ knitr::include_graphics("00-images/bouba-kiki.png")
 
 \vspace{0.15in}
 
-3.  How many students in the entire class were correct in identifying Bouba?
+3.  How many students in the entire class were correct in identifying Bouba? ([MentiMeter Poll 1](https://www.menti.com/alguueyyhrs3))
 
 \vspace{0.15in}
 
@@ -254,7 +254,7 @@ knitr::include_graphics("00-images/bouba-kiki.png")
 
 \vspace{0.1in}
 
-8.  Each student should flip their coin again. How many students "guessed" correctly in the second class simulation? (Sketch your results in Q10)
+8.  Each student should flip their coin again. How many students "guessed" correctly in the second class simulation? (Sketch your results in Q10) ([MentiMeter Poll 2](https://www.menti.com/al3ms4pzma2g))
 
 \vspace{0.1in}
 
@@ -278,7 +278,7 @@ knitr::include_graphics("00-images/bouba-kiki.png")
 knitr::include_graphics("00-images/martian-dotplot.png")
 ```
 
-We still only have a few simulations to compare our class data to. It would be much better to be able to see how our class compared to hundreds or thousands of "just-guessing" classes. Since we don't want to flip coins all class period, we will use a computer simulation (<http://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm>) to get 100 "random guessing" statistics.
+We still only have a few simulations to compare our class data to. It would be much better to be able to see how our class compared to hundreds or thousands of "just-guessing" classes. Since we don't want to flip coins all class period, we will use a computer simulation (`Canvas > Online Simulation Applets > One proportion inference`) to get 100 "random guessing" statistics.
 
 13. Carry out the applet simulation. Note that you should consider the following questions when designing your simulation study:
 

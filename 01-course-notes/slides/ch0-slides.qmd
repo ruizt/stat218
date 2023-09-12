@@ -33,7 +33,7 @@ format:
 
 ## Arson Answers
 
-![](images/arson-answers.png)
+![](images/arson-answers.PNG)
 
 ## Kiki & Bouba {background-image="images/kiki-bouba-mentimeter1.png" background-size=10% background-position="0% 0%"}
 
