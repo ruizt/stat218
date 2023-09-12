@@ -1,0 +1,51 @@
+---
+title: "Welcome to Stat 218!"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+---
+
+## Welcome to Stat 218: Applied Statistics for Life Science
+### Thursday, Sept. 21 -- Today we will...
+
++ Data!
++ Introductions
++ Syllabus
++ Working in Teams
++ Class Norms
+
+## Data Exhuast {background-image="images/data-exhaust-mentimeter-qr.png" background-size=10% background-position="0% 0%"}
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alswqzqtk4jq7rudmrxucmh6nu2urv94/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+## To do:
+
++ **Homework 0: Syllabus + Learning Community**
+  + Due Friday 9/22 at 5pm
++ **Print/Download Chapter 1 Course Notes**
+  + For class Monday 9/25
+
+## Friday, Sept. 22 -- Today we will...
+
++ Example 0.1: Question the Arson
++ Example 0.2: Can our class speak Martian?
+
+## Arson Answers
+
+![](images/arson-answers.png)
+
+## Kiki & Bouba {background-image="images/kiki-bouba-mentimeter1.png" background-size=10% background-position="0% 0%"}
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alpioir4oeoy91a3rbcbhr9ovosfr4us/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+## Kiki & Bouba {background-image="images/kiki-bouba-mentimeter2.png" background-size=10% background-position="0% 0%"}
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/al5kz2vaqnz48i34gymaoyszxpfdhccb/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+## To do:
+
++ **Homework 0: Syllabus + Learning Community**
+  + Due Friday 9/22 at 5pm
++ **Print/Download Chapter 1 Course Notes**
+  + For class Monday 9/25
