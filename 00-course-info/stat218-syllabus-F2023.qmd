@@ -1,6 +1,7 @@
 ---
 title: "Stat 218: Applied Statistics for Life Sciences"
-# author: ""
+subtitle: "Cal Poly - San Luis Obispo, Fall 2023"
+# author: "Fall 2023"
 # date: "January 9, 2023"
 format: 
   html:
@@ -24,7 +25,7 @@ fontsize: 11pt
 **Canvas Discussion Board:**
 
 For questions of general interest, such as course clarifications or conceptual
-questions, please use the canvas Discussion page. I encourage you to give your post a concise and informative post title, so that other people can find it. For example, *“How to I determine my data type?”* is a better title than *“help with homework”*.
+questions, please use the Canvas Discussion page. I encourage you to give your post a concise and informative post title/first sentence, so that other people can find it. For example, *“How do I determine my data type?”* is a better title than *“help with homework”*.
 
 `r fontawesome::fa("brain")` `r fontawesome::fa("question")` `r fontawesome::fa("question")` While your posts are not anonymous, in this case there is no such thing as a bad
 question!
@@ -33,26 +34,26 @@ question!
 
 **Class Meeting Times:** MTRF
 
-- Section 01: 7:10am - 8:00am `r fontawesome::fa("coffee")` `r fontawesome::fa("coffee")`
-- Section 02: 8:10am - 9:00am `r fontawesome::fa("coffee")`
+- Section 02: 7:10am - 8:00am `r fontawesome::fa("coffee")` `r fontawesome::fa("coffee")`
+- Section 01: 8:10am - 9:00am `r fontawesome::fa("coffee")`
 
-**Room:** Crochet Education Room 203
+**Room:** Crochett Education Room 203
 
 **Office Hours** are held in my office (25-103) during the following times:
 
-::: column-margin
+<!-- ::: column-margin -->
 
-{{< video https://www.youtube.com/embed/yQq1-_ujXrM?si=sFpcpfT9Cey2-Eaf >}}
+<!-- {{< video https://www.youtube.com/embed/yQq1-_ujXrM?si=sFpcpfT9Cey2-Eaf >}} -->
 
-Introducing Faculty Office Hours
+<!-- Introducing Faculty Office Hours -->
 
-:::
+<!-- ::: -->
 
 | Day       | Time                   |
 |-----------|------------------------|
-| Monday    | 11:10am - 12:00pm      |
-| Wednesday | 4:10pm - 5:00pm        |
-| Thursday  | 2:10pm - 3:00pm        |
+| Monday    | 3:10pm - 4:00pm        |
+| Wednesday | 1:10pm - 2:00pm        |
+| Thursday  | 10:10am - 11:00am      |
 
 
 Note that office hours are not just for when you have content questions. Stop by to introduce yourself, ask questions about the broader field of statistics, or share what you are working on!
@@ -192,16 +193,15 @@ class_days <- filter(Cal, category %in% c("Class Day")) |>
 
 # Course Description
 
-Stat 218 is designed to engage you in the statistical investigation process from developing a research question and data collection methods to analyzing and communicating results. This course introduces basic descriptive and inferential statistics using both traditional (normal and 
--distribution) and simulation approaches including confidence intervals and hypothesis testing on proportions (one-sample, two-sample), means (one-sample, two-sample, paired, ANOVA), regression, and correlation. You will be exposed to numerous examples of real-world applications of statistics that are designed to help you develop a conceptual understanding of statistics.
+Stat 218 is designed to engage you in the statistical investigation process from developing a research question and data collection methods to analyzing and communicating results. This course introduces basic descriptive and inferential statistics using both traditional (normal-distribution) and simulation approaches including confidence intervals and hypothesis testing on proportions (one-sample, two-sample), means (one-sample, two-sample, paired, ANOVA), regression, and correlation. You will be exposed to numerous examples of real-world applications of statistics that are designed to help you develop a conceptual understanding of statistics.
 
 **Prerequisites**
 
 Entrance to STAT 218 requires at least one of the following be met:
 
 + Grade of C- or better in MATH 115
-+ Grade of B or better in MATH 96 
-+ appropriate placement on the [Math Placement Exam](https://math.calpoly.edu/mape)
++ Grade of B or better in MATH 96
++ appropriate placement on the [Math Placement Exam](https://math.calpoly.edu/mape).
 
 You should have familiarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).
 
@@ -215,7 +215,7 @@ You should have familiarity with computers and technology (e.g., Internet browsi
 
 # Course Tools
 
-For each topic, you will be provided a set of *course notes* `r fontawesome::fa("book")` containing definitions, examples, and practice problems. We will work through each set of notes during class time (both as a large class and in groups). You are expected to either print `r fontawesome::fa("print")` or save `r fontawesome::fa("save")` the notes to your computer/device and follow along, filling `r fontawesome::fa("pencil")` out your set of notes as we go.
+For each topic, you will be provided a set of *course notes* `r fontawesome::fa("book")` containing definitions, examples, and practice problems. We will work through each set of notes during class time (both as a large class and in groups). You are expected to either print `r fontawesome::fa("print")` or save `r fontawesome::fa("save")` the notes to your device and follow along, filling `r fontawesome::fa("pencil")` out your set of notes as we go.
 
 Tools you will need for this course:
 
@@ -237,9 +237,11 @@ This schedule is tentative and subject to change.
 #| echo: false
 #| eval: true
 #| warning: false
-#| fig-width: 8
-#| fig-height: 8
+#| fig-width: 5
+#| fig-height: 5
 #| fig-pos: 'H'
+#| out-width: 60%
+#| fig-align: center
 class_cal
 ```
 
@@ -260,6 +262,8 @@ Your grade in STAT 218 will contain the following components:
 ```{r}
 #| echo: false
 #| fig-loc: "H"
+#| out-width: 70%
+#| fig-align: center
 library(RColorBrewer)
 pal <- brewer.pal(n = 8, name = "Purples")
 
@@ -317,14 +321,14 @@ grades |>
 
 Lower bounds for grade cutoffs are shown in the following table. I will not "round up" grades at the end of the quarter. See this [thread](https://twitter.com/drseanmullen/status/1604212304622518272?s=46&t=II3oNLTSSrljVPqptoe21g) for advice on *"Playing the lines. Don't be there."*
 
-::: column-margin
+<!-- ::: column-margin -->
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-</script>
+<!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> -->
+<!-- </script> -->
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">When my 11yo daughter complains her opponent in tennis is calling calls out..<br><br>I tell her:<br><br>“Don’t play the lines.”<br><br>As a college student, eventually every professor has to draw some lines.<br><br>Don’t play them so close. Don’t be there.</p>&mdash; Dr. Sean Mullen (@drseanmullen) <a href="https://twitter.com/drseanmullen/status/1604212307260645376?ref_src=twsrc%5Etfw">December 17, 2022</a></blockquote>
+<!-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr">When my 11yo daughter complains her opponent in tennis is calling calls out..<br><br>I tell her:<br><br>“Don’t play the lines.”<br><br>As a college student, eventually every professor has to draw some lines.<br><br>Don’t play them so close. Don’t be there.</p>&mdash; Dr. Sean Mullen (@drseanmullen) <a href="https://twitter.com/drseanmullen/status/1604212307260645376?ref_src=twsrc%5Etfw">December 17, 2022</a></blockquote> -->
 
-:::
+<!-- ::: -->
 
 | Letter grade | X +  | X   | X - |
 |--------------|------|-----|-----|
@@ -358,17 +362,17 @@ your work.
 
 ### Participation
 
-Most of class time will be devoted to group and individual activities. Coming to class prepared to participate in these activities is vital for your success in the course. It will be left up to the discretion of the instructor whether an activity is given and graded as participation. These activities may also require additional work outside of class. You must be in class to receive credit for any grades under participation. There may be "exit tickets" given at the end of class for participation points, data collection or simulation activities during class, or in-class discussion through online tools.
+Most of class time will be devoted to group and individual activities. Coming to class prepared to participate in these activities is vital for your success in the course. It will be left up to the discretion of the instructor whether an activity is given and graded as participation. You must be in class to receive credit for any grades under participation. There may be "exit tickets" given at the end of class for participation points, data collection or simulation activities during class, or in-class discussion through online tools. You can expect about 1-2 participation check days per week.
 
 + **2** participation grades will be dropped; think of these as "sick days".
 
 ::: callout-note
-If you are feeling ill, please *do not come to class*. Instead, email me, review the material and work on the course notes and weekly homework/lab assignment; then schedule an appointment with me to meet virtually.
+If you are feeling ill, please *do not come to class*. Instead, email me, do your best to fill out the course notes then check with a group member for their notes. Work on the weekly homework/lab assignment; then schedule an appointment with me to meet virtually.
 :::
 
 ### Homework Assignments
 
-Homework will be assigned weekly throughout the semester to provide you additional practice with the course content. Each homework assignment will be accompanied by a "homework quiz" taken on Canvas and graded for correctness; you will also turn in your completed homework assignment via Canvas to be checked for engagement.
+Homework will be assigned weekly throughout the semester to provide you additional practice with the course content. Each homework assignment will be accompanied by a "homework quiz" taken on Canvas and graded for correctness; you may take the "homework quiz" twice and Canvas will keep the average of the two attempts. You will also turn in your completed homework assignment (pdf or word document) via Canvas to be checked for intellectual engagement.
 
 + Homework Assignments are due **Wednesdays at 11:59am**.
 
@@ -376,7 +380,7 @@ Homework will be assigned weekly throughout the semester to provide you addition
 
 Every Thursday, you will meet with your classmates and instructor to work through that week’s Posit Cloud group lab. The lab will reinforce the ideas learned in the course notes and homework assignment, through the use of R to explore and analyze data.
 
-+ Each group will turn in the lab to Canvas.
++ Each group will turn in the lab (pdf or html file) to Canvas.
 + R Labs are due as a group on **Mondays at 11:59pm**.
 
 ::: callout-warning
@@ -387,7 +391,7 @@ You should *not* just add a group member's name to the weekly lab if absent.
 
 ### Unit Quizzes
 
-Quizzes will be administered approximately bi weekly to assess your progress in the course. These quizzes will be closed note and closed book. Students are expected to **notify me prior** to class if unable to take the quiz during the scheduled time. See the use of "grace days" for quizzes in the late policy below.
+Quizzes will be administered approximately biweekly to assess your progress in the course. These quizzes will be closed note and closed book. These quizzes will be announced in class and via Canvas at least two days in advance. Students are expected to **notify me prior** to class if unable to take the quiz during the scheduled time. See the use of "grace days" for quizzes in the late policy below.
 
 + When given, unit quizzes will most often be taken on **Friday's during class**.
 
@@ -421,17 +425,17 @@ There will be one project during the quarter, where you will be asked to apply t
 
 <!-- If you find yourself with extenuating circumstances, please email me **prior** to the due date. You will typically have multiple days to complete assignments, make sure to plan ahead for any unforeseen circumstances. -->
 
-We are living through a challenging time with unique, unusual circumstances. I do not want class deadlines to cause you extreme stress or anxiety. I offer **3 "grace days"** -- days to turn in the assignment late without a penalty. These can be used on the homework assignments, lab assignments (a single group member must be willing to use one of their grace days for the entire group), and quizzes (must contact me ahead of time to arrange an alternative ; these are measured in business days) but not participation or exams. These grace days can be used all at once on a single assignment or used on separate assignments throughout the quarter. Simply add a comment on the assignment in Canvas **and** send me an email to let me know you how many grace days you want to use on the assignment.
+We are living through a challenging time with unique, unusual circumstances. I do not want class deadlines to cause you extreme stress or anxiety. I offer **3 "grace days"** -- days to turn in the assignment late without a penalty. These can be used on the homework assignments, lab assignments (a single group member must be willing to use one of their grace days for the entire group), and quizzes (must contact me ahead of time to arrange an alternative; for quizzes, "grace days" are measured in business days), but not participation or exams. These "grace days" can be used all at once on a single assignment or used on separate assignments throughout the quarter. Simply add a comment on the assignment in Canvas **and** send me an email to let me know you how many "grace days" you want to use on the assignment.
 
-After using up your grace days, late work will be accepted with a 10% grade penalty for each day late (including weekends) with a minimum grade of 50%.
+After using up your "grace days", late work will be accepted with a 10% grade penalty for each day late (including weekends) with a minimum grade of 50%.
 
 ::: callout-warning
 ### Automatic Canvas Settings
 
-Canvas is set up to automatically input 0% for missing assignments and apply the 10% grade deduction policy. I will need to manually adjust your grade when you use your grace days so it is important for you to leave a note on your assignment and/or email me. You are responsible for double checking your grade.
+Canvas is set up to automatically input 0% for missing assignments (as an incentive to go complete the assignment) and apply the 10% grade deduction policy. I will need to manually adjust your grade when you use your grace days so it is important for you to leave a note on your assignment and email me. You are responsible for double checking your grade.
 :::
 
-If you find yourself with extenuating circumstances, please email me before the due date.
+If you find yourself with extenuating circumstances beyond the defined late policy, please email me before the due date.
 
 # Course Expectations
 
