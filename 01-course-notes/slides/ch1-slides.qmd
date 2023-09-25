@@ -1,0 +1,72 @@
+---
+title: "Thinking Statistically + Data"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+---
+
+## Monday, September 25th
+### Today we will...
+
++ Finish Ch. 0 notes (Example 0.1: Can our class speak Martian?)
++ Introduce basic statistical terminology
++ Example 1.1: Alleged Hearing Loss
++ Example 1.2: Helper vs. Hinderer
+
+## To do:
+
++ **Homework 1: Can chimpanzees solve problems?**
+  + Due Wednesday 9/27 at 11:59pm
+  
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+
+## Tuesday, September 26th
+### Today we will...
+
++ Recap basic statistical terminology
++ Example 1.3: Are women passed over for managerial training?
++ Example 1.4: Font Preferences
++ **Exit ticket!**
+
+## To do:
+
++ **Homework 1: Can chimpanzees solve problems?**
+  + Due Wednesday 9/27 at 11:59pm
+
++ **Create a FREE posit cloud account** following the first part of the instructions on Canvas.
+  + Make sure you remember your login and password.
+  + Bring your computer FULLY charged on Thursday!
+  
++ **Print/Download Chapter 2 Course Notes**
+  + For class Friday 9/29
++ **Review notes for Quiz**
+  + Friday 9/29
+  
+## Thursday, September 28th
+### Today we will...
+
++ Introduce Brandon Kim - 4th year stats major
++ Lab 1: Intro to Posit Cloud
+
+## To do:
+
++ **Lab 1: Intro to Posit Cloud**
+  + Due Monday 10/2 at 11:59pm
++ **Print/Download Chapter 2 Course Notes**
+  + For class Friday 9/29
++ **Review notes for Quiz on Friday**
+  + In-class Friday 9/29
+
+## Friday, September 29th
+### Today we will...
+
++ Quiz 1 (20 minutes to complete)
++ Start Ch. 2 Notes
+
+## To do:
+
++ **Lab 1: Intro to Posit Cloud**
+  + Due Monday 10/2 at 11:59pm
