@@ -12,7 +12,7 @@ format:
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science}
+          \fancyhead[R]{Homework 1: Can chimpanzees solve problems?}
           \fancyfoot[C]{\thepage}
   docx:
     toc: false
