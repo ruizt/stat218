@@ -11,6 +11,9 @@ format: pdf
 editor: visual
 execute:
   echo: true
+  error: true
+  message: false
+  warning: false
 ---
 
 ```{r setup}
@@ -34,7 +37,7 @@ Your answer goes here.
 
 Let's start by exploring how many matches in our data set were won by each uniform color
 
-2.  **Create a [*frequency bar plot*]{.underline} of the variable `color`.**
+2.  **Create a *frequency bar plot* of the variable `color`.**
 
 **Step 1:** Set-up the data and the variable(s) of interest
 
@@ -54,7 +57,7 @@ ggplot(data = athletes,
        y = "____")
 ```
 
-We could also choose to display the data as a proportion in a [***relative frequency bar plot**.*]{.underline} To find the relative frequency, we divide the count in each level by the total sample size. The resulting values are sample proportions.
+We could also choose to display the data as a proportion in a ***relative frequency bar plot***. To find the relative frequency, we divide the count in each level by the total sample size. The resulting values are sample proportions.
 
 To get *proportions* instead of *counts* we need to override the default statistic `geom_bar(stat = "count")` wants to use. To do this, we tell it we want proportions on the y-axis. We do this using the following code:
 
@@ -124,7 +127,7 @@ Your answer goes here.
 
 # Scenario One: Original
 
-[Research Question:]{.underline} Do competitors that wear red uniforms win a *majority* of the time?
+Research Question: Do competitors that wear red uniforms win a *majority* of the time?
 
 8.  **State the null and alternative hypotheses in words.**
 
@@ -136,15 +139,7 @@ Your answer goes here.
 
 10.  **Run the code below. Based on the output, what decision do you make about your hypotheses? Justify your answer using the p-value.**
 
-```{r binom-test1}
-prop_test(athletes, 
-          response = won, 
-          p = 0.5, 
-          success = "red", 
-          alternative = "greater",
-          z = FALSE
-          )
-
+```{r binom-test-1}
 binom.test(x = 248, n = 457, p = 0.5, alternative = "greater")
 ```
 
@@ -161,18 +156,18 @@ Research Question: Does one color win more often than the other?
 
 -   Alternative:
 
-13. **Change the code below to conduct a two-sided test.**
+13. **Copy and change the code from question 10 to conduct a two-sided test.**
 
-```{r binom-test2}
+```{r binom-test-2}
 
 ```
 
-14. **Compare to scenario one (original). How is the shaded region different? How is the p-value different? What is similar and what is different about the hypothesis? Are the conclusions the same?**
+14. **Compare to scenario one (original). How is the p-value different? What is similar and what is different about the hypothesis? Are the conclusions the same?**
 
 ::: callout-note
 ## Key Idea
 
-The p-value for a two-sided test is about twice as large as that for a one-sided test. Thus the strength of evidence **decreases**. (i.e. reject the null less often).
+The p-value for a two-sided test is "about" twice as large as that for a one-sided test. Thus the strength of evidence **decreases**. (i.e. reject the null less often).
 :::
 
 # Scenario Three: Distance Between the Statistic and the Null
@@ -180,11 +175,15 @@ The p-value for a two-sided test is about twice as large as that for a one-sided
 Research Question: Do competitors that wear red uniforms win a majority of the time?
 
 -   Recall: Going back to scenario one (one-sided hypothesis), we had the following information: hypothesized null = 0.5 and observed statistic = 0.543.
--   Now suppose we observe a statistic of 0.57. (i.e. 57% of the 457 matches were won by a competitor wearing red.)
+-   Now suppose 261 matches were won by competitors wearing read (i.e., an observe a statistic of 0.571).
 
 15. **How does the distance between our observed statistic and hypothesized null change? Might be helpful to draw a picture.**
 
 16. **Run the code below. What is our p-value?**
+
+```{r binom-test-3}
+binom.test(x = ____, n = 457, p = 0.5, alternative = "greater")
+```
 
 17. **Is your p-value larger or smaller than your original one? Explain why this makes sense.**
 
@@ -202,18 +201,24 @@ Research Question: Do competitors that wear red uniforms win a majority of the t
 
 -   In boxing, the researchers found that out of the 272 boxing matches 150 of them were won by competitors wearing red.
 
-    *(Note: the sample statistic of 150/272 = 0.551 is similar to the original sample statistic from scenario 1.)*
+*(Note: the sample statistic of 150/272 = 0.551 is similar to the original sample statistic from scenario one - original of 0.543.)*
 
-18. **Complete the code below to import the boxing data.**
+Run the code below to filter out a *subset* containing only the boxing matches.
 
 ```{r boxing-data}
-# load the boxing data
-
+# filter the boxing data
+boxing <- athletes |>
+  filter(sport == "boxing")
+head(boxing)
 ```
 
-19. **Use the One Proportion applet to test our hypothesis. Click summary statistics.**
+19. **Run the code below to test our hypothesis.**
 
-20. **Compare to the original scenario. Note the center of the distributions. How does the standard deviation change? Is the p-value larger or smaller?**
+```{r binom-test-4}
+binom.test(x = _____, n = ______, p = 0.5, alternative = "greater")
+```
+
+20. **Compare to the original scenario. Note the probability of success. Is the p-value larger or smaller?**
 
 ::: callout-note
 ## Key Idea
