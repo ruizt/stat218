@@ -21,9 +21,9 @@ execute:
 
 1. In a study conducted by researchers at the Marine Biology Institute in Monterey, California, a dolphin named Luna was the focus of an investigation into whether bottlenose dolphins demonstrated the ability to identify edible fish species, herring, based on their distinct vocalizations. The researchers conducted a series of trials using underwater recordings of fish vocalizations.
 
-> During the trials, Luna the bottlenose dolphin was presented with **three** different underwater sound recordings, each corresponding to a different fish species: flounder, herring, and pufferfish. Luna was observed in her natural habitat, and she was allowed to swim freely near the sound sources. Out of 60 trials, Luna accurately identified the herring sound recording 28 times.
+> During the trials, Luna the bottlenose dolphin was presented with two different underwater sound recordings, each corresponding to a different fish species: herring and pufferfish. Luna was observed in her natural habitat, and she was allowed to swim freely near the sound sources. Out of 60 trials, Luna accurately identified the herring sound recording 39 times.
 
-> `r fontawesome::fa("question")` **Research Question:** Can it be concluded, based on Luna's observations, that the bottlenose dolphin Luna is significantly better at identifying the herring fish species based on vocalizations compared to random chance?
+> `r fontawesome::fa("question")` **Research Question:** Can it be concluded, based on Luna's observations, that the bottlenose dolphin Luna is better at identifying the herring fish species based on vocalizations compared to random chance?
 
 a. Identify the following in the context of this example (4 pts):
 
@@ -43,7 +43,7 @@ a. Identify the following in the context of this example (4 pts):
 
 \vspace{0.2in}
 
-b. If Luna the bottlenose dolphin were randomly selecting between three types of fish for her meal, how many times would you expect her accurately identified the herring sound recording? Explain. (3 pts)
+b. If Luna the bottlenose dolphin were randomly selecting between three types of fish for her meal, how many times would you expect her accurately identified the herring sound recording? Explain. (2 pts)
 
 Below is a dot plot displaying 100 simulations of the number of times Luna accurately identified the herring sound recording under the assumption that her selections were made at random.
 
@@ -71,7 +71,7 @@ knitr::include_graphics("../01-course-notes/01-images/font-style-image.png")
 
 > The researchers aren’t sure which font is more appropriate for the label and simply want to know whether the majority of all consumers will choose the truffles with one font more than the other.
 
-Why was it important for the researchers to present balance out the order in which the fonts were presented across the study? For example, how would the study results have been affected if the researchers always presented the Signet font on the left? (4 pts)
+Why was it important for the researchers to present balance out the order in which the fonts were presented across the study? For example, how would the study results have been affected if the researchers always presented the Signet font on the left? (3 pts)
 
 \vspace{1in}
 
@@ -87,4 +87,4 @@ d. Number of stitches required ______
 
 \vspace{0.3in}
 
-\hfill ______ / 16 pts
+\hfill ______ / 14 pts

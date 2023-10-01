@@ -1,0 +1,81 @@
+---
+title: "Inference and Confidence Intervals for a Single Categorical Variable"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+---
+
+## Monday, October 2nd
+### Today we will...
+
++ Review setting up hypotheses
++ Evaluating evidence using p-values
++ Theoretical approach to p-values
++ Example 2.1 & 2.2 (In groups for Tuesday Class Participation)
+
+## To do:
+
++ **Example 2.1 & 2.2**
+  + Checked for class participation credit on Tuesday
+
++ **Homework 2: Can Marine sniff out cancer?**
+  + Due Wednesday 10/4 at 11:59pm
+  
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+
+## Tuesday, October 3rd
+### Today we will...
+
++ Questions on Examples 2.1 & 2.2
++ Introduce Confidence Intervals
+
+## To do:
+
++ **Homework 2: Can Marine sniff out cancer?**
+  + Due Wednesday 10/4 at 11:59pm
+  
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+  
+## Thursday, September 28th
+### Today we will...
+
++ Lab 2: What Impacts Strength of Evidence
+
+## To do:
+
++ **Lab 2: What Impacts Strength of Evidence?**
+  + Due Monday 10/9 at 11:59pm
+  
++ **Print/Download Chapter 3 Course Notes**
+  + For class Monday 10/9
+
+## Friday, September 29th
+### Today we will...
+
++ Review hypothesis testing & confidence intervals
++ Meaning of 95% confidence interval
++ **Exit Ticket**
+
+
+## Exit Ticket!
+
++ Rip out a half sheet of paper, or grab a notecard from the instructor.
++ Write your name and answer the question below.
++ Turn in before you leave.
+
+"What is one concept about hypothesis testing and confidence intervals you have a question about?"
+
+## To do:
+
++ **Lab 2: What Impacts Strength of Evidence?**
+  + Due Monday 10/9 at 11:59pm
+  
++ **Print/Download Chapter 3 Course Notes**
+  + For class Monday 10/9
+  
+  

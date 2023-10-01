@@ -17,62 +17,139 @@ execute:
   echo: false
 ---
 
-The analyses we completed in Chapter 2 were for a single categorical variable with only two outcomes. For example, in the helper/hinderer study, the babies were choosing either one toy or the other. In the gender discrimination example, each employee selected for management was either male or female. Next, we'll consider problems involving a single categorical variable which has more than two categories.
+The analyses we completed in Chapter 2 were for a single categorical variable with only two outcomes. For example, in the helper/hinderer study, the babies were choosing either one toy or the other. In the sex discrimination example, each employee selected for management was either male or female. Next, we'll consider problems involving a single categorical variable which has more than two categories.
 
-## Example 3.1: Crime Statistics
+## Example 3.1: Fire Incidents
 
-The Minneapolis Police Department posts regular updates on crime statistics on their website. A colleague of mine has collected this data for the past few years on all neighborhoods in Minneapolis. A portion of the data set and the precinct map are shown below.
+California is one of the places having the most deadliest and destructive wildfire seasons. This dataset contains the list of Wildfires that occurred in California between 2013 and 2020. The dataset contains the location where wildfires have occurred including the County name and also details on when the wildfire has started. A portion of the data set is shown below.
 
-Source: <http://www.minneapolismn.gov/police/crime-statistics/>
+```{r}
+library(tidyverse)
+# fire_incidents <- read_csv("data/California_Fire_Incidents.csv") |> 
+#   separate_wider_delim(CanonicalUrl, delim = "/", names = c(NA, NA, "Year", "MonthNum", "Day", "NA", NA)) |> 
+#   mutate(Season = case_when(MonthNum %in% c(9,10,11) ~ "Fall",
+#                             MonthNum %in% c(12,1,2) ~ "Winter",
+#                             MonthNum %in% c(3,4,5) ~ "Spring",
+#                             MonthNum %in% c(6,7,8) ~ "Summer"
+#                             ),
+#          Month = case_when(MonthNum == 1 ~ "Jan",
+#                            MonthNum == 2 ~ "Feb",
+#                            MonthNum == 3 ~ "Mar",
+#                            MonthNum == 4 ~ "Apr",
+#                            MonthNum == 5 ~ "May",
+#                            MonthNum == 6 ~ "Jun",
+#                            MonthNum == 7 ~ "Jul",
+#                            MonthNum == 8 ~ "Aug",
+#                            MonthNum == 9 ~ "Sep",
+#                            MonthNum == 10 ~ "Oct",
+#                            MonthNum == 11 ~ "Nov",
+#                            MonthNum == 12 ~ "Dec",
+#                            
+#                             )
+#          ) |> 
+#   mutate(row = seq(1,n())) |> 
+#   group_by(Year, Season, Month, Name, AcresBurned, CrewsInvolved, Dozers, Engines) |> 
+#   slice(1) |> 
+#   arrange(row) |> 
+#   select(Year, Season, Month, Name, AcresBurned, Counties, CrewsInvolved, Dozers, Engines)
+# write_csv(fire_incidents, "data/fire_incidents.csv")
 
-Suppose the police chief for Precinct #2 has received a complaint from a permanent resident who lives in a neighborhood near the University of Minnesota. This resident has asked for additional patrol to take place in his neighborhood as he believes that crime rates vary over the course of the year.
+# fire_incidents |> # start with our original data set
+#   filter(Counties == "Riverside") |> 
+#   write_csv("data/riverside_incidents.csv")
+```
 
-Crime rates are reported by month, so we will use the following definitions for the Seasons: 
+```{r}
+#| echo: true
+#| eval: false
+fire_incidents <- read_csv("data/fire_incidents.csv")
+head(fire_incidents)
+```
 
-+ Fall: September, October, and November 
-+ Winter: December, January, and February 
-+ Spring: March, April, and May 
-+ Summer: June, July, and August
+```{r}
+#| echo: false
+fire_incidents <- read_csv("data/fire_incidents.csv")
+fire_incidents[10:15,]
+```
 
-Crimes classified as Murder, Rape, Robbery, Aggravated Assault, Burglary, Larceny, Auto Theft, and Arson are all used in reporting the Total.
+This data is provided by kaggle.com (<https://www.kaggle.com/datasets/ananthu017/california-wildfire-incidents-20132020/>) to generate insights on what locations in California are under fire threat, what time of year do wildfires usually occur and how frequent and devastating they are. Suppose the fire chief in Riverside county has received the task of determining if the number of fires in the county varies over the course of the year.
 
-The Minneapolis Police Department reported that a total of 103 crimes occurred in the University of Minnesota neighborhood last year.
+`r fontawesome::fa("question")` **Research Question:** Is there evidence to suggest that fire patterns in the Riverside county differ over the four seasons of the year?
 
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|                        |                                                                                                                                            |
-|                        |                                                                                                                                            |
-| Research Question      | Is there evidence to suggest that crime patterns in the University of Minnesota neighborhood differ over the four seasons of the year?     |
-|                        |                                                                                                                                            |
-|                        |                                                                                                                                            |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|                        | The four parameters of interest are defined as follows:                                                                                    |
-|                        |                                                                                                                                            |
-|                        | π~fall~ = the probability of a crime occurring in the Fall                                                                                 |
-|                        |                                                                                                                                            |
-| Parameters of Interest | π~winter~ = the probability of a crime occurring in the Winter                                                                             |
-|                        |                                                                                                                                            |
-|                        | π~spring~ = the probability of a crime occurring in the Spring                                                                             |
-|                        |                                                                                                                                            |
-|                        | π~summer~ = the probability of a crime occurring in the Summer                                                                             |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|                        | H~o~: Crimes are equally dispersed over the four seasons                                                                                   |
-|                        |                                                                                                                                            |
-| Hypotheses             |                                                                                                                                            |
-|                        |                                                                                                                                            |
-|                        | \                                                                                                                                          |
-|                        | \                                                                                                                                          |
-|                        | \                                                                                                                                          |
-|                        | H~a~: Crimes are not occurring equally over the four seasons                                                                               |
-|                        |                                                                                                                                            |
-|                        | \                                                                                                                                          |
-|                        | \                                                                                                                                          |
-|                        |                                                                                                                                            |
-|                        | \                                                                                                                                          |
-|                        | \                                                                                                                                          |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+Fires are reported by month, so we will use the following definitions for the Seasons:
 
-The approach we take here to address the research question is very similar to what we have done previously.  We will assume the crime patterns are occurring equally across the four seasons (i.e., that the null hypothesis is true) and then get a good idea of what outcomes we would expect to see if this were really the case. Then, we will check to see if the observed outcomes given in the data are consistent (or inconsistent) with what we expected to see under the null hypothesis.  If the observed data are inconsistent with the outcomes expected under the null, then we have sufficient statistical evidence to say crime rates vary across the four seasons.
+-   `Fall`: September, October, and November
+-   `Winter`: December, January, and February
+-   `Spring`: March, April, and May
+-   `Summer`: June, July, and August
+
+The fire chief reported a total of 146 fires occurred in Riverside county between 2013 and 2020.
+
+*The code below shows how we can find the number of fires in Riverside county from the original data set*
+
+```{r}
+fire_incidents |> # start with our original data set
+  filter(Counties == "Riverside") |> # filter the data set to include only Riverside county
+  nrow() # count the number of observational rows (fires) in the Riverside county
+```
+
+**Parameters of interest** The four parameters of interest are defined as follows:
+
+$\pi_\text{fall}$ = the population proportion of a fire occurring in the Fall
+
+$\pi_\text{winter}$ = the population proportion of a fire occurring in the Winter
+
+$\pi_\text{spring}$ = the population proportion of a fire occurring in the Spring
+
+$\pi_\text{summer}$ = the population proportion of a fire occurring in the Summer
+
+**Hypotheses**
+
+$H_0$: Fires are equally dispersed over the four seasons.
+
+$H_A$: Fires are not occurring equally over the four seasons.
+
+The approach we take here to address the research question is very similar to what we have done previously. We will *assume* the fire patterns are occurring equally across the four seasons (i.e., that the null hypothesis is true) and then get a good idea of what outcomes we would expect to see if this were really the case. Then, we will check to see if the observed outcomes given in the data are consistent (or inconsistent) with what we expected to see under the null hypothesis. If the observed data are inconsistent with the outcomes expected under the null, then we have sufficient statistical evidence to say the number of fires vary across the four seasons.
+
+1.  Find the expected number of fires for each season under the assumption that fires are occurring equally over the four seasons. How did you obtain these values?
+
+\vspace{0.1in}
+
+    |                    | Fall | Winter | Spring | Summer | Total |
+    |--------------------|------|--------|--------|--------|-------|
+    | **Expected Count** |      |        |        |        |       |
+
+\vspace{0.5in}
+
+Note that we must allow for some slight variations in the fire patterns over the four seasons because we do not anticipate the numbers to come out exactly at the expected number for each season.  Over repeated samples, slight variations will occur in the fire patterns.  We could use simulation to give us an idea of how much deviation from the expected counts we should anticipate. 
+
+2.  We are going to use an adjustable spinner to simulate the variations we would expect to see under the condition that fires are occurring equally over the four seasons.
+
++ Visit <https://www.nctm.org/adjustablespinner/>.
++ Change the `Number of sectors` to 4 and change the color names to the Season names. 
+
+Why do we want the spinner set up with 25% for each Season (Color)? Explain
+
+\vspace{0.3in}
+
++ Spin once (this is the equivalent of one coin toss). Spin a couple more times to see what happens to the count table.
++ Reset the count.
++ Set the `Number of Spins` to 146 and hit Spin (or Skip to End).
+
+Why is do we want to set this to 146? Explain.
+
+\vspace{0.3in}
+
++ Record the results of your simulation in the table below
+
+*Your simulation results*
+
+    |                      | Fall | Winter | Spring | Summer | Total |
+    |----------------------|------|--------|--------|--------|-------|
+    | **Simulated Counts** |      |        |        |        |       |
+
+\vspace{0.5in}
 
 
-1. Find the expected number of total crimes for each season under the assumption that crimes are occurring equally over the four seasons.  How did you obtain these values?
+Next, consider the actual crime statistics for the University of Minnesota neighborhood for the past year.
 

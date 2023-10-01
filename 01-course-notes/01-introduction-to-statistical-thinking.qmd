@@ -149,6 +149,12 @@ tidyr::tibble("Trial" = rep(seq(1,20)),
 
 ## Example 1.2: Helper vs. Hinderer?
 
+<https://www.youtube.com/watch?v=j4n_Qh4Gg9Q>
+
+<https://www.youtube.com/watch?v=ExcxDMEHlHY>
+
+<https://www.youtube.com/watch?v=NsWICFLt_-g>
+
 In a study reported in a November 2007 issue of Nature, researchers investigated whether infants take into account an individual’s actions towards others in evaluating that individual as appealing or aversive, perhaps laying the foundation for social interaction [@hamlin2007].  In one component of the study, sixteen 10-month-old infants were shown a “climber” character (a piece of wood with “google” eyes glued onto it) that could not make it up a hill in two tries.  Then they were shown two scenarios for the climber’s next try, one where the climber was pushed to the top of the hill by another character (“helper”) and one where the climber was pushed back down the hill by another character (“hinderer”).  The infant was alternately shown these two scenarios several times.  Then the child was presented with both pieces of wood (the helper and the hinderer) and asked to pick one to play with. The color and shape and order (left/right) of the toys were varied and balanced out among the 16 infants [@holcomb2010introducing].
 
 `r fontawesome::fa("question")` **Research Question:** Do 10-month-old infants tend to prefer the helper toy over the hinderer toy?

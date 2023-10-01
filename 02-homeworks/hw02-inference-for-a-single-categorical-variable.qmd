@@ -1,5 +1,5 @@
 ---
-title: "Homework 2: Can dogs sniff out cancer?"
+title: "Homework 2: Can Marine sniff out cancer?"
 subtitle: "Inference and Confidence Intervals for a Single Categorical Variable"
 embed-resources: true
 format:
@@ -12,7 +12,7 @@ format:
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Homework 2: Can dogs sniff out cancer?}
+          \fancyhead[R]{Homework 2: Can Marine sniff out cancer?}
           \fancyfoot[C]{\thepage}
   docx:
     toc: false

@@ -395,7 +395,7 @@ A 28-year-old developed pain involving the spine and the left side of her body a
 
 \vspace{0.8in}
 
-### Example 2.2: Effectiveness of an Experimental Drug
+## Example 2.2: Effectiveness of an Experimental Drug
 
 Suppose a commonly prescribed drug for relieving nervous tension is believed to be only 70% effective. Experimental results with a *new* drug administered to a random sample of 20 adults who were suffering from nervous tension show that 18 received relief. Is there statistical evidence that the new experimental drug is more than 70% effective?
 
