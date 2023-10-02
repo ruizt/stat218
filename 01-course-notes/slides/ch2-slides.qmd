@@ -18,13 +18,14 @@ format:
 
 + **Lab 1: Intro to Posit Cloud**
   + Due Monday 10/2 at 11:59pm
-
+  
++ **Example 2.1 & 2.2**
+  + Checked for class participation credit on Tuesday
+  
 + **Homework 2: Can Marine sniff out cancer?**
   + Due Wednesday 10/4 at 11:59pm
 
-+ **Example 2.1 & 2.2**
-  + Checked for class participation credit on Thursday
-  
+
 ::: callout-warning
 Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 :::
@@ -36,9 +37,6 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 + Introduce Confidence Intervals
 
 ## To do:
-
-+ **Example 2.1 & 2.2**
-  + Checked for class participation credit on Thursday
   
 + **Homework 2: Can Marine sniff out cancer?**
   + Due Wednesday 10/4 at 11:59pm
