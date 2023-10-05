@@ -10,7 +10,7 @@ format:
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Chapter 0: Welcome to Stat 218 - Applied Statistics for Life Science}
+          \fancyhead[R]{Chapter 3: Inference for a Categorical Variable with More than Two Categories}
           \fancyfoot[C]{\thepage}
   docx:
     toc: false
@@ -71,9 +71,12 @@ options(scipen = 999)
 ```{r}
 #| echo: true
 #| eval: false
-fire_incidents <- read_csv("data/fire_incidents.csv")
-head(fire_incidents)
+fire_incidents <- read_csv("data/fire_incidents.csv") # <1>
+head(fire_incidents) # <2>
 ```
+
+1.  Read the `fire_incidents` data set into the R environment, then
+2.  print the first 6 rows of the data set.
 
 ```{r}
 #| echo: false
@@ -81,7 +84,7 @@ fire_incidents <- read_csv("data/fire_incidents.csv")
 fire_incidents[10:15,]
 ```
 
-This data is provided by kaggle.com (<https://www.kaggle.com/datasets/ananthu017/california-wildfire-incidents-20132020/>) to generate insights on what locations in California are under fire threat, what time of year do wildfires usually occur and how frequent and devastating they are. Suppose the fire chief in Riverside county has received the task of determining if the number of fires in the county varies over the course of the year.
+This data is provided by kaggle.com (<https:\www.kaggle.com/datasets/ananthu017/california-wildfire-incidents-20132020/>) to generate insights on what locations in California are under fire threat, what time of year do wildfires usually occur and how frequent and devastating they are. Suppose the fire chief in Riverside county has received the task of determining if the number of fires in the county varies over the course of the year.
 
 `r fontawesome::fa("question")` **Research Question:** Is there evidence to suggest that fire patterns in the Riverside county differ over the four seasons of the year?
 
@@ -95,26 +98,37 @@ Fires are reported by month, so we will use the following definitions for the Se
 The fire chief reported a total of 146 fires occurred in Riverside county between 2013 and 2020.
 
 ::: callout
-The code below shows how we can get only the fires in Riverside county from the original data set and save it to a data set named `riverside_fires`
+The code below shows how we can get only the fires in Riverside county from the original data set and save it to a data set named `riverside_incidents`
 
 ```{r}
 #| echo: true
-riverside_fires <- fire_incidents |> # start with our original data set
-  filter(Counties == "Riverside") # filter the data set to include only Riverside county
+riverside_incidents <- # <1>
+  fire_incidents |> # <2>
+  filter(Counties == "Riverside") # <3>
 ```
+
+1.  Create a new subset of data called `riverside_incidents`.
+2.  Start with the original `fire_incidents` data set, then
+3.  filter the data set to include only Riverside county.
 :::
 
 +------------------------+----------------------------------------------------------------------------------------+
 | Setup                  | **Population** All potential fires that could occur in Riverside.                      |
-|                        |                                                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 |                        | **Sample** $n = 146$ fires which occurred in Riverside county between 2013 and 2020.   |
-|                        |                                                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 |                        | **Observation** A fire in Riverside county                                             |
-|                        |                                                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 |                        | **Variable of interest** Season (fall/winter/spring/summer)                            |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------+
 | Parameters of interest | The four parameters of interest are defined as follows:                                |
-|                        |                                                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 |                        | $\pi_\text{fall}$ = the population proportion of a fire occurring in the Fall          |
 |                        |                                                                                        |
 |                        | $\pi_\text{winter}$ = the population proportion of a fire occurring in the Winter      |
@@ -122,14 +136,19 @@ riverside_fires <- fire_incidents |> # start with our original data set
 |                        | $\pi_\text{spring}$ = the population proportion of a fire occurring in the Spring      |
 |                        |                                                                                        |
 |                        | $\pi_\text{summer}$ = the population proportion of a fire occurring in the Summer      |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------+
 | Hypotheses             | $H_0$: Fires are equally dispersed over the four seasons                               |
 |                        |                                                                                        |
 |                        | ($\pi_\text{fall}$ = $\pi_\text{winter}$ = $\pi_\text{spring})$. =$\pi_\text{summer}$) |
-|                        |                                                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 |                        | $H_A$: Fires are not occurring equally over the four seasons                           |
 |                        |                                                                                        |
 |                        | (at least one $\pi_i$ differs).                                                        |
+|                        |\                                                                                       |
+|                        |\                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------+
 
 The approach we take here to address the research question is very similar to what we have done previously. We will *assume* the fire patterns are occurring equally across the four seasons (i.e., that the null hypothesis is true) and then get a good idea of what outcomes we would expect to see if this were really the case. Then, we will check to see if the observed outcomes given in the data are consistent (or inconsistent) with what we expected to see under the null hypothesis. If the observed data are inconsistent with the outcomes expected under the null, then we have sufficient statistical evidence to say the number of fires vary across the four seasons.
@@ -138,11 +157,12 @@ The approach we take here to address the research question is very similar to wh
 
 \vspace{0.1in}
 
-+----------------+------+--------+--------+--------+-------+
-|                | Fall | Winter | Spring | Summer | Total |
-+================+======+========+========+========+=======+
-| Expected Count |      |        |        |        |       |
-+----------------+------+--------+--------+--------+-------+
++----------------+--------+--------+--------+--------+--------+
+|                | Fall   | Winter | Spring | Summer | Total  |
++================+========+========+========+========+========+
+| Expected Count | \      |        |        |        |        |
+|                | \      |        |        |        |        |
++----------------+--------+--------+--------+--------+--------+
 
 \vspace{0.5in}
 
@@ -150,7 +170,7 @@ Note that we must allow for some slight variations in the fire patterns over the
 
 2.  We are going to use an adjustable spinner to simulate the variations we would expect to see *under* the assumption that fires are occurring equally over the four seasons.
 
--   Visit <https://www.nctm.org/adjustablespinner/>.
+-   Visit <https:\www.nctm.org/adjustablespinner/>.
 -   Change the `Number of sectors` to 4 and change the color names to the Season names.
 
 Why do we want the spinner set up with 25% for each Season (Color)? Explain
@@ -169,11 +189,12 @@ Why is do we want to set this to 146? Explain.
 
 **Your simulation results**
 
-+----------------------+------+--------+--------+--------+-------+
-|                      | Fall | Winter | Spring | Summer | Total |
-+======================+======+========+========+========+=======+
-| **Simulated Counts** |      |        |        |        |       |
-+----------------------+------+--------+--------+--------+-------+
++----------------------+--------+--------+--------+--------+--------+
+|                      | Fall   | Winter | Spring | Summer | Total  |
++======================+========+========+========+========+========+
+| **Simulated Counts** |\       |        |        |        |        |
+|                      |\       |        |        |        |        |
++----------------------+--------+--------+--------+--------+--------+
 
 \vspace{0.5in}
 
@@ -184,23 +205,27 @@ Next, consider the actual fire statistics for Riverside County between 2013 and 
 ::: callout
 ```{r}
 #| echo: true
-fire_incidents |> # start with our original data set
-  filter(Counties == "Riverside") |> # filter the data set to include only Riverside county
-  count(Season) # summarize the data to obtain the number of fires in each season
+riverside_incidents |> # <1>
+  count(Season) # <2>
 ```
+
+1.  Start with the `riverside_incidents` data set containing only fires in Riverside county, then
+2.  summarize the data to obtain the number of fires in each `Season`.
 :::
 
-+---------------------+------+--------+--------+--------+-------+
-|                     | Fall | Winter | Spring | Summer | Total |
-+=====================+======+========+========+========+=======+
-| **Observed Counts** | 25   | 5      | 31     | 85     | 146   |
-+---------------------+------+--------+--------+--------+-------+
++---------------------+--------+--------+--------+--------+--------+
+|                     | Fall   | Winter | Spring | Summer | Total  |
++=====================+========+========+========+========+========+
+| **Observed Counts** | 25     | 5      | 31     | 85     | 146    |
+|                     |\       |        |        |        |        |
++---------------------+--------+--------+--------+--------+--------+
 
 3.  Next to the stacked bar plot of the observed data, sketch out a stacked bar plot of your simulation results *under* the assumption that fires are equally dispersed over the four seasons. Additionally sketch your other group members simulation results.
 
 ```{r}
 #| out-width: 100%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-lineup-sketch.png")
 ```
 
@@ -253,13 +278,14 @@ sim |>
   facet_wrap(~Seasons, nrow = 4, scales = "free_x") +
   theme(aspect.ratio = 2) +
   theme_test() +
-  labs(title = "Simulated under the assumption \nthe pattern of fires is equal adross all seasons", 
+  labs(title = "Simulated under the assumption \nthe pattern of fires is equal across all seasons", 
        x = "Number of Fires")
 ```
 
 ```{r}
 #| out-width: 100%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-simulated-4pvalues.png")
 ```
 
@@ -270,13 +296,17 @@ knitr::include_graphics("03-images/fire-simulated-4pvalues.png")
 +--------+------------+------------+------------+--------+---------+-----------------------+
 | Season | Obs. Count | Lower Side | Upper Side | Total  | p-value | Strength of Evidence? |
 +========+============+============+============+========+=========+=======================+
-| Fall   |            |            |            |        |         |                       |
+| Fall   |\           |            |            |        |         |                       |
+|        |\           |            |            |        |         |                       |
 +--------+------------+------------+------------+--------+---------+-----------------------+
-| Winter |            |            |            |        |         |                       |
+| Winter |\           |            |            |        |         |                       |
+|        |\           |            |            |        |         |                       |
 +--------+------------+------------+------------+--------+---------+-----------------------+
-| Spring |            |            |            |        |         |                       |
+| Spring |\           |            |            |        |         |                       |
+|        |\           |            |            |        |         |                       |
 +--------+------------+------------+------------+--------+---------+-----------------------+
-| Summer |            |            |            |        |         |                       |
+| Summer |\           |            |            |        |         |                       |
+|        |\           |            |            |        |         |                       |
 +--------+------------+------------+------------+--------+---------+-----------------------+
 
 \vspace{0.3in}
@@ -298,6 +328,7 @@ It can be shown that the maximum familywise error rate for a set of k tests, eac
 ```{r}
 #| out-width: 100%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-simulated-4differences.png")
 ```
 
@@ -309,10 +340,13 @@ knitr::include_graphics("03-images/fire-simulated-4differences.png")
 |          | Fall              | Winter           | Spring   | Summer   | Total    |
 +==========+===================+==================+==========+==========+==========+
 | Observed | 25                | 5                | 31       | 85       | 146      |
+|          |\                  |                  |          |          |          |
 +----------+-------------------+------------------+----------+----------+----------+
 | Expected | 36.5              | 36.5             | 36.5     | 36.5     | 146      |
+|          |\                  |                  |          |          |          |
 +----------+-------------------+------------------+----------+----------+----------+
 | Distance | 25 - 36.5 = -11.5 | 5 - 36.5 = -31.5 |          |          |          |
+|          |\                  |                  |          |          |          |
 +----------+-------------------+------------------+----------+----------+----------+
 
 \vspace{0.3in}
@@ -325,18 +359,28 @@ So that the negative distances do not cancel out the positive ones, we will squa
 
 *Note that the absolute value could have been used, as well, but the statistical hypothesis testing procedure we will soon be discussing uses the squared distances, so that's what we're considering here.*
 
-|              |  Fall  | Winter | Spring | Summer  |  Total   |
-|--------------|:------:|:------:|:------:|:-------:|:--------:|
-| Observed     |   25   |   5    |   31   |   85    |   146    |
-| Expected     |  36.5  |  36.5  |  36.5  |  36.5   |   146    |
-| Distance     | -11.5  | -31.5  |  -5.5  |  48.5   |    0     |
++--------------+--------+--------+--------+---------+----------+
+|              | Fall   | Winter | Spring | Summer  | Total    |
++==============+:======:+:======:+:======:+:=======:+:========:+
+| Observed     | 25     | 5      | 31     | 85      | 146      |
+|              |\       |        |        |         |          |
++--------------+--------+--------+--------+---------+----------+
+| Expected     | 36.5   | 36.5   | 36.5   | 36.5    | 146      |
+|              |\       |        |        |         |          |
++--------------+--------+--------+--------+---------+----------+
+| Distance     | -11.5  | -31.5  | -5.5   | 48.5    | 0        |
+|              |\       |        |        |         |          |
++--------------+--------+--------+--------+---------+----------+
 | Distance$^2$ | 132.25 | 992.25 | 30.25  | 2352.25 | **3514** |
+|              |\       |        |        |         |          |
++--------------+--------+--------+--------+---------+----------+
 
 The total squared distances summed up across all four seasons is about 3514. Note that we cannot determine whether or not this 3514 is "unusual" using our previous graphs because the previous graphs considered each season individually. Our new measure is the squared difference between the Observed and Expected counts summed over four seasons, so we now need a new graph that shows this value for all of our 100 simulated results from the online applet to determine whether or not 3514 is "unusual".
 
 ```{r}
 #| out-width: 70%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-sqdistance-sketch.png")
 ```
 
@@ -374,7 +418,7 @@ sim |>
   # facet_wrap(~Seasons, nrow = 4, scales = "free_x") +
   # theme(aspect.ratio = 2) +
   theme_test() +
-  labs(title = "Simulated under the assumption \nthe pattern of fires is equal adross all seasons", 
+  labs(title = "Simulated under the assumption \nthe pattern of fires is equal across all seasons", 
        x = "Sum of Squared Distances")
 ```
 
@@ -394,14 +438,19 @@ $$\text{Test Statistic} = \sum \frac{(\text{Observed} - \text{Expected})^2}{\tex
 |                       | Fall    | Winter  | Spring  | Summer  | Total     |
 +=======================+:=======:+:=======:+:=======:+:=======:+:=========:+
 | Observed (O)          | 25      | 5       | 31      | 85      | 146       |
+|                       |\        |         |         |         |           |
 +-----------------------+---------+---------+---------+---------+-----------+
 | Expected (E)          | 36.5    | 36.5    | 36.5    | 36.5    | 146       |
+|                       |\        |         |         |         |           |
 +-----------------------+---------+---------+---------+---------+-----------+
 | Difference = (O - E)  | -11.5   | -31.5   | -5.5    | 48.5    | 0         |
+|                       |\        |         |         |         |           |
 +-----------------------+---------+---------+---------+---------+-----------+
 | $(O - E)^2$           | 132.25  | 992.25  | 30.25   | 2352.25 | 3514      |
+|                       |\        |         |         |         |           |
 +-----------------------+---------+---------+---------+---------+-----------+
 | $\frac{(O - E)^2}{E}$ | 3.62    | 27.18   | 0.83    | 64.44   | **96.07** |
+|                       |\        |         |         |         |           |
 +-----------------------+---------+---------+---------+---------+-----------+
 
 13. The **Test Statistic** for this analysis would be:
@@ -415,13 +464,14 @@ Similar to what we have done in the past, now we must determine whether or not t
 ```{r}
 #| out-width: 100%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-chisq-sketch.png")
 ```
 
 The `Online Simulation Applet > Goodness of Fit` can be used to compute the Test Statistic over repeated samples under the null hypothesis.
 
--   Step 1: Copy/Paste the data into the left window. Click `Use Data`
-  - Visit xxx to copy the `Season` variable/column of data
+-   Step 1: Clear the data, then Copy/Paste the data into the left window. Click `Use Data`
+-   Visit <https:\raw.githubusercontent.com/earobinson95/stat218-calpoly-f2023/main/01-course-notes/data/riverside_seasons.csv> to copy the `Season` variable/column of data
 -   Step 2: Double check hypothesized (expected) probabilities for the categories. Click `Set`
 -   Make sure `Show Sampling Options` is selected.
 -   Change `Number of Samples` to the number of repetitions you want to run (100 or 1000)
@@ -434,6 +484,7 @@ The following graph shows the test statistic computed for 100 simulations carrie
 ```{r}
 #| out-width: 60%
 #| fig-align: center
+#| fig-pos: "H"
 knitr::include_graphics("03-images/fire-chisq-sim-applet.png")
 ```
 
@@ -445,18 +496,23 @@ knitr::include_graphics("03-images/fire-chisq-sim-applet.png")
 
 $$\text{Test Statistic} = \sum \frac{(\text{Observed} - \text{Expected})^2}{\text{Expected}}$$
 
-\vspace{0.8in}
+\vspace{0.7in}
 
 17. Compute the p-value, make a decision, and write a final conclusion for the original research question.
 
-\vspace{0.8in}
+\vspace{0.7in}
 
 ::: callout-note
 ### The Chi-square Distribution and Goodness-of-fit Test
 
 It can be shown that this test statistic actually follows what is known as the **Chi-Square Distribution**. This is different from the Binomial distribution and Normal distribution, both presented earlier. Unlike the binomial distribution, the chi-square distribution is not based on counts and is often skewed to the right.
 
-INSERT SKETCH OF CHI-SQUARE DISTRIBUTION
+```{r}
+#| out-width: 40%
+#| fig-align: center
+#| fig-pos: "H"
+knitr::include_graphics("03-images/fire-chisq-distribution.png")
+```
 
 The number of categories is taken into consideration through a quantity called the degrees-of-freedom, typically referred to as the df.
 
@@ -465,7 +521,7 @@ $$\text{df} = \text{\# of Categories} – 1$$
 We then refer to our Chi-square Test Statistic as $\chi^2_{df}$.
 :::
 
-This hypothesis testing procedure is often called the **Chi-square Goodness of Fit Test**. In practice, statisticians will use statistical software, such as R, to conduct a Chi-square Goodness-of-fit Test, given the data set (recall `riverside_fires`).
+This hypothesis testing procedure is often called the **Chi-square Goodness of Fit Test**. In practice, statisticians will use statistical software, such as R, to conduct a Chi-square Goodness-of-fit Test, given the data set (recall `riverside_incidents`).
 
 The function `chisq_test()` from the `infer` package will conduct a Chi-square Goodness-of-fit-Test with the following parameter inputs:
 
@@ -476,7 +532,7 @@ The function `chisq_test()` from the `infer` package will conduct a Chi-square G
 ```{r}
 #| echo: true
 library(infer)
-chisq_test(x = riverside_fires,
+chisq_test(x = riverside_incidents,
            response = Season,
            p = c("Fall" = 0.25,
                  "Winter" = 0.25,
