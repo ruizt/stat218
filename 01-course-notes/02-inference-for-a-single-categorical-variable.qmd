@@ -5,7 +5,8 @@ format:
   html:
     toc: true
   pdf:
-    keep-tex: false    include-in-header:
+    keep-tex: false    
+    include-in-header:
       text: |
           \usepackage{fancyhdr}
           \pagestyle{fancy}
@@ -853,9 +854,9 @@ Also, note that the population parameter ($\pi$ = the proportion of the populati
 
 We can, however, conduct a simulation study to see how well our methods for constructing a confidence interval work. In this simulation study, we will set the population proportion to a value that is known, construct confidence intervals from several random samples, and see how often the resulting interval actually captures the true value of the population proportion.
 
-This process is easy to do using an applet available on the web. Open the "Simulating Confidence Intervals" applet.
+This process is easy to do using an applet available on the web. `Online Simulation Applets` > `Simulating Confidence Intervals for Population Parameter`
 
-Link: <http://www.rossmanchance.com/applets/NewConfsim/Confsim.html> 
+Link: <http://www.rossmanchance.com/applets/2021/confsim/ConfSim.html> 
 
 Carry out the following steps.
 
@@ -865,7 +866,13 @@ Carry out the following steps.
 
 2.  Click on "Sample." Then, click on the interval to see the sample proportion that was obtained. You should see something similar to the following.
 
-INSERT SCREENSHOT HERE
+
+```{r}
+#| fig-align: center
+#| out-width: 80%
+#| fig-pos: "H"
+knitr::include_graphics("02-images/confint-sim.png")
+```
 
 > In the example shown above, the first random sample resulted in = 69/89 = .775. The confidence interval constructed using the Wald method was $0.689 \le \pi \le 0.862$. Note that this interval did in fact capture the true population proportion, $\pi = 0.80$.
 
