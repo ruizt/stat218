@@ -19,7 +19,6 @@ execute:
 ```{r setup}
 # Load in the packages necessary for our analysis: tidyverse
 library(tidyverse)
-library(infer)
 ```
 
 Officials noticed that competitors in the combat sports of boxing, tae kwon do, Greco-Roman wrestling, and freestyle wrestling are randomly assigned red or blue uniforms. For each match in the 2004 Olympics, they recorded the uniform color of the athlete who won.
@@ -135,14 +134,13 @@ Research Question: Do competitors that wear red uniforms win a *majority* of the
 
 -   Alternative:
 
-9. **Check the conditions for using the normal approximation method to test our hypotheses.**
+9.  **Check the conditions for using the normal approximation method to test our hypotheses.**
 
-10.  **Run the code below. Based on the output, what decision do you make about your hypotheses? Justify your answer using the p-value.**
+10. **Run the code below. Based on the output, what decision do you make about your hypotheses? Justify your answer using the p-value.**
 
 ```{r binom-test-1}
 binom.test(x = 248, n = 457, p = 0.5, alternative = "greater")
 ```
-
 
 11. **Write a conclusion in context of the scenario.**
 
