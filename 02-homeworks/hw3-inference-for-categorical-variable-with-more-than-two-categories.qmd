@@ -50,7 +50,9 @@ mastitis <- tibble(cow_id = sample(1:138, 138),
 write.csv(mastitis, "data/mastitis.csv", row.names = F)
 ```
 
-Mastitis is a common and economically significant disease in dairy cows and heifers. It is an inflammation of the mammary gland tissue and udder, which can be caused by various factors, including bacterial infections, environmental conditions, and poor milking practices. Mastitis can lead to reduced milk production and quality. Identifying whether the breed pattern of cows with mastitis consistent with the breed pattern of cows in the herd and is crucial for dairy farmer Selberg.
+Mastitis is a common and costly condition in dairy cows and heifers. It is an inflammation of the mammary gland tissue and udder, which can be caused by various factors, including bacterial infections, environmental conditions, and poor milking practices. Mastitis can lead to reduced milk production and quality. Identifying whether the breed pattern of cows with mastitis consistent with the breed pattern of cows in the herd and is crucial for dairy farmer Selberg.
+
+\vspace{0.1in}
 
 The proportion of cows of each breed in the dairy farmer Selberg's herd is shown below.
 
@@ -63,9 +65,15 @@ knitr::include_graphics("03-images/cow-distribution.png")
 Farmer Selberg has collected data (shown below) on the heifers and diary cows with mastitis from his herd.
 
 ```{r}
-mastitis <- read_csv("data/mastitis.csv")
-head(mastitis)
+#| echo: true
+library(tidyverse) # <1>
+mastitis <- read_csv("data/mastitis.csv") # <2>
+head(mastitis) # <3>
 ```
+
+1. Load the `tidyverse` package.
+2. Read in the `mastitis` data set.
+3. View the top 6 rows of the `mastitis` data set.
 
 **Research Question:** Is there evidence to suggest that the breed pattern of cows with mastitis deviates from breed patterns in dairy farmer Selberg's herd?
 
@@ -86,12 +94,7 @@ Consider the following table. The first row of this table contains the Observed 
 |              | Brown Swiss | Dutch Belted | Holstein | Jersey | Total |
 |--------------|-------------|--------------|----------|--------|-------|
 | **Observed** | 39          | 6            | 62       | 31     | 138   |
-|\             |             |              |          |        |       |
-|\             |             |              |          |        |       |
 | **Expected** | 23.46       |              |          |        |       |
-|\             |             |              |          |        |       |
-|\             |             |              |          |        |       |
-
 
 \vspace{1in}
 
@@ -119,7 +122,7 @@ Consider the following table. The first row of this table contains the Observed 
 
 \vspace{0.8in}
 
-10. Suppose your friend computes the following percentages: Brown Swiss: 39/138 $\approx$ 28%; Dutch Belted: 6/138 $\approx$ 28%; Holstein: 62/138 $\approx$ 45%; and Jersey: 31/138 $\approx$ 22%. Your friend then makes the following statement: "There is enough evidence for the research question because these percentages are different from the breed percentages for the entire herd (i.e., Brown Swiss = 17%, Dutch Belted = 10%, Holstein = 40%, and Jersey = 33%)." Why is this statement statistically incorrect? Explain.
+10. Suppose your friend computes the following percentages: Brown Swiss: 39/138 $\approx$ 28%; Dutch Belted: 6/138 $\approx$ 4%; Holstein: 62/138 $\approx$ 45%; and Jersey: 31/138 $\approx$ 23%. Your friend then makes the following statement: "There is enough evidence for the research question because these percentages are different from the breed percentages for the entire herd (i.e., Brown Swiss = 17%, Dutch Belted = 10%, Holstein = 40%, and Jersey = 33%)." Why is this statement statistically incorrect? Explain.
 
 \vspace{1.2in}
 
@@ -129,15 +132,15 @@ Consider the following table. The first row of this table contains the Observed 
 
 12. Conduct 1000 replications via the `Online Simulation Applets` \> `Goodness of Fit` to create a simulated distribution of the test statistic under the assumption that cows with mastitis do not deviate from the overall breed patterns in dairy farmer Selberg's herd. *(Hint: you will need to change the hypothesized probabilities in the applet)*. 
 
-The data can be found at <>
+> The breed data can be found at <https://raw.githubusercontent.com/earobinson95/stat218-calpoly-f2023/main/02-homeworks/data/mastitis_breeds.csv>
 
 ::: callout-warning
 Watch the ordering of the categories when setting up your hypothesized probabilities.
 :::
 
-Paste/sketch the simulated null sampling distribution below.
+> Paste/sketch the simulated null sampling distribution below.
 
-\vspace{0.8in}
+\vspace{2.5in}
 
 13. Is our observed Chi-square test statistic consistent with results we would expect to see if cows with mastitis do not deviate from the overall breed patterns in dairy farmer Selberg's herd? Explain.
 
@@ -155,13 +158,42 @@ Recall that in practice, statisticians conduct a Goodness of Fit test using the 
 
 13. How many degrees of freedom are used to determine the shape of the Chi-square distribution for our scenario?
 
-\vspace{0.8in}
+\vspace{0.35in}
 
-14. Select the correct code/output below to test the hypotheses.
+14. Select the correct code/output below to test the hypotheses. Explain your selection.
 
-A. Option 1
+**a.**
 
 ```{r}
+#| echo: true
+library(infer)
+chisq_test(mastitis,
+           response = breed,
+           p = c("BrownSwiss" = 0.28,
+                 "DutchBelted" = 0.04,
+                 "Holstein" = 0.45,
+                 "Jersey" = 0.23)
+           )
+```
+
+**b.**
+
+```{r}
+#| echo: true
+library(infer)
+chisq_test(mastitis,
+           response = breed,
+           p = c("BrownSwiss" = 0.25,
+                 "DutchBelted" = 0.25,
+                 "Holstein" = 0.25,
+                 "Jersey" = 0.25)
+           )
+```
+
+**c.**
+
+```{r}
+#| echo: true
 library(infer)
 chisq_test(mastitis,
            response = breed,
@@ -174,7 +206,7 @@ chisq_test(mastitis,
 
 15. From the output above, find the p-value, make a decision, and write a final conclusion for the original research question.
 
-\vspace{0.5in}
+\vspace{1in}
 
 ::: callout-caution
 ## Canvas Quiz
