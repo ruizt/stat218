@@ -41,13 +41,13 @@ question!
 
 **Office Hours** are held in my office (25-103) during the following times:
 
-<!-- ::: column-margin -->
+::: column-margin
 
-<!-- {{< video https://www.youtube.com/embed/yQq1-_ujXrM?si=sFpcpfT9Cey2-Eaf >}} -->
+{{< video https://www.youtube.com/embed/yQq1-_ujXrM?si=sFpcpfT9Cey2-Eaf >}}
 
-<!-- Introducing Faculty Office Hours -->
+Introducing Faculty Office Hours
 
-<!-- ::: -->
+:::
 
 | Day       | Time                   |
 |-----------|------------------------|
@@ -74,10 +74,15 @@ semester_dates <- seq(ymd(20230921), ymd(20231215), by=1)
 class_wdays <- c("Mon", "Tue", "Thu", "Fri")
 
 not_here_dates <- c(
-  # ymd("202311"),
+  ymd("20231110"),
+  ymd("20231120"),
+  ymd("20231121"),
+  ymd("20231122"),
+  ymd("20231123"),
+  ymd("20231124")
   # ymd("20230220")
   # Break
-  seq(ymd(20221120), ymd(20221124), by = 1)
+  # seq(ymd(20221120), ymd(20221124), by = 1)
   )
 
 exam_dates <- c(ymd(20231024), 
@@ -182,7 +187,6 @@ class_days <- filter(Cal, category %in% c("Class Day")) |>
     "Ch. 7 - Inferential Methods for a Single Numerical Variable",
     "Ch. 8 - Comparing a Numerical Variable Across Two Groups",
     "Ch. 9 - Comparing a Numerical Variable Across More than Two Groups",
-    "THANKSGIVING BREAK, NO CLASS",
     "Ch. 10 - Methods for Two Numerical Variables",
     "Final Project")) |>
   # bind_rows(project_days) |>
@@ -321,14 +325,14 @@ grades |>
 
 Lower bounds for grade cutoffs are shown in the following table. I will not "round up" grades at the end of the quarter. See this [thread](https://twitter.com/drseanmullen/status/1604212304622518272?s=46&t=II3oNLTSSrljVPqptoe21g) for advice on *"Playing the lines. Don't be there."*
 
-<!-- ::: column-margin -->
+::: column-margin
 
-<!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> -->
-<!-- </script> -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+</script>
 
-<!-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr">When my 11yo daughter complains her opponent in tennis is calling calls out..<br><br>I tell her:<br><br>“Don’t play the lines.”<br><br>As a college student, eventually every professor has to draw some lines.<br><br>Don’t play them so close. Don’t be there.</p>&mdash; Dr. Sean Mullen (@drseanmullen) <a href="https://twitter.com/drseanmullen/status/1604212307260645376?ref_src=twsrc%5Etfw">December 17, 2022</a></blockquote> -->
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">When my 11yo daughter complains her opponent in tennis is calling calls out..<br><br>I tell her:<br><br>“Don’t play the lines.”<br><br>As a college student, eventually every professor has to draw some lines.<br><br>Don’t play them so close. Don’t be there.</p>&mdash; Dr. Sean Mullen (@drseanmullen) <a href="https://twitter.com/drseanmullen/status/1604212307260645376?ref_src=twsrc%5Etfw">December 17, 2022</a></blockquote>
 
-<!-- ::: -->
+:::
 
 | Letter grade | X +  | X   | X - |
 |--------------|------|-----|-----|

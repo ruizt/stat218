@@ -3167,11 +3167,11 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">Read the <code>fire_incidents</code> data set into the R environment, then</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">Read the <code>fire_incidents</code> data set into the R environment, then</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="2">print the first 6 rows of the data set.</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">print the first 6 rows of the data set.</span>
 </dd>
 </dl>
 </div>
@@ -3214,15 +3214,15 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">Create a new subset of data called <code>riverside_incidents</code>.</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">Create a new subset of data called <code>riverside_incidents</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="2">Start with the original <code>fire_incidents</code> data set, then</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">Start with the original <code>fire_incidents</code> data set, then</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="3">filter the data set to include only Riverside county.</span>
+<span data-code-lines="3" data-code-cell="annotated-cell-1" data-code-annotation="3">filter the data set to include only Riverside county.</span>
 </dd>
 </dl>
 </div>
@@ -3232,8 +3232,9 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 78%">
+<col style="width: 17%">
+<col style="width: 64%">
+<col style="width: 17%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3247,6 +3248,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <strong>Variable of interest</strong> Season (fall/winter/spring/summer)<br>
 <br>
 </td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Parameters of interest</td>
@@ -3258,16 +3260,11 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <p><span class="math inline">\(\pi_\text{summer}\)</span> = the population proportion of a fire occurring in the Summer<br>
 <br>
 </p></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Hypotheses</td>
-<td><p><span class="math inline">\(H_0\)</span>: Fires are equally dispersed over the four seasons</p>
-<p>(<span class="math inline">\(\pi_\text{fall}\)</span> = <span class="math inline">\(\pi_\text{winter}\)</span> = <span class="math inline">\(\pi_\text{spring})\)</span>. =<span class="math inline">\(\pi_\text{summer}\)</span>)<br>
-<br>
-<span class="math inline">\(H_A\)</span>: Fires are not occurring equally over the four seasons</p>
-<p>(at least one <span class="math inline">\(\pi_i\)</span> differs).<br>
-<br>
-</p></td>
+<td colspan="2"><span class="math inline">\(H_0\)</span>: Fires are equally dispersed over the four seasons | | (<span class="math inline">\(\pi_\text{fall}\)</span> = <span class="math inline">\(\pi_\text{winter}\)</span> = <span class="math inline">\(\pi_\text{spring}\)</span> =<span class="math inline">\(\pi_\text{summer}\)</span>) | (<span class="math inline">\(\pi_\text{fall}\)</span> = 0.25; <span class="math inline">\(\pi_\text{winter}\)</span> = 0.25; <span class="math inline">\(\pi_\text{spring}\)</span> = 0.25; <span class="math inline">\(\pi_\text{summer} = 0.25\)</span>)   |   | <span class="math inline">\(H_A\)</span>: Fires are not occurring equally over the four seasons | | (at least one <span class="math inline">\(\pi_i\)</span> differs). |   |   |</td>
 </tr>
 </tbody>
 </table>
@@ -3373,11 +3370,11 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <dl>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">Start with the <code>riverside_incidents</code> data set containing only fires in Riverside county, then</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-1" data-code-annotation="1">Start with the <code>riverside_incidents</code> data set containing only fires in Riverside county, then</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="2">summarize the data to obtain the number of fires in each <code>Season</code>.</span>
+<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="2">summarize the data to obtain the number of fires in each <code>Season</code>.</span>
 </dd>
 </dl>
 </div>

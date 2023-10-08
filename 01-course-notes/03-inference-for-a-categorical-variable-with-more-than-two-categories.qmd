@@ -141,7 +141,8 @@ riverside_incidents <- # <1>
 +------------------------+----------------------------------------------------------------------------------------+
 | Hypotheses             | $H_0$: Fires are equally dispersed over the four seasons                               |
 |                        |                                                                                        |
-|                        | ($\pi_\text{fall}$ = $\pi_\text{winter}$ = $\pi_\text{spring})$. =$\pi_\text{summer}$) |
+|                        | ($\pi_\text{fall}$ = $\pi_\text{winter}$ = $\pi_\text{spring}$ =$\pi_\text{summer}$) |
+|                        | ($\pi_\text{fall}$ = 0.25; $\pi_\text{winter}$ = 0.25; $\pi_\text{spring}$ = 0.25; $\pi_\text{summer} = 0.25$) |
 |                        |\                                                                                       |
 |                        |\                                                                                       |
 |                        | $H_A$: Fires are not occurring equally over the four seasons                           |
