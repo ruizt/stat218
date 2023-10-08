@@ -12,7 +12,7 @@ format:
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Homework 3: XXXX}
+          \fancyhead[R]{Homework 3: Which cow breeds have mastitis?}
           \fancyfoot[C]{\thepage}
   docx:
     toc: false
@@ -102,11 +102,11 @@ Consider the following table. The first row of this table contains the Observed 
 
 \vspace{0.8in}
 
-5.  The value in the first row and second column is 23.46 (i.e. Observed count for the Brown Swiss breed). Explain where this number came from. What does this value represent?
+5.  The value in the first row and second column is 23.46 (i.e. Expected count for the Brown Swiss breed). Explain where this number came from. What does this value represent?
 
 \vspace{0.8in}
 
-6.  Complete the empty cells in the second row to contain the expected outcome for each of the breeds.
+6.  Complete the empty cells in the second row to contain the expected count for each of the breeds.
 
 \vspace{0.3in}
 
@@ -118,7 +118,7 @@ Consider the following table. The first row of this table contains the Observed 
 
 \vspace{2in}
 
-9.  Why is the Expected count for the Holstein's so much higher than the other breeds?
+9.  Why is the Expected count for the Holstein's higher than the other breeds?
 
 \vspace{0.8in}
 
