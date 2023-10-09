@@ -21,7 +21,7 @@ Start Ch. 3 Notes (Example 3.1)
 ```{r}
 #| fig-align: center
 #| out-width: 40%
-knitr::include_graphics("images/adjustable-spinner.png")
+knitr::include_graphics("images/adjustable-spinner.PNG")
 ```
 
 ## To do:
