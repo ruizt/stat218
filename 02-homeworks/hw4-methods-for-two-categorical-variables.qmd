@@ -1,0 +1,60 @@
+---
+title: "Homework 4: Fatal Injuries in the Iliad"
+subtitle: "XXX"
+embed-resources: true
+format:
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Homework 3: Which cow breeds have mastitis?}
+          \fancyfoot[C]{\thepage}
+  docx:
+    toc: false
+# format: html
+# format: docx
+# format: revealjs
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r simulate-data}
+#| include: false
+#| eval: false
+library(tidyverse)
+
+set.seed(93401)
+mastitis <- tibble(cow_id = sample(1:138, 138),
+                   condition = "mastitis",
+                   breed = c(rep("BrownSwiss", 39),
+                                    rep("DutchBelted", 6),
+                                    rep("Holstein", 62),
+                                    rep("Jersey", 31)
+                         ),
+                   age_months = round(runif(138, min = 24, max = 48), 0)
+                 
+) |> 
+  mutate(type = case_when(age_months < 36 ~ "heifer",
+                          age_months >= 36 ~ "dairy cow"
+                          )
+         ) |> 
+  arrange(cow_id)
+
+write.csv(mastitis, "data/mastitis.csv", row.names = F)
+```
+
+
+\vspace{1in}
+
+::: callout-caution
+## Canvas Quiz
+
+Make sure to complete the Homework Quiz on Canvas.
+:::

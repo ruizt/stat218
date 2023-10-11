@@ -11,7 +11,7 @@ format:
 
 Start Ch. 3 Notes (Example 3.1)
 
-+ Setup single proportion with more than 2 categories
++ Setup single categorical variable with more than 2 categories
 + Simulate outcomes and summarize with a single measure
 
 ## Adjustable Spinner
