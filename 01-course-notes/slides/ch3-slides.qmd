@@ -64,17 +64,15 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 ## Thursday, October 12th
 ### Today we will...
 
-+ Lab 3: xxx
-+ Exit Ticket: xxx
-
-## Exit Ticket
++ Lab 3: Is the census report accurate?
++ Participation Ticket: Tell me your group role this week when I come around during lab work time.
 
 ## To do:
   
 + **Homework 3: Which cow breeds have mastitis?**
   + Due Thursday 10/12 at 11:59pm
   
-+ **Lab 3: xxx**
++ **Lab 3: Is the census report accurate?**
   + Due Monday 10/16 at 11:59pm
   
 + **Quiz 2: Statistical Inference for Single Proportions**
@@ -87,11 +85,13 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 ### Today we will...
 
 + Quiz 2: Statistical Inference for Single Proportions
-+ Ch. 4 Notes -- Explanatory and Response Variables
++ Ch. 4 Notes
+  + Explanatory and Response Variables
+  + Visualizing and Summarizing Two Variables
 
 ## To do:
 
-+ **Lab 3: xxx**
++ **Lab 3: Is the census report accurate?**
   + Due Monday 10/16 at 11:59pm
   
   

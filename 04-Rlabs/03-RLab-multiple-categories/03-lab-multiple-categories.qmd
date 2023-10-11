@@ -26,7 +26,7 @@ library(tidyverse)
 The accuracy of a census report for a city in southern California was questioned by some government officials. A random sample of 1,215 people living in the city was used to check the census report. The census results (expected probabilities) are given below:
 
 |                   | Black | Asian | Anglo | Latino/Latina | Indigenous | All others |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|-------------------|-------|-------|-------|---------------|------------|------------|
 | **Census Result** | 10%   | 3%    | 38%   | 41%           | 6%         | 2%         |
 
 **Research question:** Do the counts obtained via the random sample call into question the accuracy of the census report?
@@ -70,7 +70,7 @@ ________ <- read_csv("data/________.csv")
 8.  **How many of the 1,215 people do we expect to see of each ethnic origin if the results of the census are accurate?**
 
     |                    | Black | Asian | Anglo | Latino/Latina | Indigenous | All others |
-    |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+    |--------------------|-------|-------|-------|---------------|------------|------------|
     | **Expected Count** |       |       |       |               |            |            |
 
 9.  **Check the conditions for using the Chi-square distribution to test our hypotheses.**
