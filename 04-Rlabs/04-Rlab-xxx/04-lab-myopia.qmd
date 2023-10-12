@@ -1,0 +1,17 @@
+---
+title: "R Lab 3: Chi-square Test"
+subtitle: "Myopia"
+author:
+  - "Team Captain: NAME HERE"
+  - "Facilitator: NAME HERE"
+  - "Recorder: NAME HERE"
+  - "Resource Manager: NAME HERE"
+date: "DATE HERE"
+format: pdf
+editor: visual
+execute:
+  echo: true
+  error: true
+  message: false
+  warning: false
+---

@@ -500,11 +500,8 @@ Reconsider the "Vested Interest and Task Performance" example. Fisher's exact te
 
 -   An **observational study** involves collecting and analyzing data *without randomly assigning treatments* to observations.
 
--   called a Chi-square test of *Homogeneity*
-
 -   On the other hand, in a **designed experiment**, a *treatment is randomly assigned* on individual observations in order to observe whether the treatment *causes* a change in the response.
 
--   called a Chi-square test of *Independence*
 :::
 
 ::: callout-tip
