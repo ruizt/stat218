@@ -107,7 +107,7 @@ myth_busters |> # <1>
 library(janitor)
 myth_busters |> 
   count(seeding, action) |> 
-  pivot_wider(names_from = seeding,  # <3>
+  pivot_wider(names_from = action,  # <3>
               values_from = n) |>   # <3>
   adorn_totals(where = c("row", "col")) # <4>
 ```
