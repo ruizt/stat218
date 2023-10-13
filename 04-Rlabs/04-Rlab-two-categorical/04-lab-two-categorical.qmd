@@ -95,13 +95,11 @@ myopia |>
 
 **10. Using the filled bar plot and the proportion contingency table above, do you think the proportion of all people with Myopia differs between the different levels of light? Explain your answer.**
 
-**11. Write out the parameters of interest for this study.**
+**11. Write out the null and alternative hypotheses to test whether the level of light is associated with the presence of Myopia.**
 
-**12. Write out the null and alternative hypotheses to test whether the level of light is associated with the presence of Myopia.**
+**12. Check the conditions necessary to use the Chi-square distribution to test our hypotheses.**
 
-**13. Check the conditions necessary to use the Chi-square distribution to test our hypotheses.**
-
-**14. Complete the code below to conduct a Chi-square Test.**
+**13. Complete the code below to conduct a Chi-square Test.**
 
 ```{r}
 chisq_test(x = myopia,
@@ -110,4 +108,4 @@ chisq_test(x = myopia,
            )
 ```
 
-**15. Write a conclusion in context of the study. Make sure to cite the test statistic, degrees of freedom, and p-value.**
+**14. Write a conclusion in context of the study. Make sure to cite the test statistic, degrees of freedom, and p-value.**

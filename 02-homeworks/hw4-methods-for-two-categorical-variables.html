@@ -3152,6 +3152,19 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 </header>
 
 <p>Homer’s Iliad is an epic poem, compiled around 800 BCE, that describes several weeks of the last year of the 10-year siege of Troy (Ilion) by the Achaeans. The story centers on the rage of the great warrior Achilles. But it includes many details of injuries and outcomes, and is thus the oldest record of Greek medicine. The data report 146 recorded injuries for which both injury site and outcome are provided in the Iliad (Hutchinson, 2013). The top 6 rows of the recorded injuries is shown below:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Poem          InjurySite Lethal  
+  &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;   
+1 Homer&#39;s Iliad Head/neck  Fatal   
+2 Homer&#39;s Iliad Body       Fatal   
+3 Homer&#39;s Iliad Limb       Nonfatal
+4 Homer&#39;s Iliad Limb       Fatal   
+5 Homer&#39;s Iliad Head/neck  Fatal   
+6 Homer&#39;s Iliad Head/neck  Fatal   </code></pre>
+</div>
+</div>
 <p><strong>Research Question:</strong> Is the location of an injury associated with whether the injury was fatal?</p>
 <ol type="1">
 <li>Identify the explanatory and response variables in the context of this study.</li>
@@ -3291,9 +3304,9 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">explanatory =</span> InjurySite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">explanatory =</span> InjurySite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   statistic chisq_df  p_value
@@ -3305,8 +3318,8 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   statistic chisq_df  p_value
@@ -3318,12 +3331,12 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> <span class="fu">c</span>(<span class="st">&quot;Fatal&quot;</span> <span class="ot">=</span> <span class="fl">0.84</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;Nonfatal&quot;</span> <span class="ot">=</span> <span class="fl">0.16</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq_test</span>(<span class="at">x =</span> iliad,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> Lethal,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> <span class="fu">c</span>(<span class="st">&quot;Fatal&quot;</span> <span class="ot">=</span> <span class="fl">0.84</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;Nonfatal&quot;</span> <span class="ot">=</span> <span class="fl">0.16</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   statistic chisq_df p_value
