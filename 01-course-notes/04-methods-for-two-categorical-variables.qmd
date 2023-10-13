@@ -241,17 +241,18 @@ myth_busters |>
 
 **Expected counts** under assumption null is true (no relationship between seeding and action)
 
-+----------------------+---------------+---------------+
-|                      | No Yawn       | Yawned        |
-+----------------------+---------------+---------------+
-| Control              | \             |               |
-|                      | \             |               |
-|                      | \             |               |
-+----------------------+---------------+---------------+
-| Seeded               | \             |               |
-|                      | \             |               |
-|                      | \             |               |
-+----------------------+---------------+---------------+
+
++---------------------+--------------+--------------+--------------+
+|                     | No yawn      | Yawned       | Total        |
++---------------------+--------------+--------------+--------------+
+| Control             | \            |              | 36           |
+|                     | \            |              |              |
++---------------------+--------------+--------------+--------------+
+| Seeded              | \            |              | 34           |
+|                     | \            |              |              |
++---------------------+--------------+--------------+--------------+
+| Total               | 36           | 14           | 50           |
++---------------------+--------------+--------------+--------------+
 
 **Chi-Square Test Statistic** Next, we compare each of our observed counts to what we would have expected if $H_0$ was true. We compare how far "off" our observed frequencies are from what was expected using the same formula we saw in Chapter 3.
 
