@@ -262,7 +262,7 @@ $$
 Using the formula above, we can calculate how far "off" each of the cells in our observed table is from what we expected under the assumption there is no relationship between seeding and yawn action.
 
 $$
-X^2 =\frac{(11.52-13)^2}{11.52}+\frac{(4.48-3)^2}{4.48}+\frac{(24.48-23)^2}{24.48}+\frac{(9.52-11)^2}{9.52}=0.999
+X^2 =\frac{(13-11.52)^2}{11.52}+\frac{(3-4.48)^2}{4.48}+\frac{(23-24.48)^2}{24.48}+\frac{(11-9.52)^2}{9.52}=0.999
 $$
 
 #### Conducting a Simulation Study
