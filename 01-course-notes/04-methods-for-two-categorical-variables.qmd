@@ -326,7 +326,7 @@ knitr::include_graphics("04-images/yawn-dot-sketch.png")
 
 We can conduct a large scale simulation using `Online Simulation Applets` \> `Two-way Tables`.
 
--   Clear \> Copy/Paste in the data \<\>
+-   Clear \> Copy/Paste in the data <https://github.com/earobinson95/stat218-calpoly-f2023/blob/main/01-course-notes/data/myth-yawns.csv>
 -   Click `Use Data`
 -   Click `Show Shuffle Options`
 -   Change `Statistic` to $X^2$.
