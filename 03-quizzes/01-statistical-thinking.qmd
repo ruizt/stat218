@@ -43,7 +43,7 @@ a. Identify the following in the context of this example (4 pts):
 
 \vspace{0.2in}
 
-b. If Luna the bottlenose dolphin were randomly selecting between three types of fish for her meal, how many times would you expect her accurately identified the herring sound recording? Explain. (2 pts)
+b. If Luna the bottlenose dolphin were randomly selecting between two types of fish for her meal, how many times would you expect her to accurately identified the herring sound recording? Explain. (2 pts)
 
 Below is a dot plot displaying 100 simulations of the number of times Luna accurately identified the herring sound recording under the assumption that her selections were made at random.
 
