@@ -1,0 +1,36 @@
+---
+title: "Midterm Exam 1"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+embed-resources: true
+---
+
+## Monday, October 23rd
+### Today we will...
+
++ Example 4.3
++ KaHoot Review
++ Review Concepts from Exit Tickets
++ Work on Practice Problems (in groups)
+
+## To do:
+
++ **Lab 4: Nightlight use and myopia**
+  + Due TONIGHT 10/23 at 11:59pm
+  
++ **Study for Midterm Exam 1**
+  + In-class, Tuesday 10/24
+  + You may use a calculator, and one (8.5" x 11") sheet of notes (front and back). You must turn in your note sheet with your exam.
+  
+
+## Tuesday, October 24th
+
++ **Midterm Exam 1**
+  + You may use a calculator, and one (8.5" x 11") sheet of notes (front and back). You must turn in your note sheet with your exam.
+  + You have 50 minutes to complete the exam.
+  + Please *quietly* bring up your exam when you are finished. You may then leave.
+
++ **Print Chapter 5 Course Notes**
+  + For class Thursday
