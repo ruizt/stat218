@@ -1,0 +1,70 @@
+---
+title: "Chapter 6: Inference for a Single Numerical Variable"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+embed-resources: true
+---
+
+## Monday, October 30th
+### Today we will...
+
++ Review Central Limit Theorem
++ Introduce t-test
++ Example 6.2 (in groups)
+
+## To do:
+  
++ **Homework 6: What is the average body temperature?**
+  + Due Thursday 11/2 at 11:59pm
+
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+
+## Tuesday, October 31st
+### Today we will...
+
++ Happy Halloween! Take some candy!
++ Confidence Intervals for Single Numeric Variables
+
+## To do:
+  
++ **Homework 6: What is the average body temperature?**
+  + Due Thursday 11/2 at 11:59pm
+  
++ **Study for Quiz 3: Inference for a Single Numerical Variables**
+  + In class Friday, 11/3
+
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+
+## Thursday, November 2nd
+### Today we will...
+
++ Lab 6: Hours worked
+
+## To do:
+  
++ **Homework 6: What is the average body temperature?**
+  + Due Thursday 11/2 at 11:59pm
+  
++ **Lab 6: Hours worked**
+  + Due Monday 11/6 at 11:59pm
+  
++ **Study for Quiz 3: Inference for a Single Numerical Variables**
+  + In class Friday, 11/3
+  
+## Friday, November 3rd
+### Today we will...
+
++ Quiz 3: Inference for a Single Numerical Variable
++ Introduce final project?
+
+## To do:
+  
++ **Lab 6: Hours worked**
+  + Due Monday 11/6 at 11:59pm
+  
