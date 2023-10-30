@@ -11,7 +11,7 @@ embed-resources: true
 ### Today we will...
 
 + Review Central Limit Theorem
-+ Introduce t-test
++ Introduce t-test 
 + Example 6.2 (in groups)
 
 ## To do:
