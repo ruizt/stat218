@@ -254,16 +254,16 @@ Use the table below to answer the following four questions.
 
 | R code               | Output                   |
 |----------------------|--------------------------|
-| `qt(0.90, df = 45)`  | `r qt(0.90, df = 45) |> round(2)`  |
-| `qt(0.95, df = 45)`  | `r qt(0.95, df = 45) |> round(2)`  |
-| `qt(0.975, df = 45)` | `r qt(0.95, df = 45) |> round(2)`  |
-| `qt(0.99, df = 45)`  | `r qt(0.975, df = 45) |> round(2)` |
-| `qt(0.995, df = 45)` | `r qt(0.995, df = 45) |> round(2)` |
-| `qt(0.90, df = 46)`  | `r qt(0.90, df = 46) |> round(2)`  |
-| `qt(0.95, df = 46)`  | `r qt(0.95, df = 46) |> round(2)`  |
-| `qt(0.975, df = 46)` | `r qt(0.975, df = 46) |> round(2)` |
-| `qt(0.99, df = 46)`  | `r qt(0.99, df = 46) |> round(2)`  |
-| `qt(0.995, df = 46)` | `r qt(0.995, df = 46) |> round(2)` |
+| `qt(0.90, df = 64)`  | `r qt(0.90, df = 64) |> round(2)`  |
+| `qt(0.95, df = 64)`  | `r qt(0.95, df = 64) |> round(2)`  |
+| `qt(0.975, df = 64)` | `r qt(0.95, df = 64) |> round(2)`  |
+| `qt(0.99, df = 64)`  | `r qt(0.975, df = 64) |> round(2)` |
+| `qt(0.995, df = 64)` | `r qt(0.995, df = 64) |> round(2)` |
+| `qt(0.90, df = 65)`  | `r qt(0.90, df = 65) |> round(2)`  |
+| `qt(0.95, df = 65)`  | `r qt(0.95, df = 65) |> round(2)`  |
+| `qt(0.975, df = 65)` | `r qt(0.975, df = 65) |> round(2)` |
+| `qt(0.99, df = 65)`  | `r qt(0.99, df = 65) |> round(2)`  |
+| `qt(0.995, df = 65)` | `r qt(0.995, df = 65) |> round(2)` |
 
 13. Calculate the 95% confidence interval.
 
