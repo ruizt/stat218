@@ -256,8 +256,8 @@ Use the table below to answer the following four questions.
 |----------------------|--------------------------|
 | `qt(0.90, df = 64)`  | `r qt(0.90, df = 64) |> round(2)`  |
 | `qt(0.95, df = 64)`  | `r qt(0.95, df = 64) |> round(2)`  |
-| `qt(0.975, df = 64)` | `r qt(0.95, df = 64) |> round(2)`  |
-| `qt(0.99, df = 64)`  | `r qt(0.975, df = 64) |> round(2)` |
+| `qt(0.975, df = 64)` | `r qt(0.975, df = 64) |> round(2)`  |
+| `qt(0.99, df = 64)`  | `r qt(0.99, df = 64) |> round(2)` |
 | `qt(0.995, df = 64)` | `r qt(0.995, df = 64) |> round(2)` |
 | `qt(0.90, df = 65)`  | `r qt(0.90, df = 65) |> round(2)`  |
 | `qt(0.95, df = 65)`  | `r qt(0.95, df = 65) |> round(2)`  |
