@@ -238,7 +238,7 @@ This example involves possible discrimination against female employees.  Suppose
 
 The large employee pool that can be tapped for management training is 60% female and 40% male; however, since the management program began, 9 of the 20 employees chosen for management training were female (only 45%).  Do the female employees have a valid statistical argument that they are being discriminated against? 
 
-`r fontawesome::fa("question")`  **Research Question:** *Is there statistical evidence for gender discrimination against females?*
+`r fontawesome::fa("question")`  **Research Question:** *Is there statistical evidence for sex discrimination against females?*
 
 1.	Identify the following in the context of this example:
 
@@ -276,7 +276,7 @@ Once again, the key question is how to determine whether the result is surprisin
 Carry out the applet simulation.  Note that you should consider the following questions when designing your simulation study:
 
 + What are the two possible outcomes on each of the trials?
-+ What is the probability that a female is selected for a managerial position under the assumption that there is no gender discrimination in the selection process?  Change your `Probability of heads` accordingly.
++ What is the probability that a female is selected for a managerial position under the assumption that there is no sex discrimination in the selection process?  Change your `Probability of heads` accordingly.
 + How many subjects were there in this study?  Keep this value in mind when setting the `Number of tosses` value.
 
 Carry out the simulation study 1000 times overall, keeping track of the probability of employees chosen for management that were female on each of the simulated experiments.  Sketch in your results below:

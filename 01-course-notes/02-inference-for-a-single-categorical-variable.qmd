@@ -83,7 +83,7 @@ Before you begin a hypothesis test, you should clearly state your research quest
 +==============================================================+===============================================================================+
 | Example 1.2: Helper vs. Hinderer\                            | Do 10-month-old infants tend to prefer the helper toy over the hinderer toy?\ |
 +--------------------------------------------------------------+-------------------------------------------------------------------------------+
-| Example 1.3: Are women passed over for managerial training?\ | Is there statistical evidence for gender discrimination against females?\     |
+| Example 1.3: Are women passed over for managerial training?\ | Is there statistical evidence for sex discrimination against females?\     |
 +--------------------------------------------------------------+-------------------------------------------------------------------------------+
 | Example 1.4: Font Preference\                                | Do the majority of all consumers prefer one font over the other?\             |
 +--------------------------------------------------------------+-------------------------------------------------------------------------------+
@@ -110,7 +110,7 @@ For our three examples, the null and alternative hypotheses are shown below.
 | \                                                                             | \                                                                                                |
 | \                                                                             |                                                                                                  |
 +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-| Is there statistical evidence for gender discrimination against females?\     | H~0~: The selection process is fair.\                                                            |
+| Is there statistical evidence for sex discrimination against females?\     | H~0~: The selection process is fair.\                                                            |
 | \                                                                             | \                                                                                                |
 | \                                                                             | H~A~: The selection process is biased against females.\                                          |
 | \                                                                             | \                                                                                                |
@@ -139,7 +139,7 @@ Note that we can also state these hypotheses in terms of the population paramete
 | \                                          | \                                     |
 +--------------------------------------------+---------------------------------------+
 | Is there statistical evidence for          | H~0~:                                 |
-| gender discrimination against females?     | \                                     |
+| sex discrimination against females?     | \                                     |
 | \                                          | \                                     |
 | \                                          | \                                     |
 | \                                          | H~A~:                                 |
@@ -176,8 +176,8 @@ First, note that in our three examples, we examined different parts of the distr
 | \                                       | \              | \                  |
 | \                                       | \              | \                  |
 +-----------------------------------------+----------------+--------------------+
-| Is there statistical evidence for gender| H~0~:\         | Lower-tailed Test\ |
-| gender discrimination against females?  | \              | \                  |
+| Is there statistical evidence for sex| H~0~:\         | Lower-tailed Test\ |
+| sex discrimination against females?  | \              | \                  |
 | \                                       | \              | \                  |
 | \                                       | \              | \                  |
 | \                                       | H~A~:\         |                    |
@@ -218,7 +218,7 @@ Statisticians use what is called a ***p-value*** to quantify the amount of evide
 **Lower-tailed test:** The observed result must fall in the lower 5% of the reference distribution.
 :::
 
-Is there statistical evidence for gender discrimination against females?
+Is there statistical evidence for sex discrimination against females?
 
 ```{r}
 #| fig-align: center
@@ -321,7 +321,7 @@ Next, we will review the steps involved in a formal hypothesis test for each of 
 **Are Women Passed Over for Managerial Training?**
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Research Question                 | Is there statistical evidence of gender discrimination against females?                                               |
+| Research Question                 | Is there statistical evidence of sex discrimination against females?                                               |
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Hypotheses                        | H~0~: The selection process is fair; that is, the probability a woman is selected is 60%.                             |
 | \                                 | \                                                                                                                     |

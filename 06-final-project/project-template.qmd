@@ -1,0 +1,128 @@
+---
+title: "Your Title Goes Here! Make it fun and related to your data set!"
+subtitle: "Stat 218: Final Project"
+author:
+  - "Team Captain: NAME HERE"
+  - "Facilitator: NAME HERE"
+  - "Recorder: NAME HERE"
+  - "Resource Manager: NAME HERE"
+date: "DATE HERE"
+format: pdf
+editor: visual
+execute:
+  echo: true
+  error: true
+  message: false
+  warning: false
+---
+
+<!-- Note, anything in green is a comment and will not show when your document is rendered. Please type your material below the green comments. -->
+
+```{r setup}
+#| include: false
+# The code to load in the necessary packages goes here!
+# You will need: tidyverse, mosaic, and moderndive
+```
+
++ DATA SET NAME: <copy paste link to data set here>
+
+```{r read-data}
+## This is where you will read in your data! 
+# I suggest copying and pasting code from a prior lab. 
+# You will need to change: 
+# 1. the name of the dataset (you get to choose the name)
+# 2. directions for how to get to the data (is it in a data folder? is it in the main folder?)
+
+```
+
+```{r clean-data}
+## Replace the DATA NAME with your data set name after reading in the data. This will make sure the names in your data set are all "clean" -- no spaces, all lowercase, etc. 
+DATA NAME <- DATA NAME |> 
+  janitor::clean_names()
+```
+
+```{r print-data}
+## Print the top 6 rows of your data set
+```
+
+## Data Description
+
+<!-- In this section you are to describe your data set! -->
+
+<!-- This section has three tasks:
+1. Describe the context of your data set in your own words! Make sure to tell me where the data set came from, what an observational unit is, and what variables / information is stored in the data set.
+2. Tell me why your group picked this data set.
+3. Describe the two quantitative variables you are interested in. Which is the the explanatory variable and which is the response? What do you expect the relationship to be?
+-->
+
+Your data set description goes here. This should be a paragraph and read like a report.
+
+
+## Data Visualization
+<!-- In this section you create three visualizations of your data -->
+
+### Histogram of RESPONSE VARIABLE
+
+```{r histogram-1}
+## Code to make your first histogram goes here! 
+## Don't forget to choose nice binwidths (be dramatic) and axis titles!
+```
+
+<!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers. Your group may choose to additionally run the favstats() function to get summary statistics for this variable. -->
+
+Describe the histogram of the response variable here.
+
+
+### Histogram of EXPLANATORY VARIABLE
+
+```{r histogram-2}
+## Code to make your second histogram goes here! 
+## Don't forget to choose nice binwidths and an axis title!
+
+
+```
+
+<!-- Here is where you describe what you see in the histogram. Your description must include the following components: center, spread, shape, outliers.  Your group may choose to additionally run the favstats() function to get summary statistics for this variable.  -->
+
+Describe the histogram of the explanatory variable here.
+
+### Scatterplot of RESPONSE VARIABLE and EXPLANATORY VARIABLE
+
+```{r scatterplot}
+## Code to make your scatterplot goes here! 
+## Don't forget to choose nice axis labels!
+```
+
+<!-- Here is where you describe what you see in the scatterplot. Your description must include the following components: direction, shape, strength, outliers -->
+
+Describe scatterplot here.
+
+## Linear Relationship Between <INSERT NAME OF RESPONSE VARIABLE> and <INSERT NAME OF EXPLANATORY VARIABLE>
+
+### Model Conditions
+<!-- Here is where you describe the four conditions (LINE) for linear regression.  -->
+<!-- State what the condition is and if you believe it is / is not violated IN THE CONTEXT OF YOUR DATA! -->
+
+Put conditions here. This should be in a paragraph form with complete sentences.
+
+### Coefficient Estimates
+
+```{r lm}
+## Code to fit a linear regression (note this, is different from adding the line to the scatterplot).
+```
+
+```{r coefs}
+## Code to get coefficient table from linear regression
+```
+
+Make sure to type the equation (in context of your data) and interpret the coefficients in context of your data set here.
+
+### Inference for the Slope
+
+<!-- Here is where you describe the hypothesis test and results for whether the slope is 0.  -->
+
+Put slope hypothesis test paragraph here. Make sure to include all parts necessary for a hypothesis test from setup to conclusion. Make sure to use context of your data.
+
+<!-- Here is where you describe the confidence interval for the true slope. -->
+
+Put interpretation of confidence interval for the true slope here. Make sure to use context of your data.

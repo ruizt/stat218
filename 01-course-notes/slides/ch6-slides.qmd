@@ -76,7 +76,7 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 ### Today we will...
 
 + Quiz 3: Inference for a Single Numerical Variable
-+ Introduce final project
++ Introduce Final Group Project
 
 ## To do:
   
@@ -84,4 +84,9 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
   + Due Monday 11/6 at 11:59pm
   
 + **Print Chapter 7 Notes for class Monday**
+
++ **Group Project Check-point 0: Group Contract**
+  + Due Friday 11/10 at 11:59pm
+
+
   
