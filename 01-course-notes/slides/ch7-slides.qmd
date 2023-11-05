@@ -13,8 +13,12 @@ embed-resources: true
 + Two-sample Independent t-test
   + Example 7.1
 + Practice with two-sample independent t-test
-  + Example 7.2 (in groups)
-  + Checked for participation tomorrow
+  + Example 7.2 (in groups) -- Checked for participation tomorrow
+  
+::: callout-warning
+### MONDAY OFFICE HOURS
+Now 2pm - 3pm. We have job candidate talks for the rest of the quarter during my regular office hours.
+:::
 
 ## Two-Sample Independent t-test
 
@@ -28,9 +32,14 @@ knitr::include_graphics("images/two-independent-means.png")
   
 + **Homework 7: New York City Trees**
   + Due Thursday 11/9 at 11:59pm
+  
+    
++ **Example 7.2**
+  + For class participation tomorrow!
 
 ::: callout-warning
-Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+### MONDAY OFFICE HOURS
+Now 2pm - 3pm. We have job candidate talks for the rest of the quarter during my regular office hours.
 :::
 
 ## Tuesday, November 7th

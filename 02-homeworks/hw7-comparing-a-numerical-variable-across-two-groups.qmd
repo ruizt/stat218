@@ -12,7 +12,7 @@ format:
           \usepackage{fancyhdr}
           \pagestyle{fancy}
           \fancyhf{}
-          \fancyhead[R]{Homework 7: xxx}
+          \fancyhead[R]{Homework 7: New York City Trees}
           \fancyfoot[C]{\thepage}
   docx:
     toc: false
@@ -31,18 +31,20 @@ library(tidyverse)
 library(mosaic)
 library(infer)
 
+set.seed(56156)
 nyc_trees <- read_csv("data/new_york_tree_census_2015.csv") |> 
   filter(spc_common %in% c("honeylocust", "Norway maple")) |> 
-  select(tree_id, tree_dbh, status, spc_common, sidewalk) |> 
+  select(tree_id, tree_dbh, status, spc_common, sidewalk, problems) |> 
   filter(tree_dbh < 100) |> 
-  sample(672)
+  sample(672) |> 
+  select(-orig.id)
 ```
 
 ### New York City Trees
 
 New York City’s trees shade us in the summer, beautify our neighborhoods, help reduce noise, and support urban wildlife. Beyond these priceless benefits, our urban forest provides us a concrete return on the financial investment we put into it. This return includes stormwater interception, energy conservation, air pollutant removal, and carbon dioxide storage. Our publicly owned trees are as much of an asset to us as our streets, sewers, bridges, and public buildings.
 
-This dataset includes a record for every tree in New York City and includes the tree's location by borough and latitude/longitude, species by Latin name and common names, size, health, and issues with the tree's roots, trunk, and branches.
+The dataset includes a random sample of 672 Norway Maple and Honeylocust trees from every tree in New York City and includes the tree's location by borough, species by common name `spc_common`, size in diameter inches `tree_dbh`, health, and issues with the tree's roots, trunk, and branches.
 
 ```{r}
 head(nyc_trees)
@@ -102,7 +104,7 @@ ggplot(data = nyc_trees,
 
 \vspace{1in}
 
-6. State the parameter in words ($\mu_\text{Norway Maple}-\mu_\text{Honeylocust}).
+6. State the parameter in words ($\mu_\text{Norway Maple}-\mu_\text{Honeylocust}$).
 
 \vspace{1in}
 
