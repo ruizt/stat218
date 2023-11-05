@@ -3143,7 +3143,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
   <li><a href="#example-7.3-diet-and-cholesterol-paired-t-test" id="toc-example-7.3-diet-and-cholesterol-paired-t-test" class="nav-link" data-scroll-target="#example-7.3-diet-and-cholesterol-paired-t-test">Example 7.3: Diet and Cholesterol (Paired t-test)</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="07-xxx.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="07-xxx.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="07-comparing-a-numerical-variable-across-two-groups.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="07-comparing-a-numerical-variable-across-two-groups.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -3305,14 +3305,14 @@ Characteristics for Sampling Distribution for Difference in Means
 <p>When the samples are <strong>independent</strong>, the sampling distribution for the difference in means can be described as follows.</p>
 <ol type="1">
 <li><p>mean = <span class="math inline">\(\mu_1 – \mu_2\)</span>.</p></li>
-<li><p>standard deviation of the sampling distribution (i.e., standard error) = <span class="math display">\[\sqrt{\frac{s_1}{n_1^2} + \frac{s_2}{n_2^2}}\]</span></p></li>
+<li><p>standard deviation of the sampling distribution (i.e., standard error) = <span class="math display">\[\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span></p></li>
 </ol>
 <p><em>Note: we are assuming the variances are unequal in this calculation, there are other formulas for assuming equal variances.</em></p>
 <ol start="3" type="1">
 <li>The shape of the sampling distribution is approximately normal if both sample sizes are “sufficiently large” (&gt; 30 in each group) OR if both original populations are normally distributed.</li>
 </ol>
 <p>Given these characteristics, the test statistic we will use when testing for differences in two population means for independent samples is as follows:</p>
-<p><span class="math display">\[T= \frac{\text{observed value}-\text{null value}}{\text{standard error}}= \frac{(\bar x_1 - \bar x_2)-(\mu_1 - \mu_2)}{\sqrt{\frac{s_1}{n_1^2} + \frac{s_2}{n_2^2}}}\]</span></p>
+<p><span class="math display">\[T= \frac{\text{observed value}-\text{null value}}{\text{standard error}}= \frac{(\bar x_1 - \bar x_2)-(\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span></p>
 <p>These test statistics both follow a t-distribution, and the degrees of freedom are given by <span class="math inline">\((n_1 - 1) +(n_2 - 1)\)</span>.</p>
 <p><em>Note: there are more complicated ways to adjust for these degrees of freedom, but that is beyond the scope of this class. You may notice that R outputs a different number of degrees of freedom than what this formula gives you.</em></p>
 </div>
@@ -3497,7 +3497,7 @@ Constructing a Confidence Interval for the Difference in Means
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math display">\[(\bar x_1 - \bar x_2) \pm \text{t-quantile}\]</span></p>
+<p><span class="math display">\[(\bar x_1 - \bar x_2) \pm \text{t-quantile}\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span></p>
 </div>
 </div>
 <ol start="13" type="1">

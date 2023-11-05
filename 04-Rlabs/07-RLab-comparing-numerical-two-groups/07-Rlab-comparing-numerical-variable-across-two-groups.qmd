@@ -126,8 +126,6 @@ t_test(color,
 
 14. What does the p-value you obtained mean, in the context of the study? *Hint: it is the probability of what...assuming what?*
 
-15. Report the 99% confidence interval for the mean difference.
+15. Interpret the confidence interval in context of the study. Careful to check your confidence level.
 
-16. Interpret the confidence interval in context of the study.
-
-18. The abstract states, that the conflicting color stimuli "*caused* an increase of 2.3 seconds or 5.6% over the normal time for reading the same words printed in black." Is this statement valid? Explain.
+16. The abstract states, that the conflicting color stimuli "*caused* an increase of 2.3 seconds or 5.6% over the normal time for reading the same words printed in black." Is this statement valid? Explain.

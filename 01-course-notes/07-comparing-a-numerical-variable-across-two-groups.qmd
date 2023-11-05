@@ -277,7 +277,7 @@ When the samples are **independent**, the sampling distribution for the differen
 
 1.	mean = $\mu_1 – \mu_2$.
 
-2.	standard deviation of the sampling distribution (i.e., standard error) = $$\sqrt{\frac{s_1}{n_1^2} + \frac{s_2}{n_2^2}}$$
+2.	standard deviation of the sampling distribution (i.e., standard error) = $$\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
 
 *Note: we are assuming the variances are unequal in this calculation, there are other formulas for assuming equal variances.*
 
@@ -285,7 +285,7 @@ When the samples are **independent**, the sampling distribution for the differen
 
 Given these characteristics, the test statistic we will use when testing for differences in two population means for independent samples is as follows:
 
-$$T= \frac{\text{observed value}-\text{null value}}{\text{standard error}}= \frac{(\bar x_1 - \bar x_2)-(\mu_1 - \mu_2)}{\sqrt{\frac{s_1}{n_1^2} + \frac{s_2}{n_2^2}}}$$
+$$T= \frac{\text{observed value}-\text{null value}}{\text{standard error}}= \frac{(\bar x_1 - \bar x_2)-(\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
 
 These test statistics both follow a t-distribution, and the degrees of freedom are given by $(n_1 - 1) +(n_2 - 1)$. 
 
@@ -463,7 +463,7 @@ t_test(x = cholesterol_data_long,
 ::: callout-note
 ### Constructing a Confidence Interval for the Difference in Means 
 
-$$(\bar x_1 - \bar x_2) \pm \text{t-quantile}$$
+$$(\bar x_1 - \bar x_2) \pm \text{t-quantile}\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
 
 :::
 
