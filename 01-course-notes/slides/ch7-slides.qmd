@@ -12,6 +12,9 @@ embed-resources: true
 
 + Two-sample Independent t-test
   + Example 7.1
++ Practice with two-sample independent t-test
+  + Example 7.2 (in groups)
+  + Checked for participation tomorrow
 
 ## To do:
   
@@ -25,16 +28,9 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 ## Tuesday, November 7th
 ### Today we will...
 
-+ Practice with two-sample independent t-test
-  + Example 7.2 (in groups)
-+ Exit Ticket
-
-##
-
-::: callout-note
-## Exit Ticket
-What does xxx
-:::
++ Check Example 7.2 for participation
++ Paired t-test
+  + Example 7.3
 
 ## To do:
 
@@ -58,17 +54,9 @@ Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
 + **Lab 7: xxx**
   + Due Monday 11/13 at 11:59pm
   
-## Friday, November 10th
-### Today we will...
-
-+ Paired t-test
-  + Example 7.3
-
-## To do:
-  
-+ **Lab 7: xxx**
-  + Due Monday 11/13 at 11:59pm
-  
 + **Study for Midterm Exam 2**
   + In class, Tuesday 11/14
+  
+## Friday, November 10th
+### NO CLASS for Veteran's Day
   
