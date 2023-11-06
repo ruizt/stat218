@@ -36,6 +36,9 @@ knitr::include_graphics("images/two-independent-means.png")
     
 + **Example 7.2**
   + For class participation tomorrow!
+  
++ **Project Group Contract**
+  + Due Friday 11/10 at 11:59pm
 
 ::: callout-warning
 ### MONDAY OFFICE HOURS
