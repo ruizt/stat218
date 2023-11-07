@@ -1,0 +1,346 @@
+---
+title: "Review Guide for Midterm 2 Exam"
+subtitle: "STAT 218: Applied Statistics for Life Science"
+embed-resources: true
+format:
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Stat 218: Review Guide for Midterm 2 Exam}
+          \fancyfoot[C]{\thepage}
+  docx:
+    toc: false
+# format: html
+# format: docx
+# format: revealjs
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# What to Expect
+
+-   You may bring an $8 \frac{1}{2} \times 11$ standard sheet of notes (both sides). I will not provide you with formulas, so put what you think you need on here.
+  + You will turn this in with your exam.
+-   You may bring any calculator to use. I will have a handful of simple calculators. You may **not** use your phone as a calculator.
+-   The exam is mostly multiple choice, but will have a couple of short answer questions mixed in.
+- You will have 50 minutes to complete the exam. It took me approximately 15 minutes to complete.
+
+::: callout-tip
+## Canvas Discussion Board
+Post any logistic or studying questions on the Canvas discussion board. Please respond to each other!
+:::
+
+# Key Concepts to Review
+
+Note: this may not be an exhaustive list. You should review all of your notes, assignments, labs, and quizzes from Chapters 5 - 7 (and concepts that are necessary to build off of from the first four chapters).
+
+-   Can you describe a distribution for a numerical variable? (shape, center, spread, outliers)
+-   Identify summary statistics (with symbols) from `favstats` output.
+-   Identifying pieces of a data set: observation, variable, sample size, parameter, etc.
+-   Work through hypotheses testing for the following types of scenarios (how does parameter wording change, how does the sampling distribution change?):
+    -   One numerical variable (t-test for a single mean)
+    -   Comparing a numerical variable across two **independent** groups (two-sample independent t-test)
+    -   Comparing a numerical variable across two **dependent** groups (paired t-test)
+-   Understand the concept of a sampling distribution for
+    - means
+    - differences in means
+    - mean of the differences.
+-   Confidence intervals.
+    -   How do you find the t-quantile for different confidence levels?
+    -   How do confidence intervals and levels relate to hypotheses testing?
+-   Scope of Inference
+    - How do you know when you can generalize to the population of interest? (Random Sampling / a Representative Sample from xxx)
+    - When can you say *causation* versus *association* only? (Random Assignment of xxx)
+-   How do you interpret the p-value? Can you do this for various scenarios?
+
+\newpage
+
+# Practice Problems
+
+
+1. You are thinking of using a t-test to investigate a research hypothesis about the mean of a population. The distribution of your sample is extremely skewed (i.e., not normally distributed). Which of the following statements is most correct? 
+
+> a. 	You may use the t-test provided your sample size is large (say at least 30 or so). 
+> b. 	You should not use the t-test regardless of the sample size because the population does not have a normal distribution, so the normality assumption won’t be met.
+> c. 	You may use the t-test provided you use a fairly large confidence level, say 99%.
+> d. 	You may not use the t-test, but a confidence interval constructed using the t-distribution should be valid.
+
+2. A 95% confidence interval for the difference in population means between Groups A and B (µA - µB) is given as follows:  -3.9 ≤ µA - µB ≤ -1.0. Which of the following statements is most correct?
+
+> a. 	We have evidence that the mean of Group A is larger than the mean of Group B.
+> b. 	We have evidence that the mean of Group A is smaller than the mean of Group B.
+> c. 	We have evidence that the mean of Group A is equal to the mean of Group B.
+> d. 	We can’t tell - we can’t draw any conclusions unless we have a p-value.
+
+## One Sample
+
+5. Suppose you are investigating the weight of Snickers bars. Your hypotheses are as follows: 
+
+> $H_0$: The mean weight for all Snickers bars is 48 grams ($\mu = 48$).  
+> $H_A$: The mean weight for all Snickers bars is more than 48 grams ($\mu > 48$). 
+
+You take a random sample of 40 Snickers bars, and you conclude that the mean weight of all Snickers bars is more than 48 grams with a p-value of 0.02. 
+
+i. Which of the following statements best describes what that p-value means?
+
+> a. If the mean weight of all Snickers bars is 48 grams, the probability that a random sample of 40 Snickers would have a mean as high or higher than your sample mean is 0.02.
+> b. 	If the mean weight of all Snickers bars is more than 48 grams, the probability that a random sample of 40 Snickers would have a mean as high or higher than your sample mean is 0.02.
+> c. 	Only 2% of all Snickers bars weigh more than 48 grams.
+> d. 	The probability that the true mean weight of all Snickers bars equals 48 grams is 0.02.
+
+ii. Suppose that the standard deviation of your sample was $s = 5g$. The standard error (i.e., standard deviation of the sample mean) is:
+
+> a.	8
+> b. 	5
+> c. 	0.125 
+> d. 	0.79
+
+iii. Suppose a 95% confidence interval is computed to estimate the mean weight of all Snickers bars. Which of the following values will definitely be within the limits of this confidence interval?
+
+> a. 	The population mean, $\mu$.
+> b. 	The sample mean, $\bar x$.
+> c. 	The p-value.
+> d. 	None of the above.
+
+\noindent \textbf{Q7} [2 points] An article in the San Luis Tribune claims that
+the average age for people who receive food stamps in SLO is 40 years. A Cal
+Poly student believes the average age is less than that. The student obtains a
+random sample of 100 people in SLO who receive food stamps, and finds their
+average age to be 39.2 years. Performing a hypothesis test, the student finds 
+their sample mean to be statistically significantly lower than the age of 40 
+stated in the article (p-value < 0.05). Indicate fore each of the following
+interpretations whether they are valid or invalid.
+
+\noindent \textbf{(a)} The statistically significant result indicates that the 
+majority of people who receive food stamps is younger than 40.
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{(b)} An error must have been made. This difference in means
+(39.2 vs. 40 years) is too small to be statistically significant.
+\begin{itemize}
+\item Valid
+\item Invalid
+\end{itemize}
+
+## TWO SAMPLE
+
+### Parkinson's
+
+Can Tai Chi help improve postural stability in Parkinson's patients? To investigate,
+researchers randomly assigned 65 Parkinson's patients to practice Tai Chi daily for 24 weeks, and
+another 65 Parkinson's patients to practice stretching daily for 24 weeks. The outcome we will focus
+on is functional reach (measured in cm.). Here are the summary statistics for the data collected.
+Sample size Sample mean Sample SD
+Tai Chi 65 29.4cm 5.5cm
+Stretching 65 25.0cm 7.3cm
+(a) (1 point) Identify the explanatory variable.
+(b) (5 points) Describe a tactile simulation strategy (using either coins, or spinners, or cards) to
+calculate a p-value to investigate whether Tai Chi can help improve functional reach in Parkinson's
+patients. Be sure to provide enough details so that anyone could carry out the simulation by reading
+just your description here. (Note: I am not looking for directions on how to use an applet.)
+(c) (4 points) A 95% condence interval comparing Tai Chi and Stretching was calculated from the
+above data: (2.1552, 6.6448). Interpret this interval in the context of this study.
+(d) (2 points) A 99% condence interval based on the above data would be the 95%
+condence interval. Circle one. narrower than the same as wider than
+(e) (2 points) Suppose that the summary statistics had turned out to be:
+Sample size Sample mean Sample SD
+Tai Chi 65 29.4cm 6.5cm
+Stretching 65 25.0cm 8.3cm
+What would be the primary change to the 95% condence interval compared to (2.1552, 6.6448)?
+(A). The middle of the interval would be a smaller number
+(B). The middle of the interval would be a bigger number
+(C). The width of the interval would be a bigger number
+(D). The width of the interval would be a smaller number
+(E). The interval would remain unchanged
+
+
+### NC Births
+
+\textbf{Q3}[24 points] 
+In 2004, the state of North Carolina released to the public a large dataset
+containing information on births recorded in this state. This data set has been 
+of interest to medical researchers who are studying the relation between habits
+and practices of expectant mothers and the birth of their children. This 
+analysis will focus on a random sample of 1,000 observations from the published
+dataset. 
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(a)}[3 points] Hospital administration at Duke University Hospital are
+interested in the difference in the mean baby birth weight between mothers who do not
+smoke and mothers who do smoke. Using the table below, report the observed
+statistic for this comparison. Indicate in your answer what notation should be
+used for this statistic. 
+
+\vspace{0.25cm}
+
+$$\underset{\text{(notation)}}{\underline{\hspace{8cm}}} = \underset{\text{(value)}}{\underline{\hspace{3cm}}}$$
+
+\vspace{0.25in}
+
+```{r favstats-smoking}
+favstats(weight ~ habit, data = births14) %>%
+  pander()
+```
+
+\vspace{0.5in}
+
+```{r, out.width = "80%"}
+births14 %>%
+  filter(!is.na(habit)) %>% 
+  ggplot(mapping = aes(x = weight)) + 
+  geom_histogram(binwidth = 1.5) + 
+  facet_wrap(~habit, scales = "free") + 
+  theme_bw() +
+  labs(x = "Weight of Baby (lbs)", 
+       y = "Number of Babies")
+```
+
+\newpage
+
+\noindent
+\textbf{(b)}[4 points] These hospital administrators are
+interested in estimating the true difference in mean birth weight between
+mothers who do not smoke and mothers who do smoke. The administrators learned in
+their Statistics class how to obtain a confidence interval for a difference in
+means using a $t$-distribution. Using the plots above and your knowledge of how
+the data were collected evaluate whether it would be appropriate for the
+administrators to use a $t$-distribution to obtain a confidence interval for the
+true difference in means.
+
+\vspace{1.5in}
+
+\noindent
+\textbf{(c)}[5 points] The administrators contacted the Department of Statistics
+at Duke and requested a consultation. The Statistician they spoke with suggested
+they use bootstrapping instead of a $t$-distribution to obtain a confidence
+interval. Fill in the blanks below to explain to the administrators how one
+bootstrap (re)sample is found. 
+
+\noindent
+On (\#) \underline{\hspace{1in}} cards, write \underline{\hspace{1.5in}} and \underline{\hspace{1.5in}} on the 
+cards.
+
+\vspace{0.25in}
+
+\noindent
+Generate a new sample by:
+
+\vspace{0.5in}
+
+\noindent
+Calculate and plot the \underline{\hspace{4cm}} from each bootstrap (re)sample. 
+
+\vspace{0.25in}
+
+\noindent
+\textbf{(d)}[3 points] The Statistician carried out a simulation with 1000 
+bootstrap resamples using the order (`nonsmoker` - `smoker`) and obtained the
+bootstrap distribution below. 
+
+Where is the bootstrap distribution centered? Why is the distribution centered 
+at that value?
+
+```{r bootstrap-births, out.width = "60%", fig.align = 'left'}
+bootstrap_dist <- births14 %>% 
+  filter(!is.na(habit)) %>% 
+  specify(response = weight, explanatory = habit) %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "diff in means", 
+            order = c("nonsmoker", "smoker")
+            )
+
+bootstrap_dist %>% 
+  visualise() + 
+  labs(x = "Bootstrap Difference in Means (Nonsmoker - Smoker)", 
+       title = "", 
+       y = "Frequency") + 
+  theme_bw() +
+  scale_x_continuous(breaks = seq(0,2, 0.25))
+```
+
+\newpage
+
+\noindent
+\textbf{(e)}[3 points] The table below presents percentiles for the bootstrap 
+distribution shown above. Circle the two values which will construct a 99%
+confidence interval. 
+
+\vspace{0.25cm}
+
+```{r percentile-CI-table}
+bootstrap_dist %>% 
+  summarize("0.5%" = quantile(stat, 0.005), 
+            "1%" = quantile(stat, 0.01),
+            "2.5%" = quantile(stat, 0.025),
+            "5%" = quantile(stat, 0.05),
+            "90%" = quantile(stat, 0.90),
+            "95%" = quantile(stat, 0.95),
+            "97.5%" = quantile(stat, 0.975),
+            "99%" = quantile(stat, 0.99),
+            "99.5%" = quantile(stat, 0.995)
+            ) %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Quantile", 
+               values_to = "Value") %>% 
+  pander()
+```
+
+\vspace{0.25cm}
+
+\noindent
+\textbf{(f)}[4 points] Interpret the 99% confidence interval found in part (f)
+\textbf{in the context of this study}. 
+
+\vspace{1in}
+
+\noindent
+\textbf{(g)}[2 points] Based on your confidence interval in (f), which of the
+following is the most likely p-value for a two-sided hypothesis test? Circle 
+one. 
+
+\begin{center}
+(i) 0.20 \hspace{0.25in} (ii) 0.10 \hspace{0.25in} (iii) 0.05 \hspace{0.25in} 
+(iv) 0.01 \hspace{0.25in} (v) 0.005
+\end{center}
+
+## Paired vs Two Sample
+
+19.	Which of the following analyses is most appropriate for the following situation? A teacher compares the pre-test and post-test scores of a group of students to test whether their scores have increased throughout the semester.  
+
+> a.	A paired t-test for dependent samples
+> b.	A two-sample t-test for independent samples
+
+20.	Which of the following analyses is appropriate for the following situation? A random sample of 100 male students and a random sample of 1000 female students are asked how many Cal Poly Soccer games they attended this past season. The goal is to test whether male Cal Poly students attend more football games, on average, than the female Cal Poly students.  
+
+> a.	A paired t-test for dependent samples
+> b.	A two-sample t-test for independent samples
+
+21.	Which of the following analyses is appropriate for the following situation? Ten diamond rings are shown to two jewelers, and each jeweler is asked to determine the appraisal value for each ring. The goal is to test whether the two jewelers give different appraisal values, on average.
+
+> a.	A paired t-test for dependent samples
+> b.	A two-sample t-test for independent samples
+
+1.	A researcher has measured the size of 20 cancer patients’ tumors both before and after a new treatment. To test whether the size of the tumors decreased, on average, the researcher should use a paired t-test for dependent samples. (2 pts)
+
+> TRUE \hspace{1.2in} FALSE
+
+\vspace{0.2in}
+
+2.	Suppose that in order to investigate the effectiveness of a new blood pressure drug, subjects are randomly assigned to either the placebo group or the treatment group.  All subjects have their blood pressure measured at baseline.  Those in the placebo group then receive an inactive pill for 2 months, and those in the treatment group receive the new drug for 2 months.  At the end of the two months, researchers once again measure each subject’s blood pressure and compute the change in blood pressure for each subject.  To test for a difference in these changes across the placebo and treatment groups, you should use a paired t-test for dependent samples. (2 pts)
+
+> TRUE \hspace{1.2in} FALSE
