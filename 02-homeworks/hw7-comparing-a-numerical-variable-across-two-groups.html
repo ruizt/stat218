@@ -3278,8 +3278,14 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li>Where can we generalize our results (i.e. what is our population in which we obtained the observed data)?</li>
 </ol>
 <ol start="14" type="1">
-<li>Construct a 95% confidence interval for the true difference in mean diameter between Honeylocust and Norway Maple trees.</li>
+<li>Using the t-quanitle from below, construct a 95% confidence interval for the true difference in mean diameter between Honeylocust and Norway Maple trees.</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">670</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.963511</code></pre>
+</div>
+</div>
 </section>
 <section id="paired-t-test-vs-two-sample-independent-t-test" class="level3">
 <h3 class="anchored" data-anchor-id="paired-t-test-vs-two-sample-independent-t-test">Paired t-test vs Two-Sample Independent t-test</h3>

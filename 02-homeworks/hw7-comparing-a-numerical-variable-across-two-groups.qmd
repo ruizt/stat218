@@ -153,7 +153,11 @@ t_test(x = nyc_trees,
 
 \vspace{1in}
 
-14.	Construct a 95% confidence interval for the true difference in mean diameter between Honeylocust and Norway Maple trees.
+14.	Using the t-quanitle from below, construct a 95% confidence interval for the true difference in mean diameter between Honeylocust and Norway Maple trees.
+
+```{r}
+qt(0.975, df = 670)
+```
 
 \vspace{1.8in}
 
