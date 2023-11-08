@@ -103,14 +103,25 @@ knitr::include_graphics("images/diffcol.png")
 
 ## To do:
 
+:::: columns
+::: column
 + **Homework 7: New York City Trees**
   + Due Thursday 11/9 at 11:59pm
   
 + **Lab 7: Color Interference**
   + Due Monday 11/13 at 11:59pm
+
+:::
+::: column
+  
++ **Project Group Contract**
+  + Due Friday 11/10 at 11:59pm
   
 + **Study for Midterm Exam 2**
   + In class, Tuesday 11/14
+
+:::
+::::
 
 ::: callout-warning
 ## NO CLASS TOMORROW!
