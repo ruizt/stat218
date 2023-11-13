@@ -1,0 +1,26 @@
+---
+title: "Chapter 8: Comparing a Numerical Variable Across More Than Two Groups"
+format: 
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Chapter 8: Comparing a Numerical Variable Across More Than Two Groups}
+          \fancyfoot[C]{\thepage}
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+bibliography: references.bib
+reference-location: section
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
