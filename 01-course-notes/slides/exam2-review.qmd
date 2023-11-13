@@ -1,0 +1,54 @@
+---
+title: "Midterm Exam 2"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+embed-resources: true
+---
+
+## Monday, November 13th -- Today we will...
+
+:::: columns
+::: column
++ Padlet Class Review (in groups, discuss and post one question)
++ Work on Practice Problems (in groups)
+
+:::
+::: column
+```{r}
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics("images/padlet-exam2-review.PNG")
+```
+:::
+::::
+
+::: callout-warning
+### MONDAY OFFICE HOURS NOW 2pm - 3pm
+:::
+
+## To do:
+
++ **Lab 7: Color Interference**
+  + Due TONIGHT 11/13 at 11:59pm
+  
++ **Study for Midterm Exam 2** In-class, Tuesday 11/14
+  + You may use a calculator, and one (8.5" x 11") sheet of notes (front and back).
+  
++ **Group Project Checkpoint 1 (Data + Variables)**
+  + Due Friday 11/10 at 11:59pm
+  
+::: callout-warning
+### MONDAY OFFICE HOURS NOW 2pm - 3pm
+:::
+
+## Tuesday, Novmeber 24th
+
++ **Midterm Exam 2**
+  + You may use a calculator, and one (8.5" x 11") sheet of notes (front and back). You must turn in your note sheet with your exam.
+  + You have 50 minutes to complete the exam.
+  + Please *quietly* bring up your exam when you are finished. You may then leave.
+
++ **Print Chapter 8 Course Notes**
+  + For class Thursday (No Lab this week)
