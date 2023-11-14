@@ -43,12 +43,18 @@ knitr::include_graphics("images/padlet-exam2-review.PNG")
 ### MONDAY OFFICE HOURS NOW 2pm - 3pm
 :::
 
-## Tuesday, Novmeber 24th
+## Tuesday, Novmeber 14th
+
+
+::: {style="font-size: 80%;"}
 
 + **Midterm Exam 2**
   + You may use a calculator, and one (8.5" x 11") sheet of notes (front and back). You must turn in your note sheet with your exam.
   + You have 50 minutes to complete the exam.
   + Please *quietly* bring up your exam when you are finished. You may then leave.
-
-+ **Print Chapter 8 Course Notes**
-  + For class Thursday (No Lab this week)
++ **Print Chapter 8 Course Notes** 
+  + for class Thursday (No Lab this week)
++ **Group Project Checkpoint 1 (Data + Variables)**
+  + Due Friday 11/10 at 11:59pm
+  
+:::

@@ -24,3 +24,167 @@ execute:
   warning: false
 ---
 
+```{r}
+library(tidyverse)
+```
+
+In the previous chapter, we covered how we could compare a numerical variable across two groups using (1) a difference in two means (independent samples), and (2) the mean of the differences (paired).
+
+### Example 8.1: IMDb Movie Ratings between Genres
+
+Today we're going to use a data set we explored in Chapter 5, to visualize the distribution of IMDB movie ratings. The data set is comprised of the following variables collected on each movie:
+
+| **Variable**     | **Description**                                             |
+|------------------|-------------------------------------------------------------|
+| `Movie`          | Title of the movie                                          |
+| `averageRating`  | Average IMDb user rating score from 1 to 10                 |
+| `numVotes`       | Number of votes from IMDb users                             |
+| `Genre`          | Categories the movie falls into (e.g., Action, Drama, etc.) |
+| `2020 Gross`     | Gross profit from movie viewing                             |
+| `runtimeMinutes` | Length of movie (in minutes)                                |
+|                  |                                                             |
+
+```{r data-cleaning}
+#| include: false
+
+movies <- readxl::read_xlsx("data/movies_2020.xlsx") |>  
+  distinct(Movie, .keep_all = TRUE)
+
+title_ids <- read_csv("data/movie_ids.csv")
+  
+movie_ids <- left_join(movies, 
+                       title_ids, 
+                       by = 
+                         intersect(
+                           colnames(movies), 
+                           colnames(title_ids)
+                           )
+                       )
+
+ratings <- read_csv("data/ratings.csv")
+
+movie_ratings <- left_join(movie_ids, 
+                           ratings, 
+                           by = "id"
+                           ) |> 
+  select(Movie, 
+         Genre, 
+         `2020 Gross`, 
+         runtimeMinutes, 
+         averageRating, 
+         numVotes) |> 
+  drop_na(averageRating)
+```
+
+Below is a table summarizing the number of observations (movies) in the data set for the four most common Genres.
+
+```{r genre-table}
+#| echo: false
+
+movie_ratings |> 
+  count(Genre) |> 
+  arrange(-n) |> 
+  filter(Genre %in% c("Comedy",
+                           "Documentary",
+                           "Drama",
+                           "Thriller/Suspense",
+                      "Horror"))
+```
+
+```{r data-filtering}
+
+genres <- tibble(Genre = c("Comedy", 
+                           "Documentary", 
+                           "Drama", 
+                           "Thriller/Suspense",
+                           "Horror")
+                 )
+
+movie_ratings <- movie_ratings |> 
+  semi_join(genres, by = "Genre")
+```
+
+```{r}
+head(movie_ratings, n = 10)
+```
+
+For a categorical variable that has more than two groups, we can use the **same** visualization techniques as we did for a categorical variable with two groups.
+
+1.  Think back to last week, what were two ways we visualized one numerical variable and one categorical variable?
+
+
+The figure below provides a boxplot of xxx
+
+```{r anova-viz}
+#| layout-nrow: 1
+
+# ggplot(data = movie_ratings, 
+#              mapping = aes(y = averageRating, x = Genre)) + 
+#   geom_boxplot() + 
+#   theme_bw() +
+#   labs(x = "Genre of Movie", 
+#        y = "Average IMDb Rating"
+#        )
+
+ggplot(data = movie_ratings, 
+             mapping = aes(x = averageRating, y = Genre)) + 
+  geom_boxplot() + 
+  theme_bw() +
+  labs(y = "Genre of Movie", 
+       x = "Average IMDb Rating"
+       )
+
+```
+
+Answer the following questions about the boxplots above.
+
+1.  Which genre has the highest center?
+
+\vspace{0.2in}
+
+2.  Which genre has the largest spread?
+
+\vspace{0.2in}
+
+3.  Which genre has the most skewed distribution?
+
+\vspace{.2in}
+
+Let's obtain a more complete picture of how different these groups are with summary statistics. Our familiar friend `favstats()` can help us compare summary statistics across different groups.
+
+Like before, the rating of the film is the response and the genre is the explanatory variable. So, our code looks like:
+
+```{r stat-comparison}
+#| echo: true
+
+favstats(averageRating ~ Genre, 
+         data = movie_ratings)
+```
+
+Use the output from the `favstats()` function to answer the following questions:
+
+\vspace{0.2in}
+
+4.  Report the mean rating for each genre. Use appropriate notation.
+
+\vspace{0.8in}
+
+5.  Which genres have the largest difference in their mean rating?
+
+\vspace{0.8in}
+
+6.  Which genre has the largest standard deviation in ratings?
+
+\vspace{0.25in}
+
+7.  Which genre has the smallest standard deviation in ratings?
+
+\vspace{0.25in}
+
+8.  How many times larger is your answer in #6 than your answer in #7?
+
+\vspace{0.8in}
+
+9.  Which genre has the largest sample size? What is the formula for the standard deviation of a mean (aka remember this is our standard error)? What effect does sample size have on the standard error?
+
+\vspace{0.5in}
