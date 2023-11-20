@@ -199,7 +199,7 @@ emmeans(squirrel_model,
 
 \vspace{0.2in}
 
-14. Compare your decisions/results in the previous two questions. How does including a multiplicty adjustment (e.g., Tukey's) impact the results?
+14. Compare your decisions/results in the previous two questions. How does including a multiplicity adjustment (e.g., Tukey's) impact the results?
 
 \vspace{0.8in}
 
