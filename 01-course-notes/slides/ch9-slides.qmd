@@ -1,0 +1,81 @@
+---
+title: "Chapter 9: Simple Linear Regression"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+embed-resources: true
+---
+
+## Monday, November 27th
+### Today we will...
+
+  
+::: callout-warning
+### MONDAY OFFICE HOURS 
+Now 2pm - 3pm
+:::
+
+## To do:
+  
++ **Homework 8: Squirrel Size**
+  + Due Thursday 11/30 at 11:59pm
+  
++ **Project Checkpoint 2**
+  + Due Friday 12/1 at 11:59pm
+
+::: callout-warning
+### MONDAY OFFICE HOURS
+Now 2pm - 3pm.
+:::
+
+## Tuesday, November 28th
+### Today we will...
+
+## To do:
+
++ **Homework 8: Squirrel Size**
+  + Due Thursday 11/30 at 11:59pm
+  
++ **Project Checkpoint 2**
+  + Due Friday 12/1 at 11:59pm
+  
++ **Study for Quiz 4: ANOVA**
+  + In class, Friday 12/1
+
+## Thursday, November 30th
+### Today we will...
+
++ Lab 8: Soil Moisture and Early Growth Biomass for Strawberries
+
+## To do:
+
++ **Homework 8: Squirrel Size**
+  + Due Thursday 11/30 at 11:59pm
+  
++ **Lab 8: Soil Moisture and Early Growth Biomass for Strawberries**
+  + Due Monday 12/4 at 11:59pm
+
+  
++ **Project Checkpoint 2**
+  + Due Friday 12/1 at 11:59pm
+  
++ **Study for Quiz 4: ANOVA**
+  + In class, Friday 12/1
+
+
+## Friday, December 1st
+### Today we will...
+
++ Quiz 4: ANOVA (~20 minutes)
+  
+## To do:
+  
++ **Lab 8: Soil Moisture and Early Growth Biomass for Strawberries**
+  + Due Monday 12/4 at 11:59pm
+
++ **Project Checkpoint 2**
+  + Due Friday 12/1 at 11:59pm
+
++ **Homework 9: **
+  + Due *Tuesday* 12/5 at 11:59pm
