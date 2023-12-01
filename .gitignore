@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-
 99-*
 *.Rproj
 *Kim
@@ -20,3 +19,4 @@
 *rubric*
 *quizzes*
 midterm1-exam*
+midterm2-exam.pdf
