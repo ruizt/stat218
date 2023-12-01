@@ -85,37 +85,17 @@ ggplot(data = golf,
 
 3. Set up the null and alternative hypotheses for testing for an association using the slop 
 
-*Independent observations* (for both simulation-based and theory-based methods): individual data points must be independent.
 
--   Check this assumption by investigating the sampling method and determining if the observational units are related in any way.
+4. Check the assumptions/conditions for using simple linear regression on our data:
 
-**4. Do you believe this condition (independent observations) is violated? Why or why not?**
-
-<!-- Your answer goes below this line -->
-
-
-
-
-
-*Linearity* (for both simulation-based and theory-based methods): the data should follow a linear trend.
-
--   Check this assumption by examining the scatterplot of the two variables, the relationship on the scatterplot should appear linear.
-
-**5. Do you believe this condition (linearity) is violated? Why or why not?**
-
-<!-- Your answer goes below this line -->
-
-
-
-
-
-*Equal/Constant variability* (for theory-based methods only): the variability of points around the least squares line remains roughly constant
-
--   Check this assumption by examining the scatterplot of the two variables, the variability in the points around the regression line should be approximately the same for all of the values of $x$. When I say the "variability in the points," I mean you should be looking at the **vertical** spread of the points.
-
-*Nearly normal residuals* (for theory-based methods only): residuals must be nearly normal.
-
--   Check this assumption by examining a histogram of the residuals **or** a histogram of the response variable ($y$). The distribution of either of these values should appear approximately normal.
++ Independent observations: individual data points must be independent.
+  + Check this assumption by investigating the sampling method and determining if the observational units are related in any way.
++ Linearity: the data should follow a linear trend.
+  + Check this assumption by examining the scatterplot of the two variables, the relationship on the scatterplot should appear linear.
++ Equal/Constant variability: the variability of points around the least squares line remains roughly constant
+  + Check this assumption by examining the scatterplot of the two variables, the variability in the points around the regression line should be approximately the same for all of the values of $x$. When I say the "variability in the points," I mean you should be looking at the **vertical** spread of the points.
++ Normality: residuals must be nearly normal.
+  + Check this assumption by examining a histogram of the residuals **or** a histogram of the response variable ($y$). The distribution of either of these values should appear approximately normal.
 
 ### Using theory-based methods
 

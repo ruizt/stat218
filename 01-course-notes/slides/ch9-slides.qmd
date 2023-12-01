@@ -70,8 +70,7 @@ Now 2pm - 3pm.
 ### Today we will...
 
 + Quiz 4: ANOVA (~20 minutes)
-+ Ch. 9 Notes: Inference for the Slope?
-+ Project Work time?
++ Project work time
   
 ## To do:
   
@@ -81,5 +80,5 @@ Now 2pm - 3pm.
 + **Project Checkpoint 2 (Histograms + Scatterplot?)**
   + Due Friday 12/1 at 11:59pm
 
-+ **Homework 9: **
-  + Due *Tuesday* 12/5 at 11:59pm
++ **Homework 9: Golf Driving Distances**
+  + Optional for Practice on Linear Regression

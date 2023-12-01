@@ -45,7 +45,7 @@ Researchers set out to explore how squirrel size is impacted by latitude. Specif
 head(squirrels)
 ```
 
-**Research question** Does the mean squirrel differ between the four selected California locations?
+**Research question** Does the mean length of all squirrels differ between the four selected California locations?
 
 ```{r}
 favstats(Length ~ Location, data = squirrels)
