@@ -28,7 +28,7 @@ library(mosaic)
 library(broom)
 ```
 
-In golf the goal is to complete a hole with as few strokes as possible. A long driving distance to start a hole can help minimize the strokes necessary to complete the hole, as long as that drive stays on the fairway. Data were collecting on 354 PGA and LGPA players in 2008. For each player, the average driving distance (yards), fairway accuracy (percentage), and sex was measured.
+In golf the goal is to complete a hole with as few strokes as possible. A long driving distance to start a hole can help minimize the strokes necessary to complete the hole, as long as that drive stays on the fairway. Data were collecting on 197 PGA and LGPA male players in 2008. For each player, the average driving distance (yards), fairway accuracy (percentage), and sex was measured.
 
 ```{r data}
 #| echo: true
@@ -37,7 +37,7 @@ golf_data <- read_csv("data/golf.csv") |>
 head(golf_data)
 ```
 
-**Research Question:** Does the accuracy of a professional golfer change when they hit the ball farther?
+**Research Question:** Does the accuracy of a professional male golfer change when they hit the ball farther?
 
 ```{r}
 #| echo: true
@@ -48,17 +48,6 @@ ggplot(data = golf_data,
   geom_point() +  
   labs(x = "Driving Distance (yards)",  
        y = "Accuracy (%)") 
-```
-
-```{r}
-#| echo: true
-ggplot(data = golf_data, 
-       mapping = aes(x = Driving_Distance
-                    )
-       ) +  
-  geom_histogram(binwidth = 5, color = "white") + 
-  labs(x = "Driving Distance (yards)",
-       y = "Number of Golfers") 
 ```
 
 1. Identify the following in context of the problem:
@@ -83,17 +72,7 @@ ggplot(data = golf_data,
 
 \vspace{0.8in}
 
-2. Set up the null and alternative hypotheses:
-
-+ In words.
-
-\vspace{1.5in}
-
-+ In symbols
-
-\vspace{1.5in}
-
-3. Based on the scatterplot above, does it appear that there is a relationship between driving distance and percent accuracy? Explain.
+2. Based on the scatterplot above, does it appear that there is a relationship between driving distance and percent accuracy? Explain.
 
 \vspace{1.5in}
 
@@ -111,10 +90,18 @@ ggplot(data = golf_data,
        y = "Accuracy (%)") 
 ```
 
-4. Set up the null and alternative hypotheses for testing for an association using the slope.
+3. Set up the null and alternative hypotheses for testing for an association using the slope:
+
++ In words.
+
+\vspace{1.5in}
+
++ In symbols
+
+\vspace{1.5in}
 
 
-5. Fill in the code below as if you were running a linear regression model.
+4. Fill in the code below as if you were running a linear regression model.
 
 ```{r}
 #| eval: false
@@ -137,7 +124,7 @@ golf_model |>
          p.value = scales::pvalue(p.value))
 ```
 
-6. Check the assumptions/conditions for using simple linear regression on our data:
+5. Check the assumptions/conditions for using simple linear regression on our data:
 
 ```{r}
 #| echo: true
@@ -171,31 +158,31 @@ check_model(golf_model)
   
 \vspace{0.8in}
 
-7. Using the output from the code above, write the equation of the regression line in the context of the problem.
+6. Using the output from the code above, write the equation of the regression line in the context of the problem.
 
 \vspace{1.5in}
 
-8. Interpret the estimated slope in context of the problem.
+7. Interpret the estimated slope in context of the problem.
 
 \vspace{1.5in}
 
-9. State your conclusion in context of the research question. Cite evidence to support your conclusion.
+8. State your conclusion in context of the research question. Cite evidence to support your conclusion.
 
 \vspace{1.5in}
 
-10. Interpret the 95% confidence interval for the slope.
+9. Interpret the 95% confidence interval for the slope.
 
 \vspace{1.5in}
 
-11. Suppose you have a golfer with a driving distance of 280 yards. What would you expect their accuracy to be?
+10. Suppose you have a golfer with a driving distance of 280 yards. What would you expect their accuracy to be?
 
 \vspace{0.8in}
 
-12. Assume that same golfer has an actual accuracy of 71%, what is the residual for this golfer?
+11. Assume that same golfer has an actual accuracy of 71%, what is the residual for this golfer?
 
 \vspace{0.8in}
 
-13. Instead, assume that same golfer has an actual accuracy of 55%, what is the residual for this golfer?
+12. Instead, assume that same golfer has an actual accuracy of 55%, what is the residual for this golfer?
 
 \vspace{0.8in}
 
