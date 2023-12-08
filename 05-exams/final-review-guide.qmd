@@ -689,7 +689,7 @@ ggplot(data = AccordPrice,
   labs(y = "Price (in $1000's)",
        x = "Mileage (in 1000's")
 
-model = lm(Mileage ~ Price,
+model = lm(Price ~ Mileage,
            data = AccordPrice)
 
 model |> 
