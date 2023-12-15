@@ -687,7 +687,7 @@ ggplot(data = AccordPrice,
   scale_x_continuous(limits = c(0,160), breaks = seq(0,160,20), expand = c(0,2)) +
   scale_y_continuous(limits = c(0,30), breaks = seq(0,30,5)) +
   labs(y = "Price (in $1000's)",
-       x = "Mileage (in 1000's")
+       x = "Mileage (in 1000's)")
 
 model = lm(Price ~ Mileage,
            data = AccordPrice)
