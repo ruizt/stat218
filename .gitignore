@@ -2,22 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-99-*
+zz-*
 *.Rproj
-*Kim
-00-course-info/Kim (& Robinson) STATS-ASE 101 Fall 23_encrypted_.pdf
-00-course-info/Cal Poly Colloquium - Unfried.pdf
-00-course-info/canvas-image.png
-00-course-info/class-planning.xlsx
-00-course-info/Teaching for well-being slide.pptx
-04-Rlabs/stat218-calpoly-labs - Shortcut.lnk
-*_ul*
-*nul*
-00-course-info/seating-chart.docx
-00-course-info/final-exam.txt
-*.excalidraw
-*rubric*
-*quizzes*
-midterm1-exam*
-midterm2-exam.pdf
-05-exams/final-exam.pdf
+.DS_Store
+
+/.quarto/

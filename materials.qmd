@@ -1,0 +1,30 @@
+---
+title: "Materials"
+title-block-style: none
+---
+
+### Week 1 (1/8/24)
+
+### Week 2 (1/15/24)
+
+*Academic holiday 1/15/24*
+
+### Week 3 (1/22/24)
+
+### Week 4 (1/29/24)
+
+### Week 5 (2/5/24)
+
+### Week 6 (2/12/24)
+
+### Week 7 (2/19/24)
+
+*Academic holiday 2/19/24*
+
+### Week 8 (2/26/24)
+
+### Week 9 (3/4/24)
+
+### Week 10 (3/11/24)
+
+### Finals week (3/18/24)

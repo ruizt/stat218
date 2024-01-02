@@ -1,0 +1,117 @@
+---
+title: "Course syllabus"
+subtitle: "Applied Statistics for Life Sciences"
+author: "STAT218"
+author-title: "Course listing"
+date: "01/01/2024"
+date-format: "MMMM YYYY"
+published-title: "Updated"
+editor: visual
+# format: pdf
+---
+
+### Course information
+
+**Instructor:** Trevor Ruiz (he/him/his) \[[email](mailto:truiz01@calpoly.edu)\]
+
+**Class meetings:**
+
+-   \[Section 05/8273\] 2:10pm — 4:00pm TR Construction Innovations Center Room C202
+-   \[Section 06/8274\] 4:10pm — 6:00pm TR Business Room 113
+
+**Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/stat218)\]
+
+### Catalog Description
+
+Data collection and experimental design, descriptive statistics, confidence intervals, parametric and non parametric one and two-sample hypothesis tests, analysis of variance, correlation, simple linear regression, chi-square tests. Applications of statistics to the life sciences. Substantial use of statistical software.
+
+Prerequisite: MATH 96; or MATH 115; or appropriate Math Placement Level.
+
+Fulfills GE Area B4 (GE Area B1 for students on the 2019-20 or earlier catalogs); a grade of C- or better is required in one course in this GE area.
+
+### Materials
+
+**Textbook**: Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above; we will cover chapters 1 – 2 and 4 – 6.
+
+**Computing**: computing will be hosted online via a \[[posit.cloud workspace](https://posit.cloud/spaces/462317/join?access_code=RQXBKOVEbyfwuYzJaVWBVVDXPiWtgOrBkqJu1m4H)\]; this eliminates the need for you to manage software installations and provides an easy mechanism to distribute and review activities. To access the workspace, you'll need to create a free account. Please be aware that any files you create on the workspace will be visible to admins.
+
+### Learning outcomes
+
+The course aims to enable students to:
+
+a.  design a data collection scheme based on simple random sampling or simple experimental designs;
+b.  distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each;
+c.  summarize data using graphical and numerical techniques;
+d.  construct and interpret confidence intervals for means and differences between means for independent and paired samples;
+e.  conduct parametric and non-parametric two-sample hypothesis tests for means;
+f.  construct and interpret a confidence interval for a single proportion;
+g.  conduct Chi-square goodness-of-fit tests and tests for independence;
+h.  distinguish between case-control and cohort studies and compute relative-risk and odds in the appropriate settings;
+i.  perform analysis of variance tests and post-hoc comparisons for completely randomized designs; and
+j.  use simple linear regression to describe relationships between variables.
+
+### Assessments
+
+Every effort will be made to return evaluated work within one week of submission. Final exams, per University policy, will be retained by the instructor. Scores will be recorded in Canvas, and students will be responsible for checking their scores to ensure accurate data entry upon receipt of evaluated work.
+
+Please also note that failure to adhere to course policies --- particularly collaboration, academic integrity, and attendance policies --- may result in a lower letter grade than would otherwise be assigned.
+
+### Tentative schedule
+
+Subject to change.
+
+| Week             | Topic                                                               | Reading    | Assignment |
+|------------------|------------------|------------------|------------------|
+| 1 (1/8/24)       | Introduction to data and statistical thinking                       | 1.1 — 1.3  | HW1        |
+| 2 (1/15/24)      | Numerical and categorical data; descriptive statistics              | 1.4 — 1.6  | HW2        |
+| 3 (1/22/24)      | Foundations for inference: point estimates and confidence intervals | 4.1 — 4.2  | Test 1     |
+| 4 (1/29/24)      | Foundations for inference: hypothesis tests                         | 4.3        | HW3        |
+| 5 (2/5/24)       | One- and two-sample inference for numerical data                    | 5.1 — 5.3  | HW4        |
+| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4        | Test 2     |
+| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2  | HW5        |
+| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4  | HW6        |
+| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3  | Test 3     |
+| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5  |            |
+| Finals (3/18/24) | N/A                                                                 | N/A        | Final exam |
+
+### Course policies
+
+#### Collaboration
+
+Collaboration within the class (including across class sections) is allowed (and encouraged!) on homework assignments, subject to certain conditions outlined in the paragraph below. Collaborations should not include individuals outside of the class. Students collaborating with a group are expected to prepare their own solutions, in their own words and writing, and should to indicate their collaborators in writing on their submission. This is limited to peers that were consulted closely in completing the assignment; brief or passing interactions are not considered collaborations.
+
+A collaboration is a shared effort. Students that choose to work together on homework assignments are expected to make material contributions towards producing one or more shared answers or solutions. Material contributions might include participation in discussions, critique of a proposed solution, or presentation of a problem approach. In the absence of such contributions, submitting solutions prepared in a group is not appropriate. The best way to adhere to this policy is to attempt problems individually before consulting others.
+
+#### Attendance
+
+Regular attendance is essential for success in the course and required per University policy. Each student may miss two class meetings without notice but additional absences should be [excusable](https://academicprograms.calpoly.edu/content/academicpolicies/class-attendance) and students should notify the instructor. Frequent unexcused absences may negatively impact course grades.
+
+#### Communication and email
+
+Students are encouraged to use face-to-face means of communication (office hours, class meetings, appointments) when possible. Email may be used on a secondary basis or when a written record of communication is needed. Every effort is made to respond to email within 48 weekday hours --- so a message sent Thursday or Friday may not receive a reply until Monday or Tuesday. Time-sensitive messages should be identified as such in the subject line. Students should wait one week before sending a reminder.
+
+#### Time commitment
+
+STAT218 is a four-credit course, which corresponds to a minimum time commitment of 12 hours per week, including lectures, reading, assignments, and study time. Some variability in workload by week should be expected, and most students will need to budget a few extra hours each week. However, students can expect to be able to meet course expectations with a time commitment of 12-16 hours per week. Considering that lecture accounts for four hours per week, students should anticipate devoting 8-12 hours outside of class.
+
+#### Assignment scores and final grades
+
+Every effort will be made to provide consistent, fair, and accurate evaluation of student work. Students should notify the instructor of any suspected errors or discrepancies in evaluation promptly on an assignment-by-assignment basis (*i.e.,* not at the end of the quarter) to guarantee consideration. Final (letter) grades will only be changed in the case of clerical errors. Attempting to negotiate scores or final grades is not appropriate.
+
+Per University policy, faculty have final responsibility for grading criteria and grading judgment and have the right to alter student assessment or other parts of the syllabus during the term. If any student feels their grade is unfairly assigned at the end of the course, they have the right to appeal it according to the procedure outlined [here](https://academicprograms.calpoly.edu/content/academic-petition-appeals).
+
+#### Late work
+
+Each student may turn in two homework assignments up to one week late without penalty at any time during the quarter and without notice. Subsequently, assignments turned in up to one week late will be evaluated for 75% credit unless an extension is granted in advance. No late work will be accepted beyond one week after the original due date.
+
+#### Accommodations
+
+It is University policy to provide, on a flexible and individualized basis, reasonable accommodations to students who have disabilities that may affect their ability to participate in course activities or to meet course requirements. Accommodation requests should be made through the [Disability Resource Center](https://drc.calpoly.edu) (DRC).
+
+#### Conduct and Academic Integrity
+
+Students are expected to be aware of and adhere to University policy regarding academic integrity and conduct. Detailed information on these policies, and potential repercussions of policy violations, can be found via the [Office of Student Rights & Responsibilities](https://osrr.calpoly.edu) (OSRR).
+
+#### Copyright and distribution of course materials
+
+All course materials, including handouts, homework assignments, lab assignments, study guides, course notes, exams, and solutions are subject to copyright; students are not permitted to share or distribute any course materials without the written consent of the instructor. This includes, in particular, uploading materials or prepared solutions to online services and sharing materials or prepared solutions with students who may take the course in a future term. Transgressions of this policy compromise the effectiveness of instruction and assessment and do a disservice to current and future students.
