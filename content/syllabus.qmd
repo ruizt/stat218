@@ -19,7 +19,11 @@ editor: visual
 -   \[Section 05/8273\] 2:10pm — 4:00pm TR Construction Innovations Center Room C202
 -   \[Section 06/8274\] 4:10pm — 6:00pm TR Business Room 113
 
-**Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/stat218)\]
+Class meetings will comprise a mixture of lecture, lab activities, and discussion.
+
+**Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/stat218)\].
+
+These times are partitioned into 10 minute intervals that you can schedule via the appointment link above; this system is intended to minimize waiting times and guarantee one-on-one availability. Slots can be scheduled anywhere from 7 calendar days to 10 minutes in advance. While drop-ins are welcome, I can't guarantee availability outside of scheduled times.
 
 ### Catalog Description
 
@@ -31,64 +35,109 @@ Fulfills GE Area B4 (GE Area B1 for students on the 2019-20 or earlier catalogs)
 
 ### Materials
 
-**Textbook**: Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above; we will cover chapters 1 – 2 and 4 – 6.
+To access course materials, engage in class, and complete assignments, you'll need an internet-connected laptop or tablet with a keyboard — the keyboard is necessary since we will do some web-hosted computation and you will be expected to type assignments. I'll let you know in advance when you need to bring a laptop/tablet to class. Besides your personal computer, all materials are free.
 
-**Computing**: computing will be hosted online via a \[[posit.cloud workspace](https://posit.cloud/spaces/462317/join?access_code=RQXBKOVEbyfwuYzJaVWBVVDXPiWtgOrBkqJu1m4H)\]; this eliminates the need for you to manage software installations and provides an easy mechanism to distribute and review activities. To access the workspace, you'll need to create a free account. Please be aware that any files you create on the workspace will be visible to admins.
+**Textbook**: Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above; we will cover chapters 1 – 2, 4 – 6, and 8.
+
+**Computing**: computing will be hosted online via a \[[posit.cloud workspace](https://posit.cloud/spaces/462317/join?access_code=RQXBKOVEbyfwuYzJaVWBVVDXPiWtgOrBkqJu1m4H)\]. To access the workspace, you'll need to create a (free) posit.cloud account — open the invitation by clicking the link above and follow prompts. Activities and assignments will be distributed via this workspace. Please be aware that any files you create on the workspace will be visible to admins.
+
+**Course notes**: notes to supplement readings will be posted as needed on the course website.
+
+### Additional resources
+
+Students wanting more depth of coverage may wish to consult the following resources (available online or through the Kennedy Library):
+
+-   Van Belle, Fisher, Heagerty, and Lumley (2004). [Biostatistics: a methodology for the health sciences](https://csu-calpoly.primo.exlibrisgroup.com/permalink/01CALS_PSU/1qh1nk7/alma991005991838302920). Wiley. This text provides a thorough introduction to biostatistics (statistics for life sciences) and is an excellent reference for more detailed discussion of methods covered in STAT218 and some more advanced methods *not* covered in STAT218. Students may find portions of the text more challenging than the OpenIntro book we are using for the course, but much of the material remains accessible and extensive notes are provided at the end of each chapter to help fill in any conceptual/mathematical gaps in understanding.
+
+-   Douglas *et al.* (2023). [An Introduction to R](https://intro2r.com). This online book covers a variety of introductory topics pertaining to R/RStudio: installation, packages, files and directories, objects, functions, data types, data structures, graphics, basic statistics, markdown, and version control.
 
 ### Learning outcomes
 
-The course aims to enable students to:
+The course aims to enable you to demonstrate the following abilities.
 
-a.  design a data collection scheme based on simple random sampling or simple experimental designs;
-b.  distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each;
-c.  summarize data using graphical and numerical techniques;
-d.  construct and interpret confidence intervals for means and differences between means for independent and paired samples;
-e.  conduct parametric and non-parametric two-sample hypothesis tests for means;
-f.  construct and interpret a confidence interval for a single proportion;
-g.  conduct Chi-square goodness-of-fit tests and tests for independence;
-h.  distinguish between case-control and cohort studies and compute relative-risk and odds in the appropriate settings;
-i.  perform analysis of variance tests and post-hoc comparisons for completely randomized designs; and
-j.  use simple linear regression to describe relationships between variables.
+-   \[L1\] design a data collection scheme based on simple random sampling or simple experimental designs
+
+-   \[L2\] distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each
+
+-   \[L3\] summarize data using graphical and numerical techniques
+
+-   \[L4\] construct and interpret confidence intervals for means and differences between means for independent and paired samples
+
+-   \[L5\] conduct parametric and non-parametric two-sample hypothesis tests for means
+
+-   \[L6\] construct and interpret a confidence interval for a single proportion
+
+-   \[L7\] conduct Chi-square goodness-of-fit tests and tests for independence
+
+-   \[L8\] distinguish between case-control and cohort studies and compute relative-risk and odds in the appropriate settings
+
+-   \[L9\] perform analysis of variance tests and post-hoc comparisons for completely randomized designs
+
+-   \[L10\] use simple linear regression to describe relationships between variables
+
+In addition, you will learn to perform simple analyses and computations in R and can expect to attain a basic level of proficiency with the software; however, as this is not a programming class, emphasis will be placed on obtaining and interpreting relevant outputs in the context of the analyses indicated above.
 
 ### Assessments
 
-Every effort will be made to return evaluated work within one week of submission. Final exams, per University policy, will be retained by the instructor. Scores will be recorded in Canvas, and students will be responsible for checking their scores to ensure accurate data entry upon receipt of evaluated work.
+Attainment of learning outcomes will be measured by performance on homework assignments, tests, and a comprehensive final exam.
 
-Please also note that failure to adhere to course policies --- particularly collaboration, academic integrity, and attendance policies --- may result in a lower letter grade than would otherwise be assigned.
+**Homeworks** are your opportunity to practice using course concepts and methods covered in class and comprise both graded and ungraded questions, marked as such. Graded questions will be largely data analytic and will correspond to specific marked learning outcomes; responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. Ungraded questions are entirely for your benefit as extra practice. You can submit revisions to any graded responses needing improvement for reassessment.
+
+**Tests** are your opportunity to demonstrate that you've synthesized course material and achieved learning outcomes. Tests will comprise sets of questions, some conceptual and some data analytic, corresponding to specific marked learning outcomes. Responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. You will be given a 24 hour window to complete each test, and afforded an opportunity to submit revisions to responses needing improvement.
+
+The **final exam** will be a comprehensive assessment focusing on concepts and interpretation of data analytic results. No use of R will be required for the final exam. Questions will correspond to specific marked learning outcomes, and responses will be assessed as satisfactory (S) or unsatisfactory (U). Due to the timing of the final exam, no revisions will be allowed. Final exams, per University policy, will be retained, but can be reviewed on request after the term has concluded.
+
+**Letter grades** will be determined as follows. Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least five outcomes must be fully met, and one more must be partly met. Letter grades are then defined as follows:
+
+| Grade | Minimum number of fully met outcomes | Minimum number of partly met outcomes |
+|-------|--------------------------------------|---------------------------------------|
+| A     | 9                                    | 1                                     |
+| A-    | 9                                    | 0                                     |
+| B+    | 8                                    | 2                                     |
+| B     | 8                                    | 1                                     |
+| B-    | 8                                    | 0                                     |
+| C+    | 7                                    | 2                                     |
+| C     | 7                                    | 1                                     |
+| C-    | 7                                    | 0                                     |
+| D+    | 6                                    | 2                                     |
+| D     | 6                                    | 1                                     |
+| D-    | 6                                    | 0                                     |
+
+Please note that these definitions are tentative and potentially subject to change. Please also note that failure to adhere to course policies — particularly collaboration, academic integrity, and attendance policies — may result in a lower letter grade than would otherwise be assigned.
 
 ### Tentative schedule
 
 Subject to change.
 
-| Week             | Topic                                                               | Reading    | Assignment |
+| Week             | Topics                                                              | Readings  | Assignments |
 |------------------|------------------|------------------|------------------|
-| 1 (1/8/24)       | Introduction to data and statistical thinking                       | 1.1 — 1.3  | HW1        |
-| 2 (1/15/24)      | Numerical and categorical data; descriptive statistics              | 1.4 — 1.6  | HW2        |
-| 3 (1/22/24)      | Foundations for inference: point estimates and confidence intervals | 4.1 — 4.2  | Test 1     |
-| 4 (1/29/24)      | Foundations for inference: hypothesis tests                         | 4.3        | HW3        |
-| 5 (2/5/24)       | One- and two-sample inference for numerical data                    | 5.1 — 5.3  | HW4        |
-| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4        | Test 2     |
-| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2  | HW5        |
-| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4  | HW6        |
-| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3  | Test 3     |
-| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5  |            |
-| Finals (3/18/24) | N/A                                                                 | N/A        | Final exam |
+| 1 (1/8/24)       | Introduction to data and statistical thinking                       | 1.1 — 1.3 | HW1         |
+| 2 (1/15/24)      | Numerical and categorical data; descriptive statistics              | 1.4 — 1.6 | HW2         |
+| 3 (1/22/24)      | Foundations for inference: point estimates and confidence intervals | 4.1 — 4.2 | Test 1      |
+| 4 (1/29/24)      | Foundations for inference: hypothesis tests                         | 4.3       | HW3         |
+| 5 (2/5/24)       | One- and two-sample inference for numerical data                    | 5.1 — 5.3 | HW4         |
+| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4       | Test 2      |
+| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2 | HW5         |
+| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4 | HW6         |
+| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3 | Test 3      |
+| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5 | None        |
+| Finals (3/18/24) | N/A                                                                 | N/A       | Final exam  |
 
 ### Course policies
 
 #### Collaboration
 
-Collaboration within the class (including across class sections) is allowed (and encouraged!) on homework assignments, subject to certain conditions outlined in the paragraph below. Collaborations should not include individuals outside of the class. Students collaborating with a group are expected to prepare their own solutions, in their own words and writing, and should to indicate their collaborators in writing on their submission. This is limited to peers that were consulted closely in completing the assignment; brief or passing interactions are not considered collaborations.
+Collaboration within the class and across class sections is allowed and encouraged on homework assignments, subject to certain conditions outlined in the paragraph below. Collaborations should not include individuals outside of the class. Students collaborating with a group are expected to prepare their own assignment submissions, in their own words and writing, and should to indicate their collaborators in writing on their submission. This is limited to peers that were consulted closely in completing the assignment; brief or passing interactions are not considered collaborations.
 
-A collaboration is a shared effort. Students that choose to work together on homework assignments are expected to make material contributions towards producing one or more shared answers or solutions. Material contributions might include participation in discussions, critique of a proposed solution, or presentation of a problem approach. In the absence of such contributions, submitting solutions prepared in a group is not appropriate. The best way to adhere to this policy is to attempt problems individually before consulting others.
+A collaboration is a shared effort. Students that choose to work together on homework assignments are expected to make material contributions towards producing one or more shared answers or solutions. Material contributions might include participation in discussions, critique of a proposed solution, or presentation of a problem approach. In the absence of such contributions, submitting solutions prepared in a group is not appropriate. The best way to adhere to this policy is to attempt problems individually before consulting others and exchanging work.
 
 #### Attendance
 
-Regular attendance is essential for success in the course and required per University policy. Each student may miss two class meetings without notice but additional absences should be [excusable](https://academicprograms.calpoly.edu/content/academicpolicies/class-attendance) and students should notify the instructor. Frequent unexcused absences may negatively impact course grades.
+Regular attendance is essential for success in the course and required per University policy. Each student may miss two class meetings without notice but additional absences should be [excusable](https://academicprograms.calpoly.edu/content/academicpolicies/class-attendance) and students should notify the instructor. Unexcused absences may negatively impact course grades.
 
 #### Communication and email
 
-Students are encouraged to use face-to-face means of communication (office hours, class meetings, appointments) when possible. Email may be used on a secondary basis or when a written record of communication is needed. Every effort is made to respond to email within 48 weekday hours --- so a message sent Thursday or Friday may not receive a reply until Monday or Tuesday. Time-sensitive messages should be identified as such in the subject line. Students should wait one week before sending a reminder.
+Students are encouraged to use face-to-face means of communication (office hours, class meetings, appointments) when possible. Email may be used on a secondary basis or when a written record of communication is needed. Every effort is made to respond to email within 48 weekday hours — so a message sent Thursday or Friday may not receive a reply until Monday or Tuesday. Time-sensitive messages should be identified as such in the subject line. Students should wait one week before sending a reminder.
 
 #### Time commitment
 
@@ -100,9 +149,11 @@ Every effort will be made to provide consistent, fair, and accurate evaluation o
 
 Per University policy, faculty have final responsibility for grading criteria and grading judgment and have the right to alter student assessment or other parts of the syllabus during the term. If any student feels their grade is unfairly assigned at the end of the course, they have the right to appeal it according to the procedure outlined [here](https://academicprograms.calpoly.edu/content/academic-petition-appeals).
 
-#### Late work
+#### Deadlines and late work
 
-Each student may turn in two homework assignments up to one week late without penalty at any time during the quarter and without notice. Subsequently, assignments turned in up to one week late will be evaluated for 75% credit unless an extension is granted in advance. No late work will be accepted beyond one week after the original due date.
+Each student may turn in two homework assignments up to one week late without penalty at any time during the quarter and without notice. Subsequently, assignments turned in up to one week late will be evaluated for 75% credit unless an extension is granted in advance. As a general policy, late work will be not accepted beyond one week after the original due date. Deadlines for tests are strict.
+
+These policies are intended to provide you with some flexibility to work around unforeseen circumstances while maintaining accountability for completing coursework in a timely manner. That said, if any circumstances arise that the policies do not accommodate well, please let me know and I will do my best to work with you to keep you on track in the course. Exceptions may be granted for significant and unforeseen challenges (medical absences, family emergencies, and the like).
 
 #### Accommodations
 
@@ -111,6 +162,8 @@ It is University policy to provide, on a flexible and individualized basis, reas
 #### Conduct and Academic Integrity
 
 Students are expected to be aware of and adhere to University policy regarding academic integrity and conduct. Detailed information on these policies, and potential repercussions of policy violations, can be found via the [Office of Student Rights & Responsibilities](https://osrr.calpoly.edu) (OSRR).
+
+Instances of academic dishonesty will be reported to OSRR and will result in penalty ranging from credit reduction to grade reduction to course failure, depending on the severity of the situation.
 
 #### Copyright and distribution of course materials
 
