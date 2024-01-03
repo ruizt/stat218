@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-/_zz-*
+*zz-*
 *.Rproj
 .DS_Store
 
