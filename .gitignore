@@ -2,8 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-/_zz-*
 *.Rproj
 .DS_Store
-
+_zz-references
 /.quarto/
