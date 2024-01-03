@@ -1,0 +1,131 @@
+---
+title: 'Lab 7: Color Interference'
+subtitle: "Chapter 7: Comparing a Numerical Variable across Two Groups"
+author:
+  - "Team Captain: NAME HERE"
+  - "Facilitator: NAME HERE"
+  - "Recorder: NAME HERE"
+  - "Resource Manager: NAME HERE"
+date: "DATE HERE"
+format: pdf
+editor: source
+execute:
+  echo: true
+  error: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(mosaic)
+library(infer)
+```
+
+The abstract of the article "Studies of interference in serial verbal reactions" in the *Journal of Experimental Psychology* reads:
+
+> In this study pairs of conflicting stimuli, both being inherent aspects of the same symbols, were presented simultaneously (a name of one color printed in the ink of another color---a word stimulus and a
+> color stimulus). The difference in time for reading the words printed in colors and the same words printed in black is the measure of interference of color stimuli upon reading words. The interference of conflicting color stimuli upon the time for reading 100 words (each word naming a color unlike the ink-color of its print) caused an increase of 2.3 seconds or 5.6% over the normal time for reading the same words printed in black.
+
+The article reports on the results of a study in which seventy college undergraduates were given forms with 100 names of colors written in black ink, and the same 100 names of colors written in another color (i.e., the word purple written in green ink). The total time (in seconds) for reading the 100 words printed in black, and the total time (in seconds) for reading the 100 words printed in different colors were recorded for each subject. The order in which the forms (black or color) were given was randomized to the subjects.
+
+The data below was simulated to reflect the results found in the paper.
+
+```{r data}
+color <- read.csv("data/interference.csv")
+head(color)
+```
+
+
+**Research Question** Does printing the name of colors in a different color increase the time it takes to read the words?
+
+1. What is the observational unit?
+
+2. Should these observations be considered paired or independent? Explain your answer.
+
+3. Based on your answer to question 2, is the appropriate observed summary statistic to be used to analyze these data the difference in mean times or the mean difference in times? Explain your answer.
+
+4. Write your parameter of interest.
+
+5. Write out the null and alternative hypotheses (in words), in the context of this study.
+
+6.  Create two histograms of the following:
+
+-   the distribution of reading times for words printed in black `Black`
+-   the distribution of reading times for words printed in a different color `DiffCol`
+
+```{r letter-comparison}
+
+## Code for histogram 1: Reading times printed in black
+ggplot(data = color, 
+       mapping = aes(x = ________)) + 
+  geom_histogram(binwidth = _____) +
+  labs(title = "_______________",
+       x = "_______________",
+       y = "_______________")
+
+## Code for histogram 2: Reading times printed in a different color
+ggplot(data = color, 
+       mapping = aes(x = ________)) + 
+  geom_histogram(binwidth = _____) +
+  labs(title = "_______________",
+       x = "_______________",
+       y = "_______________")
+```
+
+If you look at the data, you will notice there are three columns: `Subj`, `DiffCol`, and `Black`. There is not, however a column with the differences between the different color read time (`DiffCol`) and the black read time (`Black`). Let's make a new column with the differences!
+
+```{r add-differences-to-data}
+color <- color |> 
+  mutate(Difference = DiffCol - Black)
+head(color)
+```
+
+7. Create a histogram to visualize the difference in read time between the different colored text and the black text.
+
+
+```{r difference-histogram}
+ggplot(data = color, 
+       mapping = aes(x = ________)) + 
+  geom_histogram(binwidth = _____) +
+  labs(title = "_______________",
+       x = "_______________",
+       y = "_______________")
+```
+
+8. Use the `favstats()` function to obtain the summary of the observed data. *Be careful about what you are summarizing!*
+
+```{r difference-stats}
+# favstats() code goes here
+```
+
+9. What is the observed mean difference in reading times? Assign a symbol to this value.
+
+10 Check the normality assumption for using the t-test to investigate the research question.
+
+11. Calculate the t test-statistic. *Hint: (Feel free to use the code block below as a calculator)*
+
+```{r T-stat-calc}
+
+```
+
+12.  Fill in the code with these necessary pieces to conduct the paired t-test.
+
+```{r t-test}
+t_test(color, 
+       response = __________, 
+       mu = ____, 
+       alternative = "________", 
+       conf.int = TRUE, 
+       conf.level = 0.99
+      )
+```
+
+13. What is the p-value for this hypothesis test? With an $alpha = 0.01$ what decision would you make?
+
+14. What does the p-value you obtained mean, in the context of the study? *Hint: it is the probability of what...assuming what?*
+
+15. Interpret the confidence interval in context of the study. Careful to check your confidence level.
+
+16. The abstract states, that the conflicting color stimuli "*caused* an increase of 2.3 seconds or 5.6% over the normal time for reading the same words printed in black." Is this statement valid? Explain.

@@ -1,0 +1,46 @@
+---
+title: "Chapter 5: Methods for Describing a Single Numerical Variable"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+embed-resources: true
+---
+
+## Thursday, October 26th
+### Today we will...
+
+::: callout-note
+## NEW GROUPS!
+
++ Find your new group (see front of room).
++ Share a food or tradition that reminds you of fall.
++ Exchange contact information.
+:::
+
++ Methods for describing a single numerical variable
+
+## To do:
+
++ **Print Chapter 6 Notes**
+  + For class Friday
+
+## Friday, October 27th
+### Today we will...
+
+::: callout-note
+## NEW GROUPS!
+
++ Find your new group (see front of room).
++ Share a food or tradition that reminds you of fall.
++ Exchange contact information.
+:::
+
++ Distribution of the Sample Mean
++ Central Limit Theorem
+
+## To do:
+
+**Relax!**
+  
+  

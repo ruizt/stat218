@@ -1,0 +1,97 @@
+---
+title: "Chapter 3: Inference for a Categorical Variable with More than Two Categories"
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: simple
+---
+
+## Monday, October 9th
+### Today we will...
+
+Start Ch. 3 Notes (Example 3.1)
+
++ Setup single categorical variable with more than 2 categories
++ Simulate outcomes and summarize with a single measure
+
+## Adjustable Spinner
+
+<https://www.nctm.org/adjustablespinner>
+
+```{r}
+#| fig-align: center
+#| out-width: 40%
+knitr::include_graphics("images/adjustable-spinner.PNG")
+```
+
+## To do:
+
++ **Lab 2: What Impacts Strength of Evidence?**
+  + Due TONIGHT at 11:59pm
+  
++ **Homework 3: Which cow breeds have mastitis?**
+  + Due Thursday 10/12 at 11:59pm
+
+
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+
+## Tuesday, October 10th
+### Today we will...
+
+Finish Ch. 3 Notes (Example 3.1)
+
++ Introduce Chi-square test statistic
++ Chi-square distribution
+
+## To do:
+  
++ **Homework 3: Which cow breeds have mastitis?**
+  + Due Thursday 10/12 at 11:59pm
+
++ **Quiz 2: Statistical Inference for Single Proportions**
+  + In class Friday 10/13
+  
++ **Print/Download Chapter 4 Course Notes**
+  + For class Friday 10/13
+
+  
+::: callout-warning
+Don't forget to take the Canvas Quiz **AND** submit your completed assignment.
+:::
+  
+## Thursday, October 12th
+### Today we will...
+
++ Lab 3: Is the census report accurate?
++ Participation Ticket: Tell me your group role this week when I come around during lab work time.
+
+## To do:
+  
++ **Homework 3: Which cow breeds have mastitis?**
+  + Due Thursday 10/12 at 11:59pm
+  
++ **Lab 3: Is the census report accurate?**
+  + Due Monday 10/16 at 11:59pm
+  
++ **Quiz 2: Statistical Inference for Single Proportions**
+  + In class Friday 10/13
+  
++ **Print/Download Chapter 4 Course Notes**
+  + For class Friday 10/13
+
+## Friday, October 13th
+### Today we will...
+
++ Quiz 2: Statistical Inference for Single Proportions
++ Ch. 4 Notes
+  + Explanatory and Response Variables
+  + Visualizing and Summarizing Two Variables
+
+## To do:
+
++ **Lab 3: Is the census report accurate?**
+  + Due Monday 10/16 at 11:59pm
+  
+  

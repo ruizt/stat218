@@ -1,0 +1,90 @@
+---
+title: "Quiz 1: Statistical Thinking"
+date: "Friday, September 29, 2023"
+author: "Name: ____________________________"
+embed-resources: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Quiz 1: Statistical Thinking}
+          \fancyfoot[C]{\thepage}
+# format: html
+# format: docx
+# format: revealjs
+execute:
+  echo: false
+---
+
+1. In a study conducted by researchers at the Marine Biology Institute in Monterey, California, a dolphin named Luna was the focus of an investigation into whether bottlenose dolphins demonstrated the ability to identify edible fish species, herring, based on their distinct vocalizations. The researchers conducted a series of trials using underwater recordings of fish vocalizations.
+
+> During the trials, Luna the bottlenose dolphin was presented with two different underwater sound recordings, each corresponding to a different fish species: herring and pufferfish. Luna was observed in her natural habitat, and she was allowed to swim freely near the sound sources. Out of 60 trials, Luna accurately identified the herring sound recording 39 times.
+
+> `r fontawesome::fa("question")` **Research Question:** Can it be concluded, based on Luna's observations, that the bottlenose dolphin Luna is better at identifying the herring fish species based on vocalizations compared to random chance?
+
+a. Identify the following in the context of this example (4 pts):
+
+-   Population of interest:
+
+\vspace{0.2in}
+
+-   Sample (and Sample Size):
+
+\vspace{0.2in}
+
+-   Variable of interest:
+
+\vspace{0.2in}
+
+-   Data type:
+
+\vspace{0.2in}
+
+b. If Luna the bottlenose dolphin were randomly selecting between two types of fish for her meal, how many times would you expect her to accurately identified the herring sound recording? Explain. (2 pts)
+
+Below is a dot plot displaying 100 simulations of the number of times Luna accurately identified the herring sound recording under the assumption that her selections were made at random.
+
+```{r}
+#| fig-align: center
+#| out-width: 60%
+knitr::include_graphics("01-images/herring-sound-recording-applet-sim.png")
+```
+
+c. Based on the dot plot of 100 simulations of the number of times Luna correctly identified the herring sound recording, does this outcome convince you that Luna's ability to identify edible fish species is more than random chance? Why or why not? (3 pts)
+
+
+\vspace{1.5in}
+
+2. Recall **Example 1.4: Font Preferences**.
+
+> Researchers carried out a marketing field study in order to study preferences of potential consumers in the U.S.  They used silver cardboard boxes to contain chocolate truffles in a forced choice task. All of the box tops were decorated in the same way, and a white label was attached to each bearing the name *“Indulgence”* in either Signet font or Salem font.  The text on each label was approximately equal-sized.  For each of the 40 subjects in the study, one box labeled with the Signet font and another box labeled with the Salem font were placed on a tray, and the subject was simply asked to choose a truffle from one of the two boxes that were on the tray in front of them. 
+
+```{r}
+#| fig-align: center
+#| out-width: 60%
+#| fig-pos: "H"
+knitr::include_graphics("../01-course-notes/01-images/font-style-image.png")
+```
+
+> The researchers aren’t sure which font is more appropriate for the label and simply want to know whether the majority of all consumers will choose the truffles with one font more than the other.
+
+Why was it important for the researchers to present balance out the order in which the fonts were presented across the study? For example, how would the study results have been affected if the researchers always presented the Signet font on the left? (3 pts)
+
+\vspace{1in}
+
+3. Suppose that the observational units in a study are the patients arriving at an emergency room on a given day. Classify each of the following variables as categorical (or qualitative) -- "C" -- or numeric (or quantitative) -- “Q”. (2 pts)
+
+a. Waiting time in minutes _______ 
+
+b. Blood Type _______
+
+c. Whether or not stitches are required _____ 
+
+d. Number of stitches required ______
+
+\vspace{0.3in}
+
+\hfill ______ / 14 pts

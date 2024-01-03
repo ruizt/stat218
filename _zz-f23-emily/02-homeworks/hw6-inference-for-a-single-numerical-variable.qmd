@@ -1,0 +1,288 @@
+---
+title: "Homework 6: Has average body temperature changed?"
+subtitle: "Inference for a Single Numerical Variable"
+embed-resources: true
+format:
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+    include-in-header:
+      text: |
+          \usepackage{fancyhdr}
+          \pagestyle{fancy}
+          \fancyhf{}
+          \fancyhead[R]{Homework 6: Has average body temperature changed?}
+          \fancyfoot[C]{\thepage}
+  docx:
+    toc: false
+# format: html
+# format: docx
+# format: revealjs
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r simulate-data}
+#| include: false
+library(tidyverse)
+library(mosaic)
+set.seed(56156)
+bodytemp_data <- tibble(class = "Stat218",
+               age = round(runif(65, 18,22),0),
+               major = sample(c("Animal Science", "Biology", "Chemistry", "Wine and Viticulture", "Horticulture", "Marine Science"), 65, replace = TRUE),
+               temp = rnorm(n = 65, mean = 97.84, sd = 1.612)
+               )
+```
+
+Many researchers claim that the value of 98.6 degrees Fahrenheit for the average body temperature for adult humans is out-of-date, and doesn't apply to present day adult humans. A random sample of students in Stat 218 classes at Cal Poly were asked to report their body temperature in degrees Fahrenheit.
+
+```{r}
+#| echo: true
+head(bodytemp_data)
+```
+
+The following summary statistics and visualizations for the average body temperature from our observed data are given:
+
+```{r}
+#| echo: true
+favstats( ~ temp, data = bodytemp_data)
+```
+
+```{r}
+#| echo: true
+#| fig-width: 12
+#| fig-height: 5
+ggplot(data = bodytemp_data,
+       mapping = aes(x = temp)) +
+  geom_histogram(binwidth = 1,
+                 color = "white")
+
+ggplot(data = bodytemp_data,
+       mapping = aes(x = temp)) +
+  geom_boxplot()
+```
+
+\newpage
+
+**Research Question:** Is there evidence the average body temperature for all adult humans is different from 98.6 degrees Fahrenheit?
+
+## Set-up
+
+1.  Identify the following in context of the study:
+
+\vspace{0.25in}
+
+-   Population:
+
+\vspace{0.25in}
+
+-   Sample:
+
+\vspace{0.25in}
+
+-   Variable of Interest:
+
+\vspace{0.25in}
+
+-   Data Type:
+
+\vspace{0.25in}
+
+2.  How many students were in the observed data set? What is the mean of the observed data? What is the standard deviation? Assign a symbol to each.
+
+\vspace{0.75in}
+
+3.  Describe the distribution of the observed data.
+
+-   Shape:
+
+\vspace{0.25in}
+
+-   Center:
+
+\vspace{0.25in}
+
+-   Spread:
+
+\vspace{0.25in}
+
+-   Outliers:
+
+\vspace{0.25in}
+
+## t-test
+
+4.  State the parameter of interest (in words, and assign a symbol).
+
+\vspace{1.4in}
+
+5.  Set up the null and alternative hypotheses in both words and symbols.
+
+\vspace{1.4in}
+
+Remember what we would like to know is: If the average body temperature for adult humans is 98.6 degrees Fahrenheit, then how unusual/unlikely would it be for us to observe the data that we obtained on the sample?
+
+6.  Assuming that the average body temperature for adult humans is 98.6 degrees Fahrenheit (i.e., the null is true), use the central limit theorem to predict the shape, center (mean), and variability (s) of the distribution of sample means (i.e., null distribution).
+
+\vspace{0.25in}
+
+-   Check the normality / large sample size assumptions for using a t-test.
+
+\vspace{0.25in}
+
+-   Shape of the distribution of sample means (i.e., null distribution)?
+
+\vspace{0.25in}
+
+-   Center (mean) of the distribution of sample means (i.e., null distribution)?
+
+\vspace{0.25in}
+
+-   Standard deviation distribution of sampling mean (i.e., standard error)?
+
+\vspace{0.25in}
+
+\newpage
+
+I have provided the correct t-distribution for testing this research question below.
+
+```{r}
+#| out-width: 75%
+#| fig-align: center
+knitr::include_graphics("06-images/t-distribution.PNG")
+```
+
+7.  How many degrees of freedom does the t-distribution above have?
+
+\vspace{0.25in}
+
+8.  Calculate the T test statistic for the observed data.
+
+\vspace{1in}
+
+9.  On the t-distribution curve above, show how you would estimate/calculate the p-value to test the research question.
+
+\vspace{0.25in}
+
+10.  Select the appropriate R code below for testing the research question.
+
+\vspace{0.1in}
+
+```{r}
+detach("package:mosaic", unload = TRUE)
+library(infer)
+```
+
+> a.  
+
+```{r}
+#| echo: true
+t_test(x = bodytemp_data,
+       response = temp,
+       mu = 98.6,
+       alternative = "less",
+       conf_int = FALSE
+       )
+```
+
+\newpage
+
+> b.  
+
+```{r}
+#| echo: true
+t_test(x = bodytemp_data,
+       response = temp,
+       mu = 98.6,
+       alternative = "two-sided",
+       conf_int = FALSE
+       )
+```
+
+> c.  
+
+```{r}
+#| echo: true
+t_test(x = bodytemp_data,
+       response = temp,
+       mu = 97.81,
+       alternative = "two-sided",
+       conf_int = FALSE
+       )
+```
+
+> d.  
+
+```{r}
+#| echo: true
+t_test(x = bodytemp_data,
+       response = age,
+       mu = 20,
+       alternative = "two-sided",
+       conf_int = FALSE
+       )
+```
+
+\newpage
+
+11. Using the correct output above, write a conclusion in context of the study.
+
+\vspace{1.4in}
+
+12. Do you think it makes sense to conclude that the body temperature for *all* adults differs from 98.6 degrees Fahrenheit? Why or why not? Think about who was in the sample of our observed data.
+
+\vspace{1.4in}
+
+::: callout-note
+## Key Idea: Scope of Inference
+
+Obtaining a *random sample* from the population of interest allows us to *generalize* our results to the entire population.
+
+If we do not have a *random (or representative) sample* from the population of interest, we can only draw conclusions about the sample.
+:::
+
+## Confidence Interval
+
+Suppose instead of testing whether the body temperature differs from 98.6, we want to provide an interval estimate of the current average body temperature all intro statistics students. 
+
+\newpage
+
+Use the table below to answer the following four questions.
+
+| R code               | Output                   |
+|----------------------|--------------------------|
+| `qt(0.90, df = 64)`  | `r qt(0.90, df = 64) |> round(2)`  |
+| `qt(0.95, df = 64)`  | `r qt(0.95, df = 64) |> round(2)`  |
+| `qt(0.975, df = 64)` | `r qt(0.975, df = 64) |> round(2)`  |
+| `qt(0.99, df = 64)`  | `r qt(0.99, df = 64) |> round(2)` |
+| `qt(0.995, df = 64)` | `r qt(0.995, df = 64) |> round(2)` |
+| `qt(0.90, df = 65)`  | `r qt(0.90, df = 65) |> round(2)`  |
+| `qt(0.95, df = 65)`  | `r qt(0.95, df = 65) |> round(2)`  |
+| `qt(0.975, df = 65)` | `r qt(0.975, df = 65) |> round(2)` |
+| `qt(0.99, df = 65)`  | `r qt(0.99, df = 65) |> round(2)`  |
+| `qt(0.995, df = 65)` | `r qt(0.995, df = 65) |> round(2)` |
+
+13. Calculate the 95% confidence interval.
+
+\vspace{1.4in}
+
+14. Does it seem reasonable that 98.6 does not fall within the confidence interval? Explain.
+
+\vspace{1.4in}
+
+15. What margin of error multiplier would you use for a 99% confidence interval? What happens to the width of the confidence interval?
+
+\vspace{1.4in}
+
+16. How might your 95% confidence interval change if you, instead, had an observed standard deviation of 3.25?
+
+\vspace{1.4in}
+
+::: callout-caution
+## Canvas Quiz
+
+Make sure to complete the Homework Quiz on Canvas.
+:::
