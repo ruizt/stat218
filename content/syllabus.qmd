@@ -37,21 +37,17 @@ Fulfills GE Area B4 (GE Area B1 for students on the 2019-20 or earlier catalogs)
 
 ### Materials
 
-To access course materials, engage in class, and complete assignments, you'll need an internet-connected laptop or tablet with a keyboard — the keyboard is necessary since we will do some web-hosted computation and you will be expected to type assignments. I'll let you know in advance when you need to bring a laptop/tablet to class. Besides your personal computer, all materials are free.
+To access course materials, engage in class, and complete assignments, you'll need an internet-connected (a) laptop or (b) tablet with a keyboard — the keyboard is necessary since we will do some web-hosted computation and you will be expected to type assignments. I'll let you know in advance when you need to bring a laptop/tablet to class. Besides your personal computer, all materials are free.
 
-**Textbook**: Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above; we will cover chapters 1 – 2, 4 – 6, and 8.
+**Textbooks**:
+
+1.  Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above. This will be our primary reference and we will cover chapters 1 – 2, 4 – 6, and 8.
+2.  Van Belle, Fisher, Heagerty, and Lumley (2004). [Biostatistics: a methodology for the health sciences](https://csu-calpoly.primo.exlibrisgroup.com/permalink/01CALS_PSU/1qh1nk7/alma991005991838302920). Wiley. A PDF can be obtained through the Kennedy Library via the link above. This text provides a thorough introduction to biostatistics (statistics for life sciences) and is an excellent reference for more depth of coverage. Select readings will be assigned from this book.
+3.  Douglas *et al.* (2023). [An Introduction to R](https://intro2r.com). This online book covers a variety of introductory topics pertaining to R/RStudio: installation, packages, files and directories, objects, functions, data types, data structures, graphics, basic statistics, markdown, and version control. Select readings will be assigned from this book.
 
 **Computing**: computing will be hosted online via a \[[posit.cloud workspace](https://posit.cloud/spaces/462317/join?access_code=RQXBKOVEbyfwuYzJaVWBVVDXPiWtgOrBkqJu1m4H)\]. To access the workspace, you'll need to create a (free) posit.cloud account — open the invitation by clicking the link above and follow prompts. Activities and assignments will be distributed via this workspace. Please be aware that any files you create on the workspace will be visible to admins.
 
 **Course notes**: notes to supplement readings will be posted as needed on the course website.
-
-### Additional resources
-
-Students wanting more depth of coverage may wish to consult the following resources (available online or through the Kennedy Library):
-
--   Van Belle, Fisher, Heagerty, and Lumley (2004). [Biostatistics: a methodology for the health sciences](https://csu-calpoly.primo.exlibrisgroup.com/permalink/01CALS_PSU/1qh1nk7/alma991005991838302920). Wiley. This text provides a thorough introduction to biostatistics (statistics for life sciences) and is an excellent reference for more detailed discussion of methods covered in STAT218 and some more advanced methods *not* covered in STAT218. Students may find portions of the text more challenging than the OpenIntro book we are using for the course, but much of the material remains accessible and extensive notes are provided at the end of each chapter to help fill in any conceptual/mathematical gaps in understanding.
-
--   Douglas *et al.* (2023). [An Introduction to R](https://intro2r.com). This online book covers a variety of introductory topics pertaining to R/RStudio: installation, packages, files and directories, objects, functions, data types, data structures, graphics, basic statistics, markdown, and version control.
 
 ### Learning outcomes
 
@@ -92,7 +88,7 @@ The **final exam** will be a comprehensive assessment focusing on concepts and i
 **Letter grades** will be determined as follows. Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least five outcomes must be fully met, and one more must be partly met. Letter grades are then defined as follows:
 
 | Grade | Minimum number of fully met outcomes | Minimum number of partly met outcomes |
-|-------|--------------------------------------|---------------------------------------|
+|---------------|----------------------------|-----------------------------|
 | A     | 9                                    | 1                                     |
 | A-    | 9                                    | 0                                     |
 | B+    | 8                                    | 2                                     |
@@ -112,7 +108,7 @@ Please note that these definitions are tentative and potentially subject to chan
 Subject to change.
 
 | Week             | Topics                                                              | Readings  | Assignments |
-|------------------|------------------|------------------|------------------|
+|------------|-------------------------------------|------------|------------|
 | 1 (1/8/24)       | Introduction to data and statistical thinking                       | 1.1 — 1.3 | HW1         |
 | 2 (1/15/24)      | Numerical and categorical data; descriptive statistics              | 1.4 — 1.6 | HW2         |
 | 3 (1/22/24)      | Foundations for inference: point estimates and confidence intervals | 4.1 — 4.2 | Test 1      |
