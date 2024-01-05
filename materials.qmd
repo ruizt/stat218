@@ -13,7 +13,7 @@ If you have any difficulty accessing materials or understanding the organization
 
 -   Readings should be completed *in advance* of the class meetings for which they are listed; we will have in-class reading quizzes.
 -   If links to slides or handouts are available prior to class meetings, it is recommended (but not required) that you download and/or print copies and bring them to class for annotation.
--   You will be expected to make copies of
+-   For class meetings in which a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates' work after the class meeting.
 
 ### Week 1 (1/8/24)
 
@@ -36,25 +36,18 @@ If you have any difficulty accessing materials or understanding the organization
 
 ### Week 2 (1/15/24)
 
-*Academic holiday 1/15/24*
+*Academic holiday 1/15/24 and Monday class schedule on 1/16/24*
 
 *Data, data types, and data collection*
 
-***Tuesday***:
+***Thursday***:
 
 -   \[reading\] Vu and Harrington 1.2; Douglas *et al.* 2.1 - 2.4 and 3.1 - 3.2
 -   \[lecture/discussion\] data types and data structures
 -   \[activity\] distinguishing data types in practice
 -   \[lab\] R basics and data in R
 
-***Thursday***:
-
--   \[reading\] Vu and Harrington 1.4 - 1.5; handout on descriptive statistics
--   \[lecture/discussion\] descriptive statistics for numerical and categorical data
--   \[lab\] descriptive statistics and graphics in R
--   \[case study\]
-
-**Assignment**: HW2 due Thursday 1/25 11:59pm PST
+**No assignment this week**
 
 ### Week 3 (1/22/24)
 
@@ -62,69 +55,65 @@ If you have any difficulty accessing materials or understanding the organization
 
 ***Tuesday***:
 
+-   \[reading\] Vu and Harrington 1.4 - 1.5; handout on descriptive statistics
+-   \[lecture/discussion\] descriptive statistics for numerical and categorical data
+-   \[lab\] descriptive statistics and graphics in R
+-   \[case study\] NHANES, part 1 <!--# NHANES::NHANES -->
+
+***Thursday***:
+
 -   \[reading\] Vu and Harrington 4.1
 -   \[lecture/discussion\] populations and samples
 -   \[lab\] exploring sampling variation through simulation
--   \[case study\]
+-   \[case study\] NHANES, part 2
 
-***Thursday***:
-
--   \[reading\] Vu and Harrington 4.2
--   \[lecture/discussion\] interval estimation
--   \[lab\] computing confidence intervals in R
--   \[case study\]
-
-**Assignment**: Test 1 due Friday 1/26 11:59pm PST
+**Assignment**: HW2 due Thursday 2/1 11:59pm PST \[L1, L3\]
 
 ### Week 4 (1/29/24)
 
-*Hypothesis testing*
+*Interval estimation and hypothesis testing*
 
 ***Tuesday***:
 
--   \[lecture/discussion\] the hypothesis testing framework
--   \[lab\] designing a test for the mean
--   \[case study\]
+-   \[reading\] Vu and Harrington 4.2
+-   \[lecture/discussion\] interval estimation for a population mean
+-   \[lab\] computing confidence intervals in R
+-   \[case study\] primary biliary cirrhosis <!--# van belle -->
 
 ***Thursday***:
 
--   \[lecture/discussion\] on making mistakes: type I and type II errors
--   \[lab\] inferential errors
--   \[case study\]
+-   \[reading\] Vu and Harrington 4.3
+-   \[lecture/discussion\] hypothesis tests for a population mean
+-   \[lab\] inferential errors <!--# simulation -->
+-   \[case study\] DDT in kale <!--# MASS::DDT -->
 
-**Assignment**: HW3 due Thursday 2/8 11:59pm PST
+**Assignment**: Test 1 due Friday 2/2 11:59pm PST \[L1, L2, L3\]
 
 ### Week 5 (2/5/24)
 
-*One- and two-sample inference for numerical data*
+*Two-sample inference for numerical data*
 
 ***Tuesday***:
 
--   \[lecture/discussion\] one-sample *t* test; paired *t* test
--   \[lab\] *t* tests in R
--   \[case study\]
+-   \[lecture/discussion\] two-sample *t* tests and intervals for paired and independent data
+-   \[lab\] *t* tests in R <!--# cloud seeding, envm -->
+-   \[case study\] evolution of Darwin's finches <!--# Sleuth3::case0201, bio -->
 
 ***Thursday***:
 
--   \[lecture/discussion\] two-sample *t* tests; nonparametric alternatives
--   \[lab\] exploring the equal variance assumption
--   \[case study\]
+-   \[lecture/discussion\] nonparametric alternatives for two sample inference
+-   \[lab\] nonparametric and randomization tests in R
+-   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health -->
+
+***Assignment***: HW3 due Thursday 2/15 11:59pm PST \[L4, L5\]
 
 ### Week 6 (2/12/24)
 
 *Analysis of variance*
 
-***Tuesday***:
+***Assignment***: HW4 due Thursday 2/22 11:59pm PST \[L9\]
 
--   \[lecture/discussion\] comparing more than two means
--   \[lab\] ANOVA in R
--   \[case study\]
-
-***Thursday***:
-
--   \[lecture/discussion\] post-hoc comparisons and multiple testing
--   \[lab\] multiple comparisons in R
--   \[case study\]
+<!--# anorexia on body weights (MASS) -->
 
 ### Week 7 (2/19/24)
 
@@ -132,16 +121,30 @@ If you have any difficulty accessing materials or understanding the organization
 
 *Academic holiday 2/19/24*
 
+***Assignment***: Test 2 due Friday 2/23 11:59pm PST \[L4, L5, L9\]
+
 ### Week 8 (2/26/24)
 
 *Inference for categorical data: contingency tables and chi-square tests*
+
+***Assignment***: HW5 due Thursday 3/7 11:59pm PST \[L6, L7, L8\]
+
+<!--# smoking and lung cancer -->
 
 ### Week 9 (3/4/24)
 
 *Simple linear regression*
 
+***Assignment***: HW6 due Thursday 3/14 11:59pm PST \[L10\]
+
+<!--# big bang -->
+
 ### Week 10 (3/11/24)
 
 *Inference in regression*
 
+***Assignment***: Test 3 due Friday 3/15 11:59pm PST \[L6, L7, L8, L10\]
+
 ### Finals week (3/18/24)
+
+*Oral exams to be held during scheduled exam time*

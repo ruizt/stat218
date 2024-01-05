@@ -10,7 +10,9 @@ editor: visual
 # format: pdf
 ---
 
-Statistics plays a crucial role in the sciences: statistical techniques provide a means of weighing quantitative evidence derived from observation and experimentation in the face of uncertainty. Statistical thinking and data analysis also facilitate discovery, exploration, and hypothesis generation. This class aims to introduce students to common statistical methods used almost universally across the sciences — descriptive and graphical techniques, inferential methods for comparing population means, analysis of categorical data and contingency tables, and linear regression — while drawing on examples from the life sciences to help illuminate the potential for application in students' chosen field(s) of study.
+Statistics plays a crucial role in the sciences: statistical techniques provide a means of weighing quantitative evidence derived from observation and experimentation in the face of uncertainty. Statistical thinking and data analysis also facilitate discovery, exploration, and hypothesis generation. Likewise, the sciences play a crucial role in statistics: technological and knowledge innovations in methods of scientific investigation motivate the development of new statistical methods for data analysis.
+
+This class aims to provide a hands-on introduction to common statistical methods used almost universally across the sciences — descriptive and graphical techniques, inferential methods for comparing population means, analysis of categorical data and contingency tables, and linear regression — while drawing on examples from the life sciences to help illuminate the potential for application in students' chosen field(s) of study and providing basic training in the use of statistical software. The class also creates a unique opportunity for students to interact broadly and make connections across majors and class standing.
 
 ### Course information
 
@@ -73,33 +75,35 @@ The course aims to enable you to demonstrate the following abilities.
 
 -   \[L10\] use simple linear regression to describe relationships between variables
 
+-   \[L11\] apply one or more methods from the course to your major field of study
+
 In addition, you will learn to perform simple analyses and computations in R and can expect to attain a basic level of proficiency with the software; however, as this is not a programming class, emphasis will be placed on obtaining and interpreting relevant outputs in the context of the analyses indicated above.
 
 ### Assessments
 
-Attainment of learning outcomes will be measured by performance on homework assignments, tests, and a comprehensive final exam.
+Attainment of learning outcomes will be measured by performance on homework assignments, tests, and a final oral exam.
 
 **Homeworks** are your opportunity to practice using course concepts and methods covered in class and comprise both graded and ungraded questions, marked as such. Graded questions will be largely data analytic and will correspond to specific marked learning outcomes; responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. Ungraded questions are entirely for your benefit as extra practice. You can submit revisions to any graded responses needing improvement for reassessment.
 
 **Tests** are your opportunity to demonstrate that you've synthesized course material and achieved learning outcomes. Tests will comprise sets of questions, some conceptual and some data analytic, corresponding to specific marked learning outcomes. Responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. You will be given a 24 hour window to complete each test, and afforded an opportunity to submit revisions to responses needing improvement.
 
-The **final exam** will be a comprehensive assessment focusing on concepts and interpretation of data analytic results. No use of R will be required for the final exam. Questions will correspond to specific marked learning outcomes, and responses will be assessed as satisfactory (S) or unsatisfactory (U). Due to the timing of the final exam, no revisions will be allowed. Final exams, per University policy, will be retained, but can be reviewed on request after the term has concluded.
+The **final oral exam** will require you to find an application of course material in the field of your major and present it as a case study in 5 minutes. You will be expected to describe the research question, study design, analysis, and conclusion, and answer 1-2 questions. These will be carried out in private and scheduled during the final exam time. This assignment applies to learning outcome L11 only, and you will receive an assessment of 'fully met', 'partly met', or 'unmet' for that outcome depending on your presentation and ability to answer questions. A rubric will be provided in advance to clearly define the expectations associated with each possible assessment.
 
-**Letter grades** will be determined as follows. Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least five outcomes must be fully met, and one more must be partly met. Letter grades are then defined as follows:
+**Letter grades** will be determined as follows. Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
 
-| Grade | Minimum number of fully met outcomes | Minimum number of partly met outcomes |
-|-------|--------------------------------------|---------------------------------------|
-| A     | 9                                    | 1                                     |
-| A-    | 9                                    | 0                                     |
-| B+    | 8                                    | 2                                     |
-| B     | 8                                    | 1                                     |
-| B-    | 8                                    | 0                                     |
-| C+    | 7                                    | 2                                     |
-| C     | 7                                    | 1                                     |
-| C-    | 7                                    | 0                                     |
-| D+    | 6                                    | 2                                     |
-| D     | 6                                    | 1                                     |
-| D-    | 6                                    | 0                                     |
+| Grade | Minimum number of partly + fully met outcomes | Minimum number of fully met outcomes |
+|------------------|---------------------------|----------------------------|
+| A     | 10                                            | 9                                    |
+| A-    | 10                                            | 8                                    |
+| B+    | 8                                             | 7                                    |
+| B     | 8                                             | 6                                    |
+| B-    | 8                                             | 5                                    |
+| C+    | 6                                             | 5                                    |
+| C     | 6                                             | 4                                    |
+| C-    | 6                                             | 3                                    |
+| D+    | 6                                             | 2                                    |
+| D     | 6                                             | 1                                    |
+| D-    | 6                                             | 0                                    |
 
 Please note that these definitions are tentative and potentially subject to change. Please also note that failure to adhere to course policies — particularly collaboration, academic integrity, and attendance policies — may result in a lower letter grade than would otherwise be assigned.
 
@@ -107,19 +111,19 @@ Please note that these definitions are tentative and potentially subject to chan
 
 Subject to change.
 
-| Week             | Topics                                                              | Readings  | Assignments |
-|------------------|---------------------------------------------------------------------|-----------|-------------|
-| 1 (1/8/24)       | Introduction to data and statistical thinking                       | 1.1 — 1.3 | HW1         |
-| 2 (1/15/24)      | Numerical and categorical data; descriptive statistics              | 1.4 — 1.6 | HW2         |
-| 3 (1/22/24)      | Foundations for inference: point estimates and confidence intervals | 4.1 — 4.2 | Test 1      |
-| 4 (1/29/24)      | Foundations for inference: hypothesis tests                         | 4.3       | HW3         |
-| 5 (2/5/24)       | One- and two-sample inference for numerical data                    | 5.1 — 5.3 | HW4         |
-| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4       | Test 2      |
-| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2 | HW5         |
-| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4 | HW6         |
-| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3 | Test 3      |
-| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5 | None        |
-| Finals (3/18/24) | N/A                                                                 | N/A       | Final exam  |
+| Week             | Topics                                                              | Readings       | Assignments |
+|--------------|-------------------------------|--------------|--------------|
+| 1 (1/8/24)       | Introduction to statistical thinking and study design               | 1.1            | HW1         |
+| 2 (1/15/24)      | Data, data types, and data collection                               | 1.2            | None        |
+| 3 (1/22/24)      | Foundations for inference                                           | 1.4 – 1.5; 4.1 | HW2         |
+| 4 (1/29/24)      | Interval estimation and hypothesis tests                            | 4.2 – 4.3      | Test 1      |
+| 5 (2/5/24)       | Two-sample inference for numerical data; nonparametric alternatives | 5.1 — 5.3      | HW3         |
+| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4            | HW4         |
+| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2      | Test 2      |
+| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4      | HW5         |
+| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3      | HW6         |
+| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5      | Test 3      |
+| Finals (3/18/24) | N/A                                                                 | N/A            | Oral exam   |
 
 ### Course policies
 
