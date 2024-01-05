@@ -3,6 +3,15 @@ title: "Lab 1: R Basics"
 author: "STAT218"
 execute: 
   eval: false
+format: 
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
 ---
 
 This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won't be expected to do much data manipulation for this class, it will be helpful for you to have some understanding of data structures and how to do basic calculations going forward.
@@ -124,7 +133,7 @@ Arithmetic only works with logical, integer, and numeric values:
 
 It will not work with character values:
 
-```{r character arithmetic, eval = T}
+```{r character arithmetic, eval = T, error = T}
 # invalid operation
 '12'*'12'
 ```

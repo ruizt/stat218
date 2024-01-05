@@ -83,16 +83,18 @@ In addition, you will learn to perform simple analyses and computations in R and
 
 Attainment of learning outcomes will be measured by performance on homework assignments, tests, and a final oral exam.
 
-**Homeworks** are your opportunity to practice using course concepts and methods covered in class and comprise both graded and ungraded questions, marked as such. Graded questions will be largely data analytic and will correspond to specific marked learning outcomes; responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. Ungraded questions are entirely for your benefit as extra practice. You can submit revisions to any graded responses needing improvement for reassessment.
+**Homeworks** are your opportunity to practice using course concepts and methods covered in class and comprise both graded and ungraded questions, marked as such. Graded questions will be largely data analytic and will correspond to specific marked learning outcomes; responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. Ungraded questions are entirely for your benefit as extra practice. **You can submit revisions** to any graded responses needing improvement for reassessment.
 
-**Tests** are your opportunity to demonstrate that you've synthesized course material and achieved learning outcomes. Tests will comprise sets of questions, some conceptual and some data analytic, corresponding to specific marked learning outcomes. Responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. You will be given a 24 hour window to complete each test, and afforded an opportunity to submit revisions to responses needing improvement.
+**Tests** are your opportunity to demonstrate that you've synthesized course material and achieved learning outcomes. Tests will comprise sets of questions, some conceptual and some data analytic, corresponding to specific marked learning outcomes. Responses will be assessed as satisfactory (S) or needing improvement (NI) according to whether they are fully correct, and qualitative feedback will be offered if an assessment of NI is given. You will be given a 24 hour window to complete each test, and **you can submit revisions** to responses needing improvement.
 
 The **final oral exam** will require you to find an application of course material in the field of your major and present it as a case study in 5 minutes. You will be expected to describe the research question, study design, analysis, and conclusion, and answer 1-2 questions. These will be carried out in private and scheduled during the final exam time. This assignment applies to learning outcome L11 only, and you will receive an assessment of 'fully met', 'partly met', or 'unmet' for that outcome depending on your presentation and ability to answer questions. A rubric will be provided in advance to clearly define the expectations associated with each possible assessment.
 
-**Letter grades** will be determined as follows. Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
+## Letter grades
+
+Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
 
 | Grade | Minimum number of partly + fully met outcomes | Minimum number of fully met outcomes |
-|------------------|---------------------------|----------------------------|
+|------------------|---------------------------|---------------------------|
 | A     | 10                                            | 9                                    |
 | A-    | 10                                            | 8                                    |
 | B+    | 8                                             | 7                                    |
@@ -112,7 +114,7 @@ Please note that these definitions are tentative and potentially subject to chan
 Subject to change.
 
 | Week             | Topics                                                              | Readings       | Assignments |
-|--------------|-------------------------------|--------------|--------------|
+|---------------|---------------------------|---------------|---------------|
 | 1 (1/8/24)       | Introduction to statistical thinking and study design               | 1.1            | HW1         |
 | 2 (1/15/24)      | Data, data types, and data collection                               | 1.2            | None        |
 | 3 (1/22/24)      | Foundations for inference                                           | 1.4 – 1.5; 4.1 | HW2         |

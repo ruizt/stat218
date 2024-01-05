@@ -4,6 +4,7 @@ format:
   revealjs:
     logo: img/poly-logo-2.jpg
     footer: "STAT218"
+    smaller: true
 execute: 
   echo: false
   warning: false
@@ -24,6 +25,20 @@ Hi I'm Trevor. You can call me Trevor, or, if you prefer, Dr. Ruiz.
 -   Research interests: methods for large and complex scientific data
 -   Hobbies: juggling, dance, classical guitar
 -   Have a cat
+
+## Why am I a statistician?
+
+Short answer: I like variety.
+
+Long answer:
+
+-   as a philosophy student I was interested in how we support claims of empirical fact through scientific investigation
+
+-   usually involves data as quantitative evidence
+
+-   statistics is the science of evaluating quantitative evidence
+
+Silly answer: I couldn't come up with anything better to do.
 
 ## About you
 
@@ -63,27 +78,29 @@ By show of hands...
 4.  Expect to use statistics for your degree coursework?
 5.  Expect to use statistics for research or senior project?
 6.  Required for your major?
-7.  Here purely out of interest?
+7.  Considering a statistics or data science minor?
 :::
 
-## Uncertainty {.smaller}
+## Warm up: uncertainty {.smaller}
 
-Statistics is largely concerned with uncertainty. Many outcomes in life are uncertain, and this can make a lot of questions hard to answer:
+Life is full of uncertainty, and this can make a lot of questions hard to answer:
 
 1.  Imagine you're a medical care provider. Which therapy should you prescribe for a patient given their prognosis? You don't know precisely how each one will turn out, so how do you decide?
 2.  Flu shots don't always prevent people from getting the flu; many people who are innoculated still become ill, sometimes fatally. Your doctor asks if you want the shot. Should you get it?
 3.  You're a trainer devising a fitness regimen for a client. You've decided on the basic elements, but what order should you recommend? Will it make any difference with respect to their goals? How will you know?
 4.  You're considering trying a nutritional supplement for weight loss. Some people that try it experience severe side effects, but not too many. So, is it safe? It works sometimes, but not all the time. So, is it effective?
 
-## Statistical thinking
+## Statistics and uncertainty
 
-Key problem: similar situations do not always result in the same outcome.
+*Key problem: similar situations do not always result in the same outcome.*
+
+Statistical thinking: **uncertainty is measurable**.
 
 What statistics can offer:
 
--   principles for designing studies in order to understand outcome variability
--   data analytic tools for separating *random* from *systematic* outcome variability
--   heuristics for answering questions while accounting for uncertainty, called *statistical inferences*
+-   principles for designing studies and collecting data in order to capture outcome variability
+-   data analytic tools to distinguish random from systematic variability
+-   heuristics to make inferences that account for uncertainty
 
 ## Course goal and scope
 
@@ -93,11 +110,10 @@ So we will focus on:
 
 -   statistical thinking, study design, and data analysis
 -   classical methods, mostly developed 1900-1940
--   emphasis on application and interpretation
 -   case studies from life sciences
--   minimal math, theory, and computation
+-   application, not theory
 
-## Materials
+## Materials {.smaller}
 
 **Web**. All materials are hosted/linked on the course website. I *won't* be using Canvas.
 
@@ -108,6 +124,8 @@ So we will focus on:
 -   Douglas *et al.* (2023). [An Introduction to R](https://intro2r.com).
 
 **Computing**. Hosted online via posit.cloud; more details in a bit.
+
+**Other.** You'll need a laptop, tablet with keyboard, or access to a computer. MS Word strongly recommended but not strictly necessary.
 
 ## Patterns {.smaller}
 
@@ -130,21 +148,21 @@ Quarterly pattern:
 
 ## Tentative schedule {.smaller .scrollable}
 
-| Week             | Topics                                                              | Assignments |
-|------------------|------------------------------------|------------------|
-| 1 (1/8/24)       | Introduction to statistical thinking and study design               | HW1         |
-| 2 (1/15/24)      | Data, data types, and data collection                               | None        |
-| 3 (1/22/24)      | Foundations for inference                                           | HW2         |
-| 4 (1/29/24)      | Interval estimation and hypothesis tests                            | Test 1      |
-| 5 (2/5/24)       | Two-sample inference for numerical data; nonparametric alternatives | HW3         |
-| 6 (2/12/24)      | Comparing means with analysis of variance                           | HW4         |
-| 7 (2/19/24)      | Inference for categorical data: proportions                         | Test 2      |
-| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | HW5         |
-| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | HW6         |
-| 10 (3/11/24)     | Simple linear regression: inference                                 | Test 3      |
-| Finals (3/18/24) | N/A                                                                 | Oral exam   |
+| Week             | Topics                                                   | Assignments |
+|-------------------|----------------------------------|-------------------|
+| 1 (1/8/24)       | Introduction to statistical thinking and study design    | HW1         |
+| 2 (1/15/24)      | Data, data types, and data collection                    | None        |
+| 3 (1/22/24)      | Foundations for inference                                | HW2         |
+| 4 (1/29/24)      | Interval estimation and hypothesis tests                 | Test 1      |
+| 5 (2/5/24)       | Two-sample inference; nonparametric alternatives         | HW3         |
+| 6 (2/12/24)      | Comparing means with analysis of variance                | HW4         |
+| 7 (2/19/24)      | Inference for categorical data: proportions              | Test 2      |
+| 8 (2/26/24)      | Inference for categorical data: chi-square tests         | HW5         |
+| 9 (3/4/24)       | Simple linear regression: model framework and estimation | HW6         |
+| 10 (3/11/24)     | Simple linear regression: inference                      | Test 3      |
+| Finals (3/18/24) | N/A                                                      | Oral exam   |
 
-## Assessments  {.smaller}
+## Assessments {.smaller}
 
 On the syllabus, you'll find 11 learning outcomes labelled \[L1\] — \[L11\].
 
@@ -184,17 +202,28 @@ At the end of the quarter, you will receive for each outcome L1 — L11:
 
 -   an **evaluation**: whether that outcome was fully met, partly met, or not met
 
-Your letter grade will be based on the tally of fully met and partly met outcomes. Details are in the syllabus, but:
+    -   not met: under 50%
 
--   Must at partly or fully meet at least 6 to pass, 8 for B or better, 10 for A or better
+    -   partly met: 50% — 80%
 
-```{=html}
-<!-- -->
-```
--   Beyond that, letter grade is determined by the number of outcomes fully met
+    -   fully met: 80% or better
 
-## Grading example  {.smaller .scrollable}
+Your letter grade will be based on the tally of fully met and partly met outcomes.
 
+## Letter grades
+
+Details are in the syllabus, but:
+
+-   Must at partly or fully meet at least...
+    -   6/11 to pass
+    -   8/11 for B or better
+    -   10/11 for A or better
+-   Subject to those thresholds, letter grade is determined by the number of outcomes fully met
+
+## Grading example {.smaller .scrollable}
+
+::: columns
+::: {.column width="0.7"}
 | Learning outcome | Score | Evaluation |
 |------------------|-------|------------|
 | L1               | 83%   | Fully met  |
@@ -207,14 +236,20 @@ Your letter grade will be based on the tally of fully met and partly met outcome
 | L9               | 57%   | Partly met |
 | L10              | 41%   | Not met    |
 | L11              | 100%  | Fully met  |
+:::
 
-10 partly or fully met, 7 fully met -\> B+
+::: {.column width="0.3"}
+Your grade might look something like this:
+
+\[10 partly or fully met\] + \[7 fully met\] ➞ B+
+:::
+:::
 
 ## Select policies
 
 -   collaboration encouraged on homeworks; not allowed on tests
 
--   attendance expected; more than two unexcused absences may impact grade
+-   attendance expected; more than two unexcused absences may negatively impact grade
 
 -   expect to allocate 12-16hr/wk, including class meetings
 
@@ -255,3 +290,59 @@ Why R?
 -   Widely used
 
 Let's take some time to introduce this environment.
+
+Go to: course webpage \> syllabus \> materials. Then look for:
+
+![](img/posit-link.png){fig-align="center"}
+
+Take a moment to create an account.
+
+## An example project
+
+![](img/posit-landing.png){fig-align="center"}
+
+1.  Make sure the class workspace "stat218" is highlighted at left. If "Your Workspace" is highlighted, you won't see the example assignment.
+
+<!-- -->
+
+2.  Click on the example assignment, then wait.
+
+Once everyone is ready, we'll have a look at the example files together.
+
+## Orientation checklist
+
+1.  Overall layout of RStudio: file navigator, console, file editor.
+2.  `README.md` — keep this open for reference as we go.
+    -   As an aside: whenever you see a file called README, you should read it.
+3.  `example-script.R` is an R script
+    -   how to execute lines of code
+    -   data import on L18
+    -   make and save changes
+4.  `example-doc.qmd` is a quarto doc
+    -   YAML header
+    -   how to render
+    -   make and save changes
+5.  Files you should ignore
+
+## General pointers
+
+-   don't change the directory structure
+
+-   don't rename, add, or remove files
+
+-   anything you create will be visible to me
+
+-   any changes you make on assignments *won't* be shareable with your classmates
+
+## For next time
+
+You'll read about study designs.
+
+As you're reading, consider this example: there is broad agreement that smoking causes cancer. Try and answer these questions:
+
+1.  Not all smokers develop cancer, so smoking doesn't cause cancer in the way that combustion causes a flame. What then do we mean by "cause" when we say that smoking causes cancer?
+2.  How would you design a study to test the hypothesis that smoking causes cancer?
+    -   Which of the study designs in your reading are *applicable*?
+    -   Among applicable designs, which are *possible*?
+    -   Among the possible designs, which are practically and ethically *feasible*?
+    -   Among feasible designs, which would you choose and what would you measure?

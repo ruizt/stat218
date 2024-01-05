@@ -1,0 +1,12 @@
+---
+title: "Welcome to STAT218!"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
