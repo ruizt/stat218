@@ -15,7 +15,19 @@ prefer-html: true
 embed-resources: true
 ---
 
-Recall that the difference between an observational study and an experiment hinges on whether researchers intentionally intervene on the system of study (experiment) or passively record outcomes (observational study).
+Recall that the difference between an observational study and an experiment hinges on whether researchers intentionally intervene on the system of study (experiment) or passively record outcomes (observational study). Additionally, the following common study designs were discussed:
+
+-   In **prospective** studies participants are recruited *before* developing a condition
+
+-   In **retrospective** studies participants are recruited *after* developing a condition
+
+-   A **cohort** study involves people belonging to a group defined by one or more (usually artificial) criteria
+
+-   In a **case-control** study, participants with (cases) and without (controls) a condition are compared
+
+-   In a **matched case-control** study, cases and controls are paired according to criteria determined by the investigator
+
+In this activity you'll read abstracts from a few published studies and determine, in consultation with your group, what kind of study is described in the abstract.
 
 ### Example 1: long COVID
 

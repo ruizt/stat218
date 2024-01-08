@@ -47,7 +47,7 @@ Often, observational studies are used to explore/generate hypotheses prior to de
 Either type of study can be used to address a question.
 
 | Question                                          | Observational study                                                      | Experiment                                                                                   |
-|-------------------|------------------------|-----------------------------|
+|---------------------------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | Are diet and mood related?                        | Conduct surveys on diet, lifestyle, and affect                           | Recruit study participants, assign diets, measure affect                                     |
 | Is vaping safer than smoking?                     | Follow groups of vapers and smokers over time and record health outcomes | Among a group of smokers, assign some to switch to vaping; compare health outcomes over time |
 | Do insecticide applications affect soil microbes? | Analyze soil samples from farms using different insecticides             | \[**Your turn**\]                                                                            |
@@ -194,21 +194,21 @@ Extraneous conditions *may* still be associated with outcomes and add noise — 
 
 The ability to randomize interventions in experiments means:
 
-- observed associations are independent of extraneous factors
+-   observed associations are independent of extraneous factors
 
-- results can support causal inferences
+-   results can support causal inferences
 
 The absence of randomization in observational studies means:
 
-- confounding is always possible
+-   confounding is always possible
 
-- results may be misleading
+-   results may be misleading
 
 Usually, *observational studies are considered weaker forms of scientific evidence than experiments*, with some caveats:
 
-- a large volume of independent observational studies pointing to the same conclusions may be more convincing than a few narrow experiments
+-   a large volume of independent observational studies pointing to the same conclusions may be more convincing than a few narrow experiments
 
-- observational studies may provide better evidence under real world conditions than available experimental data
+-   observational studies may provide better evidence under real world conditions than available experimental data
 
 ## Common study designs
 
@@ -274,9 +274,9 @@ We will discuss data collection in more depth later, but the way that study unit
 
 The gold standard is a *simple random sample* of units selected from a larger collection:
 
-- every unit in the larger collection has an equal chance of being selected
+-   every unit in the larger collection has an equal chance of being selected
 
-- easier said than done --- failure to obtain a random sample is one of the most common study flaws
+-   easier said than done --- failure to obtain a random sample is one of the most common study flaws
 
 For now we will set the issue of sampling aside.
 
