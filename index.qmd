@@ -7,7 +7,7 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-*Site currently under construction!*
+*Check back for updates*
 
 :::
 

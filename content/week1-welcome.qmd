@@ -1,5 +1,6 @@
 ---
-title: "Welcome to STAT218!"
+title: "Welcome to STAT218"
+subtitle: "Applied Statistics for Life Sciences"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
@@ -24,7 +25,7 @@ Hi I'm Trevor. You can call me Trevor, or, if you prefer, Dr. Ruiz.
 -   BA Philosophy, MS & PhD Statistics
 -   Research interests: methods for large and complex scientific data
 -   Hobbies: juggling, dance, classical guitar
--   Have a cat
+-   Have a cat named Mona
 
 ## Why am I a statistician?
 
@@ -81,7 +82,7 @@ By show of hands...
 7.  Considering a statistics or data science minor?
 :::
 
-## Warm up: uncertainty {.smaller}
+## Uncertainty {.smaller}
 
 Life is full of uncertainty, and this can make a lot of questions hard to answer:
 
@@ -126,6 +127,32 @@ So we will focus on:
 **Computing**. Hosted online via posit.cloud; more details in a bit.
 
 **Other.** You'll need a laptop, tablet with keyboard, or access to a computer. MS Word strongly recommended but not strictly necessary.
+
+## Printing slides
+
+![Open menu from lower left](img/printing-slides-1.png)
+
+## Printing slides
+
+![Navigate to tools](img/printing-slides-2.png)
+
+## Printing slides
+
+![Select PDF export mode](img/printing-slides-3.png)
+## Printing slides
+
+![Then print from browser to PDF](img/printing-slides-4.png)
+- I suggest landscape layout and either 1 slide per page or per page
+
+## Preparing for class
+
+Every class meeting you should arrive having:
+
+1. prepared reading notes or annotations of assigned reading
+2. obtained a copy of the slides for taking notes
+3. obtained a copy of activity or lab handouts
+
+Let's do this now for next class.
 
 ## Patterns {.smaller}
 
@@ -198,7 +225,7 @@ Your assessment for this will pertain only to \[L11\]: applying methods from the
 
 At the end of the quarter, you will receive for each outcome L1 — L11:
 
--   a **score**: proportion of questions outcome that received a satisfactory assessment
+-   a **score**: proportion of questions that received a satisfactory assessment
 
 -   an **evaluation**: whether that outcome was fully met, partly met, or not met
 
@@ -257,9 +284,9 @@ Your grade might look something like this:
 
 ## Office hours & email
 
-Office hours are 12-2 M-W
+Office hours are 12-2 M-W in 25-236
 
--   Schedule 10min time slots via Calendly
+-   Schedule 10min time slots via Calendly (see syllabus for link)
 
 Usually I get to email quickly, but allow at least 48 (weekday) hours
 
@@ -324,25 +351,14 @@ Once everyone is ready, we'll have a look at the example files together.
     -   make and save changes
 5.  Files you should ignore
 
-## General pointers
-
--   don't change the directory structure
-
--   don't rename, add, or remove files
-
--   anything you create will be visible to me
-
--   any changes you make on assignments *won't* be shareable with your classmates
-
 ## For next time
 
-You'll read about study designs.
+You'll read about study designs. As you're reading...
 
-As you're reading, consider this example: there is broad agreement that smoking causes cancer. Try and answer these questions:
+Consider: there is broad agreement that smoking causes cancer, but not all smokers develop cancer.
 
-1.  Not all smokers develop cancer, so smoking doesn't cause cancer in the way that combustion causes a flame. What then do we mean by "cause" when we say that smoking causes cancer?
-2.  How would you design a study to test the hypothesis that smoking causes cancer?
-    -   Which of the study designs in your reading are *applicable*?
-    -   Among applicable designs, which are *possible*?
-    -   Among the possible designs, which are practically and ethically *feasible*?
-    -   Among feasible designs, which would you choose and what would you measure?
+1.  What then do we mean by "cause" when we say that smoking causes cancer?
+2.  What do you imagine the evidence might be for this claim?
+3.  How would you design a study to test the hypothesis that smoking causes cancer? 
+    - Which of the designs mentioned in the reading seem potentially applicable?
+    - Pick one design that seems best suited to the question. If you were to carry out a study according to that design, what would constitute evidence for or against the hypothesis?

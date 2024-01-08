@@ -27,7 +27,7 @@ Recall that the difference between an observational study and an experiment hing
 
 -   In a **matched case-control** study, cases and controls are paired according to criteria determined by the investigator
 
-In this activity you'll read abstracts from a few published studies and determine, in consultation with your group, what kind of study is described in the abstract.
+In this activity you'll read abstracts from a few published studies and determine, in consultation with your group, what kind of study is described in the abstract. You do not need to consider the examples in order — start with the ones that look most interesting.
 
 ### Example 1: long COVID
 
@@ -74,3 +74,18 @@ Discuss the following questions with your group:
 3.  Is this a cohort study?
 4.  Is this study retrospective, prospective, or neither?
 5.  Consider the finding that a third of participants consuming fermented kimchi showed improved glucose tolerance. Does this provide evidence that consuming fermented kimchi is likely to improve glucose tolerance? Would you answer differently if the study had found that number were 8 in 10?
+
+### Example 4: Moderna vaccine efficacy
+
+From the journal publication reporting clinical trial results for the Moderna COVID vaccine:
+
+> Vaccines are needed to prevent coronavirus disease 2019 (Covid-19) and to protect persons who are at high risk for complications. The mRNA-1273 vaccine is a lipid nanoparticle–encapsulated mRNA-based vaccine that encodes the prefusion stabilized full-length spike protein of the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), the virus that causes Covid-19. This \[study\] was conducted at 99 centers across the United States ... The trial enrolled 30,420 volunteers who were randomly assigned in a 1:1 ratio to receive either vaccine or placebo (15,210 participants in each group) ... Symptomatic Covid-19 illness was confirmed in 185 participants in the placebo group and in 11 participants in the mRNA-1273 group; vaccine efficacy was 94.1%. 
+
+Baden, L. R., *et al*. (2021). Efficacy and safety of the mRNA-1273 SARS-CoV-2 vaccine. *New England journal of medicine*, *384*(5), 403-416.
+
+Discuss the following questions with your group:
+
+1.  Is this an observational study or an experiment?
+2.  Is this study prospective, retrospective, or neither?
+3.  Is this a case-control study? If so, what are the cases, and what are the controls?
+4.  Consider the finding that 11 symptomatic illnesses were observed in the vaccine group and 185 were observed in the placebo group. Does this provide evidence that the vaccine reduces the likelihood of symptomatic illness?

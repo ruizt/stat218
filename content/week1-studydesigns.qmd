@@ -313,3 +313,33 @@ In STAT218 you are expected to be fluent with study design concepts, but of cour
 -   \[L1\] design a data collection scheme based on simple random sampling or simple experimental designs
 
 -   \[L2\] distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each
+
+## Case study: LEAP
+
+Learning early about peanut allergy (LEAP) study:
+
+-   640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy
+
+-   each infant randomly assigned to peanut consumption and peanut avoidance groups
+
+    -   peanut consumption: fed 6g peanut protein daily until 5 years old
+
+    -   peanut avoidance: no peanut consumption until 5 years old
+
+-   at 5 years old, oral food challenge (OFC) allergy test administered
+
+    -   PASS: no allergy detected
+
+    -   FAIL: allergy detected
+
+*What kind of study is this? Experiment or observational study? Retrospective, prospective, case-control, cohort?*
+
+## Case study: LEAP
+
+![Tabular summary of LEAP results.](img/leap-1.png){width="300"}
+
+-   Does peanut avoidance/consumption appear associated with developing an allergy?
+
+-   If so, does the study provide evidence that early exposure likely reduces the chance of developing an allergy by 5 years of age?
+
+-   What calculation could you perform to summarize the difference between study groups?

@@ -23,7 +23,7 @@ This class aims to provide a hands-on introduction to common statistical methods
 -   \[Section 05/8273\] 2:10pm — 4:00pm TR Construction Innovations Center Room C202
 -   \[Section 06/8274\] 4:10pm — 6:00pm TR Business Room 113
 
-Class meetings will comprise a mixture of lecture, lab activities, and discussion.
+Class meetings will comprise a mixture of lecture, lab activities, class activities, and discussion.
 
 **Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/stat218)\].
 
@@ -89,12 +89,12 @@ Attainment of learning outcomes will be measured by performance on homework assi
 
 The **final oral exam** will require you to find an application of course material in the field of your major and present it as a case study in 5 minutes. You will be expected to describe the research question, study design, analysis, and conclusion, and answer 1-2 questions. These will be carried out in private and scheduled during the final exam time. This assignment applies to learning outcome L11 only, and you will receive an assessment of 'fully met', 'partly met', or 'unmet' for that outcome depending on your presentation and ability to answer questions. A rubric will be provided in advance to clearly define the expectations associated with each possible assessment.
 
-## Letter grades
+### Letter grades
 
 Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
 
 | Grade | Minimum number of partly + fully met outcomes | Minimum number of fully met outcomes |
-|-------|-----------------------------------------------|--------------------------------------|
+|--------------|--------------------------------|--------------------------|
 | A     | 10                                            | 9                                    |
 | A-    | 10                                            | 8                                    |
 | B+    | 8                                             | 7                                    |
@@ -113,8 +113,8 @@ Please note that these definitions are tentative and potentially subject to chan
 
 Subject to change.
 
-| Week             | Topics                                                              | Readings       | Assignments |
-|------------------|---------------------------------------------------------------------|----------------|-------------|
+| Week             | Topics                                                              | Readings (V&H) | Assignments |
+|------------|-----------------------------------|------------|------------|
 | 1 (1/8/24)       | Introduction to statistical thinking and study design               | 1.1            | HW1         |
 | 2 (1/15/24)      | Data, data types, and data collection                               | 1.2            | None        |
 | 3 (1/22/24)      | Foundations for inference                                           | 1.4 – 1.5; 4.1 | HW2         |
@@ -141,7 +141,7 @@ Regular attendance is essential for success in the course and required per Unive
 
 #### Communication and email
 
-Students are encouraged to use face-to-face means of communication (office hours, class meetings, appointments) when possible. Email may be used on a secondary basis or when a written record of communication is needed. Every effort is made to respond to email within 48 weekday hours — so a message sent Thursday or Friday may not receive a reply until Monday or Tuesday. Time-sensitive messages should be identified as such in the subject line. Students should wait one week before sending a reminder.
+Students are encouraged to use face-to-face means of communication (office hours, class meetings, appointments) when possible. Email may be used on a secondary basis or when a written record of communication is needed. Every effort is made to respond to email within 48 weekday hours — so a message sent Thursday or Friday may not receive a reply until Monday or Tuesday. Time-sensitive messages should be identified as such in the subject line. For non-time-sensitive messages, please wait one week before sending a reminder.
 
 #### Time commitment
 
@@ -155,7 +155,7 @@ Per University policy, faculty have final responsibility for grading criteria an
 
 #### Deadlines and late work
 
-Each student may turn in two homework assignments up to one week late without penalty at any time during the quarter and without notice. Subsequently, assignments turned in up to one week late will be evaluated for 75% credit unless an extension is granted in advance. As a general policy, late work will be not accepted beyond one week after the original due date. Deadlines for tests are strict.
+Each student may turn in two homework assignments up to one week late without penalty at any time during the quarter and without notice. Subsequently, late work will incur a penalty in final grade calculations unless an extension is granted in advance. As a general policy, late work will be not accepted beyond one week after the original due date. Deadlines for tests are strict.
 
 These policies are intended to provide you with some flexibility to work around unforeseen circumstances while maintaining accountability for completing coursework in a timely manner. That said, if any circumstances arise that the policies do not accommodate well, please let me know and I will do my best to work with you to keep you on track in the course. Exceptions may be granted for significant and unforeseen challenges (medical absences, family emergencies, and the like).
 
