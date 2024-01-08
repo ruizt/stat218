@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
-  <title>STAT218 - Welcome to STAT218!</title>
+  <title>STAT218 - Study designs</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -327,20 +327,294 @@
       margin-right: 0; 
     }
   </style>
+  <meta name="mermaid-theme" content="neutral">
+  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome to STAT218!</h1>
+  <h1 class="title">Study designs</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section class="slide level2">
+<section id="what-is-a-study" class="slide level2">
+<h2>What is a study?</h2>
+<p>A <strong>study</strong> is an effort to collect data in order to answer one or more research questions.</p>
+<p>Ultimately, you’re in this class to learn how to answer questions (or evaluate the answers of others) in a sound way, so we will start with the basics of study design because:</p>
+<ul>
+<li><p>studies must be well-matched to research questions to provide good answers</p></li>
+<li><p>how data are obtained is just as important as how the resulting data are analyzed</p></li>
+<li><p>no analysis, no matter how sophisticated will rescue a poorly conceived study</p></li>
+</ul>
+<p>[Terminology] A <strong>study unit</strong> is the smallest object or entity that is measured in a study; also called <em>experimental unit</em> or <em>observational unit.</em></p>
+</section>
+<section id="two-types-of-studies" class="slide level2">
+<h2>Two types of studies</h2>
+<p><strong>Observational studies</strong> collect data from an existing situation <strong>without intervention</strong>.</p>
+<ul>
+<li><p>Aim is to detect associations and patterns</p></li>
+<li><p>Can’t be used to establish causal links (more on this later)</p></li>
+</ul>
+<p><strong>Experiments</strong> collect data from a situation in which one or more interventions have been introduced by the investigator.</p>
+<ul>
+<li>Aim is to draw conclusions about the effect of one or more interventions</li>
+<li>Stronger form of scientific evidence than an observational study</li>
+</ul>
+<p>Often, observational studies are used to explore/generate hypotheses prior to designing an experiment.</p>
+</section>
+<section id="comparing-study-types" class="slide level2">
+<h2>Comparing study types</h2>
+<p>Either type of study can be used to address a question.</p>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 33%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Observational study</th>
+<th>Experiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Are diet and mood related?</td>
+<td>Conduct surveys on diet, lifestyle, and affect</td>
+<td>Recruit study participants, assign diets, measure affect</td>
+</tr>
+<tr class="even">
+<td>Is vaping safer than smoking?</td>
+<td>Follow groups of vapers and smokers over time and record health outcomes</td>
+<td>Among a group of smokers, assign some to switch to vaping; compare health outcomes over time</td>
+</tr>
+<tr class="odd">
+<td>Do insecticide applications affect soil microbes?</td>
+<td>Analyze soil samples from farms using different insecticides</td>
+<td>[<strong>Your turn</strong>]</td>
+</tr>
+</tbody>
+</table>
+<p>In each example, which approach would you choose if you were the researcher? What are the pros and cons?</p>
+</section>
+<section id="why-does-intervention-matter" class="slide level2">
+<h2>Why does intervention matter?</h2>
+<p>In an experiment, the researcher intentionally intervenes in a way that they expect to change outcomes.</p>
+<ul>
+<li><strong>intervention</strong> confers a degree of <strong>control</strong> over study conditions</li>
+</ul>
+<!-- -   by controlling study conditions so that interventions are the only source of systematic variation in outcomes, one can study the **causal effects** of intervention -->
+<p>In an observational study, there is no (intentional) intervention.</p>
+<ul>
+<li><strong>without intervention</strong> the researcher has <strong>no control</strong> over study conditions</li>
+</ul>
+<!-- -   outcomes may vary due to conditions not measured in the study, so **no causal effects** can be observed with certainty -->
+<p>Control over conditions allows a researcher to study causal effects resulting from interventions. This can best be understood in terms of a phenomenon known as <em>confounding</em>.</p>
+</section>
+<section id="confounding" class="slide level2">
+<h2>Confounding</h2>
+<p>Confounding occurs when two conditions cannot be differentiated.</p>
+<p>This happens when either:</p>
+<ul>
+<li><p>[omission] one study condition is not measured</p>
+<ul>
+<li><p>a researcher finds that dog owners live longer, but failed to measure how much exercise each subject gets</p></li>
+<li><p>is it the dog, or the daily walks?</p></li>
+</ul></li>
+<li><p>[conflation] two study conditions are <em>always</em> observed simultaneously</p>
+<ul>
+<li><p>a researcher finds that people on diet 1 tend to be overweight, but all study participants on diet 1 are from the U.S., and all study participants on diet 2 are from Canada</p></li>
+<li><p>is it the diet, or the country?</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="consequences-of-confounding" class="slide level2">
+<h2>Consequences of confounding</h2>
+<p>Usually, researchers are concerned with confounding by omission.</p>
+<div class="columns">
+<div class="column" style="width:0.4;">
+<p>When an unobserved condition is associated with both the observed condition and the outcome one may observe:</p>
+<ul>
+<li><p>an artificial association between the study condition and outcome</p></li>
+<li><p>a distorted association between the study condition and outcome</p></li>
+</ul>
+</div><div class="column" style="width:0.6;">
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved condition) --- B(study condition) &amp; C(outcome) 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>This is very common in observational studies, because you can’t measure every study condition.</p>
+</section>
+<section id="example-of-confounding" class="slide level2">
+<h2>Example of confounding</h2>
 
+<img data-src="week1-studydesigns_files/figure-revealjs/unnamed-chunk-2-1.png" width="1152" class="r-stretch"><ul>
+<li><p>[left] Higher state educational expenditure looks associated with <em>lower</em> SAT scores</p></li>
+<li><p>[center] But increased expenditure looks associated with more test takers</p></li>
+<li><p>[right] And higher percentages of test takers are associated with lower averages</p></li>
+</ul>
+<p><em>If you ignored how many students take the test, you’d conclude that expenditure is counterproductive</em></p>
+</section>
+<section id="antidote-randomization" class="slide level2">
+<h2>Antidote: randomization</h2>
+<p>The ability to control study conditions allows researchers to <em>randomize</em> interventions among study subjects:</p>
+<ul>
+<li>allocated in such a way that all subjects are equally likely to receive any intervention</li>
+</ul>
+<div class="columns">
+<p><strong>Randomization eliminates confounding</strong> by isolating the condition(s) of interest:</p><div class="column" style="width:0.6;">
+<ul>
+<li><p>interventions are independent of extraneous conditions ⟹ no association possible</p></li>
+<li><p>if outcomes differ systematically according to the intervention, you can be certain that it is not an artifact</p></li>
+</ul>
+</div><div class="column" style="width:0.4;">
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved condition) x-.-x B(study condition)
+  A --- C(outcome)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Extraneous conditions <em>may</em> still be associated with outcomes and add noise — well-thought-out experiments find ways to reduce this.</p>
+<!-- ## Confounding in experiments -->
+<!-- *Caveat: randomized experiments are not immune from confounding.* -->
+<!-- Consider a randomized trial to evaluate the effectiveness of smoking cessation aids. -->
+<!-- |                   | Varenicline | Bupropion   | Placebo     | -->
+<!-- |-------------------|-------------|-------------|-------------| -->
+<!-- | Group size        | 352         | 329         | 344         | -->
+<!-- | Completed therapy | 259 (73.6%) | 225 (68.4%) | 215 (62.5%) | -->
+<!-- If the results are analyzed based only on participants that completed the therapy, confounding could distort results: -->
+<!-- -   underlying differences among participants may be associated with both persistence and success -->
+</section>
+<section id="practical-consequences" class="slide level2">
+<h2>Practical consequences</h2>
+<p>The ability to randomize interventions in experiments means:</p>
+<ul>
+<li><p>observed associations are independent of extraneous factors</p></li>
+<li><p>results can support causal inferences</p></li>
+</ul>
+<p>The absence of randomization in observational studies means:</p>
+<ul>
+<li><p>confounding is always possible</p></li>
+<li><p>results may be misleading</p></li>
+</ul>
+<p>Usually, <em>observational studies are considered weaker forms of scientific evidence than experiments</em>, with some caveats:</p>
+<ul>
+<li><p>a large volume of independent observational studies pointing to the same conclusions may be more convincing than a few narrow experiments</p></li>
+<li><p>observational studies may provide better evidence under real world conditions than available experimental data</p></li>
+</ul>
+</section>
+<section id="common-study-designs" class="slide level2">
+<h2>Common study designs</h2>
+<p>Studies can be designed to investigate outcomes in a variety of ways, regardless of whether study conditions include intervention. Many study designs originate in clinical medicine — the following are among the most common.</p>
+<ul>
+<li><p>In <strong>prospective</strong> studies participants are recruited <em>before</em> developing a condition</p></li>
+<li><p>In <strong>retrospective</strong> studies participants are recruited <em>after</em> developing a condition</p></li>
+<li><p>A <strong>cohort</strong> study involves people belonging to a group defined by one or more (usually artificial) criteria</p></li>
+<li><p>In a <strong>case-control</strong> study, participants with (cases) and without (controls) a condition are compared</p></li>
+<li><p>In a <strong>matched case-control</strong> study, cases and controls are paired according to criteria determined by the investigator</p></li>
+</ul>
+</section>
+<section id="study-designs-can-get-complicated" class="slide level2">
+<h2>Study designs can get complicated</h2>
+<p>The study designs mentioned previously are not mutually exclusive and could apply to either experiments or observational studies. For example:</p>
+<ul>
+<li><p>following this year’s Cal Poly freshmen (cohort) until graduation (condition) and comparing four-year graduation (outcome) rates between those that participated in a new orientation activity (cases) and those that didn’t (controls) would be a <em>prospective case-control cohort study</em></p></li>
+<li><p>it would be an observational study if participation was voluntary, and an experiment if students were assigned to participate or not</p></li>
+</ul>
+<p>Can you change the example so that…</p>
+<ul>
+<li><p>it’s a retrospective study?</p></li>
+<li><p>it’s a <em>matched</em> case-control study?</p></li>
+</ul>
+</section>
+<section id="experimental-designs" class="slide level2">
+<h2>Experimental designs</h2>
+<p>A <strong>treatment</strong> is an experimental intervention; the <strong>design</strong> of an experiment refers to how treatments are allocated to study units.</p>
+<p>The most basic design is:</p>
+<ul>
+<li><p>[balanced] each treatment is replicated an equal number of times</p></li>
+<li><p>[randomized] treatments are allocated completely at random to study units</p></li>
+<li><p>[no crossover] each study unit receives exactly one treatment</p></li>
+</ul>
+<p>We’ll call this a <strong>completely randomized design</strong>. It’s the only kind of experimental design we’re going to consider in STAT218.</p>
+<p>There are many other designs that we won’t discuss (but see STAT313); these are all about improving experimental efficiency by controlling extraneous variation.</p>
+</section>
+<section id="blinding" class="slide level2">
+<h2>Blinding</h2>
+<p>The terms <em>single-blind</em> and <em>double-blind</em> refer to experiments with human subjects, typically in clinical studies.</p>
+<p>In a <strong>single-blind</strong> study, participants are unaware of which treatment they receive.</p>
+<ul>
+<li>Example: in a case-control study, one group of patients is given a new medicine and the other is given a saline solution administered under identical conditions</li>
+<li>Idea: controls for placebo effect</li>
+</ul>
+<p>In a <strong>double-blind</strong> study, both participants <em>and</em> investigators are unaware of which treatments are administered.</p>
+<ul>
+<li>Example: same as above, but now the person administering the doses is unaware of which are medicine and which are saline</li>
+<li>Idea: controls for unconscious influence on outcome by researchers (<em>e.g.,</em> attend more carefully and compassionately to patients receiving medicine out of concern for side-effects)</li>
+</ul>
+</section>
+<section id="data-collection" class="slide level2">
+<h2>Data collection</h2>
+<p>We will discuss data collection in more depth later, but the way that study units are obtained, independently of the type of study or design, determines the breadth of conclusions supported by the results, depending on whether study units chosen are representative of a larger collection.</p>
+<p>The gold standard is a <em>simple random sample</em> of units selected from a larger collection:</p>
+<ul>
+<li><p>every unit in the larger collection has an equal chance of being selected</p></li>
+<li><p>easier said than done — failure to obtain a random sample is one of the most common study flaws</p></li>
+</ul>
+<p>For now we will set the issue of sampling aside.</p>
+</section>
+<section id="considerations-in-creating-a-study" class="slide level2">
+<h2>Considerations in creating a study</h2>
+<ul>
+<li><p>The research question should be motivated by science, not statistics.</p></li>
+<li><p>You may have to work within limitations:</p>
+<ul>
+<li><p>The design that best aligns with the question may not be possible or practical.</p></li>
+<li><p>An experiment might give the strongest evidence but not be feasible or ethical.</p></li>
+</ul></li>
+<li><p>A plan should be in place for <em>all</em> of the following:</p>
+<ul>
+<li><p>how to obtain/recruit study units/participants</p></li>
+<li><p>how many to obtain/recruit and how to ensure that target is met</p></li>
+<li><p>protocol for allocating treatment</p></li>
+<li><p>collecting data and measuring outcomes</p></li>
+<li><p>contingencies for dropout/failure to ensure the study yields results</p></li>
+<li><p>data handling and data analysis</p></li>
+<li><p>how results will be used</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="study-design-in-stat218" class="slide level2">
+<h2>Study design in STAT218</h2>
+<p>In STAT218 you are expected to be fluent with study design concepts, but of course won’t actually carry out an end-to-end study.</p>
+<ul>
+<li><p>[L1] design a data collection scheme based on simple random sampling or simple experimental designs</p></li>
+<li><p>[L2] distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each</p></li>
+</ul>
 
 
 <img src="img/poly-logo-2.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
@@ -558,6 +832,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,6 +1,7 @@
 ---
 title: "Lab 1: R Basics"
 author: "STAT218"
+author-title: "Course activity"
 execute: 
   eval: false
 format: 

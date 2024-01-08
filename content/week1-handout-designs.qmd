@@ -1,0 +1,64 @@
+---
+title: "Distinguishing study designs"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: false
+format: 
+  html:
+    toc: true
+  pdf:
+    keep-tex: false
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+Recall that the difference between an observational study and an experiment hinges on whether researchers intentionally intervene on the system of study (experiment) or passively record outcomes (observational study).
+
+### Example 1: long COVID
+
+Long COVID is a multi-systemic and often debilitating condition that develops in at least 10% of patients following a COVID infection. The following is an excerpt of the abstract from a recent study seeking to identify symptoms and risk factors associated with long COVID and published in *Nature Medicine*:
+
+> We undertook a ... study using a UK-based primary care database, Clinical Practice Research Datalink Aurum, to determine symptoms that are associated with confirmed SARS-CoV-2 infection beyond 12 weeks in non-hospitalized adults and the risk factors associated with developing persistent symptoms. We selected 486,149 adults with confirmed SARS-CoV-2 infection ... Outcomes included 115 individual symptoms, as well as long COVID, defined as a composite outcome of 33 symptoms by the World Health Organization clinical case definition ... Among the patients infected with SARS-CoV-2, risk factors for long COVID included female sex, belonging to an ethnic minority, socioeconomic deprivation, smoking, obesity and a wide range of comorbidities. The risk of developing long COVID was also found to be increased along a gradient of decreasing age.
+
+Subramanian *et al.* (2022). Symptoms and risk factors for long COVID in non-hospitalized adults. *Nature medicine*, *28*(8), 1706-1714.
+
+Discuss the following questions with your group:
+
+1.  Is this an observational study or an experiment?
+2.  Is this study retrospective, prospective, or neither?
+3.  Is this a case-control study? If so, what are the cases and what are the controls?
+4.  Is this a cohort study?
+
+### Example 2: selenium exposure and Mediterranean diet
+
+The following is from the abstract of a study investigating dietary mitigation of selenium exposure:
+
+> Selenium is a trace element found in many chemical forms. Selenium and its species have nutritional and toxicologic properties, some of which may play a role in the etiology of neurological disease. We hypothesized that adherence to the Mediterranean-Dietary Approach to Stop Hypertension Intervention for Neurodegenerative Delay (MIND) diet could influence intake and endogenous concentrations of selenium and selenium species, thus contributing to the beneficial effects of this dietary pattern. We carried out a cross-sectional study of 137 non-smoking blood donors (75 females and 62 males) from the Reggio Emilia province, Northern Italy. We assessed MIND diet adherence using a semiquantitative food frequency questionnaire. We assessed selenium exposure through dietary intake and measurement of urinary and serum concentrations, including speciation of selenium compound in serum ... Adherence to the MIND diet was positively associated with dietary selenium intake and urinary selenium excretion, whereas it was inversely associated with serum concentrations of overall selenium and organic selenium ... Our results suggest that greater adherence to the MIND diet is non-linearly associated with lower circulating concentrations of selenium and of 2 potentially neurotoxic species of this element, selenoprotein P and selenate. This may explain why adherence to the MIND dietary pattern may reduce cognitive decline.
+
+Urbano, T., *et al.* (2023). Adherence to the Mediterranean-DASH Intervention for Neurodegenerative Delay (MIND) diet and exposure to selenium species: A cross-sectional study. Nutrition Research.
+
+Discuss the following questions with your group:
+
+1.  Does the abstract describe an observational study or an experiment?
+2.  Is this study prospective, retrospective, or neither?
+3.  Is this a case-control study? If so, what are the cases and what are the controls?
+4.  Consider the finding that MIND adherence is associated with lower circulating concentrations of selenium. Does this provide evidence that adoption of the MIND diet is likely to reduce selenium concentrations? Why or why not?
+
+### Example 3: fermented kimchi and glucose metabolism
+
+The following is from an abstract of a study investigating possible benefits of kimchi consumption among prediabetic individuals:
+
+> With the increased incidence of diabetes mellitus, the importance of early intervention in prediabetes has been emphasized ... We hypothesized that kimchi and its fermented form would have beneficial effects on glucose metabolism in patients with prediabetes. A total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity ... Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.
+
+An, S. Y., *et al.* (2013). Beneficial effects of fresh and fermented kimchi in prediabetic individuals. *Annals of Nutrition and Metabolism*, *63*(1-2), 111-119.
+
+Discuss the following questions with your group:
+
+1.  Does the abstract describe an observational study or an experiment?
+2.  Is this a case-control study? If so what are the cases and what are the controls?
+3.  Is this a cohort study?
+4.  Is this study retrospective, prospective, or neither?
+5.  Consider the finding that a third of participants consuming fermented kimchi showed improved glucose tolerance. Does this provide evidence that consuming fermented kimchi is likely to improve glucose tolerance? Would you answer differently if the study had found that number were 8 in 10?
