@@ -7,7 +7,7 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-*Check back for updates*
+*No announcements yet*
 
 :::
 
