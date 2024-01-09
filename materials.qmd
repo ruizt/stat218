@@ -23,7 +23,7 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[activity\] working groups and icebreakers
 -   \[activity\] orientation to posit.cloud
 
-***Thursday class meeting***: \[slides\] \[handout\]
+***Thursday class meeting***: \[[slides](content/week1-studydesigns.qmd)\] \[[handout](content/week1-handout-designs.qmd)\]
 
 -   \[reading\] van Belle *et al.* 2.1 - 2.5; Vu and Harrington 1.1
 -   \[lecture/discussion\] study designs
