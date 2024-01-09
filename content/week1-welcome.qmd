@@ -139,6 +139,7 @@ So we will focus on:
 ## Printing slides
 
 ![Select PDF export mode](img/printing-slides-3.png)
+
 ## Printing slides
 
 ![Then print from browser to PDF](img/printing-slides-4.png)
