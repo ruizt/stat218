@@ -41,4 +41,4 @@ Consider the Learning Early About Peanut allergy (LEAP) study discussed in class
 
 > For the LEAP study, 640 infants in the United Kingdom were enrolled with risk factors for peanut allergies (eczema or egg allergy); 530 passed a skin test at the start of the study showing no peanut allergy. Each infant was randomly assigned to peanut consumption (6g peanut protein per day) or peanut avoidance (no peanut consumption) groups. At 5 years of age, an allergy test was administered to each study participant; the rates of peanut allergy were compared between the two groups.
 
-1.  \[L1\] Propose a retrospective observational study to investigate the research question, "is early peanut exposure associated with a lower risk of developing peanut allergies?" Include a specific description of how you might enroll participants.
+8.  \[L1\] Propose a retrospective observational study to investigate the research question, "is early peanut exposure associated with a lower risk of developing peanut allergies?" Include a specific description of how you might enroll participants.
