@@ -47,7 +47,7 @@ Often, observational studies are used to explore/generate hypotheses prior to de
 Either type of study can be used to address a question.
 
 | Question                                          | Observational study                                                      | Experiment                                                                                   |
-|---------------------------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+|-------------------|------------------------|-----------------------------|
 | Are diet and mood related?                        | Conduct surveys on diet, lifestyle, and affect                           | Recruit study participants, assign diets, measure affect                                     |
 | Is vaping safer than smoking?                     | Follow groups of vapers and smokers over time and record health outcomes | Among a group of smokers, assign some to switch to vaping; compare health outcomes over time |
 | Do insecticide applications affect soil microbes? | Analyze soil samples from farms using different insecticides             | \[**Your turn**\]                                                                            |
@@ -214,29 +214,33 @@ Usually, *observational studies are considered weaker forms of scientific eviden
 
 Studies can be designed to investigate outcomes in a variety of ways, regardless of whether study conditions include intervention. Many study designs originate in clinical medicine — the following are among the most common.
 
--   In **prospective** studies participants are recruited *before* developing a condition
+::: columns
+::: {.column width="0.5"}
+In **prospective** studies participants are recruited *before* developing a condition
 
--   In **retrospective** studies participants are recruited *after* developing a condition
+![](img/prospective-diagram.png){width="400" height="184"}
+:::
 
--   A **cohort** study involves people belonging to a group defined by one or more (usually artificial) criteria
+::: {.column width="0.5"}
+In **retrospective** studies participants are recruited *after* developing a condition
 
--   In a **case-control** study, participants with (cases) and without (controls) a condition are compared
+![](img/retrospective-diagram.png){width="400" height="184"}
+:::
+:::
 
--   In a **matched case-control** study, cases and controls are paired according to criteria determined by the investigator
+These terms usually refer to observational studies; experiments are typically prospective in nature, since one recruits participants *before* administering an intervention.
 
-## Study designs can get complicated
+## Example study
 
-The study designs mentioned previously are not mutually exclusive and could apply to either experiments or observational studies. For example:
+Imagine following this year's Cal Poly freshmen (a "cohort") and comparing four-year graduation (outcome) rates between those that participated in a new orientation activity and those that didn't. This would be:
 
--   following this year's Cal Poly freshmen (cohort) until graduation (condition) and comparing four-year graduation (outcome) rates between those that participated in a new orientation activity (cases) and those that didn't (controls) would be a *prospective case-control cohort study*
+-   prospective if an observational study
 
--   it would be an observational study if participation was voluntary, and an experiment if students were assigned to participate or not
+<!-- -->
 
-Can you change the example so that...
+-   an experiment if students were assigned to participate or not
 
--   it's a retrospective study?
-
--   it's a *matched* case-control study?
+*Can you change the example so that it's a retrospective study?*
 
 ## Experimental designs
 
@@ -332,11 +336,19 @@ Learning early about peanut allergy (LEAP) study:
 
     -   FAIL: allergy detected
 
-*What kind of study is this? Experiment or observational study? Retrospective, prospective, case-control, cohort?*
+*What kind of study is this? Experiment or observational study? Retrospective, prospective, or neither?*
 
 ## Case study: LEAP
 
+::: columns
+::: {.column width="0.5"}
 ![Tabular summary of LEAP results.](img/leap-1.png){width="300"}
+:::
+
+::: {.column width="0.5"}
+![Graphical summary of LEAP results.](img/leap-2.png){width="\"300"}
+:::
+:::
 
 -   Does peanut avoidance/consumption appear associated with developing an allergy?
 

@@ -17,15 +17,9 @@ embed-resources: true
 
 Recall that the difference between an observational study and an experiment hinges on whether researchers intentionally intervene on the system of study (experiment) or passively record outcomes (observational study). Additionally, the following common study designs were discussed:
 
--   In **prospective** studies participants are recruited *before* developing a condition
+-   In **prospective** ("looking ahead") studies participants are recruited *before* developing a condition based on exposure; results look ahead to the proportions in each exposure group that develop the condition
 
--   In **retrospective** studies participants are recruited *after* developing a condition
-
--   A **cohort** study involves people belonging to a group defined by one or more (usually artificial) criteria
-
--   In a **case-control** study, participants with (cases) and without (controls) a condition are compared
-
--   In a **matched case-control** study, cases and controls are paired according to criteria determined by the investigator
+-   In **retrospective** ("looking back") studies participants are recruited *after* developing a condition; results look back on the proportions in each group that met certain criteria
 
 In this activity you'll read abstracts from a few published studies and determine, in consultation with your group, what kind of study is described in the abstract. You do not need to consider the examples in order — start with the ones that look most interesting.
 
@@ -41,8 +35,6 @@ Discuss the following questions with your group:
 
 1.  Is this an observational study or an experiment?
 2.  Is this study retrospective, prospective, or neither?
-3.  Is this a case-control study? If so, what are the cases and what are the controls?
-4.  Is this a cohort study?
 
 ### Example 2: selenium exposure and Mediterranean diet
 
@@ -56,8 +48,7 @@ Discuss the following questions with your group:
 
 1.  Does the abstract describe an observational study or an experiment?
 2.  Is this study prospective, retrospective, or neither?
-3.  Is this a case-control study? If so, what are the cases and what are the controls?
-4.  Consider the finding that MIND adherence is associated with lower circulating concentrations of selenium. Does this provide evidence that adoption of the MIND diet is likely to reduce selenium concentrations? Why or why not?
+3.  Consider the finding that MIND adherence is associated with lower circulating concentrations of selenium. Does this provide evidence that adoption of the MIND diet is likely to reduce selenium concentrations? Why or why not?
 
 ### Example 3: fermented kimchi and glucose metabolism
 
@@ -70,10 +61,8 @@ An, S. Y., *et al.* (2013). Beneficial effects of fresh and fermented kimchi in 
 Discuss the following questions with your group:
 
 1.  Does the abstract describe an observational study or an experiment?
-2.  Is this a case-control study? If so what are the cases and what are the controls?
-3.  Is this a cohort study?
-4.  Is this study retrospective, prospective, or neither?
-5.  Consider the finding that a third of participants consuming fermented kimchi showed improved glucose tolerance. Does this provide evidence that consuming fermented kimchi is likely to improve glucose tolerance? Would you answer differently if the study had found that number were 8 in 10?
+2.  Is this study retrospective, prospective, or neither?
+3.  Consider the finding that a third of participants consuming fermented kimchi showed improved glucose tolerance. Does this provide evidence that consuming fermented kimchi is likely to improve glucose tolerance? Would you answer differently if the study had found that number were 8 in 10?
 
 ### Example 4: Moderna vaccine efficacy
 
@@ -87,5 +76,4 @@ Discuss the following questions with your group:
 
 1.  Is this an observational study or an experiment?
 2.  Is this study prospective, retrospective, or neither?
-3.  Is this a case-control study? If so, what are the cases, and what are the controls?
-4.  Consider the finding that 11 symptomatic illnesses were observed in the vaccine group and 185 were observed in the placebo group. Does this provide evidence that the vaccine reduces the likelihood of symptomatic illness?
+3.  Consider the finding that 11 symptomatic illnesses were observed in the vaccine group and 185 were observed in the placebo group. Does this provide evidence that the vaccine reduces the likelihood of symptomatic illness?

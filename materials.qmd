@@ -30,7 +30,7 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[activity\] distinguishing types of studies
 -   \[case study\] preventing peanut allergies
 
-**Assignment**: HW1 due Thursday 1/18 11:59pm PST \[L1, L2\]
+**Assignment**: \[[HW1](content/hw1.qmd)\] due Thursday 1/18 11:59pm PST \[L1, L2\]
 
 ### Week 2 (1/15/24)
 
