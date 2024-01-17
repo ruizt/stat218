@@ -15,7 +15,7 @@ prefer-html: true
 embed-resources: true
 ---
 
-This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won't be expected to do much data manipulation for this class, it will be helpful for you to have some understanding of data structures and how to do basic calculations going forward.
+This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won't be expected to do much data manipulation or manual calculation for this class, it will be helpful for you to have some understanding of this material going forward, as most R objects are arranged as data structures comprising one or more data types.
 
 This lab covers a lot of ground; consider it a reference you can return to later as needed.
 
@@ -58,17 +58,17 @@ log(2, base = exp(1))
 log(2)
 ```
 
-The result of each of these calculations is a *value*. Values are elementary objects in the R environment and can thus be assigned names using the assignment operator `<-`:
+The result of each of these calculations is a *value*. Values are the most elementary objects in the R environment. Values can be assigned names using the assignment operator `<-`:
 
 ```{r name assignment}
 # store a value
 x <- log(2)
 
-# display named value
+# print value in console
 x
 ```
 
-Names can consist of any combination of letters, numbers, and the delimiters `_` and `.`; names cannot start with numbers.
+Names can consist of any combination of letters, numbers, and the delimiters `_` and `.`; names cannot start with numbers (try it and see what happens).
 
 If a name is used multiple times, the most recently assigned value will be stored. However, 'most recent' in this context means 'most recently executed': R will not pay attention to the order of lines in your script, but the order in which you run them. To see this, try redefining `x` to be a new value. if you then go back and run the previous line that displays the value, you'll notice you get the new value, not the old one, even though the line appears before the new assignment.
 
@@ -132,12 +132,14 @@ Arithmetic only works with logical, integer, and numeric values:
 12L*FALSE
 ```
 
-It will not work with character values:
+It will not work with character values. Notice the text of the error message:
 
 ```{r character arithmetic, eval = T, error = T}
 # invalid operation
 '12'*'12'
 ```
+
+This is a very common error message — when you see it, you'll know that most likely, somewhere R attempted to perform arithmetic with character values, so it's probably a data type issue.
 
 ::: callout-note
 ## Your turn
@@ -220,12 +222,12 @@ c(1^2, 2^2, 3^2) # verbose
 
 If an operation is carried out between vectors of different lengths, a warning is printed indicating as much.
 
-```{r operations between vectors of unequal lengths, eval = T}
+```{r operations between vectors of unequal lengths, eval = T, message = T, warning = T}
 # can you figure out what calculation was performed?
 c(1, 2, 3)*c(4, 5)
 ```
 
-Many functions, including those mentioned at the outset, are also vectorized (distributed elementwise).
+Many functions, including those mentioned at the outset, are also vectorized (calculations are performed elementwise).
 
 ```{r vectorized functions}
 sqrt(c(1, 4, 9))
@@ -328,6 +330,8 @@ data.frame(col1 = c(1, 2, 3, 4),
 my_df <- data.frame(number = c(1, 2, 3, 4), 
                     truth = c(T, F, T, T), 
                     color = c('red', 'blue', 'green', 'yellow'))
+
+# the result is a vector containing the values of that column
 my_df$color
 ```
 

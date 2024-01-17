@@ -36,11 +36,11 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 
 *Academic holiday 1/15/24 and Monday class schedule on 1/16/24*
 
-*Data, data types, and data collection*
+*Introduction to data and data types*
 
-***Thursday class meeting*** \[slides\] \[handout\] \[lab\]
+***Thursday class meeting*** \[[slides](content/week2-datatypes.qmd)\] \[[lab](content/labs/lab1-rbasics.qmd)\]
 
--   \[reading\] Vu and Harrington 1.2; Douglas *et al.* 2.1 - 2.4 and 3.1 - 3.2
+-   \[reading\] Vu and Harrington 1.2; Douglas *et al.* 3.1 - 3.2
 -   \[lecture/discussion\] data types and data structures
 -   \[activity\] distinguishing data types in practice
 -   \[lab\] R basics and data in R
@@ -53,7 +53,7 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 
 ***Tuesday class meeting***
 
--   \[reading\] Vu and Harrington 1.4 - 1.5; handout on descriptive statistics
+-   \[reading\] Vu and Harrington 1.4 - 1.5; van Belle *et al.* 3.4
 -   \[lecture/discussion\] descriptive statistics for numerical and categorical data
 -   \[lab\] descriptive statistics and graphics in R
 -   \[case study\] NHANES, part 1 <!--# NHANES::NHANES -->

@@ -1,0 +1,15 @@
+---
+title: "Foundations for inference"
+subtitle: "Populations, samples, and sampling variability"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---

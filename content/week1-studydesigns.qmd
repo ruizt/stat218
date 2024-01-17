@@ -1,6 +1,6 @@
 ---
 title: "Study designs"
-format: 
+format:
   revealjs:
     logo: img/poly-logo-2.jpg
     footer: "STAT218"
@@ -47,7 +47,7 @@ Often, observational studies are used to explore/generate hypotheses prior to de
 Either type of study can be used to address a question.
 
 | Question                                          | Observational study                                                      | Experiment                                                                                   |
-|-------------------|------------------------|-----------------------------|
+|---------------------------------------------------|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | Are diet and mood related?                        | Conduct surveys on diet, lifestyle, and affect                           | Recruit study participants, assign diets, measure affect                                     |
 | Is vaping safer than smoking?                     | Follow groups of vapers and smokers over time and record health outcomes | Among a group of smokers, assign some to switch to vaping; compare health outcomes over time |
 | Do insecticide applications affect soil microbes? | Analyze soil samples from farms using different insecticides             | \[**Your turn**\]                                                                            |
