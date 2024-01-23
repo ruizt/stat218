@@ -1,6 +1,6 @@
 ---
-title: "Foundations for inference"
-subtitle: "Populations, samples, and sampling variability"
+title: "Bivariate descriptive summaries"
+subtitle: "Quantitative and graphical techniques for summarizing two variables"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
@@ -13,3 +13,175 @@ execute:
   warning: false
   message: false
 ---
+
+## Today's agenda
+
+```{r}
+library(oibiostat)
+library(tidyverse)
+library(pander)
+data(famuss)
+```
+
+## Measures of spread
+
+The *spread* of observations refers to how concentrated or diffuse the values are.
+
+```{r, fig.width = 8, fig.height = 2.5, fig.align='center'}
+par(mfrow = c(1, 2))
+curve(dnorm, from = -3, to = 3, 
+      main = 'more spread', 
+      xaxt = 'n', 
+      yaxt = 'n',
+      xlab = '',
+      ylab = '')
+curve(dnorm(x, sd = 0.25), from = -3, to = 3, 
+      main = 'less spread', 
+      xaxt = 'n', 
+      yaxt = 'n',
+      xlab = '',
+      ylab = '')
+```
+
+Two ways to understand and measure spread:
+
+-   *ranges* of values capturing much of the distribution
+-   *deviations* of values from a central value
+
+## Range measures
+
+A simple way to understand and measure spread is based on ranges. Consider more ages, sorted and ranked:
+
+```{r}
+x <- c(16, 18, 19, 20, 21, 22, 25, 26, 28, 29, 30, 34)
+rbind(age = x, rank = rank(x)) %>% pander()
+```
+
+-   The **range** is the difference \[maximum value\] - \[minimum value\] $$\text{range} = 34 - 16 = 18$$
+
+-   The **interquartile range** (IQR) is the difference \[75th percentile\] - \[25th percentile\] $$\text{IQR} = 29 - 19 = 10$$ *When might you prefer IQR to range? Can you think of an example?*
+
+## Deviation measures
+
+Another way is based on *deviations* from a central value. Continuing the example, the mean age is is 24. The deviations of each observation from the mean are:
+
+```{r}
+x <- c(16, 18, 19, 20, 21, 22, 25, 26, 28, 29, 30, 34)
+
+rbind(age = x, deviation = x - mean(x)) %>% pander()
+```
+
+The **average deviation** is defined as the average of the absolute values of the deviations from the mean: $$
+\frac{8 + 6 + 5 + 4 + 3 + 2 + 1 + 2 + 4 + 5 + 6}{12}
+$$ The **standard deviation** is defined in terms of the squared deviations from the mean: $$
+\sqrt{\frac{(-8)^2 + (-6)^2 + (-5)^2 + (-4)^2 + (-3)^2 + (-2)^2 + (1)^2 + (2)^2 + (4)^2 + (5)^2 + (6)^2}{12 - 1}}
+$$
+
+## Calculations
+
+Listed from largest to smallest, here are each of the measures of spread for the 12 ages:
+
+```{r}
+c(range = diff(range(x)),
+  iqr = IQR(x),
+  st.dev = sd(x),
+  avg.dev = mean(abs(x - mean(x)))) %>%
+  pander()
+```
+
+They are not always ordered in this way.
+
+> While it's good to know how to reconstruct these calculations, you won't actually have to perform them from scratch in practice, so it's more important that you understand their conceptual basis
+
+## Univariate summaries
+
+So far we have discussed **univarite** descriptive techniques --- those that pertain to one variable at a time. Consider, for example, the height and weight of participants in the FAMuSS study:
+
+::: {.columns}
+
+::: {.column width="70%"}
+```{r, fig.width=8, fig.height = 4}
+library(oibiostat)
+data(famuss)
+height <- famuss$height
+weight <- famuss$weight
+
+par(mfrow = c(1, 2))
+hist(height)
+hist(weight)
+```
+:::
+
+::: {.column width="30%"}
+
+- both unimodal, heights symmetric, weights right-skewed, no obvious outliers
+- but these observations actually come in *pairs* 
+- the summaries we know how to make don't reflect how the variables might be related
+
+:::
+
+:::
+
+## Bivariate summaries
+
+Bivariate (and by extension multivariate) summaries are graphical or numerical descriptions that represent two (or more) variables *jointly*.
+
+::: {.columns}
+
+::: {.column width="60%"}
+A simple example is a scatterplot:
+```{r, fig.width=5, fig.height=4}
+plot(height, weight, cex.lab = 1.5, cex.axis = 1.5)
+```
+
+:::
+
+::: {.column width="40%"}
+Each point represents a pair of values $(h, w)$ for one study participant.
+
+- Reveals a relationship: taller participants tend to be heavier
+- But no longer shows individual distributions clearly
+
+:::
+
+:::
+
+## Univariate vs. bivariate summaries
+
+Each summary type helps to address different sets of questions.
+
+- univariate summaries allow one to answer basic questions about how the values of one variable are distributed
+- bivariate summaries allow one to answer basic questions about how the values of two variables are related
+
+Some example questions that bivariate summaries could help address in the context of the FAMuSS study are:
+
+- did genotype frequencies differ by race or sex among study participants?
+- were differential changes in arm strength observed according to genotype?
+- did study participants experience similar or different changes in arm strength depending on arm dominance?
+- did change in arm strength appear related in any way to body size among study participants?
+
+## Two numerical variables
+
+## One numerical and one categorical
+
+## Two categorical variables
+
+
+# Extras
+
+## Formulae
+
+The general formulae for the deviation measures are expressed as follows. 
+
+Denote $n$ observations of a variable $x$ by $x_1, \dots, x_n$, so that $x_i$ indicates the value of the $i$th observation. 
+
+The **mean** of the observations is denoted by $\bar{x}$ and defined as:
+$$
+\bar{x} = \frac{1}{n}\sum_i x_i
+$$
+
+Then, the **average deviation** is: $$
+\text{average deviation} = \frac{1}{n}\sum_i |x_i - \bar{x}|
+$$ The **standard deviation** is: $$
+\text{standard deviation} = \sqrt{\frac{1}{n - 1}\sum_i (x_i - \bar{x})^2}
+$$

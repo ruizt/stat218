@@ -30,7 +30,7 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[activity\] distinguishing types of studies
 -   \[case study\] preventing peanut allergies
 
-**Assignment**: \[[HW1](content/hw1.qmd)\] due Thursday 1/18 11:59pm PST \[L1, L2\]
+**Assignment**: \[[HW1](content/hw/hw1.qmd)\] due Thursday 1/18 11:59pm PST \[L1, L2\]
 
 ### Week 2 (1/15/24)
 
@@ -49,23 +49,22 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 
 ### Week 3 (1/22/24)
 
-*Foundations for inference*
+*Descriptive statistics and graphical summaries*
 
-***Tuesday class meeting***
+***Tuesday class meeting*** \[[slides](content/week3-descriptive.qmd)\] \[[lab](content/labs/lab2-descriptive.qmd)\]
 
 -   \[reading\] Vu and Harrington 1.4 - 1.5; van Belle *et al.* 3.4
 -   \[lecture/discussion\] descriptive statistics for numerical and categorical data
--   \[lab\] descriptive statistics and graphics in R
--   \[case study\] NHANES, part 1 <!--# NHANES::NHANES -->
+-   \[lab\] descriptive statistics in R; robustness
 
 ***Thursday class meeting***
 
--   \[reading\] Vu and Harrington 4.1
--   \[lecture/discussion\] populations and samples
--   \[lab\] exploring sampling variation through simulation
--   \[case study\] NHANES, part 2
+-   \[reading\] Vu and Harrington 1.6
+-   \[lecture/discussion\] descriptive statistics for relationships between two variables
+-   \[lab\] bivariate summaries in R
+-   \[case study\] NHANES
 
-**Assignment**: HW2 due Thursday 2/1 11:59pm PST \[L1, L3\]
+**Assignment**: extended to next week
 
 ### Week 4 (1/29/24)
 
@@ -85,7 +84,9 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[lab\] inferential errors <!--# simulation -->
 -   \[case study\] DDT in kale <!--# MASS::DDT -->
 
-**Assignment**: Test 1 due Friday 2/2 11:59pm PST \[L1, L2, L3\]
+**Assignment**: HW2 due Thursday 2/8 11:59pm PST \[L1, L3\] 
+
+<!-- **Assignment**: Test 1 due Friday 2/2 11:59pm PST \[L1, L2, L3\] -->
 
 ### Week 5 (2/5/24)
 

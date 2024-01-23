@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nFoundations for inference\nTuesday class meeting\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics and graphics in R\n[case study] NHANES, part 1 \n\nThursday class meeting\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] populations and samples\n[lab] exploring sampling variation through simulation\n[case study] NHANES, part 2\n\nAssignment: HW2 due Thursday 2/1 11:59pm PST [L1, L3]\n\n\nWeek 4 (1/29/24)\nInterval estimation and hypothesis testing\nTuesday:\n\n[reading] Vu and Harrington 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] primary biliary cirrhosis \n\nThursday:\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] inferential errors \n[case study] DDT in kale \n\nAssignment: Test 1 due Friday 2/2 11:59pm PST [L1, L2, L3]\n\n\nWeek 5 (2/5/24)\nTwo-sample inference for numerical data\nTuesday:\n\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] t tests in R \n[case study] evolution of Darwin’s finches \n\nThursday:\n\n[lecture/discussion] nonparametric alternatives for two sample inference\n[lab] nonparametric and randomization tests in R\n[case study] effect of soporific drugs on sleep \n\nAssignment: HW3 due Thursday 2/15 11:59pm PST [L4, L5]\n\n\nWeek 6 (2/12/24)\nAnalysis of variance\nAssignment: HW4 due Thursday 2/22 11:59pm PST [L9]\n\n\n\nWeek 7 (2/19/24)\nInference for categorical data: proportions\nAcademic holiday 2/19/24\nAssignment: Test 2 due Friday 2/23 11:59pm PST [L4, L5, L9]\n\n\nWeek 8 (2/26/24)\nInference for categorical data: contingency tables and chi-square tests\nAssignment: HW5 due Thursday 3/7 11:59pm PST [L6, L7, L8]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\nAssignment: HW6 due Thursday 3/14 11:59pm PST [L10]\n\n\n\nWeek 10 (3/11/24)\nInference in regression\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
+    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n\nThursday class meeting\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] NHANES\n\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nInterval estimation and hypothesis testing\nTuesday:\n\n[reading] Vu and Harrington 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] primary biliary cirrhosis \n\nThursday:\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] inferential errors \n[case study] DDT in kale \n\nAssignment: HW2 due Thursday 2/8 11:59pm PST [L1, L3]\n\n\n\nWeek 5 (2/5/24)\nTwo-sample inference for numerical data\nTuesday:\n\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] t tests in R \n[case study] evolution of Darwin’s finches \n\nThursday:\n\n[lecture/discussion] nonparametric alternatives for two sample inference\n[lab] nonparametric and randomization tests in R\n[case study] effect of soporific drugs on sleep \n\nAssignment: HW3 due Thursday 2/15 11:59pm PST [L4, L5]\n\n\nWeek 6 (2/12/24)\nAnalysis of variance\nAssignment: HW4 due Thursday 2/22 11:59pm PST [L9]\n\n\n\nWeek 7 (2/19/24)\nInference for categorical data: proportions\nAcademic holiday 2/19/24\nAssignment: Test 2 due Friday 2/23 11:59pm PST [L4, L5, L9]\n\n\nWeek 8 (2/26/24)\nInference for categorical data: contingency tables and chi-square tests\nAssignment: HW5 due Thursday 3/7 11:59pm PST [L6, L7, L8]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\nAssignment: HW6 due Thursday 3/14 11:59pm PST [L10]\n\n\n\nWeek 10 (3/11/24)\nInference in regression\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
   },
   {
     "objectID": "content/week1-welcome.html#about-me",
@@ -203,6 +203,300 @@
     "text": "Recall that the difference between an observational study and an experiment hinges on whether researchers intentionally intervene on the system of study (experiment) or passively record outcomes (observational study). Additionally, the following common study designs were discussed:\n\nIn prospective (“looking ahead”) studies participants are recruited before developing a condition based on exposure; results look ahead to the proportions in each exposure group that develop the condition\nIn retrospective (“looking back”) studies participants are recruited after developing a condition; results look back on the proportions in each group that met certain criteria\n\nIn this activity you’ll read abstracts from a few published studies and determine, in consultation with your group, what kind of study is described in the abstract. You do not need to consider the examples in order — start with the ones that look most interesting.\n\nExample 1: long COVID\nLong COVID is a multi-systemic and often debilitating condition that develops in at least 10% of patients following a COVID infection. The following is an excerpt of the abstract from a recent study seeking to identify symptoms and risk factors associated with long COVID and published in Nature Medicine:\n\nWe undertook a … study using a UK-based primary care database, Clinical Practice Research Datalink Aurum, to determine symptoms that are associated with confirmed SARS-CoV-2 infection beyond 12 weeks in non-hospitalized adults and the risk factors associated with developing persistent symptoms. We selected 486,149 adults with confirmed SARS-CoV-2 infection … Outcomes included 115 individual symptoms, as well as long COVID, defined as a composite outcome of 33 symptoms by the World Health Organization clinical case definition … Among the patients infected with SARS-CoV-2, risk factors for long COVID included female sex, belonging to an ethnic minority, socioeconomic deprivation, smoking, obesity and a wide range of comorbidities. The risk of developing long COVID was also found to be increased along a gradient of decreasing age.\n\nSubramanian et al. (2022). Symptoms and risk factors for long COVID in non-hospitalized adults. Nature medicine, 28(8), 1706-1714.\nDiscuss the following questions with your group:\n\nIs this an observational study or an experiment?\nIs this study retrospective, prospective, or neither?\n\n\n\nExample 2: selenium exposure and Mediterranean diet\nThe following is from the abstract of a study investigating dietary mitigation of selenium exposure:\n\nSelenium is a trace element found in many chemical forms. Selenium and its species have nutritional and toxicologic properties, some of which may play a role in the etiology of neurological disease. We hypothesized that adherence to the Mediterranean-Dietary Approach to Stop Hypertension Intervention for Neurodegenerative Delay (MIND) diet could influence intake and endogenous concentrations of selenium and selenium species, thus contributing to the beneficial effects of this dietary pattern. We carried out a cross-sectional study of 137 non-smoking blood donors (75 females and 62 males) from the Reggio Emilia province, Northern Italy. We assessed MIND diet adherence using a semiquantitative food frequency questionnaire. We assessed selenium exposure through dietary intake and measurement of urinary and serum concentrations, including speciation of selenium compound in serum … Adherence to the MIND diet was positively associated with dietary selenium intake and urinary selenium excretion, whereas it was inversely associated with serum concentrations of overall selenium and organic selenium … Our results suggest that greater adherence to the MIND diet is non-linearly associated with lower circulating concentrations of selenium and of 2 potentially neurotoxic species of this element, selenoprotein P and selenate. This may explain why adherence to the MIND dietary pattern may reduce cognitive decline.\n\nUrbano, T., et al. (2023). Adherence to the Mediterranean-DASH Intervention for Neurodegenerative Delay (MIND) diet and exposure to selenium species: A cross-sectional study. Nutrition Research.\nDiscuss the following questions with your group:\n\nDoes the abstract describe an observational study or an experiment?\nIs this study prospective, retrospective, or neither?\nConsider the finding that MIND adherence is associated with lower circulating concentrations of selenium. Does this provide evidence that adoption of the MIND diet is likely to reduce selenium concentrations? Why or why not?\n\n\n\nExample 3: fermented kimchi and glucose metabolism\nThe following is from an abstract of a study investigating possible benefits of kimchi consumption among prediabetic individuals:\n\nWith the increased incidence of diabetes mellitus, the importance of early intervention in prediabetes has been emphasized … We hypothesized that kimchi and its fermented form would have beneficial effects on glucose metabolism in patients with prediabetes. A total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity … Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.\n\nAn, S. Y., et al. (2013). Beneficial effects of fresh and fermented kimchi in prediabetic individuals. Annals of Nutrition and Metabolism, 63(1-2), 111-119.\nDiscuss the following questions with your group:\n\nDoes the abstract describe an observational study or an experiment?\nIs this study retrospective, prospective, or neither?\nConsider the finding that a third of participants consuming fermented kimchi showed improved glucose tolerance. Does this provide evidence that consuming fermented kimchi is likely to improve glucose tolerance? Would you answer differently if the study had found that number were 8 in 10?\n\n\n\nExample 4: Moderna vaccine efficacy\nFrom the journal publication reporting clinical trial results for the Moderna COVID vaccine:\n\nVaccines are needed to prevent coronavirus disease 2019 (Covid-19) and to protect persons who are at high risk for complications. The mRNA-1273 vaccine is a lipid nanoparticle–encapsulated mRNA-based vaccine that encodes the prefusion stabilized full-length spike protein of the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), the virus that causes Covid-19. This [study] was conducted at 99 centers across the United States … The trial enrolled 30,420 volunteers who were randomly assigned in a 1:1 ratio to receive either vaccine or placebo (15,210 participants in each group) … Symptomatic Covid-19 illness was confirmed in 185 participants in the placebo group and in 11 participants in the mRNA-1273 group; vaccine efficacy was 94.1%. \n\nBaden, L. R., et al. (2021). Efficacy and safety of the mRNA-1273 SARS-CoV-2 vaccine. New England journal of medicine, 384(5), 403-416.\nDiscuss the following questions with your group:\n\nIs this an observational study or an experiment?\nIs this study prospective, retrospective, or neither?\nConsider the finding that 11 symptomatic illnesses were observed in the vaccine group and 185 were observed in the placebo group. Does this provide evidence that the vaccine reduces the likelihood of symptomatic illness?"
   },
   {
+    "objectID": "content/week2-datatypes.html#todays-agenda",
+    "href": "content/week2-datatypes.html#todays-agenda",
+    "title": "Introduction to data",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nReading quiz\nLoose ends from last time: LEAP case study; experimental design basics\nData basics: data semantics and data types\nLab: data types and data structures in R"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#case-study-leap",
+    "href": "content/week2-datatypes.html#case-study-leap",
+    "title": "Introduction to data",
+    "section": "Case study: LEAP",
+    "text": "Case study: LEAP\nLearning early about peanut allergy (LEAP) study:\n\n640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy\neach infant randomly assigned to peanut consumption and peanut avoidance groups\n\npeanut consumption: fed 6g peanut protein daily until 5 years old\npeanut avoidance: no peanut consumption until 5 years old\n\nat 5 years old, oral food challenge (OFC) allergy test administered\n\nPASS: no allergy detected\nFAIL: allergy detected\n\n\nReview questions from last time:\n\nExperiment or observational study?\nRetrospective, prospective, or neither?"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#case-study-leap-1",
+    "href": "content/week2-datatypes.html#case-study-leap-1",
+    "title": "Introduction to data",
+    "section": "Case study: LEAP",
+    "text": "Case study: LEAP\n \nA greater proportion of children in the avoidance group developed an allergy (11.8% specifically). Given the type of study, which is a more accurate interpretation of this result?\n\nCompared with consumption, peanut avoidance early in life was associated with more frequent occurrence of peanut allergies among children in the study.\nCompared with consumption, peanut avoidance early in life led to more frequent occurrence of peanut allergies among children in the study."
+  },
+  {
+    "objectID": "content/week2-datatypes.html#experimental-design",
+    "href": "content/week2-datatypes.html#experimental-design",
+    "title": "Introduction to data",
+    "section": "Experimental design",
+    "text": "Experimental design\nThe LEAP study exemplifies the simple kind of design we will consider for much of STAT218:\n\ntwo “treatments” (peanut consumption and peanut avoidance)\ntreatments are allocated completely at random among all study units\n\nThe design of an experiment refers to how treatments (experimental interventions) are allocated to study units.\n\nthe number of replicates of a treatment refers to the number of study units receiving that treatment\na design is balanced if all treatments have equal numbers of replicates\ntreatment allocation should always be randomized; different designs use different randomization schemes\n\nCheck your understanding: is the experimental design of the LEAP study balanced?"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#data-semantics",
+    "href": "content/week2-datatypes.html#data-semantics",
+    "title": "Introduction to data",
+    "section": "Data semantics",
+    "text": "Data semantics\n\nData are a set of measurements.\nA variable is any measured attribute of study units.\nAn observation is a measurement of one or more variables taken on one particular study unit.\n\nIt is usually expedient to arrange data values in a table in which each row is an observation and each column is a variable:"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#leap-example",
+    "href": "content/week2-datatypes.html#leap-example",
+    "title": "Introduction to data",
+    "section": "LEAP example",
+    "text": "LEAP example\nA table showing the observations and variables for the LEAP study would look like this:\n\n\n\n\n\n\n\n\n\n\nparticipant.ID\ntreatment.group\nofc.test.result\n\n\n\n\nLEAP_100522\nPeanut Consumption\nPASS OFC\n\n\nLEAP_103358\nPeanut Consumption\nPASS OFC\n\n\nLEAP_105069\nPeanut Avoidance\nPASS OFC\n\n\nLEAP_105328\nPeanut Consumption\nPASS OFC\n\n\n\n\n\nThe table you saw earlier was a summary of the data (not the data itself):\n\n\n\n\n\n\n\n\n\n\n \nFAIL OFC\nPASS OFC\n\n\n\n\nPeanut Avoidance\n36\n227\n\n\nPeanut Consumption\n5\n262"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#numeric-and-categorical-variables",
+    "href": "content/week2-datatypes.html#numeric-and-categorical-variables",
+    "title": "Introduction to data",
+    "section": "Numeric and categorical variables",
+    "text": "Numeric and categorical variables\nVariables are classified according to their values. The broadest distinction made is between numeric and categorical variables.\n\nA variable is numeric if its value is a number\nA variable is categorical if its value is a category, usually recorded as a name or label\n\nFor example:\n\nthe value of sex can be male or female, so it is categorical\nwhereas age (in years) can be any positive integer, so it is numeric\n\nCheck your understanding: in the LEAP study…\n\ntreatment group is [numeric/categorical]\nOFC test result is [numeric/categorical]"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#variable-subtypes",
+    "href": "content/week2-datatypes.html#variable-subtypes",
+    "title": "Introduction to data",
+    "section": "Variable subtypes",
+    "text": "Variable subtypes\nFurther distinctions are made based on the type of number or type of category used to measure an attribute. Can you match the subtypes to the variables at right?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nhispanic\ngrade\nweight\n\n\n\n\n15\nnot\n10\n78.02\n\n\n18\nhispanic\n12\n78.47\n\n\n17\nnot\n11\n95.26\n\n\n18\nnot\n12\n95.26\n\n\n\n\n\n\n\n\na numerical variable is discrete if there are ‘gaps’ between its possible values\na numerical variable is continuous if there are no such gaps\na categorical variable is nominal if its levels are not ordered\na categorical variable is ordinal if its levels are ordered"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#many-ways-to-measure-attributes",
+    "href": "content/week2-datatypes.html#many-ways-to-measure-attributes",
+    "title": "Introduction to data",
+    "section": "Many ways to measure attributes",
+    "text": "Many ways to measure attributes\nVariable type (or subtype) is not an inherent quality — attributes can often be measured in many different ways.\nFor instance, age might be measured as either a discrete, continuous, or ordinal variable, depending on the situation:\n\n\n\nAge (years)\nAge (minutes)\nAge (brackets)\n\n\n\n\n12\n6307518.45\n10-18\n\n\n8\n4209187.18\n5-10\n\n\n21\n11258103.08\n18-30\n\n\n\n\nNumeric variables can always be represented as categorical, but not the other way around."
+  },
+  {
+    "objectID": "content/week2-datatypes.html#your-turn-identifying-data-types-i",
+    "href": "content/week2-datatypes.html#your-turn-identifying-data-types-i",
+    "title": "Introduction to data",
+    "section": "Your turn: identifying data types I",
+    "text": "Your turn: identifying data types I\nClassify each variable as nominal, ordinal, discrete, or continuous:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nndrm.ch\ndrm.ch\nsex\nage\nrace\nheight\nweight\nactn3.r577x\nbmi\n\n\n\n\n33.3\n0\nFemale\n19\nCaucasian\n65.7\n129\nCT\n21.01\n\n\n71.4\n0\nFemale\n18\nOther\n67\n148\nCT\n23.18\n\n\n37.5\n0\nFemale\n21\nCaucasian\n66.7\n183\nCC\n28.92\n\n\n50\n0\nFemale\n28\nAsian\n61\n112\nCC\n21.16\n\n\n\n\n\nData are from an observational study investigating demographic, physiological, and genetic characteristics associated with muscle strength.\n\nndrm.ch and drm.ch are change in strength in nondominant and dominant arms before and after training\nactn3.r577x gives genotype at a particular location within the ACTN3 gene (so-called “sports gene”)"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#your-turn-identifying-data-types-ii",
+    "href": "content/week2-datatypes.html#your-turn-identifying-data-types-ii",
+    "title": "Introduction to data",
+    "section": "Your turn: identifying data types II",
+    "text": "Your turn: identifying data types II\nRecall the kimchi/prediabetes study from last time:\n\nA total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity … Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.\n\n\nlist the minimal collection of variables measured\ndetermine a likely type for each variable\ninvent a few example observations to sketch what the data table might look like"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#describing-studies",
+    "href": "content/week2-datatypes.html#describing-studies",
+    "title": "Introduction to data",
+    "section": "Describing studies",
+    "text": "Describing studies\nLet’s put some pieces together. The “essential information” to report when explaining/presenting a study comprises:\n\nResearch question or hypothesis\nType of study\nNumber and type of study units\nIf applicable, experimental design\nObservations and variables measured"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#lab-data-types-and-structures-in-r",
+    "href": "content/week2-datatypes.html#lab-data-types-and-structures-in-r",
+    "title": "Introduction to data",
+    "section": "Lab: data types and structures in R",
+    "text": "Lab: data types and structures in R\nThe simplest data structure in R is a vector: a collection of values of a single “type”. This lab will introduce you to data types, vectors, and a few other common data structures.\n\n\n\n\nThe variable types we just discussed map pretty neatly (but not perfectly) onto the main “data types” in R:\n\nnumeric ➜ integer, numeric\ncategorical ➜ character, logical\n\nYour objectives in this lab are:\n\nlearn to perform simple calculations\nlearn to recognize data types and data structures"
+  },
+  {
+    "objectID": "content/week2-datatypes.html#up-next-descriptive-statistics",
+    "href": "content/week2-datatypes.html#up-next-descriptive-statistics",
+    "title": "Introduction to data",
+    "section": "Up next: descriptive statistics",
+    "text": "Up next: descriptive statistics\nSo far we’ve discussed study designs and the basics of data.\nDescriptive statistics refers to techniques for summarizing data:\n\nnumerical summaries\ntables\ngraphical summaries\n\nSuch summaries are essential first steps in any data analysis, as they convey what was directly observed in the study.\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/hw/hw1.html",
+    "href": "content/hw/hw1.html",
+    "title": "Homework 1: Study designs",
+    "section": "",
+    "text": "Instructions: type up your answers and submit your work electronically. Questions with a learning outcome indicated in brackets will be evaluated for credit; other questions are provided for additional practice. You are expected to answer all questions."
+  },
+  {
+    "objectID": "content/hw/hw1.html#education-and-injury-prevention",
+    "href": "content/hw/hw1.html#education-and-injury-prevention",
+    "title": "Homework 1: Study designs",
+    "section": "Education and injury prevention",
+    "text": "Education and injury prevention\nSuppose you wish to study the efficacy of physical activity and exercise education as a means of sports injury prevention. Your research question is, “does knowledge about injury prevention during physical activity and exercise reduce the risk of injury?”. Imagine that ASI offers a short injury prevention training.\nYour initial study proposal is as follows:\n\n150 Cal Poly students will be selected for the study: 75 from among those who completed the injury prevention training voluntarily, and 75 from among those who did not. Participants will be followed for a year to determine how many in each group experience an injury related to physical activity at any point during the study period. At the end of the study, injury rates will be compared between those that participated in the injury prevention training and those that did not.\n\n\n[L2] Is this an observational study or an experiment? Explain your answer.\n[L1] How would you go about selecting study participants at random? Propose a specific means of identifying and contacting students to participate in the study.\n[L2] Imagine you found that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If you answer yes, give a hypothetical example of a confounding factor; if you answer no, explain why confounding is not a concern.\n[L1] If you answered that it is an observational study, propose an experiment that would address the same question. If you answered that it is an experiment, propose an observational study that would address the same question.\n[L2] Suppose the alternate study you proposed in (4) indicated that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If so, give a hypothetical example of a confounding factor; if not, explain why confounding is not a concern.\nIs the original proposal a retrospective or prospective study? Explain your answer.\nIf you answered that it is retrospective, determine an alternate study to investigate the same research question that is instead prospective; if you answered that it is prospective, determine an alternate study that is retrospective. Write a short proposal similar to the above for your alternate study."
+  },
+  {
+    "objectID": "content/hw/hw1.html#peanut-allergies",
+    "href": "content/hw/hw1.html#peanut-allergies",
+    "title": "Homework 1: Study designs",
+    "section": "Peanut allergies",
+    "text": "Peanut allergies\nConsider the Learning Early About Peanut allergy (LEAP) study discussed in class and in your reading:\n\nFor the LEAP study, 640 infants in the United Kingdom were enrolled with risk factors for peanut allergies (eczema or egg allergy); 530 passed a skin test at the start of the study showing no peanut allergy. Each infant was randomly assigned to peanut consumption (6g peanut protein per day) or peanut avoidance (no peanut consumption) groups. At 5 years of age, an allergy test was administered to each study participant; the rates of peanut allergy were compared between the two groups.\n\n\n[L1] Propose a retrospective observational study to investigate the research question, “is early peanut exposure associated with a lower risk of developing peanut allergies?” Include a specific description of how you might enroll participants."
+  },
+  {
+    "objectID": "content/labs/lab3-multivariate.html",
+    "href": "content/labs/lab3-multivariate.html",
+    "title": "Lab 2: Descriptive statistics",
+    "section": "",
+    "text": "Let’s explore how some of the other descriptive statistics we’ve discussed behave in response to outliers. Specifically, measures of spread: standard deviation and IQR.\nThe variable you just looked at — dominant arm percent change in strength — has a group of observations at 100%. If these are removed, the standard deviation increases by 10%, but the IQR only increases by 5%.\n\n# extract dominant arm percent change in strength\ndrm &lt;- famuss$drm.ch\n\n# drop the observations over 80%\ndrm.drop &lt;- drm[drm &lt; 100]\n\n# compute the numeric summary with and without outliers\nsummary(drm)\nsummary(drm.drop)\n\n# compare standard deviations\nsd(drm)/sd(drm.drop)\n\n# compare interquartile ranges\nIQR(drm)/IQR(drm.drop)\n\nThis may not seem very notable, so let’s make up an example that’s a bit more extreme: let’s add a very large positive observation, say, 1000. Then, the IQR does not change at all, but the standard deviation more than doubles!\n\n# add a large observation\ndrm.add &lt;- c(drm, 1000)\n\n# compare IQR with and without\nIQR(drm.add)/IQR(drm)\n\n# compare SD with and without\nsd(drm.add)/sd(drm)\n\nThe differences in robustness between IQR and standard deviation, and between mean and median, are largely why both the five-number summary and the mean and standard deviation are reported. When these statistics differ dramatically, it is most likely due to the presence of outliers!\n\n\n\n\n\n\nYour turn\n\n\n\nCompute the numeric summary for a variable from a different dataset and based on this alone attempt a guess at whether there are outliers. If so, are they more likely outliers to the left or right?\n\n# load a new dataset (census)\ndata(census.2010)\n\n# number of doctors per state (thousands)\ndoctors &lt;- census.2010$doctors\n\n# compute numeric summary -- guess whether there are outliers?\n\n# make a histogram or boxplot to confirm your guess\n\n# bonus: which state??"
+  },
+  {
+    "objectID": "content/labs/lab1-rbasics.html",
+    "href": "content/labs/lab1-rbasics.html",
+    "title": "Lab 1: R Basics",
+    "section": "",
+    "text": "This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won’t be expected to do much data manipulation or manual calculation for this class, it will be helpful for you to have some understanding of this material going forward, as most R objects are arranged as data structures comprising one or more data types.\nThis lab covers a lot of ground; consider it a reference you can return to later as needed.\n\nArithmetic operations\nWhile R does a lot more than function as a calculator, it can be used to perform basic arithmetic. All of the usual operations — addition, subtraction, multiplication, division, exponentiation — can be performed as shown below.\n\n# addition\n2 + 1 \n\n# subtraction\n2 - 1\n\n# multiplication\n2*3\n\n# division\n2/3\n\n# exponentiation\n3^2\n\n# parentheses for order of operations: compare\n(2 + 1)/4\n2 + 1/4\n\nBasic functions can also be evaluated. To name a few:\n\n# square root\nsqrt(9)\n\n# exponential function e^x\nexp(1)\n\n# logarithm: compare, default base is e (i.e., natural log)\nlog(2, base = exp(1))\nlog(2)\n\nThe result of each of these calculations is a value. Values are the most elementary objects in the R environment. Values can be assigned names using the assignment operator &lt;-:\n\n# store a value\nx &lt;- log(2)\n\n# print value in console\nx\n\nNames can consist of any combination of letters, numbers, and the delimiters _ and .; names cannot start with numbers (try it and see what happens).\nIf a name is used multiple times, the most recently assigned value will be stored. However, ‘most recent’ in this context means ‘most recently executed’: R will not pay attention to the order of lines in your script, but the order in which you run them. To see this, try redefining x to be a new value. if you then go back and run the previous line that displays the value, you’ll notice you get the new value, not the old one, even though the line appears before the new assignment.\n\n# assign a new value the name 'x': this overwrites the first value\nx &lt;- 4\n\n\n\n\n\n\n\nYour turn\n\n\n\nWrite one line of code each to perform the following calculations:\n\nCalculate the sum of the ages of each member of your group, in years.\nHow about in months? Multiply by 12.\nCalculate the average number of siblings among the members of your group.\n\n\n# sum of ages of group members\n\n# convert to months: multiply by 12\n\n# average number of siblings among group members\n\n\n\n\n\nData types\nValues may be of different types. The function class(...) will return the “class” of object it is given; for values, the object class is simply the data type.\nThere are four main data types in R.\n\n# numeric\nclass(12)\n\n# character\nclass('text')\n\n# logical\nclass(TRUE)\n\n# integer\nclass(12L)\n\nArithmetic only works with logical, integer, and numeric values:\n\n# valid operations\n12*12\n12L*12\n12L*12L\n12*TRUE\n12*FALSE\n12L*TRUE\n12L*FALSE\n\nIt will not work with character values. Notice the text of the error message:\n\n# invalid operation\n'12'*'12'\n\nError in \"12\" * \"12\": non-numeric argument to binary operator\n\n\nThis is a very common error message — when you see it, you’ll know that most likely, somewhere R attempted to perform arithmetic with character values, so it’s probably a data type issue.\n\n\n\n\n\n\nYour turn\n\n\n\n\nCalculate the product of TRUE and FALSE. Which data type results from this operation?\nWhat do you think will happen if you add a logical and numeric value? Discuss first, then verify.\nWhat kind of value does each of the above operations return? Discuss first, then verify.\n\n\n# product of true and false\n\n# add a logical and numeric value\n\n# check data type of the above\n\n\n\n\n\nVectors\nIn practice, data usually consists of multiple values, not just one; in R, the most basic type of collection of values is called a vector. Technically, a vector is a “concatenation” of values of the same data type. Vectors can be formed using the concatenation function c(...):\n\n# concatenate values with c(...) to form a vector\nc(1, 2, 3)\n\n# store it\nx &lt;- c(1, 2, 3)\n\n# data type\nclass(x)\n\nIf values of different types are concatenated, they are coerced to the same data type; vectors cannot contain values of mixed type. The lines below demonstrate this behavior:\n\n# integer and logical -&gt; integer\nclass(c(2L, TRUE))\n\n# integer and numeric -&gt; numeric\nclass(c(2L, 12))\n\n# numeric and logical -&gt; numeric\nclass(c(12, TRUE))\n\n# character and anything -&gt; character\nclass(c('text', TRUE))\nclass(c('text', 2L))\nclass(c('text', 12))\n\n\nVectorization\nArithmetic between vectors is carried out elementwise; arithmetic operations between vectors and values are ‘vectorized’, meaning operations are applied over each element. This makes certain calculations quite efficient. The following examples illustrate vectorized arithmetic operations in two verbose ways: first as an elementwise operation between two vectors; then as a concatenation of the results of each elementwise operation.\n\n# equivalent\n2*c(1, 2, 3) # vectorized\nc(2, 2, 2)*c(1, 2, 3) # verbose\nc(2*1, 2*2, 2*3) # verbose\n\n# equivalent\nc(1, 2, 3) + 1 # vectorized\nc(1, 2, 3) + c(1, 1, 1) # verbose\nc(1 + 1, 2 + 1, 3 + 1) # verbose\n\n# equivalent\nc(1, 2, 3)/3 # vectorized\nc(1, 2, 3)/c(3, 3, 3) # verbose\nc(1/3, 2/3, 3/3) # verbose\n\n# equivalent\nc(1, 2, 3)^2 # vectorized\nc(1, 2, 3)^c(2, 2, 2) # verbose\nc(1^2, 2^2, 3^2) # verbose\n\nIf an operation is carried out between vectors of different lengths, a warning is printed indicating as much.\n\n# can you figure out what calculation was performed?\nc(1, 2, 3)*c(4, 5)\n\nWarning in c(1, 2, 3) * c(4, 5): longer object length is not a multiple of\nshorter object length\n\n\n[1]  4 10 12\n\n\nMany functions, including those mentioned at the outset, are also vectorized (calculations are performed elementwise).\n\nsqrt(c(1, 4, 9))\nlog(c(1, 10, 100), base = 10)\nexp(c(0, 1, 2))\n\n\n\nIndexing\nElements of vectors are indexed by consecutive integers; elements can be retrieved by specifying the indices in square brackets after the object name.\n\n# define a vector\nx &lt;- c(10, 20, 30, 40)\n\n# second element\nx[2]\n\n# first and third elements\nx[c(1, 3)]\n\n# second through fourth elements\nx[2:4]\n\n\n\nMissing values\nMany datasets have missing values that occur for various reasons: equipment failure, participant dropout, survey nonresponse, and so on. These can be represented in R as well. This is useful as a means of retaining the information that there is an observation that was somehow lost. Missing values are displayed as the special character NA in R.\n\n# vector with a missing third element\nc(1, 2, NA, 4)\n\n# note: still numeric\nclass(c(1, 2, NA, 4))\n\n\n\n\n\n\n\nYour turn\n\n\n\n\nCreate a vector with the ages of each person in your group (in years). Call it ages.\nConvert to months using vectorized arithmetic.\nNow pretend one of you is absent; repeat (1) but replace their age by a missing value. call the vector ages_incomplete.\nConvert to months again using the same operation as in (2); how is the missing value handled?\n\n\n# vector of ages in years\n\n# convert to months with vectorized arithmetic\n\n# pretend one person is absent: input a missing value\n\n# repeat conversion to months: how is the NA handled?\n\n\n\n\n\nMatrices, arrays, lists, and data frames\nMatrices can be constructed from vectors by specifying row and column dimensions, and how to arrange the values – by row or by column.\n\nx &lt;- c(1, 2, 3, 4)\nmatrix(data = x, nrow = 2, ncol = 2, byrow = TRUE)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nWe won’t really see arrays much, but since they are mentioned in the reading, here’s an example of how to construct one, and how it is displayed.\n\nx &lt;- c(1, 2, 3, 4, 5, 6, 7, 8)\narray(data = x, dim = c(2, 2, 2))\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n, , 2\n\n     [,1] [,2]\n[1,]    5    7\n[2,]    6    8\n\n\nA list is a highly general data structure; it’s just an indexed amalgamation of objects of any type.\n\n# make a list\nlist('anchor', c(22, 5), log)\n\n[[1]]\n[1] \"anchor\"\n\n[[2]]\n[1] 22  5\n\n[[3]]\nfunction (x, base = exp(1))  .Primitive(\"log\")\n\n# the list elements can be named, which makes for easy retrieval\nmy_list &lt;- list(words = 'anchor', numbers = c(22, 5), functions = log)\nmy_list$words\n\n[1] \"anchor\"\n\n# even so, indexing can still be used\nmy_list[[1]]\n\n[1] \"anchor\"\n\n\nData frames are like lists, except each element is a vector of the same length; they appear much like matrices, but behave differently in important ways.\n\n# make a data frame\ndata.frame(col1 = c(1, 2, 3, 4), \n           col2 = c(T, F, T, T), \n           col3 = c('red', 'blue', 'green', 'yellow'))\n\n  col1  col2   col3\n1    1  TRUE    red\n2    2 FALSE   blue\n3    3  TRUE  green\n4    4  TRUE yellow\n\n# unlike matrices, however, columns can be retrieved by name\nmy_df &lt;- data.frame(number = c(1, 2, 3, 4), \n                    truth = c(T, F, T, T), \n                    color = c('red', 'blue', 'green', 'yellow'))\n\n# the result is a vector containing the values of that column\nmy_df$color\n\n[1] \"red\"    \"blue\"   \"green\"  \"yellow\"\n\n\nData frames are the fundamental data structure on which a large portion of R software is built. When data files are read into R, as you saw very briefly earlier, they are read in by default as data frames. Many R functions used in performing data analyses require data to be supplied as a data frame.\n\n\n\n\n\n\nYour turn\n\n\n\nCreate a data frame in which each row corresponds to one member of your group and columns are the variables age, number of siblings, and favorite singer.\n\n# data frame with columns age, no. of siblings, and favorite singer; each row corresponds to one group member"
+  },
+  {
+    "objectID": "content/labs/lab2-descriptive.html",
+    "href": "content/labs/lab2-descriptive.html",
+    "title": "Lab 2: Descriptive statistics",
+    "section": "",
+    "text": "By now you have seen basic descriptive and graphical summaries. But what determines when some descriptive statistics are “better” to use than others?\nThis lab has two objectives:\n\nTeach you to compute descriptive statistics and prepare graphical summaries for a single variable in R\nLearn when and why to use certain descriptive statistics in place of others\n\nWe will focus on how outliers, or observations far from center, affect different descriptive measures. In statistics, the term for this is robustness: a robust statistic is less affected by the presence of outliers.\n\nAccessing data\nFor this lab we’ll use the FAMuSS dataset, as in lecture. This dataset is stored in the oibiostat package, which is an R package companion to the Vu and Harrington textbook.\n\n# load openintro biostat package\nlibrary(oibiostat)\n\n# load famuss data\ndata(famuss)\n\n# open data documentation\n?famuss\n\nThe command above makes the dataset available in your environment as a data frame named famuss in which the columns represent variables and the rows represent observations. You can see the first few rows using head():\n\nhead(famuss)\n\n  ndrm.ch drm.ch    sex age      race height weight actn3.r577x    bmi\n1      40     40 Female  27 Caucasian   65.0    199          CC 33.112\n2      25      0   Male  36 Caucasian   71.7    189          CT 25.845\n3      40      0 Female  24 Caucasian   65.0    134          CT 22.296\n4     125      0 Female  40 Caucasian   68.0    171          CT 25.998\n5      40     20 Female  32 Caucasian   61.0    118          CC 22.293\n6      75      0 Female  24  Hispanic   62.2    120          CT 21.805\n\n\nYou can extract a vector of the observations for any particular variable from the dataframe as follows: famuss$[variable name]. We will be performing calculations one column at a time, so you’ll need to be able to extract and store a column as a new R object.\n\n# extract the age variable\nfamuss$age\n\n# extract the bmi variable\nfamuss$bmi\n\n# store the age column as a vector\nage &lt;- famuss$age\n\n\n\n\n\n\n\nYour turn\n\n\n\n\n# try it yourself: pick a variable to extract and store\n\n\n\n\n\nGraphical and tabular summaries\nOur most basic summaries are frequency distributions. For categorical variables, these are simply observation counts by category; for numeric variables, values must be binned and then tabulated.\nFor categorical variables (i.e., character vectors or factors):\n\ntable() will tabulate the number of occurrences of unique values in a vector\nfor a categorical variable, plot() will create a barplot of the frequency distribution\n\nFor numeric variables:\n\nhist() will create a histogram\n\n\n## categorical summaries\nrace &lt;- famuss$race\n\n# frequency distribution\ntable(race)\n\n# barplot of frequency distribution\nplot(race)\n## quantitative summaries\nage &lt;- famuss$age\n\n# histogram; 'breaks = ...' controls the binning\nhist(age, breaks = 20)\n\nA quick word about functions. The inputs to functions are called arguments. The histogram function hist() requires a data argument, in this case age, to make the plot. However, the function also has several optional arguments that control things like labels, binning, axis limits, and so on. The breaks = 20 part of the last command is an example of an optional argument. Most functions in R have optional arguments that control their behavior.\n\n\n\n\n\n\nYour turn\n\n\n\nTry making a table, barplot, and histogram on your own with some of the other variables.\nWhen generating the histogram, adjust the number of bins using the breaks = ... argument. Experiment to see how the shape of the distribution appears at various binning resolutions; then pick a number of breaks that you feel reflects the data best.\n\n# make a table of the frequency distribution of genotypes\n\n# make a barplot of the frequency distribution of genotypes\n\n# make a histogram of dominant arm change; play with the binning!\n\n\n\n\n\nNumerical summaries\nIn class we discussed several descriptive statistics for numeric variables.\n\nmeasures of center: mean, median\npercentiles: quartiles, min, max\n\nThese statistics are so commonly used that they have their own functions in R.\n\n# the median gets its own function\nmedian(age)\n\n# ditto mean\nmean(age)\n\n# ... and minimum and maximum\nmin(age)\nmax(age)\n\n# 30th percentile of age (\"quantile\" is another term for percentile)\nquantile(age, probs = 0.3)\n\n# 30th *and* 60th percentile of age\nquantile(age, probs = c(0.3, 0.6))\n\nThe five-number summary is the collection of the percentiles that give the minimum, quartiles, and maximum.\n\n\n\n\n\n\nYour turn\n\n\n\nTry computing the five-number summary using a variable of your choice. Be sure you pick a numeric and not a categorical variable.\nPay attention to how the probs = ... argument to the quantile() function can be used to calculate multiple percentiles at once. Use this feature to calculate all five numbers in the five-number summary with one command.\n\n# choose a *quantiative* variable from the dataset\n\n# compute the five-number summary using quantile()\n\n# compare the mean and the median. are they close?\n\n\n\nAlternatively, the summary() command will do the work for you.\n\nsummary(age)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   17.0    20.0    22.0    24.4    27.0    40.0 \n\n\n\n\nExploring robustness\nStatistics based on percentiles are in general insensitive to outliers, unless there’s a large group of outlying observations. In this sense they are robust statistics.\nAn easy way to see this is to consider the median (middle value or 50th percentile). The maximum observation could be arbitrarily large without changing the middle value, so the median will be the same whether the largest value is 10 or 10,000. The mean, by contrast, does not share this property.\n\n# make up some observations between 1 and 100\nx &lt;- sample(1:100, size = 20)\nx\n\n# median of made up observations, plus 101\nmedian(c(x, 101))\n\n# median of made up observations, plus 1M\nmedian(c(x, 1000000))\n\n# same comparison, but with mean\nmean(c(x, 101))\nmean(c(x, 1000000))\n\nSo in the presence of outliers, the median will capture the center of the distribution of values more accurately. In fact, even if the distribution is simply skewed, the mean will shift away from center.\n\n# distribution of ages is right-skewed\nhist(age)\n\n# plot the mean and median on top of the histogram\nhist(age)\nabline(v = mean(age), col = 2)\nabline(v = median(age), col = 4)\n\n\n\n\nThis difference is useful — the comparison of median and mean can indicate the direction and amount of skewness present.\n\n# mean &gt; median ---&gt; right-skewed\nsummary(age)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   17.0    20.0    22.0    24.4    27.0    40.0 \n\n\n\n\n\n\n\n\nYour turn\n\n\n\nCalculate the numeric summary for percent change in dominant arm strength and see if you can determine the direction and magnitude of skewness based on this summary only.\nThe amount of skewness is a bit subjective — so just discuss and make a determination about whether the difference between median and mean seems sizeable.\n\n# check the numeric summary for percent change in dominant arm strength\n# can you tell the direction of skewness?? does it seem very skewed??\n\n\n\n\nknitr::purl(input = 'lab2-descriptive.qmd',\n            output = 'lab2-descriptive.R')"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#last-time",
+    "href": "content/week3-descriptive.html#last-time",
+    "title": "Descriptive statistics",
+    "section": "Last time",
+    "text": "Last time\n\n\n\nData semantics\n\n\ncategorical data: ordinal (ordered) or nominal (unordered)\nnumeric data: continuous (no ‘gaps’) or discrete (‘gaps’)\n\n\nData types and data structures in R\n\n\nbasic types: numeric, character, logical, integer\na vector is a collection of values of one type\na data frame is a type-heterogeneous list of vectors of equal length\n\n\nVectors can store observations of one variable:\n\n# 4 observations of age\nages &lt;- c(18, 22, 18, 12)\nages\n\n[1] 18 22 18 12\n\n\nData frames can store observations of many variables:\n\n# 3 observations of 2 variables\ndata.frame(subject.id = c(11, 2, 31),\n           age = c(24, 31, 17),\n           sex = c('m', 'm', 'f'))\n\n  subject.id age sex\n1         11  24   m\n2          2  31   m\n3         31  17   f\n\n\n\n\nTechniques for summarizing data depend on the data type"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#todays-agenda",
+    "href": "content/week3-descriptive.html#todays-agenda",
+    "title": "Descriptive statistics",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nGraphical and tabular summaries for numeric and categorical data\n\nfrequency distributions\nbarplots\nhistograms\n\nQuantitative summaries for numeric data\n\npercentiles\nmeasures of center\nmeasures of spread\n\nLab exploring descriptive statistics and robustness"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#what-are-descriptive-statistics",
+    "href": "content/week3-descriptive.html#what-are-descriptive-statistics",
+    "title": "Descriptive statistics",
+    "section": "What are descriptive statistics?",
+    "text": "What are descriptive statistics?\nDescriptive statistics are quantitative summaries of the observations of one or more variables. They usually serve one of three aims:\n\nIdentify typical or “central” values\nCharacterize the variability or “spread” of values\nCharacterize relationships between variables\n\nDescriptive statistics are often accompanied by graphical summaries that aid in visualizing these same characteristics."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#todays-example-data-famuss",
+    "href": "content/week3-descriptive.html#todays-example-data-famuss",
+    "title": "Descriptive statistics",
+    "section": "Today’s example data: FAMuSS",
+    "text": "Today’s example data: FAMuSS\nObservational study of 595 individuals comparing change in arm strength before and after resistance training between genotypes for a region of interest on the ACTN3 gene.\n\nPescatello, L. S., et al. (2013). Highlights from the functional single nucleotide polymorphisms associated with human muscle size and strength or FAMuSS study. BioMed research international, 2013.\n\n\n\n\nExample data rows\n\n\n\n\n\n\n\n\n\n\n\n\n\nndrm.ch\ndrm.ch\nsex\nage\nrace\nheight\nweight\nactn3.r577x\nbmi\n\n\n\n\n40\n40\nFemale\n27\nCaucasian\n65\n199\nCC\n33.11\n\n\n25\n0\nMale\n36\nCaucasian\n71.7\n189\nCT\n25.84\n\n\n40\n0\nFemale\n24\nCaucasian\n65\n134\nCT\n22.3\n\n\n125\n0\nFemale\n40\nCaucasian\n68\n171\nCT\n26"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#categorical-frequency-distributions",
+    "href": "content/week3-descriptive.html#categorical-frequency-distributions",
+    "title": "Descriptive statistics",
+    "section": "Categorical frequency distributions",
+    "text": "Categorical frequency distributions\nFor categorical variables, the frequency distribution is simply an observation count by category. For example:\n\n\n\n\n\nData table\n\n\n\n\n\n\nparticipant.id\ngenotype\n\n\n\n\n494\nTT\n\n\n510\nTT\n\n\n216\nCT\n\n\n19\nTT\n\n\n278\nCT\n\n\n86\nTT\n\n\n\n\n\n\n\n\n\nFrequency distribution\n\n\n\n\n\n\n\nCC\nCT\nTT\n\n\n\n\n173\n261\n161"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#numeric-frequency-distributions",
+    "href": "content/week3-descriptive.html#numeric-frequency-distributions",
+    "title": "Descriptive statistics",
+    "section": "Numeric frequency distributions",
+    "text": "Numeric frequency distributions\nFrequency distributions of numeric variables are observation counts by range.\n\n\n\n\n\nData table\n\n\n\n\n\n\nparticipant.id\nbmi\n\n\n\n\n194\n22.3\n\n\n141\n20.76\n\n\n313\n23.48\n\n\n522\n29.29\n\n\n504\n42.28\n\n\n273\n20.34\n\n\n\n\n\n\n\n\n\nFrequency distribution\n\n\n\n\n\n\n\n\n(10,20]\n(20,30]\n(30,40]\n(40,50]\n\n\n\n\n69\n461\n58\n7\n\n\n\n\n\n\n\n\n\n\nThe operation of dividing a numeric variable into interval ranges is called binning."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#histograms",
+    "href": "content/week3-descriptive.html#histograms",
+    "title": "Descriptive statistics",
+    "section": "Histograms",
+    "text": "Histograms\nThe graphical display of a frequency distribution for a numeric variable is called a histogram. Binning has a big effect on the visual impression."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#shapes",
+    "href": "content/week3-descriptive.html#shapes",
+    "title": "Descriptive statistics",
+    "section": "Shapes",
+    "text": "Shapes\nFor numeric variables, the histogram reveals the shape of the distribution:\n\nsymmetric if it shows left-right symmetry about a central value\nskewed if it stretches farther in one direction from a central value"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#modes",
+    "href": "content/week3-descriptive.html#modes",
+    "title": "Descriptive statistics",
+    "section": "Modes",
+    "text": "Modes\nHistograms also reveal the number of modes or local peaks of frequency distributions.\n\nuniform if there are zero peaks\nunimodal if there is one peak\nbimodal if there are two peaks\nmultimodal if there are two or more peaks"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#your-turn-characterizing-distributions",
+    "href": "content/week3-descriptive.html#your-turn-characterizing-distributions",
+    "title": "Descriptive statistics",
+    "section": "Your turn: characterizing distributions",
+    "text": "Your turn: characterizing distributions\nConsider four variables from the FAMuSS study. Describe the shape and modality."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#your-turn-characterizing-distributions-1",
+    "href": "content/week3-descriptive.html#your-turn-characterizing-distributions-1",
+    "title": "Descriptive statistics",
+    "section": "Your turn: characterizing distributions",
+    "text": "Your turn: characterizing distributions\nHere are some made-up data. Describe the shape and modality."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#descriptive-measures",
+    "href": "content/week3-descriptive.html#descriptive-measures",
+    "title": "Descriptive statistics",
+    "section": "Descriptive measures",
+    "text": "Descriptive measures\nFrequency distributions are great for many purposes but they have limitations:\n\nminimal “data reduction”, especially for many bins/categories\nsensitive to choice of binning\nperception of pattern is subjective\n\nDescriptive measures, by contrast, reduce all observations of a variable down to just one number. There are two common types of measures:\n\nmeasures of center: mean, median, mode\nmeasures of spread: absolute deviation, standard deviation, interquartile range, range"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#measures-of-center",
+    "href": "content/week3-descriptive.html#measures-of-center",
+    "title": "Descriptive statistics",
+    "section": "Measures of center",
+    "text": "Measures of center\nA measure of center is a statistic that reflects the typical value of one or more variables.\n\n\nThere are three common measures of center, each of which corresponds to a slightly different meaning of “typical”:\n\n\n\nMeasure\nDefinition\n\n\n\n\nMode\nMost frequent value\n\n\nMean\nAverage value\n\n\nMedian\nMiddle value\n\n\n\n\nSuppose your data consisted of the following observations of age in years:\n\n\n19, 19, 21, 25 and 31\n\n\n\nthe mode or most frequent value is 19\nthe median or middle value is 21\nthe mean or average value is \\(\\frac{19 + 19 + 21 + 25 + 31}{5}\\) = 23\n\n\n\nThese measures are only used with numeric variables."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#your-turn",
+    "href": "content/week3-descriptive.html#your-turn",
+    "title": "Descriptive statistics",
+    "section": "Your turn",
+    "text": "Your turn\nConsider the first 8 observations of change in nondominant arm strength from the FAMuSS study data:\n\n\n40, 25, 40, 125, 40, 75, 100 and 57.1\n\n\nCompute the mean, median, and mode."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#comparing-measures-of-center",
+    "href": "content/week3-descriptive.html#comparing-measures-of-center",
+    "title": "Descriptive statistics",
+    "section": "Comparing measures of center",
+    "text": "Comparing measures of center\nEach statistic is a little different, but often they roughly agree; for example, all are between 20 and 25, which seems to capture the typical age well enough.\n\nHow do you think the frequency distribution affects which one is “best”?"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#percentiles",
+    "href": "content/week3-descriptive.html#percentiles",
+    "title": "Descriptive statistics",
+    "section": "Percentiles",
+    "text": "Percentiles\nThe median is an example of a percentile: a value with specified proportions of data lying both above and below. For example, the 20th percentile is the value with 20% of observations below and 80% of observations above.\nRanking observations helps to find this number. Suppose we have 5 observations:\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\n19\n20\n21\n25\n31\n\n\nrank\n1\n2\n3\n4\n5\n\n\n\n\n\nThe 20th percentile is 20 since it is ranked second when observations are listed in order:\n\n20% below (19, 20)\n80% above (20, 21, 25, 31)\n\n\nSoftware implementations have a variety of ways for calculating percentiles when an exact solution isn’t available due to ties (repeated values) or sample size."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#cumulative-frequency-distribution",
+    "href": "content/week3-descriptive.html#cumulative-frequency-distribution",
+    "title": "Descriptive statistics",
+    "section": "Cumulative frequency distribution",
+    "text": "Cumulative frequency distribution\nThe cumulative frequency distribution is a function showing all percentiles with an exact solution. Think of it as percentile (y) against value (x).\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation of some specific values:\n\nabout 40% of the subjects are 20 or younger\nabout 80% of the subjects are 24 or younger\n\nYour turn:\n\nRoughly what percentage of subjects are 22 or younger?\nAbout what age is the 10th percentile?"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#common-percentiles",
+    "href": "content/week3-descriptive.html#common-percentiles",
+    "title": "Descriptive statistics",
+    "section": "Common percentiles",
+    "text": "Common percentiles\n\n\nThe five-number summary is a collection of five percentiles that succinctly describe the frequency distribution:\n\n\n\nStatistic name\nMeaning\n\n\n\n\nminimum\n0th percentile\n\n\nfirst quartile\n25th percentile\n\n\nmedian\n50th percentile\n\n\nthird quartile\n75th percentile\n\n\nmaximum\n100th percentile\n\n\n\n\nBoxplots provide a graphical display of the five-number summary."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#boxplots-vs.-histograms",
+    "href": "content/week3-descriptive.html#boxplots-vs.-histograms",
+    "title": "Descriptive statistics",
+    "section": "Boxplots vs. histograms",
+    "text": "Boxplots vs. histograms\nNotice how the two displays align, and also how they differ. The histogram shows shape in greater detail, but the boxplot is much more compact."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#boxplots-vs.-histograms-1",
+    "href": "content/week3-descriptive.html#boxplots-vs.-histograms-1",
+    "title": "Descriptive statistics",
+    "section": "Boxplots vs. histograms",
+    "text": "Boxplots vs. histograms\nSuppose we wanted to compare the change in dominant arm strength with the change in nondominant arm strength in the FAMuSS (sports gene) study.\nThe boxplot is a cleaner display due to its compactness."
+  },
+  {
+    "objectID": "content/week3-descriptive.html#lab-robustness",
+    "href": "content/week3-descriptive.html#lab-robustness",
+    "title": "Descriptive statistics",
+    "section": "Lab: robustness",
+    "text": "Lab: robustness\nFor this lab we’ll continue to work with the FAMuSS data as we have throughout lecture.\nThis lab has two objectives:\n\nTeach you to compute descriptive statistics and prepare graphical summaries for a single variable in R\nLearn when and why to use certain descriptive statistics in place of others"
+  },
+  {
+    "objectID": "content/week3-descriptive.html#up-next-multivariate-summaries",
+    "href": "content/week3-descriptive.html#up-next-multivariate-summaries",
+    "title": "Descriptive statistics",
+    "section": "Up next: multivariate summaries",
+    "text": "Up next: multivariate summaries\nToday we discussed numeric and graphical summaries for a single variable. These are univariate techniques.\n\nWill reveal basic statistical properties (shape, skew, outliers)\nWon’t reveal relationships\n\nWhat if you wish to understand relationships? The fact is, most data are multivariate because several variables are measured together.\nNext time we’ll discuss\n\nMeasures of spread/variability\nBivariate descriptive and graphical techniques\n\n\n\n\nSTAT218"
+  },
+  {
     "objectID": "content/week1-studydesigns.html#what-is-a-study",
     "href": "content/week1-studydesigns.html#what-is-a-study",
     "title": "Study designs",
@@ -329,305 +623,88 @@
     "text": "Case study: LEAP\n\n\n\n\n\nTabular summary of LEAP results.\n\n\n\n\n\n\nGraphical summary of LEAP results.\n\n\n\n\n\nDoes peanut avoidance/consumption appear associated with developing an allergy?\nIf so, does the study provide evidence that early exposure likely reduces the chance of developing an allergy by 5 years of age?\nWhat calculation could you perform to summarize the difference between study groups?\n\n\n\n\nSTAT218"
   },
   {
-    "objectID": "content/labs/lab2-descriptive.html",
-    "href": "content/labs/lab2-descriptive.html",
-    "title": "Lab 2: Descriptive statistics",
-    "section": "",
-    "text": "This lab has two objectives:\n\nTeach you to compute descriptive statistics and prepare graphical summaries for a single variable in R\nAllow you to explore the concept of robustness and learn when and why to use certain descriptive statistics in place of others\n\nIn statistics, the term robustness refers to sensitivity to outliers; outliers are observations far from center. As you will see in this lab, certain descriptive summaries are more sensitive to outliers than others.\n\nAccessing data\nFor this lab we’ll use the FAMuSS dataset, as in lecture. This dataset is stored in the oibiostat package, which is an R package companion to the Vu and Harrington textbook.\n\n# load openintro biostat package\nlibrary(oibiostat)\n\n# load famuss data\ndata(famuss)\n\n# open data documentation\n?famuss\n\nThe command above makes the dataset available in your environment as a data frame named famuss in which the columns represent variables and the rows represent observations. You can see the first few rows using head():\n\nhead(famuss)\n\n  ndrm.ch drm.ch    sex age      race height weight actn3.r577x    bmi\n1      40     40 Female  27 Caucasian   65.0    199          CC 33.112\n2      25      0   Male  36 Caucasian   71.7    189          CT 25.845\n3      40      0 Female  24 Caucasian   65.0    134          CT 22.296\n4     125      0 Female  40 Caucasian   68.0    171          CT 25.998\n5      40     20 Female  32 Caucasian   61.0    118          CC 22.293\n6      75      0 Female  24  Hispanic   62.2    120          CT 21.805\n\n\nYou can extract a vector of the observations for any particular variable from the dataframe as follows: famuss$[variable name]. We will be performing calculations one column at a time, so you’ll need to be able to extract and store a column as a new R object.\n\n# extract the age variable\nfamuss$age\n\n# extract the bmi variable\nfamuss$bmi\n\n# store the age column as a vector\nage &lt;- famuss$age\n\n\n\n\n\n\n\nYour turn\n\n\n\n\n# try it yourself: pick a variable to extract and store\n\n\n\n\n\nGraphical and tabular summaries\nOur most basic summaries are frequency distributions. For categorical variables, these are simply observation counts by category; for numeric variables, values must be binned and then tabulated.\nFor categorical variables (i.e., character vectors or factors):\n\ntable() will tabulate the number of occurrences of unique values in a vector\nfor a categorical variable, plot() will create a barplot of the frequency distribution\n\nFor numeric variables:\n\nhist() will create a histogram\n\n\n## categorical summaries\nrace &lt;- famuss$race\n\n# frequency distribution\ntable(race)\n\n# barplot of frequency distribution\nplot(race)\n## quantitative summaries\nage &lt;- famuss$age\n\n# histogram; 'breaks = ...' controls the binning\nhist(age, breaks = 20)\n\n\n\n\n\n\n\nYour turn\n\n\n\nTry making a table, barplot, and histogram on your own with some of the other variables.\nWhen generating the histogram, adjust the number of bins using the breaks = ... argument. Experiment to see how the shape of the distribution appears at various binning resolutions; then pick a number of breaks that you feel reflects the data best.\n\n# make a table of the frequency distribution of genotypes\n\n# make a barplot of the frequency distribution of genotypes\n\n# make a histogram of dominant arm change; play with the binning!\n\n\n\nCreating a table of the frequency distribution of a numeric variable takes an extra step: you’ll need to bin the values into intervals first, and then make the table just as you would with a categorical variable.\n\n# notice what happens by default\ntable(age)\n\n# bin age into 6 brackets\nage_binned &lt;- cut(age, breaks = 6)\n\n# then make a table\ntable(age_binned)\n\n# manually specify the cutoffs\nage_binned &lt;- cut(age, breaks = c(15, 20, 30, 40))\ntable(age_binned)\n\n# show *relative* frequency distribution\ntable(age_binned)/length(age_binned)\n\n\n\n\n\n\n\nYour turn\n\n\n\nTry doing the ‘manual’ binning illustrated above on your own with the weight variable. Pay attention to how the breaks = ... argument to the cut() function is used to specify bin limits.\n\n# bin body weight into 10 intervals \n\n# tabulate frequency distribution\n\n# repeat with bin limits 80-130, 130-180, 180-220, 220-320\n\n\n\nUsually, you can skip this step and just make a histogram with the appropriate number of bins, but it’s helpful to know how to tabulate in case the need ever arises.\n\n\nNumerical summaries\nIn class we discussed several descriptive statistics for numeric variables, including:\n\npercentiles\nmean\nstandard deviation\n\nThese statistics together formed what we said was the standard numerical summary usually reported: the “five number summary” (minimum, quartiles, and maximum) together with the mean and standard deviation.\n\n# 30th percentile of age\nquantile(age, probs = 0.3)\n\n# 30th *and* 60th percentile of age\nquantile(age, probs = c(0.3, 0.6))\n\n# the median gets its own function\nmedian(age)\n\n# ditto mean\nmean(age)\n\n# ... and standard deviation\nsd(age)\n\n# ... aaand interquartile range\nIQR(age)\n\n# ... AAAAAND minimum and maximum\nmin(age)\nmax(age)\n\n\n\n\n\n\n\nYour turn\n\n\n\nTry computing the numeric summaries above using a variable of your choice. Be sure you pick a numeric and not a categorical variable.\nPay attention to how the probs = ... argument to the quantile() function can be used to calculate multiple percentiles at once. Use this feature to calculate all five numbers in the five-number summary with one command.\n\n# choose a *quantiative* variable from the dataset\n\n# compute the five-number summary using quantile()\n\n# compare the mean and the median. are they close?\n\n\n\nAlternatively, the summary() command will do most of the work for you.\n\nsummary(age)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   17.0    20.0    22.0    24.4    27.0    40.0 \n\n\n\n\nExploring robustness\nStatistics based on percentiles are in general insensitive to outliers, unless there’s a large group of outlying observations. In this sense they are robust.\nAn easy way to see this is to consider the median (middle value or 50th percentile). The maximum observation could be arbitrarily large without changing the middle value, so the median will be the same whether the largest value is 10 or 10,000. The mean, by contrast, does not share this property.\n\n# make up some observations between 1 and 100\nx &lt;- sample(1:100, size = 20)\nx\n\n# median of made up observations, plus 101\nmedian(c(x, 101))\n\n# median of made up observations, plus 1M\nmedian(c(x, 1000000))\n\n# same comparison, but with mean\nmean(c(x, 101))\nmean(c(x, 1000000))\n\nSo in the presence of outliers, the median will capture the center of the distribution of values more accurately. In fact, even if the distribution is simply skewed, the mean will shift away from center.\n\n# distribution of ages is right-skewed\nhist(age)\n\n# plot the mean and median on top of the histogram\nhist(age)\nabline(v = mean(age), col = 2)\nabline(v = median(age), col = 4)\n\n\n\n\nThis difference is useful — the comparison of median and mean can indicate the direction and amount of skewness present.\n\n# mean &gt; median ---&gt; right-skewed\nsummary(age)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   17.0    20.0    22.0    24.4    27.0    40.0 \n\n\n\n\n\n\n\n\nYour turn\n\n\n\nSee if you can put this property into practice: calculate the numeric summary for percent change in dominant arm strength and see if you can determine the direction and magnitude of skewness based on this summary only.\nThe amount of skewness is a bit subjective — so just discuss and make a determination about whether the difference between median and mean seems sizeable.\n\n# check the numeric summary for percent change in dominant arm strength\n# can you tell the direction of skewness?? does it seem very skewed??\n\n\n\nLet’s explore how some of the other descriptive statistics we’ve discussed behave in response to outliers. Specifically, measures of spread: standard deviation and IQR.\nThe variable you just looked at — dominant arm percent change in strength — has a group of observations at 100%. If these are removed, the standard deviation increases by 10%, but the IQR only increases by 5%.\n\n# extract dominant arm percent change in strength\ndrm &lt;- famuss$drm.ch\n\n# drop the observations over 80%\ndrm.drop &lt;- drm[drm &lt; 100]\n\n# compute the numeric summary with and without outliers\nsummary(drm)\nsummary(drm.drop)\n\n# compare standard deviations\nsd(drm)/sd(drm.drop)\n\n# compare interquartile ranges\nIQR(drm)/IQR(drm.drop)\n\nThis may not seem very notable, so let’s make up an example that’s a bit more extreme: let’s add a very large positive observation, say, 1000. Then, the IQR does not change at all, but the standard deviation more than doubles!\n\n# add a large observation\ndrm.add &lt;- c(drm, 1000)\n\n# compare IQR with and without\nIQR(drm.add)/IQR(drm)\n\n# compare SD with and without\nsd(drm.add)/sd(drm)\n\nThe differences in robustness between IQR and standard deviation, and between mean and median, are largely why both the five-number summary and the mean and standard deviation are reported. When these statistics differ dramatically, it is most likely due to the presence of outliers!\n\n\n\n\n\n\nYour turn\n\n\n\nCompute the numeric summary for a variable from a different dataset and based on this alone attempt a guess at whether there are outliers. If so, are they more likely outliers to the left or right?\n\n# load a new dataset (census)\ndata(census.2010)\n\n# number of doctors per state (thousands)\ndoctors &lt;- census.2010$doctors\n\n# compute numeric summary -- guess whether there are outliers?\n\n# make a histogram or boxplot to confirm your guess\n\n# bonus: which state??"
-  },
-  {
-    "objectID": "content/labs/lab1-rbasics.html",
-    "href": "content/labs/lab1-rbasics.html",
-    "title": "Lab 1: R Basics",
-    "section": "",
-    "text": "This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won’t be expected to do much data manipulation or manual calculation for this class, it will be helpful for you to have some understanding of this material going forward, as most R objects are arranged as data structures comprising one or more data types.\nThis lab covers a lot of ground; consider it a reference you can return to later as needed.\n\nArithmetic operations\nWhile R does a lot more than function as a calculator, it can be used to perform basic arithmetic. All of the usual operations — addition, subtraction, multiplication, division, exponentiation — can be performed as shown below.\n\n# addition\n2 + 1 \n\n# subtraction\n2 - 1\n\n# multiplication\n2*3\n\n# division\n2/3\n\n# exponentiation\n3^2\n\n# parentheses for order of operations: compare\n(2 + 1)/4\n2 + 1/4\n\nBasic functions can also be evaluated. To name a few:\n\n# square root\nsqrt(9)\n\n# exponential function e^x\nexp(1)\n\n# logarithm: compare, default base is e (i.e., natural log)\nlog(2, base = exp(1))\nlog(2)\n\nThe result of each of these calculations is a value. Values are the most elementary objects in the R environment. Values can be assigned names using the assignment operator &lt;-:\n\n# store a value\nx &lt;- log(2)\n\n# print value in console\nx\n\nNames can consist of any combination of letters, numbers, and the delimiters _ and .; names cannot start with numbers (try it and see what happens).\nIf a name is used multiple times, the most recently assigned value will be stored. However, ‘most recent’ in this context means ‘most recently executed’: R will not pay attention to the order of lines in your script, but the order in which you run them. To see this, try redefining x to be a new value. if you then go back and run the previous line that displays the value, you’ll notice you get the new value, not the old one, even though the line appears before the new assignment.\n\n# assign a new value the name 'x': this overwrites the first value\nx &lt;- 4\n\n\n\n\n\n\n\nYour turn\n\n\n\nWrite one line of code each to perform the following calculations:\n\nCalculate the sum of the ages of each member of your group, in years.\nHow about in months? Multiply by 12.\nCalculate the average number of siblings among the members of your group.\n\n\n# sum of ages of group members\n\n# convert to months: multiply by 12\n\n# average number of siblings among group members\n\n\n\n\n\nData types\nValues may be of different types. The function class(...) will return the “class” of object it is given; for values, the object class is simply the data type.\nThere are four main data types in R.\n\n# numeric\nclass(12)\n\n# character\nclass('text')\n\n# logical\nclass(TRUE)\n\n# integer\nclass(12L)\n\nArithmetic only works with logical, integer, and numeric values:\n\n# valid operations\n12*12\n12L*12\n12L*12L\n12*TRUE\n12*FALSE\n12L*TRUE\n12L*FALSE\n\nIt will not work with character values. Notice the text of the error message:\n\n# invalid operation\n'12'*'12'\n\nError in \"12\" * \"12\": non-numeric argument to binary operator\n\n\nThis is a very common error message — when you see it, you’ll know that most likely, somewhere R attempted to perform arithmetic with character values, so it’s probably a data type issue.\n\n\n\n\n\n\nYour turn\n\n\n\n\nCalculate the product of TRUE and FALSE. Which data type results from this operation?\nWhat do you think will happen if you add a logical and numeric value? Discuss first, then verify.\nWhat kind of value does each of the above operations return? Discuss first, then verify.\n\n\n# product of true and false\n\n# add a logical and numeric value\n\n# check data type of the above\n\n\n\n\n\nVectors\nIn practice, data usually consists of multiple values, not just one; in R, the most basic type of collection of values is called a vector. Technically, a vector is a “concatenation” of values of the same data type. Vectors can be formed using the concatenation function c(...):\n\n# concatenate values with c(...) to form a vector\nc(1, 2, 3)\n\n# store it\nx &lt;- c(1, 2, 3)\n\n# data type\nclass(x)\n\nIf values of different types are concatenated, they are coerced to the same data type; vectors cannot contain values of mixed type. The lines below demonstrate this behavior:\n\n# integer and logical -&gt; integer\nclass(c(2L, TRUE))\n\n# integer and numeric -&gt; numeric\nclass(c(2L, 12))\n\n# numeric and logical -&gt; numeric\nclass(c(12, TRUE))\n\n# character and anything -&gt; character\nclass(c('text', TRUE))\nclass(c('text', 2L))\nclass(c('text', 12))\n\n\nVectorization\nArithmetic between vectors is carried out elementwise; arithmetic operations between vectors and values are ‘vectorized’, meaning operations are applied over each element. This makes certain calculations quite efficient. The following examples illustrate vectorized arithmetic operations in two verbose ways: first as an elementwise operation between two vectors; then as a concatenation of the results of each elementwise operation.\n\n# equivalent\n2*c(1, 2, 3) # vectorized\nc(2, 2, 2)*c(1, 2, 3) # verbose\nc(2*1, 2*2, 2*3) # verbose\n\n# equivalent\nc(1, 2, 3) + 1 # vectorized\nc(1, 2, 3) + c(1, 1, 1) # verbose\nc(1 + 1, 2 + 1, 3 + 1) # verbose\n\n# equivalent\nc(1, 2, 3)/3 # vectorized\nc(1, 2, 3)/c(3, 3, 3) # verbose\nc(1/3, 2/3, 3/3) # verbose\n\n# equivalent\nc(1, 2, 3)^2 # vectorized\nc(1, 2, 3)^c(2, 2, 2) # verbose\nc(1^2, 2^2, 3^2) # verbose\n\nIf an operation is carried out between vectors of different lengths, a warning is printed indicating as much.\n\n# can you figure out what calculation was performed?\nc(1, 2, 3)*c(4, 5)\n\nWarning in c(1, 2, 3) * c(4, 5): longer object length is not a multiple of\nshorter object length\n\n\n[1]  4 10 12\n\n\nMany functions, including those mentioned at the outset, are also vectorized (calculations are performed elementwise).\n\nsqrt(c(1, 4, 9))\nlog(c(1, 10, 100), base = 10)\nexp(c(0, 1, 2))\n\n\n\nIndexing\nElements of vectors are indexed by consecutive integers; elements can be retrieved by specifying the indices in square brackets after the object name.\n\n# define a vector\nx &lt;- c(10, 20, 30, 40)\n\n# second element\nx[2]\n\n# first and third elements\nx[c(1, 3)]\n\n# second through fourth elements\nx[2:4]\n\n\n\nMissing values\nMany datasets have missing values that occur for various reasons: equipment failure, participant dropout, survey nonresponse, and so on. These can be represented in R as well. This is useful as a means of retaining the information that there is an observation that was somehow lost. Missing values are displayed as the special character NA in R.\n\n# vector with a missing third element\nc(1, 2, NA, 4)\n\n# note: still numeric\nclass(c(1, 2, NA, 4))\n\n\n\n\n\n\n\nYour turn\n\n\n\n\nCreate a vector with the ages of each person in your group (in years). Call it ages.\nConvert to months using vectorized arithmetic.\nNow pretend one of you is absent; repeat (1) but replace their age by a missing value. call the vector ages_incomplete.\nConvert to months again using the same operation as in (2); how is the missing value handled?\n\n\n# vector of ages in years\n\n# convert to months with vectorized arithmetic\n\n# pretend one person is absent: input a missing value\n\n# repeat conversion to months: how is the NA handled?\n\n\n\n\n\nMatrices, arrays, lists, and data frames\nMatrices can be constructed from vectors by specifying row and column dimensions, and how to arrange the values – by row or by column.\n\nx &lt;- c(1, 2, 3, 4)\nmatrix(data = x, nrow = 2, ncol = 2, byrow = TRUE)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nWe won’t really see arrays much, but since they are mentioned in the reading, here’s an example of how to construct one, and how it is displayed.\n\nx &lt;- c(1, 2, 3, 4, 5, 6, 7, 8)\narray(data = x, dim = c(2, 2, 2))\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n, , 2\n\n     [,1] [,2]\n[1,]    5    7\n[2,]    6    8\n\n\nA list is a highly general data structure; it’s just an indexed amalgamation of objects of any type.\n\n# make a list\nlist('anchor', c(22, 5), log)\n\n[[1]]\n[1] \"anchor\"\n\n[[2]]\n[1] 22  5\n\n[[3]]\nfunction (x, base = exp(1))  .Primitive(\"log\")\n\n# the list elements can be named, which makes for easy retrieval\nmy_list &lt;- list(words = 'anchor', numbers = c(22, 5), functions = log)\nmy_list$words\n\n[1] \"anchor\"\n\n# even so, indexing can still be used\nmy_list[[1]]\n\n[1] \"anchor\"\n\n\nData frames are like lists, except each element is a vector of the same length; they appear much like matrices, but behave differently in important ways.\n\n# make a data frame\ndata.frame(col1 = c(1, 2, 3, 4), \n           col2 = c(T, F, T, T), \n           col3 = c('red', 'blue', 'green', 'yellow'))\n\n  col1  col2   col3\n1    1  TRUE    red\n2    2 FALSE   blue\n3    3  TRUE  green\n4    4  TRUE yellow\n\n# unlike matrices, however, columns can be retrieved by name\nmy_df &lt;- data.frame(number = c(1, 2, 3, 4), \n                    truth = c(T, F, T, T), \n                    color = c('red', 'blue', 'green', 'yellow'))\n\n# the result is a vector containing the values of that column\nmy_df$color\n\n[1] \"red\"    \"blue\"   \"green\"  \"yellow\"\n\n\nData frames are the fundamental data structure on which a large portion of R software is built. When data files are read into R, as you saw very briefly earlier, they are read in by default as data frames. Many R functions used in performing data analyses require data to be supplied as a data frame.\n\n\n\n\n\n\nYour turn\n\n\n\nCreate a data frame in which each row corresponds to one member of your group and columns are the variables age, number of siblings, and favorite singer.\n\n# data frame with columns age, no. of siblings, and favorite singer; each row corresponds to one group member"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#todays-agenda",
-    "href": "content/week3-descriptive.html#todays-agenda",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#todays-agenda",
+    "href": "content/week3-multivariate.html#todays-agenda",
+    "title": "Bivariate descriptive summaries",
     "section": "Today’s agenda",
     "text": "Today’s agenda"
   },
   {
-    "objectID": "content/week3-descriptive.html#what-are-descriptive-statistics",
-    "href": "content/week3-descriptive.html#what-are-descriptive-statistics",
-    "title": "Descriptive statistics",
-    "section": "What are descriptive statistics?",
-    "text": "What are descriptive statistics?\nDescriptive statistics provide concise summaries of the observations of one or more variables. They typically focus on:\n\nidentifying typical or “central” values\ncharacterizing the variability or “spread” of values\nvisualizing how observations are distributed among the possible values of the variable(s)\n\nDescriptive techniques can be either quantitative or graphical summaries.\nWe will start by considering the frequency distribution: a graphical or tabular display of how frequently values of the variable were observed."
-  },
-  {
-    "objectID": "content/week3-descriptive.html#todays-example-data-famuss",
-    "href": "content/week3-descriptive.html#todays-example-data-famuss",
-    "title": "Descriptive statistics",
-    "section": "Today’s example data: FAMuSS",
-    "text": "Today’s example data: FAMuSS\nObservational study of 595 individuals comparing change in arm strength before and after resistance training between genotypes for a region of interest on the ACTN3 gene.\n\nPescatello, L. S., et al. (2013). Highlights from the functional single nucleotide polymorphisms associated with human muscle size and strength or FAMuSS study. BioMed research international, 2013.\n\n\n\n\nExample data rows\n\n\n\n\n\n\n\n\n\n\n\n\n\nndrm.ch\ndrm.ch\nsex\nage\nrace\nheight\nweight\nactn3.r577x\nbmi\n\n\n\n\n40\n40\nFemale\n27\nCaucasian\n65\n199\nCC\n33.11\n\n\n25\n0\nMale\n36\nCaucasian\n71.7\n189\nCT\n25.84\n\n\n40\n0\nFemale\n24\nCaucasian\n65\n134\nCT\n22.3\n\n\n125\n0\nFemale\n40\nCaucasian\n68\n171\nCT\n26"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#categorical-frequency-distributions",
-    "href": "content/week3-descriptive.html#categorical-frequency-distributions",
-    "title": "Descriptive statistics",
-    "section": "Categorical frequency distributions",
-    "text": "Categorical frequency distributions\nFor categorical variables, the frequency distribution is simply an observation count by category. For example:\n\n\n\n\n\nData table\n\n\n\n\n\n\nparticipant.id\ngenotype\n\n\n\n\n494\nTT\n\n\n510\nTT\n\n\n216\nCT\n\n\n19\nTT\n\n\n278\nCT\n\n\n86\nTT\n\n\n\n\n\n\n\n\n\nFrequency distribution\n\n\n\n\n\n\n\nCC\nCT\nTT\n\n\n\n\n173\n261\n161"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#numeric-frequency-distributions",
-    "href": "content/week3-descriptive.html#numeric-frequency-distributions",
-    "title": "Descriptive statistics",
-    "section": "Numeric frequency distributions",
-    "text": "Numeric frequency distributions\nFrequency distributions of numeric variables are observation counts by range.\n\n\n\n\n\nData table\n\n\n\n\n\n\nparticipant.id\nbmi\n\n\n\n\n194\n22.3\n\n\n141\n20.76\n\n\n313\n23.48\n\n\n522\n29.29\n\n\n504\n42.28\n\n\n273\n20.34\n\n\n\n\n\n\n\n\n\nFrequency distribution\n\n\n\n\n\n\n\n\n(10,20]\n(20,30]\n(30,40]\n(40,50]\n\n\n\n\n69\n461\n58\n7\n\n\n\n\n\n\n\n\n\n\nThe operation of dividing a numeric variable into interval ranges is called binning."
-  },
-  {
-    "objectID": "content/week3-descriptive.html#histograms",
-    "href": "content/week3-descriptive.html#histograms",
-    "title": "Descriptive statistics",
-    "section": "Histograms",
-    "text": "Histograms\nThe graphical display of a frequency distribution for a numeric variable is called a histogram. Binning has a big effect on the visual impression."
-  },
-  {
-    "objectID": "content/week3-descriptive.html#shapes",
-    "href": "content/week3-descriptive.html#shapes",
-    "title": "Descriptive statistics",
-    "section": "Shapes",
-    "text": "Shapes\nFor numeric variables, the histogram reveals the shape of the distribution:\n\nsymmetric if it shows left-right symmetry about a central value\nskewed if it stretches farther in one direction from a central value"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#modes",
-    "href": "content/week3-descriptive.html#modes",
-    "title": "Descriptive statistics",
-    "section": "Modes",
-    "text": "Modes\nHistograms also reveal the number of modes or local peaks of frequency distributions.\n\nuniform if there are zero peaks\nunimodal if there is one peak\nbimodal if there are two peaks\nmultimodal if there are two or more peaks"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#your-turn-characterizing-shapes",
-    "href": "content/week3-descriptive.html#your-turn-characterizing-shapes",
-    "title": "Descriptive statistics",
-    "section": "Your turn: characterizing shapes",
-    "text": "Your turn: characterizing shapes"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#more-shapes",
-    "href": "content/week3-descriptive.html#more-shapes",
-    "title": "Descriptive statistics",
-    "section": "More shapes",
-    "text": "More shapes"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#descriptive-measures",
-    "href": "content/week3-descriptive.html#descriptive-measures",
-    "title": "Descriptive statistics",
-    "section": "Descriptive measures",
-    "text": "Descriptive measures\nFrequency distributions (especially graphics) are great for many purposes but they have limitations:\n\nminimal “data reduction”, especially for many bins/categories\nsensitive to choice of binning\ninterpretation is subjective\n\nBy contrast, descriptive measures reduce all observations of a variable down to just one number. There are two common types of measures:\n\nmeasures of center: mean, median, mode\nmeasures of spread: absolute deviation, standard deviation, interquartile range, range"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#measures-of-center",
-    "href": "content/week3-descriptive.html#measures-of-center",
-    "title": "Descriptive statistics",
-    "section": "Measures of center",
-    "text": "Measures of center\nA measure of center is a statistic that reflects the typical value of one or more variables.\n\n\nThere are three common measures of center, each of which corresponds to a slightly different meaning of “typical”:\n\n\n\nMeasure\nDefinition\n\n\n\n\nMode\nMost frequent value\n\n\nMean\nAverage value\n\n\nMedian\nMiddle value\n\n\n\n\nSuppose your data consisted of the following observations of age in years:\n\n\n19, 19, 21, 25 and 31\n\n\n\nthe mode or most frequent value is 19\nthe median or middle value is 21\nthe mean or average value is \\(\\frac{19 + 19 + 21 + 25 + 31}{5}\\) = 23\n\n\n\nThese measures are only used with numeric variables. Other clarifications:\n\nfor continuous variables, mode will be computed subject to binning\nfor an even number of observations, the median is defined as the midpoint between the two middle values"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#comparing-measures-of-center",
-    "href": "content/week3-descriptive.html#comparing-measures-of-center",
-    "title": "Descriptive statistics",
-    "section": "Comparing measures of center",
-    "text": "Comparing measures of center\nEach statistic is a little different, but often they roughly agree; for example, all are between 20 and 25, which seems to capture the typical age.\n\nWhen might one measure might be a better choice than the others? Can you think of an example?"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#percentiles",
-    "href": "content/week3-descriptive.html#percentiles",
-    "title": "Descriptive statistics",
-    "section": "Percentiles",
-    "text": "Percentiles\nThe median is an example of a percentile: a value with specified proportions of data lying both above and below. For example, the 20th percentile is the value with 20% of observations below and 80% of observations above.\nRanking observations helps to find this number. Suppose we have 5 observations:\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\n19\n20\n21\n25\n31\n\n\nrank\n1\n2\n3\n4\n5\n\n\n\n\n\nThe 20th percentile is 20 since it is ranked second when observations are listed in order:\n\n20% below (19, 20)\n80% above (20, 21, 25, 31)\n\n\nSoftware implementations have a variety of ways for calculating percentiles when an exact solution isn’t available due to ties (repeated values) or sample size."
-  },
-  {
-    "objectID": "content/week3-descriptive.html#cumulative-frequency-distribution",
-    "href": "content/week3-descriptive.html#cumulative-frequency-distribution",
-    "title": "Descriptive statistics",
-    "section": "Cumulative frequency distribution",
-    "text": "Cumulative frequency distribution\nClosely related to the concept of a percentile is the cumulative frequency distribution: the proportion of observations smaller than or equal to each unique observed value.\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation of some specific values:\n\nabout 40% of the subjects are 20 or younger\nabout 80% of the subjects are 24 or younger\n\nYour turn:\n\nRoughly what percentage of subjects are 22 or younger?\nAbout what age is the 10th percentile?"
-  },
-  {
-    "objectID": "content/week3-descriptive.html#measures-of-spread",
-    "href": "content/week3-descriptive.html#measures-of-spread",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#measures-of-spread",
+    "href": "content/week3-multivariate.html#measures-of-spread",
+    "title": "Bivariate descriptive summaries",
     "section": "Measures of spread",
     "text": "Measures of spread\nThe spread of observations refers to how concentrated or diffuse the values are.\n\nTwo ways to understand and measure spread:\n\nranges of values capturing much of the distribution\ndeviations of values from a central value"
   },
   {
-    "objectID": "content/week3-descriptive.html#range-measures",
-    "href": "content/week3-descriptive.html#range-measures",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#range-measures",
+    "href": "content/week3-multivariate.html#range-measures",
+    "title": "Bivariate descriptive summaries",
     "section": "Range measures",
     "text": "Range measures\nA simple way to understand and measure spread is based on ranges. Consider more ages, sorted and ranked:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\n16\n18\n19\n20\n21\n22\n25\n26\n28\n29\n30\n34\n\n\nrank\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n\n\n\n\n\n\nThe range is the difference [maximum value] - [minimum value] \\[\\text{range} = 34 - 16 = 18\\]\nThe interquartile range (IQR) is the difference [75th percentile] - [25th percentile] \\[\\text{IQR} = 29 - 19 = 10\\] When might you prefer IQR to range? Can you think of an example?"
   },
   {
-    "objectID": "content/week3-descriptive.html#deviation-measures",
-    "href": "content/week3-descriptive.html#deviation-measures",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#deviation-measures",
+    "href": "content/week3-multivariate.html#deviation-measures",
+    "title": "Bivariate descriptive summaries",
     "section": "Deviation measures",
     "text": "Deviation measures\nAnother way is based on deviations from a central value. Continuing the example, the mean age is is 24. The deviations of each observation from the mean are:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\n16\n18\n19\n20\n21\n22\n25\n26\n28\n29\n30\n34\n\n\ndeviation\n-8\n-6\n-5\n-4\n-3\n-2\n1\n2\n4\n5\n6\n10\n\n\n\n\n\nThe average deviation is defined as the average of the absolute values of the deviations from the mean: \\[\n\\frac{8 + 6 + 5 + 4 + 3 + 2 + 1 + 2 + 4 + 5 + 6}{12}\n\\] The standard deviation is defined in terms of the squared deviations from the mean: \\[\n\\sqrt{\\frac{(-8)^2 + (-6)^2 + (-5)^2 + (-4)^2 + (-3)^2 + (-2)^2 + (1)^2 + (2)^2 + (4)^2 + (5)^2 + (6)^2}{12 - 1}}\n\\]"
   },
   {
-    "objectID": "content/week3-descriptive.html#calculations",
-    "href": "content/week3-descriptive.html#calculations",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#calculations",
+    "href": "content/week3-multivariate.html#calculations",
+    "title": "Bivariate descriptive summaries",
     "section": "Calculations",
-    "text": "Calculations\nListed from largest to smallest, here are each of the measures of spread for the 12 ages:\n\n\n\n\n\n\n\n\n\n\n\nrange\niqr\nst.dev\navg.dev\n\n\n\n\n18\n8.5\n5.527\n4.667\n\n\n\n\n\nThey are not always ordered in this way; in lab you’ll explore further examples.\n\nWhile it’s good to know how to reconstruct these calculations, you won’t actually have to perform them from scratch in practice, so it’s more important that you understand their conceptual basis"
+    "text": "Calculations\nListed from largest to smallest, here are each of the measures of spread for the 12 ages:\n\n\n\n\n\n\n\n\n\n\n\nrange\niqr\nst.dev\navg.dev\n\n\n\n\n18\n8.5\n5.527\n4.667\n\n\n\n\n\nThey are not always ordered in this way.\n\nWhile it’s good to know how to reconstruct these calculations, you won’t actually have to perform them from scratch in practice, so it’s more important that you understand their conceptual basis"
   },
   {
-    "objectID": "content/week3-descriptive.html#numerical-summaries",
-    "href": "content/week3-descriptive.html#numerical-summaries",
-    "title": "Descriptive statistics",
-    "section": "Numerical summaries",
-    "text": "Numerical summaries\nTwo sets of descriptive statistics are typically reported to give numerical summaries of data.\n\n\nThe five-number summary is a collection of five percentiles that succinctly describe the distribution of observed values of a variable:\n\n\n\nStatistic name\nMeaning\n\n\n\n\nminimum\n0th percentile\n\n\nfirst quartile\n25th percentile\n\n\nmedian\n50th percentile\n\n\nthird quartile\n75th percentile\n\n\nmaximum\n100th percentile\n\n\n\n\nIn addition, the mean and standard deviation are often reported.\n\n\n\nStatistic name\nMeaning\n\n\n\n\nMean\naverage value\n\n\nStandard deviation\ndispersion about mean"
+    "objectID": "content/week3-multivariate.html#univariate-summaries",
+    "href": "content/week3-multivariate.html#univariate-summaries",
+    "title": "Bivariate descriptive summaries",
+    "section": "Univariate summaries",
+    "text": "Univariate summaries\nSo far we have discussed univarite descriptive techniques — those that pertain to one variable at a time. Consider, for example, the height and weight of participants in the FAMuSS study:\n\n\n\n\n\n\n\n\n\nboth unimodal, heights symmetric, weights right-skewed, no obvious outliers\nbut these observations actually come in pairs\nthe summaries we know how to make don’t reflect how the variables might be related"
   },
   {
-    "objectID": "content/week3-descriptive.html#boxplots",
-    "href": "content/week3-descriptive.html#boxplots",
-    "title": "Descriptive statistics",
-    "section": "Boxplots",
-    "text": "Boxplots\nBoxplots provide a graphical display of the five-number summary, plus the standard deviation.\n\n\n\n\nThe basic anatomy is:\n\nbox shows quartiles\nwhiskers are multiples of the standard deviation (usually 1.5)\nobservations outside the whiskers are plotted separately\n\nThe main advantage this has over a histogram is that it’s much more compact."
+    "objectID": "content/week3-multivariate.html#bivariate-summaries",
+    "href": "content/week3-multivariate.html#bivariate-summaries",
+    "title": "Bivariate descriptive summaries",
+    "section": "Bivariate summaries",
+    "text": "Bivariate summaries\nBivariate (and by extension multivariate) summaries are graphical or numerical descriptions that represent two (or more) variables jointly.\n\n\nA simple example is a scatterplot:\n\n\n\n\n\n\nEach point represents a pair of values \\((h, w)\\) for one study participant.\n\nReveals a relationship: taller participants tend to be heavier\nBut no longer shows individual distributions clearly"
   },
   {
-    "objectID": "content/week3-descriptive.html#example-descriptive-summary",
-    "href": "content/week3-descriptive.html#example-descriptive-summary",
-    "title": "Descriptive statistics",
-    "section": "Example descriptive summary",
-    "text": "Example descriptive summary\nSuppose we wanted to use our descriptive tools to compare the change in dominant arm strength with the change in nondominant arm strength in the FAMuSS (sports gene) study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are the shapes? How many modes? Differences in center? Differences in spread?"
+    "objectID": "content/week3-multivariate.html#univariate-vs.-bivariate-summaries",
+    "href": "content/week3-multivariate.html#univariate-vs.-bivariate-summaries",
+    "title": "Bivariate descriptive summaries",
+    "section": "Univariate vs. bivariate summaries",
+    "text": "Univariate vs. bivariate summaries\nEach summary type helps to address different sets of questions.\n\nunivariate summaries allow one to answer basic questions about how the values of one variable are distributed\nbivariate summaries allow one to answer basic questions about how the values of two variables are related\n\nSome example questions that bivariate summaries could help address in the context of the FAMuSS study are:\n\ndid genotype frequencies differ by race or sex among study participants?\nwere differential changes in arm strength observed according to genotype?\ndid study participants experience similar or different changes in arm strength depending on arm dominance?\ndid change in arm strength appear related in any way to body size among study participants?"
   },
   {
-    "objectID": "content/week3-descriptive.html#lab-robustness",
-    "href": "content/week3-descriptive.html#lab-robustness",
-    "title": "Descriptive statistics",
-    "section": "Lab: robustness",
-    "text": "Lab: robustness\nFor this lab we’ll continue to work with the FAMuSS data as we have throughout lecture.\nThis lab has two objectives:\n\nTeach you to compute descriptive statistics and prepare graphical summaries for a single variable in R\nAllow you to explore the concept of robustness and learn when and why to use certain descriptive statistics in place of others"
+    "objectID": "content/week3-multivariate.html#two-numerical-variables",
+    "href": "content/week3-multivariate.html#two-numerical-variables",
+    "title": "Bivariate descriptive summaries",
+    "section": "Two numerical variables",
+    "text": "Two numerical variables"
   },
   {
-    "objectID": "content/week3-descriptive.html#formulae",
-    "href": "content/week3-descriptive.html#formulae",
-    "title": "Descriptive statistics",
+    "objectID": "content/week3-multivariate.html#one-numerical-and-one-categorical",
+    "href": "content/week3-multivariate.html#one-numerical-and-one-categorical",
+    "title": "Bivariate descriptive summaries",
+    "section": "One numerical and one categorical",
+    "text": "One numerical and one categorical"
+  },
+  {
+    "objectID": "content/week3-multivariate.html#two-categorical-variables",
+    "href": "content/week3-multivariate.html#two-categorical-variables",
+    "title": "Bivariate descriptive summaries",
+    "section": "Two categorical variables",
+    "text": "Two categorical variables"
+  },
+  {
+    "objectID": "content/week3-multivariate.html#formulae",
+    "href": "content/week3-multivariate.html#formulae",
+    "title": "Bivariate descriptive summaries",
     "section": "Formulae",
     "text": "Formulae\nThe general formulae for the deviation measures are expressed as follows.\nDenote \\(n\\) observations of a variable \\(x\\) by \\(x_1, \\dots, x_n\\), so that \\(x_i\\) indicates the value of the \\(i\\)th observation.\nThe mean of the observations is denoted by \\(\\bar{x}\\) and defined as: \\[\n\\bar{x} = \\frac{1}{n}\\sum_i x_i\n\\]\nThen, the average deviation is: \\[\n\\text{average deviation} = \\frac{1}{n}\\sum_i |x_i - \\bar{x}|\n\\] The standard deviation is: \\[\n\\text{standard deviation} = \\sqrt{\\frac{1}{n - 1}\\sum_i (x_i - \\bar{x})^2}\n\\]\n\n\n\nSTAT218"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#todays-agenda",
-    "href": "content/week2-datatypes.html#todays-agenda",
-    "title": "Introduction to data",
-    "section": "Today’s agenda",
-    "text": "Today’s agenda\n\nReading quiz\nLoose ends from last time: LEAP case study; experimental design basics\nData basics: data semantics and data types\nLab: data types and data structures in R"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#case-study-leap",
-    "href": "content/week2-datatypes.html#case-study-leap",
-    "title": "Introduction to data",
-    "section": "Case study: LEAP",
-    "text": "Case study: LEAP\nLearning early about peanut allergy (LEAP) study:\n\n640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy\neach infant randomly assigned to peanut consumption and peanut avoidance groups\n\npeanut consumption: fed 6g peanut protein daily until 5 years old\npeanut avoidance: no peanut consumption until 5 years old\n\nat 5 years old, oral food challenge (OFC) allergy test administered\n\nPASS: no allergy detected\nFAIL: allergy detected\n\n\nReview questions from last time:\n\nExperiment or observational study?\nRetrospective, prospective, or neither?"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#case-study-leap-1",
-    "href": "content/week2-datatypes.html#case-study-leap-1",
-    "title": "Introduction to data",
-    "section": "Case study: LEAP",
-    "text": "Case study: LEAP\n \nA greater proportion of children in the avoidance group developed an allergy (11.8% specifically). Given the type of study, which is a more accurate interpretation of this result?\n\nCompared with consumption, peanut avoidance early in life was associated with more frequent occurrence of peanut allergies among children in the study.\nCompared with consumption, peanut avoidance early in life led to more frequent occurrence of peanut allergies among children in the study."
-  },
-  {
-    "objectID": "content/week2-datatypes.html#experimental-design",
-    "href": "content/week2-datatypes.html#experimental-design",
-    "title": "Introduction to data",
-    "section": "Experimental design",
-    "text": "Experimental design\nThe LEAP study exemplifies the simple kind of design we will consider for much of STAT218:\n\ntwo “treatments” (peanut consumption and peanut avoidance)\ntreatments are allocated completely at random among all study units\n\nThe design of an experiment refers to how treatments (experimental interventions) are allocated to study units.\n\nthe number of replicates of a treatment refers to the number of study units receiving that treatment\na design is balanced if all treatments have equal numbers of replicates\ntreatment allocation should always be randomized; different designs use different randomization schemes\n\nCheck your understanding: is the experimental design of the LEAP study balanced?"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#data-semantics",
-    "href": "content/week2-datatypes.html#data-semantics",
-    "title": "Introduction to data",
-    "section": "Data semantics",
-    "text": "Data semantics\n\nData are a set of measurements.\nA variable is any measured attribute of study units.\nAn observation is a measurement of one or more variables taken on one particular study unit.\n\nIt is usually expedient to arrange data values in a table in which each row is an observation and each column is a variable:"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#leap-example",
-    "href": "content/week2-datatypes.html#leap-example",
-    "title": "Introduction to data",
-    "section": "LEAP example",
-    "text": "LEAP example\nA table showing the observations and variables for the LEAP study would look like this:\n\n\n\n\n\n\n\n\n\n\nparticipant.ID\ntreatment.group\nofc.test.result\n\n\n\n\nLEAP_100522\nPeanut Consumption\nPASS OFC\n\n\nLEAP_103358\nPeanut Consumption\nPASS OFC\n\n\nLEAP_105069\nPeanut Avoidance\nPASS OFC\n\n\nLEAP_105328\nPeanut Consumption\nPASS OFC\n\n\n\n\n\nThe table you saw earlier was a summary of the data (not the data itself):\n\n\n\n\n\n\n\n\n\n\n \nFAIL OFC\nPASS OFC\n\n\n\n\nPeanut Avoidance\n36\n227\n\n\nPeanut Consumption\n5\n262"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#numeric-and-categorical-variables",
-    "href": "content/week2-datatypes.html#numeric-and-categorical-variables",
-    "title": "Introduction to data",
-    "section": "Numeric and categorical variables",
-    "text": "Numeric and categorical variables\nVariables are classified according to their values. The broadest distinction made is between numeric and categorical variables.\n\nA variable is numeric if its value is a number\nA variable is categorical if its value is a category, usually recorded as a name or label\n\nFor example:\n\nthe value of sex can be male or female, so it is categorical\nwhereas age (in years) can be any positive integer, so it is numeric\n\nCheck your understanding: in the LEAP study…\n\ntreatment group is [numeric/categorical]\nOFC test result is [numeric/categorical]"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#variable-subtypes",
-    "href": "content/week2-datatypes.html#variable-subtypes",
-    "title": "Introduction to data",
-    "section": "Variable subtypes",
-    "text": "Variable subtypes\nFurther distinctions are made based on the type of number or type of category used to measure an attribute. Can you match the subtypes to the variables at right?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nage\nhispanic\ngrade\nweight\n\n\n\n\n15\nnot\n10\n78.02\n\n\n18\nhispanic\n12\n78.47\n\n\n17\nnot\n11\n95.26\n\n\n18\nnot\n12\n95.26\n\n\n\n\n\n\n\n\na numerical variable is discrete if there are ‘gaps’ between its possible values\na numerical variable is continuous if there are no such gaps\na categorical variable is nominal if its levels are not ordered\na categorical variable is ordinal if its levels are ordered"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#many-ways-to-measure-attributes",
-    "href": "content/week2-datatypes.html#many-ways-to-measure-attributes",
-    "title": "Introduction to data",
-    "section": "Many ways to measure attributes",
-    "text": "Many ways to measure attributes\nVariable type (or subtype) is not an inherent quality — attributes can often be measured in many different ways.\nFor instance, age might be measured as either a discrete, continuous, or ordinal variable, depending on the situation:\n\n\n\nAge (years)\nAge (minutes)\nAge (brackets)\n\n\n\n\n12\n6307518.45\n10-18\n\n\n8\n4209187.18\n5-10\n\n\n21\n11258103.08\n18-30\n\n\n\n\nNumeric variables can always be represented as categorical, but not the other way around."
-  },
-  {
-    "objectID": "content/week2-datatypes.html#your-turn-identifying-data-types-i",
-    "href": "content/week2-datatypes.html#your-turn-identifying-data-types-i",
-    "title": "Introduction to data",
-    "section": "Your turn: identifying data types I",
-    "text": "Your turn: identifying data types I\nClassify each variable as nominal, ordinal, discrete, or continuous:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nndrm.ch\ndrm.ch\nsex\nage\nrace\nheight\nweight\nactn3.r577x\nbmi\n\n\n\n\n33.3\n0\nFemale\n19\nCaucasian\n65.7\n129\nCT\n21.01\n\n\n71.4\n0\nFemale\n18\nOther\n67\n148\nCT\n23.18\n\n\n37.5\n0\nFemale\n21\nCaucasian\n66.7\n183\nCC\n28.92\n\n\n50\n0\nFemale\n28\nAsian\n61\n112\nCC\n21.16\n\n\n\n\n\nData are from an observational study investigating demographic, physiological, and genetic characteristics associated with muscle strength.\n\nndrm.ch and drm.ch are change in strength in nondominant and dominant arms before and after training\nactn3.r577x gives genotype at a particular location within the ACTN3 gene (so-called “sports gene”)"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#your-turn-identifying-data-types-ii",
-    "href": "content/week2-datatypes.html#your-turn-identifying-data-types-ii",
-    "title": "Introduction to data",
-    "section": "Your turn: identifying data types II",
-    "text": "Your turn: identifying data types II\nRecall the kimchi/prediabetes study from last time:\n\nA total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity … Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.\n\n\nlist the minimal collection of variables measured\ndetermine a likely type for each variable\ninvent a few example observations to sketch what the data table might look like"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#describing-studies",
-    "href": "content/week2-datatypes.html#describing-studies",
-    "title": "Introduction to data",
-    "section": "Describing studies",
-    "text": "Describing studies\nLet’s put some pieces together. The “essential information” to report when explaining/presenting a study comprises:\n\nResearch question or hypothesis\nType of study\nNumber and type of study units\nIf applicable, experimental design\nObservations and variables measured"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#lab-data-types-and-structures-in-r",
-    "href": "content/week2-datatypes.html#lab-data-types-and-structures-in-r",
-    "title": "Introduction to data",
-    "section": "Lab: data types and structures in R",
-    "text": "Lab: data types and structures in R\nThe simplest data structure in R is a vector: a collection of values of a single “type”. This lab will introduce you to data types, vectors, and a few other common data structures.\n\n\n\n\nThe variable types we just discussed map pretty neatly (but not perfectly) onto the main “data types” in R:\n\nnumeric ➜ integer, numeric\ncategorical ➜ character, logical\n\nYour objectives in this lab are:\n\nlearn to perform simple calculations\nlearn to recognize data types and data structures"
-  },
-  {
-    "objectID": "content/week2-datatypes.html#up-next-descriptive-statistics",
-    "href": "content/week2-datatypes.html#up-next-descriptive-statistics",
-    "title": "Introduction to data",
-    "section": "Up next: descriptive statistics",
-    "text": "Up next: descriptive statistics\nSo far we’ve discussed study designs and the basics of data.\nDescriptive statistics refers to techniques for summarizing data:\n\nnumerical summaries\ntables\ngraphical summaries\n\nSuch summaries are essential first steps in any data analysis, as they convey what was directly observed in the study.\n\n\n\nSTAT218"
-  },
-  {
-    "objectID": "content/hw1.html",
-    "href": "content/hw1.html",
-    "title": "Homework 1: Study designs",
-    "section": "",
-    "text": "Instructions: type up your answers and submit your work electronically. Questions with a learning outcome indicated in brackets will be evaluated for credit; other questions are provided for additional practice. You are expected to answer all questions."
-  },
-  {
-    "objectID": "content/hw1.html#education-and-injury-prevention",
-    "href": "content/hw1.html#education-and-injury-prevention",
-    "title": "Homework 1: Study designs",
-    "section": "Education and injury prevention",
-    "text": "Education and injury prevention\nSuppose you wish to study the efficacy of physical activity and exercise education as a means of sports injury prevention. Your research question is, “does knowledge about injury prevention during physical activity and exercise reduce the risk of injury?”. Imagine that ASI offers a short injury prevention training.\nYour initial study proposal is as follows:\n\n150 Cal Poly students will be selected for the study: 75 from among those who completed the injury prevention training voluntarily, and 75 from among those who did not. Participants will be followed for a year to determine how many in each group experience an injury related to physical activity at any point during the study period. At the end of the study, injury rates will be compared between those that participated in the injury prevention training and those that did not.\n\n\n[L2] Is this an observational study or an experiment? Explain your answer.\n[L1] How would you go about selecting study participants at random? Propose a specific means of identifying and contacting students to participate in the study.\n[L2] Imagine you found that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If you answer yes, give a hypothetical example of a confounding factor; if you answer no, explain why confounding is not a concern.\n[L1] If you answered that it is an observational study, propose an experiment that would address the same question. If you answered that it is an experiment, propose an observational study that would address the same question.\n[L2] Suppose the alternate study you proposed in (4) indicated that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If so, give a hypothetical example of a confounding factor; if not, explain why confounding is not a concern.\nIs the original proposal a retrospective or prospective study? Explain your answer.\nIf you answered that it is retrospective, determine an alternate study to investigate the same research question that is instead prospective; if you answered that it is prospective, determine an alternate study that is retrospective. Write a short proposal similar to the above for your alternate study."
-  },
-  {
-    "objectID": "content/hw1.html#peanut-allergies",
-    "href": "content/hw1.html#peanut-allergies",
-    "title": "Homework 1: Study designs",
-    "section": "Peanut allergies",
-    "text": "Peanut allergies\nConsider the Learning Early About Peanut allergy (LEAP) study discussed in class and in your reading:\n\nFor the LEAP study, 640 infants in the United Kingdom were enrolled with risk factors for peanut allergies (eczema or egg allergy); 530 passed a skin test at the start of the study showing no peanut allergy. Each infant was randomly assigned to peanut consumption (6g peanut protein per day) or peanut avoidance (no peanut consumption) groups. At 5 years of age, an allergy test was administered to each study participant; the rates of peanut allergy were compared between the two groups.\n\n\n[L1] Propose a retrospective observational study to investigate the research question, “is early peanut exposure associated with a lower risk of developing peanut allergies?” Include a specific description of how you might enroll participants."
   },
   {
     "objectID": "content/syllabus.html",
@@ -641,6 +718,6 @@
     "href": "index.html",
     "title": "Applied Statistics for Life Sciences",
     "section": "",
-    "text": "Announcements\n\n\n\nHW1 posted\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
+    "text": "Announcements\n\n\n\n\nAll deadlines extended 1 week due to CFA strike; tentative schedule not yet updated\nMaterials posted for class Tuesday 1/23 and outline updated for class Thursday 1/25\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
   }
 ]

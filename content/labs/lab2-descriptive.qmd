@@ -15,12 +15,14 @@ prefer-html: true
 embed-resources: true
 ---
 
+By now you have seen basic descriptive and graphical summaries. But what determines when some descriptive statistics are "better" to use than others?
+
 This lab has two objectives:
 
 1.  Teach you to compute descriptive statistics and prepare graphical summaries for a single variable in R
-2.  Allow you to explore the concept of robustness and learn when and why to use certain descriptive statistics in place of others
+2.  Learn when and why to use certain descriptive statistics in place of others
 
-In statistics, the term **robustness** refers to sensitivity to outliers; outliers are observations far from center. As you will see in this lab, certain descriptive summaries are more sensitive to outliers than others.
+We will focus on how outliers, or observations far from center, affect different descriptive measures. In statistics, the term for this is **robustness**: a robust statistic is less affected by the presence of outliers.
 
 ### Accessing data
 
@@ -58,6 +60,7 @@ age <- famuss$age
 
 ::: callout-note
 ## Your turn
+
 ```{r your turn 0}
 # try it yourself: pick a variable to extract and store
 
@@ -95,6 +98,8 @@ age <- famuss$age
 hist(age, breaks = 20)
 ```
 
+A quick word about functions. The inputs to functions are called *arguments*. The histogram function `hist()` requires a data argument, in this case `age`, to make the plot. However, the function also has several optional arguments that control things like labels, binning, axis limits, and so on. The `breaks = 20` part of the last command is an example of an optional argument. Most functions in R have optional arguments that control their behavior.
+
 ::: callout-note
 ## Your turn
 
@@ -108,91 +113,47 @@ When generating the histogram, adjust the number of bins using the `breaks = ...
 # make a barplot of the frequency distribution of genotypes
 
 # make a histogram of dominant arm change; play with the binning!
-
 ```
 :::
-
-Creating a table of the frequency distribution of a numeric variable takes an extra step: you'll need to bin the values into intervals first, and then make the table just as you would with a categorical variable.
-
-```{r manually binning numeric variables, results = 'hide'}
-# notice what happens by default
-table(age)
-
-# bin age into 6 brackets
-age_binned <- cut(age, breaks = 6)
-
-# then make a table
-table(age_binned)
-
-# manually specify the cutoffs
-age_binned <- cut(age, breaks = c(15, 20, 30, 40))
-table(age_binned)
-
-# show *relative* frequency distribution
-table(age_binned)/length(age_binned)
-```
-
-::: callout-note
-## Your turn
-
-Try doing the 'manual' binning illustrated above on your own with the `weight` variable. Pay attention to how the `breaks = ...` argument to the `cut()` function is used to specify bin limits. 
-
-```{r your turn 2}
-# bin body weight into 10 intervals 
-
-# tabulate frequency distribution
-
-# repeat with bin limits 80-130, 130-180, 180-220, 220-320
-
-```
-:::
-
-Usually, you can skip this step and just make a histogram with the appropriate number of bins, but it's helpful to know how to tabulate in case the need ever arises.
 
 ### Numerical summaries
 
-In class we discussed several **descriptive statistics** for numeric variables, including:
+In class we discussed several **descriptive statistics** for numeric variables.
 
--   percentiles
+-   measures of center: mean, median
 
--   mean
+-   percentiles: quartiles, min, max
 
--   standard deviation
-
-These statistics together formed what we said was the standard numerical summary usually reported: the "five number summary" (minimum, quartiles, and maximum) together with the mean and standard deviation.
+These statistics are so commonly used that they have their own functions in R.
 
 ```{r descriptive stats, results = 'hide'}
-# 30th percentile of age
-quantile(age, probs = 0.3)
-
-# 30th *and* 60th percentile of age
-quantile(age, probs = c(0.3, 0.6))
-
 # the median gets its own function
 median(age)
 
 # ditto mean
 mean(age)
 
-# ... and standard deviation
-sd(age)
-
-# ... aaand interquartile range
-IQR(age)
-
-# ... AAAAAND minimum and maximum
+# ... and minimum and maximum
 min(age)
 max(age)
+
+# 30th percentile of age ("quantile" is another term for percentile)
+quantile(age, probs = 0.3)
+
+# 30th *and* 60th percentile of age
+quantile(age, probs = c(0.3, 0.6))
 ```
+
+The five-number summary is the collection of the percentiles that give the minimum, quartiles, and maximum.
 
 ::: callout-note
 ## Your turn
 
-Try computing the numeric summaries above using a variable of your choice. Be sure you pick a numeric and not a categorical variable.
+Try computing the five-number summary using a variable of your choice. Be sure you pick a numeric and not a categorical variable.
 
 Pay attention to how the `probs = ...` argument to the `quantile()` function can be used to calculate multiple percentiles at once. Use this feature to calculate all five numbers in the five-number summary with one command.
 
-```{r your turn 3}
+```{r your turn 2}
 # choose a *quantiative* variable from the dataset
 
 # compute the five-number summary using quantile()
@@ -202,7 +163,7 @@ Pay attention to how the `probs = ...` argument to the `quantile()` function can
 ```
 :::
 
-Alternatively, the `summary()` command will do most of the work for you.
+Alternatively, the `summary()` command will do the work for you.
 
 ```{r summary command}
 summary(age)
@@ -210,7 +171,7 @@ summary(age)
 
 ### Exploring robustness
 
-Statistics based on percentiles are in general insensitive to outliers, unless there's a large group of outlying observations. In this sense they are *robust*.
+Statistics based on percentiles are in general insensitive to outliers, unless there's a large group of outlying observations. In this sense they are robust statistics.
 
 An easy way to see this is to consider the median (middle value or 50th percentile). The maximum observation could be arbitrarily large without changing the middle value, so the median will be the same whether the largest value is 10 or 10,000. The mean, by contrast, does not share this property.
 
@@ -252,72 +213,18 @@ summary(age)
 ::: callout-note
 ## Your turn
 
-See if you can put this property into practice: calculate the numeric summary for percent change in dominant arm strength and see if you can determine the direction and magnitude of skewness *based on this summary only*.
+Calculate the numeric summary for percent change in dominant arm strength and see if you can determine the direction and magnitude of skewness *based on this summary only*.
 
 The amount of skewness is a bit subjective --- so just discuss and make a determination about whether the difference between median and mean seems sizeable.
 
-```{r your turn 4}
+```{r your turn 3}
 # check the numeric summary for percent change in dominant arm strength
 # can you tell the direction of skewness?? does it seem very skewed??
 
 ```
 :::
 
-Let's explore how some of the other descriptive statistics we've discussed behave in response to outliers. Specifically, measures of spread: standard deviation and IQR.
-
-The variable you just looked at — dominant arm percent change in strength — has a group of observations at 100%. If these are removed, the standard deviation increases by 10%, but the IQR only increases by 5%.
-
-```{r IQR-sd comparison, results = 'hide'}
-# extract dominant arm percent change in strength
-drm <- famuss$drm.ch
-
-# drop the observations over 80%
-drm.drop <- drm[drm < 100]
-
-# compute the numeric summary with and without outliers
-summary(drm)
-summary(drm.drop)
-
-# compare standard deviations
-sd(drm)/sd(drm.drop)
-
-# compare interquartile ranges
-IQR(drm)/IQR(drm.drop)
+```{r, eval = F}
+knitr::purl(input = 'lab2-descriptive.qmd',
+            output = 'lab2-descriptive.R')
 ```
-
-This may not seem very notable, so let's make up an example that's a bit more extreme: let's add a very large positive observation, say, 1000. Then, the IQR does not change at all, but the standard deviation more than doubles!
-
-```{r robustness of IQR, results = 'hide'}
-# add a large observation
-drm.add <- c(drm, 1000)
-
-# compare IQR with and without
-IQR(drm.add)/IQR(drm)
-
-# compare SD with and without
-sd(drm.add)/sd(drm)
-```
-
-The differences in robustness between IQR and standard deviation, and between mean and median, are largely why *both* the five-number summary *and* the mean and standard deviation are reported. When these statistics differ dramatically, it is most likely due to the presence of outliers!
-
-::: callout-note
-## Your turn
-
-Compute the numeric summary for a variable from a different dataset and *based on this alone* attempt a guess at whether there are outliers. If so, are they more likely outliers to the left or right?
-
-
-```{r}
-# load a new dataset (census)
-data(census.2010)
-
-# number of doctors per state (thousands)
-doctors <- census.2010$doctors
-
-# compute numeric summary -- guess whether there are outliers?
-
-# make a histogram or boxplot to confirm your guess
-
-# bonus: which state??
-
-```
-:::

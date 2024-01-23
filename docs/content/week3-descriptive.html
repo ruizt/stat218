@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H3YKZX4J88"></script>
@@ -340,19 +405,79 @@
 </div>
 
 </section>
+<section id="last-time" class="slide level2">
+<h2>Last time</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ol type="1">
+<li>Data semantics</li>
+</ol>
+<ul>
+<li><strong>categorical</strong> data: ordinal (ordered) or nominal (unordered)</li>
+<li><strong>numeric</strong> data: continuous (no ‘gaps’) or discrete (‘gaps’)</li>
+</ul>
+<ol start="2" type="1">
+<li>Data types and data structures in R</li>
+</ol>
+<ul>
+<li>basic types: numeric, character, logical, integer</li>
+<li>a <strong>vector</strong> is a collection of values of one type</li>
+<li>a <strong>data frame</strong> is a type-heterogeneous list of vectors of equal length</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>Vectors can store observations of one variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 4 observations of age</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">18</span>, <span class="dv">12</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>ages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18 22 18 12</code></pre>
+</div>
+</div>
+<p>Data frames can store observations of many variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 3 observations of 2 variables</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">data.frame</span>(<span class="at">subject.id =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">2</span>, <span class="dv">31</span>),</span>
+<span id="cb3-3"><a href="#cb3-3"></a>           <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">31</span>, <span class="dv">17</span>),</span>
+<span id="cb3-4"><a href="#cb3-4"></a>           <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">'m'</span>, <span class="st">'m'</span>, <span class="st">'f'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  subject.id age sex
+1         11  24   m
+2          2  31   m
+3         31  17   f</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><em>Techniques for summarizing data depend on the data type</em></p>
+</section>
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
+<ol type="1">
+<li><p>Graphical and tabular summaries for numeric and categorical data</p>
+<ul>
+<li>frequency distributions</li>
+<li>barplots</li>
+<li>histograms</li>
+</ul></li>
+<li><p>Quantitative summaries for numeric data</p>
+<ul>
+<li>percentiles</li>
+<li>measures of center</li>
+<li>measures of spread</li>
+</ul></li>
+<li><p>Lab exploring descriptive statistics and robustness</p></li>
+</ol>
 </section>
 <section id="what-are-descriptive-statistics" class="slide level2">
 <h2>What are descriptive statistics?</h2>
-<p>Descriptive statistics provide concise summaries of the observations of one or more variables. They typically focus on:</p>
+<p><strong>Descriptive statistics</strong> are quantitative summaries of the observations of one or more variables. They usually serve one of three aims:</p>
 <ol type="1">
-<li>identifying typical or “central” values</li>
-<li>characterizing the variability or “spread” of values</li>
-<li>visualizing how observations are distributed among the possible values of the variable(s)</li>
+<li>Identify typical or “central” values</li>
+<li>Characterize the variability or “spread” of values</li>
+<li>Characterize relationships between variables</li>
 </ol>
-<p>Descriptive techniques can be either quantitative or graphical summaries.</p>
-<p>We will start by considering the <strong>frequency distribution</strong>: a graphical or tabular display of how frequently values of the variable were observed.</p>
+<p>Descriptive statistics are often accompanied by <strong>graphical summaries</strong> that aid in visualizing these same characteristics.</p>
 </section>
 <section id="todays-example-data-famuss" class="slide level2">
 <h2>Today’s example data: FAMuSS</h2>
@@ -515,7 +640,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -599,7 +724,7 @@
 </table>
 </div>
 <div class="cell-output-display">
-<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -610,7 +735,7 @@
 <h2>Histograms</h2>
 <p>The graphical display of a frequency distribution for a numeric variable is called a <strong>histogram</strong>. Binning has a big effect on the visual impression.</p>
 
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="shapes" class="slide level2">
 <h2>Shapes</h2>
 <p>For numeric variables, the histogram reveals the <strong>shape</strong> of the distribution:</p>
@@ -619,7 +744,7 @@
 <li><strong>skewed</strong> if it stretches farther in one direction from a central value</li>
 </ul>
 
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="modes" class="slide level2">
 <h2>Modes</h2>
 <p>Histograms also reveal the number of <strong>modes</strong> or local peaks of frequency distributions.</p>
@@ -630,24 +755,26 @@
 <li><strong>multimodal</strong> if there are two or more peaks</li>
 </ul>
 
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="your-turn-characterizing-shapes" class="slide level2">
-<h2>Your turn: characterizing shapes</h2>
-
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="more-shapes" class="slide level2">
-<h2>More shapes</h2>
-
 <img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="your-turn-characterizing-distributions" class="slide level2">
+<h2>Your turn: characterizing distributions</h2>
+<p>Consider four variables from the FAMuSS study. Describe the shape and modality.</p>
+
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section id="your-turn-characterizing-distributions-1" class="slide level2">
+<h2>Your turn: characterizing distributions</h2>
+<p>Here are some made-up data. Describe the shape and modality.</p>
+
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="descriptive-measures" class="slide level2">
 <h2>Descriptive measures</h2>
-<p>Frequency distributions (especially graphics) are great for many purposes but they have limitations:</p>
+<p>Frequency distributions are great for many purposes but they have limitations:</p>
 <ul>
 <li>minimal “data reduction”, especially for many bins/categories</li>
 <li>sensitive to choice of binning</li>
-<li>interpretation is subjective</li>
+<li>perception of pattern is subjective</li>
 </ul>
-<p>By contrast, descriptive measures reduce all observations of a variable down to just one number. There are two common types of measures:</p>
+<p>Descriptive measures, by contrast, reduce all observations of a variable down to just one number. There are two common types of measures:</p>
 <ul>
 <li><strong>measures of center</strong>: mean, median, mode</li>
 <li><strong>measures of spread</strong>: absolute deviation, standard deviation, interquartile range, range</li>
@@ -695,17 +822,26 @@
 </ul>
 </div>
 </div>
-<p><em>These measures are only used with numeric variables.</em> Other clarifications:</p>
-<ul>
-<li>for continuous variables, mode will be computed subject to binning</li>
-<li>for an even number of observations, the median is defined as the midpoint between the two middle values</li>
-</ul>
+<p><em>These measures are only used with numeric variables.</em></p>
+<!-- Other clarifications: -->
+<!-- -   for continuous variables, mode will be computed subject to binning -->
+<!-- -   for an even number of observations, the median is defined as the midpoint between the two middle values -->
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<p>Consider the first 8 observations of change in nondominant arm strength from the FAMuSS study data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><em>40</em>, <em>25</em>, <em>40</em>, <em>125</em>, <em>40</em>, <em>75</em>, <em>100</em> and <em>57.1</em></p>
+</div>
+</div>
+<p>Compute the mean, median, and mode.</p>
 </section>
 <section id="comparing-measures-of-center" class="slide level2">
 <h2>Comparing measures of center</h2>
-<p>Each statistic is a little different, but often they roughly agree; for example, all are between 20 and 25, which seems to capture the typical age.</p>
+<p>Each statistic is a little different, but often they roughly agree; for example, all are between 20 and 25, which seems to capture the typical age well enough.</p>
 
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"><p><em>When might one measure might be a better choice than the others? Can you think of an example?</em></p>
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"><p><em>How do you think the frequency distribution affects which one is “best”?</em></p>
 <!-- ## When to use what -->
 <!-- Usually either mean or median are used, unless extreme skewness or multiple modes are present. -->
 <!-- ```{r, fig.width = 12, fig.height = 4} -->
@@ -766,14 +902,14 @@
 </section>
 <section id="cumulative-frequency-distribution" class="slide level2">
 <h2>Cumulative frequency distribution</h2>
-<p>Closely related to the concept of a percentile is the <em>cumulative frequency distribution</em>: the proportion of observations smaller than or equal to each unique observed value.</p>
+<p>The <em>cumulative frequency distribution</em> is a function showing all percentiles with an exact solution. Think of it as percentile (y) against value (x).</p>
 <div class="columns">
 <div class="column" style="width:0.6;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-15-1.png" width="480"></p>
+<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-18-1.png" width="480"></p>
 </figure>
 </div>
 </div>
@@ -792,181 +928,11 @@
 </div>
 </div>
 </section>
-<section id="measures-of-spread" class="slide level2">
-<h2>Measures of spread</h2>
-<p>The <em>spread</em> of observations refers to how concentrated or diffuse the values are.</p>
-
-<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" class="r-stretch quarto-figure-center"><p>Two ways to understand and measure spread:</p>
-<ul>
-<li><em>ranges</em> of values capturing much of the distribution</li>
-<li><em>deviations</em> of values from a central value</li>
-</ul>
-</section>
-<section id="range-measures" class="slide level2">
-<h2>Range measures</h2>
-<p>A simple way to understand and measure spread is based on ranges. Consider more ages, sorted and ranked:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:99%;">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>age</strong></td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">28</td>
-<td style="text-align: center;">29</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">34</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>rank</strong></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">12</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<ul>
-<li><p>The <strong>range</strong> is the difference [maximum value] - [minimum value] <span class="math display">\[\text{range} = 34 - 16 = 18\]</span></p></li>
-<li><p>The <strong>interquartile range</strong> (IQR) is the difference [75th percentile] - [25th percentile] <span class="math display">\[\text{IQR} = 29 - 19 = 10\]</span> <em>When might you prefer IQR to range? Can you think of an example?</em></p></li>
-</ul>
-</section>
-<section id="deviation-measures" class="slide level2">
-<h2>Deviation measures</h2>
-<p>Another way is based on <em>deviations</em> from a central value. Continuing the example, the mean age is is 24. The deviations of each observation from the mean are:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:100%;">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>age</strong></td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">28</td>
-<td style="text-align: center;">29</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">34</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>deviation</strong></td>
-<td style="text-align: center;">-8</td>
-<td style="text-align: center;">-6</td>
-<td style="text-align: center;">-5</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">-3</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">10</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The <strong>average deviation</strong> is defined as the average of the absolute values of the deviations from the mean: <span class="math display">\[
-\frac{8 + 6 + 5 + 4 + 3 + 2 + 1 + 2 + 4 + 5 + 6}{12}
-\]</span> The <strong>standard deviation</strong> is defined in terms of the squared deviations from the mean: <span class="math display">\[
-\sqrt{\frac{(-8)^2 + (-6)^2 + (-5)^2 + (-4)^2 + (-3)^2 + (-2)^2 + (1)^2 + (2)^2 + (4)^2 + (5)^2 + (6)^2}{12 - 1}}
-\]</span></p>
-</section>
-<section id="calculations" class="slide level2">
-<h2>Calculations</h2>
-<p>Listed from largest to smallest, here are each of the measures of spread for the 12 ages:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:46%;">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">range</th>
-<th style="text-align: center;">iqr</th>
-<th style="text-align: center;">st.dev</th>
-<th style="text-align: center;">avg.dev</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">8.5</td>
-<td style="text-align: center;">5.527</td>
-<td style="text-align: center;">4.667</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>They are not always ordered in this way; in lab you’ll explore further examples.</p>
-<blockquote>
-<p>While it’s good to know how to reconstruct these calculations, you won’t actually have to perform them from scratch in practice, so it’s more important that you understand their conceptual basis</p>
-</blockquote>
-</section>
-<section id="numerical-summaries" class="slide level2">
-<h2>Numerical summaries</h2>
-<p>Two sets of descriptive statistics are typically reported to give numerical summaries of data.</p>
+<section id="common-percentiles" class="slide level2">
+<h2>Common percentiles</h2>
 <div class="columns">
-<div class="column" style="width:0.5;">
-<p>The <em>five-number summary</em> is a collection of five percentiles that succinctly describe the distribution of observed values of a variable:</p>
+<div class="column" style="width:50%;">
+<p>The <strong>five-number summary</strong> is a collection of five percentiles that succinctly describe the frequency distribution:</p>
 <table>
 <thead>
 <tr class="header">
@@ -997,98 +963,65 @@
 </tr>
 </tbody>
 </table>
-</div><div class="column" style="width:0.5;">
-<p>In addition, the <em>mean and standard deviation</em> are often reported.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Statistic name</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Mean</strong></td>
-<td>average value</td>
-</tr>
-<tr class="even">
-<td><strong>Standard deviation</strong></td>
-<td>dispersion about mean</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="boxplots" class="slide level2">
-<h2>Boxplots</h2>
-<p>Boxplots provide a graphical display of the five-number summary, plus the standard deviation.</p>
-<div class="columns">
-<div class="column" style="width:40%;">
+</div><div class="column" style="width:50%;">
+<p>Boxplots provide a graphical display of the five-number summary.</p>
 <p><img data-src="img/boxplot-anatomy.png"></p>
-</div><div class="column" style="width:60%;">
-<p>The basic anatomy is:</p>
-<ul>
-<li>box shows quartiles</li>
-<li>whiskers are multiples of the standard deviation (usually 1.5)</li>
-<li>observations outside the whiskers are plotted separately</li>
-</ul>
-<p>The main advantage this has over a histogram is that it’s much more compact.</p>
 </div>
 </div>
 </section>
-<section id="example-descriptive-summary" class="slide level2">
-<h2>Example descriptive summary</h2>
-<p>Suppose we wanted to use our descriptive tools to compare the change in dominant arm strength with the change in nondominant arm strength in the FAMuSS (sports gene) study.</p>
+<section id="boxplots-vs.-histograms" class="slide level2">
+<h2>Boxplots vs.&nbsp;histograms</h2>
+<p>Notice how the two displays align, and also how they differ. The histogram shows shape in greater detail, but the boxplot is much more compact.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-20-1.png" width="480"></p>
+<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-19-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-21-1.png" width="480"></p>
+<p><img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-20-1.png" width="480"></p>
 </div>
 </div>
 </div>
 </div>
-<p><em>What are the shapes? How many modes? Differences in center? Differences in spread?</em></p>
 </section>
+<section id="boxplots-vs.-histograms-1" class="slide level2">
+<h2>Boxplots vs.&nbsp;histograms</h2>
+<p>Suppose we wanted to compare the change in dominant arm strength with the change in nondominant arm strength in the FAMuSS (sports gene) study.</p>
+<p>The boxplot is a cleaner display due to its compactness.</p>
+
+<img data-src="week3-descriptive_files/figure-revealjs/unnamed-chunk-21-1.png" width="576" class="r-stretch"></section>
 <section id="lab-robustness" class="slide level2">
 <h2>Lab: robustness</h2>
 <p>For this lab we’ll continue to work with the FAMuSS data as we have throughout lecture.</p>
 <p>This lab has two objectives:</p>
 <ol type="1">
 <li>Teach you to compute descriptive statistics and prepare graphical summaries for a single variable in R</li>
-<li>Allow you to explore the concept of robustness and learn when and why to use certain descriptive statistics in place of others</li>
+<li>Learn when and why to use certain descriptive statistics in place of others</li>
 </ol>
 </section>
-<section>
-<section id="extras" class="title-slide slide level1 center">
-<h1>Extras</h1>
-
-</section>
-<section id="formulae" class="slide level2">
-<h2>Formulae</h2>
-<p>The general formulae for the deviation measures are expressed as follows.</p>
-<p>Denote <span class="math inline">\(n\)</span> observations of a variable <span class="math inline">\(x\)</span> by <span class="math inline">\(x_1, \dots, x_n\)</span>, so that <span class="math inline">\(x_i\)</span> indicates the value of the <span class="math inline">\(i\)</span>th observation.</p>
-<p>The <strong>mean</strong> of the observations is denoted by <span class="math inline">\(\bar{x}\)</span> and defined as: <span class="math display">\[
-\bar{x} = \frac{1}{n}\sum_i x_i
-\]</span></p>
-<p>Then, the <strong>average deviation</strong> is: <span class="math display">\[
-\text{average deviation} = \frac{1}{n}\sum_i |x_i - \bar{x}|
-\]</span> The <strong>standard deviation</strong> is: <span class="math display">\[
-\text{standard deviation} = \sqrt{\frac{1}{n - 1}\sum_i (x_i - \bar{x})^2}
-\]</span></p>
+<section id="up-next-multivariate-summaries" class="slide level2">
+<h2>Up next: multivariate summaries</h2>
+<p>Today we discussed numeric and graphical summaries for a <em>single</em> variable. These are <strong>univariate</strong> techniques.</p>
+<ul>
+<li><strong>Will</strong> reveal basic statistical properties (shape, skew, outliers)</li>
+<li><strong>Won’t</strong> reveal relationships</li>
+</ul>
+<p>What if you wish to understand relationships? The fact is, most data are <strong>multivariate</strong> because several variables are measured together.</p>
+<p>Next time we’ll discuss</p>
+<ol type="1">
+<li>Measures of spread/variability</li>
+<li>Bivariate descriptive and graphical techniques</li>
+</ol>
 
 
 <img src="img/poly-logo-2.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>STAT218</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
