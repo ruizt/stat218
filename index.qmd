@@ -7,8 +7,8 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- All deadlines extended 1 week due to CFA strike; tentative schedule not yet updated
-- Materials posted for class Tuesday 1/23 and outline updated for class Thursday 1/25
+- Schedule updated to reflect shifted deadlines
+- Grades posted for HW1; revisions due Friday 1/26
 
 :::
 

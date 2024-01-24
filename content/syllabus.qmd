@@ -103,7 +103,7 @@ The **final oral exam** will require you to find an application of course materi
 Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
 
 | Grade | Minimum number of partly + fully met outcomes | Minimum number of fully met outcomes |
-|-----------------|------------------------------|-------------------------|
+|------------------|-----------------------------|-------------------------|
 | A     | 10                                            | 9                                    |
 | A-    | 10                                            | 8                                    |
 | B+    | 8                                             | 7                                    |
@@ -122,19 +122,19 @@ Please note that these definitions are tentative and potentially subject to chan
 
 Subject to change.
 
-| Week             | Topics                                                              | Readings (V&H) | Assignments |
-|--------------|------------------------------|--------------|--------------|
-| 1 (1/8/24)       | Introduction to statistical thinking and study design               | 1.1            | HW1         |
-| 2 (1/15/24)      | Data, data types, and data collection                               | 1.2            | None        |
-| 3 (1/22/24)      | Foundations for inference                                           | 1.4 – 1.5; 4.1 | HW2         |
-| 4 (1/29/24)      | Interval estimation and hypothesis tests                            | 4.2 – 4.3      | Test 1      |
-| 5 (2/5/24)       | Two-sample inference for numerical data; nonparametric alternatives | 5.1 — 5.3      | HW3         |
-| 6 (2/12/24)      | Comparing means with analysis of variance                           | 5.4            | HW4         |
-| 7 (2/19/24)      | Inference for categorical data: proportions                         | 8.1 — 8.2      | Test 2      |
-| 8 (2/26/24)      | Inference for categorical data: chi-square tests                    | 8.3 — 8.4      | HW5         |
-| 9 (3/4/24)       | Simple linear regression: model framework and estimation            | 6.1 — 6.3      | HW6         |
-| 10 (3/11/24)     | Simple linear regression: inference                                 | 6.4 — 6.5      | Test 3      |
-| Finals (3/18/24) | N/A                                                                 | N/A            | Oral exam   |
+| Week             | Topics                                                   | Readings (V&H) | Assignments |
+|---------------|---------------------------|---------------|---------------|
+| 1 (1/8/24)       | Introduction to statistical thinking and study design    | 1.1            | HW1         |
+| 2 (1/15/24)      | Data, data types, and data collection                    | 1.2            | None        |
+| 3 (1/22/24)      | Descriptive statistics and graphical summaries           | 1.4 – 1.6      | ~~HW2~~     |
+| 4 (1/29/24)      | Foundations for inference                                | 4.1 – 4.2      | HW2         |
+| 5 (2/5/24)       | One- and two-sample inference for numerical data         | 4.3; 5.1 — 5.3 | Test 1      |
+| 6 (2/12/24)      | Nonparametric inference                                  | TBD            | HW3         |
+| 7 (2/19/24)      | Comparing many means with analysis of variance           | 5.5            | HW4         |
+| 8 (2/26/24)      | Inference for categorical data                           | 8.1 — 8.4      | Test 2      |
+| 9 (3/4/24)       | Simple linear regression: model framework and estimation | 6.1 — 6.3      | HW5         |
+| 10 (3/11/24)     | Simple linear regression: inference                      | 6.4 — 6.5      | Test 3      |
+| Finals (3/18/24) | N/A                                                      | N/A            | Oral exam   |
 
 ### Course policies
 

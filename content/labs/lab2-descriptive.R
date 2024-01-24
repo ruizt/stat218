@@ -76,6 +76,7 @@ quantile(age, probs = c(0.3, 0.6))
 # choose a *quantiative* variable from the dataset
 
 # compute the five-number summary using quantile()
+quantile(age, probs = c(0, .25, .5, .75, 1))
 
 # compare the mean and the median. are they close?
 

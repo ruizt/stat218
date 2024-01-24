@@ -224,7 +224,7 @@ The amount of skewness is a bit subjective --- so just discuss and make a determ
 ```
 :::
 
-```{r, eval = F}
+```{r, eval = F, echo = F}
 knitr::purl(input = 'lab2-descriptive.qmd',
             output = 'lab2-descriptive.R')
 ```

@@ -56,77 +56,86 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[reading\] Vu and Harrington 1.4 - 1.5; van Belle *et al.* 3.4
 -   \[lecture/discussion\] descriptive statistics for numerical and categorical data
 -   \[lab\] descriptive statistics in R; robustness
+-   \[case study\] functional SNPs associated with muscle strength and size (FAMuSS)
 
-***Thursday class meeting***
+***Thursday class meeting*** \[[slides](content/week3-multivariate.qmd)\] \[[lab](content/labs/lab3-multivariate.qmd)\]
 
 -   \[reading\] Vu and Harrington 1.6
 -   \[lecture/discussion\] descriptive statistics for relationships between two variables
 -   \[lab\] bivariate summaries in R
--   \[case study\] NHANES
+-   \[case study\] FAMUSS
 
 **Assignment**: extended to next week
 
 ### Week 4 (1/29/24)
 
-*Interval estimation and hypothesis testing*
+*Foundations for inference*
 
-***Tuesday***:
+**Tuesday**:
+
+- \[reading\] Vu and Harrington 4.1
+- \[lecture/discussion\] sampling and sampling distributions
+- \[lab\] exploring sampling variability
+- \[case study\] National health and nutrition examination survey (NHANES)
+
+***Thursday***:
 
 -   \[reading\] Vu and Harrington 4.2
 -   \[lecture/discussion\] interval estimation for a population mean
 -   \[lab\] computing confidence intervals in R
--   \[case study\] primary biliary cirrhosis <!--# van belle -->
+-   \[case study\] NHANES
 
-***Thursday***:
+
+**Assignment**: HW2 due Thursday 2/8 11:59pm PST \[L1, L3\] 
+
+### Week 5 (2/5/24)
+
+*One- and two-sample inference for numerical data*
+
+***Tuesday***:
 
 -   \[reading\] Vu and Harrington 4.3
 -   \[lecture/discussion\] hypothesis tests for a population mean
 -   \[lab\] inferential errors <!--# simulation -->
 -   \[case study\] DDT in kale <!--# MASS::DDT -->
 
-**Assignment**: HW2 due Thursday 2/8 11:59pm PST \[L1, L3\] 
-
-<!-- **Assignment**: Test 1 due Friday 2/2 11:59pm PST \[L1, L2, L3\] -->
-
-### Week 5 (2/5/24)
-
-*Two-sample inference for numerical data*
-
-***Tuesday***:
+***Thursday***:
 
 -   \[lecture/discussion\] two-sample *t* tests and intervals for paired and independent data
 -   \[lab\] *t* tests in R <!--# cloud seeding, envm -->
 -   \[case study\] evolution of Darwin's finches <!--# Sleuth3::case0201, bio -->
 
-***Thursday***:
+**Assignment**: Test 1 due Friday 2/9 11:59pm PST \[L1, L2, L3\]
 
--   \[lecture/discussion\] nonparametric alternatives for two sample inference
--   \[lab\] nonparametric and randomization tests in R
--   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health -->
-
-***Assignment***: HW3 due Thursday 2/15 11:59pm PST \[L4, L5\]
 
 ### Week 6 (2/12/24)
 
-*Analysis of variance*
+*Nonparametric inference*
 
-***Assignment***: HW4 due Thursday 2/22 11:59pm PST \[L9\]
+<!-- ***Tuesday***: -->
 
-<!--# anorexia on body weights (MASS) -->
+<!-- -   \[lecture/discussion\] nonparametric alternatives for two sample inference -->
+<!-- -   \[lab\] nonparametric and randomization tests in R -->
+<!-- -   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health --> -->
+
+***Assignment***: HW3 due Thursday 2/22 11:59pm PST \[L4, L5\]
+
 
 ### Week 7 (2/19/24)
 
-*Inference for categorical data: proportions*
+*Analysis of variance*
 
 *Academic holiday 2/19/24*
 
-***Assignment***: Test 2 due Friday 2/23 11:59pm PST \[L4, L5, L9\]
+***Assignment***: HW4 due Thursday 2/29 11:59pm PST \[L9\]
+
+<!--# anorexia on body weights (MASS) -->
 
 ### Week 8 (2/26/24)
 
-*Inference for categorical data: contingency tables and chi-square tests*
+*Inference for categorical data*
 
-***Assignment***: HW5 due Thursday 3/7 11:59pm PST \[L6, L7, L8\]
+***Assignment***: Test 2 due Friday 3/1 11:59pm PST \[L4, L5, L9\]
 
 <!--# smoking and lung cancer -->
 
@@ -134,13 +143,16 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 
 *Simple linear regression*
 
-***Assignment***: HW6 due Thursday 3/14 11:59pm PST \[L10\]
-
 <!--# big bang -->
+
+***Assignment***: HW5 due Thursday 3/14 11:59pm PST \[L6, L7, L8\]
+
 
 ### Week 10 (3/11/24)
 
-*Inference in regression*
+*Simple linear regression*
+
+<!--# big bang -->
 
 ***Assignment***: Test 3 due Friday 3/15 11:59pm PST \[L6, L7, L8, L10\]
 
