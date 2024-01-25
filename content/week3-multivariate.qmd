@@ -23,15 +23,19 @@ library(pander)
 data(famuss)
 ```
 
-1.  (Univariate) Measures of spread
+1.  HW discussion
 
-2.  Graphical summmaries for two variables
+2.  Reading quiz \[[2pm section](https://forms.office.com/r/BTsqQQLRqX)\] \[[4pm section](https://forms.office.com/r/GsSRY4e5VD)\]
+
+3.  (Univariate) Measures of spread
+
+4.  Graphical summmaries for two variables
 
     -   numeric/numeric
     -   numeric/categorical
     -   categorial/categorical
 
-3.  Lab: bivariate graphics in R
+5.  Lab: bivariate graphics in R
 
 ## Measures of spread
 
@@ -367,6 +371,7 @@ Common misconceptions:
 *Did change in arm strength appear related in any way to body size among study participants?*
 
 Here are the correlations corresponding to the plots we checked earlier.
+
 ```{r}
 cor_mx <- famuss %>%
   select(drm.ch, ndrm.ch, height, weight, bmi) %>%
@@ -376,12 +381,13 @@ cor_mx[3:5, 1:2] %>%
   t() %>%
   pander()
 ```
+
 So there aren't any linear relationships here. A rule of thumb:
 
-- $|r| < 0.3$: no relationship
-- $0.3 \leq |r| < 0.6$: weak to moderate relationship
-- $0.6 \leq |r| < 1$: moderate to strong relationship
-- $|r| = 1$: either a mistake or not real data
+-   $|r| < 0.3$: no relationship
+-   $0.3 \leq |r| < 0.6$: weak to moderate relationship
+-   $0.6 \leq |r| < 1$: moderate to strong relationship
+-   $|r| = 1$: either a mistake or not real data
 
 ## Numeric/categorical
 
@@ -389,8 +395,7 @@ Side-by-side boxplots are usually a good option. Avoid stacked histograms.
 
 *Were differential changes in arm strength observed according to genotype?*
 
-::: {.columns}
-
+::: columns
 ::: {.column width="80%"}
 ```{r, fig.width = 8, fig.height = 4}
 par(mfrow = c(1, 2),
@@ -416,12 +421,10 @@ boxplot(drm.ch ~ actn3.r577x,
 ::: {.column width="20%"}
 Look for differences:
 
-- location shift
-- spread
-- center
+-   location shift
+-   spread
+-   center
 
 *What do you think? Any notable relationships?*
 :::
-
 :::
-

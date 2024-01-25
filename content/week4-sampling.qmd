@@ -1,0 +1,27 @@
+---
+title: "Sampling variability"
+subtitle: "Frequency distributions of summary statistics under random sampling"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Today's agenda
+
+```{r}
+library(tidyverse)
+library(NHANES)
+nhanes <- NHANES %>% 
+  filter(SurveyYr == "2009_10") %>%
+  mutate(subj.id = row_number()) %>%
+  select(subj.id, Gender, Age, Poverty, Pulse, BPSys1, BPDia1, TotChol, SleepHrsNight) %>%
+  drop_na() 
+```
