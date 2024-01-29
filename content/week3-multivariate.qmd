@@ -233,7 +233,7 @@ Notice, though, that the marginal means (dashed red lines) still capture the cen
 Bivariate summary techniques differ depending on the data types of the variables being compared. Some examples the context of the FAMuSS study:
 
 | Question                                                                                                   | Comparison              |
-|------------------------------------|------------------------------------|
+|------------------------------------------------------------------------------------------------------------|-------------------------|
 | Did genotype frequencies differ by race or sex among study participants?                                   | categorical/categorical |
 | Were differential changes in arm strength observed according to genotype?                                  | numeric/categorical     |
 | Did change in arm strength appear related in any way to body size among study participants?                | numeric/numeric         |

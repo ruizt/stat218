@@ -1,0 +1,280 @@
+---
+title: "Sampling variability"
+subtitle: "Frequency distributions of summary statistics under random sampling"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Today's agenda
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+library(NHANES)
+nhanes <- NHANES %>% 
+  filter(SurveyYr == "2009_10") %>%
+  mutate(subj.id = row_number()) %>%
+  select(subj.id, Gender, Age, Poverty, Pulse, BPSys1, BPDia1, TotChol, SleepHrsNight) %>%
+  drop_na() 
+cholesterol <- nhanes$TotChol
+set.seed(12824)
+samp <- sample(cholesterol, size = 50)
+```
+
+## From last time
+
+::: {.columns}
+
+::: {.column}
+Under simple random sampling:
+
+- the sample mean provides a good point estimate of the population mean
+- its theoretical sampling variability is given by the standard deviation $\frac{\sigma}{\sqrt{n}} = \frac{\text{population SD}}{\sqrt{\text{sample size}}}$
+- its estimated sampling variability is given by the standard error $\frac{s_x}{\sqrt{n}} = \frac{\text{sample SD}}{\sqrt{\text{sample size}}}$
+::: 
+
+::: {.column}
+```{r}
+tbl <- cbind(mean = c(mean(samp), mean(cholesterol)),
+      sd = c(sd(samp), sd(cholesterol))) 
+row.names(tbl) <- c('sample', 'population')
+pander(tbl)
+par(mfrow = c(1, 2),
+    mar = c(4, 4, 4, 1),
+    cex = 2)
+hist(samp, 
+     breaks = 10, 
+     main = 'sample (n = 50)', 
+     xlab = 'cholesterol',
+     ylab = 'frequency')
+hist(cholesterol, 
+     breaks = 30, 
+     main = 'population', 
+     xlab = 'cholesterol',
+     ylab = 'frequency')
+```
+:::
+
+:::
+
+So in the example: the estimated mean total HDL cholesterol among the population is 5.031 mmol/L *and this point estimate is expected to deviate by 0.1396 mmol/L from the population mean on average across samples.*
+
+## Interval estimation
+
+A point estimate for the mean provides a guess at the exact value of the parameter; an interval estimate is **a range of plausible values**.
+
+In general, an interval estimate is constructed from two main ingredients:
+
+1. point estimate
+2. standard error
+
+And one secret ingredient:
+
+3. a model for the sampling distribution of the point estimate
+
+The general form of an interval estimate is: $$\text{point estimate} \pm \text{margin of error}$$
+
+
+## Precision and coverage
+
+::: {.columns}
+
+::: {.column width="45%"}
+Intervals have two main and attributes:
+
+- **precision** refers to how wide or narrow the interval is
+- **coverage** refers to how often, under random sampling, the interval captures the parameter of interest
+:::
+
+::: {.column width="55%"}
+These properties are inversely related:
+
+- if I say mean cholesterol is between 0 and 50 I'm almost certainly right, but the estimate is useless
+- if I say mean cholesterol is between 5.0299 and 5.0301, I've made a very precise guess, but I'm likely wrong (think about sampling variability)
+:::
+
+:::
+
+> An accurate interval should maintain high coverage while achieving practically useful precision. *This isn't always possible!*
+
+## An interval for the mean
+
+A common interval for the population mean is:
+$$\bar{x} \pm 2\times SE(\bar{x}) \qquad\text{where}\quad SE(\bar{x}) = \left(\frac{s_x}{\sqrt{n}}\right)$$
+
+::: {.columns}
+
+::: {.column}
+By hand:
+$$5.031 \pm 2\times 0.1396 = (4.75, 5.31)$$
+:::
+
+::: {.column}
+In R:
+```{r, echo = T}
+c(lwr = mean(samp) - 2*sd(samp)/sqrt(50), 
+  upr = mean(samp) + 2*sd(samp)/sqrt(50))
+```
+:::
+
+:::
+
+The precision is evident from the interval width (0.5611). But what about coverage?
+
+## Exploring interval coverage
+
+Let's carry on pretending that the NHANES data comprise a population.
+
+The first section of `lab5-intervals` contains some simple commands to draw a sample and calculate an interval estimate.
+
+1. Each of you will generate an interval *based on a different sample*
+2. We'll tally how many of you obtained intervals capturing the population mean
+
+Our tally will give an approximate idea of the coverage.
+
+## More simulation
+
+::: {.columns}
+
+::: {.column width="65%"}
+Artificially simulating a larger number of intervals provides a slightly better approximation of coverage. 
+
+- at right, 100 intervals
+- 97% cover the population mean (vertical dashed line)
+
+What do you expect would happen to coverage if, for the same samples...
+
+- a wider margin of error (say, $3\times SE$) were used?
+- a narrower margin of error (say, $1\times SE$) were used?
+:::
+
+::: {.column width="35%"}
+```{r, fig.height = 7, fig.width=4}
+nsim <- 100
+set.seed(13124)
+intervals <- tibble(sim = 1:nsim, 
+                    pop.mean = mean(cholesterol)) %>%
+  mutate(data = map(sim, ~sample(cholesterol, size = 50)),
+         xbar = map(data, mean),
+         se = map(data, ~sd(.x)/sqrt(length(.x)))) %>%
+  unnest(cols = c(xbar, se)) %>%
+  mutate(lwr = xbar - 2*se, 
+         upr = xbar + 2*se,
+         coverage = factor((lwr < pop.mean)*(pop.mean < upr),
+                           labels = c('misses', 'covers')))
+         
+         
+intervals %>%
+  ggplot(aes(x = xbar, y = sim, color = coverage)) +
+  geom_point() +
+  geom_linerange(aes(xmin = lwr, 
+                     xmax = upr)) +
+  geom_vline(xintercept = mean(cholesterol),
+             linetype = 'dashed') +
+  theme_minimal(base_size = 20) +
+  scale_x_continuous(breaks = round(mean(cholesterol) + sd(cholesterol)*c(-3, -1.5, 0, 1.5, 3)/sqrt(50), 2)) +
+  theme(panel.grid = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey'),
+        axis.text.y = element_blank(),
+        legend.position = 'top') +
+  labs(y = '', x = '') +
+  guides(color = guide_legend(title = NULL))
+```
+:::
+
+:::
+## So why 2 standard errors?
+
+::: {.columns}
+
+::: {.column}
+The margin of error of $2\times SE$ comes from the so-called "empirical rule".
+
+- under the normal model, 95% of values are within 2SD of center
+- so for 95% of samples, the sample mean is within 2SD of the population mean 
+
+Hence, $\bar{x} \pm 2\times SD$ achieves approximately 95% coverage.
+
+:::
+
+::: {.column}
+![](img/empirical-rule.png){width=500}
+:::
+
+:::
+
+*But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage?*
+
+## A closer look at the normal model
+
+An alternate but equivalent way to understand the normal model for the sampling distribution of $\bar{x}$ is in terms of deviations. The following are equivalent:
+
+
+```{r, fig.height = 2.5, fig.width = 10}
+par(mfrow = c(1, 2),
+    mar = c(6, 1, 1, 1), 
+    cex.lab = 1.5, 
+    cex.axis = 1)
+curve(dnorm(x, sd = 2),
+      from = -6, to = 6,
+      axes = F,
+      xlab = expression(bar(x)))
+axis(1, at = seq(-6, 6, by = 3), 
+     labels = c(expression(mu - 3*sigma/sqrt(n)), 
+                expression(mu - 1.5*sigma/sqrt(n)),
+                expression(mu),
+                expression(mu + 1.5*sigma/sqrt(n)),
+                expression(mu + 3*sigma/sqrt(n))
+                ),
+     las=0)
+title(main = 'normal model')
+curve(dnorm(x, sd = 1),
+      from = -6, to = 6,
+      axes = F, xlab = '')
+axis(1, at = seq(-3, 3, by = 1.5))
+title(xlab = expression(frac(bar(x) - mu, sigma/sqrt(n))), line = 5)
+title(main = 'deviations from center')
+```
+
+The expression $\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$ is called a *z-score* and measures the number of standard deviations from center.
+
+## The $t$ model
+
+Because we don't know the population variance, we're *actually* using $\frac{\bar{x} - \mu}{s_x/\sqrt{n}}$. 
+
+This quantity is better approximated by a $t$ model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.
+
+::: {.columns}
+
+::: {.column width="40%"}
+The difference between models depends mainly on sample size:
+
+- behaves almost exactly the same for moderate to large samples
+- larger deviations from center for small samples
+:::
+
+::: {.column width="60%"}
+![Comparison of $t$ model with normal model for various degrees of freedom.](img/normal-t.png)
+:::
+
+:::
+
+## Comparing models
+
+## Adjusting coverage
+
+## Rules of thumb
+
+## Interval interpretation
+
+## Putting it all into practice

@@ -342,9 +342,470 @@
 </section>
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
+<p>Today we’ll focus on understanding sampling variability. This is a foundation for the development of inferential statistics.</p>
+<ol type="1">
+<li>Reading quiz [2pm section] [4pm section]</li>
+<li>[lecture/lab] Effect of sampling variability on summary statistics</li>
+<li>[lecture/lab] Effect of sample size on sampling variability of summary statistics</li>
+<li>The normal model</li>
+</ol>
+</section>
+<section id="inferential-statistics" class="slide level2">
+<h2>Inferential statistics</h2>
+<p>Consider this descriptive finding from the FAMuSS study:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Median percent change by genotype:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:29%;">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">CC</th>
+<th style="text-align: center;">CT</th>
+<th style="text-align: center;">TT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">42.9</td>
+<td style="text-align: center;">45.5</td>
+<td style="text-align: center;">50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><em>Subjects with genotype TT exhibited the largest median percent change in strength</em></p>
+</div>
+</div>
+<p><strong>Inferential statistics</strong> will allow us to address questions like:</p>
+<blockquote>
+<p>Should we expect these differences to persist among the general population?</p>
+</blockquote>
+<p>To do so we will need to articulate how samples relate to populations.</p>
+</section>
+<section id="sampling-variability" class="slide level2">
+<h2>Sampling variability</h2>
+<p>Different samples inevitably produce different outcomes. This is <strong>sampling variation</strong>:</p>
+<blockquote>
+<p>If we re-run the study with new participants we’ll get different results</p>
+</blockquote>
+<p>The basis for statistical inference is distinguishing sampling variation from systematic variation.</p>
+<p>What we really want to know in the FAMuSS study:</p>
+<blockquote>
+<p>Is the CC/TT/CT difference systematic in the population or an artefact of the sample?</p>
+</blockquote>
+<p>In other words…</p>
+<ul>
+<li>was the result due to chance?</li>
+<li>or was it genuine?</li>
+</ul>
+<!-- How often we'd observe a difference depends on a combination of factors: -->
+<!-- |             |                    |            | -->
+<!-- |-------------|--------------------|------------| -->
+<!-- |             | Sampling variation |            | -->
+<!-- | Effect size | **Low**            | **High**   | -->
+<!-- | **Low**     | Less often         | More often | -->
+<!-- | **High**    | More often         | Less often | -->
+</section>
+<section id="random-sampling" class="slide level2">
+<h2>Random sampling</h2>
+<p>If we assume study units are sampled at random from a broader population, we can quantify how much summary statistics are expected to change from sample to sample.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/srs.png"></p>
+</div><div class="column" style="width:50%;">
+<p>A study <strong>population</strong> is a collection of all study units of interest.</p>
+<p>A <strong>sample</strong> is a subcollection from a population:</p>
+<ul>
+<li><em>random</em> if study units have a known chance of inclusion in the sample</li>
+<li><em>nonrandom</em> or <em>convenience</em> otherwise</li>
+</ul>
+</div>
+</div>
+<p>In STAT218 we’ll limit attention to <strong>simple random samples</strong>: each study unit in the population has an equal chance of inclusion in the sample.</p>
+</section>
+<section id="a-pretend-population-nhanes-data" class="slide level2">
+<h2>A pretend population: NHANES data</h2>
+<p>The National Health and Nutrition Esamination Survey (NHANES) is an annual CDC program to collect health and nutrition data on the non-institutionalized civilian resident population of the United States. Here are a few variables:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">subj.id</th>
+<th style="text-align: center;">Gender</th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Poverty</th>
+<th style="text-align: center;">Pulse</th>
+<th style="text-align: center;">BPSys1</th>
+<th style="text-align: center;">BPDia1</th>
+<th style="text-align: center;">TotChol</th>
+<th style="text-align: center;">SleepHrsNight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">male</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">1.36</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">114</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">3.49</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">male</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">1.36</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">114</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">3.49</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">male</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">1.36</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">114</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">3.49</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">female</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">1.91</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">118</td>
+<td style="text-align: center;">82</td>
+<td style="text-align: center;">6.7</td>
+<td style="text-align: center;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>I’ve selected 3,179 responses from the 2009-2010 survey; let’s pretend the corresponding individuals form a population of interest.</p>
+</section>
+<section id="population-distribution-of-a-variable" class="slide level2">
+<h2>Population distribution of a variable</h2>
+<p>Consider the <code>TotChol</code> variable: total HDL cholesterol in mmol/L. It has a certain frequency distribution among the population that we’ll call its <em>population distribution</em>.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:50%;">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Population mean</th>
+<th style="text-align: center;">Population SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">5.043</td>
+<td style="text-align: center;">1.075</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-5-1.png" width="480"></p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>If we draw a random sample of 50 individuals…</p>
+<ul>
+<li>how closely will the sample align with the population distribution?</li>
+<li>how much will alignment change if we select a new sample?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="simulating-sampling-variability" class="slide level2">
+<h2>Simulating sampling variability</h2>
+<p>Open the class activity <code>lab4-sampling</code>. The first part of this lab will load the NHANES data and provide you with a command for extracting a sample.</p>
+<p>Your task:</p>
+<ol type="1">
+<li>Have each person in your group extract a sample.</li>
+<li>Calculate the mean and standard deviation.</li>
+<li>Make a histogram.</li>
+<li>Compare your results to the population.</li>
+<li>Compare your results to each other.</li>
+</ol>
+<p>After you’ve had a chance to try in groups, we’ll compare across the class.</p>
+</section>
+<section id="simulating-sampling-variability-1" class="slide level2">
+<h2>Simulating sampling variability</h2>
+<div class="columns">
+<div class="column" style="width:&quot;55%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-7-1.png" width="768"></p>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<p>You should have observed something a bit like this.</p>
+<p>These are 16 random samples with the sample mean indicated by the blue dashed line and the population mean indicated by the red solid line.</p>
+<ul>
+<li>frequency distributions differ a lot</li>
+<li>sample means vary a little</li>
+<li>most means are close to 5</li>
+<li>most standard deviations are near 1</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="point-estimation" class="slide level2">
+<h2>Point estimation</h2>
+<p>It should seem plausible that the sample mean and standard deviation provide good estimates of the corresponding population quantities.</p>
+<p>We call them point estimates of population parameters.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter name</th>
+<th>Parameter notation</th>
+<th>Point estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td><span class="math inline">\(\sigma\)</span></td>
+<td><span class="math inline">\(s_x\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Now we can more formally describe statistical inference:</p>
+<ul>
+<li>a population parameter is any numeric characteristic of a population distribution</li>
+<li>an inference is a conclusion about the value of a population parameter based on point estimates <em>and their sampling variability</em></li>
+</ul>
+<p>We will focus initially on inferences about the mean <span class="math inline">\(\mu\)</span> based on the point estimate <span class="math inline">\(\bar{x}\)</span>.</p>
+</section>
+<section id="measuring-sampling-variability" class="slide level2">
+<h2>Measuring sampling variability</h2>
+<p>If we had means calculated from a large number of samples, we could make a frequency distribution for the values of the sample mean. This is called a <strong>sampling distribution</strong>.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-8-1.png" width="384"></p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:71%;">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>sample</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>mean</strong></td>
+<td style="text-align: center;">4.957</td>
+<td style="text-align: center;">5.039</td>
+<td style="text-align: center;">5.24</td>
+<td style="text-align: center;">5.24</td>
+<td style="text-align: center;">4.864</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Could measure the sampling variability using any measure of spread.</p>
+<ul>
+<li>standard deviation: 0.1513356</li>
+</ul>
+<p><em>On average, the sample mean varies about the population mean by 0.15 mmol/L across simple random samples.</em></p>
+</div>
+</div>
+</section>
+<section id="measuring-sampling-variability-1" class="slide level2">
+<h2>Measuring sampling variability</h2>
+<p>Theory indicates the standard deviation of the sample mean under random sampling is: <span class="math display">\[
+SD(\bar{x}) = \frac{\sigma}{\sqrt{n}}
+\qquad \left(\frac{\text{population SD}}{\sqrt{\text{sample size}}}\right)
+\]</span></p>
+<p>For <code>TotChol</code>, the theoretical standard deviation is <span class="math inline">\(SD(\bar{x}) = \frac{1.0747}{\sqrt{50}} =\)</span> 0.1519822.</p>
+<p>We can estimate this quantity by replacing <span class="math inline">\(\sigma\)</span> with the point estimate <span class="math inline">\(s_x\)</span>, resulting in a <strong>standard error</strong> (estimated standard deviation): <span class="math display">\[SE(\bar{x}) = \frac{s_x}{\sqrt{n}}
+\qquad \left(\frac{\text{sample SD}}{\sqrt{\text{sample size}}}\right)\]</span></p>
+<!-- ## Summing up -->
+<!-- So far we have established two key points: -->
+<!-- -   the sample mean and standard deviation provide good point estimates of the corresponding population parameters under random sampling -->
+<!-- -   we can estimate the sampling variability of the mean under random sampling using its standard error $\frac{s_x}{\sqrt{n}}$ -->
+</section>
+<section id="example-with-one-sample" class="slide level2">
+<h2>Example with one sample</h2>
+<p>The simulations we’ve done so far have been a means of understanding just what a standard error is meant to capture; these are <em>not</em> a practicable method for measuring sampling variation.</p>
+<p>In practice we’d simply compute a point estimate and standard error.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-10-1.png" width="768"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:24%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mean</th>
+<th style="text-align: center;">se</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">5.031</td>
+<td style="text-align: center;">0.1396</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p><em>The estimated mean total HDL cholesterol among the population is 5.031 mmol/L.</em></p></li>
+<li><p><em>The point estimate is expected to deviate by 0.1396 mmol/L on average from the population mean.</em></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="effect-of-sample-size" class="slide level2">
+<h2>Effect of sample size</h2>
+<p>The formula for the theoretical standard deviation of <span class="math inline">\(\bar{x}\)</span> suggests that sampling variability diminishes with sample size. For example:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:76%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>n</strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>SD</strong></td>
+<td style="text-align: center;">0.3398</td>
+<td style="text-align: center;">0.152</td>
+<td style="text-align: center;">0.1075</td>
+<td style="text-align: center;">0.03398</td>
+<td style="text-align: center;">0.01075</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The second section of <code>lab4-sampling</code> explores this. With your group:</p>
+<ol type="1">
+<li>Start with a sample size of 10.</li>
+<li>Have each person draw a sample and compute the mean (or draw a series of samples and compute the mean each time).</li>
+<li>Compare and observe how big the differences between your means are.</li>
+<li>Repeat with a sample size of 1000.</li>
+</ol>
+<p>You should see much less sampling variability after increasing <span class="math inline">\(n\)</span>.</p>
+</section>
+<section id="visualizing-effect-of-sample-size" class="slide level2">
+<h2>Visualizing effect of sample size</h2>
+<p>Generating a large number (10K) of samples allows us to approximate the sampling distribution for a variety of sample sizes.</p>
 
+<img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-14-1.png" width="768" class="r-stretch"><ul>
+<li>spread diminishes with sample size</li>
+<li>less variability among estimates from larger samples</li>
+</ul>
+<p>So estimates are more accurate with more data, <em>assuming data are from a random sample.</em></p>
+</section>
+<section id="normal-model" class="slide level2">
+<h2>Normal model</h2>
+<p>Notice that each simulated sampling distribution has produced a unimodal, symmetric, bell-shaped histogram.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>The normal model is a theoretical frequency distribution characterized by two parameters:</p>
+<ul>
+<li>a mean (center)</li>
+<li>a standard deviation (spread)</li>
+</ul>
+<p>Theory dictates that the sampling distribution of the sample mean is well-approximated by a normal model under simple random sampling.</p>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-sampling_files/figure-revealjs/unnamed-chunk-15-1.png" width="768"></p>
+</div>
+</div>
+</div>
+</div>
+<p><em>Based on discussion thus far, what do you think the model parameters might be?</em></p>
 
-<img src="img/poly-logo-2.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="img/poly-logo-2.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 <p>STAT218</p>
 </div>
 </section>
