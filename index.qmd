@@ -7,8 +7,7 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- Schedule updated to reflect shifted deadlines
-- Grades posted for HW1; revisions due Friday 1/26
+- Updates posted for week 4
 
 :::
 

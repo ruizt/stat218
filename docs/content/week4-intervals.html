@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
-  <title>STAT218 - Sampling variability</title>
+  <title>STAT218 - Interval estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -398,8 +398,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Sampling variability</h1>
-  <p class="subtitle">Frequency distributions of summary statistics under random sampling</p>
+  <h1 class="title">Interval estimation</h1>
+  <p class="subtitle">Adjusting estimates for sampling variation</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -553,29 +553,75 @@
 <li>under the normal model, 95% of values are within 2SD of center</li>
 <li>so for 95% of samples, the sample mean is within 2SD of the population mean</li>
 </ul>
-<p>Hence, <span class="math inline">\(\bar{x} \pm 2\times SD\)</span> achieves approximately 95% coverage.</p>
+<p>So in theory, according to the normal model, <span class="math inline">\(\bar{x} \pm 2\times SD\)</span> achieves 95% coverage.</p>
 </div><div class="column">
 <p><img data-src="img/empirical-rule.png" width="500"></p>
 </div>
 </div>
-<p><em>But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage?</em></p>
+<p><em>But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage using the normal model?</em></p>
+</section>
+<section id="normal-model-coverage" class="slide level2">
+<h2>Normal model coverage</h2>
+<div class="columns">
+<div class="column">
+<p>At right, the misses are compared between intervals calculated with SD (left) and SE (right) using the multiplier from the normal model on the same 10,000 simulated datasets with sample size <span class="math inline">\(n = 15\)</span>.</p>
+<ul>
+<li>SE misses more often</li>
+<li>so the normal model produces <em>under-coverage</em></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:25%;">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">type</th>
+<th style="text-align: center;">coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">sd</td>
+<td style="text-align: center;">0.954</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">se</td>
+<td style="text-align: center;">0.9294</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><em>What do you think: the multiplier should be [smaller/larger] to ensure 95% coverage.</em></p>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="a-closer-look-at-the-normal-model" class="slide level2">
 <h2>A closer look at the normal model</h2>
 <p>An alternate but equivalent way to understand the normal model for the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is in terms of deviations. The following are equivalent:</p>
 
-<img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><p>The expression <span class="math inline">\(\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}\)</span> is called a <em>z-score</em> and measures the number of standard deviations from center.</p>
+<img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><p>The expression <span class="math inline">\(\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}\)</span> is called a <em>z-score</em> and measures the number of standard deviations from center.</p>
 </section>
 <section id="the-t-model" class="slide level2">
 <h2>The <span class="math inline">\(t\)</span> model</h2>
-<p>Because we don’t know the population variance, we’re <em>actually</em> using <span class="math inline">\(\frac{\bar{x} - \mu}{s_x/\sqrt{n}}\)</span>.</p>
-<p>This quantity is better approximated by a <span class="math inline">\(t\)</span> model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.</p>
+<p>We’re <em>actually</em> using <span class="math inline">\(\frac{\bar{x} - \mu}{s_x/\sqrt{n}}\)</span> to construct intervals, because we don’t know <span class="math inline">\(\sigma\)</span>.</p>
+<p>These deviations are better approximated by a <span class="math inline">\(t\)</span> model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.</p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>The difference between models depends mainly on sample size:</p>
 <ul>
 <li>behaves almost exactly the same for moderate to large samples</li>
 <li>larger deviations from center for small samples</li>
+<li>leads to larger multipliers for computing margin of error</li>
 </ul>
 </div><div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
@@ -587,23 +633,152 @@
 </div>
 </div>
 </section>
-<section id="comparing-models" class="slide level2">
-<h2>Comparing models</h2>
+<section id="model-specification" class="slide level2">
+<h2>Model specification</h2>
+<p>The <span class="math inline">\(t\)</span> model is characterized by its <em>degrees of freedom</em>.</p>
+<ul>
+<li>for interval estimates for the mean, <span class="math inline">\(n - 1\)</span> is used</li>
+<li>depending on the degrees of freedom (<em>i.e.</em>, sample size), a different multiplier is applied to the standard error to obtain the margin of error</li>
+</ul>
+<p>The multiplier is called a <strong>critical value</strong>, and can be found in R via:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># pseudo code -- replace coverage with desired level, e.g., 0.95</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> (n <span class="sc">-</span> <span class="dv">1</span>), <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>chosen to ensure a specified <strong>nominal coverage level</strong> (usually 95%)</li>
+<li>higher nominal coverage levels utilize larger critical values, producing wider intervals</li>
+</ul>
 </section>
-<section id="adjusting-coverage" class="slide level2">
-<h2>Adjusting coverage</h2>
+<section id="model-validation" class="slide level2">
+<h2>Model validation</h2>
+<p>Using the <span class="math inline">\(t\)</span> model should produce coverage closer to the nominal level compared with the normal model. Let’s check through simulation.</p>
+<div class="columns">
+<div class="column">
+<p>At right, misses are compared between intervals using SE and critical values from the normal model (left) and <span class="math inline">\(t\)</span> model (right) constructed on the same 10,000 simulated datasets with sample size <span class="math inline">\(n = 10\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:28%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">model</th>
+<th style="text-align: center;">coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">normal</td>
+<td style="text-align: center;">0.9219</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">t</td>
+<td style="text-align: center;">0.9461</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The <span class="math inline">\(t\)</span> model produces coverage much closer to the nominal level.</p>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="rules-of-thumb" class="slide level2">
-<h2>Rules of thumb</h2>
+<section id="calculations" class="slide level2">
+<h2>Calculations</h2>
+<p>So, to sum up, the general formula for an interval for a population mean is: <span class="math display">\[\bar{x} \pm c \times SE(\bar{x}) \quad\text{where}\quad SE(\bar{x}) = \frac{s_x}{\sqrt{n}}\]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Rules of thumb:</p>
+<ul>
+<li>for moderate to large samples, use the normal model
+<ul>
+<li><span class="math inline">\(c = 1\)</span> for 68% coverage</li>
+<li><span class="math inline">\(c = 2\)</span> for 95% coverage</li>
+<li><span class="math inline">\(c = 3\)</span> for 99.7% coverage</li>
+</ul></li>
+<li>for small sample sizes, use the <span class="math inline">\(t\)</span> model</li>
+<li>when in doubt, use the <span class="math inline">\(t\)</span> model</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Exact critical values in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># normal critical value</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>c <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">lower.tail =</span> F)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># t critical value</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>c <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Interval calculation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># pseudo code</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">mean</span>(data_vec) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span>c<span class="sc">*</span><span class="fu">sd</span>(data_vec)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="interval-interpretation" class="slide level2">
-<h2>Interval interpretation</h2>
+<section id="interpretation" class="slide level2">
+<h2>Interpretation</h2>
+<p>As we’ve seen, coverage pertains to how often an interval of a particular form captures the population parameter of interest across samples of a fixed size. Loosely speaking, this represents how often you’d be right if you were to fully replicate your study <em>ad infinitum</em>.</p>
+<p>This leads to the following interpretation:</p>
+<blockquote>
+<p>With [XX]% confidence, the mean [population parameter] is estimated to be between [lower bound] and [upper bound] [units].</p>
+</blockquote>
+<p>For this reason, statisticians call interval estimates <strong>confidence intervals</strong>.</p>
 </section>
-<section id="putting-it-all-into-practice" class="slide level2">
-<h2>Putting it all into practice</h2>
+<section id="revisiting-initial-example" class="slide level2">
+<h2>Revisiting initial example</h2>
+<div class="columns">
+<div class="column">
+<p>So in the example we began with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># calculate 95% interval</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">mean</span>(samp) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(samp)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.751348 5.309852</code></pre>
+</div>
+</div>
+<p><em>With 95% confidence, the mean total HDL cholesterol is estimated to be between 4.751 and 5.31 mmol/L.</em></p>
+<p>Remember, “95% confidence” refers to coverage under sampling variation.</p>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:24%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mean</th>
+<th style="text-align: center;">se</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">5.031</td>
+<td style="text-align: center;">0.1396</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
 
-
-<img src="img/poly-logo-2.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="img/poly-logo-2.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 <p>STAT218</p>
 </div>
 </section>

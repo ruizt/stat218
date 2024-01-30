@@ -1,6 +1,6 @@
 ---
-title: "Sampling variability"
-subtitle: "Frequency distributions of summary statistics under random sampling"
+title: "Interval estimation"
+subtitle: "Adjusting estimates for sampling variation"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
@@ -203,7 +203,7 @@ The margin of error of $2\times SE$ comes from the so-called "empirical rule".
 - under the normal model, 95% of values are within 2SD of center
 - so for 95% of samples, the sample mean is within 2SD of the population mean 
 
-Hence, $\bar{x} \pm 2\times SD$ achieves approximately 95% coverage.
+So in theory, according to the normal model, $\bar{x} \pm 2\times SD$ achieves 95% coverage.
 
 :::
 
@@ -213,7 +213,78 @@ Hence, $\bar{x} \pm 2\times SD$ achieves approximately 95% coverage.
 
 :::
 
-*But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage?*
+*But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage using the normal model?*
+
+## Normal model coverage
+
+
+```{r, cache = T}
+nsim <- 10000
+n <- 15
+set.seed(13124)
+intervals <- tibble(sim = 1:nsim, 
+                    pop.mean = mean(cholesterol),
+                    pop.sd = sd(cholesterol),
+                    sd = pop.sd/sqrt(n)) %>%
+  mutate(data = map(sim, ~sample(cholesterol, size = n)),
+         xbar = map(data, mean),
+         se = map(data, ~sd(.x)/sqrt(n))) %>%
+  unnest(cols = c(xbar, se)) %>%
+  pivot_longer(cols = c(se, sd), names_to = 'type') %>%
+  mutate(lwr = xbar - 2*value, 
+         upr = xbar + 2*value,
+         coverage = factor((lwr < pop.mean)*(pop.mean < upr),
+                           labels = c('misses', 'covers')))
+```
+
+::: {.columns}
+
+::: {.column}
+
+At right, the misses are compared between intervals calculated with SD (left) and SE (right) using the multiplier from the normal model on the same 10,000 simulated datasets with sample size $n = 15$.
+
+- SE misses more often
+- so the normal model produces *under-coverage*
+
+```{r}
+intervals %>%
+  select(coverage, type) %>%
+  group_by(type) %>%
+  summarize(coverage = mean(coverage == 'covers')) %>%
+  pander()
+```
+
+*What do you think: the multiplier should be [smaller/larger] to ensure 95% coverage.*
+
+::: 
+
+
+::: {.column}
+
+```{r, fig.height=12}
+intervals %>%
+  filter(coverage == 'misses') %>%
+  ggplot(aes(x = pop.mean, y = sim, color = coverage)) +
+  facet_wrap(~type) +
+  geom_point(aes(x = xbar), alpha = 0.4) +
+  geom_linerange(aes(xmin = lwr, 
+                     xmax = upr),
+                 alpha = 0.4) +
+  geom_vline(xintercept = mean(cholesterol),
+             linetype = 'dashed') +
+  theme_minimal(base_size = 30) +
+  scale_x_continuous(breaks = round(mean(cholesterol) + sd(cholesterol)*c(-3, -1.5, 0, 1.5, 3)/sqrt(50), 2)) +
+  theme(panel.grid = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey'),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(angle = 55, size = 20, hjust = 1, vjust = 1)) +
+  labs(y = '', x = '') +
+  guides(color = guide_none())
+```
+
+:::
+
+:::
 
 ## A closer look at the normal model
 
@@ -248,11 +319,12 @@ title(main = 'deviations from center')
 
 The expression $\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$ is called a *z-score* and measures the number of standard deviations from center.
 
+
 ## The $t$ model
 
-Because we don't know the population variance, we're *actually* using $\frac{\bar{x} - \mu}{s_x/\sqrt{n}}$. 
+We're *actually* using $\frac{\bar{x} - \mu}{s_x/\sqrt{n}}$ to construct intervals, because we don't know $\sigma$. 
 
-This quantity is better approximated by a $t$ model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.
+These deviations are better approximated by a $t$ model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.
 
 ::: {.columns}
 
@@ -261,6 +333,7 @@ The difference between models depends mainly on sample size:
 
 - behaves almost exactly the same for moderate to large samples
 - larger deviations from center for small samples
+- leads to larger multipliers for computing margin of error
 :::
 
 ::: {.column width="60%"}
@@ -269,12 +342,177 @@ The difference between models depends mainly on sample size:
 
 :::
 
-## Comparing models
+## Model specification
 
-## Adjusting coverage
+The $t$ model is characterized by its *degrees of freedom*.
 
-## Rules of thumb
+- for interval estimates for the mean, $n - 1$ is used
+- depending on the degrees of freedom (*i.e.*, sample size), a different multiplier is applied to the standard error to obtain the margin of error
 
-## Interval interpretation
+The multiplier is called a **critical value**, and can be found in R via:
+```{r, echo = TRUE, eval = F}
+# pseudo code -- replace coverage with desired level, e.g., 0.95
+qt((1 - coverage)/2, df = (n - 1), lower.tail = F)
+```
 
-## Putting it all into practice
+- chosen to ensure a specified **nominal coverage level** (usually 95%)
+- higher nominal coverage levels utilize larger critical values, producing wider intervals
+
+
+## Model validation
+
+Using the $t$ model should produce coverage closer to the nominal level compared with the normal model. Let's check through simulation.
+
+```{r, cache = T}
+nsim <- 10000
+n <- 10
+set.seed(12824)
+intervals <- tibble(sim = 1:nsim, 
+                    pop.mean = mean(cholesterol)) %>%
+  mutate(data = map(sim, ~sample(cholesterol, size = n)),
+         xbar = map(data, mean),
+         se = map(data, ~sd(.x)/sqrt(n))) %>%
+  unnest(cols = c(xbar, se)) %>%
+  mutate(normal = 2,
+         t = qt(0.975, df = n - 1)) %>%
+  pivot_longer(cols = c(normal, t), names_to = 'model') %>%
+  mutate(lwr = xbar - se*value, 
+         upr = xbar + se*value,
+         coverage = factor((lwr < pop.mean)*(pop.mean < upr),
+                           labels = c('misses', 'covers')))
+```
+
+::: {.columns}
+
+::: {.column}
+At right, misses are compared between intervals using SE and critical values from the normal model (left) and $t$ model (right) constructed on the same 10,000 simulated datasets with sample size $n = 10$.
+
+```{r}
+intervals %>%
+  select(coverage, model) %>%
+  group_by(model) %>%
+  summarize(coverage = mean(coverage == 'covers')) %>%
+  pander()
+```
+
+The $t$ model produces coverage much closer to the nominal level.
+:::
+
+:::{.column}
+
+
+```{r, fig.height=10}
+intervals %>%
+  filter(coverage == 'misses') %>%
+  ggplot(aes(x = pop.mean, y = sim, color = coverage)) +
+  facet_wrap(~model) +
+  geom_point(aes(x = xbar), alpha = 0.3) +
+  geom_linerange(aes(xmin = lwr, 
+                     xmax = upr),
+                 alpha = 0.3) +
+  geom_vline(xintercept = mean(cholesterol),
+             linetype = 'dashed') +
+  theme_minimal(base_size = 30) +
+  scale_x_continuous(breaks = round(mean(cholesterol) + sd(cholesterol)*c(-3, -1.5, 0, 1.5, 3)/sqrt(50), 2)) +
+  theme(panel.grid = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey'),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(angle = 55, size = 20, hjust = 1, vjust = 1)) +
+  labs(y = '', x = '') +
+  guides(color = guide_none())
+```
+
+:::
+
+:::
+
+
+## Calculations
+
+So, to sum up, the general formula for an interval for a population mean is:
+$$\bar{x} \pm c \times SE(\bar{x}) \quad\text{where}\quad SE(\bar{x}) = \frac{s_x}{\sqrt{n}}$$
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+Rules of thumb:
+
+- for moderate to large samples, use the normal model
+    + $c = 1$ for 68% coverage
+    + $c = 2$ for 95% coverage
+    + $c = 3$ for 99.7% coverage
+- for small sample sizes, use the $t$ model
+- when in doubt, use the $t$ model
+
+:::
+
+::: {.column width="50%"}
+Exact critical values in R:
+
+```{r, eval = F, echo = T}
+# normal critical value
+c <- qnorm((1 - coverage)/2, lower.tail = F)
+
+# t critical value
+c <- qt((1 - coverage)/2, df = n - 1, lower.tail = F)
+```
+
+Interval calculation:
+```{r, eval = F, echo = T}
+# pseudo code
+mean(data_vec) + c(-1, 1)*c*sd(data_vec)/sqrt(n)
+```
+
+:::
+
+:::
+
+## Interpretation
+
+As we've seen, coverage pertains to how often an interval of a particular form captures the population parameter of interest across samples of a fixed size. Loosely speaking, this represents how often you'd be right if you were to fully replicate your study *ad infinitum*. 
+
+This leads to the following interpretation:
+
+> With [XX]% confidence, the mean [population parameter] is estimated to be between [lower bound] and [upper bound] [units].
+
+For this reason, statisticians call interval estimates **confidence intervals**.
+
+## Revisiting initial example
+
+::: {.columns}
+
+::: {.column}
+So in the example we began with:
+
+```{r, echo = T}
+# calculate 95% interval
+mean(samp) + c(-1, 1)*2*sd(samp)/sqrt(50)
+```
+
+*With 95% confidence, the mean total HDL cholesterol is estimated to be between `r round(mean(samp) - 2*sd(samp)/sqrt(50), 3)` and `r round(mean(samp) + 2*sd(samp)/sqrt(50), 3)` mmol/L.*
+
+Remember, "95% confidence" refers to coverage under sampling variation.
+
+::: 
+
+::: {.column}
+```{r}
+c(mean = mean(samp), 
+  se = sd(samp)/sqrt(length(samp))) %>%
+  pander()
+
+par(mar = c(4, 4, 4, 1),
+    cex = 2)
+hist(samp, 
+     breaks = 10, 
+     main = 'sample (n = 50)', 
+     xlab = 'cholesterol',
+     ylab = 'frequency')
+```
+:::
+
+:::
+
+
+

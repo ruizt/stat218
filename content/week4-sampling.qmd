@@ -30,10 +30,10 @@ nhanes <- NHANES %>%
 
 Today we'll focus on understanding sampling variability. This is a foundation for the development of inferential statistics.
 
-1. Reading quiz \[2pm section\] \[4pm section\]
-2. [lecture/lab] Effect of sampling variability on summary statistics
-3. [lecture/lab] Effect of sample size on sampling variability of summary statistics
-4. The normal model
+1.  Reading quiz \[[2pm section](https://forms.office.com/r/gs613rUX1z)\] \[[4pm section](https://forms.office.com/r/f9asSVpc8y)\]
+2.  \[lecture/lab\] Effect of sampling variability on summary statistics
+3.  \[lecture/lab\] Effect of sample size on sampling variability of summary statistics
+4.  The normal model
 
 ## Inferential statistics
 
@@ -82,7 +82,7 @@ Different samples inevitably produce different outcomes. This is **sampling vari
 
 > If we re-run the study with new participants we'll get different results
 
-The basis for statistical inference is distinguishing sampling variation from systematic variation. 
+The basis for statistical inference is distinguishing sampling variation from systematic variation.
 
 What we really want to know in the FAMuSS study:
 
@@ -123,7 +123,6 @@ A **sample** is a subcollection from a population:
 
 -   *random* if study units have a known chance of inclusion in the sample
 -   *nonrandom* or *convenience* otherwise
-
 :::
 :::
 
@@ -282,16 +281,14 @@ Could measure the sampling variability using any measure of spread.
 
 ## Measuring sampling variability
 
-Theory indicates the standard deviation of the sample mean under random sampling is: 
-$$
+Theory indicates the standard deviation of the sample mean under random sampling is: $$
 SD(\bar{x}) = \frac{\sigma}{\sqrt{n}} 
 \qquad \left(\frac{\text{population SD}}{\sqrt{\text{sample size}}}\right)
 $$
 
 For `TotChol`, the theoretical standard deviation is $SD(\bar{x}) = \frac{1.0747}{\sqrt{50}} =$ `r sd(nhanes$TotChol)/sqrt(50)`.
 
-We can estimate this quantity by replacing $\sigma$ with the point estimate $s_x$, resulting in a **standard error** (estimated standard deviation): 
-$$SE(\bar{x}) = \frac{s_x}{\sqrt{n}} 
+We can estimate this quantity by replacing $\sigma$ with the point estimate $s_x$, resulting in a **standard error** (estimated standard deviation): $$SE(\bar{x}) = \frac{s_x}{\sqrt{n}} 
 \qquad \left(\frac{\text{sample SD}}{\sqrt{\text{sample size}}}\right)$$
 
 <!-- ## Summing up -->
@@ -299,16 +296,16 @@ $$SE(\bar{x}) = \frac{s_x}{\sqrt{n}}
 <!-- So far we have established two key points: -->
 
 <!-- -   the sample mean and standard deviation provide good point estimates of the corresponding population parameters under random sampling -->
+
 <!-- -   we can estimate the sampling variability of the mean under random sampling using its standard error $\frac{s_x}{\sqrt{n}}$ -->
 
 ## Example with one sample
 
-The simulations we've done so far have been a means of understanding just what a standard error is meant to capture; these are *not* a practicable method for measuring sampling variation. 
+The simulations we've done so far have been a means of understanding just what a standard error is meant to capture; these are *not* a practicable method for measuring sampling variation.
 
 In practice we'd simply compute a point estimate and standard error.
 
-::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 ```{r, fig.height = 6, fig.width = 8}
 set.seed(12824)
@@ -329,11 +326,10 @@ c(mean = mean(one_samp),
   pander()
 ```
 
-- *The estimated mean total HDL cholesterol among the population is 5.031 mmol/L.* 
+-   *The estimated mean total HDL cholesterol among the population is 5.031 mmol/L.*
 
-- *The point estimate is expected to deviate by 0.1396 mmol/L on average from the population mean.*
+-   *The point estimate is expected to deviate by 0.1396 mmol/L on average from the population mean.*
 :::
-
 :::
 
 ## Effect of sample size
@@ -386,8 +382,8 @@ unnest(samp_dists, cols = starts_with('sample')) %>%
        y = 'frequency')
 ```
 
-- spread diminishes with sample size
-- less variability among estimates from larger samples
+-   spread diminishes with sample size
+-   less variability among estimates from larger samples
 
 So estimates are more accurate with more data, *assuming data are from a random sample.*
 
@@ -395,13 +391,12 @@ So estimates are more accurate with more data, *assuming data are from a random 
 
 Notice that each simulated sampling distribution has produced a unimodal, symmetric, bell-shaped histogram.
 
-::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
 The normal model is a theoretical frequency distribution characterized by two parameters:
 
-- a mean (center)
-- a standard deviation (spread)
+-   a mean (center)
+-   a standard deviation (spread)
 
 Theory dictates that the sampling distribution of the sample mean is well-approximated by a normal model under simple random sampling.
 :::
@@ -417,8 +412,6 @@ curve(dnorm, from = -4, to = 4,
       xaxt = 'n', yaxt = 'n')
 ```
 :::
-
 :::
 
 *Based on discussion thus far, what do you think the model parameters might be?*
-
