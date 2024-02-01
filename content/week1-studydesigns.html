@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STAT218 - Study designs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H3YKZX4J88"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-H3YKZX4J88', { 'anonymize_ip': true});
+</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">STAT218</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../content/syllabus.html" rel="" target="">
+ <span class="menu-text">Course syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../materials.html" rel="" target="">
+ <span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-a-study" id="toc-what-is-a-study" class="nav-link active" data-scroll-target="#what-is-a-study">What is a study?</a></li>
+  <li><a href="#two-types-of-studies" id="toc-two-types-of-studies" class="nav-link" data-scroll-target="#two-types-of-studies">Two types of studies</a></li>
+  <li><a href="#comparing-study-types" id="toc-comparing-study-types" class="nav-link" data-scroll-target="#comparing-study-types">Comparing study types</a></li>
+  <li><a href="#why-does-intervention-matter" id="toc-why-does-intervention-matter" class="nav-link" data-scroll-target="#why-does-intervention-matter">Why does intervention matter?</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a></li>
+  <li><a href="#consequences-of-confounding" id="toc-consequences-of-confounding" class="nav-link" data-scroll-target="#consequences-of-confounding">Consequences of confounding</a></li>
+  <li><a href="#example-of-confounding" id="toc-example-of-confounding" class="nav-link" data-scroll-target="#example-of-confounding">Example of confounding</a></li>
+  <li><a href="#antidote-randomization" id="toc-antidote-randomization" class="nav-link" data-scroll-target="#antidote-randomization">Antidote: randomization</a></li>
+  <li><a href="#practical-consequences" id="toc-practical-consequences" class="nav-link" data-scroll-target="#practical-consequences">Practical consequences</a></li>
+  <li><a href="#common-study-designs" id="toc-common-study-designs" class="nav-link" data-scroll-target="#common-study-designs">Common study designs</a></li>
+  <li><a href="#example-study" id="toc-example-study" class="nav-link" data-scroll-target="#example-study">Example study</a></li>
+  <li><a href="#experimental-designs" id="toc-experimental-designs" class="nav-link" data-scroll-target="#experimental-designs">Experimental designs</a></li>
+  <li><a href="#blinding" id="toc-blinding" class="nav-link" data-scroll-target="#blinding">Blinding</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data collection</a></li>
+  <li><a href="#considerations-in-creating-a-study" id="toc-considerations-in-creating-a-study" class="nav-link" data-scroll-target="#considerations-in-creating-a-study">Considerations in creating a study</a></li>
+  <li><a href="#study-design-in-stat218" id="toc-study-design-in-stat218" class="nav-link" data-scroll-target="#study-design-in-stat218">Study design in STAT218</a></li>
+  <li><a href="#case-study-leap" id="toc-case-study-leap" class="nav-link" data-scroll-target="#case-study-leap">Case study: LEAP</a></li>
+  <li><a href="#case-study-leap-1" id="toc-case-study-leap-1" class="nav-link" data-scroll-target="#case-study-leap-1">Case study: LEAP</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="week1-studydesigns.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Study designs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="what-is-a-study" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-study">What is a study?</h2>
+<p>A <strong>study</strong> is an effort to collect data in order to answer one or more research questions.</p>
+<p>Ultimately, you’re in this class to learn how to answer questions (or evaluate the answers of others) in a sound way, so we will start with the basics of study design because:</p>
+<ul>
+<li><p>studies must be well-matched to research questions to provide good answers</p></li>
+<li><p>how data are obtained is just as important as how the resulting data are analyzed</p></li>
+<li><p>no analysis, no matter how sophisticated will rescue a poorly conceived study</p></li>
+</ul>
+<p>[Terminology] A <strong>study unit</strong> is the smallest object or entity that is measured in a study; also called <em>experimental unit</em> or <em>observational unit.</em></p>
+</section>
+<section id="two-types-of-studies" class="level2">
+<h2 class="anchored" data-anchor-id="two-types-of-studies">Two types of studies</h2>
+<p><strong>Observational studies</strong> collect data from an existing situation <strong>without intervention</strong>.</p>
+<ul>
+<li><p>Aim is to detect associations and patterns</p></li>
+<li><p>Can’t be used to establish causal links (more on this later)</p></li>
+</ul>
+<p><strong>Experiments</strong> collect data from a situation in which one or more interventions have been introduced by the investigator.</p>
+<ul>
+<li>Aim is to draw conclusions about the effect of one or more interventions</li>
+<li>Stronger form of scientific evidence than an observational study</li>
+</ul>
+<p>Often, observational studies are used to explore/generate hypotheses prior to designing an experiment.</p>
+</section>
+<section id="comparing-study-types" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-study-types">Comparing study types</h2>
+<p>Either type of study can be used to address a question.</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 33%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Observational study</th>
+<th>Experiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Are diet and mood related?</td>
+<td>Conduct surveys on diet, lifestyle, and affect</td>
+<td>Recruit study participants, assign diets, measure affect</td>
+</tr>
+<tr class="even">
+<td>Is vaping safer than smoking?</td>
+<td>Follow groups of vapers and smokers over time and record health outcomes</td>
+<td>Among a group of smokers, assign some to switch to vaping; compare health outcomes over time</td>
+</tr>
+<tr class="odd">
+<td>Do insecticide applications affect soil microbes?</td>
+<td>Analyze soil samples from farms using different insecticides</td>
+<td>[<strong>Your turn</strong>]</td>
+</tr>
+</tbody>
+</table>
+<p>In each example, which approach would you choose if you were the researcher? What are the pros and cons?</p>
+</section>
+<section id="why-does-intervention-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-does-intervention-matter">Why does intervention matter?</h2>
+<p>In an experiment, the researcher intentionally intervenes in a way that they expect to change outcomes.</p>
+<ul>
+<li><strong>intervention</strong> confers a degree of <strong>control</strong> over study conditions</li>
+</ul>
+<!-- -   by controlling study conditions so that interventions are the only source of systematic variation in outcomes, one can study the **causal effects** of intervention -->
+<p>In an observational study, there is no (intentional) intervention.</p>
+<ul>
+<li><strong>without intervention</strong> the researcher has <strong>no control</strong> over study conditions</li>
+</ul>
+<!-- -   outcomes may vary due to conditions not measured in the study, so **no causal effects** can be observed with certainty -->
+<p>Control over conditions allows a researcher to study causal effects resulting from interventions. This can best be understood in terms of a phenomenon known as <em>confounding</em>.</p>
+</section>
+<section id="confounding" class="level2">
+<h2 class="anchored" data-anchor-id="confounding">Confounding</h2>
+<p>Confounding occurs when two conditions cannot be differentiated.</p>
+<p>This happens when either:</p>
+<ul>
+<li><p>[omission] one study condition is not measured</p>
+<ul>
+<li><p>a researcher finds that dog owners live longer, but failed to measure how much exercise each subject gets</p></li>
+<li><p>is it the dog, or the daily walks?</p></li>
+</ul></li>
+<li><p>[conflation] two study conditions are <em>always</em> observed simultaneously</p>
+<ul>
+<li><p>a researcher finds that people on diet 1 tend to be overweight, but all study participants on diet 1 are from the U.S., and all study participants on diet 2 are from Canada</p></li>
+<li><p>is it the diet, or the country?</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="consequences-of-confounding" class="level2">
+<h2 class="anchored" data-anchor-id="consequences-of-confounding">Consequences of confounding</h2>
+<p>Usually, researchers are concerned with confounding by omission.</p>
+<div class="columns">
+<div class="column" style="width:0.4;">
+<p>When an unobserved condition is associated with both the observed condition and the outcome one may observe:</p>
+<ul>
+<li><p>an artificial association between the study condition and outcome</p></li>
+<li><p>a distorted association between the study condition and outcome</p></li>
+</ul>
+</div><div class="column" style="width:0.6;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved condition) --- B(study condition) &amp; C(outcome) 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>This is very common in observational studies, because you can’t measure every study condition.</p>
+</section>
+<section id="example-of-confounding" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-confounding">Example of confounding</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="week1-studydesigns_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<ul>
+<li><p>[left] Higher state educational expenditure looks associated with <em>lower</em> SAT scores</p></li>
+<li><p>[center] But increased expenditure looks associated with more test takers</p></li>
+<li><p>[right] And higher percentages of test takers are associated with lower averages</p></li>
+</ul>
+<p><em>If you ignored how many students take the test, you’d conclude that expenditure is counterproductive</em></p>
+</section>
+<section id="antidote-randomization" class="level2">
+<h2 class="anchored" data-anchor-id="antidote-randomization">Antidote: randomization</h2>
+<p>The ability to control study conditions allows researchers to <em>randomize</em> interventions among study subjects:</p>
+<ul>
+<li>allocated in such a way that all subjects are equally likely to receive any intervention</li>
+</ul>
+<div class="columns">
+<p><strong>Randomization eliminates confounding</strong> by isolating the condition(s) of interest:</p><div class="column" style="width:0.6;">
+<ul>
+<li><p>interventions are independent of extraneous conditions ⟹ no association possible</p></li>
+<li><p>if outcomes differ systematically according to the intervention, you can be certain that it is not an artifact</p></li>
+</ul>
+</div><div class="column" style="width:0.4;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved condition) x-.-x B(study condition)
+  A --- C(outcome)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Extraneous conditions <em>may</em> still be associated with outcomes and add noise — well-thought-out experiments find ways to reduce this.</p>
+<!-- ## Confounding in experiments -->
+<!-- *Caveat: randomized experiments are not immune from confounding.* -->
+<!-- Consider a randomized trial to evaluate the effectiveness of smoking cessation aids. -->
+<!-- |                   | Varenicline | Bupropion   | Placebo     | -->
+<!-- |-------------------|-------------|-------------|-------------| -->
+<!-- | Group size        | 352         | 329         | 344         | -->
+<!-- | Completed therapy | 259 (73.6%) | 225 (68.4%) | 215 (62.5%) | -->
+<!-- If the results are analyzed based only on participants that completed the therapy, confounding could distort results: -->
+<!-- -   underlying differences among participants may be associated with both persistence and success -->
+</section>
+<section id="practical-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="practical-consequences">Practical consequences</h2>
+<p>The ability to randomize interventions in experiments means:</p>
+<ul>
+<li><p>observed associations are independent of extraneous factors</p></li>
+<li><p>results can support causal inferences</p></li>
+</ul>
+<p>The absence of randomization in observational studies means:</p>
+<ul>
+<li><p>confounding is always possible</p></li>
+<li><p>results may be misleading</p></li>
+</ul>
+<p>Usually, <em>observational studies are considered weaker forms of scientific evidence than experiments</em>, with some caveats:</p>
+<ul>
+<li><p>a large volume of independent observational studies pointing to the same conclusions may be more convincing than a few narrow experiments</p></li>
+<li><p>observational studies may provide better evidence under real world conditions than available experimental data</p></li>
+</ul>
+</section>
+<section id="common-study-designs" class="level2">
+<h2 class="anchored" data-anchor-id="common-study-designs">Common study designs</h2>
+<p>Studies can be designed to investigate outcomes in a variety of ways, regardless of whether study conditions include intervention. Many study designs originate in clinical medicine — the following are among the most common.</p>
+<div class="columns">
+<div class="column" style="width:0.5;">
+<p>In <strong>prospective</strong> studies participants are recruited <em>before</em> developing a condition</p>
+<p><img src="img/prospective-diagram.png" width="400" height="184"></p>
+</div><div class="column" style="width:0.5;">
+<p>In <strong>retrospective</strong> studies participants are recruited <em>after</em> developing a condition</p>
+<p><img src="img/retrospective-diagram.png" width="400" height="184"></p>
+</div>
+</div>
+<p>These terms usually refer to observational studies; experiments are typically prospective in nature, since one recruits participants <em>before</em> administering an intervention.</p>
+</section>
+<section id="example-study" class="level2">
+<h2 class="anchored" data-anchor-id="example-study">Example study</h2>
+<p>Imagine following this year’s Cal Poly freshmen (a “cohort”) and comparing four-year graduation (outcome) rates between those that participated in a new orientation activity and those that didn’t. This would be:</p>
+<ul>
+<li>prospective if an observational study</li>
+</ul>
+<!-- -->
+<ul>
+<li>an experiment if students were assigned to participate or not</li>
+</ul>
+<p><em>Can you change the example so that it’s a retrospective study?</em></p>
+</section>
+<section id="experimental-designs" class="level2">
+<h2 class="anchored" data-anchor-id="experimental-designs">Experimental designs</h2>
+<p>A <strong>treatment</strong> is an experimental intervention; the <strong>design</strong> of an experiment refers to how treatments are allocated to study units.</p>
+<p>The most basic design is:</p>
+<ul>
+<li><p>[balanced] each treatment is replicated an equal number of times</p></li>
+<li><p>[randomized] treatments are allocated completely at random to study units</p></li>
+<li><p>[no crossover] each study unit receives exactly one treatment</p></li>
+</ul>
+<p>We’ll call this a <strong>completely randomized design</strong>. It’s the only kind of experimental design we’re going to consider in STAT218.</p>
+<p>There are many other designs that we won’t discuss (but see STAT313); these are all about improving experimental efficiency by controlling extraneous variation.</p>
+</section>
+<section id="blinding" class="level2">
+<h2 class="anchored" data-anchor-id="blinding">Blinding</h2>
+<p>The terms <em>single-blind</em> and <em>double-blind</em> refer to experiments with human subjects, typically in clinical studies.</p>
+<p>In a <strong>single-blind</strong> study, participants are unaware of which treatment they receive.</p>
+<ul>
+<li>Example: in a case-control study, one group of patients is given a new medicine and the other is given a saline solution administered under identical conditions</li>
+<li>Idea: controls for placebo effect</li>
+</ul>
+<p>In a <strong>double-blind</strong> study, both participants <em>and</em> investigators are unaware of which treatments are administered.</p>
+<ul>
+<li>Example: same as above, but now the person administering the doses is unaware of which are medicine and which are saline</li>
+<li>Idea: controls for unconscious influence on outcome by researchers (<em>e.g.,</em> attend more carefully and compassionately to patients receiving medicine out of concern for side-effects)</li>
+</ul>
+</section>
+<section id="data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection">Data collection</h2>
+<p>We will discuss data collection in more depth later, but the way that study units are obtained, independently of the type of study or design, determines the breadth of conclusions supported by the results, depending on whether study units chosen are representative of a larger collection.</p>
+<p>The gold standard is a <em>simple random sample</em> of units selected from a larger collection:</p>
+<ul>
+<li><p>every unit in the larger collection has an equal chance of being selected</p></li>
+<li><p>easier said than done — failure to obtain a random sample is one of the most common study flaws</p></li>
+</ul>
+<p>For now we will set the issue of sampling aside.</p>
+</section>
+<section id="considerations-in-creating-a-study" class="level2">
+<h2 class="anchored" data-anchor-id="considerations-in-creating-a-study">Considerations in creating a study</h2>
+<ul>
+<li><p>The research question should be motivated by science, not statistics.</p></li>
+<li><p>You may have to work within limitations:</p>
+<ul>
+<li><p>The design that best aligns with the question may not be possible or practical.</p></li>
+<li><p>An experiment might give the strongest evidence but not be feasible or ethical.</p></li>
+</ul></li>
+<li><p>A plan should be in place for <em>all</em> of the following:</p>
+<ul>
+<li><p>how to obtain/recruit study units/participants</p></li>
+<li><p>how many to obtain/recruit and how to ensure that target is met</p></li>
+<li><p>protocol for allocating treatment</p></li>
+<li><p>collecting data and measuring outcomes</p></li>
+<li><p>contingencies for dropout/failure to ensure the study yields results</p></li>
+<li><p>data handling and data analysis</p></li>
+<li><p>how results will be used</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="study-design-in-stat218" class="level2">
+<h2 class="anchored" data-anchor-id="study-design-in-stat218">Study design in STAT218</h2>
+<p>In STAT218 you are expected to be fluent with study design concepts, but of course won’t actually carry out an end-to-end study.</p>
+<ul>
+<li><p>[L1] design a data collection scheme based on simple random sampling or simple experimental designs</p></li>
+<li><p>[L2] distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each</p></li>
+</ul>
+</section>
+<section id="case-study-leap" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-leap">Case study: LEAP</h2>
+<p>Learning early about peanut allergy (LEAP) study:</p>
+<ul>
+<li><p>640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy</p></li>
+<li><p>each infant randomly assigned to peanut consumption and peanut avoidance groups</p>
+<ul>
+<li><p>peanut consumption: fed 6g peanut protein daily until 5 years old</p></li>
+<li><p>peanut avoidance: no peanut consumption until 5 years old</p></li>
+</ul></li>
+<li><p>at 5 years old, oral food challenge (OFC) allergy test administered</p>
+<ul>
+<li><p>PASS: no allergy detected</p></li>
+<li><p>FAIL: allergy detected</p></li>
+</ul></li>
+</ul>
+<p><em>What kind of study is this? Experiment or observational study? Retrospective, prospective, or neither?</em></p>
+</section>
+<section id="case-study-leap-1" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-leap-1">Case study: LEAP</h2>
+<div class="columns">
+<div class="column" style="width:0.5;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/leap-1.png" class="img-fluid figure-img" width="300"></p>
+<figcaption class="figure-caption">Tabular summary of LEAP results.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:0.5;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/leap-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Graphical summary of LEAP results.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Does peanut avoidance/consumption appear associated with developing an allergy?</p></li>
+<li><p>If so, does the study provide evidence that early exposure likely reduces the chance of developing an allergy by 5 years of age?</p></li>
+<li><p>What calculation could you perform to summarize the difference between study groups?</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">© 2024 Trevor Ruiz</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -31,6 +31,11 @@ set.seed(12824)
 samp <- sample(cholesterol, size = 50)
 ```
 
+1. HW2 remarks/discussion
+2. [Lecture] A basic interval estimate for the mean
+3. [Lecture/lab] Exploring interval coverage
+4. [Lecture/lab] Comparing normal and $t$ models
+
 ## From last time
 
 ::: {.columns}
@@ -317,8 +322,22 @@ title(xlab = expression(frac(bar(x) - mu, sigma/sqrt(n))), line = 5)
 title(main = 'deviations from center')
 ```
 
-The expression $\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$ is called a *z-score* and measures the number of standard deviations from center.
+The expression $\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}$ measures the number of standard deviations from center.
 
+## Simulating deviations
+
+Another way to check normal model coverage is to use deviations:
+
+1. Simulate many samples
+2. Compute scaled deviations
+3. Tally how many scaled deviations are between -2 and 2
+
+The proportion of samples for which the scaled deviation is between -2 and 2 approximates the coverage. 
+
+We'll try it in the next part of the `lab5-intervals`. Hypotheses: 
+
+- deviations scaled by SD should be between -2 and 2 95% of the time
+- deviations scaled by SE should be between -2 and 2 [*more/less*] than 95% of the time
 
 ## The $t$ model
 
