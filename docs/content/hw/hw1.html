@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="STAT218">
+<meta name="dcterms.date" content="2024-01-18">
 
-<title>STAT218 - Lab 1: R Basics</title>
+<title>STAT218 - Homework 1: Study designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +20,6 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
-}
-
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-}
-pre.numberSource { margin-left: 3em; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -4744,13 +4711,13 @@ Qg:"user_data_auto_meta",Rg:"user_data_auto_multi",Sg:"user_data_auto_selectors"
 1,Zh));Object.freeze([N.g.za,N.g.Ja,N.g.Bb,N.g.Ma,N.g.uf,N.g.Sa,N.g.nf,N.g.Ei]);
 var ai={},bi=Object.freeze((ai[N.g.si]=1,ai[N.g.ui]=1,ai[N.g.vi]=1,ai[N.g.wi]=1,ai[N.g.xi]=1,ai[N.g.yi]=1,ai[N.g.zi]=1,ai[N.g.Ai]=1,ai[N.g.Bi]=1,ai[N.g.Ad]=1,ai)),ci={},di=Object.freeze((ci[N.g.jg]=1,ci[N.g.kg]=1,ci[N.g.hc]=1,ci[N.g.ic]=1,ci[N.g.lg]=1,ci[N.g.Ib]=1,ci[N.g.jc]=1,ci[N.g.eb]=1,ci[N.g.ub]=1,ci[N.g.fb]=1,ci[N.g.wa]=1,ci[N.g.kc]=1,ci[N.g.Ga]=1,ci[N.g.mg]=1,ci)),ei=Object.freeze([N.g.ia,N.g.hb,N.g.oc,N.g.Yc,N.g.ad,N.g.Na,N.g.Tb]),fi=Object.freeze([].concat(ei)),gi=Object.freeze([N.g.Ra,N.g.Nd,
 N.g.fd,N.g.vf,N.g.Id]),hi=Object.freeze([].concat(gi)),ii={},ji=(ii[N.g.J]="1",ii[N.g.R]="2",ii[N.g.N]="3",ii[N.g.Fa]="4",ii),ki={},li=Object.freeze((ki[N.g.ia]=1,ki[N.g.Bd]=1,ki[N.g.Ha]=1,ki[N.g.Lb]=1,ki[N.g.df]=1,ki[N.g.Cd]=1,ki[N.g.Dd]=1,ki[N.g.Ed]=1,ki[N.g.Z]=1,ki[N.g.Fd]=1,ki[N.g.Va]=1,ki[N.g.xa]=1,ki[N.g.jb]=1,ki[N.g.Ra]=1,ki[N.g.kb]=1,ki[N.g.Wa]=1,ki[N.g.ya]=1,ki[N.g.Gd]=1,ki[N.g.ba]=1,ki[N.g.Ii]=1,ki[N.g.Kd]=1,ki[N.g.Ld]=1,ki[N.g.nf]=1,ki[N.g.Yc]=1,ki[N.g.Ob]=1,ki[N.g.zb]=1,ki[N.g.Ma]=1,ki[N.g.bd]=
-1,ki[N.g.za]=1,ki[N.g.Ja]=1,ki[N.g.Jg]=1,ki[N.g.Kg]=1,ki[N.g.Lg]=1,ki[N.g.Mg]=1,ki[N.g.Qb]=1,ki[N.g.Na]=1,ki[N.g.Rb]=1,ki[N.g.Ud]=1,ki[N.g.gd]=1,ki[N.g.Aa]=1,ki[N.g.Sb]=1,ki[N.g.Tb]=1,ki[N.g.ob]=1,ki[N.g.Ca]=1,ki[N.g.Sa]=1,ki[N.g.ja]=1,ki)),mi={},ni=Object.freeze((mi[N.g.tk]="s",mi[N.g.vk]="y",mi[N.g.sk]="p",mi[N.g.uk]="h",mi[N.g.ri]="a",mi[N.g.rk]="m",mi));Object.freeze(N.g);var oi={},pi=l.google_tag_manager=l.google_tag_manager||{},qi=Math.random();oi.Zg="41v0";oi.ne=Number("0")||0;oi.fa="dataLayer";oi.zn="ChAIgJ/trQYQk7DthfW79YAEEiUA/V1Pkl1OJ3NSVO+zBR3ZFN4MBLtx7QucEaSg05BARVXALwWKGgLDzg\x3d\x3d";var ri={__cl:1,__ecl:1,__ehl:1,__evl:1,__fal:1,__fil:1,__fsl:1,__hl:1,__jel:1,__lcl:1,__sdl:1,__tl:1,__ytl:1},si={__paused:1,__tg:1},ti;for(ti in ri)ri.hasOwnProperty(ti)&&(si[ti]=1);var ui=Qa("true"),vi,wi=!1;wi=!0;
+1,ki[N.g.za]=1,ki[N.g.Ja]=1,ki[N.g.Jg]=1,ki[N.g.Kg]=1,ki[N.g.Lg]=1,ki[N.g.Mg]=1,ki[N.g.Qb]=1,ki[N.g.Na]=1,ki[N.g.Rb]=1,ki[N.g.Ud]=1,ki[N.g.gd]=1,ki[N.g.Aa]=1,ki[N.g.Sb]=1,ki[N.g.Tb]=1,ki[N.g.ob]=1,ki[N.g.Ca]=1,ki[N.g.Sa]=1,ki[N.g.ja]=1,ki)),mi={},ni=Object.freeze((mi[N.g.tk]="s",mi[N.g.vk]="y",mi[N.g.sk]="p",mi[N.g.uk]="h",mi[N.g.ri]="a",mi[N.g.rk]="m",mi));Object.freeze(N.g);var oi={},pi=l.google_tag_manager=l.google_tag_manager||{},qi=Math.random();oi.Zg="41v0";oi.ne=Number("0")||0;oi.fa="dataLayer";oi.zn="ChAIgJ/trQYQk7DthfW79YAEEiUA/V1PkltY3RxdOSYRkuTuPOKolUVbEG62xyZtrVuAjyoq8oZjGgJOAQ\x3d\x3d";var ri={__cl:1,__ecl:1,__ehl:1,__evl:1,__fal:1,__fil:1,__fsl:1,__hl:1,__jel:1,__lcl:1,__sdl:1,__tl:1,__ytl:1},si={__paused:1,__tg:1},ti;for(ti in ri)ri.hasOwnProperty(ti)&&(si[ti]=1);var ui=Qa("true"),vi,wi=!1;wi=!0;
 vi=wi;var xi,yi=!1;xi=yi;var zi,Ai=!1;zi=Ai;oi.zd="www.googletagmanager.com";var Bi=""+oi.zd+(vi?"/gtag/js":"/gtm.js"),Ci=null,Di=null,Ei={},Fi={},Gi=function(){var a=pi.sequence||1;pi.sequence=a+1;return a};oi.pk="";var Hi="";oi.Ff=Hi;var Ii=new function(){this.h="";this.s=!1;this.F=this.M=this.C=""};function Ji(a){for(var b={},c=fa(a.split("|")),d=c.next();!d.done;d=c.next())b[d.value]=!0;return b}var Ki=new Ka,Li={},Mi={},Pi={name:oi.fa,set:function(a,b){z(ab(a,b),Li);Ni()},get:function(a){return Oi(a,2)},reset:function(){Ki=new Ka;Li={};Ni()}},Oi=function(a,b){return 2!=b?Ki.get(a):Qi(a)},Qi=function(a,b){var c=a.split(".");b=b||[];for(var d=Li,e=0;e<c.length;e++){if(null===d)return!1;if(void 0===d)break;d=d[c[e]];if(-1!==b.indexOf(d))return}return d},Ri=function(a,b){Mi.hasOwnProperty(a)||(Ki.set(a,b),z(ab(a,b),Li),Ni())},Si=function(){for(var a=["gtm.allowlist","gtm.blocklist","gtm.whitelist",
 "gtm.blacklist","tagTypeBlacklist"],b=0;b<a.length;b++){var c=a[b],d=Oi(c,1);if(Ha(d)||nb(d))d=z(d);Mi[c]=d}},Ni=function(a){Na(Mi,function(b,c){Ki.set(b,c);z(ab(b),Li);z(ab(b,c),Li);a&&delete Mi[b]})},Ti=function(a,b){var c,d=1!==(void 0===b?2:b)?Qi(a):Ki.get(a);"array"===kb(d)||"object"===kb(d)?c=z(d):c=d;return c};
 var Ui=function(a,b,c){if(!c)return!1;var d=c.selector_type,e=String(c.value),f;if("js_variable"===d){e=e.replace(/\["?'?/g,".").replace(/"?'?\]/g,"");for(var g=e.split(","),h=0;h<g.length;h++){var m=g[h].trim();if(m){if(0===m.indexOf("dataLayer."))f=Oi(m.substring(10));else{var n=m.split(".");f=l[n.shift()];for(var p=0;p<n.length;p++)f=f&&f[n[p]]}if(void 0!==f)break}}}else if("css_selector"===d&&vh){var q=wh(e);if(q&&0<q.length){f=[];for(var r=0;r<q.length&&r<("email"===b||"phone_number"===b?5:1);r++)f.push(Qc(q[r])||
 Sa(q[r].value));f=1===f.length?f[0]:f}}return f?(a[b]=f,!0):!1},Vi=function(a){if(a){var b={},c=!1;c=Ui(b,"email",a.email)||c;c=Ui(b,"phone_number",a.phone)||c;b.address=[];for(var d=a.name_and_address||[],e=0;e<d.length;e++){var f={};c=Ui(f,"first_name",d[e].first_name)||c;c=Ui(f,"last_name",d[e].last_name)||c;c=Ui(f,"street",d[e].street)||c;c=Ui(f,"city",d[e].city)||c;c=Ui(f,"region",d[e].region)||c;c=Ui(f,"country",d[e].country)||c;c=Ui(f,"postal_code",d[e].postal_code)||c;b.address.push(f)}return c?
 b:void 0}},Wi=function(a){return nb(a)?!!a.enable_code:!1};var Xi=[];function Yi(a){switch(a){case 23:return 3;case 102:return 19;case 44:return 14;case 54:return 11;case 55:return 12;case 59:return 13;case 56:return 15;case 90:return 16;case 94:return 17;case 101:return 18}}function Q(a){Xi[a]=!0;var b=Yi(a);b&&(Qf[b]=!0)}
-Q(5);Q(6);Q(7);Q(8);Q(9);Q(10);
+Q(5);Q(6);Q(7);Q(9);Q(10);
 Q(13);Q(11);Q(14);
 Q(17);Q(18);
 Q(19);Q(21);Q(22);
@@ -5216,18 +5183,17 @@ gtag('config', 'G-H3YKZX4J88', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#arithmetic-operations" id="toc-arithmetic-operations" class="nav-link active" data-scroll-target="#arithmetic-operations">Arithmetic operations</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data types</a></li>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
+  <li><a href="#education-and-injury-prevention" id="toc-education-and-injury-prevention" class="nav-link active" data-scroll-target="#education-and-injury-prevention">Education and injury prevention</a></li>
+  <li><a href="#peanut-allergies" id="toc-peanut-allergies" class="nav-link" data-scroll-target="#peanut-allergies">Peanut allergies</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab1-rbasics.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="lab1-rbasics.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="hw1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="hw1.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1: R Basics</h1>
+<h1 class="title">Homework 1: Study designs</h1>
 </div>
 
 
@@ -5235,12 +5201,18 @@ gtag('config', 'G-H3YKZX4J88', { 'anonymize_ip': true});
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Course activity</div>
+    <div class="quarto-title-meta-heading">Course</div>
     <div class="quarto-title-meta-contents">
              <p>STAT218 </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Due date</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 18, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -5248,372 +5220,35 @@ gtag('config', 'G-H3YKZX4J88', { 'anonymize_ip': true});
 
 </header>
 
-<p>This lab is intended to introduce you to the nuts and bolts of R: arithmetic operations, data types, vectors, and other data structures. While you won’t be expected to do much data manipulation or manual calculation for this class, it will be helpful for you to have some understanding of this material going forward, as most R objects are arranged as data structures comprising one or more data types.</p>
-<p>This lab covers a lot of ground; consider it a reference you can return to later as needed.</p>
-<section id="arithmetic-operations" class="level3">
-<h3 class="anchored" data-anchor-id="arithmetic-operations">Arithmetic operations</h3>
-<p>While R does a lot more than function as a calculator, it can be used to perform basic arithmetic. All of the usual operations — addition, subtraction, multiplication, division, exponentiation — can be performed as shown below.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># addition</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subtraction</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># multiplication</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># division</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># exponentiation</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># parentheses for order of operations: compare</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">4</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Basic functions can also be evaluated. To name a few:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># square root</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">9</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exponential function e^x</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># logarithm: compare, default base is e (i.e., natural log)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">2</span>, <span class="at">base =</span> <span class="fu">exp</span>(<span class="dv">1</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The result of each of these calculations is a <em>value</em>. Values are the most elementary objects in the R environment. Values can be assigned names using the assignment operator <code>&lt;-</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store a value</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print value in console</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Names can consist of any combination of letters, numbers, and the delimiters <code>_</code> and <code>.</code>; names cannot start with numbers (try it and see what happens).</p>
-<p>If a name is used multiple times, the most recently assigned value will be stored. However, ‘most recent’ in this context means ‘most recently executed’: R will not pay attention to the order of lines in your script, but the order in which you run them. To see this, try redefining <code>x</code> to be a new value. if you then go back and run the previous line that displays the value, you’ll notice you get the new value, not the old one, even though the line appears before the new assignment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign a new value the name &#39;x&#39;: this overwrites the first value</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Your turn
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Write one line of code each to perform the following calculations:</p>
+<p><em>Instructions: type up your answers and submit your work electronically. Questions with a learning outcome indicated in brackets will be evaluated for credit; other questions are provided for additional practice. You are expected to answer all questions.</em></p>
+<section id="education-and-injury-prevention" class="level2">
+<h2 class="anchored" data-anchor-id="education-and-injury-prevention">Education and injury prevention</h2>
+<p>Suppose you wish to study the efficacy of physical activity and exercise education as a means of sports injury prevention. Your research question is, “does knowledge about injury prevention during physical activity and exercise reduce the risk of injury?”. Imagine that ASI offers a short injury prevention training.</p>
+<p>Your initial study proposal is as follows:</p>
+<blockquote class="blockquote">
+<p>150 Cal Poly students will be selected for the study: 75 from among those who completed the injury prevention training voluntarily, and 75 from among those who did not. Participants will be followed for a year to determine how many in each group experience an injury related to physical activity at any point during the study period. At the end of the study, injury rates will be compared between those that participated in the injury prevention training and those that did not.</p>
+</blockquote>
 <ol type="1">
-<li><p>Calculate the sum of the ages of each member of your group, in years.</p></li>
-<li><p>How about in months? Multiply by 12.</p></li>
-<li><p>Calculate the average number of siblings among the members of your group.</p></li>
+<li>[L2] Is this an observational study or an experiment? Explain your answer.</li>
+<li>[L1] How would you go about selecting study participants at random? Propose a specific means of identifying and contacting students to participate in the study.</li>
+<li>[L2] Imagine you found that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If you answer yes, give a hypothetical example of a confounding factor; if you answer no, explain why confounding is not a concern.</li>
+<li>[L1] If you answered that it is an observational study, propose an experiment that would address the same question. If you answered that it is an experiment, propose an observational study that would address the same question.</li>
+<li>[L2] Suppose the alternate study you proposed in (4) indicated that those who completed the training are less likely to experience injury. Are these results potentially subject to confounding? If so, give a hypothetical example of a confounding factor; if not, explain why confounding is not a concern.</li>
+<li>Is the original proposal a retrospective or prospective study? Explain your answer.</li>
+<li>If you answered that it is retrospective, determine an alternate study to investigate the same research question that is instead prospective; if you answered that it is prospective, determine an alternate study that is retrospective. Write a short proposal similar to the above for your alternate study.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of ages of group members</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to months: multiply by 12</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># average number of siblings among group members</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="data-types" class="level3">
-<h3 class="anchored" data-anchor-id="data-types">Data types</h3>
-<p>Values may be of different types. The function <code>class(...)</code> will return the “class” of object it is given; for values, the object class is simply the data type.</p>
-<p>There are four main data types in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">12</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># character</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&#39;text&#39;</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># logical</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># integer</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(12L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Arithmetic only works with logical, integer, and numeric values:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valid operations</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span><span class="sc">*</span><span class="dv">12</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>12L<span class="sc">*</span><span class="dv">12</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>12L<span class="sc">*</span>12L</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span><span class="sc">*</span><span class="cn">TRUE</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span><span class="sc">*</span><span class="cn">FALSE</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>12L<span class="sc">*</span><span class="cn">TRUE</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>12L<span class="sc">*</span><span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>It will not work with character values. Notice the text of the error message:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># invalid operation</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;12&#39;</span><span class="sc">*</span><span class="st">&#39;12&#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in &quot;12&quot; * &quot;12&quot;: non-numeric argument to binary operator</code></pre>
-</div>
-</div>
-<p>This is a very common error message — when you see it, you’ll know that most likely, somewhere R attempted to perform arithmetic with character values, so it’s probably a data type issue.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Your turn
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Calculate the product of TRUE and FALSE. Which data type results from this operation?</p></li>
-<li><p>What do you think will happen if you <em>add</em> a logical and numeric value? Discuss first, then verify.</p></li>
-<li><p>What kind of value does each of the above operations return? Discuss first, then verify.</p></li>
+<section id="peanut-allergies" class="level2">
+<h2 class="anchored" data-anchor-id="peanut-allergies">Peanut allergies</h2>
+<p>Consider the Learning Early About Peanut allergy (LEAP) study discussed in class and in your reading:</p>
+<blockquote class="blockquote">
+<p>For the LEAP study, 640 infants in the United Kingdom were enrolled with risk factors for peanut allergies (eczema or egg allergy); 530 passed a skin test at the start of the study showing no peanut allergy. Each infant was randomly assigned to peanut consumption (6g peanut protein per day) or peanut avoidance (no peanut consumption) groups. At 5 years of age, an allergy test was administered to each study participant; the rates of peanut allergy were compared between the two groups.</p>
+</blockquote>
+<ol start="8" type="1">
+<li>[L1] Propose a retrospective observational study to investigate the research question, “is early peanut exposure associated with a lower risk of developing peanut allergies?” Include a specific description of how you might enroll participants.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># product of true and false</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add a logical and numeric value</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check data type of the above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="vectors" class="level3">
-<h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
-<p>In practice, data usually consists of multiple values, not just one; in R, the most basic type of collection of values is called a <em>vector</em>. Technically, a vector is a “concatenation” of values of the same data type. Vectors can be formed using the concatenation function <code>c(...)</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># concatenate values with c(...) to form a vector</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># store it</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># data type</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If values of different types are concatenated, they are coerced to the same data type; vectors cannot contain values of mixed type. The lines below demonstrate this behavior:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># integer and logical -&gt; integer</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(2L, <span class="cn">TRUE</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># integer and numeric -&gt; numeric</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(2L, <span class="dv">12</span>))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric and logical -&gt; numeric</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="cn">TRUE</span>))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># character and anything -&gt; character</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&#39;text&#39;</span>, <span class="cn">TRUE</span>))</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&#39;text&#39;</span>, 2L))</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&#39;text&#39;</span>, <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="vectorization" class="level4">
-<h4 class="anchored" data-anchor-id="vectorization">Vectorization</h4>
-<p>Arithmetic between vectors is carried out elementwise; arithmetic operations between vectors and values are ‘vectorized’, meaning operations are applied over each element. This makes certain calculations quite efficient. The following examples illustrate vectorized arithmetic operations in two verbose ways: first as an elementwise operation between two vectors; then as a concatenation of the results of each elementwise operation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># vectorized</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)<span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># verbose</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1</span>, <span class="dv">2</span><span class="sc">*</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">*</span><span class="dv">3</span>) <span class="co"># verbose</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="dv">1</span> <span class="co"># vectorized</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># verbose</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>, <span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span>) <span class="co"># verbose</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)<span class="sc">/</span><span class="dv">3</span> <span class="co"># vectorized</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>) <span class="co"># verbose</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">3</span>) <span class="co"># verbose</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="co"># vectorized</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)<span class="sc">^</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>) <span class="co"># verbose</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">^</span><span class="dv">2</span>, <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span>) <span class="co"># verbose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If an operation is carried out between vectors of different lengths, a warning is printed indicating as much.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can you figure out what calculation was performed?</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)<span class="sc">*</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in c(1, 2, 3) * c(4, 5): longer object length is not a multiple of
-shorter object length</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  4 10 12</code></pre>
-</div>
-</div>
-<p>Many functions, including those mentioned at the outset, are also vectorized (calculations are performed elementwise).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>), <span class="at">base =</span> <span class="dv">10</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="indexing" class="level4">
-<h4 class="anchored" data-anchor-id="indexing">Indexing</h4>
-<p>Elements of vectors are <em>indexed</em> by consecutive integers; elements can be retrieved by specifying the indices in square brackets after the object name.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a vector</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># second element</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># first and third elements</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># second through fourth elements</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="missing-values" class="level4">
-<h4 class="anchored" data-anchor-id="missing-values">Missing values</h4>
-<p>Many datasets have missing values that occur for various reasons: equipment failure, participant dropout, survey nonresponse, and so on. These can be represented in R as well. This is useful as a means of retaining the information that there is an observation that was somehow lost. Missing values are displayed as the special character <code>NA</code> in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector with a missing third element</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># note: still numeric</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Your turn
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Create a vector with the ages of each person in your group (in years). Call it <code>ages</code>.</p></li>
-<li><p>Convert to months using vectorized arithmetic.</p></li>
-<li><p>Now pretend one of you is absent; repeat (1) but replace their age by a missing value. call the vector <code>ages_incomplete</code>.</p></li>
-<li><p>Convert to months again using the same operation as in (2); how is the missing value handled?</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of ages in years</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to months with vectorized arithmetic</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pretend one person is absent: input a missing value</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># repeat conversion to months: how is the NA handled?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="matrices-arrays-lists-and-data-frames" class="level4">
-<h4 class="anchored" data-anchor-id="matrices-arrays-lists-and-data-frames">Matrices, arrays, lists, and data frames</h4>
-<p>Matrices can be constructed from vectors by specifying row and column dimensions, and how to arrange the values – by row or by column.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="at">data =</span> x, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]    1    2
-[2,]    3    4</code></pre>
-</div>
-</div>
-<p>We won’t really see arrays much, but since they are mentioned in the reading, here’s an example of how to construct one, and how it is displayed.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="at">data =</span> x, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>, , 1
-
-     [,1] [,2]
-[1,]    1    3
-[2,]    2    4
-
-, , 2
-
-     [,1] [,2]
-[1,]    5    7
-[2,]    6    8</code></pre>
-</div>
-</div>
-<p>A list is a highly general data structure; it’s just an indexed amalgamation of objects of any type.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a list</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">&#39;anchor&#39;</span>, <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">5</span>), log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] &quot;anchor&quot;
-
-[[2]]
-[1] 22  5
-
-[[3]]
-function (x, base = exp(1))  .Primitive(&quot;log&quot;)</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the list elements can be named, which makes for easy retrieval</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">words =</span> <span class="st">&#39;anchor&#39;</span>, <span class="at">numbers =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">5</span>), <span class="at">functions =</span> log)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>my_list<span class="sc">$</span>words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;anchor&quot;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># even so, indexing can still be used</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;anchor&quot;</code></pre>
-</div>
-</div>
-<p>Data frames are like lists, except each element is a vector of the same length; they appear much like matrices, but behave differently in important ways.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a data frame</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">col2 =</span> <span class="fu">c</span>(T, F, T, T), </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">col3 =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;yellow&#39;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  col1  col2   col3
-1    1  TRUE    red
-2    2 FALSE   blue
-3    3  TRUE  green
-4    4  TRUE yellow</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlike matrices, however, columns can be retrieved by name</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">number =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">truth =</span> <span class="fu">c</span>(T, F, T, T), </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;yellow&#39;</span>))</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the result is a vector containing the values of that column</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>my_df<span class="sc">$</span>color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;red&quot;    &quot;blue&quot;   &quot;green&quot;  &quot;yellow&quot;</code></pre>
-</div>
-</div>
-<p>Data frames are the fundamental data structure on which a large portion of R software is built. When data files are read into R, as you saw very briefly earlier, they are read in by default as data frames. Many R functions used in performing data analyses require data to be supplied as a data frame.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Your turn
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Create a data frame in which each row corresponds to one member of your group and columns are the variables age, number of siblings, and favorite singer.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data frame with columns age, no. of siblings, and favorite singer; each row corresponds to one group member</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
