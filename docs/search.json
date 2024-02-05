@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne- and two-sample inference for numerical data\nTuesday:\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] inferential errors \n[case study] DDT in kale \n\nThursday:\n\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] t tests in R \n[case study] evolution of Darwin’s finches \n\nAssignment: Test 1 due Friday 2/9 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nNonparametric inference\n\n\n\n\nAssignment: HW3 due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nAnalysis of variance\nAcademic holiday 2/19/24\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
+    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne- and two-sample inference for numerical data\nTuesday:\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] one-sample \\(t\\) tests \n[case study] DDT in kale \n\nThursday:\n\n[reading] Vu and Harrington 5.2 and 5.3\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] two-sample t tests \n[case study] evolution of Darwin’s finches \n\nAssignment: Test 1 released Friday 2/9 and due Saturday 2/10 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nNonparametric inference\n\n\n\n\nAssignment: HW3 due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nAnalysis of variance\nAcademic holiday 2/19/24\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
   },
   {
     "objectID": "content/week1-welcome.html#about-me",
@@ -1005,7 +1005,7 @@
     "href": "index.html",
     "title": "Applied Statistics for Life Sciences",
     "section": "",
-    "text": "Announcements\n\n\n\n\nHW2 posted\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
+    "text": "Announcements\n\n\n\n\nOutlines updated for week 5\nUpcoming test: Friday 2/9 (take-home)\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
   },
   {
     "objectID": "content/hw/hw2.html",
@@ -1026,20 +1026,195 @@
     "href": "content/labs/lab5-intervals.html#exploring-interval-coverage",
     "title": "Lab 5: Confidence intervals",
     "section": "Exploring interval coverage",
-    "text": "Exploring interval coverage\nFirst you’ll draw a single sample and calculate an interval estimate for the mean. The commands below will do this for you with no changes. Your goal will be to obtain an interval using these commands and compare your result with those of your groupmates. Since each of you is drawing a sample at random, your results will differ slightly.\n\n# fix sample size\nn &lt;- 35\n\n# draw a sample of size 35\nmy_samp &lt;- sample(cholesterol, size = n)\n\n# calculate mean and standard error\nxbar &lt;- mean(my_samp)\nxbar.se &lt;- sd(my_samp)/sqrt(n)\n\n# calculate the interval\nxbar.interval &lt;- xbar + c(-1, 1)*2*xbar.se\n\n# display\nxbar.interval\n\n[1] 4.699961 5.424611\n\n\n\n\n\n\n\n\nYour turn\n\n\n\nDetermine whether your interval captured the parameter of interest. Compute the population mean and compare with the interval estimate.\n\n# does the interval contain the population mean?\n\n\n\nNow imagine your group was really big, say, 10,000 students, and you all generated one interval each. The proportion of you who captured the population mean measures the coverage of the interval. We will simulate this in class to determine the coverage of the interval you just calculated."
+    "text": "Exploring interval coverage\nFirst you’ll draw a single sample and calculate an interval estimate for the mean. The commands below will do this for you with no changes. Your goal will be to obtain an interval using these commands and compare your result with those of your groupmates. Since each of you is drawing a sample at random, your results will differ slightly.\n\n# fix sample size\nn &lt;- 35\n\n# draw a sample of size 35\nmy_samp &lt;- sample(cholesterol, size = n)\n\n# calculate mean and standard error\nxbar &lt;- mean(my_samp)\nxbar.se &lt;- sd(my_samp)/sqrt(n)\n\n# calculate the interval\nxbar.interval &lt;- xbar + c(-1, 1)*2*xbar.se\n\n# display\nxbar.interval\n\n[1] 4.763290 5.471567\n\n\n\n\n\n\n\n\nYour turn\n\n\n\nDetermine whether your interval captured the parameter of interest. Compute the population mean and compare with the interval estimate.\n\n# does the interval contain the population mean?\n\n\n\nNow imagine your group was really big, say, 10,000 students, and you all generated one interval each. The proportion of you who captured the population mean measures the coverage of the interval. We will simulate this in class to determine the coverage of the interval you just calculated."
   },
   {
     "objectID": "content/labs/lab5-intervals.html#simulating-deviations",
     "href": "content/labs/lab5-intervals.html#simulating-deviations",
     "title": "Lab 5: Confidence intervals",
     "section": "Simulating deviations",
-    "text": "Simulating deviations\nThe multiplier \\(2\\times SE\\) comes from the normal model for the sampling distribution of the point estimate \\(\\bar{x}\\). This particular multiplier is intended to achieve 95% coverage — so in theory, 95 out of every 100 intervals will capture the population mean. The normal model can be expressed as a model for the scaled deviations \\(\\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}\\), where the scaling factor uses the population standard deviation \\(\\sigma/\\sqrt{n}\\). A nominal 95% coverage arises from the assumption that 95% of these deviations are between -2 and 2. But when we calculate an interval, we’re actually applying the normal model to \\(\\frac{\\bar{x} - \\mu}{s_x/\\sqrt{n}}\\), where the deviations have been scaled by the standard error \\(s_x/\\sqrt{n}\\). Are 95% of these deviations between -2 and 2?\nThe commands below allow you to simulate scaled deviations of sample means from a large number of samples, using both (a) population standard deviation and (b) standard error as scaling factors. Don’t worry about understanding the codes too much — as long as you understand the output, that is sufficient. Your task is to run these commands and compare the coverage of the normal model when SE is used in place of SD.\n\n# fix sample size \nn &lt;- 5\n\n# function to simulate scaled deviation of one sample mean\nsim_dev &lt;- function(n, data){\n  samp &lt;- sample(data, size = n)\n  xbar &lt;- mean(samp)\n  xbar.se &lt;- sd(samp)/sqrt(n)\n  xbar.sd &lt;- sd(data)/sqrt(n)\n  mu &lt;- mean(data)\n  dev &lt;- c(se = (xbar - mu)/xbar.se, \n           sd = (xbar - mu)/xbar.sd)\n  return(dev)\n}\n\n# repeat many simulations\nnsim &lt;- 1000\nsim.devs &lt;- sapply(1:nsim, function(i){sim_dev(n, data = cholesterol)}) |&gt; \n  t() |&gt; \n  as.data.frame()\n\n# how many are between -2 and 2 using SD?\ncoverage.sd &lt;- sum(abs(sim.devs$sd) &lt; 2)/nsim\ncoverage.sd\n\n[1] 0.951\n\n# using SE?\ncoverage.se &lt;- sum(abs(sim.devs$se) &lt; 2)/nsim\ncoverage.se\n\n[1] 0.882\n\n\n\n\n\n\n\n\nYour turn\n\n\n\nRun the codes above and discuss with your group:\n\nWhat did these commands do? Affirm your understanding of this simulation by listing the steps performed.\nDo either, none, or both scaled deviations achieve the nominal coverage of 95%?\nIf you change the sample size, do you get a different answer?"
+    "text": "Simulating deviations\nThe multiplier \\(2\\times SE\\) comes from the normal model for the sampling distribution of the point estimate \\(\\bar{x}\\). This particular multiplier is intended to achieve 95% coverage — so in theory, 95 out of every 100 intervals will capture the population mean. The normal model can be expressed as a model for the scaled deviations \\(\\frac{\\bar{x} - \\mu}{\\sigma/\\sqrt{n}}\\), where the scaling factor uses the population standard deviation \\(\\sigma/\\sqrt{n}\\). A nominal 95% coverage arises from the assumption that 95% of these deviations are between -2 and 2. But when we calculate an interval, we’re actually applying the normal model to \\(\\frac{\\bar{x} - \\mu}{s_x/\\sqrt{n}}\\), where the deviations have been scaled by the standard error \\(s_x/\\sqrt{n}\\). Are 95% of these deviations between -2 and 2?\nThe commands below allow you to simulate scaled deviations of sample means from a large number of samples, using both (a) population standard deviation and (b) standard error as scaling factors. Don’t worry about understanding the codes too much — as long as you understand the output, that is sufficient. Your task is to run these commands and compare the coverage of the normal model when SE is used in place of SD.\n\n# fix sample size \nn &lt;- 5\n\n# function to simulate scaled deviation of one sample mean\nsim_dev &lt;- function(n, data){\n  samp &lt;- sample(data, size = n)\n  xbar &lt;- mean(samp)\n  xbar.se &lt;- sd(samp)/sqrt(n)\n  xbar.sd &lt;- sd(data)/sqrt(n)\n  mu &lt;- mean(data)\n  dev &lt;- c(se = (xbar - mu)/xbar.se, \n           sd = (xbar - mu)/xbar.sd)\n  return(dev)\n}\n\n# repeat many simulations\nnsim &lt;- 1000\nsim.devs &lt;- sapply(1:nsim, function(i){sim_dev(n, data = cholesterol)}) |&gt; \n  t() |&gt; \n  as.data.frame()\n\n# how many are between -2 and 2 using SD?\ncoverage.sd &lt;- sum(abs(sim.devs$sd) &lt; 2)/nsim\ncoverage.sd\n\n[1] 0.955\n\n# using SE?\ncoverage.se &lt;- sum(abs(sim.devs$se) &lt; 2)/nsim\ncoverage.se\n\n[1] 0.879\n\n\n\n\n\n\n\n\nYour turn\n\n\n\nRun the codes above and discuss with your group:\n\nWhat did these commands do? Affirm your understanding of this simulation by listing the steps performed.\nDo either, none, or both scaled deviations achieve the nominal coverage of 95%?\nIf you change the sample size, do you get a different answer?"
   },
   {
     "objectID": "content/labs/lab5-intervals.html#calculating-an-interval",
     "href": "content/labs/lab5-intervals.html#calculating-an-interval",
     "title": "Lab 5: Confidence intervals",
     "section": "Calculating an interval",
-    "text": "Calculating an interval\nIn light of the under-coverage resulting from the normal model for small sample sizes, the \\(t\\) model provides a better interval in practice.\n\\[\\bar{x} \\pm c \\times SE(\\bar{x})\\]\nIn the expression above, \\(c\\) is a “critical value” obtained from the \\(t\\) model with \\(n - 1\\) degrees of freedom; its exact value depends on the desired coverage. The commands below show you how to calculate each piece and form an interval.\n\n# fix sample size and desired coverage\nn &lt;- 10\ncoverage &lt;- 0.95\n\n# draw one sample\nsamp &lt;- sample(cholesterol, size = n)\n\n# interval ingredients\nxbar &lt;- mean(samp)\nxbar.se &lt;- sd(samp)/sqrt(n)\nc.val &lt;- qt((1 - coverage)/2, df = n - 1, lower.tail = F)\n\n# calculate interval\nxbar + c(-1, 1)*c.val*xbar.se\n\n[1] 4.109401 5.366599\n\n\nYour answer will differ slightly from this result, since you will draw a different sample when you run these commands.\n\n\n\n\n\n\nYour turn\n\n\n\nUsing the same sample above, compute a 90% confidence interval for mean total HDL cholesterol. Discuss with your group and interpret the interval in context.\n\n# adjust coverage and calculate a new critical value\n\n# calculate the interval"
+    "text": "Calculating an interval\nIn light of the under-coverage resulting from the normal model for small sample sizes, the \\(t\\) model provides a better interval in practice.\n\\[\\bar{x} \\pm c \\times SE(\\bar{x})\\]\nIn the expression above, \\(c\\) is a “critical value” obtained from the \\(t\\) model with \\(n - 1\\) degrees of freedom; its exact value depends on the desired coverage. The commands below show you how to calculate each piece and form an interval.\n\n# fix sample size and desired coverage\nn &lt;- 10\ncoverage &lt;- 0.95\n\n# draw one sample\nsamp &lt;- sample(cholesterol, size = n)\n\n# interval ingredients\nxbar &lt;- mean(samp)\nxbar.se &lt;- sd(samp)/sqrt(n)\nc.val &lt;- qt((1 - coverage)/2, df = n - 1, lower.tail = F)\n\n# calculate interval\nxbar + c(-1, 1)*c.val*xbar.se\n\n[1] 4.639147 6.136853\n\n\nYour answer will differ slightly from this result, since you will draw a different sample when you run these commands.\n\n\n\n\n\n\nYour turn\n\n\n\nUsing the same sample above, compute a 90% confidence interval for mean total HDL cholesterol. Discuss with your group and interpret the interval in context.\n\n# adjust coverage and calculate a new critical value\n\n# calculate the interval"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#todays-agenda",
+    "href": "content/week5-hypothesis.html#todays-agenda",
+    "title": "Hypothesis testing",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#ddt-data",
+    "href": "content/week5-hypothesis.html#ddt-data",
+    "title": "Hypothesis testing",
+    "section": "DDT data",
+    "text": "DDT data\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm). Each measurement was taken by a different laboratory.\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#hypothesis-testing",
+    "href": "content/week5-hypothesis.html#hypothesis-testing",
+    "title": "Hypothesis testing",
+    "section": "Hypothesis testing",
+    "text": "Hypothesis testing\nThis is an example of a hypothesis testing problem: we want to test the hypothesis that mean DDT in kale is within safe limits. Hypothesis testing is another form of statistical inference.\nThe general pattern for performing a hypothesis test is:\n\nFormulate the hypothesis to test in terms of the values of a population parameter.\nAssess the likelihood of the data under the hypothesis through use of a “test statistic”.\nConclude whether the data provide evidence favoring an alternative.\n\nToday we’ll cover each step in turn in the context of tests for a population mean."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#components-of-a-test",
+    "href": "content/week5-hypothesis.html#components-of-a-test",
+    "title": "Hypothesis testing",
+    "section": "Components of a test",
+    "text": "Components of a test\n\n\n\n\n\n\n\n\nComponent\nExplanation\nDDT example\n\n\n\n\nPopulation parameter\nThe quantity of interest\nMean DDT \\(\\mu\\)\n\n\nNull hypothesis\nThe claim to be tested\n\\(\\mu \\leq 3\\)\n\n\nAlternative hypothesis\nThe alternative claim\n\\(\\mu &gt; 3\\)\n\n\nTest statistic\nA function of the sample data and the null value of the population parameter\n\\(T = \\frac{\\bar{x} - \\mu_0}{s_x/\\sqrt{n}} = 2.91\\)\n\n\nModel\nSampling distribution of the test statistic under \\(H_0\\)\n\\(t_{df = 14}\\) model\n\n\n\\(p\\)-value\nProbability under \\(H_0\\) of obtaining a result at least as favorable to \\(H_A\\)\n0.575% of samples are more favorable to \\(H_A\\)\n\n\nDecision\nReject or fail to reject \\(H_0\\)\nReject at \\(\\alpha = 0.05\\)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#formulating-hypotheses",
+    "href": "content/week5-hypothesis.html#formulating-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "1. Formulating hypotheses",
+    "text": "1. Formulating hypotheses\nHypotheses cannot be tested in isolation, but must be considered relative to a specified alternative.\nTo articulate the hypotheses for a test, we need:\n\npopulation parameter of interest\nnull hypothesis \\(H_0\\): possible value(s) under the claim to be tested\nalternative hypothesis \\(H_A\\): possible value(s) if the claim is found to be false\n\nIn the context of the DDT example…\n\\[H_0:\\hspace{15cm}\\] \\[H_A:\\hspace{15cm}\\]"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#test-statistic",
+    "href": "content/week5-hypothesis.html#test-statistic",
+    "title": "Hypothesis testing",
+    "section": "2. Test statistic",
+    "text": "2. Test statistic\nTest statistics are data summaries that:\n\ndepend on the null value of the population parameter\nhave a known sampling distribution\n\nFor a population mean, we use: \\[T = \\frac{\\bar{x} - \\mu_0}{s_x/\\sqrt{n}}\\]\nThis is well-described by a \\(t_{n - 1}\\) model when \\(\\mu = \\mu_0\\). It is useful for the test because:\n\nlarge (absolute) values of \\(T\\) are unlikely if \\(\\mu = \\mu_0\\)\nsmall (absolute) values of \\(T\\) are expected if \\(\\mu = \\mu_0\\)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#drawing-a-conclusion",
+    "href": "content/week5-hypothesis.html#drawing-a-conclusion",
+    "title": "Hypothesis testing",
+    "section": "3. Drawing a conclusion",
+    "text": "3. Drawing a conclusion\n\n\nIn the DDT example, \\(T\\) = 2.906. This favors \\(H_A\\), but by how much?\nAccording to the \\(t\\) model, less than 1% of samples would produce a result more favorable to \\(H_A\\).\n\n\n\n\n\n\nPoint estimate:\n\n\n\n\n\n\n\n\n\nmean\nse\n\n\n\n\n3.328\n0.1129\n\n\n\n\n\nTest statistic:\n\\[T = \\frac{\\bar{x} - \\mu_0}{SE(\\bar{x})} = \\]\n\nThis is strong evidence against the claim that the DDT level is 3ppm or less and in favor of the claim that the DDT level exceeds 3ppm."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#p-values",
+    "href": "content/week5-hypothesis.html#p-values",
+    "title": "Hypothesis testing",
+    "section": "\\(p\\)-values",
+    "text": "\\(p\\)-values"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-logic-of-a-test",
+    "href": "content/week5-hypothesis.html#the-logic-of-a-test",
+    "title": "Hypothesis testing",
+    "section": "The logic of a test",
+    "text": "The logic of a test\nWhy did we find evidence against \\(H_0\\) in favor of \\(H_A\\)? Let’s consider…\n\nThe test statistic is based on a value of the parameter under \\(H_0\\)\nLarger values favor \\(H_A\\), smaller values favor \\(H_0\\)\nFor our sample, \\(\\bar{x} &gt; \\mu_0\\), which favors \\(H_A\\)\nAssuming \\(H_0\\) is true, XX% of samples would be at least as favorable to \\(H_A\\)\nIf this proportion is small, our results are not likely under \\(H_0\\)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#choosing-a-null-value",
+    "href": "content/week5-hypothesis.html#choosing-a-null-value",
+    "title": "Hypothesis testing",
+    "section": "Choosing a null value",
+    "text": "Choosing a null value\nWhy did we choose \\(\\mu_0 = 3\\) for the test statistic if \\(H_0\\) includes any and all values less than or equal to 3?\nAny null value farther from the alternative will produce stronger results.\n\n\n\n\n\n\n\n\nNull value\nTest statistic numerator\nProportion of samples more favorable to \\(H_A\\)\n\n\n\n\n\\(\\mu_0 = 3\\)\n0.328\n0.00575\n\n\n\\(\\mu_0 = 2.99\\)\n0.338\n0.00483\n\n\n\\(\\mu_0 = 2.95\\)\n0.378\n0.00239"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-logic-of-hypothesis-testing",
+    "href": "content/week5-hypothesis.html#the-logic-of-hypothesis-testing",
+    "title": "Hypothesis testing",
+    "section": "The logic of hypothesis testing",
+    "text": "The logic of hypothesis testing"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#strength-of-evidence",
+    "href": "content/week5-hypothesis.html#strength-of-evidence",
+    "title": "Hypothesis testing",
+    "section": "Strength of evidence",
+    "text": "Strength of evidence\nThe result that 0.575% of samples would produce a test statistic more strongly favoring the alternative hypothesis is an example of a p-value:\n\nthe probability under \\(H_0\\) of obtaining a sample for which the test statistic is at least as favorable to \\(H_A\\) as the value actually observed\n\nIn other words, \\(p\\)-values assume the null hypothesis is true, and then ask, “what is the chance I’d obtain data at least as suggestive as what I have that the alternative is more likely than the null?”\n\nsmaller \\(p\\)-values: if \\(H_0\\) is true, equally or more favorable results are not expected often by chance\nlarger \\(p\\)-values: if \\(H_0\\) is true, equally or more favorable results are expected often by chance"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#composite-hypotheses",
+    "href": "content/week5-hypothesis.html#composite-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Composite hypotheses",
+    "text": "Composite hypotheses\nThe null hypothesis is a composite of values, so why did we choose just one (\\(\\mu_0 = 3\\)) to perform the test?\nAny null value farther from the alternative will produce stronger results.\n\n\n\n\n\n\n\n\nNull value\nTest statistic numerator\nProportion of samples more favorable to \\(H_A\\)\n\n\n\n\n\\(\\mu_0 = 3\\)\n0.328\n0.00575\n\n\n\\(\\mu_0 = 2.99\\)\n0.338\n0.00483\n\n\n\\(\\mu_0 = 2.95\\)\n0.378\n0.00239\n\n\n\nSo by using \\(\\mu_0 = 3\\), we are choosing the most conservative null value for the test."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#interpreting-results",
+    "href": "content/week5-hypothesis.html#interpreting-results",
+    "title": "Hypothesis testing",
+    "section": "Interpreting results",
+    "text": "Interpreting results\nBecause of the anatomy of hypothesis tests, there are two possible findings:\n\n[above evidence threshold] reject \\(H_0\\) in favor of \\(H_A\\)\n[below evidence threshold] fail to reject \\(H_0\\)\n\n\nSince the null is assumed to be true to perform the test, the test can only result in (a) evidence against this assumption or (b) no evidence against this assumption. But because it’s an assumption, we don’t affirm it if the test fails.\n\nIn the DDT example: the data provide sufficiently strong evidence (p = 0.00575) to reject the hypothesis that mean DDT in kale is at most 3ppm in favor of the hypothesis that mean DDT in kale exceeds 3ppm."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#your-turn-expressing-hypotheses",
+    "href": "content/week5-hypothesis.html#your-turn-expressing-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Your turn: expressing hypotheses",
+    "text": "Your turn: expressing hypotheses"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#errors-and-evidence-thresholds",
+    "href": "content/week5-hypothesis.html#errors-and-evidence-thresholds",
+    "title": "Hypothesis testing",
+    "section": "Errors and evidence thresholds",
+    "text": "Errors and evidence thresholds\nThe end result of a test should be a decision about the hypotheses in question. So, it remains to define an evidence threshold above which we decide to reject \\(H_0\\).\nConsider:\n\nif indeed mean DDT in kale is 3ppm, then 0.575% of DDT samples produce test statistics at least as favorable to the alternative as what we saw in the study\nso if we set the evidence threshold for rejecting \\(H_0\\) exactly here, we’ll be wrong 0.575% of the time"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#evidence-thresholds",
+    "href": "content/week5-hypothesis.html#evidence-thresholds",
+    "title": "Hypothesis testing",
+    "section": "Evidence thresholds",
+    "text": "Evidence thresholds\nIt remains to define an evidence threshold above which we decide to reject \\(H_0\\).\nA heuristic is to fix a significance level \\(\\alpha\\) and reject \\(H_0\\) whenever \\(p &lt; \\alpha\\).\n\nrepresents an evidence threshold\nconventionally, \\(\\alpha = 0.05\\)\ncontrols error rates\n\nImagine that indeed mean DDT in kale is 3ppm. Then 0.575% of samples produce test statistics at least as favorable to the alternative as what we saw in the study.\n\nso if we set the evidence threshold for rejecting \\(H_0\\) exactly here (\\(\\alpha = 0.00575\\)) we’ll be wrong 0.575% of the time\nif we set the evidence threshold lower (say \\(\\alpha = 0.01\\)) we’ll be wrong more than 0.575% of the time (in fact 1% of the time)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#error-types",
+    "href": "content/week5-hypothesis.html#error-types",
+    "title": "Hypothesis testing",
+    "section": "Error types",
+    "text": "Error types"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#evidence-thresholds-and-errors",
+    "href": "content/week5-hypothesis.html#evidence-thresholds-and-errors",
+    "title": "Hypothesis testing",
+    "section": "Evidence thresholds and errors",
+    "text": "Evidence thresholds and errors\nThe end result of a test should be a decision about the hypotheses in question. So, it remains to define an evidence threshold above which we decide to reject \\(H_0\\).\nImagine that indeed mean DDT in kale is 3ppm. Then:\n\n0.575% of samples produce test statistics at least as favorable to the alternative as what we saw in the study\nso if we set the evidence threshold for rejecting \\(H_0\\) exactly here, we’ll be wrong 0.575% of the time\nif we set the evidence threshold lower, we’ll be wrong more than 0.575% of the time\n\nA heuristic is to fix a significance level \\(\\alpha\\) and reject \\(H_0\\) whenever \\(p &lt; \\alpha\\). This controls the false rejection rate, also known as a type I error."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#decision-rules",
+    "href": "content/week5-hypothesis.html#decision-rules",
+    "title": "Hypothesis testing",
+    "section": "Decision rules",
+    "text": "Decision rules\nThe end result of a test should be a decision about the hypotheses in question. So, it remains to define an evidence threshold above which we decide to reject \\(H_0\\).\nA heuristic is to fix a significance level \\(\\alpha\\) and reject \\(H_0\\) whenever \\(p &lt; \\alpha\\)."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#errors",
+    "href": "content/week5-hypothesis.html#errors",
+    "title": "Hypothesis testing",
+    "section": "Errors",
+    "text": "Errors\nImagine that indeed mean DDT in kale is 3ppm. Then:\n\n0.575% of samples produce test statistics at least as favorable to the alternative as what we saw in the study\nso if we set the evidence threshold for rejecting \\(H_0\\) exactly here, we’ll be wrong 0.575% of the time\nif we set the evidence threshold lower, we’ll be wrong more than 0.575% of the time\n\nThese are errors of the first type. Our decision heuristic controls these errors."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#directional-hypotheses",
+    "href": "content/week5-hypothesis.html#directional-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Directional hypotheses",
+    "text": "Directional hypotheses\nTests for the mean can involve directional or non-directional alternatives. We refer to these as one-sided and two-sided tests, respectively.\n\n\n\n\n\n\n\n\n\nTest type\nNull\nAlternative\nFavors alternative\n\n\n\n\nUpper-sided\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\npositive \\(T\\)\n\n\nLower-sided\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\nnegative \\(T\\)\n\n\nTwo-sided\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\nlarge \\(|T|\\)\n\n\n\nThe direction of the test affects the \\(p\\)-value calculation (and thus decision), but won’t change the test statistic.\n\n# upper-sided\nt.test(ddt, mu = mu_0, alternative = 'greater')\n\n# lower-sided\nt.test(ddt, mu = mu_0, alternative = 'less')\n\n# two-sided (default)\nt.test(ddt, mu = mu_0, alternative = 'two.sided')"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#decision-errors",
+    "href": "content/week5-hypothesis.html#decision-errors",
+    "title": "Hypothesis testing",
+    "section": "Decision errors",
+    "text": "Decision errors\nThere are two ways to make mistakes, and two ways to get the answer right.\n\nYou can’t optimize both error rates simultaneously.\n\nThe test heuristics we’ve outlined control type I error rates at \\(\\alpha\\)\nThese tests have the lowest type II error rates subject to a limit on type I error"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#decision-errors-1",
+    "href": "content/week5-hypothesis.html#decision-errors-1",
+    "title": "Hypothesis testing",
+    "section": "Decision errors",
+    "text": "Decision errors\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#lab-t-tests-in-r",
+    "href": "content/week5-hypothesis.html#lab-t-tests-in-r",
+    "title": "Hypothesis testing",
+    "section": "Lab: \\(t\\)-tests in R",
+    "text": "Lab: \\(t\\)-tests in R\n\n\n\nSTAT218"
   }
 ]

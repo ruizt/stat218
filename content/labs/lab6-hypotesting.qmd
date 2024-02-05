@@ -1,0 +1,16 @@
+---
+title: "Lab 6: Hypothesis testing"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  results: 'hide'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+

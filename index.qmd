@@ -7,7 +7,9 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- HW2 posted
+- Outlines updated for week 5
+- HW2 due Thursday 2/8 11:59pm PST
+- Upcoming test: Friday 2/9 (take-home)
 
 :::
 

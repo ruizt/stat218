@@ -95,16 +95,17 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 
 -   \[reading\] Vu and Harrington 4.3
 -   \[lecture/discussion\] hypothesis tests for a population mean
--   \[lab\] inferential errors <!--# simulation -->
+-   \[lab\] one-sample $t$ tests <!--# simulation -->
 -   \[case study\] DDT in kale <!--# MASS::DDT -->
 
 ***Thursday***:
 
+-   \[reading\] Vu and Harrington 5.2 and 5.3
 -   \[lecture/discussion\] two-sample *t* tests and intervals for paired and independent data
--   \[lab\] *t* tests in R <!--# cloud seeding, envm -->
+-   \[lab\] two-sample *t* tests <!--# cloud seeding, case0301 envm -->
 -   \[case study\] evolution of Darwin's finches <!--# Sleuth3::case0201, bio -->
 
-**Assignment**: Test 1 due Friday 2/9 11:59pm PST \[L1, L2, L3\]
+**Assignment**: Test 1 released Friday 2/9 and due Saturday 2/10 11:59pm PST \[L1, L2, L3\]
 
 ### Week 6 (2/12/24)
 
