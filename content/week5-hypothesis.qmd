@@ -18,9 +18,15 @@ execute:
 
 ```{r}
 library(tidyverse)
+library(oibiostat)
 library(pander)
 ddt <- MASS::DDT
 ```
+
+1. Reading quiz \[[2pm section](https://forms.office.com/r/kR8D8tzbzk)\] \[[4pm section](https://forms.office.com/r/CNzztxACjs)\]
+2. Hypothesis tests for a population mean
+3. Lab: $t$-tests in R
+4. (If time) Exploring decision errors
 
 ## DDT data
 
@@ -118,19 +124,142 @@ $$T = \frac{\bar{x} - \mu_0}{SE(\bar{x})} = $$
 :::
 :::
 
-## Composite hypotheses
+## Recap of DDT example
 
-The null hypothesis is a *composite* of values, so why did we choose just one ($\mu_0 = 3$) to perform the test?
+> Is the mean DDT level in kale 3ppm or less?
 
-Any null value farther from the alternative will produce stronger results.
+::: {.columns}
 
-| Null value     | Test statistic numerator | Proportion of samples more favorable to $H_A$                           |
-|------------------------|------------------------|------------------------|
-| $\mu_0 = 3$    | `r mean(ddt) - 3`        | `r t.test(ddt, mu = 3, alternative = 'greater')$p.value |> round(5)`    |
-| $\mu_0 = 2.99$ | `r mean(ddt) - 2.99`     | `r t.test(ddt, mu = 2.99, alternative = 'greater')$p.value |> round(5)` |
-| $\mu_0 = 2.95$ | `r mean(ddt) - 2.95`     | `r t.test(ddt, mu = 2.95, alternative = 'greater')$p.value |> round(5)` |
+::: {.column width="55%"}
+Data are measurements of DDT levels in ppm from 15 labs. 
 
-So by using $\mu_0 = 3$, we are choosing the most conservative null value for the test.
+Population parameter:
+
+$$H_0:\hspace{15cm}$$ 
+$$H_A:\hspace{15cm}$$ 
+$$\mu_0 =\hspace{15cm}$$ 
+$$T=\hspace{15cm}$$ 
+% of samples more favorable to $H_A \approx$ 
+:::
+
+::: {.column width="45%"}
+Summary statistics:
+```{r}
+c(mean = mean(ddt),
+  sd = sd(ddt),
+  se = sd(ddt)/sqrt(length(ddt))) %>%
+  pander()
+```
+$t_{14}$ model:
+```{r, fig.width = 4, fig.height = 3}
+par(mar = c(5, 4, 0.5, 0.5),
+    cex = 1)
+curve(dt(x, df = 14), 
+      from = -4, to = 4,
+      xlab = '',
+      ylab = 'frequency')
+abline(h = 0)
+title(xlab = expression(paste("T = ", frac(bar(x) - mu[0], s[x]/sqrt(n)))),
+      line = 3.5)
+```
+
+:::
+
+:::
+
+
+## Another example: sleep
+
+> Does the average U.S. adult sleep at least 7 hours per night?
+
+::: {.columns}
+
+::: {.column width="55%"}
+Data are reported average hours of sleep per night from 135 NHANES respondents. 
+
+Population parameter:
+
+$$H_0:\hspace{15cm}$$ 
+$$H_A:\hspace{15cm}$$ 
+$$\mu_0 =\hspace{15cm}$$ 
+$$T=\hspace{15cm}$$ 
+% of samples more favorable to $H_A \approx$ 
+:::
+
+::: {.column width="45%"}
+Summary statistics:
+```{r}
+data("nhanes.samp.adult")
+sleep <- nhanes.samp.adult$SleepHrsNight
+c(mean = mean(sleep),
+  sd = sd(sleep),
+  se = sd(sleep)/sqrt(length(sleep))) %>%
+  pander()
+```
+$t_{134}$ model:
+```{r, fig.width = 4, fig.height = 3}
+par(mar = c(5, 4, 0.5, 0.5),
+    cex = 1)
+curve(dt(x, df = 134), 
+      from = -4, to = 4,
+      xlab = '',
+      ylab = 'frequency')
+abline(h = 0)
+title(xlab = expression(paste("T = ", frac(bar(x) - mu[0], s[x]/sqrt(n)))),
+      line = 3.5)
+```
+
+:::
+
+:::
+
+
+## Your turn: body temperatures
+
+
+> Is mean body temperature actually 98.6 °F, or is it lower?
+
+::: {.columns}
+
+::: {.column width="55%"}
+Data are 130 observations of body temperature (°F) [derived from a JAMA study](https://jse.amstat.org/v4n2/datasets.shoemaker.html). 
+
+Population parameter:
+
+$$H_0:\hspace{15cm}$$ 
+$$H_A:\hspace{15cm}$$ 
+$$\mu_0 =\hspace{15cm}$$ 
+$$T=\hspace{15cm}$$ 
+% of samples more favorable to $H_A \approx$ 
+:::
+
+::: {.column width="45%"}
+Summary statistics:
+```{r}
+data(thermometry)
+body.temps <- thermometry$body.temp
+c(mean = mean(body.temps),
+  sd = sd(body.temps),
+  se = sd(body.temps)/sqrt(length(body.temps))) %>%
+  pander()
+```
+$t_{129}$ model:
+```{r, fig.width = 4, fig.height = 3}
+par(mar = c(5, 4, 0.5, 0.5),
+    cex = 1)
+curve(dt(x, df = 129), 
+      from = -6, to = 4,
+      xlab = '',
+      ylab = 'frequency')
+abline(h = 0)
+title(xlab = expression(paste("T = ", frac(bar(x) - mu[0], s[x]/sqrt(n)))),
+      line = 3.5)
+```
+
+:::
+
+:::
+
 
 ## Strength of evidence
 
@@ -142,6 +271,7 @@ In other words, $p$-values assume the null hypothesis is true, and then ask, "wh
 
 -   smaller $p$-values: if $H_0$ is true, equally or more favorable results are not expected often by chance
 -   larger $p$-values: if $H_0$ is true, equally or more favorable results are expected often by chance
+
 
 ## Evidence thresholds
 
@@ -178,7 +308,22 @@ In the DDT example: *the data provide sufficiently strong evidence (p = 0.00575)
 <!-- You can't optimize both error rates simultaneously. -->
 
 <!-- -   The test heuristics we've outlined control type I error rates at $\alpha$ -->
+
 <!-- -   These tests have the lowest type II error rates *subject to* a limit on type I error -->
+
+## Composite hypotheses
+
+The null hypothesis is a *composite* of values, so why did we choose just one ($\mu_0 = 3$) to perform the test?
+
+Any null value farther from the alternative will produce stronger results.
+
+| Null value     | Test statistic numerator | Proportion of samples more favorable to $H_A$                           |
+|------------------------|------------------------|------------------------|
+| $\mu_0 = 3$    | `r mean(ddt) - 3`        | `r t.test(ddt, mu = 3, alternative = 'greater')$p.value |> round(5)`    |
+| $\mu_0 = 2.99$ | `r mean(ddt) - 2.99`     | `r t.test(ddt, mu = 2.99, alternative = 'greater')$p.value |> round(5)` |
+| $\mu_0 = 2.95$ | `r mean(ddt) - 2.95`     | `r t.test(ddt, mu = 2.95, alternative = 'greater')$p.value |> round(5)` |
+
+So by using $\mu_0 = 3$, we are choosing the most conservative null value for the test.
 
 ## Components of a test
 
@@ -191,6 +336,39 @@ In the DDT example: *the data provide sufficiently strong evidence (p = 0.00575)
 | Model                  | Sampling distribution of the test statistic under $H_0$                      | $t_{df = 14}$ model                               |
 | $p$-value              | Probability under $H_0$ of obtaining a result at least as favorable to $H_A$ | 0.575% of samples are more favorable to $H_A$     |
 | Decision               | Reject or fail to reject $H_0$                                               | Reject at $\alpha = 0.05$                         |
+
+## Performing tests in R
+
+
+::: {.columns}
+
+::: {.column}
+
+Inputs:
+
+1. data vector
+2. null value of parameter
+3. alternative hypothesis
+
+Outputs:
+
+4. test statistic
+5. degrees of freedom for $t$ model
+6. $p$-value
+7. confidence interval
+8. point estimate
+
+:::
+
+::: {.column}
+`t.test` performs all calculations. Locate each input (1-3) and output (4-7) below:
+```{r, echo = T}
+t.test(ddt, mu = 3, alternative = 'greater')
+```
+
+:::
+
+:::
 
 ## Directional hypotheses
 
@@ -216,3 +394,9 @@ t.test(ddt, mu = mu_0, alternative = 'two.sided')
 ```
 
 ## Lab: $t$-tests in R
+
+Open up `lab6-hypotesting` in the class workspace. The goals for this lab are:
+
+1. Learn how to implement $t$ tests in R and interpret output
+2. Practice formulating and testing hypotheses from simple research questions
+3. (If time) Explore decision errors
