@@ -1,0 +1,234 @@
+---
+title: "Two-sample inference"
+subtitle: "Inferences comparing two population means from paired or independent samples"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Today's agenda
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(Sleuth3)
+library(pander)
+```
+
+1.  Reading quiz \[[2pm section]()\] \[[4pm section]()\]
+2.  More one-sample inference: reporting test results; decision errors
+3.  Comparing two population means
+4.  Lab: more $t$-tests in R
+
+## From last time
+
+::: columns
+::: column
+1.  What hypotheses were tested? $$  $$
+
+2.  What was the test statistic and p-value? $$  $$
+
+3.  What was the sample size? $$  $$
+
+4.  What is the conclusion of the test? $$  $$
+
+5.  Interpret the confidence interval.
+:::
+
+::: column
+Inference for the body temperature data.
+
+```{r, echo=T}
+data(thermometry)
+body_temps <- thermometry$body.temp
+t.test(body_temps, 
+       mu = 98.6, 
+       alternative = 'two.sided')
+```
+:::
+:::
+
+
+## Significance conventions
+
+::: {.columns}
+
+::: {.column width="43%"}
+
+**Convention 1:** statistical significance
+
+- $p < 0.05$: reject $H_0$
+- $p \geq 0.05$: fail to reject $H_0$
+
+> "The data provide **significant evidence at level $\alpha$ = 0.05** against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (*T* = -5.4548 on 129 degrees of freedom, *p* = .0000002411)."
+
+:::
+
+::: {.column width="57%"}
+
+**Convention 2:** weight of evidence against $H_0$
+
+- $p < 0.01$: strong evidence
+- $0.01 \leq p < 0.05$: moderate evidence
+- $0.05 \leq p < 0.1$: weak evidence 
+- $0.1 \leq p$: no evidence
+
+> "The data **provide strong evidence** against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (*T* = -5.4548 on 129 degrees of freedom, *p* = .0000002411)."
+
+:::
+
+:::
+
+You may use either convention to interpret test results.
+
+## Choosing alternatives
+
+::: columns
+::: column
+> Is the mean body temp less than 98.6?
+
+Which test should you use? Consider the interpretations:
+
+a.  \[lower\] *evidence favoring* lower temp
+b.  \[upper\] *no evidence against* lower temp
+
+The conclusions are consistent but not equivalent -- (a) is a better answer.
+
+**Your alternative should be the claim you hope to support with evidence, and your null the claim you hope to refute.**
+:::
+
+::: column
+```{r, echo=T}
+t.test(body_temps, 
+       mu = 98.6, 
+       alternative = 'less')
+
+t.test(body_temps, 
+       mu = 98.6, 
+       alternative = 'greater')
+```
+:::
+:::
+
+
+## Reporting test results
+
+::: columns
+::: {.column width="40%"}
+To report the result of a hypothesis test, you should:
+
+1.  Lead with your conclusion
+2. State the hypotheses tested
+3.  Interpret the conclusion of the test in context
+4.  Provide the $T$ statistic, degrees of freedom, and $p$-value
+5.  State and interpret the point estimate and interval for the mean
+:::
+
+::: {.column width="60%"}
+> Our results suggest mean body temperature is less than 98.6 °F. We tested the null hypothesis that mean body temperature is 98.6 °F or greater against the alternative that mean body temperature is less than 98.6 °F. The data provide sufficiently strong evidence against the hypothesis that mean body temperature is 98.6 °F or greater in favor of the alternative that mean body temperature is less than 98.6 °F (*T* = -5.4548 on 129 degrees of freedom, p-value = .0000001205). With 95% confidence, the mean nightly hours of sleep is estimated to be at most 98.36 °F, with a point estimate of 98.23 (*SE* = 0.0643).
+:::
+:::
+
+## Your turn: sleep data
+
+::: {.columns}
+
+::: {.column}
+
+Work with your group on just *one* of the questions below. 
+
+1. Do US adults sleep 7.5 hours per night on average?
+2. Do US adults sleep less than 7.5 hours per night on average?
+3. Do US adults sleep more than 7.5 hours per night on average?
+4. Do US adults sleep more than 6.5 hours per night on average?
+
+:::
+
+::: {.column}
+
+Your task is to determine and carry out an appropriate test, and then write a complete report of the test outcome:
+    
+- answer the question
+- hypotheses tested
+- test conclusion, interpreted in context
+- test statistic, degrees of freedom, $p$-value
+- confidence interval and point estimate, interpreted in context
+
+These elements should be summarized together in complete sentences.
+
+:::
+
+:::
+
+## Test-interval duality
+
+## Decision errors
+
+## Swimsuit data
+
+> Are swimmers faster in bodysuits than in regular swimsuits?
+
+Below are the first few observations of the average velocity of competitive swimmers in a 1500m; one measurement was taken in a swimsuit, the other in a bodysuit.
+
+```{r}
+data(swim)
+swim %>% select(-velocity.diff) %>% head(3) %>% pander()
+```
+
+*Can you formulate a pair of hypotheses to test to answer this question using methods from last time?*
+
+## Comparing two means
+
+We can formulate the question as a *comparison of two means*:
+
+$$H_0: \mu_\text{bodysuit} \leq \mu_\text{swimsuit}$$ $$H_A: \mu_\text{bodysuit} > \mu_\text{swimsuit}$$ It is common to express hypotheses of this form in terms of a difference in means: $$H_0: \underbrace{\mu_\text{bodysuit} - \mu_\text{swimsuit}}_\delta \leq 0$$ $$H_A: \underbrace{\mu_\text{bodysuit} - \mu_\text{swimsuit}}_\delta > 0$$
+
+## Pairing
+
+The velocities in the swimsuit dataset are paired because every swimmer is measured in both suits.
+
+Data are **paired** just in case the measurements in each group are taken on exactly the same study units.
+
+> if you can calculate a difference for each study unit, your data are paired; otherwise, your data are not paired
+
+This is the easiest situation to handle, because it reduces to a one-sample problem with the observed differences.
+
+## Inference for paired data
+
+1.  Calculate paired differences.
+
+```{r}
+diffs <- swim$velocity.diff
+swim %>% head(3) %>% pander
+```
+
+::: columns
+::: column
+2.  Perform test as before.
+
+```{r, echo = T}
+# test for paired difference
+t.test(diffs, mu = 0, alternative = 'greater')
+```
+:::
+
+::: column
+3.  Report the result of the test. *You try.*
+:::
+:::
+
+## Cloud seeding data
+
+```{r}
+case0301 %>% count(Treatment)
+```
+
+## Inference for independent data

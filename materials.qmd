@@ -30,6 +30,8 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[activity\] distinguishing types of studies
 -   \[case study\] preventing peanut allergies
 
+Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=BRavUuC3mcIkNNXdgJplZoGVfDzDldyL&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURDJZTzI2QlNDQU45Q0lZUkpXVDUyVTVKNi4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=MM7Fxw3jbMjsKyEUlWTgwQIIAJctozRV&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOEhLR0U2Mjg1MEFTWjcyOFFNMTFNMVE1Ti4u)
+
 **Assignment**: \[[HW1](content/hw/hw1.qmd)\] due Thursday 1/18 11:59pm PST \[L1, L2\]
 
 ### Week 2 (1/15/24)
@@ -44,6 +46,8 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[lecture/discussion\] data types and data structures
 -   \[activity\] distinguishing data types in practice
 -   \[lab\] R basics and data in R
+
+Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=pi0hBvCi1pUbJUaKT4AdEuFnc0s2ZmmU&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURVoxMEVUV05HM1VYQVhHSERVM01HSFhNVi4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=V1rv4HOREiKHtDUfkdPCyKBF3VVmefvn&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNktRTE4zRVlXWTJHUTFYVjc2VzJTNk1ZNS4u)
 
 **No assignment this week**
 
@@ -65,6 +69,8 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[lab\] bivariate summaries in R
 -   \[case study\] FAMUSS
 
+Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ScewzsvfXG3Z23dXhkvoa5xXc9Ssyj3b&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNDg0NTBRMU4zVVdHS0pCRFJMMFgyTkNaSy4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=uRZDIjUtNk5kVIAH34siEo2jna1OaPzm&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNlpYSlJXS0dNWEFOTVhMMlczVVdTMEZWNy4u)
+
 **Assignment**: extended to next week
 
 ### Week 4 (1/29/24)
@@ -77,6 +83,9 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[lecture/discussion\] sampling and sampling distributions
 -   \[lab\] exploring sampling variability
 -   \[case study\] National health and nutrition examination survey (NHANES)
+
+Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=abJbRahZT6EfbMRDZPqu7vKMtMhz64jw&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQUdNOVJDRTE3RDFENUQ4VDgzSlo3WjRRRy4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=1I0Xu6SsqUefvaNvNJNJL1kMjVXpZj0a&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQ05HSjU1SENHUlFLM0cxME9GTFdTS0lKVS4u)
+
 
 ***Thursday class meeting*** \[[slides](content/week4-intervals.qmd)\] \[[lab](content/labs/lab5-intervals.qmd)\]
 
@@ -97,6 +106,8 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[lecture/discussion\] hypothesis tests for a population mean
 -   \[lab\] one-sample $t$ tests <!--# simulation -->
 -   \[case study\] DDT in kale <!--# MASS::DDT -->
+
+Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ZjeI3hXRae1NmTtS5xx1laWP4ptsrgMo&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMjk4WkQwQ1ZRTUE1OVpHNjI1UkdEVVM4NC4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=Pmk0kXjNRYNodZ8Yr1ykJ5ZcDLgKpdDN&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1ZQWEM1U0xPRlIzRTZMOFBXT1lWVFNSUS4u)
 
 ***Thursday***:
 

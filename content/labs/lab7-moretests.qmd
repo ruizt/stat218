@@ -1,0 +1,169 @@
+---
+title: "Lab 6: More hypothesis testing"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+The objective of this lab is to learn how to perform $t$-tests for a population mean in R. We will cover:
+
+- specifying null and alternative hypotheses
+- interpreting R output
+
+## Datasets
+
+Throughout this lab we'll use the datasets:
+
+- `sleep` are 135 observations of average hours of sleep per night from NHANES respondents
+
+You'll need to run the commands below in order to load these datasets before proceeding with the activity.
+
+```{r load datasets}
+library(oibiostat)
+
+data(nhanes.samp.adult)
+sleep <- nhanes.samp.adult$SleepHrsNight
+str(sleep)
+```
+
+By way of review, you'll recall from last time that hypothesis tests are performed in R using `t.test()`.
+
+```{r review}
+# do US adults sleep either more or less than 8 hours a night? [result: yes]
+t.test(sleep, mu = 8, alternative = 'two.sided')
+
+# do US adults sleep more than 8 hours a night? [result: no]
+t.test(sleep, mu = 8, alternative = 'greater')
+
+# do US adults sleep less than 8 hours a night? [result: yes]
+t.test(sleep, mu = 8, alternative = 'less')
+```
+
+::: callout-tip
+## Choosing your alternative wisely
+
+It can be tricky to pick alternatives in directional tests. Suppose you want to test whether adults sleep less than 8 hours. Should you use an upper-sided or a lower-sided test?
+
+Consider the difference in interpretation between the upper-sided ($p \approx 1$) and lower-sided ($p \approx 0$) tests above:
+
+- [upper sided test fails to reject] the data *do not* provide evidence that U.S. adults *don't* sleep less then 8 hours a night
+- [lower sided test rejects] the data provide evidence that U.S. adults don't sleep more than 8 hours a night, and favor instead the alternative that they sleep less than 8 hours a night
+
+Both answers are consistent with adults sleeping less than 8 hours, but they frame the question in different ways, and the results are not logically equivalent: the former is a double negative and basically inconclusive; the latter is a stronger conclusion. 
+
+If you want to answer the question whether adults sleep less than 8 hours, the better way to do it is with a lower-sided test, so that you potentially find evidence for the claim of interest (should you reject the upper-sided test) rather than potentially fail to find evidence against the claim of interest.
+
+The best rule of thumb for choosing the null and alternative in a direction test is: *the null should be the claim you hope to refute, and the alternative should be the claim you hope to support with evidence*. 
+:::
+
+## Reporting test results
+
+Here you'll practice reporting test results. You'll work with a group on just *one* of the questions below, and your objective is to write a complete report of the test outcome:
+
+- hypotheses tested
+- test conclusion, interpreted in context
+- test statistic, degrees of freedom, $p$-value
+- confidence interval and point estimate, interpreted in context
+
+These elements should be summarized together in complete sentences; see the lecture slides for a complete example. Be sure to consider how to frame the hypotheses appropriately to answer the question (see remark above on choosing alternatives).
+
+1. Do US adults sleep 7.5 hours per night on average?
+2. Do US adults sleep less than 7.5 hours per night on average?
+3. Do US adults sleep more than 7.5 hours per night on average?
+4. Do US adults sleep more than 6.5 hours per night on average?
+
+::: callout-note
+## Your turn
+
+Work with your group to answer one of the four questions above. Use significance level $\alpha = 0.05$ to make a decision.
+
+```{r your turn 2}
+# 1. Do US adults sleep 7.5 hours per night on average?
+
+# 2. Do US adults sleep less than 7.5 hours per night on average?
+
+# 3. Do US adults sleep more than 7.5 hours per night on average?
+
+# 4. Do US adults sleep more than 6.5 hours per night on average?
+
+```
+
+Write a complete report of the test results.
+
+:::
+
+## Exploring decision errors
+
+If there is time in class, we'll explore decision errors a little. If not, you can simulate this activity by repeatedly running the commands and making tallies on your own.
+
+There are two ways to make an error in a hypothesis test.
+
+![](img/testing-errors.png){width=400}
+
+### Type I errors
+
+First we'll all generate a sample from 3,179 observations of total HDL cholesterol, pretending that the full set of observations constitutes a population. Each of us will obtain a different sample. Using our respective samples, we'll each test whether the population mean is 5.043 and see how many of us produce an erroneous conclusion.
+
+$$H_0: \mu = 5.043$$ $$H_A: \mu \neq 5.043$$
+
+5.043 is the *true population mean*, so in point of fact $H_0$ is true and we should *not* reject; any rejections are therefore type I errors. 
+
+```{r simulating type i errors}
+load('data/nhanes.RData')
+
+# "true" population mean
+pop_mean <- mean(nhanes$TotChol)
+
+# draw a sample 
+samp <- sample(nhanes$TotChol, size = 20)
+
+# test a true null
+t.test(samp, mu = pop_mean, alternative = 'two.sided')
+```
+
+Recall that the significance level (denoted $\alpha$) determines the decision rule: we reject if $p < \alpha$. Let's tally errors as follows:
+
+Significance level | Error frequency
+---|---
+$\alpha = 0.2$ | 
+$\alpha = 0.1$ | 
+$\alpha = 0.05$ | 
+$\alpha = 0.02$ | 
+
+We should see that the type I error rate is approximately equal to the significance level. The significance level, in fact, directly controls type I error.
+
+### Type II errors
+
+Now let's test whether the population mean is some $\mu_0 \neq 5.043$. In this case, $H_0$ will be false, and a correct decision is to reject $H_0$. Any failures to reject will be considered type II errors. 
+
+```{r simulating type ii errors}
+# draw a sample 
+samp <- sample(nhanes$TotChol, size = 20)
+
+# test a false null
+t.test(samp, 
+       mu = 4.2, # change this for exercise
+       alternative = 'two.sided')
+```
+
+Let's use significance level $\alpha = 0.05$ throughout and tally errors as follows:
+
+Null value $\mu_0$ | Error frequency
+---|---
+4.2 |
+4.6 |
+4.9 |
+5.1 |
+5.4 |
+5.7 |
+
+Notice that the type II error is quite high for null values near the true mean; this is because the test prioritizes avoiding type I errors, and as a result has little power to detect such alternatives.

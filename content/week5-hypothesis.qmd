@@ -370,6 +370,7 @@ t.test(ddt, mu = 3, alternative = 'greater')
 
 :::
 
+
 ## Directional hypotheses
 
 Tests for the mean can involve directional or non-directional alternatives. We refer to these as one-sided and two-sided tests, respectively.

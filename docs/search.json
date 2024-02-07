@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne- and two-sample inference for numerical data\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] one-sample \\(t\\) tests \n[case study] DDT in kale \n\nThursday:\n\n[reading] Vu and Harrington 5.2 and 5.3\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] two-sample t tests \n[case study] evolution of Darwin’s finches \n\nAssignment: Test 1 released Friday 2/9 and due Saturday 2/10 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nNonparametric inference\n\n\n\n\nAssignment: HW3 due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nAnalysis of variance\nAcademic holiday 2/19/24\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
+    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nReading quiz responses: 2pm section 4pm section\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nReading quiz responses: 2pm section 4pm section\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nReading quiz responses: 2pm section 4pm section\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nReading quiz responses: 2pm section 4pm section\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne- and two-sample inference for numerical data\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] one-sample \\(t\\) tests \n[case study] DDT in kale \n\nReading quiz responses: 2pm section 4pm section\nThursday:\n\n[reading] Vu and Harrington 5.2 and 5.3\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] two-sample t tests \n[case study] evolution of Darwin’s finches \n\nAssignment: Test 1 released Friday 2/9 and due Saturday 2/10 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nNonparametric inference\n\n\n\n\nAssignment: HW3 due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nAnalysis of variance\nAcademic holiday 2/19/24\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
   },
   {
     "objectID": "content/week1-welcome.html#about-me",
@@ -1005,7 +1005,7 @@
     "href": "index.html",
     "title": "Applied Statistics for Life Sciences",
     "section": "",
-    "text": "Announcements\n\n\n\n\nOutlines updated for week 5\nHW2 due Thursday 2/8 11:59pm PST\nUpcoming test: Friday 2/9 (take-home)\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
+    "text": "Announcements\n\n\n\n\nOutlines updated for week 5\nHW2 due Thursday 2/8 11:59pm PST\nUpcoming test: Friday 2/9 (take-home)\nReading quiz responses posted (see materials page)\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
   },
   {
     "objectID": "content/hw/hw2.html",
@@ -1278,7 +1278,7 @@
     "href": "content/labs/lab6-hypotesting.html#datasets",
     "title": "Lab 6: Hypothesis testing",
     "section": "Datasets",
-    "text": "Datasets\nThroughout this lab we’ll use three datasets:\n\nddt are the 15 measurements from lecture of DDT level (ppm) in kale\nbody.temps are 130 observations of body temperature from a sample of US adults\nsleep are 135 observations of average hours of sleep per night from NHANES respondents\n\n\nlibrary(oibiostat)\n\nddt &lt;- MASS::DDT\nstr(ddt)\n\n num [1:15] 2.79 2.93 3.22 3.78 3.22 3.38 3.18 3.33 3.34 3.06 ...\n\ndata(nhanes.samp.adult)\nsleep &lt;- nhanes.samp.adult$SleepHrsNight\nstr(sleep)\n\n int [1:135] 9 3 6 6 6 6 6 4 7 4 ...\n\ndata(thermometry)\nbody.temps &lt;- thermometry$body.temp\nstr(body.temps)\n\n num [1:130] 96.3 96.7 96.9 97 97.1 97.1 97.1 97.2 97.3 97.4 ..."
+    "text": "Datasets\nIn this lab we’ll use two datasets:\n\nddt are the 15 measurements from lecture of DDT level (ppm) in kale\nbody.temps are 130 observations of body temperature from a sample of US adults\n\n\nlibrary(oibiostat)\n\nddt &lt;- MASS::DDT\nstr(ddt)\n\n num [1:15] 2.79 2.93 3.22 3.78 3.22 3.38 3.18 3.33 3.34 3.06 ...\n\ndata(thermometry)\nbody.temps &lt;- thermometry$body.temp\nstr(body.temps)\n\n num [1:130] 96.3 96.7 96.9 97 97.1 97.1 97.1 97.2 97.3 97.4 ..."
   },
   {
     "objectID": "content/labs/lab6-hypotesting.html#performing-a-t-test-in-r",
@@ -1292,7 +1292,7 @@
     "href": "content/labs/lab6-hypotesting.html#answering-questions-with-t-tests",
     "title": "Lab 6: Hypothesis testing",
     "section": "Answering questions with \\(t\\) tests",
-    "text": "Answering questions with \\(t\\) tests\n\nBody temperatures\nAnswer the following questions with hypothesis tests using the body.temps data. Be sure to consider how to frame the hypotheses appropriately to answer the question.\n\nIs the mean body temperature different from 98.6 °F?\nIs the mean body temperature higher than 98 °F?\nIs the mean body temperature higher than 98.2 °F?\nIs the mean body temperature lower than 98.2 °F?\nIs the mean body temperature actually 98.2 °F?\nIs the mean body temperature actually 98.3 °F?\n\n\n\n\n\n\n\nYour turn\n\n\n\nWrite commands to perform tests to answer questions 1-6 above.\n\n# 1. Is the mean body temperature different from 98.6 °F?\n\n# 2. Is the mean body temperature higher than 98 °F?\n\n# 3. Is the mean body temperature higher than 98.2 °F?\n\n# 4. Is the mean body temperature lower than 98.2 °F?\n\n# 5. Is the mean body temperature actually 98.2 °F?\n\n# 6. Is the mean body temperature actually 98.3 °F?\n\nInterpret the result of each test in context. Use significance level \\(\\alpha = 0.05\\) to make a decision.\n\n\n\n\n\n\n\n\nRemark\n\n\n\nThe hypothesis tests suggest that in fact, mean body temperature is lower than commonly thought. However, a visual inspection of the data reveals an interesting twist: the body temperature data are actually bimodal!\n\n\n\n\n\nThis doesn’t invalidate any of our inferences, but suggests that we might be asking the wrong question by focusing on the population mean if, in fact, there is no one mean body temperature. We should perhaps ask instead, what feature of the population explains the bimodal distribution?\n\n\n\n\nHours of sleep\nAnswer the following questions with hypothesis tests using the sleep data. Be sure to consider how to frame the hypotheses appropriately to answer the question.\n\nDo US adults sleep 7.5 hours per night on average?\nDo US adults sleep less than 7.5 hours per night on average?\nDo US adults sleep more than 7.5 hours per night on average?\nDo US adults sleep more than 6.5 hours per night on average?\n\n\n\n\n\n\n\nYour turn\n\n\n\nWrite commands to perform tests to answer questions 1-4 above.\n\n# 1. Do US adults sleep 7.5 hours per night on average?\n\n# 2. Do US adults sleep less than 7.5 hours per night on average?\n\n# 3. Do US adults sleep more than 7.5 hours per night on average?\n\n# 4. Do US adults sleep more than 6.5 hours per night on average?\n\nInterpret the result of each test in context. Use significance level \\(\\alpha = 0.05\\) to make a decision."
+    "text": "Answering questions with \\(t\\) tests\n\nBody temperatures\nAnswer the following questions with hypothesis tests using the body.temps data. Be sure to consider how to frame the hypotheses appropriately to answer the question.\n\nIs the mean body temperature different from 98.6 °F?\nIs the mean body temperature higher than 98 °F?\nIs the mean body temperature higher than 98.2 °F?\nIs the mean body temperature lower than 98.2 °F?\nIs the mean body temperature actually 98.2 °F?\nIs the mean body temperature actually 98.3 °F?\n\n\n\n\n\n\n\nYour turn\n\n\n\nWrite commands to perform tests to answer questions 1-6 above.\n\n# 1. Is the mean body temperature different from 98.6 °F?\n\n# 2. Is the mean body temperature higher than 98 °F?\n\n# 3. Is the mean body temperature higher than 98.2 °F?\n\n# 4. Is the mean body temperature lower than 98.2 °F?\n\n# 5. Is the mean body temperature actually 98.2 °F?\n\n# 6. Is the mean body temperature actually 98.3 °F?\n\nInterpret the result of each test in context. Use significance level \\(\\alpha = 0.05\\) to make a decision.\n\n\n\n\n\n\n\n\nRemark\n\n\n\nThe hypothesis tests suggest that in fact, mean body temperature is lower than commonly thought. However, a visual inspection of the data reveals an interesting twist: the body temperature data are actually bimodal!\n\n\n\n\n\nThis doesn’t invalidate any of our inferences, but suggests that we might be asking the wrong question by focusing on the population mean if, in fact, there is no one mean body temperature. We should perhaps ask instead, what feature of the population explains the bimodal distribution?"
   },
   {
     "objectID": "content/labs/lab6-hypotesting.html#exploring-decision-errors",
@@ -1300,5 +1300,131 @@
     "title": "Lab 6: Hypothesis testing",
     "section": "Exploring decision errors",
     "text": "Exploring decision errors\nIf there is time in class, we’ll explore decision errors a little. If not, you can simulate this activity by repeatedly running the commands and making tallies on your own.\nThere are two ways to make an error in a hypothesis test.\n\n\nType I errors\nFirst we’ll all generate a sample from 3,179 observations of total HDL cholesterol, pretending that the full set of observations constitutes a population. Each of us will obtain a different sample. Using our respective samples, we’ll each test whether the population mean is 5.043 and see how many of us produce an erroneous conclusion.\n\\[H_0: \\mu = 5.043\\] \\[H_A: \\mu \\neq 5.043\\]\n5.043 is the true population mean, so in point of fact \\(H_0\\) is true and we should not reject; any rejections are therefore type I errors.\n\nload('data/nhanes.RData')\n\n# \"true\" population mean\npop_mean &lt;- mean(nhanes$TotChol)\n\n# draw a sample \nsamp &lt;- sample(nhanes$TotChol, size = 20)\n\n# test a true null\nt.test(samp, mu = pop_mean, alternative = 'two.sided')\n\n\n    One Sample t-test\n\ndata:  samp\nt = 1.1134, df = 19, p-value = 0.2794\nalternative hypothesis: true mean is not equal to 5.042938\n95 percent confidence interval:\n 4.808389 5.810611\nsample estimates:\nmean of x \n   5.3095 \n\n\nRecall that the significance level (denoted \\(\\alpha\\)) determines the decision rule: we reject if \\(p &lt; \\alpha\\). Let’s tally errors as follows:\n\n\n\nSignificance level\nError frequency\n\n\n\n\n\\(\\alpha = 0.2\\)\n\n\n\n\\(\\alpha = 0.1\\)\n\n\n\n\\(\\alpha = 0.05\\)\n\n\n\n\\(\\alpha = 0.02\\)\n\n\n\n\nWe should see that the type I error rate is approximately equal to the significance level. The significance level, in fact, directly controls type I error.\n\n\nType II errors\nNow let’s test whether the population mean is some \\(\\mu_0 \\neq 5.043\\). In this case, \\(H_0\\) will be false, and a correct decision is to reject \\(H_0\\). Any failures to reject will be considered type II errors.\n\n# draw a sample \nsamp &lt;- sample(nhanes$TotChol, size = 20)\n\n# test a false null\nt.test(samp, \n       mu = 4.2, # change this for exercise\n       alternative = 'two.sided')\n\n\n    One Sample t-test\n\ndata:  samp\nt = 4.2466, df = 19, p-value = 0.0004364\nalternative hypothesis: true mean is not equal to 4.2\n95 percent confidence interval:\n 4.614833 5.421167\nsample estimates:\nmean of x \n    5.018 \n\n\nLet’s use significance level \\(\\alpha = 0.05\\) throughout and tally errors as follows:\n\n\n\nNull value \\(\\mu_0\\)\nError frequency\n\n\n\n\n4.2\n\n\n\n4.6\n\n\n\n4.9\n\n\n\n5.1\n\n\n\n5.4\n\n\n\n5.7\n\n\n\n\nNotice that the type II error is quite high for null values near the true mean; this is because the test prioritizes avoiding type I errors, and as a result has little power to detect such alternatives."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#summarizing-test-results",
+    "href": "content/week5-hypothesis.html#summarizing-test-results",
+    "title": "Hypothesis testing",
+    "section": "Summarizing test results",
+    "text": "Summarizing test results\n\n\nTo summarize, you should:\n\nState the hypotheses tested\nInterpret the conclusion of the test in context\nProvide the \\(T\\) statistic, degrees of freedom, and \\(p\\)-value\nState and interpret the point estimate and interval for the mean\n\n\nt.test performs all calculations. Locate each input (1-3) and output (4-7) below:\n\nt.test(ddt, mu = 3, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  ddt\nt = 2.9059, df = 14, p-value = 0.005753\nalternative hypothesis: true mean is greater than 3\n95 percent confidence interval:\n 3.129197      Inf\nsample estimates:\nmean of x \n    3.328"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#reporting-test-results",
+    "href": "content/week5-hypothesis.html#reporting-test-results",
+    "title": "Hypothesis testing",
+    "section": "Reporting test results",
+    "text": "Reporting test results\n\n\nTo report the result of a hypothesis test, you should:\n\nState the hypotheses tested\nInterpret the conclusion of the test in context\nProvide the \\(T\\) statistic, degrees of freedom, and \\(p\\)-value\nState and interpret the point estimate and interval for the mean\n\n\n\nWe tested the null hypothesis that mean DDT in kale is 3ppm or less against the alternative that mean DDT exceeds 3ppm. The data provide sufficiently strong evidence to reject the hypothesis that mean DDT in kale is 3ppm or less in favor of the alternative that mean DDT exceeds 3ppm (\\(T = 2.906\\) on \\(14\\) degrees of freedom, \\(p = 0.0058\\)). With 95% confidence, the mean DDT level is estimated to be at least 3.129 ppm, with a point estimate of 3.328 (\\(SE = 0.113\\))."
+  },
+  {
+    "objectID": "content/week5-twosample.html#todays-agenda",
+    "href": "content/week5-twosample.html#todays-agenda",
+    "title": "Two-sample inference",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nReading quiz [2pm section] [4pm section]\nMore one-sample inference: reporting test results; decision errors\nComparing two population means\nLab: more \\(t\\)-tests in R"
+  },
+  {
+    "objectID": "content/week5-twosample.html#from-last-time",
+    "href": "content/week5-twosample.html#from-last-time",
+    "title": "Two-sample inference",
+    "section": "From last time",
+    "text": "From last time\n\n\n\nWhat hypotheses were tested? \\[  \\]\nWhat was the test statistic and p-value? \\[  \\]\nWhat was the sample size? \\[  \\]\nWhat is the conclusion of the test? \\[  \\]\nInterpret the confidence interval.\n\n\nInference for the body temperature data.\n\ndata(thermometry)\nbody_temps &lt;- thermometry$body.temp\nt.test(body_temps, \n       mu = 98.6, \n       alternative = 'two.sided')\n\n\n    One Sample t-test\n\ndata:  body_temps\nt = -5.4548, df = 129, p-value = 2.411e-07\nalternative hypothesis: true mean is not equal to 98.6\n95 percent confidence interval:\n 98.12200 98.37646\nsample estimates:\nmean of x \n 98.24923"
+  },
+  {
+    "objectID": "content/week5-twosample.html#reporting-test-results",
+    "href": "content/week5-twosample.html#reporting-test-results",
+    "title": "Two-sample inference",
+    "section": "Reporting test results",
+    "text": "Reporting test results\n\n\nTo report the result of a hypothesis test, you should:\n\nLead with your conclusion\nState the hypotheses tested\nInterpret the conclusion of the test in context\nProvide the \\(T\\) statistic, degrees of freedom, and \\(p\\)-value\nState and interpret the point estimate and interval for the mean\n\n\n\nOur results suggest mean body temperature is less than 98.6 °F. We tested the null hypothesis that mean body temperature is 98.6 °F or greater against the alternative that mean body temperature is less than 98.6 °F. The data provide sufficiently strong evidence against the hypothesis that mean body temperature is 98.6 °F or greater in favor of the alternative that mean body temperature is less than 98.6 °F (T = -5.4548 on 129 degrees of freedom, p-value = .0000001205). With 95% confidence, the mean nightly hours of sleep is estimated to be at most 98.36 °F, with a point estimate of 98.23 (SE = 0.0643)."
+  },
+  {
+    "objectID": "content/week5-twosample.html#swimsuit-data",
+    "href": "content/week5-twosample.html#swimsuit-data",
+    "title": "Two-sample inference",
+    "section": "Swimsuit data",
+    "text": "Swimsuit data\n\nAre swimmers faster in bodysuits than in regular swimsuits?\n\nBelow are the first few observations of the average velocity of competitive swimmers in a 1500m; one measurement was taken in a swimsuit, the other in a bodysuit.\n\n\n\n\n\n\n\n\n\n\nswimmer.number\nwet.suit.velocity\nswim.suit.velocity\n\n\n\n\n1\n1.57\n1.49\n\n\n2\n1.47\n1.37\n\n\n3\n1.42\n1.35\n\n\n\n\n\nCan you formulate a pair of hypotheses to test to answer this question using methods from last time?"
+  },
+  {
+    "objectID": "content/week5-twosample.html#inference-for-paired-data",
+    "href": "content/week5-twosample.html#inference-for-paired-data",
+    "title": "Two-sample inference",
+    "section": "Inference for paired data",
+    "text": "Inference for paired data\n\nCalculate paired differences.\n\n\n\n\n\n\n\n\n\n\n\n\nswimmer.number\nwet.suit.velocity\nswim.suit.velocity\nvelocity.diff\n\n\n\n\n1\n1.57\n1.49\n0.08\n\n\n2\n1.47\n1.37\n0.1\n\n\n3\n1.42\n1.35\n0.07\n\n\n\n\n\n\n\n\nPerform test as before.\n\n\n# test for paired difference\nt.test(diffs, mu = 0, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  diffs\nt = 12.318, df = 11, p-value = 4.443e-08\nalternative hypothesis: true mean is greater than 0\n95 percent confidence interval:\n 0.06620114        Inf\nsample estimates:\nmean of x \n   0.0775 \n\n\n\n\nReport the result of the test. You try."
+  },
+  {
+    "objectID": "content/week5-twosample.html#comparing-two-means",
+    "href": "content/week5-twosample.html#comparing-two-means",
+    "title": "Two-sample inference",
+    "section": "Comparing two means",
+    "text": "Comparing two means\nWe can formulate the question as a comparison of two means:\n\\[H_0: \\mu_\\text{bodysuit} \\leq \\mu_\\text{swimsuit}\\] \\[H_A: \\mu_\\text{bodysuit} &gt; \\mu_\\text{swimsuit}\\] It is common to express hypotheses of this form in terms of a difference in means: \\[H_0: \\underbrace{\\mu_\\text{bodysuit} - \\mu_\\text{swimsuit}}_\\delta \\leq 0\\] \\[H_A: \\underbrace{\\mu_\\text{bodysuit} - \\mu_\\text{swimsuit}}_\\delta &gt; 0\\]"
+  },
+  {
+    "objectID": "content/week5-twosample.html#comparing-two-means-1",
+    "href": "content/week5-twosample.html#comparing-two-means-1",
+    "title": "Two-sample inference",
+    "section": "Comparing two means",
+    "text": "Comparing two means\n\n\n  Treatment  n\n1    Seeded 26\n2  Unseeded 26\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-twosample.html#pairing",
+    "href": "content/week5-twosample.html#pairing",
+    "title": "Two-sample inference",
+    "section": "Pairing",
+    "text": "Pairing\nThe velocities in the swimsuit dataset are paired because every swimmer is measured in both suits.\nData are paired just in case the measurements in each group are taken on exactly the same study units.\n\nif you can calculate a difference for each study unit, your data are paired; otherwise, your data are not paired\n\nThis is the easiest situation to handle, because it reduces to a one-sample problem with the observed differences."
+  },
+  {
+    "objectID": "content/week5-twosample.html#your-turn-sleep-data",
+    "href": "content/week5-twosample.html#your-turn-sleep-data",
+    "title": "Two-sample inference",
+    "section": "Your turn: sleep data",
+    "text": "Your turn: sleep data\n\n\nWork with your group on just one of the questions below.\n\nDo US adults sleep 7.5 hours per night on average?\nDo US adults sleep less than 7.5 hours per night on average?\nDo US adults sleep more than 7.5 hours per night on average?\nDo US adults sleep more than 6.5 hours per night on average?\n\n\nYour task is to determine and carry out an appropriate test, and then write a complete report of the test outcome:\n\nanswer the question\nhypotheses tested\ntest conclusion, interpreted in context\ntest statistic, degrees of freedom, \\(p\\)-value\nconfidence interval and point estimate, interpreted in context\n\nThese elements should be summarized together in complete sentences."
+  },
+  {
+    "objectID": "content/week5-twosample.html#test-interval-duality",
+    "href": "content/week5-twosample.html#test-interval-duality",
+    "title": "Two-sample inference",
+    "section": "Test-interval duality",
+    "text": "Test-interval duality"
+  },
+  {
+    "objectID": "content/week5-twosample.html#decision-errors",
+    "href": "content/week5-twosample.html#decision-errors",
+    "title": "Two-sample inference",
+    "section": "Decision errors",
+    "text": "Decision errors"
+  },
+  {
+    "objectID": "content/week5-twosample.html#cloud-seeding-data",
+    "href": "content/week5-twosample.html#cloud-seeding-data",
+    "title": "Two-sample inference",
+    "section": "Cloud seeding data",
+    "text": "Cloud seeding data\n\n\n  Treatment  n\n1    Seeded 26\n2  Unseeded 26"
+  },
+  {
+    "objectID": "content/week5-twosample.html#inference-for-independent-data",
+    "href": "content/week5-twosample.html#inference-for-independent-data",
+    "title": "Two-sample inference",
+    "section": "Inference for independent data",
+    "text": "Inference for independent data\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-twosample.html#choosing-alternatives",
+    "href": "content/week5-twosample.html#choosing-alternatives",
+    "title": "Two-sample inference",
+    "section": "Choosing alternatives",
+    "text": "Choosing alternatives\n\n\n\nIs the mean body temp less than 98.6?\n\nWhich test should you use? Consider the interpretations:\n\n[lower] evidence favoring lower temp\n[upper] no evidence against lower temp\n\nThe conclusions are consistent but not equivalent – (a) is a better answer.\nYour alternative should be the claim you hope to support with evidence, and your null the claim you hope to refute.\n\n\nt.test(body_temps, \n       mu = 98.6, \n       alternative = 'less')\n\n\n    One Sample t-test\n\ndata:  body_temps\nt = -5.4548, df = 129, p-value = 1.205e-07\nalternative hypothesis: true mean is less than 98.6\n95 percent confidence interval:\n     -Inf 98.35577\nsample estimates:\nmean of x \n 98.24923 \n\nt.test(body_temps, \n       mu = 98.6, \n       alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  body_temps\nt = -5.4548, df = 129, p-value = 1\nalternative hypothesis: true mean is greater than 98.6\n95 percent confidence interval:\n 98.14269      Inf\nsample estimates:\nmean of x \n 98.24923"
+  },
+  {
+    "objectID": "content/week5-twosample.html#significance-levels",
+    "href": "content/week5-twosample.html#significance-levels",
+    "title": "Two-sample inference",
+    "section": "Significance levels",
+    "text": "Significance levels\nThe conventional significance level is \\(\\alpha = 0.05\\), which leads to the following decision rule:\n\n\\(p &lt; 0.05\\): reject \\(H_0\\)\n\\(p \\geq 0.05\\): fail to reject \\(H_0\\)\n\nAlternatively, the \\(p\\)-value is often interpreted as a measure of the weight of evidence:\n\n\\(p &lt; 0.01\\): strong evidence against \\(H_0\\)\n\\(0.01 \\leq p &lt; 0.05\\): moderate evidence against \\(H_0\\)\n\\(0.05 \\leq p &lt; 0.1\\): weak evidence against \\(H_0\\)\n\\(0.1 \\leq p\\): no evidence against \\(H_0\\)\n\nYou may use either convention to interpret test results."
+  },
+  {
+    "objectID": "content/week5-twosample.html#significance-conventions",
+    "href": "content/week5-twosample.html#significance-conventions",
+    "title": "Two-sample inference",
+    "section": "Significance conventions",
+    "text": "Significance conventions\n\n\nConvention 1: statistical significance\n\n\\(p &lt; 0.05\\): reject \\(H_0\\)\n\\(p \\geq 0.05\\): fail to reject \\(H_0\\)\n\n\n“The data provide significant evidence at level \\(\\alpha\\) = 0.05 against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (T = -5.4548 on 129 degrees of freedom, p = .0000002411).”\n\n\nConvention 2: weight of evidence against \\(H_0\\)\n\n\\(p &lt; 0.01\\): strong evidence\n\\(0.01 \\leq p &lt; 0.05\\): moderate evidence\n\\(0.05 \\leq p &lt; 0.1\\): weak evidence\n\\(0.1 \\leq p\\): no evidence\n\n\n“The data provide strong evidence against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (T = -5.4548 on 129 degrees of freedom, p = .0000002411).”\n\n\n\nYou may use either convention to interpret test results."
   }
 ]
