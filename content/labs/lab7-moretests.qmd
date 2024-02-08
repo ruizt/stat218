@@ -159,7 +159,7 @@ $$H_0: \mu = 5.043$$ $$H_A: \mu \neq 5.043$$
 
 To start, run these commands:
 
-```{r simulating type i errors}
+```{r simulating type i errors, results = 'hide'}
 # draw a sample 
 samp <- sample(nhanes$TotChol, size = 20)
 
@@ -184,7 +184,7 @@ Now let's test whether the population mean is some $\mu_0 \neq 5.043$. In this c
 
 Try running the following.
 
-```{r simulating type ii errors}
+```{r simulating type ii errors, results = 'hide'}
 # draw a sample 
 samp <- sample(nhanes$TotChol, size = 20)
 
