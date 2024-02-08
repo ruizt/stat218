@@ -1,6 +1,6 @@
 ---
-title: "Two-sample inference"
-subtitle: "Inferences comparing two population means from paired or independent samples"
+title: "More one-sample tests"
+subtitle: "Reporting test results, understanding error types, and paired tests for differences"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
@@ -23,9 +23,9 @@ library(Sleuth3)
 library(pander)
 ```
 
-1.  Reading quiz \[[2pm section]()\] \[[4pm section]()\]
+1.  Reading quiz \[[2pm section](https://forms.office.com/r/gwE5PwNEvd)\] \[[4pm section](https://forms.office.com/r/ZjVfgSQP1k)\]
 2.  More one-sample inference: reporting test results; decision errors
-3.  Comparing two population means
+3.  Comparing two population means via paired differences
 4.  Lab: more $t$-tests in R
 
 ## From last time
@@ -139,6 +139,8 @@ To report the result of a hypothesis test, you should:
 
 ## Your turn: sleep data
 
+Open `lab7-moretests` in the class workspace.
+
 ::: {.columns}
 
 ::: {.column}
@@ -168,11 +170,122 @@ These elements should be summarized together in complete sentences.
 
 :::
 
-## Test-interval duality
+## Tests and intervals
+
+Notice that `t.test` produces a confidence interval.
+
+- for the two-sided test, the interval is *exactly* the one we calculated before
+- for the one-sided tests, the interval is a lower/upper confidence bound: 
+$$\begin{align*}
+\bar{x} - c \times SE(\bar{x}) &\qquad \text{lower confidence bound} \quad\Longleftrightarrow\quad \text{lower-sided test}\\
+\bar{x} + c \times SE(\bar{x}) &\qquad \text{upper confidence bound} \quad\Longleftrightarrow\quad \text{upper-sided test}
+\end{align*}$$
+where $c$ is chosen to ensure a specified coverage level
+
+The tests and intervals correspond in the following sense:
+
+> The level $\alpha$ test rejects just in case the $(1 - \alpha)$ confidence interval excludes $\mu_0$ 
+
+```{r, eval = F, echo = T}
+# changing confidence level for interval
+t.test(body_temps, mu = 98.6, alternative = 'less', conf.level = 0.99)
+```
 
 ## Decision errors
 
+::: {.columns}
+
+::: {.column width="40%"}
+There are two ways to make a mistake in a hypothesis test:
+
+1. reject a true $H_0$
+2. fail to reject a false $H_0$
+
+These are known as **type I** and **type II** errors.
+
+Because rejecting $H_0$ is a stronger conclusion, type I errors are considered more severe.
+
+:::
+
+::: {.column width="60%"}
+
+![](img/testing-errors.png)
+
+> The significance level of a test is a cap on the type I error rate. 
+
+:::
+
+:::
+
+
+## Exploring type I error rates
+
+In `lab7-moretests`, there are codes to draw a sample from a mock population and **test a true null hypothesis**. Run these and take note of your $p$-value.
+
+::: {.columns}
+
+::: {.column}
+
+In this situation, a type I error is rejecting $H_0$.
+
+- rule: reject if $p < \alpha$. 
+
+- we will tally rejections for various $\alpha$ values
+
+:::
+
+::: {.column}
+
+Significance level| Error frequency
+---|---
+$\alpha = 0.2$ |  
+$\alpha = 0.1$ | 
+$\alpha = 0.05$ | 
+$\alpha = 0.02$ | 
+
+:::
+
+:::
+
+> Takeaway: using larger significance thresholds leads to [more/less] type 1 errors
+
+## Exploring type II errors
+
+Now let's **test a false null hypothesis**. 
+
+::: {.columns}
+
+::: {.column}
+A type II error is failing to reject $H_0$.
+
+- rule: $p < 0.05$
+
+- use example commands to test each hypothesis at right
+
+- use a two-sided test
+
+:::
+
+::: {.column}
+
+Null value $\mu_0$ | Error frequency
+---|---
+4.2 |
+4.6 |
+4.9 |
+5.1 |
+5.4 |
+5.7 |
+
+:::
+
+:::
+
+> Notice that the type II error is quite high for null values near the true mean; this indicates the test has little power to detect such alternatives.
+
 ## Swimsuit data
+
+Let's consider our first *two-sample* problem.
 
 > Are swimmers faster in bodysuits than in regular swimsuits?
 
@@ -225,10 +338,3 @@ t.test(diffs, mu = 0, alternative = 'greater')
 :::
 :::
 
-## Cloud seeding data
-
-```{r}
-case0301 %>% count(Treatment)
-```
-
-## Inference for independent data

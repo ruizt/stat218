@@ -30,7 +30,7 @@ I will aim to post/update outlines for class meetings at the beginning of each w
 -   \[activity\] distinguishing types of studies
 -   \[case study\] preventing peanut allergies
 
-Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=BRavUuC3mcIkNNXdgJplZoGVfDzDldyL&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURDJZTzI2QlNDQU45Q0lZUkpXVDUyVTVKNi4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=MM7Fxw3jbMjsKyEUlWTgwQIIAJctozRV&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOEhLR0U2Mjg1MEFTWjcyOFFNMTFNMVE1Ti4u)
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=BRavUuC3mcIkNNXdgJplZoGVfDzDldyL&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURDJZTzI2QlNDQU45Q0lZUkpXVDUyVTVKNi4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=MM7Fxw3jbMjsKyEUlWTgwQIIAJctozRV&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOEhLR0U2Mjg1MEFTWjcyOFFNMTFNMVE1Ti4u)\]
 
 **Assignment**: \[[HW1](content/hw/hw1.qmd)\] due Thursday 1/18 11:59pm PST \[L1, L2\]
 
@@ -47,7 +47,7 @@ Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPag
 -   \[activity\] distinguishing data types in practice
 -   \[lab\] R basics and data in R
 
-Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=pi0hBvCi1pUbJUaKT4AdEuFnc0s2ZmmU&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURVoxMEVUV05HM1VYQVhHSERVM01HSFhNVi4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=V1rv4HOREiKHtDUfkdPCyKBF3VVmefvn&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNktRTE4zRVlXWTJHUTFYVjc2VzJTNk1ZNS4u)
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=pi0hBvCi1pUbJUaKT4AdEuFnc0s2ZmmU&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURVoxMEVUV05HM1VYQVhHSERVM01HSFhNVi4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=V1rv4HOREiKHtDUfkdPCyKBF3VVmefvn&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNktRTE4zRVlXWTJHUTFYVjc2VzJTNk1ZNS4u)\]
 
 **No assignment this week**
 
@@ -69,7 +69,7 @@ Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPag
 -   \[lab\] bivariate summaries in R
 -   \[case study\] FAMUSS
 
-Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ScewzsvfXG3Z23dXhkvoa5xXc9Ssyj3b&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNDg0NTBRMU4zVVdHS0pCRFJMMFgyTkNaSy4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=uRZDIjUtNk5kVIAH34siEo2jna1OaPzm&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNlpYSlJXS0dNWEFOTVhMMlczVVdTMEZWNy4u)
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ScewzsvfXG3Z23dXhkvoa5xXc9Ssyj3b&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNDg0NTBRMU4zVVdHS0pCRFJMMFgyTkNaSy4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=uRZDIjUtNk5kVIAH34siEo2jna1OaPzm&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNlpYSlJXS0dNWEFOTVhMMlczVVdTMEZWNy4u)\]
 
 **Assignment**: extended to next week
 
@@ -84,7 +84,7 @@ Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPag
 -   \[lab\] exploring sampling variability
 -   \[case study\] National health and nutrition examination survey (NHANES)
 
-Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=abJbRahZT6EfbMRDZPqu7vKMtMhz64jw&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQUdNOVJDRTE3RDFENUQ4VDgzSlo3WjRRRy4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=1I0Xu6SsqUefvaNvNJNJL1kMjVXpZj0a&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQ05HSjU1SENHUlFLM0cxME9GTFdTS0lKVS4u)
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=abJbRahZT6EfbMRDZPqu7vKMtMhz64jw&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQUdNOVJDRTE3RDFENUQ4VDgzSlo3WjRRRy4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=1I0Xu6SsqUefvaNvNJNJL1kMjVXpZj0a&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQ05HSjU1SENHUlFLM0cxME9GTFdTS0lKVS4u)\]
 
 
 ***Thursday class meeting*** \[[slides](content/week4-intervals.qmd)\] \[[lab](content/labs/lab5-intervals.qmd)\]
@@ -107,16 +107,18 @@ Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPag
 -   \[lab\] one-sample $t$ tests <!--# simulation -->
 -   \[case study\] DDT in kale <!--# MASS::DDT -->
 
-Reading quiz responses: [2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ZjeI3hXRae1NmTtS5xx1laWP4ptsrgMo&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMjk4WkQwQ1ZRTUE1OVpHNjI1UkdEVVM4NC4u) [4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=Pmk0kXjNRYNodZ8Yr1ykJ5ZcDLgKpdDN&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1ZQWEM1U0xPRlIzRTZMOFBXT1lWVFNSUS4u)
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ZjeI3hXRae1NmTtS5xx1laWP4ptsrgMo&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMjk4WkQwQ1ZRTUE1OVpHNjI1UkdEVVM4NC4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=Pmk0kXjNRYNodZ8Yr1ykJ5ZcDLgKpdDN&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1ZQWEM1U0xPRlIzRTZMOFBXT1lWVFNSUS4u)\]
 
-***Thursday***:
+***Thursday class meeting*** \[[slides](content/week5-moretests.qmd)\] \[[lab](content/labs/lab7-moretests.qmd)\]
 
 -   \[reading\] Vu and Harrington 5.2 and 5.3
 -   \[lecture/discussion\] two-sample *t* tests and intervals for paired and independent data
 -   \[lab\] two-sample *t* tests <!--# cloud seeding, case0301; oibiostat::swim -->
 -   \[case study\] evolution of Darwin's finches <!--# Sleuth3::case0201, bio -->
 
-**Assignment**: Test 1 released Friday 2/9 and due Saturday 2/10 11:59pm PST \[L1, L2, L3\]
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=P3sAMZD9qKiC1QD4UfnAqyvvtHU4CDVI&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQjJCQk84M0I5SFRUMzhLVFNPMThRTTVNTy4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ESjim0JqIuyPuDeYUKbYVsz3PVmaabEz&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUME5DSE5YM1BDQU5aOEVWRVhSWUNYTk41MS4u)\]
+
+**Assignment**: Test 1 released Thursday 2/8 11:59pm PST via Gradescope and due Saturday 2/10 11:59pm PST \[L1, L2, L3\]
 
 ### Week 6 (2/12/24)
 

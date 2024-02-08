@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
-  <title>STAT218 - More one-sample inference</title>
+  <title>STAT218 - More one-sample tests</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -398,7 +398,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">More one-sample inference</h1>
+  <h1 class="title">More one-sample tests</h1>
   <p class="subtitle">Reporting test results, understanding error types, and paired tests for differences</p>
 
 <div class="quarto-title-authors">
@@ -408,9 +408,9 @@
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
 <ol type="1">
-<li>Reading quiz [<a href="">2pm section</a>] [<a href="">4pm section</a>]</li>
+<li>Reading quiz [<a href="https://forms.office.com/r/gwE5PwNEvd">2pm section</a>] [<a href="https://forms.office.com/r/ZjVfgSQP1k">4pm section</a>]</li>
 <li>More one-sample inference: reporting test results; decision errors</li>
-<li>Comparing two population means</li>
+<li>Comparing two population means via paired differences</li>
 <li>Lab: more <span class="math inline">\(t\)</span>-tests in R</li>
 </ol>
 </section>
@@ -579,10 +579,18 @@ mean of x
 <ul>
 <li>for the two-sided test, the interval is <em>exactly</em> the one we calculated before</li>
 <li>for the one-sided tests, the interval is a lower/upper confidence bound: <span class="math display">\[\begin{align*}
-\bar{x} - c \times SE(\bar{x}) &amp;\qquad \text{lower confidence bound} \\
-\bar{x} + c \times SE(\bar{x}) &amp;\qquad \text{upper confidence bound}
+\bar{x} - c \times SE(\bar{x}) &amp;\qquad \text{lower confidence bound} \quad\Longleftrightarrow\quad \text{lower-sided test}\\
+\bar{x} + c \times SE(\bar{x}) &amp;\qquad \text{upper confidence bound} \quad\Longleftrightarrow\quad \text{upper-sided test}
 \end{align*}\]</span> where <span class="math inline">\(c\)</span> is chosen to ensure a specified coverage level</li>
 </ul>
+<p>The tests and intervals correspond in the following sense:</p>
+<blockquote>
+<p>The level <span class="math inline">\(\alpha\)</span> test rejects just in case the <span class="math inline">\((1 - \alpha)\)</span> confidence interval excludes <span class="math inline">\(\mu_0\)</span></p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># changing confidence level for interval</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">t.test</span>(body_temps, <span class="at">mu =</span> <span class="fl">98.6</span>, <span class="at">alternative =</span> <span class="st">'less'</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="decision-errors" class="slide level2">
 <h2>Decision errors</h2>
@@ -807,8 +815,8 @@ mean of x
 <li>Perform test as before.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># test for paired difference</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">t.test</span>(diffs, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># test for paired difference</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">t.test</span>(diffs, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
