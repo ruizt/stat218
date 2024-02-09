@@ -118,7 +118,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=P3sAMZD9qKiC1QD4UfnAqyvvtHU4CDVI&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQjJCQk84M0I5SFRUMzhLVFNPMThRTTVNTy4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=ESjim0JqIuyPuDeYUKbYVsz3PVmaabEz&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUME5DSE5YM1BDQU5aOEVWRVhSWUNYTk41MS4u)\]
 
-**Assignment**: Test 1 released Thursday 2/8 11:59pm PST via Gradescope and due Saturday 2/10 11:59pm PST \[L1, L2, L3\]
+**Assignment**: [Test 1](content/tests/test1.qmd) due Saturday 2/10 11:59pm PST \[L1, L2, L3\]
 
 ### Week 6 (2/12/24)
 
@@ -130,7 +130,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 <!-- -   \[lab\] nonparametric and randomization tests in R -->
 
-<!-- -   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health, swim (oibiostat) -->
+<!-- -   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health, swim (oibiostat) Sleuth3::ex0112 -->
 
 ***Assignment***: HW3 due Thursday 2/22 11:59pm PST \[L4, L5\]
 
