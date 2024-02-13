@@ -1,0 +1,42 @@
+Winter Quarter 2024	Instructor Permissions					
+Instructor	Course	Class Number	Number of Units	Enrollment Capacity	Effective Date	
+"Ruiz,  Trevor Dean"	STAT 218-06Applied Statistics for the Life Sciences	8274	4	35	15-Jan-24	
+						
+Days	Class Time	Building - Room	Room Capacity	Enrolled Students	Waitlisted Students	
+TR	4:10 PM - 6:00 PM	003 - 0113	47			
+						
+Course Requisites:						
+"Prerequisite: Passing score on the ELM examination, or an ELM exemption, or credit in MATH 096, or MATH 115. Not open to students with credit in STAT 217 or STAT 251."						
+						
+						
+Keep this section for your records						
+						
+Permission Number	Override Requisite	Status	Date Used	Student ID	Student Name	Student Username
+767520	No	Unused			Elle	
+531375	No	Unused			Stella	
+717849	No	Unused				
+447828	No	Unused				
+383418	No	Unused				
+812061	No	Unused				
+393390	Yes	Unused				
+433954	Yes	Unused				
+385320	Yes	Unused				
+497250	Yes	Unused				
+30528	Yes	Used	1/11/24	'029756122	"Moustafa, Marwa"	mmoustaf
+						
+						
+Distribute These Permission #'s To Potential Students						
+*Note - Permission #'s must be used in conjunction with the class number at the time of enrollment						
+						
+Permission Number	Override Requisite	Add/Drop Information				
+767520	No	Last day to add a class using this number is 1/18/24				
+531375	No	Last day to add a class using this number is 1/18/24				
+717849	No	Last day to add a class using this number is 1/18/24				
+447828	No	Last day to add a class using this number is 1/18/24				
+383418	No	Last day to add a class using this number is 1/18/24				
+812061	No	Last day to add a class using this number is 1/18/24				
+393390	Yes	Last day to add a class using this number is 1/18/24				
+433954	Yes	Last day to add a class using this number is 1/18/24				
+385320	Yes	Last day to add a class using this number is 1/18/24				
+497250	Yes	Last day to add a class using this number is 1/18/24				
+30528	Yes	Last day to add a class using this number is 1/18/24				

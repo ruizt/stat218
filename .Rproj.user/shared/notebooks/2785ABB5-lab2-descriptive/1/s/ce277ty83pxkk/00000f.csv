@@ -1,0 +1,8 @@
+"0","# load openintro biostat package"
+"0","library(oibiostat)"
+"0",""
+"0","# load famuss data"
+"0","data(famuss)"
+"0",""
+"0","# open data documentation"
+"0","?famuss"

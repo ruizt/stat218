@@ -1,0 +1,21 @@
+"0","famuss %>%"
+"0","  transmute(bmi.range = cut(bmi, breaks = seq(10, 50, by = 10))) %>%"
+"0","  table() %>%"
+"0","  pander(caption = 'Frequency distribution')"
+"1","
+---------------------------------------
+ (10,20]   (20,30]   (30,40]   (40,50] 
+--------- --------- --------- ---------
+   69        461       58         7    
+---------------------------------------
+
+Table: Frequency distribution
+
+"
+"0","hist(famuss$bmi, "
+"0","     breaks = 3, "
+"0","     main = '', "
+"0","     xlab = 'BMI',"
+"0","     ylab = '',"
+"0","     cex.axis = 2, "
+"0","     cex.lab = 2)"

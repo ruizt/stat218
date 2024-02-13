@@ -1,0 +1,1 @@
+"0","hist(famuss$bmi, main = 'BMI in FAMuSS study', xlab = 'BMI')"

@@ -1,0 +1,116 @@
+{
+  "content/syllabus.qmd": {
+    "syllabus.html": "05a0c964",
+    "syllabus.tex": "4e665bd9",
+    "syllabus.docx": "93c2ec47"
+  },
+  "index.qmd": {
+    "index.html": "8648acbd"
+  },
+  "materials.qmd": {
+    "materials.html": "613a0041",
+    "materials.docx": "e619d153"
+  },
+  "content/week1-welcome.qmd": {
+    "week1-welcome.html": "3c8ce1b6"
+  },
+  "content/labs/lab1-rbasics.qmd": {
+    "lab1-rbasics.html": "d2288ddf",
+    "lab1-rbasics.tex": "c878a730",
+    "lab1-rbasics.docx": "1e9359cb"
+  },
+  "content/week1-studydesigns.qmd": {
+    "week1-studydesigns.html": "1c7c3bd0",
+    "week1-studydesigns.docx": "afb6bee5"
+  },
+  "content/week1-handout-designs.qmd": {
+    "week1-handout-designs.html": "2bf66e33",
+    "week1-handout-designs.tex": "9d39fa9d",
+    "week1-handout-designs.docx": "ab201196"
+  },
+  "content/week2-datatypes.qmd": {
+    "week2-datatypes.html": "85ee3bc6"
+  },
+  "content/hw1.qmd": {
+    "hw1.html": "81536232",
+    "hw1.tex": "7cb7d7d3",
+    "hw1.docx": "ffea0971"
+  },
+  "content/week3-quantitative.qmd": {
+    "week3-quantitative.html": "c3aad83c"
+  },
+  "content/week3-descriptive.qmd": {
+    "week3-descriptive.html": "09e6a7b3"
+  },
+  "content/labs/lab2-descriptive.qmd": {
+    "lab2-descriptive.html": "9d30ec84",
+    "lab2-descriptive.tex": "aa8c107b",
+    "lab2-descriptive.docx": "6ba9a2fd"
+  },
+  "content/week3-multivariate.qmd": {
+    "week3-multivariate.html": "a4f79250"
+  },
+  "content/hw/hw1.qmd": {
+    "hw1.html": "42cbd3af",
+    "hw1.tex": "57c53412",
+    "hw1.docx": "07106411"
+  },
+  "content/labs/lab3-multivariate.qmd": {
+    "lab3-multivariate.html": "89dfbf7e",
+    "lab3-multivariate.tex": "e0cc904a",
+    "lab3-multivariate.docx": "4befd550"
+  },
+  "content/week4-sampling.qmd": {
+    "week4-sampling.html": "8ed184b1"
+  },
+  "content/labs/lab4-sampling.qmd": {
+    "lab4-sampling.html": "5a25de65",
+    "lab4-sampling.tex": "a0de1700",
+    "lab4-sampling.docx": "9732396e"
+  },
+  "content/week4-intervals.qmd": {
+    "week4-intervals.html": "ca22fd57"
+  },
+  "content/labs/lab5-intervals.qmd": {
+    "lab5-intervals.html": "d57ba944",
+    "lab5-intervals.tex": "13a465c4",
+    "lab5-intervals.docx": "7828a174"
+  },
+  "content/hw/hw2.qmd": {
+    "hw2.html": "e29c5e4b",
+    "hw2.tex": "5fc2928f",
+    "hw2.docx": "074c7bcf"
+  },
+  "content/week5-hypothesis.qmd": {
+    "week5-hypothesis.html": "f4a97639"
+  },
+  "content/labs/lab6-hypotesting.qmd": {
+    "lab6-hypotesting.html": "9d727890",
+    "lab6-hypotesting.docx": "6897717e"
+  },
+  "content/week5-twosample.qmd": {
+    "week5-twosample.html": "6f1e5d9b"
+  },
+  "content/labs/lab7-moretests.qmd": {
+    "lab7-moretests.html": "839f8055",
+    "lab7-moretests.docx": "20fcdc46"
+  },
+  "content/week5-moretests.qmd": {
+    "week5-moretests.html": "422e20da"
+  },
+  "content/tests/test1.qmd": {
+    "test1.html": "cbf5f120",
+    "test1.docx": "c6a41399"
+  },
+  "content/hw/hw2-soln.qmd": {
+    "hw2-soln.html": "f444a640",
+    "hw2-soln.docx": "95ac5bb9"
+  },
+  "content/week6-twosample.qmd": {
+    "week6-twosample.html": "7f736828"
+  },
+  "content/labs/lab8-twosample.qmd": {
+    "lab8-twosample.html": "dd062ec1",
+    "lab8-twosample.docx": "8d84227e"
+  }
+}

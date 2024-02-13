@@ -1,0 +1,17 @@
+"0","# view first few observations
+dplyr::sample_n(chick, size = 4) |> head() |> pander::pander()
+"
+"1","
+----------------------------
+ chick.id   weight    diet  
+---------- -------- --------
+    2        187     diet 1 
+
+    8        134     diet 1 
+
+    46       203     diet 4 
+
+    42       174     diet 4 
+----------------------------
+
+"

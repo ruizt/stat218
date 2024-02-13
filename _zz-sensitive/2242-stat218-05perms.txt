@@ -1,0 +1,42 @@
+Winter Quarter 2024	Instructor Permissions					
+Instructor	Course	Class Number	Number of Units	Enrollment Capacity	Effective Date	
+"Ruiz,  Trevor Dean"	STAT 218-05Applied Statistics for the Life Sciences	8273	4	35	15-Jan-24	
+						
+Days	Class Time	Building - Room	Room Capacity	Enrolled Students	Waitlisted Students	
+TR	2:10 PM - 4:00 PM	186 - C202	48			
+						
+Course Requisites:						
+"Prerequisite: Passing score on the ELM examination, or an ELM exemption, or credit in MATH 096, or MATH 115. Not open to students with credit in STAT 217 or STAT 251."						
+						
+						
+Keep this section for your records						
+						
+Permission Number	Override Requisite	Status	Date Used	Student ID	Student Name	Student Username
+861840	No	Unused			Paige	
+172086	No	Unused			Alyssa	
+393205	No	Unused			Julia	
+360540	No	Unused				
+294996	No	Unused				
+856623	No	Unused				
+819031	No	Unused				
+103920	Yes	Unused				
+485842	Yes	Unused				
+100266	Yes	Unused				
+250950	Yes	Unused				
+						
+						
+Distribute These Permission #'s To Potential Students						
+*Note - Permission #'s must be used in conjunction with the class number at the time of enrollment						
+						
+Permission Number	Override Requisite	Add/Drop Information				
+861840	No	Last day to add a class using this number is 1/18/24				
+172086	No	Last day to add a class using this number is 1/18/24				
+393205	No	Last day to add a class using this number is 1/18/24				
+360540	No	Last day to add a class using this number is 1/18/24				
+294996	No	Last day to add a class using this number is 1/18/24				
+856623	No	Last day to add a class using this number is 1/18/24				
+819031	No	Last day to add a class using this number is 1/18/24				
+103920	Yes	Last day to add a class using this number is 1/18/24				
+485842	Yes	Last day to add a class using this number is 1/18/24				
+100266	Yes	Last day to add a class using this number is 1/18/24				
+250950	Yes	Last day to add a class using this number is 1/18/24				

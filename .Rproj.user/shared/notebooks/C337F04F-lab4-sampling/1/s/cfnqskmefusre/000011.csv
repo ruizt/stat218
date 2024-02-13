@@ -1,0 +1,3 @@
+"0",""
+"0","# add lines at sample mean and population mean"
+"0","abline(v = samp_mean, col = 2) # red line"

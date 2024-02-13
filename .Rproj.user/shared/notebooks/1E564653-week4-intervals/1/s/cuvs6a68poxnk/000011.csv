@@ -1,0 +1,5 @@
+"0","hist(cholesterol, "
+"0","     breaks = 30, "
+"0","     main = 'population', "
+"0","     xlab = 'cholesterol',"
+"0","     ylab = 'frequency')"

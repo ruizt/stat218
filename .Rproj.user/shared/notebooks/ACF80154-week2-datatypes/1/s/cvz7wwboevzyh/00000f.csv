@@ -1,0 +1,20 @@
+"0","set.seed(11824)"
+"0","data(yrbss)"
+"0","yrbss %>%"
+"0","  select(age, hispanic, grade, weight) %>%"
+"0","  sample_n(size = 4) %>%"
+"0","  pander::pander()"
+"1","
+---------------------------------
+ age   hispanic   grade   weight 
+----- ---------- ------- --------
+ 15      not       10     78.02  
+
+ 18    hispanic    12     78.47  
+
+ 17      not       11     95.26  
+
+ 18      not       12     95.26  
+---------------------------------
+
+"

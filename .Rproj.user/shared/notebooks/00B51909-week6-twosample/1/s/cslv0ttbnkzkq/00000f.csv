@@ -1,0 +1,2 @@
+"0","depth76 <- filter(finch, Year == 1976) %>% pull(Depth)"
+"0","depth78 <- filter(finch, Year == 1978) %>% pull(Depth)"

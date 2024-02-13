@@ -1,0 +1,7 @@
+"0","library(oibiostat)"
+"0","library(Sleuth3)"
+"0","data(swim)"
+"0","data(famuss)"
+"0","data(sleep)"
+"0","finch <- case0201"
+"0","diets <- ex0112"

@@ -1,0 +1,194 @@
+---
+title: "Lab 6: Hypothesis testing"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+The objective of this lab is to learn how to perform $t$-tests for a population mean in R. We will cover:
+
+- specifying null and alternative hypotheses
+- interpreting R output
+
+## Datasets
+
+In this lab we'll use two datasets:
+
+- `ddt` are the 15 measurements from lecture of DDT level (ppm) in kale
+- `body.temps` are 130 observations of body temperature from a sample of US adults
+
+```{r}
+library(oibiostat)
+
+ddt <- MASS::DDT
+str(ddt)
+
+data(thermometry)
+body.temps <- thermometry$body.temp
+str(body.temps)
+```
+
+
+## Performing a $t$ test in R
+
+We'll illustrate the use of `t.test` with the `ddt` data. The parameter of interest here is:
+
+$$
+\mu = \text{mean DDT in kale}
+$$
+
+### Upper-sided test
+
+Consider first testing the hypotheses:
+
+$$
+\begin{align*}
+H_0: \mu \leq 3 \qquad(\text{mean DDT in kale} \leq 3) \\
+H_A: \mu > 3 \qquad(\text{mean DDT in kale} > 3)
+\end{align*}
+$$
+
+The null parameter value is the cutoff point $\mu_0 = 3$. This is an *upper-sided* test because the alternative specifies that the parameter *exceeds* the null value. We implement this test by providing as arguments to `t.test`:
+
+- data vector `ddt`
+- null parameter value `mu = 3`
+- upper sided alternative `alternative = 'greater'`
+
+```{r upper-sided test}
+# upper sided test H0: mean ddt <= 3 vs HA: mean ddt > 3
+t.test(ddt, mu = 3, alternative = 'greater')
+```
+
+Take a moment to locate each of the following outputs:
+
+- test statistic value
+- degrees of freedom for the $t$ model
+- $p$-value
+- confidence interval for the mean
+- point estiamte for the mean
+
+Since $p < 0.05$, we reject $H_0$ at significance level $\alpha = 0.05$. Interpret the result:
+
+> The data provide sufficiently strong evidence to reject the null hypothesis that mean DDT in kale is at most 3 ppm in favor of the alternative hypothesis that mean DDT in kale exceeds 3ppm (p = 0.00575).
+
+### Lower-sided test
+
+Now suppose you wish to test whether the mean DDT in kale is at least 3.5ppm.
+
+$$
+\begin{align*}
+H_0: \mu \geq 3.5 \qquad(\text{mean DDT in kale} \geq 3.5) \\
+H_A: \mu < 3.5 \qquad(\text{mean DDT in kale} < 3.5)
+\end{align*}
+$$
+
+The null parameter value is the cutoff point $\mu_0 = 3.5$. This is a *lower-sided* test because the alternative specifies that the parameter *is smaller than* the null value. We implement this test by providing as arguments to `t.test`:
+
+- null parameter value `mu = 3.5`
+- upper sided alternative `alternative = 'less'`
+
+```{r lower-sided test}
+# lower-sided test, H0: mean ddt >= 3.5 vs HA: mean ddt < 3.5
+t.test(ddt, mu = 3.5, alternative = 'less')
+```
+
+Since $p > 0.05$, we fail to reject $H_0$ at significance level $\alpha = 0.05$. Interpret the result:
+
+> The data **do not** provide sufficiently strong evidence to reject the null hypothesis that mean DDT in kale is at least 3.5 ppm in favor of the alternative hypothesis that mean DDT in kale exceeds 3.5ppm (p = 0.075).
+
+### Two-sided test
+
+Lastly, suppose we wish to test whether mean DDT is 3 or not.
+
+$$
+\begin{align*}
+H_0: \mu = 3 \qquad(\text{mean DDT in kale} = 3) \\
+H_A: \mu \neq 3 \qquad(\text{mean DDT in kale} \neq 3)
+\end{align*}
+$$
+
+The null parameter value is the point $\mu_0 = 3$. This is a *two-sided* test because the alternative specifies that the parameter *is either greater or smaller than* the null value. We implement this test by providing as arguments to `t.test`:
+
+- null parameter value `mu = 3`
+- upper sided alternative `alternative = 'two.sided'`
+
+```{r two-sided test}
+# two-sided test, H0: mean ddt == 3 vs HA: mean ddt =!= 3
+t.test(ddt, mu = 3, alternative = 'two.sided')
+```
+
+Since $p < 0.05$, we reject $H_0$ at significance level $\alpha = 0.05$. Interpret the result:
+
+> The data provide sufficiently strong evidence to reject the null hypothesis that mean DDT in kale is 3 ppm in favor of the alternative hypothesis that mean DDT in kale is not 3ppm (p = 0.012).
+
+Notice that, the evidence against the null is slightly weaker with respect to the two-sided alternative than with respect to the upper-sided alternative. This makes sense, because the alternative comprises a larger range of values, some of which are not very consistent with the data.
+
+## Answering questions with $t$ tests
+
+### Body temperatures
+
+Answer the following questions with hypothesis tests using the `body.temps` data. Be sure to consider how to frame the hypotheses appropriately to answer the question.
+
+1. Is the mean body temperature different from 98.6 °F?
+2. Is the mean body temperature higher than 98 °F?
+3. Is the mean body temperature higher than 98.2 °F?
+4. Is the mean body temperature lower than 98.2 °F?
+5. Is the mean body temperature actually 98.2 °F?
+6. Is the mean body temperature actually 98.3 °F?
+
+
+
+::: callout-note
+## Your turn
+
+Write commands to perform tests to answer questions 1-6 above.
+
+```{r your turn}
+# 1. Is the mean body temperature different from 98.6 °F?
+
+# 2. Is the mean body temperature higher than 98 °F?
+
+# 3. Is the mean body temperature higher than 98.2 °F?
+
+# 4. Is the mean body temperature lower than 98.2 °F?
+
+# 5. Is the mean body temperature actually 98.2 °F?
+
+# 6. Is the mean body temperature actually 98.3 °F?
+
+```
+
+Interpret the result of each test in context. Use significance level $\alpha = 0.05$ to make a decision.
+
+:::
+
+::: callout-tip
+## Remark
+
+The hypothesis tests suggest that in fact, mean body temperature is lower than commonly thought. However, a visual inspection of the data reveals an interesting twist: the body temperature data are actually bimodal!
+
+```{r body temp plot, echo = F}
+hist(body.temps, 
+     xlab = 'body temperature',
+     ylab = 'frequency',
+     main = '',
+     breaks = 20)
+abline(v = mean(body.temps), col = 2)
+legend(x = 'topright', 
+       legend = paste('sample mean', round(mean(body.temps), 2), sep = ' '), 
+       col = 2, 
+       lty = 1)
+```
+
+This doesn't invalidate any of our inferences, but suggests that we might be asking the wrong question by focusing on the population mean if, in fact, there is no *one* mean body temperature. We should perhaps ask instead, what feature of the population explains the bimodal distribution?
+:::
+

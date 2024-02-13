@@ -1,0 +1,3 @@
+"0","t(tbl/rowSums(tbl)) |> "
+"0","  barplot(legend.text = T, "
+"0","          args.legend = list(x = 7, y = 1))"

@@ -1,0 +1,4 @@
+"0","# invalid operation"
+"0","'12'*'12'"
+"2","Error in ""12"" * ""12"" : non-numeric argument to binary operator
+"

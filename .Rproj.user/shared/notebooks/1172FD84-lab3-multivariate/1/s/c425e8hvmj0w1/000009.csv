@@ -1,0 +1,6 @@
+"0","# retrieve height and weight columns"
+"0","height <- famuss$height"
+"0","weight <- famuss$weight"
+"0",""
+"0","# basic scatterplot"
+"0","plot(height, weight)"

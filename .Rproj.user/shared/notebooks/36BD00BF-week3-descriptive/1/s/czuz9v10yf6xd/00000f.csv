@@ -1,0 +1,27 @@
+"0","set.seed(11424)"
+"0","famuss %>% "
+"0","  mutate(participant.id = row_number()) %>%"
+"0","  rename(genotype = actn3.r577x) %>%"
+"0","  select(participant.id, genotype) %>% "
+"0","  sample_n(size = 6) %>% "
+"0","  pander(caption = 'Data table')"
+"1","
+---------------------------
+ participant.id   genotype 
+---------------- ----------
+      494            TT    
+
+      510            TT    
+
+      216            CT    
+
+       19            TT    
+
+      278            CT    
+
+       86            TT    
+---------------------------
+
+Table: Data table
+
+"

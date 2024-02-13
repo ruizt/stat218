@@ -1,0 +1,5 @@
+"0","library(Sleuth3)"
+"0","hist(ex0332$InState, breaks = 15,"
+"0","     main = 'in-state tuition, 2011-2012',"
+"0","     xlab = 'tuition in dollars',"
+"0","     ylab = 'frequency')"

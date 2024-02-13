@@ -1,0 +1,27 @@
+"0","data(yrbss)"
+"0",""
+"0","tbl <- table(yrbss$race, yrbss$grade)[, c(4, 1, 2, 3, 5)]"
+"0","tbl |> pander::pander()"
+"1","
+-------------------------------------------------------------------
+            &nbsp;                9      10     11     12    other 
+------------------------------- ------ ------ ------ ------ -------
+  **American Indian or Alaska     97     75     69     79      1   
+           Native**                                                
+
+           **Asian**             119    112    149    170      1   
+
+ **Black or African American**   898    730    753    839      5   
+
+  **Native Hawaiian or Other      67     56     62     71      1   
+      Pacific Islander**                                           
+
+           **White**             1620   1529   1533   1721     9   
+-------------------------------------------------------------------
+
+"
+"0","par(mar = c(3, 3, 1, 18))"
+"0","t(t(tbl)/colSums(tbl)) |> "
+"0","  barplot(legend.text = T,"
+"0","          args.legend = list("
+"0","            x = 12, y = 1))"

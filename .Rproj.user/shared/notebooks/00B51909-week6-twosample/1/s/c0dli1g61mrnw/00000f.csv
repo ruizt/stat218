@@ -1,0 +1,26 @@
+"0","swim_long <- swim %>%"
+"0","  transmute(swimmer = swimmer,"
+"0","            body = body.suit.velocity,"
+"0","            swim = swim.suit.velocity) %>%"
+"0","  pivot_longer(c(body, swim), "
+"0","               names_to = 'suit', "
+"0","               values_to = 'velocity') "
+"0","swim_long %>%"
+"0","  head(5) %>%"
+"0","  pander()"
+"1","
+---------------------------
+ swimmer   suit   velocity 
+--------- ------ ----------
+    1      body     1.57   
+
+    1      swim     1.49   
+
+    2      body     1.47   
+
+    2      swim     1.37   
+
+    3      body     1.42   
+---------------------------
+
+"
