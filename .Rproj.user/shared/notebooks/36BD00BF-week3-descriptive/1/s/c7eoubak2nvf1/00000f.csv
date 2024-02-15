@@ -1,7 +1,0 @@
-"0","famuss %>% "
-"0","  mutate(participant = row_number()) %>%"
-"0","  rename(genotype = actn3.r577x) %>%"
-"0","  pull(genotype) %>%"
-"0","  plot(cex.names = 2,"
-"0","       cex.axis = 2)"
-"0",""

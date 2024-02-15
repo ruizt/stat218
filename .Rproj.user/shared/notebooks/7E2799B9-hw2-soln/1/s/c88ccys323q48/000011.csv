@@ -1,7 +1,0 @@
-"0",""
-"0","# clutch size"
-"0","hist(frog$clutch.size,"
-"0","     breaks = 20,"
-"0","     xlab = 'clutch size',"
-"0","     ylab = 'frequency', "
-"0","     main = 'Clutch size')"

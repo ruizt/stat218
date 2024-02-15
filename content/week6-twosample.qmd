@@ -212,7 +212,7 @@ T = \frac{\bar{x} - \bar{y}}{SE(\bar{x} - \bar{y})}
 $$
 
 -   $\bar{x}, \bar{y}$ are groupwise sample means
--   $SE(\bar{x} - \bar{y}) = \sqrt{\frac{s_x^2}{n_x} + \frac{s_x^2}{n_y}}$
+-   $SE(\bar{x} - \bar{y}) = \sqrt{\frac{s_x^2}{n_x} + \frac{s_y^2}{n_y}}$
 -   degrees of freedom for $t$ model are approximated
 :::
 

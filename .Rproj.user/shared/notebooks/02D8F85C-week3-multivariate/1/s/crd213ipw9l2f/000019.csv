@@ -1,6 +1,0 @@
-"0","curve(dnorm(x, sd = 0.25), from = -3, to = 3, "
-"0","      main = 'less spread', "
-"0","      xaxt = 'n', "
-"0","      yaxt = 'n',"
-"0","      xlab = '',"
-"0","      ylab = '')"

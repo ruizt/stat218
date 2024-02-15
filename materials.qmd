@@ -132,14 +132,13 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=MRuvcxt3UnzYCaESALCQ0HxfqwSiQeWQ&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNjZBSEJIU1g2TDMwTThUNlM0MTBMTUM3WS4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=aIDjE9mM0bJJymQk4KhQpTJp1x801yE3&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQUFLWVJURjBJUEFJNVdCVUdKVlNHNkUzRS4u)\]
 
-**Thursday class meeting**
+**Thursday class meeting** \[[slides](content/week6-power.qmd)\] \[[lab](content/labs/lab9-power.qmd)\]
 
 -   \[reading\] Vu and Harrington 5.4; van Belle *et al.* 8.4 and 8.5 up to 8.5.4
--   \[lecture/discussion\] nonparametric alternatives for two sample inference
--   \[lab\] nonparametric and randomization tests in R
--   \[case study\] effect of soporific drugs on sleep <!--# datasets::sleep, health, swim (oibiostat) Sleuth3::ex0112-->
+-   \[lecture/discussion\] statistical power calculations for two-sample inference
+-   \[lab\] post hoc and study design power analyses in R
 
-<!-- Reading quiz responses: \[[2pm section]()\] \[[4pm section]()\] -->
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=soTSWsPn7c8kBRKEbKmPsVqQoCrl9BBS&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMDVBMFZHWVJOTUZEQU5BQU05VFhKMldENS4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=tB7L1tfZDA41fw1YCaEmqTpSemcNRRO4&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1ZOWDBLSVJFRzZMWjk0TFZWMUJMWUE3Ty4u)\]
 
 ***Assignment***: HW3 due Thursday 2/22 11:59pm PST \[L4, L5\]
 

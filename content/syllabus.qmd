@@ -11,8 +11,6 @@ editor: visual
 format: 
   html:
     toc: true
-  pdf:
-    keep-tex: false
   docx:
     toc: false
 prefer-html: true
@@ -103,7 +101,7 @@ The **final oral exam** will require you to find an application of course materi
 Students will receive a score for each learning outcome representing the weighted proportion of questions matched with that outcome that received a satisfactory assessment across all assignments, with relatively more weight given to questions from tests. The outcome will be determined as 'fully met' if the weighted proportion is at least 0.8, 'partly met' if the weighted proportion is between 0.5 and 0.8, and 'unmet' otherwise. To receive a passing grade in the class, at least six outcomes must be partly met. Letter grades are then defined as follows:
 
 | Grade | Minimum number of partly + fully met outcomes | Minimum number of fully met outcomes |
-|------------------|-----------------------------|-------------------------|
+|-------------------|-----------------------------|-------------------------|
 | A     | 10                                            | 9                                    |
 | A-    | 10                                            | 8                                    |
 | B+    | 8                                             | 7                                    |
@@ -123,7 +121,7 @@ Please note that these definitions are tentative and potentially subject to chan
 Subject to change.
 
 | Week             | Topics                                                   | Readings (V&H) | Assignments |
-|---------------|---------------------------|---------------|---------------|
+|----------------|------------------------|----------------|----------------|
 | 1 (1/8/24)       | Introduction to statistical thinking and study design    | 1.1            | HW1         |
 | 2 (1/15/24)      | Data, data types, and data collection                    | 1.2            | None        |
 | 3 (1/22/24)      | Descriptive statistics and graphical summaries           | 1.4 – 1.6      | ~~HW2~~     |

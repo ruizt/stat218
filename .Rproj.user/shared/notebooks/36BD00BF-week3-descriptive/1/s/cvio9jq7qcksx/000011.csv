@@ -1,1 +1,0 @@
-"0","-rpois(1000, lambda = 2) %>% hist(main = '', xlab = 'x', breaks = 6)"

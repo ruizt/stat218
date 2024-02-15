@@ -1,2 +1,0 @@
-"0","c(rexp(500, rate = 1), 10 - rexp(600, rate = 2))  %>%"
-"0","  hist(main = '', xlab = 'x', breaks = 20)"

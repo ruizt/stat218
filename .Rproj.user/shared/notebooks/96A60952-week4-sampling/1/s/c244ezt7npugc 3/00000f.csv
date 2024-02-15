@@ -1,8 +1,0 @@
-"0","library(tidyverse)"
-"0","library(oibiostat)"
-"0","library(NHANES)"
-"0","nhanes <- NHANES %>% "
-"0","  filter(SurveyYr == ""2009_10"") %>%"
-"0","  mutate(subj.id = row_number()) %>%"
-"0","  select(subj.id, Gender, Age, Poverty, Pulse, BPSys1, BPDia1, TotChol, SleepHrsNight) %>%"
-"0","  drop_na() "

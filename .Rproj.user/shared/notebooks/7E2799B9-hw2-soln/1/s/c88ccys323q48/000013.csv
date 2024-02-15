@@ -1,7 +1,0 @@
-"0",""
-"0","# egg size"
-"0","hist(frog$egg.size,"
-"0","     breaks = 20,"
-"0","     xlab = 'egg size',"
-"0","     ylab = 'frequency', "
-"0","     main = 'Egg size')"

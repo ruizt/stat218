@@ -1,3 +1,0 @@
-"0","curve(0.4*dnorm(x, mean = -2) + 0.6*dnorm(x, mean = 2), from = -5, to = 5,"
-"0","      xlab = '', ylab = '', main = 'bimodal', cex.main = 3, "
-"0","      xaxt = 'n', yaxt = 'n')"

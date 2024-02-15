@@ -1,3 +1,0 @@
-"0","curve(0.4*dnorm(x, mean = 0) + 0.6*dnorm(x, mean = 2), from = -3, to = 6,"
-"0","      xlab = '', ylab = '', main = 'unimodal', cex.main = 3,"
-"0","      xaxt = 'n', yaxt = 'n')"

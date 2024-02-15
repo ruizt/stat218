@@ -1,3 +1,0 @@
-"0",""
-"0","# small sample size (try running a few times)"
-"0","hist(sample(cholesterol, size = 50), breaks = 15)"

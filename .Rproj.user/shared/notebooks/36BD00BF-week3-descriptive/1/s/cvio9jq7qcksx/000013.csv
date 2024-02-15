@@ -1,2 +1,0 @@
-"0","c(rnorm(400, mean = -4, sd = 2), rnorm(600, mean = 8, sd = 5)) %>%"
-"0","  hist(main = '', xlab = 'x', breaks = 20)"
