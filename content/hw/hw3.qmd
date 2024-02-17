@@ -1,0 +1,136 @@
+---
+title: "Homework 3: One- and two-sample inference"
+author: "STAT218"
+author-title: "Course"
+date: "2/22/24"
+published-title: "Due date"
+execute: 
+  eval: false
+  echo: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+*Instructions: type up your answers and submit your work electronically via Gradescope. Questions with a learning outcome indicated in brackets will be evaluated for credit; other questions are provided for additional practice. You are expected to answer all questions. Note that an R project with datasets and prompts is provided on the class posit.cloud workspace. Please do not submit R codes; show only output or graphics relevant to answering the question. Please skip the question matching step in Gradescope.*
+
+1.  **Vu and Harrington exercise 4.4.** The 2010 General Social Survey asked the question: “For how many days during the past 30 days was your mental health, which includes stress, depression, and problems with emotions, not good?" Based on responses from 1,151 US residents, the survey reported a 95% confidence interval of 3.40 to 4.24 days in 2010.
+
+    a.  Interpret this interval in context of the data.
+    b.  What does “95% confident" mean? Explain in the context of the application.
+    c.  If a new survey were to be done with 500 Americans, would the standard error of the estimate be larger, smaller, or about the same? Assume the standard deviation has remained constant since 2010.
+
+2.  \[L4\] **Vu and Harrington exercise 4.6.** Thanksgiving spending, Part I. The 2009 holiday retail season, which kicked off on November 27, 2009 (the day after Thanksgiving), had been marked by somewhat lower self-reported consumer spending than was seen during the comparable period in 2008. To get an estimate of consumer spending, 436 randomly sampled American adults were surveyed. Daily consumer spending for the six-day period after Thanksgiving, spanning the Black Friday weekend and Cyber Monday, averaged \$84.71. A 95% confidence interval based on this sample is (\$80.31, \$89.11). Determine whether the following statements are true or false, and explain your reasoning.
+
+    a.  We are 95% confident that the average spending of these 436 American adults is between \$80.31 and \$89.11.
+    b.  This confidence interval is not valid since the distribution of spending in the sample is right skewed.
+    c.  95% of random samples have a sample mean between \$80.31 and \$89.11.
+    d.  We are 95% confident that the average spending of all American adults is between \$80.31 and \$89.11.
+    e.  A 90% confidence interval would be narrower than the 95% confidence interval.
+    f.  The margin of error is 4.4.
+
+![](vh4-6.png){width="300"}
+
+3.  **Vu and Harrington exercise 4.21.** Testing for fibromyalgia. A patient named Diana was diagnosed with fibromyalgia, a long-term syn- drome of body pain, and was prescribed anti-depressants. Being the skeptic that she is, Diana didn’t initially believe that anti-depressants would help her symptoms. However after a couple months of being on the med- ication she decides that the anti-depressants are working, because she feels like her symptoms are in fact getting better.
+
+    a.  Write the hypotheses in words for Diana’s skeptical position when she started taking the anti-depressants.
+    b.  What is a Type 1 Error in this context?
+    c.  What is a Type 2 Error in this context?
+
+4.  **Vu and Harrington exercise 4.24.** True or false. Determine if the following statements are true or false, and explain your reasoning. If false, state how it could be corrected.
+
+    a.  If a given value (for example, the null hypothesized value of a parameter) is within a 95% confidence interval, it will also be within a 99% confidence interval.
+    b.  Decreasing the significance level $\alpha$ will increase the probability of making a Type 1 Error.
+    c.  Suppose the null hypothesis is $H_0: \mu = 5$ and we fail to reject $H_0$. Under this scenario, the true population mean is 5.
+    d.  If the alternative hypothesis is true, then the probability of making a Type 2 Error and the power of a test add up to 1.
+    e.  With large sample sizes, even small differences between the null value and the true value of the parameter, a difference often called the effect size, will be identified as statistically significant.
+
+5.  \[L3, L5\] Cancer rates and sunspot activity. The dataset `cancer` contains skin cancer rates per 100,000 people in Connecticut each year from 1938 to 1972. Each year is also classified as following a period of higher than average or lower than average sunspot activity.
+
+    a.  Plot the skin cancer rates over time.
+    b.  Because rates are generally increasing over time, the variable `delta` measures the deviation of skin cancer rate from the trend. Test the hypothesis that higher-than-average sunspot activity is associated with higher-than-expected skin cancer rates relative to the long term trend. Write a full narrative summary of the test result: state the conclusion; interpret the test result in context; provide supporting statistics; and report and interpret interval and point estimates. Do not provide any R output.
+    c.  Identify, in words, the population parameter of interest in the test from part (b).
+
+```{r}
+cancer <- bind_cols(year = ex0323$Year,
+                    sunspot.activity = ex0323$SunspotActivity,
+                    cancer.rate = ex0323$CancerRate,
+                    delta = lm(CancerRate ~ Year, data = ex0323)$resid)
+# save(cancer, file = 'data/cancer.RData')
+
+# a
+plot(cancer$year, cancer$cancer.rate, type = 'b')
+
+# b
+t.test(delta ~ sunspot.activity, data = cancer)
+```
+
+6.  \[L4, L5\] Comparing self-fertilization with cross-fertilization. The dataset `plants` contains measurements of plant heights in inches for 15 pairs of plants of the same age; one plant in the pair was grown from a seed from a cross-fertilized flower, and the other was grown from a seed from a self-fertilized flower.
+
+    a.  Calculate and interpret an interval estimate for the difference in mean height between plants produced from cross-fertilization and plants produced from self-fertilization.
+    b.  Test the hypothesis that plants produced from cross-fertilization are taller on average than those produced from self-fertilization. Write a full narrative summary of the test result: state the conclusion; interpret the test result in context; provide supporting statistics; and report and interpret interval and point estimates. Do not provide any R output.
+
+```{r}
+plants <- Sleuth3::ex0428
+# save(plants, file =  'data/plants.RData')
+
+# a
+t.test(Pair(Cross, Self) ~ 1, data = plants)$conf
+
+# b
+t.test(Pair(Cross, Self) ~ 1, data = plants, alternative = 'greater')
+```
+
+7.  \[L4, L5\] Tuberculuosis and survival in guinea pigs. The dataset `tubercle` contains survival times in days of guinea pigs that were randomly assigned to receive a dose of tubercle bacilli, the bacterial pathogen that causes tuberculosis, or to a control group.
+
+    a.  Test the hypothesis that exposure to tubercle bacilli causes a decrease in survival time. Interpret the result of the test in context and provide supporting statistics.
+    b.  Estimate the decrease in survival time using a 99% confidence interval. Interpret the interval in context.
+
+```{r}
+tubercle <- ex0211
+# save(tubercle, file = 'data/tubercle.RData')
+
+# a. 
+t.test(Lifetime ~ Group, data = tubercle, mu = 0, alternative = 'less')
+
+# b.
+int <- t.test(Lifetime ~ Group, data = tubercle, mu = 0, alternative = 'two.sided', conf.level = 0.99)$conf
+
+# c.
+int/t.test(Lifetime ~ Group, data = tubercle, mu = 0, alternative = 'two.sided')$estimate[2]
+
+```
+
+8.  \[L5\] Medical marijuana. To investigate the capacity of marijuana to reduce the side effects of cancer chemotherapy, researchers performed a double-blind, randomized, crossover trial. Fifteen cancer patients on chemotherapy were randomly assigned to receive either a marijuana treatment or a placebo treatment after their first three sessions of chemotherapy. They were then crossed over to the opposite treatment for their next 3 sessions. The dataset `marijuana` conatins the resulting measurements.
+
+    a.  Test the hypothesis that marijuana treatments cause a reduction in vomiting and retching episodes for cancer patients receiving chemotherapy. Write a full narrative summary of the test results. Do not include any R output.
+    
+    b.  Assume that you found evidence that medical marijuana caused a reduction in part (a), regardless of your actual result. Would it be advisable to assure a patient that medical marijuana will reduce their vomiting and retching episodes? Why or why not?
+
+```{r}
+marijuana <- Sleuth3::ex0432
+# save(marijuana, file = 'data/marijuana.RData')
+
+# a
+t.test(Pair(Marijuana, Placebo) ~ 1, data = marijuana, alternative = 'less')
+```
+
+9.  **Vu and Harrington exercise 5.37.** A large farm wants to try out a new type of fertilizer to evaluate whether it will improve the farm’s corn production. The land is broken into plots that produce an average of 1,215 pounds of corn with a standard deviation of 94 pounds per plot. The owner is interested in detecting any average difference of at least 40 pounds per plot.
+
+    a.  How many plots of land would be needed for the experiment if the desired power level is 90%? Assume fertilizer treatments (current and new) are allocated in equal proportion among the plots.
+    
+    b.  Explain in words the meaning of the power level guarantee.
+    
+    c.  If the experiment will cost \$250 per plot and the owner wants to limit the total cost to \$10,000, what average difference will they be able to detect at the desired power level?
+
+```{r}
+# a
+power.t.test(delta = 40, sd = 94, power = 0.9)$n
+
+# c
+power.t.test(power = 0.9, sd = 94, n = 40)$delta
+```

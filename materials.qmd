@@ -140,7 +140,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=soTSWsPn7c8kBRKEbKmPsVqQoCrl9BBS&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMDVBMFZHWVJOTUZEQU5BQU05VFhKMldENS4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=tB7L1tfZDA41fw1YCaEmqTpSemcNRRO4&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1ZOWDBLSVJFRzZMWjk0TFZWMUJMWUE3Ty4u)\]
 
-***Assignment***: HW3 due Thursday 2/22 11:59pm PST \[L4, L5\]
+***Assignment***: \[[HW3](content/hw/hw3.qmd)\] due Thursday 2/22 11:59pm PST \[L4, L5\]
 
 ### Week 7 (2/19/24)
 
@@ -150,7 +150,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ***Assignment***: HW4 due Thursday 2/29 11:59pm PST \[L9\]
 
-<!--# anorexia on body weights (MASS) -->
+<!--# anorexia on body weights (MASS); case0501; -->
 
 ### Week 8 (2/26/24)
 
@@ -158,7 +158,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ***Assignment***: Test 2 due Friday 3/1 11:59pm PST \[L4, L5, L9\]
 
-<!--# smoking and lung cancer -->
+<!--# smoking and lung cancer case1802 case1803 -->
 
 ### Week 9 (3/4/24)
 
