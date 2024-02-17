@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STAT218 - Two sample inference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H3YKZX4J88"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-H3YKZX4J88', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">STAT218</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../content/syllabus.html" rel="" target="">
+ <span class="menu-text">Course syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../materials.html" rel="" target="">
+ <span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#todays-agenda" id="toc-todays-agenda" class="nav-link active" data-scroll-target="#todays-agenda">Today’s agenda</a></li>
+  <li><a href="#from-last-time" id="toc-from-last-time" class="nav-link" data-scroll-target="#from-last-time">From last time</a></li>
+  <li><a href="#inference-for-paired-data" id="toc-inference-for-paired-data" class="nav-link" data-scroll-target="#inference-for-paired-data">Inference for paired data</a></li>
+  <li><a href="#formulating-a-two-sample-problem" id="toc-formulating-a-two-sample-problem" class="nav-link" data-scroll-target="#formulating-a-two-sample-problem">Formulating a two-sample problem</a></li>
+  <li><a href="#hypotheses-for-two-sample-tests" id="toc-hypotheses-for-two-sample-tests" class="nav-link" data-scroll-target="#hypotheses-for-two-sample-tests">Hypotheses for two-sample tests</a></li>
+  <li><a href="#your-turn-famuss" id="toc-your-turn-famuss" class="nav-link" data-scroll-target="#your-turn-famuss">Your turn: FAMuSS</a></li>
+  <li><a href="#evolution-of-darwins-finches" id="toc-evolution-of-darwins-finches" class="nav-link" data-scroll-target="#evolution-of-darwins-finches">Evolution of Darwin’s finches</a></li>
+  <li><a href="#inference-for-independent-data" id="toc-inference-for-independent-data" class="nav-link" data-scroll-target="#inference-for-independent-data">Inference for independent data</a></li>
+  <li><a href="#two-input-formats" id="toc-two-input-formats" class="nav-link" data-scroll-target="#two-input-formats">Two input formats</a></li>
+  <li><a href="#interpreting-results" id="toc-interpreting-results" class="nav-link" data-scroll-target="#interpreting-results">Interpreting results</a></li>
+  <li><a href="#cloud-data-paired-or-independent" id="toc-cloud-data-paired-or-independent" class="nav-link" data-scroll-target="#cloud-data-paired-or-independent">Cloud data: paired or independent?</a></li>
+  <li><a href="#sleep-drugs-paired-or-independent" id="toc-sleep-drugs-paired-or-independent" class="nav-link" data-scroll-target="#sleep-drugs-paired-or-independent">Sleep drugs: paired or independent?</a></li>
+  <li><a href="#test-assumptions" id="toc-test-assumptions" class="nav-link" data-scroll-target="#test-assumptions">Test assumptions</a></li>
+  <li><a href="#power-calculations" id="toc-power-calculations" class="nav-link" data-scroll-target="#power-calculations">Power calculations</a></li>
+  <li><a href="#the-equal-variance-t-test" id="toc-the-equal-variance-t-test" class="nav-link" data-scroll-target="#the-equal-variance-t-test">The equal-variance <span class="math inline">\(t\)</span>-test</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="week6-twosample.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Two sample inference</h1>
+<p class="subtitle lead">Hypothesis tests and intervals for comparing means from paired and independent data</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="todays-agenda" class="level2">
+<h2 class="anchored" data-anchor-id="todays-agenda">Today’s agenda</h2>
+<ol type="1">
+<li><p>Reading quiz [<a href="https://forms.office.com/r/f81B2eHCv7">2pm section</a>] [<a href="https://forms.office.com/r/1HiaaNEXCG">4pm section</a>]</p></li>
+<li><p>[lecture/lab] Two-sample inference for population means</p>
+<ol type="a">
+<li>Paired data</li>
+<li>Independent data</li>
+</ol></li>
+<li><p>[if time] Introduction to power analysis</p></li>
+</ol>
+</section>
+<section id="from-last-time" class="level2">
+<h2 class="anchored" data-anchor-id="from-last-time">From last time</h2>
+<blockquote class="blockquote">
+<p>Are swimmers faster in bodysuits than in regular swimsuits?</p>
+</blockquote>
+<p>Below are the first few observations of the average velocity of competitive swimmers in a 1500m; one measurement was taken in a swimsuit, the other in a bodysuit.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 29%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">swimmer</th>
+<th style="text-align: center;">body.suit.velocity</th>
+<th style="text-align: center;">swim.suit.velocity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.57</td>
+<td style="text-align: center;">1.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1.47</td>
+<td style="text-align: center;">1.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1.42</td>
+<td style="text-align: center;">1.35</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><em>two-sample</em> problem because there are two sets of observations</li>
+<li>observations are <strong>paired</strong> by swimmer</li>
+</ul>
+<p>This is the easiest kind of two-sample problem because we can reduce it to a one-sample problem by performing inference on paired differences.</p>
+</section>
+<section id="inference-for-paired-data" class="level2">
+<h2 class="anchored" data-anchor-id="inference-for-paired-data">Inference for paired data</h2>
+<ol type="1">
+<li>Calculate paired differences.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">swimmer</th>
+<th style="text-align: center;">body.suit.velocity</th>
+<th style="text-align: center;">swim.suit.velocity</th>
+<th style="text-align: center;">velocity.diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.57</td>
+<td style="text-align: center;">1.49</td>
+<td style="text-align: center;">0.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1.47</td>
+<td style="text-align: center;">1.37</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1.42</td>
+<td style="text-align: center;">1.35</td>
+<td style="text-align: center;">0.07</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<ol start="2" type="1">
+<li>Perform test as before.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test for paired difference</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(diffs, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  diffs
+t = 12.318, df = 11, p-value = 4.443e-08
+alternative hypothesis: true mean is greater than 0
+95 percent confidence interval:
+ 0.06620114        Inf
+sample estimates:
+mean of x 
+   0.0775 </code></pre>
+</div>
+</div>
+</div><div class="column">
+<ol start="3" type="1">
+<li>Report the result of the test. <em>You try.</em></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="formulating-a-two-sample-problem" class="level2">
+<h2 class="anchored" data-anchor-id="formulating-a-two-sample-problem">Formulating a two-sample problem</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Two-sample problems are characterized by:</p>
+<ul>
+<li>one variable of interest</li>
+<li>two groups of observations</li>
+<li>objective to compare group means</li>
+</ul>
+<p>Inference concerns the <em>difference in means</em></p>
+<p><span class="math display">\[\delta = \mu_1 - \mu_2\]</span></p>
+<p>We just tested:</p>
+<p><span class="math display">\[H_0: \mu_\text{body} \leq \mu_\text{swim}\]</span> <span class="math display">\[H_A: \mu_\text{body} &gt; \mu_\text{swim}\]</span></p>
+</div><div class="column" style="width:40%;">
+<p>Rearranging the data to emphasize two-sample problem structure:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">swimmer</th>
+<th style="text-align: center;">suit</th>
+<th style="text-align: center;">velocity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">body</td>
+<td style="text-align: center;">1.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">swim</td>
+<td style="text-align: center;">1.49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">body</td>
+<td style="text-align: center;">1.47</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">swim</td>
+<td style="text-align: center;">1.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">body</td>
+<td style="text-align: center;">1.42</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>variable of interest: <code>velocity</code></li>
+<li>grouping: <code>suit</code></li>
+<li>pairing: <code>swimmer</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="hypotheses-for-two-sample-tests" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses-for-two-sample-tests">Hypotheses for two-sample tests</h2>
+<p>We can articulate two-sided and directional tests for the difference in means <span class="math inline">\(\delta = \mu_1 - \mu_2\)</span> and the corresponding interpretation in terms of the group means.</p>
+<div class="columns">
+<div class="column">
+<p><strong>Difference in means</strong></p>
+<p><span class="math display">\[\text{two-sided}\begin{cases} H_0: \delta \qquad 0 \\ H_A: \delta \qquad 0 \end{cases}\]</span></p>
+<p><span class="math display">\[\text{lower-sided}\begin{cases} H_0: \delta \qquad 0 \\ H_A: \delta \qquad 0 \end{cases}\]</span></p>
+<p><span class="math display">\[\text{upper-sided}\begin{cases} H_0: \delta \qquad 0 \\ H_A: \delta \qquad 0 \end{cases}\]</span></p>
+</div><div class="column">
+<p><strong>Group interpretation</strong></p>
+<p><span class="math display">\[\begin{cases} H_0: \mu_1 \qquad \mu_2 \\ H_A: \mu_1 \qquad \mu_2 \end{cases}\]</span></p>
+<p><span class="math display">\[\begin{cases} H_0: \mu_1 \qquad \mu_2 \\ H_A: \mu_1 \qquad \mu_2 \end{cases}\]</span></p>
+<p><span class="math display">\[\begin{cases} H_0: \mu_1 \qquad \mu_2 \\ H_A: \mu_1 \qquad \mu_2 \end{cases}\]</span></p>
+</div>
+</div>
+</section>
+<section id="your-turn-famuss" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn-famuss">Your turn: FAMuSS</h2>
+<blockquote class="blockquote">
+<p>Does resistance training lead to greater strength gains on the nondominant arm?</p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 16%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ndrm.ch</th>
+<th style="text-align: center;">drm.ch</th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">age</th>
+<th style="text-align: center;">race</th>
+<th style="text-align: center;">height</th>
+<th style="text-align: center;">weight</th>
+<th style="text-align: center;">actn3.r577x</th>
+<th style="text-align: center;">bmi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">Caucasian</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">199</td>
+<td style="text-align: center;">CC</td>
+<td style="text-align: center;">33.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">Caucasian</td>
+<td style="text-align: center;">71.7</td>
+<td style="text-align: center;">189</td>
+<td style="text-align: center;">CT</td>
+<td style="text-align: center;">25.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">Caucasian</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">134</td>
+<td style="text-align: center;">CT</td>
+<td style="text-align: center;">22.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Articulate and test an appropriate hypothesis for <span class="math inline">\(\delta = \mu_\text{ndrm} - \mu_\text{drm}\)</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Hypotheses: <span class="math display">\[H_0: \hspace{15cm}\]</span> <span class="math display">\[H_A: \hspace{15cm}\]</span></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>Result:</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="evolution-of-darwins-finches" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-of-darwins-finches">Evolution of Darwin’s finches</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<blockquote class="blockquote">
+<p>Grant, P. (1986). Ecology and Evolution of Darwin’s Finches, Princeton University Press, Princeton, N.J.</p>
+</blockquote>
+<p>Peter and Rosemary Grant caught and measured all the birds from more than 20 generations of finches on the Galapagos island of Daphne Major.</p>
+<ul>
+<li><p>severe drought in 1977 limited food to large tough seeds</p></li>
+<li><p>selection pressure favoring larger and stronger beaks</p></li>
+<li><p>hypothesis: beak depth increased in 1978 relative to 1976</p></li>
+</ul>
+<p><em>How do we test for a difference in the absence of pairing?</em></p>
+</div><div class="column" style="width:30%;">
+<p>Finch beak data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Year</th>
+<th style="text-align: center;">Depth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1976</td>
+<td style="text-align: center;">10.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1976</td>
+<td style="text-align: center;">8.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1976</td>
+<td style="text-align: center;">9.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1978</td>
+<td style="text-align: center;">10.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1978</td>
+<td style="text-align: center;">10.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1978</td>
+<td style="text-align: center;">11.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Variable: <code>Depth</code></li>
+<li>Grouping: <code>Year</code></li>
+<li><em>No pairing!</em></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="inference-for-independent-data" class="level2">
+<h2 class="anchored" data-anchor-id="inference-for-independent-data">Inference for independent data</h2>
+<blockquote class="blockquote">
+<p>Beak depths exemplify <strong>independent data</strong>: the groups of observations are unrelated.</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<p>Inference is based on the difference in group means:</p>
+<p><span class="math display">\[
+T = \frac{\bar{x} - \bar{y}}{SE(\bar{x} - \bar{y})}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\bar{x}, \bar{y}\)</span> are groupwise sample means</li>
+<li><span class="math inline">\(SE(\bar{x} - \bar{y}) = \sqrt{\frac{s_x^2}{n_x} + \frac{s_y^2}{n_y}}\)</span></li>
+<li>degrees of freedom for <span class="math inline">\(t\)</span> model are approximated</li>
+</ul>
+</div><div class="column">
+<p><span class="math display">\[H_0: \mu_{1976} \geq \mu_{1978}\]</span> <span class="math display">\[H_A: \mu_{1976} &lt; \mu_{1978}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Depth <span class="sc">~</span> Year, <span class="at">data =</span> finch,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'less'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Depth by Year
+t = -4.5833, df = 172.98, p-value = 4.37e-06
+alternative hypothesis: true difference in means between group 1976 and group 1978 is less than 0
+95 percent confidence interval:
+      -Inf -0.427321
+sample estimates:
+mean in group 1976 mean in group 1978 
+          9.469663          10.138202 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-input-formats" class="level2">
+<h2 class="anchored" data-anchor-id="two-input-formats">Two input formats</h2>
+<div class="columns">
+<div class="column">
+<p>The <strong>formula</strong> format takes inputs:</p>
+<ol type="1">
+<li>an R formula</li>
+<li>a data frame</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-sample test (formula inputs)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Depth <span class="sc">~</span> Year, <span class="at">data =</span> finch,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'less'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Depth by Year
+t = -4.5833, df = 172.98, p-value = 4.37e-06
+alternative hypothesis: true difference in means between group 1976 and group 1978 is less than 0
+95 percent confidence interval:
+      -Inf -0.427321
+sample estimates:
+mean in group 1976 mean in group 1978 
+          9.469663          10.138202 </code></pre>
+</div>
+</div>
+<p><code>Depth ~ Year</code>: “depth <em>depends on</em> year”</p>
+</div><div class="column">
+<p>The <strong>vector</strong> format takes inputs:</p>
+<ol type="1">
+<li>vector of observations for one group</li>
+<li>vector of observations for the other group</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-sample test (vector inputs)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(depth76, depth78,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'less'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  depth76 and depth78
+t = -4.5833, df = 172.98, p-value = 4.37e-06
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -0.427321
+sample estimates:
+mean of x mean of y 
+ 9.469663 10.138202 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="interpreting-results" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-results">Interpreting results</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Depth by Year
+t = -4.5833, df = 172.98, p-value = 4.37e-06
+alternative hypothesis: true difference in means between group 1976 and group 1978 is less than 0
+95 percent confidence interval:
+      -Inf -0.427321
+sample estimates:
+mean in group 1976 mean in group 1978 
+          9.469663          10.138202 </code></pre>
+</div>
+</div>
+<p>To report the results:</p>
+<ol type="1">
+<li>State conclusion</li>
+<li>Interpret test result in context</li>
+<li>Report statistics (<em>T</em>, <em>df</em>, <em>p</em>-value)</li>
+<li>Provide point estimates</li>
+</ol>
+<p><em>Careful about signs and directions!</em></p>
+</div><div class="column" style="width:55%;">
+<blockquote class="blockquote">
+<p>Our findings suggest finch beak depth on Daphne Major increased as a result of natural selection following drought. The data provide strong evidence against the null hypothesis that mean beak depth remained comparable or diminished in the generation following the drought in favor of the alternative that mean beak depth increased (<em>T</em> = -4.58 on 172.98 degrees of freedom, <em>p</em> = 0.00000437). With 95% confidence, the increase in beak depth is estimated to be at least 0.427 mm, with a point estimate of 0.669 mm (<em>SE</em> = 0.1459).</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="cloud-data-paired-or-independent" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-data-paired-or-independent">Cloud data: paired or independent?</h2>
+<blockquote class="blockquote">
+<p>Does dropping silver iodide onto clouds increase rainfall?</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Data are rainfall measurements in a target area from 26 days when clouds were seeded and 26 days when clouds were not seeded.</p>
+<ul>
+<li><code>rainfall</code> gives volume of rainfall in acre-feet</li>
+<li><code>treatment</code> indicates whether clouds were seeded</li>
+</ul>
+<p>Hypotheses to test: <span class="math display">\[H_0: \mu_\text{seeded} \quad \mu_\text{unseeded}\]</span> <span class="math display">\[H_A: \mu_\text{seeded} \quad \mu_\text{unseeded}\]</span></p>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">rainfall</th>
+<th style="text-align: center;">treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">302.8</td>
+<td style="text-align: center;">Seeded</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">255</td>
+<td style="text-align: center;">Seeded</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1698</td>
+<td style="text-align: center;">Seeded</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">978</td>
+<td style="text-align: center;">Seeded</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28.6</td>
+<td style="text-align: center;">Unseeded</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">321.2</td>
+<td style="text-align: center;">Unseeded</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11.5</td>
+<td style="text-align: center;">Unseeded</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17.3</td>
+<td style="text-align: center;">Unseeded</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sleep-drugs-paired-or-independent" class="level2">
+<h2 class="anchored" data-anchor-id="sleep-drugs-paired-or-independent">Sleep drugs: paired or independent?</h2>
+<blockquote class="blockquote">
+<p>Which (if either) of two soporific drugs is more effective?</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Data are extra hours of sleep for 10 study participants when taking each of two drugs.</p>
+<ul>
+<li><code>extra.sleep</code> gives hours of additional sleep relative to control</li>
+<li><code>drug</code> indicates which sleep drug was taken</li>
+<li><code>subject</code> indicates study participant id</li>
+</ul>
+<p>Hypotheses to test: <span class="math display">\[H_0: \mu_1 \quad \mu_2\]</span> <span class="math display">\[H_A: \mu_1 \quad \mu_2\]</span></p>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 9%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">extra.sleep</th>
+<th style="text-align: center;">drug</th>
+<th style="text-align: center;">subject</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1.9</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-1.6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="test-assumptions">Test assumptions</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Inference relies on a <span class="math inline">\(t\)</span> model providing a good approximation to the sampling distribution. This requires three assumptions:</p>
+<ol type="1">
+<li><p>variable of interest is numeric and not too discrete</p></li>
+<li><p>observations are independent (besides pairing)</p></li>
+<li><p>either:</p>
+<ol type="a">
+<li>sample sizes are not too small</li>
+<li>or distribution(s) are symmetric and unimodal</li>
+</ol></li>
+</ol>
+</div><div class="column" style="width:60%;">
+<p>Common issues:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Highly discrete data</td>
+<td><span class="math inline">\(t\)</span> model not appropriate</td>
+</tr>
+<tr class="even">
+<td>Dependent observations</td>
+<td><span class="math inline">\(SE\)</span> is a biased estimate: nominal error rates and coverage are inaccurate</td>
+</tr>
+<tr class="odd">
+<td>Small samples with <u><em>heavy</em></u> skew or <u><em>extreme</em></u> outliers</td>
+<td><span class="math inline">\(SE\)</span> too small: inflated type I error and under-coverage</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><em>In each of these scenarios, different inference procedures should be used.</em></p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="power-calculations" class="level2">
+<h2 class="anchored" data-anchor-id="power-calculations">Power calculations</h2>
+<blockquote class="blockquote">
+<p>How much data do you need to collect in order to detect a difference of <span class="math inline">\(\delta\)</span>?</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>The statistical <strong>power</strong> of a test captures how often it detects a specified alternative.</p>
+<ul>
+<li><p>defined as <span class="math inline">\(\beta = (1 - \text{type II error rate})\)</span></p></li>
+<li><p>measures how often the test correctly rejects</p></li>
+<li><p>value depends on…</p>
+<ol type="a">
+<li>magnitude of difference between null value and true value of parameter</li>
+<li>significance level</li>
+<li>sample size</li>
+</ol></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.95</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">delta =</span> <span class="fl">0.5</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">'two.sample'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">'two.sided'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 104.928
+          delta = 0.5
+             sd = 1
+      sig.level = 0.05
+          power = 0.95
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\Rightarrow\)</span> need 105 observations in each group to detect a difference of 0.5 standard deviations at level 0.05 with type II error rate 5% or less</p>
+</div>
+</div>
+</section>
+<section id="the-equal-variance-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="the-equal-variance-t-test">The equal-variance <span class="math inline">\(t\)</span>-test</h2>
+<p>If it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power (lower type II error rate) by using a different standard error:</p>
+<p><span class="math display">\[SE_\text{pooled}(\bar{x} - \bar{y}) = \sqrt{\frac{\color{red}{s_p^2}}{n_x} + \frac{\color{red}{s_p^2}}{n_y}}
+\quad\text{where}\quad \color{red}{s_p} = \underbrace{\sqrt{\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\text{weighted average of } s_x^2 \;\&amp;\; s_y^2}\]</span></p>
+<p>Implement by adding <code>var.equal = T</code> as an argument to <code>t.test()</code>.</p>
+<ul>
+<li>larger df is used, hence more frequent rejections</li>
+<li>avoid unless you have a small sample</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">© 2024 Trevor Ruiz</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

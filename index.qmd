@@ -1,0 +1,16 @@
+---
+title: "Applied Statistics for Life Sciences"
+date: today
+published-title: 'Updated'
+---
+
+::: callout-note
+## Announcements
+
+- HW3 posted
+
+:::
+
+This is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm -- 4:00pm) and 06-8274 (TR 4:10pm -- 6:00pm). Please note that this site does *not* pertain to other sections of STAT 218 (of which there are several).
+
+Material posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission.
