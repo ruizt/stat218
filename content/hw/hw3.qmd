@@ -33,7 +33,7 @@ embed-resources: true
     e.  A 90% confidence interval would be narrower than the 95% confidence interval.
     f.  The margin of error is 4.4.
 
-![](vh4-6.png){width="300"}
+![](img/vh4-6.png){width="300"}
 
 3.  **Vu and Harrington exercise 4.21.** Testing for fibromyalgia. A patient named Diana was diagnosed with fibromyalgia, a long-term syn- drome of body pain, and was prescribed anti-depressants. Being the skeptic that she is, Diana didn’t initially believe that anti-depressants would help her symptoms. However after a couple months of being on the med- ication she decides that the anti-depressants are working, because she feels like her symptoms are in fact getting better.
 
