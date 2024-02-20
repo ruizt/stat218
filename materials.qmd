@@ -97,7 +97,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ### Week 5 (2/5/24)
 
-*One- and two-sample inference for numerical data*
+*One-sample inference for numerical data*
 
 ***Tuesday class meeting*** \[[slides](content/week5-hypothesis.qmd)\] \[[lab](content/labs/lab6-hypotesting.qmd)\]
 
@@ -121,7 +121,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ### Week 6 (2/12/24)
 
-*Two-sample and nonparametric inference*
+*Two-sample inference for numerical data*
 
 ***Tuesday class meeting*** \[[slides](content/week6-twosample.qmd)\] \[[lab](content/labs/lab8-twosample.qmd)\]
 
@@ -144,9 +144,22 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ### Week 7 (2/19/24)
 
-*Analysis of variance*
+*Nonparametric tests; analysis of variance*
 
 *Academic holiday 2/19/24*
+
+**Tuesday class meeting** \[[slides](content/week7-nonparametric.qmd)\] \[[lab](content/labs/lab10-nonparametric.qmd)\]
+
+-   \[reading\] van Belle *et al.* 8.4 and 8.5 up to 8.5.4
+-   \[lecture/discussion\] nonparametric inferences for one- and two-sample problems
+-   \[lab\] three case studies
+
+
+**Thursday class meeting** 
+
+-   \[reading\] Vu and Harrington 5.5
+-   \[lecture/discussion\] analysis of variance
+-   \[lab\] grouped summaries; ANOVA in R
 
 ***Assignment***: HW4 due Thursday 2/29 11:59pm PST \[L9\]
 

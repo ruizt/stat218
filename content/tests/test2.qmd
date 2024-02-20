@@ -1,0 +1,24 @@
+---
+title: "Test 1"
+author: "STAT218"
+author-title: "Course"
+date: "2/10/24"
+published-title: "Due date"
+execute: 
+  echo: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+### Instructions
+
+You have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but **must complete this assignment on your own**. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers. Please use the word document provided (download from the class website) and write in your answers below each prompt. You should submit your work via Gradescope; please skip the page matching step and do not match pages to parts of the outline.
+
+The test comprises two parts: concepts, containing short multiple-choice questions; and applications, which requires some data analysis. Revisions will be allowed for the applications part, but not for the concepts part.
+
+ex0332

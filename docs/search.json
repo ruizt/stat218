@@ -4,7 +4,7 @@
     "href": "materials.html",
     "title": "Materials",
     "section": "",
-    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nReading quiz responses: [2pm section] [4pm section]\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne- and two-sample inference for numerical data\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] one-sample \\(t\\) tests \n[case study] DDT in kale \n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.1\n[lecture/discussion] interpreting hypothesis tests and understanding decision errors\n[lab] exploring decision errors\n[case study] is true body temperature 98.6F?\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [Test 1] due Saturday 2/10 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nTwo-sample and nonparametric inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.2 and 5.3\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] two-sample t tests \n[case study] evolution of Darwin’s finches \n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.4; van Belle et al. 8.4 and 8.5 up to 8.5.4\n[lecture/discussion] statistical power calculations for two-sample inference\n[lab] post hoc and study design power analyses in R\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [HW3] due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nAnalysis of variance\nAcademic holiday 2/19/24\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
+    "text": "Refer to this page for a detailed schedule of coursework and links to all materials. This information is organized by week, and you should check this page on a weekly basis for updates as the quarter progresses.\nI will aim to post/update outlines for class meetings at the beginning of each week (Monday), and update with links to relevant materials as the week progresses. So, you should look at the beginning of the week to see what’s ahead, and check back for newly posted materials before and after class meetings.\n\nPreparing for class meetings\n\nComplete readings in advance of the class meetings for which they are listed. Take notes or make annotations, and bring your notes to class.\nDownload and/or print copies of posted slides and handouts and bring these to class.\nIf a lab is indicated, it is recommended that you bring your laptop/tablet. While these are group activities and it is an option to share, you will not have direct access to your groupmates’ work after the class meeting.\n\n\n\nWeek 1 (1/8/24)\nIntroduction to statistical thinking and study designs\nTuesday class meeting [slides]\n\n[lecture/discussion] course introduction and syllabus review\n[activity] working groups and icebreakers\n[activity] orientation to posit.cloud\n\nThursday class meeting: [slides] [handout]\n\n[reading] van Belle et al. 2.1 - 2.5; Vu and Harrington 1.1\n[lecture/discussion] study designs\n[activity] distinguishing types of studies\n[case study] preventing peanut allergies\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [HW1] due Thursday 1/18 11:59pm PST [L1, L2]\n\n\nWeek 2 (1/15/24)\nAcademic holiday 1/15/24 and Monday class schedule on 1/16/24\nIntroduction to data and data types\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.2; Douglas et al. 3.1 - 3.2\n[lecture/discussion] data types and data structures\n[activity] distinguishing data types in practice\n[lab] R basics and data in R\n\nReading quiz responses: [2pm section] [4pm section]\nNo assignment this week\n\n\nWeek 3 (1/22/24)\nDescriptive statistics and graphical summaries\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.4 - 1.5; van Belle et al. 3.4\n[lecture/discussion] descriptive statistics for numerical and categorical data\n[lab] descriptive statistics in R; robustness\n[case study] functional SNPs associated with muscle strength and size (FAMuSS)\n\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 1.6\n[lecture/discussion] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[case study] FAMUSS\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: extended to next week\n\n\nWeek 4 (1/29/24)\nFoundations for inference\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.1\n[lecture/discussion] sampling and sampling distributions\n[lab] exploring sampling variability\n[case study] National health and nutrition examination survey (NHANES)\n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture/discussion] interval estimation for a population mean\n[lab] computing confidence intervals in R\n[case study] NHANES\n\nAssignment: [HW2] due Thursday 2/8 11:59pm PST [L3, L4]\n\n\nWeek 5 (2/5/24)\nOne-sample inference for numerical data\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 4.3\n[lecture/discussion] hypothesis tests for a population mean\n[lab] one-sample \\(t\\) tests \n[case study] DDT in kale \n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.1\n[lecture/discussion] interpreting hypothesis tests and understanding decision errors\n[lab] exploring decision errors\n[case study] is true body temperature 98.6F?\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [Test 1] due Saturday 2/10 11:59pm PST [L1, L2, L3]\n\n\nWeek 6 (2/12/24)\nTwo-sample inference for numerical data\nTuesday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.2 and 5.3\n[lecture/discussion] two-sample t tests and intervals for paired and independent data\n[lab] two-sample t tests \n[case study] evolution of Darwin’s finches \n\nReading quiz responses: [2pm section] [4pm section]\nThursday class meeting [slides] [lab]\n\n[reading] Vu and Harrington 5.4; van Belle et al. 8.4 and 8.5 up to 8.5.4\n[lecture/discussion] statistical power calculations for two-sample inference\n[lab] post hoc and study design power analyses in R\n\nReading quiz responses: [2pm section] [4pm section]\nAssignment: [HW3] due Thursday 2/22 11:59pm PST [L4, L5]\n\n\nWeek 7 (2/19/24)\nNonparametric tests; analysis of variance\nAcademic holiday 2/19/24\nTuesday class meeting [slides] [lab]\n\n[reading] van Belle et al. 8.4 and 8.5 up to 8.5.4\n[lecture/discussion] nonparametric inferences for one- and two-sample problems\n[lab] three case studies\n\nThursday class meeting\n\n[reading] Vu and Harrington 5.5\n[lecture/discussion] analysis of variance\n[lab] grouped summaries; ANOVA in R\n\nAssignment: HW4 due Thursday 2/29 11:59pm PST [L9]\n\n\n\nWeek 8 (2/26/24)\nInference for categorical data\nAssignment: Test 2 due Friday 3/1 11:59pm PST [L4, L5, L9]\n\n\n\nWeek 9 (3/4/24)\nSimple linear regression\n\nAssignment: HW5 due Thursday 3/14 11:59pm PST [L6, L7, L8]\n\n\nWeek 10 (3/11/24)\nSimple linear regression\n\nAssignment: Test 3 due Friday 3/15 11:59pm PST [L6, L7, L8, L10]\n\n\nFinals week (3/18/24)\nOral exams to be held during scheduled exam time"
   },
   {
     "objectID": "content/week5-moretests.html#todays-agenda",
@@ -381,8 +381,8 @@
     "objectID": "content/week6-twosample.html#todays-agenda",
     "href": "content/week6-twosample.html#todays-agenda",
     "title": "Two sample inference",
-    "section": "",
-    "text": "Reading quiz [2pm section] [4pm section]\n[lecture/lab] Two-sample inference for population means\n\nPaired data\nIndependent data\n\n[if time] Introduction to power analysis"
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nReading quiz [2pm section] [4pm section]\n[lecture/lab] Two-sample inference for population means\n\nPaired data\nIndependent data\n\n[if time] Introduction to power analysis"
   },
   {
     "objectID": "content/week6-twosample.html#from-last-time",
@@ -424,7 +424,7 @@
     "href": "content/week6-twosample.html#evolution-of-darwins-finches",
     "title": "Two sample inference",
     "section": "Evolution of Darwin’s finches",
-    "text": "Evolution of Darwin’s finches\n\n\n\nGrant, P. (1986). Ecology and Evolution of Darwin’s Finches, Princeton University Press, Princeton, N.J.\n\nPeter and Rosemary Grant caught and measured all the birds from more than 20 generations of finches on the Galapagos island of Daphne Major.\n\nsevere drought in 1977 limited food to large tough seeds\nselection pressure favoring larger and stronger beaks\nhypothesis: beak depth increased in 1978 relative to 1976\n\nHow do we test for a difference in the absence of pairing?\n\nFinch beak data:\n\n\n\n\n\n\n\n\n\nYear\nDepth\n\n\n\n\n1976\n10.5\n\n\n1976\n8.4\n\n\n1976\n9.8\n\n\n1978\n10.7\n\n\n1978\n10.3\n\n\n1978\n11.6\n\n\n\n\n\n\nVariable: Depth\nGrouping: Year\nNo pairing!"
+    "text": "Evolution of Darwin’s finches\n\n\n\nGrant, P. (1986). Ecology and Evolution of Darwin’s Finches, Princeton University Press, Princeton, N.J.\n\nPeter and Rosemary Grant caught and measured all the birds from more than 20 generations of finches on the Galapagos island of Daphne Major.\n\nsevere drought in 1977 limited food to large tough seeds\nselection pressure favoring larger and stronger beaks\nhypothesis: beak depth increased in 1978 relative to 1976\n\nHow do we test for a difference in the absence of pairing?\n\nFinch beak data:\n\n\n\n\n\n\n\n\n\nYear\nDepth\n\n\n\n\n1976\n8.9\n\n\n1976\n8.2\n\n\n1976\n6.2\n\n\n1978\n9.6\n\n\n1978\n11.1\n\n\n1978\n10.4\n\n\n\n\n\n\nVariable: Depth\nGrouping: Year\nNo pairing!"
   },
   {
     "objectID": "content/week6-twosample.html#inference-for-independent-data",
@@ -452,7 +452,7 @@
     "href": "content/week6-twosample.html#cloud-data-paired-or-independent",
     "title": "Two sample inference",
     "section": "Cloud data: paired or independent?",
-    "text": "Cloud data: paired or independent?\n\nDoes dropping silver iodide onto clouds increase rainfall?\n\n\n\nData are rainfall measurements in a target area from 26 days when clouds were seeded and 26 days when clouds were not seeded.\n\nrainfall gives volume of rainfall in acre-feet\ntreatment indicates whether clouds were seeded\n\nHypotheses to test: \\[H_0: \\mu_\\text{seeded} \\quad \\mu_\\text{unseeded}\\] \\[H_A: \\mu_\\text{seeded} \\quad \\mu_\\text{unseeded}\\]\n\n\n\n\n\n\n\n\n\n\nrainfall\ntreatment\n\n\n\n\n302.8\nSeeded\n\n\n255\nSeeded\n\n\n1698\nSeeded\n\n\n978\nSeeded\n\n\n28.6\nUnseeded\n\n\n321.2\nUnseeded\n\n\n11.5\nUnseeded\n\n\n17.3\nUnseeded"
+    "text": "Cloud data: paired or independent?\n\nDoes dropping silver iodide onto clouds increase rainfall?\n\n\n\nData are rainfall measurements in a target area from 26 days when clouds were seeded and 26 days when clouds were not seeded.\n\nrainfall gives volume of rainfall in acre-feet\ntreatment indicates whether clouds were seeded\n\nHypotheses to test: \\[H_0: \\mu_\\text{seeded} \\quad \\mu_\\text{unseeded}\\] \\[H_A: \\mu_\\text{seeded} \\quad \\mu_\\text{unseeded}\\]\n\n\n\n\n\n\n\n\n\n\nrainfall\ntreatment\n\n\n\n\n274.7\nSeeded\n\n\n115.3\nSeeded\n\n\n978\nSeeded\n\n\n7.7\nSeeded\n\n\n1\nUnseeded\n\n\n830.1\nUnseeded\n\n\n244.3\nUnseeded\n\n\n95\nUnseeded"
   },
   {
     "objectID": "content/week6-twosample.html#sleep-drugs-paired-or-independent",
@@ -480,7 +480,7 @@
     "href": "content/week6-twosample.html#the-equal-variance-t-test",
     "title": "Two sample inference",
     "section": "The equal-variance \\(t\\)-test",
-    "text": "The equal-variance \\(t\\)-test\nIf it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power (lower type II error rate) by using a different standard error:\n\\[SE_\\text{pooled}(\\bar{x} - \\bar{y}) = \\sqrt{\\frac{\\color{red}{s_p^2}}{n_x} + \\frac{\\color{red}{s_p^2}}{n_y}}\n\\quad\\text{where}\\quad \\color{red}{s_p} = \\underbrace{\\sqrt{\\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\\text{weighted average of } s_x^2 \\;\\&\\; s_y^2}\\]\nImplement by adding var.equal = T as an argument to t.test().\n\nlarger df is used, hence more frequent rejections\navoid unless you have a small sample"
+    "text": "The equal-variance \\(t\\)-test\nIf it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power (lower type II error rate) by using a different standard error:\n\\[SE_\\text{pooled}(\\bar{x} - \\bar{y}) = \\sqrt{\\frac{\\color{red}{s_p^2}}{n_x} + \\frac{\\color{red}{s_p^2}}{n_y}}\n\\quad\\text{where}\\quad \\color{red}{s_p} = \\underbrace{\\sqrt{\\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\\text{weighted average of } s_x^2 \\;\\&\\; s_y^2}\\]\nImplement by adding var.equal = T as an argument to t.test().\n\nlarger df is used, hence more frequent rejections\navoid unless you have a small sample\n\n\n\n\n\nSTAT218"
   },
   {
     "objectID": "content/hw/hw2.html",
@@ -1481,14 +1481,14 @@
     "href": "index.html",
     "title": "Applied Statistics for Life Sciences",
     "section": "",
-    "text": "Announcements\n\n\n\n\nHW3 posted\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
+    "text": "Announcements\n\n\n\n\nOutlines updated for week 7\n\n\n\nThis is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm – 4:00pm) and 06-8274 (TR 4:10pm – 6:00pm). Please note that this site does not pertain to other sections of STAT 218 (of which there are several).\nMaterial posted on this site is intended for use by currently enrolled students in the above-mentioned sections for educational purposes only, and is subject to copyright. Please do not reproduce any material on this site without permission."
   },
   {
     "objectID": "content/week6-power.html#todays-agenda",
     "href": "content/week6-power.html#todays-agenda",
     "title": "Power analyses",
-    "section": "",
-    "text": "Reading quiz [2pm section] [4pm section]\nType II errors: review and further exploration\n[lecture/lab] Power analysis\n\nSample size calculations\nPost-hoc power analyses"
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nReading quiz [2pm section] [4pm section]\nType II errors: review and further exploration\n[lecture/lab] Power analysis\n\nSample size calculations\nPost-hoc power analyses"
   },
   {
     "objectID": "content/week6-power.html#from-last-time",
@@ -1572,7 +1572,7 @@
     "href": "content/week6-power.html#two-common-power-analyses",
     "title": "Power analyses",
     "section": "Two common power analyses",
-    "text": "Two common power analyses\n\n\nPost hoc analysis: how much power does the test I conducted have if the true difference is exactly equal to my estimate?\nHelps to interpret negative results:\n\nlow power \\(\\rightarrow\\) failure to reject was likely\nhigh power \\(\\rightarrow\\) failure to reject was not likely\n\n\n\n\n\n\n\nDon’t over-interpret post-hoc analyses\n\n\n\nFailure to reject using a well-powered test does not confirm the null hypothesis.\n\n\n\nSample size determination: how much data do I need to collect to detect a difference of \\(\\delta\\) using a particular test?\nHelps avoid two potential issues:\n\ntoo little data \\(\\rightarrow\\) study not likely to yield significant results\ntoo much data \\(\\rightarrow\\) study is too likely to yield significant results"
+    "text": "Two common power analyses\n\n\nPost hoc analysis: how much power does the test I conducted have if the true difference is exactly equal to my estimate?\nHelps to interpret negative results:\n\nlow power \\(\\rightarrow\\) failure to reject was likely\nhigh power \\(\\rightarrow\\) failure to reject was not likely\n\n\n\n\n\n\n\nDon’t over-interpret post-hoc analyses\n\n\nFailure to reject using a well-powered test does not confirm the null hypothesis.\n\n\n\n\nSample size determination: how much data do I need to collect to detect a difference of \\(\\delta\\) using a particular test?\nHelps avoid two potential issues:\n\ntoo little data \\(\\rightarrow\\) study not likely to yield significant results\ntoo much data \\(\\rightarrow\\) study is too likely to yield significant results"
   },
   {
     "objectID": "content/week6-power.html#post-hoc-analysis",
@@ -1635,7 +1635,7 @@
     "href": "content/week6-power.html#power-curves",
     "title": "Power analyses",
     "section": "Power curves",
-    "text": "Power curves\n\nPower is usually construed as a curve depending on the true difference.\n\n\n\nPower curve for the test exactly as performed with the cloud seeding data:\n\n\n\n\n\n\nAll other attributes of the test are fixed to approximate the test performed:\n\nsample size \\(n = 26\\)\nsignificance level \\(\\alpha = 0.05\\)\npopulation standard deviation \\(\\sigma = 650\\) (larger of two group estimates)"
+    "text": "Power curves\n\nPower is usually construed as a curve depending on the true difference.\n\n\n\nPower curve for the test exactly as performed with the cloud seeding data:\n\n\n\n\n\n\n\n\n\n\nAll other attributes of the test are fixed to approximate the test performed:\n\nsample size \\(n = 26\\)\nsignificance level \\(\\alpha = 0.05\\)\npopulation standard deviation \\(\\sigma = 650\\) (larger of two group estimates)"
   },
   {
     "objectID": "content/week6-power.html#powersample-size-curves",
@@ -1649,7 +1649,7 @@
     "href": "content/week6-power.html#power-vs.-sample-size-curves",
     "title": "Power analyses",
     "section": "Power vs. sample size curves",
-    "text": "Power vs. sample size curves\n\n\nMinimum detectable difference at 5 levels of power as a function of sample size for a one-sided test:\n\n\n\n\n\nAssumes \\(\\sigma = 1.2\\) for a conservative estimate.\n\nThe best power achievable within budget for the target detection range is 0.7593159.\n\nincreasing power to 0.8 will require n = 112 per group\n\n$240 over budget\n\nincreasing power to 0.9 will require n = 155 per group\n\n$1050 over budget"
+    "text": "Power vs. sample size curves\n\n\nMinimum detectable difference at 5 levels of power as a function of sample size for a one-sided test:\n\n\n\n\n\n\n\n\n\nAssumes \\(\\sigma = 1.2\\) for a conservative estimate.\n\nThe best power achievable within budget for the target detection range is 0.7593159.\n\nincreasing power to 0.8 will require n = 112 per group\n\n$240 over budget\n\nincreasing power to 0.9 will require n = 155 per group\n\n$1050 over budget\n\n\n\n\n\n\n\n\nSTAT218"
   },
   {
     "objectID": "content/week6-power.html#sample-size-calculation",
@@ -1663,7 +1663,7 @@
     "href": "content/week6-power.html#power-curve-for-body-temps",
     "title": "Power analyses",
     "section": "Power curve for body temps",
-    "text": "Power curve for body temps\n\n\nAssuming we underestimated the population standard deviation a bit, the power curve for a one-sided test would look like this:\n\n\n\n\n\n\nAssumptions:\n\nn = 19 per group\n\\(\\sigma = 1.2\\) per group\nsignificance level \\(\\alpha = 0.05\\)\none-sided test\n\n\nFairly low power for alternatives near the estimated difference (dashed line), so failure to reject doesn’t strongly rule out the alternative."
+    "text": "Power curve for body temps\n\n\nAssuming we underestimated the population standard deviation a bit, the power curve for a one-sided test would look like this:\n\n\n\n\n\n\n\n\n\n\nAssumptions:\n\nn = 19 per group\n\\(\\sigma = 1.2\\) per group\nsignificance level \\(\\alpha = 0.05\\)\none-sided test\n\n\nFairly low power for alternatives near the estimated difference (dashed line), so failure to reject doesn’t strongly rule out the alternative."
   },
   {
     "objectID": "content/labs/lab9-power.html",
@@ -1706,5 +1706,285 @@
     "title": "Power analyses",
     "section": "",
     "text": "Reading quiz [2pm section] [4pm section]\nType II errors: review and further exploration\n[lecture/lab] Power analysis\n\nSample size calculations\nPost-hoc power analyses"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#todays-agenda",
+    "href": "content/week7-nonparametric.html#todays-agenda",
+    "title": "Nonparametric inference",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\n[lecture] One- and two-sample inference using ranks\n[lecture] Permutation tests\n[lab] Three applications of nonparametric tests"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#from-before",
+    "href": "content/week7-nonparametric.html#from-before",
+    "title": "Nonparametric inference",
+    "section": "From before",
+    "text": "From before\nRecall the basis for our inferential procedures (intervals/tests) so far:\n\nthe \\(t\\) model approximates the sampling distribution of the \\(T\\) statistic(s)\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is an example of a parametric approach.\n\nthe t model is parametric distribution\nwe assume it describes the frequency of values of \\(T\\) under random sampling\n\nrequires “sufficiently large” sample(s) or normal population distribution(s)"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#assumptions-underlying-t-tests",
+    "href": "content/week7-nonparametric.html#assumptions-underlying-t-tests",
+    "title": "Nonparametric inference",
+    "section": "Assumptions underlying \\(t\\) tests",
+    "text": "Assumptions underlying \\(t\\) tests"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#nonparametric-procedures",
+    "href": "content/week7-nonparametric.html#nonparametric-procedures",
+    "title": "Nonparametric inference",
+    "section": "Nonparametric procedures",
+    "text": "Nonparametric procedures\nNonparametric procedures are distribution-free in the sense that they make no assumptions about the specific form of the underlying population distribution.\n\nThis does not mean nonparametric methods are free of any assumptions whatsoever\n\nNonparametrics can provide useful alternatives in special circumstances:\n\nparametric assumptions not plausible\ninferences about population parameters besides means\nsmall-sample settings\n‘narrow’ inferences limited in scope to observed data rather than a population\n\nWe will cover two nonparametric approaches to one- and two-sample inference:\n\nRank-based procedures\nPermutation procedures"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#rank-based-procedures",
+    "href": "content/week7-nonparametric.html#rank-based-procedures",
+    "title": "Nonparametric inference",
+    "section": "Rank-based procedures",
+    "text": "Rank-based procedures\n\nRank-based procedures are inferential procedures that leverage sorted data and distributional symmetry or group exchangeability assumptions to test for location shifts.\n\nConsider the DDT data (15 measurements of DDT in kale in ppm) again. Sorted:\n\n\n2.79, 2.93, 3.06, 3.07, 3.08, 3.18, 3.22, 3.22, 3.33, 3.34, 3.34, 3.38, 3.56, 3.78 and 4.64\n\n\nSuppose you wish to test whether the ‘center’ is 3ppm. If you assume the population distribution is symmetric about c…\n\nHow many observations would you expect to be smaller than c?\nHow many observations are actually smaller than 3?\nBased on your answers to 1-2, do you think it is likely that c = 3?"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#t-tests-are-parametric",
+    "href": "content/week7-nonparametric.html#t-tests-are-parametric",
+    "title": "Nonparametric inference",
+    "section": "\\(t\\) tests are parametric",
+    "text": "\\(t\\) tests are parametric\nRecall the basis for our inferential procedures (intervals/tests) so far:\n\nthe \\(t\\) model approximates the sampling distribution of the \\(T\\) statistic(s)\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is an example of a parametric approach: it relies on a distributional assumption.\n\nthe t model is parametric distribution\n\\(T\\) exactly follows this model only when underlying population distribution(s) are normal"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#parametric-inference",
+    "href": "content/week7-nonparametric.html#parametric-inference",
+    "title": "Nonparametric inference",
+    "section": "Parametric inference",
+    "text": "Parametric inference\nRecall the basis for our inferential procedures (intervals/tests) so far:\n\nthe \\(t\\) model approximates the sampling distribution of the \\(T\\) statistic(s)\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is an example of a parametric approach: it relies on a distributional assumption.\n\nthe t model is parametric distribution\n\\(T\\) exactly follows this model only when underlying population distribution(s) are normal\n\nWhat should be done if the assumption is not plausible?"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#stuff",
+    "href": "content/week7-nonparametric.html#stuff",
+    "title": "Nonparametric inference",
+    "section": "stuff",
+    "text": "stuff\n\n\n [1] -4.6 -2.4 -1.8 -1.4 -1.3 -1.3 -1.2 -1.0 -0.8  0.0\n\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  ddt\nV = 111.5, p-value = 0.9984\nalternative hypothesis: true location is less than 3\n95 percent confidence interval:\n  -Inf 3.425\nsample estimates:\n(pseudo)median \n       3.26001 \n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#signed-ranks",
+    "href": "content/week7-nonparametric.html#signed-ranks",
+    "title": "Nonparametric inference",
+    "section": "Signed ranks",
+    "text": "Signed ranks\n\n\n\n\n\n\n\n\n\n\n\nobs.num\nddt\nddt.c\nsigned.rank\n\n\n\n\n3\n3.06\n0.06\n1\n\n\n2\n2.93\n-0.07\n-2.5\n\n\n4\n3.07\n0.07\n2.5\n\n\n5\n3.08\n0.08\n4\n\n\n6\n3.18\n0.18\n5\n\n\n1\n2.79\n-0.21\n-6\n\n\n7\n3.22\n0.22\n7.5\n\n\n8\n3.22\n0.22\n7.5\n\n\n9\n3.33\n0.33\n9\n\n\n10\n3.34\n0.34\n10.5\n\n\n11\n3.34\n0.34\n10.5\n\n\n12\n3.38\n0.38\n12\n\n\n13\n3.56\n0.56\n13\n\n\n14\n3.78\n0.78\n14\n\n\n15\n4.64\n1.64\n15"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#signed-rank-test",
+    "href": "content/week7-nonparametric.html#signed-rank-test",
+    "title": "Nonparametric inference",
+    "section": "Signed rank test",
+    "text": "Signed rank test\n\nThe signed rank test is an alternative to the one-sample t test that assumes the population distribution is symmetric to test hypotheses about its center c.\n\n\n\nHypotheses: \\[H_0: c = c_0 \\quad\\text{vs.}\\quad H_A: c \\mathrel{\\substack{&lt;\\\\\\neq\\\\ &gt;}} c_0\\] Procedure:\n\n[center] Calculate deviations \\(d_i = x_i - c_0\\)\n[rank] Sort and rank the absolute deviations \\(|d_i|\\)\n\naverage ranks in case of ties\ndrop zeros\n\n[sum] Add up the ‘signed ranks’ \\(\\text{sign}(d_i) \\times R_i\\)\n\n\nThis produces the test statistic:\n\\[V = \\sum_{i = 1}^n \\text{sign}(d_i) \\times R_i\\]\nSampling distribution found using:\n\n(exact) combinatorics\n(approximate) probability theory\n\nReject if \\(V\\) is sufficiently large in the direction of the alternative."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#illustration",
+    "href": "content/week7-nonparametric.html#illustration",
+    "title": "Nonparametric inference",
+    "section": "Illustration",
+    "text": "Illustration\n\n\nSigned rank calculations:\n\n\n# A tibble: 15 × 4\n   obs.num   ddt   ddt.c signed.rank\n     &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;\n 1      10  3.06  0.0600         1  \n 2       2  2.93 -0.0700        -2.5\n 3      11  3.07  0.0700         2.5\n 4      13  3.08  0.0800         4  \n 5       7  3.18  0.180          5  \n 6       1  2.79 -0.21          -6  \n 7       3  3.22  0.220          7.5\n 8       5  3.22  0.220          7.5\n 9       8  3.33  0.33           9  \n10       9  3.34  0.34          10.5\n11      15  3.34  0.34          10.5\n12       6  3.38  0.38          12  \n13      12  3.56  0.56          13  \n14       4  3.78  0.78          14  \n15      14  4.64  1.64          15  \n\n\n\n\n\n\n\n\n\nsign\nV\n\n\n\n\nnegative\n-8.5\n\n\npositive\n111.5\n\n\nboth\n103"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#illustration-ddt-data",
+    "href": "content/week7-nonparametric.html#illustration-ddt-data",
+    "title": "Nonparametric inference",
+    "section": "Illustration: DDT data",
+    "text": "Illustration: DDT data\n\n\nSigned rank calculations:\n\n\n# A tibble: 15 × 4\n   obs.num   ddt   ddt.c signed.rank\n     &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;\n 1      10  3.06  0.0600         1  \n 2       2  2.93 -0.0700        -2.5\n 3      11  3.07  0.0700         2.5\n 4      13  3.08  0.0800         4  \n 5       7  3.18  0.180          5  \n 6       1  2.79 -0.21          -6  \n 7       3  3.22  0.220          7.5\n 8       5  3.22  0.220          7.5\n 9       8  3.33  0.33           9  \n10       9  3.34  0.34          10.5\n11      15  3.34  0.34          10.5\n12       6  3.38  0.38          12  \n13      12  3.56  0.56          13  \n14       4  3.78  0.78          14  \n15      14  4.64  1.64          15  \n\n\nProcedure:\n\nCenter observations\nRank absolute deviations\nSum signed ranks\n\n\nHypotheses:\n\\[H_0: c = 3 \\quad\\text{vs}\\quad H_A: c &gt; 3\\]\nTest statistic:\n\n\n\n\n\n\n\n\n\nsign\nsum\n\n\n\n\nnegative\n-8.5\n\n\npositive\n111.5\n\n\n\n103\n\n\n\n\n\nThere are 32768 possible sign combinations; of these, only about 0.18% give a larger value of \\(V\\).\n\n\\(p = 0.0018 &lt; 0.05 \\;\\Rightarrow\\; \\text{reject } H_0\\)"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#signed-rank-test-in-r",
+    "href": "content/week7-nonparametric.html#signed-rank-test-in-r",
+    "title": "Nonparametric inference",
+    "section": "Signed rank test in R",
+    "text": "Signed rank test in R\nThe implementation in R looks and functions much like t.test:\n\n\n\n# signed rank test\nwilcox.test(ddt, mu = 3, \n            alternative = 'greater',\n            conf.int = T)\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  ddt\nV = 111.5, p-value = 0.001876\nalternative hypothesis: true location is greater than 3\n95 percent confidence interval:\n 3.135002      Inf\nsample estimates:\n(pseudo)median \n       3.26001 \n\n\n\nreports the sum of positive signed ranks\n\\(p\\) value is approximate with ties or zeros\npseudo-median (\\(\\neq\\) median) is a measure of center\n\n\nThe technically accurate interpretation is given in terms of “center”:\n\nThe data provide strong evidence against the null hypothesis that the center of the distribution of DDT in kale is 3ppm in favor of the alternative hypothesis that the center exceeds 3ppm (signed rank test, p = 0.001876)."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#paired-differences",
+    "href": "content/week7-nonparametric.html#paired-differences",
+    "title": "Nonparametric inference",
+    "section": "Paired differences",
+    "text": "Paired differences\n\nFor paired differences, the signed rank test tests for a difference in location between the groups.\n\nThe test assumes that both population distributions are symmetric and tests the hypotheses:\n\\[H_0: c_1 = c_2 \\quad\\text{vs}\\quad H_A: c_1 \\mathrel{\\substack{&lt;\\\\\\neq\\\\ &gt;}} c_2\\]\n\n\\(c_1\\) is the center of group/population 1\n\\(c_2\\) is the center of group/population 2"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#rank-sum-test",
+    "href": "content/week7-nonparametric.html#rank-sum-test",
+    "title": "Nonparametric inference",
+    "section": "Rank sum test",
+    "text": "Rank sum test\n\nThe rank-sum test is a two-sample rank-based inference procedure that tests for a difference in location from independent samples.\n\nKey idea: if observations in both groups come from the same population distribution, then they should be exchangeable (i.e., groupings don’t matter).\n\n\nAssumptions:\n\nobservations are independent\nthe populations differ only by location\n\nHypotheses:\n\\[H_0: c_1 = c_2\\quad\\text{vs}\\quad H_A: c_1 \\mathrel{\\substack{&lt;\\\\\\neq\\\\&gt;}} c_2\\]\n\nProcedure:\n\n[pool] Combine observations from both groups\n[rank] Sort and rank pooled observations\n[sum] Add up ranks in the smaller group\n\nReject if the sum is larger/smaller than expected."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#rank-sum-test-in-r",
+    "href": "content/week7-nonparametric.html#rank-sum-test-in-r",
+    "title": "Nonparametric inference",
+    "section": "Rank sum test in R",
+    "text": "Rank sum test in R\nThe wilcox.test function also implements the rank sum test.\n\n\n\nwilcox.test(delta ~ sunspot.activity, data = cancer, \n            mu = 0, alternative = 'greater', \n            conf.int = T)\n\n\n    Wilcoxon rank sum exact test\n\ndata:  delta by sunspot.activity\nW = 270, p-value = 8.182e-06\nalternative hypothesis: true location shift is greater than 0\n95 percent confidence interval:\n 0.2693557       Inf\nsample estimates:\ndifference in location \n              0.455014 \n\n\n\n\\(p\\)-value gives the percentage of possible rank allocations among the groups for which the rank sum is at least as favorable to \\(H_A\\)\n\ncomputed by combinatorics\nsubject to minima depending on sample sizes\n\n\n\n\nThe data provide strong evidence against the hypothesis that the distribution of deviations from expected cancer rates in Connecticut does not differ according to sunspot activity in favor of a positive location shift associated with high sunspot activity (rank sum test, \\(p &lt; 0.0001\\))."
+  },
+  {
+    "objectID": "content/tests/test1-soln.html",
+    "href": "content/tests/test1-soln.html",
+    "title": "Test 1",
+    "section": "",
+    "text": "[L2] Which of the following is an example of an experimental intervention?\n\nContacting prospective study participants during recruitment\nContacting study participants for follow-up surveys\nOffering study participants an incentive, such as a gift card\nAllocating different stimuli to study participants\n\nAnswer: D\n[L1] Suppose you wish to conduct a study involving a survey of California residents. Which of the following sampling schemes would identify a random sample from the target population?\n\nPhysically visit CVS stores around the state of California and survey shoppers at random\nObtain a list of all residential addresses, use a computer to draw 5,000 at random, and mail your survey to each selected address\nObtain a list of all residential addresses, use a computer to draw 5,000 at random, and recruit volunteers to physically visit each selected address\nGenerate a large number of random phone numbers with California area codes and send text messages to every generated number.\n\nAnswer: B, C\n[L1] Suppose you read a study wherein 300 people with a self-reported history of substance abuse and 200 people without any such history are surveyed to determine how many experienced adverse events in childhood, and the study finds that a much higher proportion of those with substance abuse histories report adverse childhood experiences than those without substance abuse histories. Identify the study type.\n\nRetrospective\nProspective\nExperiment\nCohort study\n\nAnswer: A\n\nThe next two questions are based on the figure below, which shows deaths among residents in Virginia in 1940 by age bracket and demographic.\n\n\n\n\n\n\n\n\n\n\n[L3] Which age group has the highest death rate?\n\n50-54\n55-59\n60-64\n65-69\n70-74\ncan’t tell\n\nAnswer: F\n[L3] For which age group do urban women account for the highest proportion of deaths?\n\n50-54\n55-59\n60-64\n65-69\n70-74\ncan’t tell\n\nAnswer: D\n[L4] A 95% confidence interval for the diameter in inches of black cherry trees estimated from 31 observations made on felled trees is (12.097, 14.399). Select the correct interpretation of this estimate:\n\nWith 95% probability, the diameter of black cherry trees is between 12.097 and 14.399.\nWith 95% confidence, the diameter of black cherry trees is between 12.097 and 14.399 inches.\nWith 95% confidence, the mean diameter of black cherry trees is between 12.097 and 14.399.\nWith 95% confidence, the mean diameter of black cherry trees is between 12.097 and 14.399 inches.\n\nAnswer: D\n[L4] From the interval in the previous question, determine the point estimate for the population mean.\n\n2.3\n13.2\n14.5\n12.1\ncan’t tell\n\nAnswer: B\n\nThe next three questions relate to the following data on in-state tuition in dollars from a sample of 50 public and private colleges. Note that 1e+04 indicates ten thousand dollars, 2e+04 indicates twenty thousand, and so on.\n\n\n\n\n\n\n\n\n\n\n[L3] Describe the shape of the distribution.\n\nLeft-skewed\nRight-skewed\nSymmetric\nNone of the above\n\nAnswer: B\n[L3] The sample mean is 17781 dollars. Identify below the median.\n\n13852\n17501\n19307\n8000\nnone of the above\n\nAnswer: A\n[L3] Which measure of spread should be used to describe this data?\n\nStandard deviation\nInterquartile range\nRange\nNone of the above\n\nAnswer: B"
+  },
+  {
+    "objectID": "content/tests/test1-soln.html#part-i-concepts",
+    "href": "content/tests/test1-soln.html#part-i-concepts",
+    "title": "Test 1",
+    "section": "",
+    "text": "[L2] Which of the following is an example of an experimental intervention?\n\nContacting prospective study participants during recruitment\nContacting study participants for follow-up surveys\nOffering study participants an incentive, such as a gift card\nAllocating different stimuli to study participants\n\nAnswer: D\n[L1] Suppose you wish to conduct a study involving a survey of California residents. Which of the following sampling schemes would identify a random sample from the target population?\n\nPhysically visit CVS stores around the state of California and survey shoppers at random\nObtain a list of all residential addresses, use a computer to draw 5,000 at random, and mail your survey to each selected address\nObtain a list of all residential addresses, use a computer to draw 5,000 at random, and recruit volunteers to physically visit each selected address\nGenerate a large number of random phone numbers with California area codes and send text messages to every generated number.\n\nAnswer: B, C\n[L1] Suppose you read a study wherein 300 people with a self-reported history of substance abuse and 200 people without any such history are surveyed to determine how many experienced adverse events in childhood, and the study finds that a much higher proportion of those with substance abuse histories report adverse childhood experiences than those without substance abuse histories. Identify the study type.\n\nRetrospective\nProspective\nExperiment\nCohort study\n\nAnswer: A\n\nThe next two questions are based on the figure below, which shows deaths among residents in Virginia in 1940 by age bracket and demographic.\n\n\n\n\n\n\n\n\n\n\n[L3] Which age group has the highest death rate?\n\n50-54\n55-59\n60-64\n65-69\n70-74\ncan’t tell\n\nAnswer: F\n[L3] For which age group do urban women account for the highest proportion of deaths?\n\n50-54\n55-59\n60-64\n65-69\n70-74\ncan’t tell\n\nAnswer: D\n[L4] A 95% confidence interval for the diameter in inches of black cherry trees estimated from 31 observations made on felled trees is (12.097, 14.399). Select the correct interpretation of this estimate:\n\nWith 95% probability, the diameter of black cherry trees is between 12.097 and 14.399.\nWith 95% confidence, the diameter of black cherry trees is between 12.097 and 14.399 inches.\nWith 95% confidence, the mean diameter of black cherry trees is between 12.097 and 14.399.\nWith 95% confidence, the mean diameter of black cherry trees is between 12.097 and 14.399 inches.\n\nAnswer: D\n[L4] From the interval in the previous question, determine the point estimate for the population mean.\n\n2.3\n13.2\n14.5\n12.1\ncan’t tell\n\nAnswer: B\n\nThe next three questions relate to the following data on in-state tuition in dollars from a sample of 50 public and private colleges. Note that 1e+04 indicates ten thousand dollars, 2e+04 indicates twenty thousand, and so on.\n\n\n\n\n\n\n\n\n\n\n[L3] Describe the shape of the distribution.\n\nLeft-skewed\nRight-skewed\nSymmetric\nNone of the above\n\nAnswer: B\n[L3] The sample mean is 17781 dollars. Identify below the median.\n\n13852\n17501\n19307\n8000\nnone of the above\n\nAnswer: A\n[L3] Which measure of spread should be used to describe this data?\n\nStandard deviation\nInterquartile range\nRange\nNone of the above\n\nAnswer: B"
+  },
+  {
+    "objectID": "content/tests/test1-soln.html#part-ii-applications",
+    "href": "content/tests/test1-soln.html#part-ii-applications",
+    "title": "Test 1",
+    "section": "Part II: applications",
+    "text": "Part II: applications\n\nDiets and chick weights\nThe following data come from a study investigating the early growth of chicks on different diets. In the study, 47 chicks were randomly assigned one of four diets at birth and researchers measured body weight in grams daily. The data below show body weights at 18 days since birth for each chick. The question of interest is: which diet is best?\n\n# read in data\nchick &lt;- read.csv('data/chick.csv')\n\n# preview\nhead(chick)\n\n\n[L2] Is this observational or experimental data? Explain your reasoning.\n\nExperimental. Researchers allocated diets at random to the chicks, which is an experimental intervention in the relevant sense.\n\n[L3] Produce a visualization that compares body weight distributions by diet. For which diet have chicks grown the most? The least? Explain the statistic(s) or features of the distribution you used to make this determination.\n\n\nboxplot(weight ~ diet, data = chick, xlab = '', ylab = 'weight (g)')\n\n\n\n\n\n\n\n\nBased on the boxplots, chicks grew the most on diet 3 and the least on diet 1. This is most easily seen by comparing medians (central bar in each box), but also reflected in the other quartiles.\n\n[L3] Calculate point estimates and standard errors for the mean body weight at 18 days after birth on each diet.\n\n\nlibrary(tidyverse)\nchick |&gt;\n  group_by(diet) |&gt;\n  summarize(avg.weight = mean(weight),\n            se = sd(weight)/sqrt(n())) |&gt;\n  pander::pander()\n\n\n\n\n\n\n\n\n\ndiet\navg.weight\nse\n\n\n\n\ndiet 1\n158.9\n11.94\n\n\ndiet 2\n187.7\n20.03\n\n\ndiet 3\n233.1\n18.21\n\n\ndiet 4\n202.9\n10.61\n\n\n\n\n\n\n[L2] Assume that in the previous question you found that chicks on diet 3 grew the most, regardless of your actual answer. Can you conclude that diet 3 caused the fastest growth? Explain why or why not.\n\nYes. Since the diets were randomly allocated, no additional factors can be confounded with diet. Therefore, estimated differences in growth are due to the effect of diet.\n\n[L4] Calculate a 95% confidence interval for the mean body weight of chicks on diet 3 at 18 days after birth. Interpret the interval in context.\n\nWith 95% confidence, the mean body weight of a chick on diet 3 at 18 days after birth is estimated to be between 191.9043713 and 274.2956287 grams.\n\n\nGSS data\nThe General Social Survey (GSS) is an effort to measure behaviors, opinions, and demographics of Americans and has been conducted annually since 1972. The data below are observations of a small collection of variables for 500 respondents from across several survey years.\n\n# import GSS data\ngss &lt;- read.csv('data/gss.csv')\n\n# preview\nhead(gss)\n\n\n[L3] Make a histogram of the weekly hours worked and describe the shape and modality. Choose an appropriate number of breaks.\n\n\nhist(gss$weekly.hours.worked, breaks = 20,\n     main = '', xlab = 'weekly hours', ylab = 'frequency')\n\n\n\n\n\n\n\n\nThe breaks chosen should make apparent the relatively high frequency of ~40 hour weeks compared with all other hours.\n\n[L3] What is the 20th percentile of weekly hours worked among respondents? What is the 80th percentile?\n\n\nquantile(gss$weekly.hours.worked, probs = c(0.2, 0.8)) |&gt; \n  pander::pander()\n\n\n\n\n\n\n\n\n20%\n80%\n\n\n\n\n30.8\n50\n\n\n\n\n\n\n[L3] Compute a point estimate of the mean hours worked. Report the estimate and its standard error.\n\nThe mean weekly hours worked is estimated to be 41.382 (SE = 0.6627689).\n\n[L4] Produce and interpret an 85% confidence interval for the mean weekly hours worked.\n\nWith 85% confidence, the mean weekly hours worked is estimated to be between 40.4264524 and 42.3375476.\n\n[L3] Use an appropriate graphical summary to assess whether mean hours worked seems to differ by class. Explain the plot you produce and interpret any patterns observed.\n\n\nboxplot(weekly.hours.worked ~ class, \n        data = gss, \n        range = 2,\n        xlab = '')\n\n\n\n\n\n\n\n\nThe boxplot shows some slight differences by class. The nost notable difference is lower class compared with all others, as the interquartile range for lower class hours worked is almost entirely below the central value of 40. Most likely, class definitions include hours worked either directly or indirectly (e.g., through accounting for income), so the observed differences are not especially straightforward to interpret or necessarily meaningful.\n\n[L3] Make any additional bivariate comparison addressing a question of your choice. State the question in non-technical terms, produce a visualization that conveys the comparison, and interpret any patterns observed."
+  },
+  {
+    "objectID": "content/tests/test2.html",
+    "href": "content/tests/test2.html",
+    "title": "Test 1",
+    "section": "",
+    "text": "Instructions\nYou have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but must complete this assignment on your own. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers. Please use the word document provided (download from the class website) and write in your answers below each prompt. You should submit your work via Gradescope; please skip the page matching step and do not match pages to parts of the outline.\nThe test comprises two parts: concepts, containing short multiple-choice questions; and applications, which requires some data analysis. Revisions will be allowed for the applications part, but not for the concepts part.\nex0332"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#minimum-p-values",
+    "href": "content/week7-nonparametric.html#minimum-p-values",
+    "title": "Nonparametric inference",
+    "section": "Minimum \\(p\\) values",
+    "text": "Minimum \\(p\\) values\nThe \\(p\\) value for the test is the proportion of all possible sign combinations that yield a \\(V\\) larger/smaller than observed.\n\n\n\n\n\n\n\n\n\n\n\n\n\nfewer sign combinations for few observations\nsmallest possible \\(p\\) value depends on sample size\ndon’t expect small p-values in small-\\(n\\) settings"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#paired-difference-example",
+    "href": "content/week7-nonparametric.html#paired-difference-example",
+    "title": "Nonparametric inference",
+    "section": "Paired difference example",
+    "text": "Paired difference example\n\n\n\nIs drug 2 more effective than drug 1?\n\nFirst few observations of sleep data:\n\n\n\n\n\n\n\n\n\n\n\nID\ndrug1\ndrug2\ndiff\n\n\n\n\n1\n0.7\n1.9\n-1.2\n\n\n2\n-1.6\n0.8\n-2.4\n\n\n3\n-0.2\n1.1\n-1.3\n\n\n4\n-1.2\n0.1\n-1.3\n\n\n\n\n\nThe signed rank test will test for a difference in location, assuming that the pairwise differences are symmetric about some central point.\n\nHypotheses:\n\\[\\begin{cases} H_0: c_\\text{drug1} = c_\\text{drug2} \\\\\nH_A: c_\\text{drug1} &lt; c_\\text{drug2}\n\\end{cases}\\]\n\nwilcox.test(sleep.diffs, mu = 0,\n            alternative = 'less',\n            conf.int = T)\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  sleep.diffs\nV = 0, p-value = 0.004545\nalternative hypothesis: true location is less than 0\n95 percent confidence interval:\n      -Inf -1.149967\nsample estimates:\n(pseudo)median \n     -1.400031 \n\n\nAside: what does \\(V = 0\\) mean?"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#checking-assumptions",
+    "href": "content/week7-nonparametric.html#checking-assumptions",
+    "title": "Nonparametric inference",
+    "section": "Checking assumptions",
+    "text": "Checking assumptions\n\nFor the signed rank test, the underlying distribution is assumed to be symmetric.\n\nCheck the symmetry assumption graphically using histograms.\n\nIt can be tricky with small sample sizes; don’t be too sensitive to asymmetries. Both of these are acceptable."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#your-turn",
+    "href": "content/week7-nonparametric.html#your-turn",
+    "title": "Nonparametric inference",
+    "section": "Your turn",
+    "text": "Your turn\n\nIs the rank sum test appropriate for comparing centers?\n\n\n\nOut-of-state tuition costs from 26 public and 26 private universities.\n\n\n\n\n\n\n\n\n\n\nDeviations from expected cancer rates in CT in years with high and low sunspot activity."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#example-tuition",
+    "href": "content/week7-nonparametric.html#example-tuition",
+    "title": "Nonparametric inference",
+    "section": "Example: tuition",
+    "text": "Example: tuition\n\n\nBelow are out-of-state tuition costs from 26 public and 26 private universities.\n\n\n\n\n\n\n\n\n\n\nBelow are deviations from expected cancer rates in years with high and low sunspot activity.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#examples",
+    "href": "content/week7-nonparametric.html#examples",
+    "title": "Nonparametric inference",
+    "section": "Examples",
+    "text": "Examples\n\nIs the rank sum test appropriate for comparing centers?\n\n\n\nOut-of-state tuition costs from 26 public and 26 private universities.\n\n\n\n\n\n\n\n\n\n\nDeviations from expected cancer rates in CT in years with high and low sunspot activity."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#in-practice",
+    "href": "content/week7-nonparametric.html#in-practice",
+    "title": "Nonparametric inference",
+    "section": "In practice",
+    "text": "In practice\n\nIs the rank sum test appropriate for comparing centers?\n\n\n\nOut-of-state tuition costs from 26 public and 26 private universities.\n\n\n\n\n\n\n\n\n\n\nDeviations from expected cancer rates in CT in years with high and low sunspot activity."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#calibrate-your-eyes",
+    "href": "content/week7-nonparametric.html#calibrate-your-eyes",
+    "title": "Nonparametric inference",
+    "section": "Calibrate your eyes",
+    "text": "Calibrate your eyes\n\nIs the rank sum test appropriate for comparing centers?\n\n\n\nOut-of-state tuition costs from 26 public and 26 private universities.\n\n\n\n\n\n\n\n\n\n\nDeviations from expected cancer rates in CT in years with high and low sunspot activity."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#checking-assumptions-1",
+    "href": "content/week7-nonparametric.html#checking-assumptions-1",
+    "title": "Nonparametric inference",
+    "section": "Checking assumptions",
+    "text": "Checking assumptions\n\nThe assumption for the rank sum test is that the distributions differ only by location.\n\nIf this is true, histograms should have the same shape and modes.\n\nIn all of these cases, there is a (true) difference in location.\n\nif shape differs too much, the rank sum test should not be used\ncan be hard to tell with small samples"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#use-heuristics-for-rank-procedures",
+    "href": "content/week7-nonparametric.html#use-heuristics-for-rank-procedures",
+    "title": "Nonparametric inference",
+    "section": "Use heuristics for rank procedures",
+    "text": "Use heuristics for rank procedures\nConsider a rank-based procedure if…\n\nsample sizes are small\nyou want to test for a location shift\n\nOnce you’ve decided to consider a rank test…\n\nDetermine test type (one-sample, paired, two-sample)\nCheck symmetry/similarity assumption graphically\nPerform test"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#permutation-tests",
+    "href": "content/week7-nonparametric.html#permutation-tests",
+    "title": "Nonparametric inference",
+    "section": "Permutation tests",
+    "text": "Permutation tests\n\nPermutation tests are two-sample procedures that provide highly flexible alternatives to parametric tests based on exchangeability.\n\nKey idea: if there is no difference between groups/populations, observations are exchangeable between groups.\n\n\nProcedure:\n\nRandomly shuffle group assignments among the observations.\nCalculate any group comparison.\nRepeat many times.\nCalculate proportion of shufflings for which the comparison is at least as large as the observed comparison in the direction of the alternative\n\n\nPermutation tests for differences in means are implemented by permTS().\n\npermTS(OutOfState ~ Type, data = ex0332, \n       alternative = 'greater')\n\n\n    Permutation Test using Asymptotic Approximation\n\ndata:  OutOfState by Type\nZ = 3.0644, p-value = 0.001091\nalternative hypothesis: true mean Type=Private - mean Type=Public is greater than 0\nsample estimates:\nmean Type=Private - mean Type=Public \n                            12219.08"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#when-to-use-permutation-tests",
+    "href": "content/week7-nonparametric.html#when-to-use-permutation-tests",
+    "title": "Nonparametric inference",
+    "section": "When to use permutation tests",
+    "text": "When to use permutation tests\nThere are three main situations where permutation tests are recommended over \\(t\\) tests:\n\nSmall sample sizes\nYou wish to make inferences about an unusual parameter (e.g. median) or function (e.g. ratio of means)\nYou wish to make “narrow” inference about the likelihood of observing the group difference you obtained given the exact observations in your samples.\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#lab-two-end-to-end-analyses",
+    "href": "content/week7-nonparametric.html#lab-two-end-to-end-analyses",
+    "title": "Nonparametric inference",
+    "section": "Lab: two end-to-end analyses",
+    "text": "Lab: two end-to-end analyses\n\n\nCholesterol data:\n\n\n\n\n\n\n\n\n\nDiet\nCholesterol\n\n\n\n\nCORNFLK\n4.61\n\n\nOATBRAN\n3.84\n\n\nCORNFLK\n6.42\n\n\nOATBRAN\n5.57\n\n\n\n\n\nZinc and dietary supplements:\n\n\n\n\n\n\n\n\n\nGroup\nZinc\n\n\n\n\nA\n1.31\n\n\nA\n1.45\n\n\nA\n1.12\n\n\nA\n1.16\n\n\n\n\n\n\nQuestions:\n\nAre zinc concentrations (mg/ml) in the blood of rats lower among those that received a dietary supplement (group A) compared with those that did not receive the supplement group (B)?\nIs there a difference in cholesterol associated with consuming oat bran compared with consuming corn flakes?\n\nYour task, for each dataset:\n\nDetermine the appropriate nonparametric test\nPerform the test\nPrepare a written interpretation of the result\n\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#lab-three-end-to-end-analyses",
+    "href": "content/week7-nonparametric.html#lab-three-end-to-end-analyses",
+    "title": "Nonparametric inference",
+    "section": "Lab: three end-to-end analyses",
+    "text": "Lab: three end-to-end analyses\n\n\nCholesterol data:\n\n\n\n\n\n\n\n\n\nDiet\nCholesterol\n\n\n\n\nCORNFLK\n4.61\n\n\nOATBRAN\n3.84\n\n\n\n\n\nZinc and dietary supplements:\n\n\n\n\n\n\n\n\n\nGroup\nZinc\n\n\n\n\nA\n1.31\n\n\nA\n1.45\n\n\n\n\n\nSleep data:\n\n\n\n\n\n\n\n\n\n\n\nID\n1\n2\ndiff\n\n\n\n\n1\n0.7\n1.9\n-1.2\n\n\n2\n-1.6\n0.8\n-2.4\n\n\n\n\n\n\nQuestions:\n\nAre zinc concentrations (mg/ml) in the blood of rats lower among those that received a dietary supplement (group A) compared with those that did not receive the supplement group (B)?\nIs there a difference in cholesterol associated with consuming oat bran compared with consuming corn flakes?\nDoes drug 2 produce more than 1 hour of additional sleep compared with drug 1?\n\nYour task, for each dataset, is to (a) determine and perform the appropriate nonparametric test and (b) interpret the result accurately.\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/labs/lab10-nonparametric.html",
+    "href": "content/labs/lab10-nonparametric.html",
+    "title": "Lab 10: nonparametric inference",
+    "section": "",
+    "text": "The goal of this lab is to learn how and when to implement nonparametric alternatives to one- and two-sample \\(t\\) tests. There are three alternatives we will consider:\nWe will illustrate the implementation of these tests using the following datasets:\n# load example datasets\nddt &lt;- MASS::DDT\nsleep &lt;- read.csv('data/sleep.csv')\nload('data/cancer.RData')\nTo determine whether the rank procedures are appropriate, histograms should be inspected for:\nExamples of these histograms are shown below for each dataset.\n# for one-sample inference, check histogram for symmetry\nhist(ddt, breaks = 5)\n\n\n\n\n\n\n\n# for paired inference, check histogram *of differences* for symmetry\nhist(sleep$diff, breaks = 10)\n\n\n\n\n\n\n\n# for two-sample inference, check groupwise histograms for similar shape\npar(mfrow = c(1, 2))\nhist(cancer$delta[cancer$sunspot.activity == 'High'], main = 'high activity', xlab = 'delta')\nhist(cancer$delta[cancer$sunspot.activity == 'Low'], main = 'low activity', xlab = 'delta')\nNotice that due to the small sample sizes, symmetry/similarity is hard to assess. As a result, you should only look for obviously asymmetric/different shapes. Each of these is acceptable.\nThe signed rank test and rank sum tests are implemented using wilcox.test().\n# signed rank test\nwilcox.test(ddt, mu = 3, alternative = 'greater')\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  ddt\nV = 111.5, p-value = 0.001876\nalternative hypothesis: true location is greater than 3\n\n# signed rank test, paired differences\nwilcox.test(sleep$diff, mu = 0, alternative = 'less')\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  sleep$diff\nV = 0, p-value = 0.004545\nalternative hypothesis: true location is less than 0\n\n# rank sum test\nwilcox.test(delta ~ sunspot.activity, data = cancer, alternative = 'greater')\n\n\n    Wilcoxon rank sum exact test\n\ndata:  delta by sunspot.activity\nW = 270, p-value = 8.182e-06\nalternative hypothesis: true location shift is greater than 0\nPermutation tests, by contrast, are implemented using permTS(). Note that these are only applicable for two-sample inference with independent (i.e., not paired) data.\n# permutation test\nlibrary(perm)\npermTS(delta ~ sunspot.activity, data = cancer, alternative = 'greater')\n\n\n    Permutation Test using Asymptotic Approximation\n\ndata:  delta by sunspot.activity\nZ = 3.8143, p-value = 6.829e-05\nalternative hypothesis: true mean sunspot.activity=High - mean sunspot.activity=Low is greater than 0\nsample estimates:\nmean sunspot.activity=High - mean sunspot.activity=Low \n                                             0.4433333\nPermutation tests provide an alternative nonparametric inference procedure with minimal assumptions."
+  },
+  {
+    "objectID": "content/labs/lab10-nonparametric.html#sleep-data-revisited",
+    "href": "content/labs/lab10-nonparametric.html#sleep-data-revisited",
+    "title": "Lab 10: nonparametric inference",
+    "section": "Sleep data revisited",
+    "text": "Sleep data revisited\nTo start, let’s extend the sleep data example above by trying something a little different than usual. Notice that the estimated difference in means is -1.58, and every subject experienced more extra sleep on drug 2.\nCan you work out how to test, using a rank procedure, whether drug 2 is associated with at least one more hour of extra sleep than drug 1?\nWrite the hypotheses, perform the test, and interpret the result.\n\n# use rank procedure to test whether difference exceeds 1 hour\n\nThis is not a scenario specific to nonparametric methods, but just an exercise in testing a less typical set of hypotheses with paired data.\nOnce you’ve determined and performed your test, write a short report interpreting the result."
+  },
+  {
+    "objectID": "content/labs/lab10-nonparametric.html#cholesterol-and-cereal",
+    "href": "content/labs/lab10-nonparametric.html#cholesterol-and-cereal",
+    "title": "Lab 10: nonparametric inference",
+    "section": "Cholesterol and cereal",
+    "text": "Cholesterol and cereal\nYour goal is to test whether cereal is associated with a difference in cholesterol using a nonparametric method.\nUse an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.\n\n# load cholesterol data\ncholesterol &lt;- read.csv('data/cholesterol.csv')\n\n# check assumptions\n\n# determine and perform appropriate test\n\nOnce you’ve determined and performed your test, write a short report interpreting the result."
+  },
+  {
+    "objectID": "content/labs/lab10-nonparametric.html#zinc-and-dietary-supplements",
+    "href": "content/labs/lab10-nonparametric.html#zinc-and-dietary-supplements",
+    "title": "Lab 10: nonparametric inference",
+    "section": "Zinc and dietary supplements",
+    "text": "Zinc and dietary supplements\nYour goal is to test whether taking a dietary supplement lowers zinc concentrations among rats using the following data.\n\n# load cholesterol data\nzinc &lt;- Sleuth3::ex0125\nhead(zinc, 3)\n\n  Group Zinc\n1     A 1.31\n2     A 1.45\n3     A 1.12\n\n\nThe data come from an experiment in which 39 rats were randomly assigned a dietary supplement (group A) or no dietary supplement (group B). After a period of time, the zinc concentration in each rat’s blood was measured.\nUse an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.\n\n# check assumptions\n\n# determine and perform appropriate test\n\nOnce you’ve determined and performed your test, write a short report interpreting the result."
+  },
+  {
+    "objectID": "content/week7-nonparametric.html",
+    "href": "content/week7-nonparametric.html",
+    "title": "Nonparametric inference",
+    "section": "",
+    "text": "[lecture] One- and two-sample inference using ranks\n[lecture] Permutation tests\n[lab] Three applications of nonparametric tests"
+  },
+  {
+    "objectID": "content/week7-nonparametric.html#remark",
+    "href": "content/week7-nonparametric.html#remark",
+    "title": "Nonparametric inference",
+    "section": "Remark",
+    "text": "Remark\n\nAvoid over-interpreting one summary/graphic by checking alternatives\n\n\n\n\n\n\n\n\n\n\n\n\n\ncommon error: “republicans had larger households”"
   }
 ]

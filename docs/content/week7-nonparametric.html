@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
-  <title>STAT218 - Power analyses</title>
+  <title>STAT218 - Nonparametric inference</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -399,8 +399,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Power analyses</h1>
-  <p class="subtitle">Post hoc power analyses and determination of sample sizes for study design</p>
+  <h1 class="title">Nonparametric inference</h1>
+  <p class="subtitle">Alternatives to one- and two-sample <em>t</em> tests</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -409,611 +409,636 @@
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
 <ol type="1">
-<li><p>Reading quiz [<a href="https://forms.office.com/r/URwE52tFbU">2pm section</a>] [<a href="https://forms.office.com/r/V1U6QVAQDP">4pm section</a>]</p></li>
-<li><p>Type II errors: review and further exploration</p></li>
-<li><p>[lecture/lab] Power analysis</p>
-<ol type="a">
-<li>Sample size calculations</li>
-<li>Post-hoc power analyses</li>
-</ol></li>
+<li>[lecture] One- and two-sample inference using ranks</li>
+<li>[lecture] Permutation tests</li>
+<li>[lab] Three applications of nonparametric tests</li>
 </ol>
 </section>
-<section id="a-thought-experiment" class="slide level2">
-<h2>A thought experiment</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p>Suppose that for the cloud data you’d performed a two-sided test: <span class="math display">\[H_0: \mu_\text{seeded} = \mu_\text{unseeded}\]</span> <span class="math display">\[H_A: \mu_\text{seeded} \neq \mu_\text{unseeded}\]</span></p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  Rainfall by Treatment
-t = 1.9982, df = 33.855, p-value = 0.05377
-alternative hypothesis: true difference in means between group Seeded and group Unseeded is not equal to 0
-95 percent confidence interval:
-  -4.764295 559.556603
-sample estimates:
-  mean in group Seeded mean in group Unseeded 
-              441.9846               164.5885 </code></pre>
-</div>
-</div>
-<p><em>Almost</em> below the significance threshold but not quite.</p>
-</div><div class="column" style="width:55%;">
+<section id="remark" class="slide level2">
+<h2>Remark</h2>
 <blockquote>
-<p>The data <strong>do not provide sufficient evidence to reject</strong> the null hypothesis that seeding has no effect relative to the alternative of an increase or decrease in mean rainfall due to seeding (<em>T</em> = 1.998 on 33.86 degrees of freedom, <em>p</em> = 0.05377).</p>
-</blockquote>
-<p>The point estimate for the difference is 277.4 acre-feet.</p>
-<ul>
-<li>The test says this observed difference could plausibly be due to sampling variation</li>
-<li>But is it also plausible that our test result is wrong if the difference is real?</li>
-</ul>
-<!-- - So how should we interpret the finding of a positive but not statistically significant difference? Could the difference be real? -->
-<!-- - What is the likelihood that the difference is real, despite our test result? -->
-<!-- > Did we make a type II error? -->
-</div>
-</div>
-</section>
-<section id="type-ii-error-rates" class="slide level2">
-<h2>Type II error rates</h2>
-<blockquote>
-<p>Recall: a type II error is failing to reject a false null hypothesis.</p>
-</blockquote>
-<p>In the context of two-sample inference a type II error occurs when:</p>
-<ul>
-<li>the true difference is <span class="math inline">\(\delta \neq 0\)</span></li>
-<li>we test and fail to reject <span class="math inline">\(H_0: \delta \neq 0\)</span></li>
-</ul>
-<p>The type II error rate depends on both known and unknown factors:</p>
-<ul>
-<li>[unknown] magnitude of <span class="math inline">\(\delta\)</span></li>
-<li>[unknown] population variability <span class="math inline">\(\sigma\)</span></li>
-<li>[known] significance level</li>
-<li>[known] sample sizes</li>
-</ul>
-<p><em>What was the type II error rate for the cloud seeding test?</em></p>
-</section>
-<section id="simulating-type-ii-errors" class="slide level2">
-<h2>Simulating type II errors</h2>
-<div class="columns">
-<div class="column" style="width:65%;">
-<p>Summary stats for cloud data:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:46%;">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Treatment</th>
-<th style="text-align: center;">mean</th>
-<th style="text-align: center;">sd</th>
-<th style="text-align: center;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Seeded</td>
-<td style="text-align: center;">442</td>
-<td style="text-align: center;">650.8</td>
-<td style="text-align: center;">26</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Unseeded</td>
-<td style="text-align: center;">164.6</td>
-<td style="text-align: center;">278.4</td>
-<td style="text-align: center;">26</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>We can approximate the type II error rate by:</p>
-<ol type="1">
-<li>simulating datasets with matching summary statistics</li>
-<li>performing two-sided tests of no difference</li>
-<li>computing the proportion of fail-to-reject decisions</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">type2sim</span>(<span class="at">delta =</span> <span class="dv">277</span>, <span class="at">n =</span> <span class="dv">26</span>, <span class="at">sd =</span> <span class="dv">650</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.689</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(\Rightarrow\)</span> if the true difference were exactly as estimated, our test result would be incorrect nearly 70% of the time!</p>
-</div><div class="column" style="width:35%;">
-<p>What would happen to the error rate if…</p>
-<ol type="a">
-<li>the true difference <code>delta</code> were bigger?</li>
-<li>the significance level <code>alpha</code> were smaller?</li>
-<li>the sample size <code>n</code> was larger?</li>
-<li>the variability of rainfall <code>sd</code> were less?</li>
-</ol>
-</div>
-</div>
-</section>
-<section id="simulating-type-ii-errors-1" class="slide level2">
-<h2>Simulating type II errors</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p>Open the lab and use the simulation function <code>type2sim</code> to fill in the table by changing arguments accordingly.</p>
-<ul>
-<li>try a few magnitudes of difference for each scenario</li>
-<li>repeat runs for each setting once or twice to confirm effect</li>
-</ul>
-</div><div class="column" style="width:70%;">
-<table>
-<thead>
-<tr class="header">
-<th>Factor</th>
-<th>Change</th>
-<th>Effect on error rate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>true difference in means</td>
-<td>larger</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>true difference in means</td>
-<td>smaller</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>population variability</td>
-<td>larger</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>population variability</td>
-<td>smaller</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>sample size</td>
-<td>larger</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>sample size</td>
-<td>smaller</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>significance level</td>
-<td>larger</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>significance level</td>
-<td>smaller</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<blockquote>
-<p>Based on your explorations, do you think our original test decision was erroneous?</p>
-</blockquote>
-</section>
-<section id="statistical-power" class="slide level2">
-<h2>Statistical power</h2>
-<p>The <strong>power</strong> of a test refers to its true rejection rates across alternatives and is defined as: <span class="math display">\[\beta(\delta) = \underbrace{(1 - \text{type II error rate}_\delta )}_\text{correct decision rate when null is false}\]</span></p>
-<p>Power is often interpreted as a detection rate for a specified alternative <span class="math inline">\(\delta\)</span>:</p>
-<ul>
-<li>high type II error <span class="math inline">\(\longrightarrow\)</span> low power <span class="math inline">\(\longrightarrow\)</span> low detection rate</li>
-<li>low type II error <span class="math inline">\(\longrightarrow\)</span> high power <span class="math inline">\(\longrightarrow\)</span> high detection rate</li>
-</ul>
-<blockquote>
-<p>In general tests have low power for alternatives close to the null value (where “close” is relative to sampling variability).</p>
-</blockquote>
-<p>Theory allows a direct calculation of power, given sample size, significance level, population standard deviation, and population difference in means.</p>
-</section>
-<section id="power-curves" class="slide level2">
-<h2>Power curves</h2>
-<blockquote>
-<p>Power is usually construed as a <em>curve</em> depending on the true difference.</p>
+<p>Avoid over-interpreting one summary/graphic by checking alternatives</p>
 </blockquote>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p>Power curve for the test exactly as performed with the cloud seeding data:</p>
+<div class="column">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week6-power_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>common error: “republicans had larger households”</li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-3-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="parametric-inference" class="slide level2">
+<h2>Parametric inference</h2>
+<p>Recall the basis for our inferential procedures (intervals/tests) so far:</p>
+<blockquote>
+<p>the <span class="math inline">\(t\)</span> model approximates the sampling distribution of the <span class="math inline">\(T\)</span> statistic(s)</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-4-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>This is an example of a <strong>parametric</strong> approach: it relies on a <strong>distributional assumption</strong>.</p>
+<ul>
+<li>the <em>t</em> model is parametric distribution</li>
+<li><span class="math inline">\(T\)</span> exactly follows this model only when underlying population distribution(s) are normal</li>
+</ul>
+<p><em>What should be done if the assumption is not plausible?</em></p>
+<!-- This relies on some underlying assumptions: -->
+<!-- - observations are independent -->
+<!-- - either... -->
+<!--     + sample sizes are "large enough"  -->
+<!--     + or population distributions are nearly normal -->
+</div>
+</div>
+</section>
+<section id="nonparametric-procedures" class="slide level2">
+<h2>Nonparametric procedures</h2>
+<p>Nonparametric procedures are <strong>distribution-free</strong> in the sense that they make no assumptions about the <em>specific form</em> of the underlying population distribution.</p>
+<blockquote>
+<p>This does <em>not</em> mean nonparametric methods are free of any assumptions whatsoever</p>
+</blockquote>
+<p>Nonparametrics can provide useful alternatives in special circumstances:</p>
+<ul>
+<li>parametric assumptions not plausible</li>
+<li>inferences about population parameters besides means</li>
+<li>small-sample settings</li>
+<li>‘narrow’ inferences limited in scope to observed data rather than a population</li>
+</ul>
+<p>We will cover two nonparametric approaches to one- and two-sample inference:</p>
+<ol type="1">
+<li>Rank-based procedures</li>
+<li>Permutation procedures</li>
+</ol>
+</section>
+<section id="rank-based-procedures" class="slide level2">
+<h2>Rank-based procedures</h2>
+<blockquote>
+<p><strong>Rank-based procedures</strong> are inferential procedures that leverage sorted data and distributional symmetry or group exchangeability assumptions to test for location shifts.</p>
+</blockquote>
+<p>Consider the DDT data (15 measurements of DDT in kale in ppm) again. Sorted:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><em>2.79</em>, <em>2.93</em>, <em>3.06</em>, <em>3.07</em>, <em>3.08</em>, <em>3.18</em>, <em>3.22</em>, <em>3.22</em>, <em>3.33</em>, <em>3.34</em>, <em>3.34</em>, <em>3.38</em>, <em>3.56</em>, <em>3.78</em> and <em>4.64</em></p>
+</div>
+</div>
+<p>Suppose you wish to test whether the ‘center’ is 3ppm. If you assume the population distribution is symmetric about <em>c</em>…</p>
+<ol type="1">
+<li>How many observations would you expect to be smaller than <em>c</em>?</li>
+<li>How many observations are actually smaller than 3?</li>
+<li>Based on your answers to 1-2, do you think it is likely that <em>c = 3</em>?</li>
+</ol>
+</section>
+<section id="signed-rank-test" class="slide level2">
+<h2>Signed rank test</h2>
+<blockquote>
+<p>The <strong>signed rank test</strong> is an alternative to the one-sample <em>t</em> test that <em>assumes the population distribution is symmetric</em> to test hypotheses about its center <em>c</em>.</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Hypotheses: <span class="math display">\[H_0: c = c_0 \quad\text{vs.}\quad H_A: c \mathrel{\substack{&lt;\\\neq\\ &gt;}} c_0\]</span> Procedure:</p>
+<ol type="1">
+<li><p>[center] Calculate deviations <span class="math inline">\(d_i = x_i - c_0\)</span></p></li>
+<li><p>[rank] Sort and rank the absolute deviations <span class="math inline">\(|d_i|\)</span></p>
+<ul>
+<li>average ranks in case of ties</li>
+<li>drop zeros</li>
+</ul></li>
+<li><p>[sum] Add up the ‘signed ranks’ <span class="math inline">\(\text{sign}(d_i) \times R_i\)</span></p></li>
+</ol>
+</div><div class="column" style="width:40%;">
+<p>This produces the test statistic:</p>
+<p><span class="math display">\[V = \sum_{i = 1}^n \text{sign}(d_i) \times R_i\]</span></p>
+<p>Sampling distribution found using:</p>
+<ul>
+<li>(exact) combinatorics</li>
+<li>(approximate) probability theory</li>
+</ul>
+<p>Reject if <span class="math inline">\(V\)</span> is sufficiently large in the direction of the alternative.</p>
+</div>
+</div>
+</section>
+<section id="illustration-ddt-data" class="slide level2">
+<h2>Illustration: DDT data</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Signed rank calculations:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 4
+   obs.num   ddt   ddt.c signed.rank
+     &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+ 1      10  3.06  0.0600         1  
+ 2       2  2.93 -0.0700        -2.5
+ 3      11  3.07  0.0700         2.5
+ 4      13  3.08  0.0800         4  
+ 5       7  3.18  0.180          5  
+ 6       1  2.79 -0.21          -6  
+ 7       3  3.22  0.220          7.5
+ 8       5  3.22  0.220          7.5
+ 9       8  3.33  0.33           9  
+10       9  3.34  0.34          10.5
+11      15  3.34  0.34          10.5
+12       6  3.38  0.38          12  
+13      12  3.56  0.56          13  
+14       4  3.78  0.78          14  
+15      14  4.64  1.64          15  </code></pre>
+</div>
+</div>
+<p>Procedure:</p>
+<ol type="1">
+<li><strong>Center</strong> observations</li>
+<li><strong>Rank</strong> absolute deviations</li>
+<li><strong>Sum</strong> signed ranks</li>
+</ol>
+</div><div class="column" style="width:60%;">
+<p>Hypotheses:</p>
+<p><span class="math display">\[H_0: c = 3 \quad\text{vs}\quad H_A: c &gt; 3\]</span></p>
+<p>Test statistic:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:26%;">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">sign</th>
+<th style="text-align: center;">sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">negative</td>
+<td style="text-align: center;">-8.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">positive</td>
+<td style="text-align: center;">111.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There are <em>32768</em> possible sign combinations; of these, only about 0.18% give a larger value of <span class="math inline">\(V\)</span>.</p>
+<blockquote>
+<p><span class="math inline">\(p = 0.0018 &lt; 0.05 \;\Rightarrow\; \text{reject } H_0\)</span></p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="signed-rank-test-in-r" class="slide level2">
+<h2>Signed rank test in R</h2>
+<p>The implementation in R looks and functions much like <code>t.test</code>:</p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># signed rank test</span></span>
+<span id="cb2-2"><a></a><span class="fu">wilcox.test</span>(ddt, <span class="at">mu =</span> <span class="dv">3</span>, </span>
+<span id="cb2-3"><a></a>            <span class="at">alternative =</span> <span class="st">'greater'</span>,</span>
+<span id="cb2-4"><a></a>            <span class="at">conf.int =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  ddt
+V = 111.5, p-value = 0.001876
+alternative hypothesis: true location is greater than 3
+95 percent confidence interval:
+ 3.135002      Inf
+sample estimates:
+(pseudo)median 
+       3.26001 </code></pre>
+</div>
+</div>
+<ul>
+<li>reports the sum of <em>positive</em> signed ranks</li>
+<li><span class="math inline">\(p\)</span> value is approximate with ties or zeros</li>
+<li>pseudo-median (<span class="math inline">\(\neq\)</span> median) is a measure of center</li>
+</ul>
+</div><div class="column">
+<p>The technically accurate interpretation is given in terms of “center”:</p>
+<blockquote>
+<p>The data provide strong evidence against the null hypothesis that the center of the distribution of DDT in kale is 3ppm in favor of the alternative hypothesis that the center exceeds 3ppm (signed rank test, <em>p = 0.001876</em>).</p>
+</blockquote>
+<!-- - the minimum $p$ value is $\frac{1}{\#\;\text{sign combinations}}$ = 0.00003052 (depends on sample size) -->
+</div>
+</div>
+</section>
+<section id="minimum-p-values" class="slide level2">
+<h2>Minimum <span class="math inline">\(p\)</span> values</h2>
+<p>The <span class="math inline">\(p\)</span> value for the test is the proportion of all possible sign combinations that yield a <span class="math inline">\(V\)</span> larger/smaller than observed.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>All other attributes of the test are fixed to approximate the test performed:</p>
 <ul>
-<li>sample size <span class="math inline">\(n = 26\)</span></li>
-<li>significance level <span class="math inline">\(\alpha = 0.05\)</span></li>
-<li>population standard deviation <span class="math inline">\(\sigma = 650\)</span> (larger of two group estimates)</li>
+<li>fewer sign combinations for few observations</li>
+<li>smallest possible <span class="math inline">\(p\)</span> value depends on sample size</li>
+<li>don’t expect small p-values in small-<span class="math inline">\(n\)</span> settings</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="factors-affecting-power" class="slide level2">
-<h2>Factors affecting power</h2>
+<section id="paired-differences" class="slide level2">
+<h2>Paired differences</h2>
 <blockquote>
-<p>Power depends on all the same factors as type II error rates</p>
+<p>For paired differences, the signed rank test tests for a difference in location between the groups.</p>
 </blockquote>
-<table style="width:100%;">
+<p>The test assumes that both population distributions are symmetric and tests the hypotheses:</p>
+<p><span class="math display">\[H_0: c_1 = c_2 \quad\text{vs}\quad H_A: c_1 \mathrel{\substack{&lt;\\\neq\\ &gt;}} c_2\]</span></p>
+<ul>
+<li><span class="math inline">\(c_1\)</span> is the center of group/population 1</li>
+<li><span class="math inline">\(c_2\)</span> is the center of group/population 2</li>
+</ul>
+</section>
+<section id="paired-difference-example" class="slide level2">
+<h2>Paired difference example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<blockquote>
+<p>Is drug 2 more effective than drug 1?</p>
+</blockquote>
+<p>First few observations of sleep data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:40%;">
 <colgroup>
-<col style="width: 35%">
-<col style="width: 12%">
-<col style="width: 29%">
-<col style="width: 22%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Factor</th>
-<th>Change</th>
-<th>Effect on error rate</th>
-<th>Effect on power</th>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">drug1</th>
+<th style="text-align: center;">drug2</th>
+<th style="text-align: center;">diff</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>true difference in means</td>
-<td>larger</td>
-<td></td>
-<td></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">1.9</td>
+<td style="text-align: center;">-1.2</td>
 </tr>
 <tr class="even">
-<td>true difference in means</td>
-<td>smaller</td>
-<td></td>
-<td></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-1.6</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">-2.4</td>
 </tr>
 <tr class="odd">
-<td>population variability</td>
-<td>larger</td>
-<td></td>
-<td></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">-0.2</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">-1.3</td>
 </tr>
 <tr class="even">
-<td>population variability</td>
-<td>smaller</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>sample size</td>
-<td>larger</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>sample size</td>
-<td>smaller</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>significance level</td>
-<td>larger</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>significance level</td>
-<td>smaller</td>
-<td></td>
-<td></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-1.2</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">-1.3</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<p>The signed rank test will test for a difference in location, assuming that the pairwise differences are symmetric about some central point.</p>
+</div><div class="column" style="width:50%;">
+<p>Hypotheses:</p>
+<p><span class="math display">\[\begin{cases} H_0: c_\text{drug1} = c_\text{drug2} \\
+H_A: c_\text{drug1} &lt; c_\text{drug2}
+\end{cases}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">wilcox.test</span>(sleep.diffs, <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb4-2"><a></a>            <span class="at">alternative =</span> <span class="st">'less'</span>,</span>
+<span id="cb4-3"><a></a>            <span class="at">conf.int =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  sleep.diffs
+V = 0, p-value = 0.004545
+alternative hypothesis: true location is less than 0
+95 percent confidence interval:
+      -Inf -1.149967
+sample estimates:
+(pseudo)median 
+     -1.400031 </code></pre>
+</div>
+</div>
+<p><em>Aside: what does</em> <span class="math inline">\(V = 0\)</span> mean?</p>
+</div>
+</div>
 </section>
-<section id="two-common-power-analyses" class="slide level2">
-<h2>Two common power analyses</h2>
+<section id="checking-assumptions" class="slide level2">
+<h2>Checking assumptions</h2>
+<blockquote>
+<p>For the signed rank test, the underlying distribution is assumed to be symmetric.</p>
+</blockquote>
+<p>Check the symmetry assumption graphically using histograms.</p>
+
+<img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-12-1.png" width="576" class="r-stretch"><p>It can be tricky with small sample sizes; don’t be too sensitive to asymmetries. Both of these are acceptable.</p>
+</section>
+<section id="rank-sum-test" class="slide level2">
+<h2>Rank sum test</h2>
+<blockquote>
+<p>The <strong>rank-sum test</strong> is a two-sample rank-based inference procedure that tests for a difference in location from independent samples.</p>
+</blockquote>
+<p><strong>Key idea:</strong> if observations in both groups come from the same population distribution, then they should be exchangeable (<em>i.e.</em>, groupings don’t matter).</p>
 <div class="columns">
 <div class="column">
-<p><strong>Post hoc analysis</strong>: how much power does the test I conducted have if the true difference is exactly equal to my estimate?</p>
-<p>Helps to interpret negative results:</p>
+<p>Assumptions:</p>
 <ul>
-<li>low power <span class="math inline">\(\rightarrow\)</span> failure to reject was likely</li>
-<li>high power <span class="math inline">\(\rightarrow\)</span> failure to reject was not likely</li>
+<li>observations are independent</li>
+<li>the populations differ only by location</li>
 </ul>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Hypotheses:</p>
+<p><span class="math display">\[H_0: c_1 = c_2\quad\text{vs}\quad H_A: c_1 \mathrel{\substack{&lt;\\\neq\\&gt;}} c_2\]</span></p>
+</div><div class="column">
+<p>Procedure:</p>
+<ol type="1">
+<li>[pool] Combine observations from both groups</li>
+<li>[rank] Sort and rank pooled observations</li>
+<li>[sum] Add up ranks in the smaller group</li>
+</ol>
+<p>Reject if the sum is larger/smaller than expected.</p>
 </div>
-<p><strong>Don’t over-interpret post-hoc analyses</strong></p>
 </div>
-<div class="callout-content">
-<p>Failure to reject using a well-powered test <em>does not confirm the null hypothesis</em>.</p>
+</section>
+<section id="checking-assumptions-1" class="slide level2">
+<h2>Checking assumptions</h2>
+<blockquote>
+<p>The assumption for the rank sum test is that the distributions differ only by location.</p>
+</blockquote>
+<p>If this is true, histograms should have the same shape and modes.</p>
+
+<img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-13-1.png" width="864" class="r-stretch"><p>In all of these cases, there is a (true) difference in location.</p>
+<ul>
+<li>if shape differs too much, the rank sum test should <em>not</em> be used</li>
+<li>can be hard to tell with small samples</li>
+</ul>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<blockquote>
+<p>Is the rank sum test appropriate for comparing centers?</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<p>Out-of-state tuition costs from 26 public and 26 private universities.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-14-1.png" width="480"></p>
+</figure>
 </div>
 </div>
 </div>
 </div><div class="column">
-<p><strong>Sample size determination</strong>: how much data do I need to collect to detect a difference of <span class="math inline">\(\delta\)</span> using a particular test?</p>
-<p>Helps avoid two potential issues:</p>
-<ul>
-<li>too little data <span class="math inline">\(\rightarrow\)</span> study not likely to yield significant results</li>
-<li>too much data <span class="math inline">\(\rightarrow\)</span> study is too likely to yield significant results</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="post-hoc-analysis" class="slide level2">
-<h2>Post-hoc analysis</h2>
-<blockquote>
-<p>Can we estimate the power of a test we already performed?</p>
-</blockquote>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>Feasible if we assume (a) a population standard deviation and (b) test conditions are met.</p>
-<p>For the cloud seeding test:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">250</span>, <span class="co"># magnitude of difference</span></span>
-<span id="cb4-2"><a></a>             <span class="at">sd =</span> <span class="dv">650</span>, <span class="co"># largest population SD</span></span>
-<span id="cb4-3"><a></a>             <span class="at">n =</span> <span class="dv">26</span>, <span class="co"># smallest sample size</span></span>
-<span id="cb4-4"><a></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb4-5"><a></a>             <span class="at">type =</span> <span class="st">'two.sample'</span>, </span>
-<span id="cb4-6"><a></a>             <span class="at">alternative =</span> <span class="st">'two.sided'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-     Two-sample t test power calculation 
-
-              n = 26
-          delta = 250
-             sd = 650
-      sig.level = 0.05
-          power = 0.2743235
-    alternative = two.sided
-
-NOTE: n is number in *each* group</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:45%;">
-<p>For a conservative estimate, use:</p>
-<ul>
-<li><em>smallest</em> of the two sample sizes</li>
-<li><em>largest</em> of the two standard deviations</li>
-<li><em>smaller</em> difference than observed</li>
-</ul>
-<blockquote>
-<p><span class="math inline">\(\Longrightarrow\)</span> our test would only reject in favor of a difference of the observed magnitude about 27% of the time</p>
-</blockquote>
-<p>Failure to reject doesn’t strongly rule out the alternative.</p>
-</div>
-</div>
-</section>
-<section id="your-turn-post-hoc-analysis" class="slide level2">
-<h2>Your turn: post-hoc analysis</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>Consider testing whether body temperature differs by sex.</p>
-<p>Summary stats and test result:</p>
+<p>Deviations from expected cancer rates in CT in years with high and low sunspot activity.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table style="width:43%;">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 11%">
-<col style="width: 12%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">sex</th>
-<th style="text-align: center;">mean</th>
-<th style="text-align: center;">sd</th>
-<th style="text-align: center;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">female</td>
-<td style="text-align: center;">98.66</td>
-<td style="text-align: center;">0.9929</td>
-<td style="text-align: center;">19</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">male</td>
-<td style="text-align: center;">98.17</td>
-<td style="text-align: center;">0.7876</td>
-<td style="text-align: center;">20</td>
-</tr>
-</tbody>
-</table>
+<div>
+<figure>
+<p><img data-src="week7-nonparametric_files/figure-revealjs/unnamed-chunk-15-1.png" width="480"></p>
+</figure>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="rank-sum-test-in-r" class="slide level2">
+<h2>Rank sum test in R</h2>
+<p>The <code>wilcox.test</code> function also implements the rank sum test.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">t.test</span>(body.temp <span class="sc">~</span> sex, <span class="at">data =</span> temps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">wilcox.test</span>(delta <span class="sc">~</span> sunspot.activity, <span class="at">data =</span> cancer, </span>
+<span id="cb6-2"><a></a>            <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">'greater'</span>, </span>
+<span id="cb6-3"><a></a>            <span class="at">conf.int =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Welch Two Sample t-test
+    Wilcoxon rank sum exact test
 
-data:  body.temp by sex
-t = 1.7118, df = 34.329, p-value = 0.09595
-alternative hypothesis: true difference in means between group female and group male is not equal to 0
+data:  delta by sunspot.activity
+W = 270, p-value = 8.182e-06
+alternative hypothesis: true location shift is greater than 0
 95 percent confidence interval:
- -0.09204497  1.07783444
+ 0.2693557       Inf
 sample estimates:
-mean in group female   mean in group male 
-            98.65789             98.16500 </code></pre>
+difference in location 
+              0.455014 </code></pre>
 </div>
 </div>
+<ul>
+<li><p><span class="math inline">\(p\)</span>-value gives the percentage of possible rank allocations among the groups for which the rank sum is at least as favorable to <span class="math inline">\(H_A\)</span></p>
+<ul>
+<li>computed by combinatorics</li>
+<li>subject to minima depending on sample sizes</li>
+</ul></li>
+</ul>
 </div><div class="column" style="width:45%;">
-<p>Assume the true difference is actually 0.5 °F. Determine the power of the test above when:</p>
+<blockquote>
+<p>The data provide strong evidence against the hypothesis that the distribution of deviations from expected cancer rates in Connecticut does not differ according to sunspot activity in favor of a positive location shift associated with high sunspot activity (rank sum test, <span class="math inline">\(p &lt; 0.0001\)</span>).</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="use-heuristics-for-rank-procedures" class="slide level2">
+<h2>Use heuristics for rank procedures</h2>
+<p>Consider a rank-based procedure if…</p>
+<ul>
+<li>sample sizes are small</li>
+<li>you want to test for a location shift</li>
+</ul>
+<p>Once you’ve decided to consider a rank test…</p>
 <ol type="1">
-<li>Population SD is the smaller of the two groups</li>
-<li>Population SD is the larger of the two groups</li>
-<li>A one-sided test is used instead</li>
+<li>Determine test type (one-sample, paired, two-sample)</li>
+<li>Check symmetry/similarity assumption graphically</li>
+<li>Perform test</li>
 </ol>
-<blockquote>
-<p>Based on your answers, do you think the negative test result rules out the alternative?</p>
-</blockquote>
-</div>
-</div>
 </section>
-<section id="power-curve-for-body-temps" class="slide level2">
-<h2>Power curve for body temps</h2>
+<section id="permutation-tests" class="slide level2">
+<h2>Permutation tests</h2>
+<blockquote>
+<p>Permutation tests are two-sample procedures that provide highly flexible alternatives to parametric tests based on exchangeability.</p>
+</blockquote>
+<p><strong>Key idea</strong>: if there is no difference between groups/populations, observations are <em>exchangeable</em> between groups.</p>
 <div class="columns">
-<div class="column" style="width:55%;">
-<p>Assuming we underestimated the population standard deviation a bit, the power curve for a one-sided test would look like this:</p>
+<div class="column">
+<p>Procedure:</p>
+<ol type="1">
+<li>Randomly shuffle group assignments among the observations.</li>
+<li>Calculate any group comparison.</li>
+<li>Repeat many times.</li>
+<li>Calculate proportion of shufflings for which the comparison is at least as large as the observed comparison in the direction of the alternative</li>
+</ol>
+</div><div class="column">
+<p>Permutation tests for differences in means are implemented by <code>permTS()</code>.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week6-power_files/figure-revealjs/unnamed-chunk-10-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:45%;">
-<p>Assumptions:</p>
-<ul>
-<li><em>n</em> = 19 per group</li>
-<li><span class="math inline">\(\sigma = 1.2\)</span> per group</li>
-<li>significance level <span class="math inline">\(\alpha = 0.05\)</span></li>
-<li>one-sided test</li>
-</ul>
-<blockquote>
-<p>Fairly low power for alternatives near the estimated difference (dashed line), so failure to reject doesn’t strongly rule out the alternative.</p>
-</blockquote>
-</div>
-</div>
-</section>
-<section id="the-equal-variance-t-test" class="slide level2">
-<h2>The equal-variance <span class="math inline">\(t\)</span>-test</h2>
-<p>If it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power by using a different standard error:</p>
-<p><span class="math display">\[SE_\text{pooled}(\bar{x} - \bar{y}) = \sqrt{\frac{\color{red}{s_p^2}}{n_x} + \frac{\color{red}{s_p^2}}{n_y}}
-\quad\text{where}\quad \color{red}{s_p} = \underbrace{\sqrt{\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\text{weighted average of } s_x^2 \;\&amp;\; s_y^2}\]</span></p>
-<p>In the case of the body temperature data, <span class="math inline">\(s_p\)</span> = 0.8934. Check:</p>
-<ul>
-<li>How much power do we gain if we assume a common SD of 0.89?</li>
-<li>Does it change the outcome of the test (add <code>var.equal = T</code>)?</li>
-</ul>
-<blockquote>
-<p>Produces minimal gains and inflates type I error if not warranted, so better avoided unless you have a small sample size</p>
-</blockquote>
-</section>
-<section id="sample-size-calculation" class="slide level2">
-<h2>Sample size calculation</h2>
-<blockquote>
-<p>If you were (re)designing the study, how much data should you collect to detect a specified effect size?</p>
-</blockquote>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>To detect a difference of 250 or more due to cloud seeding with power 0.9:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.9</span>, <span class="co"># target power level</span></span>
-<span id="cb8-2"><a></a>             <span class="at">delta =</span> <span class="dv">250</span>, <span class="co"># smallest difference</span></span>
-<span id="cb8-3"><a></a>             <span class="at">sd =</span> <span class="dv">650</span>, <span class="co"># largest population SD</span></span>
-<span id="cb8-4"><a></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb8-5"><a></a>             <span class="at">type =</span> <span class="st">'two.sample'</span>, </span>
-<span id="cb8-6"><a></a>             <span class="at">alternative =</span> <span class="st">'two.sided'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">permTS</span>(OutOfState <span class="sc">~</span> Type, <span class="at">data =</span> ex0332, </span>
+<span id="cb8-2"><a></a>       <span class="at">alternative =</span> <span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-     Two-sample t test power calculation 
+    Permutation Test using Asymptotic Approximation
 
-              n = 143.0276
-          delta = 250
-             sd = 650
-      sig.level = 0.05
-          power = 0.9
-    alternative = two.sided
-
-NOTE: n is number in *each* group</code></pre>
+data:  OutOfState by Type
+Z = 3.0644, p-value = 0.001091
+alternative hypothesis: true mean Type=Private - mean Type=Public is greater than 0
+sample estimates:
+mean Type=Private - mean Type=Public 
+                            12219.08 </code></pre>
 </div>
 </div>
-</div><div class="column" style="width:45%;">
-<p>For a conservative estimate, use:</p>
-<ul>
-<li><em>overestimate</em> of the larger of the two standard deviations</li>
-<li><em>minimum</em> difference of interest</li>
-</ul>
-<blockquote>
-<p><span class="math inline">\(\Longrightarrow\)</span> we need at least 144 observations in each group to detect a difference of 250 or more at least 90% of the time</p>
-</blockquote>
 </div>
 </div>
 </section>
-<section id="your-turn-sample-size-calculation" class="slide level2">
-<h2>Your turn: sample size calculation</h2>
-<p>Suppose you are designing a follow-up study and wish to detect a difference of 0.4 °F at least 70% of the time. You know women have slightly higher body temperatures than men on average.</p>
-<table>
+<section id="lab-three-end-to-end-analyses" class="slide level2">
+<h2>Lab: three end-to-end analyses</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Cholesterol data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:33%;">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 61%">
-<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Known direction?</th>
-<th>Population SD</th>
-<th>Minimum <span class="math inline">\(n\)</span></th>
+<th style="text-align: center;">Diet</th>
+<th style="text-align: center;">Cholesterol</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>No</td>
-<td>larger of prior estimates</td>
-<td></td>
+<td style="text-align: center;">CORNFLK</td>
+<td style="text-align: center;">4.61</td>
 </tr>
 <tr class="even">
-<td>No</td>
-<td>1.2 times larger than larger of prior estimates</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Yes</td>
-<td>larger of prior estimates</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Yes</td>
-<td>1.2 times larger than larger of prior estimates</td>
-<td></td>
+<td style="text-align: center;">OATBRAN</td>
+<td style="text-align: center;">3.84</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>If it costs $10 per participant to run the study, what’s the best power achievable within a $2K budget for the target detection magnitude?</p>
-</blockquote>
-</section>
-<section id="power-vs.-sample-size-curves" class="slide level2">
-<h2>Power vs.&nbsp;sample size curves</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Minimum detectable difference at 5 levels of power as a function of sample size for a one-sided test:</p>
+</div>
+</div>
+<p>Zinc and dietary supplements:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week6-power_files/figure-revealjs/unnamed-chunk-13-1.png" width="576"></p>
-</figure>
+<table style="width:22%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Group</th>
+<th style="text-align: center;">Zinc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">1.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">1.45</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+<p>Sleep data:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:35%;">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.7</td>
+<td style="text-align: center;">1.9</td>
+<td style="text-align: center;">-1.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-1.6</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">-2.4</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Assumes <span class="math inline">\(\sigma = 1.2\)</span> for a conservative estimate.</p>
-</div><div class="column" style="width:40%;">
-<p>The best power achievable within budget for the target detection range is 0.7593159.</p>
-<ul>
-<li><p>increasing power to 0.8 will require <em>n</em> = 112 per group</p>
-<ul>
-<li>$240 over budget</li>
-</ul></li>
-<li><p>increasing power to 0.9 will require <em>n</em> = 155 per group</p>
-<ul>
-<li>$1050 over budget</li>
-</ul></li>
-</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Questions:</p>
+<ol type="1">
+<li><p>Are zinc concentrations (mg/ml) in the blood of rats lower among those that received a dietary supplement (group A) compared with those that did not receive the supplement group (B)?</p></li>
+<li><p>Is there a difference in cholesterol associated with consuming oat bran compared with consuming corn flakes?</p></li>
+<li><p>Does drug 2 produce more than 1 hour of additional sleep compared with drug 1?</p></li>
+</ol>
+<p>Your task, for each dataset, is to (a) determine and perform the appropriate nonparametric test and (b) interpret the result accurately.</p>
 </div>
 </div>
 

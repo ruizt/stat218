@@ -7,7 +7,7 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- HW3 posted
+- Outlines updated for week 7
 
 :::
 
