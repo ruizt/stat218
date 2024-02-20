@@ -1,0 +1,24 @@
+---
+title: "Analysis of Variance"
+subtitle: "Inferences for several population means"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Today's agenda
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(Sleuth3)
+library(pander)
+```

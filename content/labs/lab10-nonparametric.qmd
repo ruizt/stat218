@@ -84,6 +84,9 @@ Permutation tests provide an alternative nonparametric inference procedure with 
 
 To start, let's extend the sleep data example above by trying something a little different than usual. Notice that the estimated difference in means is `r mean(sleep$diff)`, and every subject experienced more extra sleep on drug 2.
 
+::: callout-note
+## Your turn
+
 Can you work out how to test, using a rank procedure, whether drug 2 is associated with at least one more hour of extra sleep than drug 1?
 
 Write the hypotheses, perform the test, and interpret the result.
@@ -93,20 +96,32 @@ Write the hypotheses, perform the test, and interpret the result.
 
 ```
 
+:::
+
 This is not a scenario specific to nonparametric methods, but just an exercise in testing a less typical set of hypotheses with paired data.
 
 Once you've determined and performed your test, write a short report interpreting the result.
 
 ## Cholesterol and cereal
 
-Your goal is to test whether cereal is associated with a difference in cholesterol using a nonparametric method.
+Your goal is to test whether cereal is associated with a difference in cholesterol using a nonparametric method. The data are as follows:
+
+```{r cholesterol data}
+# load cholesterol data
+cholesterol <- read.csv('data/cholesterol.csv')
+head(cholesterol, 4)
+```
+
+Diets were randomly allocated to 28 participants in equal proportion; there are 14 subjects in each diet group.
+
+::: callout-note
+## Your turn
+
+Test whether oat bran significantly lowers cholesterol relative to corn flakes using a nonparametric method.
 
 Use an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.
 
 ```{r your turn 2}
-# load cholesterol data
-cholesterol <- read.csv('data/cholesterol.csv')
-
 # check assumptions
 
 # determine and perform appropriate test
@@ -114,6 +129,8 @@ cholesterol <- read.csv('data/cholesterol.csv')
 ```
 
 Once you've determined and performed your test, write a short report interpreting the result.
+
+:::
 
 ## Zinc and dietary supplements
 
@@ -127,6 +144,11 @@ head(zinc, 3)
 
 The data come from an experiment in which 39 rats were randomly assigned a dietary supplement (group A) or no dietary supplement (group B). After a period of time, the zinc concentration in each rat's blood was measured.
 
+::: callout-note
+## Your turn
+
+Test whether the dietary supplement lowers zinc concentrations among rats using a nonparametric method.
+
 Use an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.
 
 ```{r your turn 3}
@@ -137,3 +159,5 @@ Use an appropriate graphic to check whether the assumptions for a rank procedure
 ```
 
 Once you've determined and performed your test, write a short report interpreting the result.
+
+:::
