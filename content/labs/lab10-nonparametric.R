@@ -1,8 +1,8 @@
 ## ----load example data--------------------------------------------------------------------------
 # load example datasets
 ddt <- MASS::DDT
-sleep <- read.csv('data/sleep.csv')
-load('data/cancer.RData')
+sleep <- read.csv('content/labs/data/sleep.csv')
+load('content/labs/data/cancer.RData')
 
 
 ## ----checking assumptions-----------------------------------------------------------------------
@@ -37,20 +37,22 @@ permTS(delta ~ sunspot.activity, data = cancer, alternative = 'greater')
 
 ## ----your turn 1--------------------------------------------------------------------------------
 # use rank procedure to test whether difference exceeds 1 hour
-
+wilcox.test(sleep$diff, mu = -1, alternative = 'less')
 
 
 ## ----cholesterol data---------------------------------------------------------------------------
 # load cholesterol data
-cholesterol <- read.csv('data/cholesterol.csv')
+cholesterol <- read.csv('content/labs/data/cholesterol.csv')
 head(cholesterol, 4)
-
 
 ## ----your turn 2--------------------------------------------------------------------------------
 # check assumptions
+par(mfrow = c(1, 2))
+hist(cholesterol$Cholesterol[cholesterol$Diet == 'CORNFLK'], main = 'corn flakes', xlab = 'cholesterol')
+hist(cholesterol$Cholesterol[cholesterol$Diet == 'OATBRAN'], main = 'oat bran', xlab = 'cholesterol')
 
 # determine and perform appropriate test
-
+wilcox.test(Cholesterol ~ Diet, data = cholesterol, mu = 0, alternative = 'two.sided')
 
 
 ## ----zinc data----------------------------------------------------------------------------------
@@ -61,7 +63,10 @@ head(zinc, 3)
 
 ## ----your turn 3--------------------------------------------------------------------------------
 # check assumptions
+par(mfrow = c(1, 2))
+hist(zinc$Zinc[zinc$Group == 'A'], main = 'group A', xlab = 'zinc')
+hist(zinc$Zinc[zinc$Group == 'B'], main = 'group B', xlab = 'zinc')
 
 # determine and perform appropriate test
-
+permTS(Zinc ~ Group, data = zinc, mu = 0, alternative = 'less')
 
