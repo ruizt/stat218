@@ -1,0 +1,406 @@
+---
+title: "Post-hoc inference"
+subtitle: "Estimating group means, pairwise comparisons, and contrasts after ANOVA"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(pander)
+library(Sleuth3)
+library(emmeans)
+```
+
+## Today's agenda
+
+1. Reading quiz \[[2pm section](https://forms.office.com/r/iiHHN3JW3Q)\] \[[4pm section](https://forms.office.com/r/xf0URZaAe1)\]
+2. [lecture/discussion] Model estimates and post-hoc inferences following ANOVA
+3. [lab] Post-hoc inference using `emmeans` in R
+4. Practice problem: mussel morphology
+
+## From last time: diet restriction
+```{r}
+longevity <- read_csv('labs/data/longevity.csv') |>
+  mutate(Diet = factor(Diet, levels = c('NP', 'N/N85', 'N/R50', 'N/R40')))
+```
+
+::: {.columns}
+
+::: {.column width="40%"}
+**Data summaries**:
+```{r, fig.width = 8, fig.height = 4}
+par(mar = c(2, 4, 1, 1),
+    cex = 2)
+boxplot(Lifetime ~ Diet, data = longevity, xlab = '', ylab = 'lifetime (days)')
+longevity |> 
+  group_by(Diet) |> 
+  summarize(mean = mean(Lifetime),
+            sd = sd(Lifetime),
+            n = n()) |>
+  # arrange(mean) |>
+  pander()
+```
+:::
+
+::: {.column width="60%"}
+**Inference**:
+
+$$\begin{align*}
+&H_0: \mu_\text{NP} = \mu_\text{N/N85} = \mu_\text{N/R50} = \mu_\text{N/R40} \\
+&H_A: \text{at least two means differ}
+\end{align*}$$
+
+
+```{r, echo = T}
+fit <- aov(Lifetime ~ Diet, data = longevity)
+summary(fit)
+```
+
+> The data provide strong evidence against the null hypothesis that diet restriction has no effect on mean lifetime among mice (*F = 87.41* on *3* and *233* degrees of freedom, *p < 0.0001*).
+:::
+
+:::
+
+
+## Unresolved questions
+
+1. What are the estimated lifespans on each diet?
+2. Which dietary restriction levels produce significant gains in lifespan?
+
+
+What do you think? Which levels of diet restriction do you think differ "enough"?
+
+::: {.columns}
+
+::: {.column}
+*Class vote tallies*:
+
+Comparison | Different | No different
+---|---|---
+NP-N/N85 | |
+NP-N/R50 | |
+NP-N/R40 | |
+N/N85-N/R50 | |
+N/N85-N/R40 | |
+N/R50-N/R40 | |
+:::
+
+::: {.column}
+```{r, fig.width = 8, fig.height = 6}
+par(mar = c(2, 4, 1, 1),
+    cex = 2)
+boxplot(Lifetime ~ Diet, data = longevity, xlab = '', ylab = 'lifetime (days)')
+```
+:::
+
+:::
+
+## Model-based estimates
+
+> The ANOVA model can be used for inference on group means.
+
+```{r}
+emmeans(fit, ~ Diet) |>
+  confint(level = 0.95) |> 
+  as.tibble() |>
+  rename(estimate = emmean) |>
+  pander()
+```
+
+- Point estimates are the group means (same as groupwise estimates)
+- Standard errors are *model-based* (different from groupwise estimates)
+$$SE_i = \frac{s_\text{pooled}}{\sqrt{n_i}}$$
+- Intervals are "pointwise", not simultaneous
+
+```{r, eval = F}
+((sigma(fit)^2)/count(longevity, Diet)$n) |> sqrt()
+(c(1, 1, 0, 0) %*% vcov(fit) %*% c(1, 1, 0, 0))|> sqrt()
+```
+
+
+## Adjusting pointwise intervals
+
+> A simple way to correct for undercoverage is to increase the confidence level. 
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width = 6, fig.height = 5}
+emm.unadjusted <- emmeans(fit, ~ Diet) |>
+  confint(level = 0.95) |>
+  tibble() |>
+  mutate(level = 0.95)
+
+emm.adjusted <- emmeans(fit, ~ Diet) |>
+  confint(level = 1 - 0.05/4) |>
+  tibble() |>
+  mutate(level = 0.9875)
+
+bind_rows(emm.adjusted, emm.unadjusted) |>
+  mutate(coverage = factor(level, labels = c('unadjusted', 'adjusted'))) |>
+  ggplot(aes(y = Diet, x = emmean, color = coverage)) +
+  geom_errorbar(aes(x = emmean,
+                    xmin = lower.CL, 
+                    xmax = upper.CL), 
+                width = 0.3,
+                position = position_dodge(width = 0.2)) +
+  geom_point(position = position_dodge(width = 0.2)) +
+  theme_minimal(base_size = 20) +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey', linewidth = 0.1),
+        legend.position = 'top') +
+  labs(y = '', x = 'estimated mean lifetime (days)') +
+  guides(color = guide_legend(title = ''))
+```
+:::
+
+::: {.column}
+The **Bonferroni correction** for $k$ intervals consists in changing the individual coverage level to $\left(1 - \frac{\alpha}{k}\right)\%$.
+
+- Effectively a width increase
+- Guarantees joint coverage $(1 - \alpha)\%$
+- Tends to be over conservative with many means (large $k$)
+:::
+
+:::
+
+## Model estimates in R
+
+The `emmeans` package has useful functions for model-based estimates from ANOVA.
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T, fig.width = 5, fig.height = 4}
+# table
+emmeans(fit, ~ Diet, level = 1 - 0.05/4)
+```
+
+- note Bonferroni adjustment
+- these are *model-based* estimates, not descriptive summaries
+
+> Why do you think it might be misleading to conclude which means differ based on these intervals?
+:::
+
+::: {.column}
+```{r, echo = T, eval = F}
+# visualization
+emmip(fit, ~ Diet, CIs = T, level = 1 - 0.05/4)
+```
+
+```{r, echo = F, fig.width = 5, fig.height = 4}
+# visualization
+emmip(fit, ~ Diet, CIs = T, level = 1 - 0.05/4) +
+  theme_minimal(base_size = 16) +
+  labs(x = 'diet', y = 'estimated mean lifespan (days)')
+```
+
+:::
+
+:::
+
+
+## Pairwise comparisons
+
+> Pairwise comparisons are inferences made on **differences between pairs of means**.
+
+This is a *post-hoc* procedure because it is performed *after* inference on group means.
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{r}
+emmeans(fit, ~ Diet) |> 
+  pairs(adjust = 'bonferroni') |>
+  as_tibble() |> 
+  select(contrast, estimate, SE) |>
+  rename(difference = contrast) |>
+  pander(style = 'simple')
+```
+:::
+
+::: {.column width="45%"}
+
+- estimates are $\bar{x}_i - \bar{x}_j$
+- standard errors are model-based
+- inference based on a $t$ model
+    
+    + degrees of freedom: $n - k$
+    + tests: $T_{ij} = \frac{\bar{x}_i - \bar{x}_j}{SE_{ij}}$
+    + intervals: $\bar{x}_i - \bar{x}_j \pm c\times SE_{ij}$
+    
+- multiplicity corrections adjust for the number of comparisons (not means)
+:::
+
+:::
+
+## Multiple correction methods
+
+> There are *many* multiple inference corrections that could be applied in pairwise comparisons. Not all of them will agree.
+
+Among the most common:
+
+Method(s) | Approach | When to use
+---|---|---
+Bonferroni correction | Uniformly increase confidence level | Small $k$
+Tukey's method | Adjust based on largest difference | General purpose
+Scheffe's method | Correct for all possible comparisons | Large $k$
+Holm/Hochberg | Adaptive corrections based on significance level | Concerned about power
+
+## Pairwise comparisons in R
+
+`emmeans` also produces pairwise comparisons and visualizations
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+# tests
+emmeans(fit, ~ Diet) |> 
+  pairs(level = 0.95, adjust = 'bonferroni')
+```
+
+```{r, echo = T}
+# intervals
+emmeans(fit, ~ Diet) |> 
+  pairs(level = 0.95, adjust = 'bonferroni') |>
+  confint()
+```
+
+:::
+
+::: {.column}
+
+```{r, echo=T, eval = F}
+# visualization
+emmeans(fit, ~ Diet) |>
+  pairs(level = 0.95, adjust = 'bonferroni') |> 
+  plot()
+```
+
+```{r, fig.width = 6, fig.height = 4}
+emmeans(fit, ~ Diet) |>
+  pairs(level = 0.95, adjust = 'bonferroni') |> 
+  plot() + geom_vline(xintercept = 0) +
+  theme_minimal(base_size = 18) +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey', linewidth = 0.1)) +
+  labs(x = 'estimated mean difference (days)', y = '')
+```
+
+:::
+
+:::
+
+## Comparisons with a control
+
+> Research question: *how much does each level of diet restriction increase lifespan?*
+
+::: {.columns}
+
+::: {.column width="60%"}
+```{r, echo = T, eval = F}
+# comparisons with a control
+emmeans(fit, trt.vs.ctrl ~ Diet) |> confint()
+```
+
+```{r}
+emmeans(fit, trt.vs.ctrl ~ Diet)$contrasts |> 
+  confint() |>
+  as_tibble() |> 
+  select(contrast, estimate, lower.CL, upper.CL) |>
+  pander(style = 'simple')
+```
+:::
+
+::: {.column width="40%"}
+Multiple comparison adjustment uses Dunnett's method
+
+- specialized correction for comparisons with a single reference group
+:::
+
+:::
+
+With 95% confidence, relative to an unrestricted diet...
+
+- a 85kcal/day diet increases lifespan by an estimated 2.2 to 8.3 days
+- a 50kcal/day diet increases lifespan by an estimated 12.0 to 17.8 days
+- a 40kcal/day diet increases lifespan by an estimated 14.7 to 20.7 days
+
+## Lab: post-hoc inferences
+
+Open `lab12-pairwise` in the class workspace. The goal of the activity is to learn to perform post-hoc inference in R:
+
+- review of basic ANOVA
+- intervals and visualizations for group means
+- post-hoc tests for group means
+- pairwise comparisons
+- contrasts with a control
+
+You'll largely replicate the analysis presented so far in class.
+
+## Practice problem
+
+```{r}
+mussels <- read_csv('data/mussels.csv') |>
+  gather(location, aam.length) |>
+  drop_na()
+write_csv(mussels, file = 'labs/data/mussels.csv')
+```
+
+::: {.columns}
+
+::: {.column}
+
+```{r, fig.width=5, fig.height = 5}
+par(mar = c(3, 6, 1, 1))
+boxplot(aam.length ~ location, data = mussels, 
+        horizontal = T, ylab = '', las = 1)
+```
+:::
+
+::: {.column}
+Data are standardized lengths of the anterior adductor muscle (AAM) of *Mytilus trossulus* mussels from five populations.
+
+> Estimate mean AAM lengths for each population and test for differences between populations. If differences are determined to be significant, determine which populations differ significantly and provide interval estimates for the differences.
+:::
+
+:::
+
+## Power calculations for ANOVA
+
+> How much data should I collect to detect differing means with a target power level?
+
+::: {.columns}
+
+::: {.column}
+To perform sample size power calculations, one needs:
+
+- number of groups
+- target significance level ($\alpha$)
+- target power level
+- guess or prior estimate of variance ratio $\frac{\text{group variation}}{\text{error variation}}$
+:::
+
+::: {.column}
+To detect means that differ among 5 groups with half of the error variability with 90% power:
+```{r, echo = T}
+power.anova.test(groups = 5, 
+                 sig.level = 0.05, 
+                 power = 0.9, 
+                 within.var = 1, 
+                 between.var = 0.5)
+```
+:::
+
+:::

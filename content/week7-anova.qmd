@@ -90,9 +90,9 @@ If assumptions aren't met, the permutation test should be used instead.
 
 ## Today's agenda
 
-1. [lecture/discussion] inference for several means with ANOVA
-2. [lab] ANOVA in R
-3. [practice problem] diet restriction and longevity
+1. \[lecture/discussion\] inference for several means with ANOVA
+2. \[lab\] ANOVA in R
+3. \[practice problem\] diet restriction and longevity
 
 ## Chicks
 

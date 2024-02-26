@@ -7,9 +7,8 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- Outlines updated for week 7
-- Please complete feedback survey by Thursday 2/22: \[[2pm section](https://forms.office.com/r/TaS2EPd6yX)\] \[[4pm section](https://forms.office.com/r/Fw7a8CYQZP)\]
-
+- Week 8 outlines updated
+- Upcoming test release Thursday 2/29
 :::
 
 This is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm -- 4:00pm) and 06-8274 (TR 4:10pm -- 6:00pm). Please note that this site does *not* pertain to other sections of STAT 218 (of which there are several).

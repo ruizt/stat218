@@ -162,13 +162,28 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 -   \[lecture/discussion\] analysis of variance
 -   \[lab\] grouped summaries; ANOVA in R
 
-***Assignment***: HW4 due Thursday 2/29 11:59pm PST \[L9\]
+***Assignment***: \[[HW4](content/hw/hw4.qmd)\] due Thursday 2/29 11:59pm PST \[L5, L9\]
 
 ### Week 8 (2/26/24)
 
-*Inference for categorical data*
+*Post-hoc inference in ANOVA; introduction to inference for categorical data*
 
-***Assignment***: Test 2 due Friday 3/1 11:59pm PST \[L4, L5, L9\]
+**Tuesday class meeting** \[[slides](content/week8-pairwise.qmd)\] \[[lab](content/labs/lab12-pairwise.qmd)\]
+
+-   \[reading\] Vu and Harrington 5.5.3
+-   \[lecture/discussion\] pairwise comparisons from ANOVA
+-   \[lab\] pairwise comparisons in R; morphological differences in mussel populations
+
+Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=XJ7VykxSSkFnhElEttXTFHklG8ATnb04&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQktOR0dWTkVUUFJSUEZPUURBTUdFUUpOVi4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=9ucdWV8ht5y0GS7nXgUZur4eTrj0Q36r&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUN0dKUFg4UEYwQUFOUjRYVVM5S1M5SzNPMS4u)\]
+
+**Thursday class meeting**
+
+-   \[reading\] Vu and Harrington 8.1
+-   \[lecture/discussion\] one- and two-sample inference for population proportions
+-   \[lab\] three case studies
+
+
+***Assignment***: Test 2 due Saturday 3/2 11:59pm PST \[L4, L5, L9\]
 
 <!--# smoking and lung cancer case1802 case1803 -->
 
@@ -176,7 +191,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 *Simple linear regression*
 
-<!--# big bang -->
+<!--# big bang ex0823 -->
 
 ***Assignment***: HW5 due Thursday 3/14 11:59pm PST \[L6, L7, L8\]
 

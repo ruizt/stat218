@@ -9,8 +9,6 @@ execute:
 format: 
   html:
     toc: true
-  pdf:
-    keep-tex: false
   docx:
     toc: false
 prefer-html: true

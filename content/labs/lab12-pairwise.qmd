@@ -1,0 +1,281 @@
+---
+title: "Lab 12: Pairwise comparisons"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+The objective of this lab is to learn how to perform *post-hoc* inference in the analysis of variance context in R using `emmeans`. You'll reproduce an end-to-end analysis and explore a few options along the way. Your goals are:
+
+1. Review how to carry out a basic ANOVA
+2. Learn how to compute point and interval estimates for group means
+3. Learn how to construct intervals and carry out tests for pairwise comparisons
+4. Compare multiple correction methods
+
+## ANOVA with pairwise comparisons
+
+We'll use the `longevity` data from an experiment in which lifetimes in days of mice were measured after randomly allocating one of four levels of dietary intake restriction to each mouse. Load the necessary packages and dataset by executing the commands below.
+
+```{r packages and data}
+# load packages
+library(tidyverse)
+library(emmeans)
+library(pander)
+
+# read in dataset and make variable names lowercase
+longevity <- read.csv('data/longevity.csv') |> 
+  rename_with(tolower)
+
+# convert grouping variable to a factor
+longevity$diet <- factor(longevity$diet, 
+                         levels = c('NP', 'N/N85', 
+                                    'N/R50', 'N/R40'),
+                         ordered = T)
+
+# preview
+head(longevity) |> pander()
+```
+You may notice that the grouping variable `diet` was converted to an ordered factor. This is a data type in R that encodes ordinal categorical variables. It's not absolutely necessary to include the ordering, but it will make certain tasks more streamlined, such as ordering the groups in plots or making pairwise comparisons with the control level (NP).
+
+### Refresher: basic ANOVA
+
+We'll start by reviewing the steps of an analysis of variance: 
+
+1. Data visualization
+2. Grouped summaries 
+3. Fitting an ANOVA model and testing for a difference in group means
+
+These are outlined below.
+
+```{r basic anova, fig.width = 4, fig.height = 5}
+# boxplot for visual group comparisons
+boxplot(lifetime ~ diet, data = longevity)
+
+# grouped summaries
+longevity |>
+  group_by(diet) |> 
+  summarize(mean = mean(lifetime),
+            sd = sd(lifetime),
+            n = n(),
+            mean.se = sd/sqrt(n)) |>
+  pander()
+
+# fit analysis of variance model
+fit <- aov(lifetime ~ diet, data = longevity)
+summary(fit) |> pander()
+```
+
+The test indicates that the data provide strong evidence against the null hypothesis of no effect of diet on longevity. We now would like to know:
+
+- estimated mean lifetimes for each diet
+- which differences in mean lifetimes are significant
+- estimated gains in lifetime for each level of dietary restriction relative to an unrestricted diet
+
+We will use `emmeans` to perform these inferences.
+
+### Model-based estimates
+
+Estimates of the group means and the within-group standard deviation are computed when the model is fit. We can use these to compute confidence intervals for each group mean. Use the `level = ...` argument to change the confidence level.
+
+```{r intervals for group means}
+# intervals for group means
+emmeans(fit, ~ diet) |> 
+  confint(level = 0.95) |>
+  pander()
+```
+
+The `emmeans` package also has a plotting method available to visualize the ANOVA model estimates.
+
+```{r visualize estimates, fig.width = 4, fig.height = 3}
+# basic plotting method
+emmeans(fit, ~ diet) |> 
+  plot(level = 0.95, xlab = 'estimated mean lifetime')
+
+# another option
+emmip(fit, ~ diet, CIs = T, level = 0.95, ylab = 'estimated mean lifetime')
+```
+
+::: callout-note
+## Your turn
+
+The Bonferroni correction is a way to adjust multiple inferences to control error accrual. In the context of intervals, this amounts to making them wider to achieve simultaneous coverage at a specific rate.
+
+To implement the correction in a way that achieves $(1 - \alpha)$ simultaneous coverage for $k$ intervals, change the confidence level to $\left(1 - \frac{\alpha}{k}\right)$ where $k$ is the number of groups.
+
+Adjust the table and plot above to achieve a simultaneous 95% coverage of all four means.
+
+```{r your turn 1, eval = F}
+# intervals for group means
+emmeans(fit, ~ diet) |> 
+  confint(level = 0.95) # change here
+
+# plot
+emmeans(fit, ~ diet) |> 
+  plot(level = 0.95, # change here
+       xlab = 'estimated mean lifetime')
+```
+:::
+
+The Bonferroni correction can also be implemented by adding the argument `adjust = 'bonferroni'` to either `confint()` or `plot()`. If this approach is used, the `level` argument should specify the *simultaneous* coverage (not the individual coverage).
+
+### Post-hoc inferences
+
+#### Tests for means
+
+While relatively uncommon, one could perform hypothesis tests for the group means on a post-hoc basis. For example, we might test the hypotheses:
+
+$$\begin{cases} H_0: \mu_i \leq 30 \\ H_A: \mu_i > 30\end{cases}$$
+This can be implemented using `test()` with the appropriate arguments, and corresponding one-sided intervals can be constructed with `confint()`.
+
+```{r tests and intervals for group means}
+# test whether lifetimes exceed 30 days
+emmeans(fit, ~ diet) |>
+  test(null = 30, side = '>') |>
+  pander()
+
+# one-sided intervals
+emmeans(fit, ~ diet) |>
+  confint(level = 0.95, side = '>') |>
+  pander()
+```
+
+The inferences can also be adjusted for multiplicity using a Bonferroni correction by adding the argument `adjust = 'bonferroni'` as shown below.
+
+```{r adding bonferroni correction, eval = F}
+# test whether lifetimes exceed 30 days
+emmeans(fit, ~ diet) |>
+  test(null = 30, side = '>', adjust = 'bonferroni')
+
+# one-sided intervals
+emmeans(fit, ~ diet) |>
+  confint(level = 0.95, side = '>', adjust = 'bonferroni')
+```
+
+::: callout-note
+## Your turn
+
+Test whether mean lifetime on each diet is less than 40 days. Adjust for multiple inferences using the Bonferroni correction
+
+```{r your turn 2, eval = F}
+# modify this code to test whether mean lifetime is less than 40
+emmeans(fit, ~ diet) |>
+  test(null = 30, side = '>', adjust = 'bonferroni')
+```
+:::
+
+
+#### Pairwise comparisons
+
+Pairwise comparisons are inferences for the pairwise differences between group means. They can take the form of tests, intervals, or both; regardless, multiple inference corrections should always be applied.
+
+In `emmeans`, the `pairs()` function can be used in conjunction with `test()` or `confint()` to generate estimates and tests or intervals, respectively, for all pairwise differences. There is also a plotting method.
+
+```{r pairwise comparisons}
+# pairwise comparisons: tests
+emmeans(fit, ~ diet) |> 
+  pairs() |>
+  test() |>
+  pander()
+
+# pairwise comparisons: intervals
+emmeans(fit, ~ diet) |> 
+  pairs() |>
+  confint() |>
+  pander()
+
+# plotting method
+emmeans(fit, ~ diet) |>
+  pairs() |>
+  plot()
+```
+
+::: callout-note
+## Your turn
+
+Experiment with the multiple correction methods by adding an `adjust = ...` argument with one of the following values:
+
+- `tukey` is the default
+- `bonferroni`
+- `scheffe`
+- `holm`
+- `hochberg`
+
+It's easiest to see the effect by examining adjusted $p$-values rather than interval endpoints. Focus on the last contrast between the two levels of restriction `N/R50 - N/R40`. Do the methods agree?
+
+```{r your turn 3, eval = F}
+# try changing the multiple inference adjustment
+emmeans(fit, ~ diet) |> 
+  pairs() |>
+  test(adjust = 'tukey') 
+```
+:::
+
+#### Comparisons involving a control
+
+In the special case where one wishes to conduct multiple comparisons relative to a control, Dunnett's method provides a better multiple inference correction.
+
+Implementing these comparisons requires that the grouping variable be a factor whose first level is the control group. Provided this is the case, adding `trt.vs.ctrl` to the left-hand-side of the formula argument to `emmeans()` will generate the contrasts of interest.
+
+```{r comparisons with a control}
+# generate contrasts that compare with control
+emmeans(fit, trt.vs.ctrl ~ diet)
+```
+
+::: callout-note
+## Your turn
+
+What if you wanted to test for diet restriction levels that caused an increase of *at least 10 days* relative to the unrestricted diet?
+
+Consider the hypotheses:
+$$\begin{cases} H_0: \mu_{\text{trt}_j} - \mu_\text{ctrl} \leq 10 \\ H_A: \mu_{\text{trt}_j} - \mu_\text{ctrl} > 10 \end{cases}$$
+
+While not especially common, one can test directional hypotheses for pairwise differences relative to non-zero null values. The `test()` function takes arguments `null = ...` to specify the null value for the test and `side = ...` to specify direction.
+
+- `side = '<'` specifies a lower-sided test
+- `side = '>'` specifies an upper-sided test
+- `side = '='` specifies a two-sided test
+
+The default behavior in verbose form is given by the code below. Modify this to test the hypotheses mentioned at the outset.
+
+```{r your turn 4, eval = F}
+# modify the default to test whether levels increase mean lifespan by at least 10 days
+emmeans(fit, trt.vs.ctrl ~ diet)$contrast |>
+  test(null = 0, side = '=') # modify here
+```
+:::
+
+# Practice problem
+
+The `mussels` data are standardized lengths of the anterior adductor muscle (AAM) of *Mytilus trossulus* mussels from five populations. Estimate mean AAM lengths for each population and test for differences between populations. If differences are determined to be significant, determine which populations differ significantly and provide interval estimates for the differences.
+
+```{r practice problem, eval = F}
+# read in data
+mussels <- read.csv('data/mussels.csv')
+head(mussels)
+
+# visualization via boxplots
+
+# grouped summaries, check SD's
+
+# anova fit and table
+
+# point and interval estimates of group means, with bonferroni correction
+
+# visualization of estimates
+
+# pairwise comparisons
+
+# visualization
+
+```

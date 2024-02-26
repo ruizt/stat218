@@ -1,0 +1,111 @@
+---
+title: "Homework 4: Analysis of variance"
+author: "STAT218"
+author-title: "Course"
+date: "2/22/24"
+published-title: "Due date"
+execute: 
+  eval: false
+  echo: false
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r packages, eval = T}
+library(oibiostat)
+library(openintro)
+library(Sleuth3)
+library(tidyverse)
+```
+
+1. [L5] Gifted children. The dataset `openintro::gifted` contains data on 36 children identified as gifted in a large city. This problem will consider only the father's and mother's IQ: you'll perform inference on the difference in IQ between the mother and father. Assume the population is gifted children in the metropolitan region where the data were collected.
+
+    a. Conduct an appropriate $t$ test to determine whether mean IQ differs between the father and mother. Interpret the results in context.
+    b. Use a nonparametric rank procedure to test for a difference in IQ center between the father and mother. Interpret the results in context.
+    c. Explain how the hypotheses differ between the test in parts (a) and (b).
+    d. Make the appropriate histogram(s) to check whether the assumptions for the rank test are reasonable. Do you think the rank test is appropriate in this case?
+
+```{r problem 1}
+# part a
+t.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part b
+wilcox.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part d
+(gifted$fatheriq - gifted$motheriq) |> 
+  hist(breaks = 8, main = '', xlab = 'father IQ - mother IQ')
+```
+
+2. [L5] Physiological indicators of schizophrenia. The dataset `Sleuth3::case0202` contains data on volumes of the left hippocampus in cubic centimeters for 15 pairs of monozygotic twins; one twin in each pair was schizophrenic and the other was not. 
+
+    a. Check the assumptions for a nonparametric test of whether hippocampus volume differs in center between the schizophrenic and non-schizophrenic twins. Show the graphic(s) you examined and comment on whether test assumptions seem plausible.
+    b. Perform the test in (a) and interpret the results. Write a full narrative summary and include a 90% confidence interval for the difference in centers.
+
+```{r problem 2}
+# part a
+(case0202$Unaffected - case0202$Affected) |> 
+  hist(breaks = 5, main = '', xlab = 'unaffected volume - affected volume')
+
+# part b
+wilcox.test(Pair(Unaffected, Affected) ~ 1, data = case0202, 
+            conf.int = T, conf.level = 0.9)
+```
+
+3. **Vu and Harrington exercise 5.48.** Determine if the following statements are true or false, and explain your reasoning for statements you identify as false.
+If the null hypothesis that the means of four groups are all the same is rejected using ANOVA at a 5% significance level, then...
+
+    a. we can then conclude that all the means are different from one another.
+    b. the standardized variability between groups is higher than the standardized variability within groups. 
+    c. a pairwise analysis will identify at least one pair of means that are significantly different.
+
+4. [L9] Consider an experiment in which overweight subjects were randomly allocated to one of three diets: low-fat, low-carb, and Mediterranean. After two years, each subject's weight loss was measured. The output below shows the result of an ANOVA model fitted to this data. 
+
+    a. Construct the ANOVA table.
+    b. Test the hypothesis that mean weight loss does not differ among the three diets. Write a narrative summary of the result. 
+    (*Hint:* the $p$-value from an F model can be computed as `pf(fstat, num.df, denom.df, lower.tail = F)`.)
+
+```{r problem 4, eval = T}
+weightloss <- ex0623
+aov(WtLoss24 ~ Group, data = weightloss)
+```
+
+5. **Vu and Harrington exercise 5.40.** A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam.
+
+    a. What are the hypotheses for evaluating if the average test scores are different for the different teaching methods?
+    b. What are the degrees of freedom associated with the F-test for evaluating these hypotheses? 
+    c. Suppose the p-value for this test is 0.0168. What is the conclusion?
+    
+6. [L9] The dataset `Sleuth3::ex0722` contains measurements of closing force and propodus height of the claws of crabs from three predatory species. 
+
+    a. Produce side-by-side boxplots of claw height by species, ordering species by increasing median claw height.
+    b. Produce a table of grouped summaries of claw heights showing means, standard deviations, and sample sizes for each species.
+    c. Comment on whether the assumptions for analysis of variance seem to be met.
+    d. Test whether mean claw height differs among the three species. Write a short narrative summary of the results.
+    e. Conduct post-hoc pairwise comparisons to determine which means differ.
+    
+    
+```{r}
+library(emmeans)
+boxplot(Height ~ Species, data = ex0722)
+
+ex0722 |>
+  group_by(Species) |>
+  summarize(mean = mean(Height),
+            sd = sd(Height),
+            n = n())
+
+fit <- aov(Height ~ Species, data = ex0722)
+summary(fit)
+
+emmeans(fit, 'Species')
+emmeans(fit, 'Species') |> pairs(adjust = 'tukey')
+
+```
