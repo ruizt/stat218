@@ -244,43 +244,82 @@ emmeans(fit, ~ Diet) |>
 
 :::
 
-## Multiple correction methods
 
-> There are *many* multiple inference corrections that could be applied in pairwise comparisons. Not all of them will agree.
-
-Among the most common:
-
-Method(s) | Approach | When to use
----|---|---
-Bonferroni correction | Uniformly increase confidence level | Small $k$
-Tukey's method | Adjust based on largest difference | General purpose
-Scheffe's method | Correct for all possible comparisons | Large $k$
-Holm/Hochberg | Adaptive corrections based on significance level | Concerned about power
-
-## Pairwise comparisons in R
-
-`emmeans` also produces pairwise comparisons and visualizations
+## Pairwise comparisons: tests
 
 ::: {.columns}
 
 ::: {.column}
+`emmeans()` *then* `pairs()` *then* `test()`:
 ```{r, echo = T}
 # tests
 emmeans(fit, ~ Diet) |> 
-  pairs(level = 0.95, adjust = 'bonferroni')
+  pairs(adjust = 'bonferroni') |>
+  test()
 ```
-
-```{r, echo = T}
-# intervals
-emmeans(fit, ~ Diet) |> 
-  pairs(level = 0.95, adjust = 'bonferroni') |>
-  confint()
-```
-
+- *p*-values are adjusted for multiplicity
+- reject if *adjusted* *p*-value is below the significance threshold
 :::
 
 ::: {.column}
+The pairwise significance tests pertain to the hypotheses:
 
+$$\begin{cases} H_0: \mu_i - \mu_j = 0 \\ H_A: \mu_i - \mu_j \neq 0 \end{cases}$$
+Test statistic:
+
+$$T_{ij} = \frac{\bar{x}_i - \bar{x}_j}{SE_{ij}}
+\quad\text{on}\quad (n - k) \text{ df}$$
+
+Directional hypotheses or nonzero null differences can also be tested, but are less common (see lab for implementation).
+
+:::
+
+:::
+
+## Pairwise comparisons: intervals
+
+::: {.columns}
+
+::: {.column width="55%"}
+`emmeans()` *then* `pairs()` *then* `confint()`:
+```{r, echo = T}
+# tests
+emmeans(fit, ~ Diet) |> 
+  pairs(adjust = 'bonferroni') |>
+  confint(level = 0.95)
+```
+
+- `level` specifies *joint* coverage after adjustment
+:::
+
+::: {.column width="45%"}
+Intervals are for the parameter $\mu_i - \mu_j$:
+
+$$\bar{x}_i - \bar{x}_j \pm c\times SE_{ij}$$
+
+Critical value $c$ chosen according to correction method.
+
+One-sided intervals are possible but not common (see lab for implementation).
+
+:::
+
+:::
+
+## Pairwise comparisons: visualizations
+
+::: {.columns}
+
+::: {.column width="45%"}
+Another option is to visualize the pairwise comparison inferences by displaying simultaneous 95% intervals.
+
+- `level = ...` specifies simultaneous coverage level
+- intervals exclude 0 $\Leftrightarrow$ tests reject
+
+    + (given same adjustment method)
+:::
+
+::: {.column width="55%"}
+`emmeans()` *then* `pairs()` *then* `plot()`:
 ```{r, echo=T, eval = F}
 # visualization
 emmeans(fit, ~ Diet) |>
@@ -300,7 +339,22 @@ emmeans(fit, ~ Diet) |>
 
 :::
 
+
 :::
+
+
+## Multiple correction methods
+
+> There are *many* multiple inference corrections that could be applied in pairwise comparisons. Not all of them will agree.
+
+Among the most common:
+
+Method(s) | Approach | When to use
+---|---|---
+Bonferroni correction | Uniformly increase confidence level | Small $k$
+Tukey's method | Adjust based on largest difference | General purpose
+Scheffe's method | Correct for all possible comparisons | Large $k$
+Holm/Hochberg | Adaptive corrections based on significance level | Concerned about power
 
 ## Comparisons with a control
 

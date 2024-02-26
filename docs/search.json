@@ -2441,5 +2441,26 @@
     "title": "Post-hoc inference",
     "section": "Lab: post-hoc inferences",
     "text": "Lab: post-hoc inferences\nOpen lab12-pairwise in the class workspace. The goal of the activity is to learn to perform post-hoc inference in R:\n\nreview of basic ANOVA\nintervals and visualizations for group means\npost-hoc tests for group means\npairwise comparisons\ncontrasts with a control\n\nYou’ll largely replicate the analysis presented so far in class."
+  },
+  {
+    "objectID": "content/week8-pairwise.html#pairwise-comparisons-tests",
+    "href": "content/week8-pairwise.html#pairwise-comparisons-tests",
+    "title": "Post-hoc inference",
+    "section": "Pairwise comparisons: tests",
+    "text": "Pairwise comparisons: tests\n\n\nemmeans() then pairs() then test():\n\n# tests\nemmeans(fit, ~ Diet) |&gt; \n  pairs(adjust = 'bonferroni') |&gt;\n  test()\n\n contrast          estimate   SE  df t.ratio p.value\n NP - (N/N85)         -5.29 1.29 233  -4.113  0.0003\n NP - (N/R50)        -14.90 1.23 233 -12.150  &lt;.0001\n NP - (N/R40)        -17.71 1.27 233 -13.938  &lt;.0001\n (N/N85) - (N/R50)    -9.61 1.17 233  -8.183  &lt;.0001\n (N/N85) - (N/R40)   -12.43 1.22 233 -10.177  &lt;.0001\n (N/R50) - (N/R40)    -2.82 1.16 233  -2.436  0.0937\n\nP value adjustment: bonferroni method for 6 tests \n\n\n\np-values are adjusted for multiplicity\nreject if adjusted p-value is below the significance threshold\n\n\nThe pairwise significance tests pertain to the hypotheses:\n\\[\\begin{cases} H_0: \\mu_i - \\mu_j = 0 \\\\ H_A: \\mu_i - \\mu_j \\neq 0 \\end{cases}\\] Test statistic:\n\\[T_{ij} = \\frac{\\bar{x}_i - \\bar{x}_j}{SE_{ij}}\n\\quad\\text{on}\\quad (n - k) \\text{ df}\\]\nDirectional hypotheses or nonzero null differences can also be tested, but are less common (see lab for implementation)."
+  },
+  {
+    "objectID": "content/week8-pairwise.html#pairwise-comparisons-intervals",
+    "href": "content/week8-pairwise.html#pairwise-comparisons-intervals",
+    "title": "Post-hoc inference",
+    "section": "Pairwise comparisons: intervals",
+    "text": "Pairwise comparisons: intervals\n\n\nemmeans() then pairs() then confint():\n\n# tests\nemmeans(fit, ~ Diet) |&gt; \n  pairs(adjust = 'bonferroni') |&gt;\n  confint(level = 0.95)\n\n contrast          estimate   SE  df lower.CL upper.CL\n NP - (N/N85)         -5.29 1.29 233    -8.71   -1.867\n NP - (N/R50)        -14.90 1.23 233   -18.16  -11.633\n NP - (N/R40)        -17.71 1.27 233   -21.10  -14.333\n (N/N85) - (N/R50)    -9.61 1.17 233   -12.73   -6.482\n (N/N85) - (N/R40)   -12.43 1.22 233   -15.67   -9.177\n (N/R50) - (N/R40)    -2.82 1.16 233    -5.90    0.261\n\nConfidence level used: 0.95 \nConf-level adjustment: bonferroni method for 6 estimates \n\n\n\nlevel specifies joint coverage after adjustment\n\n\nIntervals are for the parameter \\(\\mu_i - \\mu_j\\):\n\\[\\bar{x}_i - \\bar{x}_j \\pm c\\times SE_{ij}\\]\nCritical value \\(c\\) chosen according to correction method.\nOne-sided intervals are possible but not common (see lab for implementation)."
+  },
+  {
+    "objectID": "content/week8-pairwise.html#pairwise-comparisons-visualizations",
+    "href": "content/week8-pairwise.html#pairwise-comparisons-visualizations",
+    "title": "Post-hoc inference",
+    "section": "Pairwise comparisons: visualizations",
+    "text": "Pairwise comparisons: visualizations\n\n\nAnother option is to visualize the pairwise comparison inferences by displaying simultaneous 95% intervals.\n\nlevel = ... specifies simultaneous coverage level\nintervals exclude 0 \\(\\Leftrightarrow\\) tests reject\n\n(given same adjustment method)\n\n\n\nemmeans() then pairs() then plot():\n\n# visualization\nemmeans(fit, ~ Diet) |&gt;\n  pairs(level = 0.95, adjust = 'bonferroni') |&gt; \n  plot()"
   }
 ]

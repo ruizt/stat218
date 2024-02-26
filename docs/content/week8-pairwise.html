@@ -765,6 +765,107 @@ Confidence level used: 0.9875 </code></pre>
 </div>
 </div>
 </section>
+<section id="pairwise-comparisons-tests" class="slide level2">
+<h2>Pairwise comparisons: tests</h2>
+<div class="columns">
+<div class="column">
+<p><code>emmeans()</code> <em>then</em> <code>pairs()</code> <em>then</em> <code>test()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># tests</span></span>
+<span id="cb6-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a></a>  <span class="fu">pairs</span>(<span class="at">adjust =</span> <span class="st">'bonferroni'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast          estimate   SE  df t.ratio p.value
+ NP - (N/N85)         -5.29 1.29 233  -4.113  0.0003
+ NP - (N/R50)        -14.90 1.23 233 -12.150  &lt;.0001
+ NP - (N/R40)        -17.71 1.27 233 -13.938  &lt;.0001
+ (N/N85) - (N/R50)    -9.61 1.17 233  -8.183  &lt;.0001
+ (N/N85) - (N/R40)   -12.43 1.22 233 -10.177  &lt;.0001
+ (N/R50) - (N/R40)    -2.82 1.16 233  -2.436  0.0937
+
+P value adjustment: bonferroni method for 6 tests </code></pre>
+</div>
+</div>
+<ul>
+<li><em>p</em>-values are adjusted for multiplicity</li>
+<li>reject if <em>adjusted</em> <em>p</em>-value is below the significance threshold</li>
+</ul>
+</div><div class="column">
+<p>The pairwise significance tests pertain to the hypotheses:</p>
+<p><span class="math display">\[\begin{cases} H_0: \mu_i - \mu_j = 0 \\ H_A: \mu_i - \mu_j \neq 0 \end{cases}\]</span> Test statistic:</p>
+<p><span class="math display">\[T_{ij} = \frac{\bar{x}_i - \bar{x}_j}{SE_{ij}}
+\quad\text{on}\quad (n - k) \text{ df}\]</span></p>
+<p>Directional hypotheses or nonzero null differences can also be tested, but are less common (see lab for implementation).</p>
+</div>
+</div>
+</section>
+<section id="pairwise-comparisons-intervals" class="slide level2">
+<h2>Pairwise comparisons: intervals</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><code>emmeans()</code> <em>then</em> <code>pairs()</code> <em>then</em> <code>confint()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># tests</span></span>
+<span id="cb8-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a></a>  <span class="fu">pairs</span>(<span class="at">adjust =</span> <span class="st">'bonferroni'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a></a>  <span class="fu">confint</span>(<span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> contrast          estimate   SE  df lower.CL upper.CL
+ NP - (N/N85)         -5.29 1.29 233    -8.71   -1.867
+ NP - (N/R50)        -14.90 1.23 233   -18.16  -11.633
+ NP - (N/R40)        -17.71 1.27 233   -21.10  -14.333
+ (N/N85) - (N/R50)    -9.61 1.17 233   -12.73   -6.482
+ (N/N85) - (N/R40)   -12.43 1.22 233   -15.67   -9.177
+ (N/R50) - (N/R40)    -2.82 1.16 233    -5.90    0.261
+
+Confidence level used: 0.95 
+Conf-level adjustment: bonferroni method for 6 estimates </code></pre>
+</div>
+</div>
+<ul>
+<li><code>level</code> specifies <em>joint</em> coverage after adjustment</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p>Intervals are for the parameter <span class="math inline">\(\mu_i - \mu_j\)</span>:</p>
+<p><span class="math display">\[\bar{x}_i - \bar{x}_j \pm c\times SE_{ij}\]</span></p>
+<p>Critical value <span class="math inline">\(c\)</span> chosen according to correction method.</p>
+<p>One-sided intervals are possible but not common (see lab for implementation).</p>
+</div>
+</div>
+</section>
+<section id="pairwise-comparisons-visualizations" class="slide level2">
+<h2>Pairwise comparisons: visualizations</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>Another option is to visualize the pairwise comparison inferences by displaying simultaneous 95% intervals.</p>
+<ul>
+<li><p><code>level = ...</code> specifies simultaneous coverage level</p></li>
+<li><p>intervals exclude 0 <span class="math inline">\(\Leftrightarrow\)</span> tests reject</p>
+<ul>
+<li>(given same adjustment method)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:55%;">
+<p><code>emmeans()</code> <em>then</em> <code>pairs()</code> <em>then</em> <code>plot()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># visualization</span></span>
+<span id="cb10-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">pairs</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">adjust =</span> <span class="st">'bonferroni'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week8-pairwise_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="multiple-correction-methods" class="slide level2">
 <h2>Multiple correction methods</h2>
 <blockquote>
@@ -807,64 +908,6 @@ Confidence level used: 0.9875 </code></pre>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="pairwise-comparisons-in-r" class="slide level2">
-<h2>Pairwise comparisons in R</h2>
-<p><code>emmeans</code> also produces pairwise comparisons and visualizations</p>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># tests</span></span>
-<span id="cb6-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a></a>  <span class="fu">pairs</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">adjust =</span> <span class="st">'bonferroni'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> contrast          estimate   SE  df t.ratio p.value
- NP - (N/N85)         -5.29 1.29 233  -4.113  0.0003
- NP - (N/R50)        -14.90 1.23 233 -12.150  &lt;.0001
- NP - (N/R40)        -17.71 1.27 233 -13.938  &lt;.0001
- (N/N85) - (N/R50)    -9.61 1.17 233  -8.183  &lt;.0001
- (N/N85) - (N/R40)   -12.43 1.22 233 -10.177  &lt;.0001
- (N/R50) - (N/R40)    -2.82 1.16 233  -2.436  0.0937
-
-P value adjustment: bonferroni method for 6 tests </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># intervals</span></span>
-<span id="cb8-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a></a>  <span class="fu">pairs</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">adjust =</span> <span class="st">'bonferroni'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a></a>  <span class="fu">confint</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> contrast          estimate   SE  df lower.CL upper.CL
- NP - (N/N85)         -5.29 1.29 233    -8.71   -1.867
- NP - (N/R50)        -14.90 1.23 233   -18.16  -11.633
- NP - (N/R40)        -17.71 1.27 233   -21.10  -14.333
- (N/N85) - (N/R50)    -9.61 1.17 233   -12.73   -6.482
- (N/N85) - (N/R40)   -12.43 1.22 233   -15.67   -9.177
- (N/R50) - (N/R40)    -2.82 1.16 233    -5.90    0.261
-
-Confidence level used: 0.95 
-Conf-level adjustment: bonferroni method for 6 estimates </code></pre>
-</div>
-</div>
-</div><div class="column">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># visualization</span></span>
-<span id="cb10-2"><a></a><span class="fu">emmeans</span>(fit, <span class="sc">~</span> Diet) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">pairs</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">adjust =</span> <span class="st">'bonferroni'</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week8-pairwise_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="comparisons-with-a-control" class="slide level2">
 <h2>Comparisons with a control</h2>
