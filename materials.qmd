@@ -176,7 +176,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=XJ7VykxSSkFnhElEttXTFHklG8ATnb04&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQktOR0dWTkVUUFJSUEZPUURBTUdFUUpOVi4u)\] \[[4pm section](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=9ucdWV8ht5y0GS7nXgUZur4eTrj0Q36r&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUN0dKUFg4UEYwQUFOUjRYVVM5S1M5SzNPMS4u)\]
 
-**Thursday class meeting**
+**Thursday class meeting** \[[slides](content/week8-proportions.qmd)\] \[[lab](content/labs/lab13-proportions.qmd)\]
 
 -   \[reading\] Vu and Harrington 8.1
 -   \[lecture/discussion\] one- and two-sample inference for population proportions
