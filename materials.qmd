@@ -183,7 +183,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 -   \[lab\] three case studies
 
 
-***Assignment***: Test 2 due Saturday 3/2 11:59pm PST \[L4, L5, L9\]
+***Assignment***: \[[Test 2](content/tests/test2.qmd)\] due Saturday 3/2 11:59pm PST \[L4, L5, L9\]
 
 <!--# smoking and lung cancer case1802 case1803 -->
 
