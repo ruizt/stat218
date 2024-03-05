@@ -27,7 +27,7 @@ library(epitools)
 
 ## Today's agenda
 
-1. Discuss final details 
+1. Discuss final details \[[partner assignments 2pm](https://forms.office.com/r/pbMNAG1GuT)\] \[[partner assignments 4pm](https://forms.office.com/r/G12TfmnUxK)\]
 2. [lecture/discussion] relative risk and odds ratios
 3. [activity] which analysis? distinguishing study types
 

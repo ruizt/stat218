@@ -193,11 +193,13 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 <!--# big bang ex0823 -->
 
-**Tuesday class meeting**
+**Tuesday class meeting** \[[slides](content/week9-contingency.qmd)\] \[[lab](content/labs/lab14-contingency.qmd)\]
 
 - [reading] Vu and Harrington 8.5.1 and 8.5.3
 - [lecture/discussion] inference for relative risk and odds ratios
 - [lab] distinguishing prospective and retrospective studies
+
+Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https://forms.office.com/r/pbMNAG1GuT)\] \[[partner assignments 4pm](https://forms.office.com/r/G12TfmnUxK)\]
 
 **Thursday class meeting**
 
