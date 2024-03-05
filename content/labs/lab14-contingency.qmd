@@ -1,0 +1,150 @@
+---
+title: "Lab 14: Inference for relative risk and odds ratios"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r load packages}
+library(oibiostat)
+library(epitools)
+library(openintro)
+library(Sleuth3)
+```
+
+This activity focuses on inference of relative risk and odds ratios. There are three objectives:
+
+1. Learn to perform tests and compute interval estimates for relative risk
+2. Learn to perform tests and compute interval estimates for odds ratios
+3. Practice discerning which estimand is appropriate given study design
+
+## Examples
+
+## Practice problems
+
+1. An outbreak of cyclosporiasis was detected among residents of New Jersey. In a case-control study, investigators found that 21 of 30 case-patients and four of 60 controls had eaten raspberries.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+cyto <- matrix(data = c(21, 4, 9, 56), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(raspberries = c('yes', 'no'),
+                               cyclosporiasis = c('yes', 'no'))
+                )
+```
+
+2. Researchers conducted a prospective cohort study of 3,000 smokers and 5,000 nonsmokers to investigate the relationship between smoking and the development of coronary heart disease (CHD) over 1 year.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+chd <- matrix(data = c(84, 2916, 87, 4913), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(smoker = c('yes', 'no'),
+                               chd = c('yes', 'no'))
+                )
+```
+
+
+3. Researchers gave 48 male bank supervisors attending a management institute hypothetical personnel files and asked them whether they would promote the applicant based on the file. The personnel files were identical except that 24 of them listed a male and 24 listed a female applicant. The assignment of managers to receive either a male or female applicant file was carried out at random.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+case1901
+```
+
+4. The Learning Early About Peanut allergy (LEAP) study recruited 530 children with risk factors for developing peanut allergies and randomly allocated peanut exposure and peanut avoidance regimens to each participant. At 5 years of age, an oral food challenge (OFC) test was administered to determine whether participants had developed allergies.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+data("LEAP")
+leap <- xtabs(~ overall.V60.outcome + treatment.group, data = LEAP)
+leap
+```
+
+5. A 30-year study to investigate the effectiveness of mammograms versus a standard non-mammogram breast cancer exam was conducted in Canada with 89,835 female participants.12 During a 5-year screening period, each woman was randomized to either receive annual mammograms or standard physical exams for breast cancer. During the 25 years following the screening period, each woman was screened for breast cancer according to the standard of care at her health care center. At the end of the 25 year follow-up period, 1,005 women died from breast cancer. The results by intervention are summarized in `mammogram`.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+mammogram <- matrix(data = c(500, 44425, 505, 44405), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(mammogram = c('yes', 'no'),
+                               cancer.death = c('yes', 'no'))
+                )
+mammogram
+```
+
+6. An observational study of 227,571 Medicare beneficiaries who initiated treatment with one of two diabetes medications recorded whether each patient reported cardiovascular problems. 
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+diabetes <- avandia |> table()
+diabetes
+```
+
+7. On March 31, 2021, Pfizer and BioNTech announced that "in a Phase 3 trial in adolescents 12 to 15 years of age with or without prior evidence of SARS-CoV-2 infection, the Pfizer-BioNTech COVID-19 vaccine BNT162b2 demonstrated 100% efficacy and robust antibody responses, exceeding those recorded earlier in vaccinated participants aged 16 to 25 years old, and was well tolerated." These results are from a Phase 3 trial in 2,260 adolescents 12 to 15 years of age in the United States. In the trial, 18 cases of COVID-19 were observed in the placebo group (n = 1,129) versus none in the vaccinated group (n = 1,131).
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+vaccine <- biontech_adolescents |> table()
+vaccine
+```
+
+8. A random sample of 1629 U.S. adults obtained from NHANES data was used to investigate whether asthma is more common in women than in men.
+
+    a. Identify the outcome of interest and groupings.
+    b. Identify the study design.
+    c. Based on the study design, is the odds ratio or relative risk a more appropriate inferential target?
+    d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
+
+```{r}
+asthma <- matrix(data = c(49, 781, 30, 769), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(sex = c('female', 'male'),
+                               asthma = c('yes', 'no'))
+                )
+asthma
+```

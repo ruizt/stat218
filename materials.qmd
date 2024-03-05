@@ -189,9 +189,23 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 ### Week 9 (3/4/24)
 
-*Simple linear regression*
+*Categorical data analysis for contingency tables*
 
 <!--# big bang ex0823 -->
+
+**Tuesday class meeting**
+
+- [reading] Vu and Harrington 8.5.1 and 8.5.3
+- [lecture/discussion] inference for relative risk and odds ratios
+- [lab] distinguishing prospective and retrospective studies
+
+**Thursday class meeting**
+
+- [reading] Vu and Harrington 8.3
+- [lecture/discussion] tests of association in contingency tables
+- [activity] final project discussion and planning
+
+<!-- openintro::malaria openintro::migraine openintro::yawn -->
 
 ***Assignment***: HW5 due Thursday 3/14 11:59pm PST \[L6, L7, L8\]
 
