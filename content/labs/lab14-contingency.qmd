@@ -42,7 +42,7 @@ Researchers recorded deaths due to cardiovascular disease (CVD) among a random s
 
 ```{r obesity data}
 obesity <- case1801 |> column_to_rownames('Obesity') |> as.matrix() |> as.table()
-obesity |> pander()
+obesity 
 ```
 
 Because the data are a random sample from the population of interest (Samoans), it is possible to estimate the probability of the outcome of interest.
@@ -61,8 +61,8 @@ riskratio(obesity, rev = 'both')
 ```
 The `riskratio` function has a specific formatting requirement: 
 
-- rows should be ordered so that the reference/control group appears first
-- columns should be ordered so that the outcome of interes appears second
+- rows should be ordered so that the group of interest appears second
+- columns should be ordered so that the outcome of interest appears second
 
 The `rev = ...` argument *reverses* the order of rows, columns, or both.
 
@@ -78,7 +78,7 @@ In the example, `rev = 'both'` is used because the contingency table shows non-o
 Researchers sampled 86 lung cancer patients (cases) and 86 healthy individuals (controls) and recorded smoking status. 
 ```{r smoking data}
 smoking <- case1803 |> column_to_rownames('Smoking') |> as.matrix() |> as.table() |> t()
-smoking |> pander()
+smoking 
 ```
 
 This is a case-control study and inherently retrospective, because the outcome of interest is developing lung cancer, but individuals are sampled based on outcome and the risk factor (smoking) is identified retrospectively. 
@@ -116,7 +116,7 @@ cyclo <- matrix(data = c(21, 4, 9, 56),
                                cyclosporiasis = c('yes', 'no'))
                 )
 
-cyclo |> pander()
+cyclo 
 ```
 
 2. Researchers conducted a prospective cohort study of 3,000 smokers and 5,000 nonsmokers to investigate the relationship between smoking and the development of coronary heart disease (CHD) over 1 year.
@@ -134,7 +134,7 @@ chd <- matrix(data = c(84, 2916, 87, 4913),
                                chd = c('yes', 'no'))
                 )
 
-chd |> pander()
+chd 
 ```
 
 
@@ -146,7 +146,8 @@ chd |> pander()
     d. Perform inference according to your answer in (c); carry out a test and compute a confidence interval.
 
 ```{r practice problem 3}
-case1901 |> pander()
+hiring <- case1901 |> column_to_rownames('Gender') |> as.matrix() |> as.table() 
+hiring
 ```
 
 4. The Learning Early About Peanut allergy (LEAP) study recruited 530 children with risk factors for developing peanut allergies and randomly allocated peanut exposure and peanut avoidance regimens to each participant. At 5 years of age, an oral food challenge (OFC) test was administered to determine whether participants had developed allergies.
@@ -159,7 +160,7 @@ case1901 |> pander()
 ```{r practice problem 4}
 data("LEAP")
 leap <- xtabs(~ overall.V60.outcome + treatment.group, data = LEAP)
-leap |> pander()
+leap 
 ```
 
 5. A 30-year study to investigate the effectiveness of mammograms versus a standard non-mammogram breast cancer exam was conducted in Canada with 89,835 female participants.12 During a 5-year screening period, each woman was randomized to either receive annual mammograms or standard physical exams for breast cancer. During the 25 years following the screening period, each woman was screened for breast cancer according to the standard of care at her health care center. At the end of the 25 year follow-up period, 1,005 women died from breast cancer. The results by intervention are summarized in `mammogram`.
@@ -176,7 +177,7 @@ mammogram <- matrix(data = c(500, 44425, 505, 44405),
                dimnames = list(mammogram = c('yes', 'no'),
                                cancer.death = c('yes', 'no'))
                 )
-mammogram |> pander()
+mammogram 
 ```
 
 6. An observational study of 227,571 Medicare beneficiaries who initiated treatment with one of two diabetes medications recorded whether each patient reported cardiovascular problems. 
@@ -188,7 +189,7 @@ mammogram |> pander()
 
 ```{r practice problem 6}
 diabetes <- avandia |> table()
-diabetes |> pander()
+diabetes 
 ```
 
 7. On March 31, 2021, Pfizer and BioNTech announced that "in a Phase 3 trial in adolescents 12 to 15 years of age with or without prior evidence of SARS-CoV-2 infection, the Pfizer-BioNTech COVID-19 vaccine BNT162b2 demonstrated 100% efficacy and robust antibody responses, exceeding those recorded earlier in vaccinated participants aged 16 to 25 years old, and was well tolerated." These results are from a Phase 3 trial in 2,260 adolescents 12 to 15 years of age in the United States. In the trial, 18 cases of COVID-19 were observed in the placebo group (n = 1,129) versus none in the vaccinated group (n = 1,131).
@@ -200,7 +201,7 @@ diabetes |> pander()
 
 ```{r practice problem 7}
 vaccine <- biontech_adolescents |> table()
-vaccine |> pander()
+vaccine 
 ```
 
 8. A random sample of 1629 U.S. adults obtained from NHANES data was used to investigate whether asthma is more common in women than in men.
@@ -217,5 +218,5 @@ asthma <- matrix(data = c(49, 781, 30, 769),
                dimnames = list(sex = c('female', 'male'),
                                asthma = c('yes', 'no'))
                 )
-asthma |> pander()
+asthma 
 ```

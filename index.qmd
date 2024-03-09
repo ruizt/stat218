@@ -7,9 +7,8 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-- Week 9 outlines updated
-- HW3 revisions due Thursday 3/7 11:59pm PST
-- Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https://forms.office.com/r/pbMNAG1GuT)\] \[[partner assignments 4pm](https://forms.office.com/r/G12TfmnUxK)\]
+- Project guidelines posted
+- HW5 posted, due Thursday 3/14 11:59pm PST
 :::
 
 This is the class website for Applied Statistics for Life Sciences (STAT 218) offered at Cal Poly in Winter 2024 for sections 05-8273 (TR 2:10pm -- 4:00pm) and 06-8274 (TR 4:10pm -- 6:00pm). Please note that this site does *not* pertain to other sections of STAT 218 (of which there are several).

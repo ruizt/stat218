@@ -201,7 +201,7 @@ Reading quiz responses: \[[2pm section](https://forms.office.com/Pages/AnalysisP
 
 Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https://forms.office.com/r/pbMNAG1GuT)\] \[[partner assignments 4pm](https://forms.office.com/r/G12TfmnUxK)\]
 
-**Thursday class meeting**
+**Thursday class meeting** \[[slides](content/week9-association.qmd)\] \[[project guidelines](content/hw/project-guidelines)\]
 
 - [reading] Vu and Harrington 8.3
 - [lecture/discussion] tests of association in contingency tables
@@ -209,7 +209,7 @@ Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https:/
 
 <!-- openintro::malaria openintro::migraine openintro::yawn -->
 
-***Assignment***: HW5 due Thursday 3/14 11:59pm PST \[L6, L7, L8\]
+***Assignment***: \[[HW5](content/hw/hw5.qmd)\] due Thursday 3/14 11:59pm PST \[L6, L7, L8\]
 
 ### Week 10 (3/11/24)
 
@@ -222,3 +222,5 @@ Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https:/
 ### Finals week (3/18/24)
 
 *Oral exams to be held during scheduled exam time*
+
+\[[project guidelines](content/hw/project-guidelines)\]
