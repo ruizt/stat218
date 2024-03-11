@@ -1,0 +1,75 @@
+---
+title: "Lab 15: Simple linear regression"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+    fig-width: 4
+    fig-height: 3
+  docx:
+    toc: false
+    fig-width: 4
+    fig-height: 3
+prefer-html: true
+embed-resources: true
+---
+
+```{r load packages}
+library(tidyverse)
+library(oibiostat)
+library(openintro)
+library(Sleuth3)
+load('data/prevend.RData')
+```
+
+## Hand fitting a regression model
+
+### Warm-up
+
+The plot below shows RFFT score (a cognitive assessment) against age for 35 respondents from the Prevention of REnal and Vascular END-stage Disease (PREVEND) study.
+
+```{r prevend data, fig.width=4, fig.height=3}
+# scatterplot
+plot(prevend)
+```
+
+We will be using this dataset as an example to learn how to implement simple linear regression (SLR). An SLR model specifies that the mean response is linear in one explanatory variable, in this case:
+$$\text{mean RFFT} = b_0 + b_1 \times\text{age}$$
+This is the equation of a line in slope-intercpet form. So, as a warm up, we'll explore "hand fitting" a line to the PREVEND data.
+
+::: callout-note
+## Your turn
+
+Use the `hand.fit()` function to draw a line through the RFFT-Age scatterplot by specifying an intercept `b0` and a slope `b1`. Adjust until you obtain a line that you think best fits the data. Write down the values that give your 'best' fit.
+
+```{r your turn 1, echo = T}
+hand.fit(b0 = 80, b1 = -0.2)
+```
+:::
+
+### Hand fitting a model
+
+No model is perfect; there will always be some error. The model residuals are the differences between observed values and the values indicated by the model:
+$$e_i = y_i - \hat{y}_i$$
+The residuals represent the model errors. The least squares estimates are the values of the slope and intercept parameters that minimize the sum of squared residuals $\sum_i e_i^2$, which is a measure of total error. Before we learn how to compute these estimates directly, it is instructive to try and find them by hand.
+
+::: callout-note
+## Your turn
+
+Adding the argument `.resid = T` will show the magnitude of the residuals on the plot as red vertical lines indicating the distance from each observation to the fitted line. It will also add a title giving the sum of squared residuals (SSR):
+
+$$SSR = \sum_i e_i^2$$
+Input your 'best' values from before and look at the SSR value. Adjust until you make the SSR as low as you can.
+
+```{r your turn 2, echo = T}
+hand.fit(b0 = 80, b1 = -0.2, .resid = T)
+```
+:::
+

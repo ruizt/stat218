@@ -3148,5 +3148,173 @@
     "title": "Homework 5: Categorical data analysis",
     "section": "",
     "text": "[L6] Vu and Harrington 8.6. Greece has faced a severe economic crisis since the end of 2009. A Gallup poll surveyed 1,000 randomly sampled Greeks in 2011 and found that 25% of them said they would rate their lives poorly enough to be considered “suffering”.\n\nDescribe the population parameter of interest. What is the value of the point estimate of this parameter?\nCheck if the conditions required for constructing a confidence interval based on these data are met.\nConstruct a 95% confidence interval for the proportion of Greeks who are “suffering”.\nWithout doing any calculations, describe what would happen to the confidence interval if we decided to use a higher confidence level.\nWithout doing any calculations, describe what would happen to the confidence interval if we used a larger sample.\n\nVu and Harrington 8.14. On June 28, 2012 the U.S. Supreme Court upheld the much debated 2010 healthcare law, declaring it constitutional. A Gallup poll released the day after this decision indicates that 46% of 1,012 Americans agree with this decision. At a 95% confidence level, this sample has a 3% margin of error. Based on this information, determine if the following statements are true or false, and explain your reasoning.\n\nWe are 95% confident that between 43% and 49% of Americans in this sample support the decision of the U.S. Supreme Court on the 2010 healthcare law.\nWe are 95% confident that between 43% and 49% of Americans support the decision of the U.S.Supreme Court on the 2010 healthcare law.\nIf we considered many random samples of 1,012 Americans, and we calculated the sample proportions of those who support the decision of the U.S. Supreme Court, 95% of those sample proportions will be between 43% and 49%.\nThe margin of error at a 90% confidence level would be higher than 3%.\n\n[L7, L8] Vu and Harrington 8.24. Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development. The table vitamin shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period).\n\nState appropriate hypotheses to test for association between use of prenatal vitamins during the three months before pregnancy and autism.\nComplete the hypothesis test and state an appropriate conclusion.\nEstimate the association between use of prenatal vitamins and autism using an appropriate measure (relative risk or odds ratio). Produce a point estimate and a confidence interval.\nWrite a narrative summary of your results from (a) – (c).\nA New York Times article reporting on this study was titled “Prenatal Vitamins May Ward Off Autism”. Do you find the title of this article to be appropriate? Explain your answer. Additionally, propose an alternative title.\n\n\n\nVu and Harrington 8.27. Determine if the statements below are true or false. For each false statement, suggest an alternative wording to make it a true statement.\n\nThe chi-square model, just like the normal model, has two parameters, mean and standard deviation.\nThe chi-square model is always right skewed, regardless of the value of the degrees of freedom parameter.\nThe chi-square statistic is always positive.\nAs the degrees of freedom increases, the shape of the chi-square model becomes more skewed.\n\n[L7, L8] Vu and Harrington 8.45. In a study examining the association between green tea consumption and esophageal carcinoma, researchers recruited 300 patients with carcinoma and 571 without carcinoma and administered a questionnaire about tea drinking habits. Out of the 47 individuals who reported that they regularly drink green tea, 17 had carcinoma. Out of the 824 individuals who reported they never drink green tea, 283 had carcinoma. These data are stored in the table tea.\n\nAnalyze the data to assess evidence for an association between green tea consumption and esophageal carcinoma from these data.\nReport and interpret a point estimate and conficence interval for an appropriate measure of association.\nWrite a narrative summary of your results in (a)-(b).\n\n\n\n[L8] Volunteer patients were randomized into one of two experiment groups where they would receive an experimental vaccine or a placebo. They were subsequently exposed to a drug-sensitive strain of malaria and observed to see whether they came down with an infection. The raw data from the trial are stored as the dataset openintro::malaria.\n\nTest for association between the vaccination and the probability of infection. (Hint: take note of the small counts.)\nEstimate the difference in probability of infection between the vaccine group and the placebo group. Provide a 95% confidence interval and interpret the interval in context.\nEstimate the relative risk of infection in the vaccine group compared with the placebo group. Provide a 95% confidence interval and interpret the interval in context.\nVaccine efficacy is often measured by the relative reduction in risk, estimated by \\(\\frac{\\hat{p}_\\text{ctrl} - \\hat{p}_\\text{trt}}{\\hat{p}_\\text{ctrl}}\\). Provide a point estimate of vaccine efficacy from the trial data.\nProvide a 95% confidence interval for vaccine efficacy based on your answers in (c)-(d). (Hint: if \\((a, b)\\) are a confidence interval for parameter \\(\\gamma\\), then an interval for \\(\\gamma + c\\) is given by \\((a + c, b + c)\\).)"
+  },
+  {
+    "objectID": "content/hw/hw4-soln.html",
+    "href": "content/hw/hw4-soln.html",
+    "title": "Homework 4: Analysis of variance",
+    "section": "",
+    "text": "library(oibiostat)\nlibrary(openintro)\nlibrary(Sleuth3)\nlibrary(tidyverse)\nlibrary(pander)\nlibrary(emmeans)\n\n\n[L5] Gifted children. The dataset openintro::gifted contains data on 36 children identified as gifted in a large city. This problem will consider only the father’s and mother’s IQ: you’ll perform inference on the difference in IQ between the mother and father. Assume the population is gifted children in the metropolitan region where the data were collected.\n\nConduct an appropriate \\(t\\) test to determine whether mean IQ differs between the father and mother. Interpret the results in context.\nUse a nonparametric rank procedure to test for a difference in IQ center between the father and mother. Interpret the results in context.\nExplain how the hypotheses differ between the test in parts (a) and (b).\nMake the appropriate histogram(s) to check whether the assumptions for the rank test are reasonable. Do you think the rank test is appropriate in this case?\n\nANSWER:\n\nThe data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same mean IQ in favor of the alternative hypothesis that the mean IQ differs (t = -2.7279, df = 35, p-value = 0.009898).\nThe data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same typical IQ in favor of the alternative hypothesis that the typical IQ differs (p-value = 0.009677).\nThe hypothesis in (a) pertains to a difference in mean IQ; the hypothesis in (b) pertains to a difference in central or typical IQ.\nThe differences don’t look especially symmetric; the rank test is probably not appropriate.\n\n\n\n# part a\nt.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)\n\n\n    Paired t-test\n\ndata:  Pair(fatheriq, motheriq)\nt = -2.7279, df = 35, p-value = 0.009898\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -5.910883 -0.866895\nsample estimates:\nmean difference \n      -3.388889 \n\n# part b\nwilcox.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  Pair(fatheriq, motheriq)\nV = 168, p-value = 0.009677\nalternative hypothesis: true location shift is not equal to 0\n\n# part d\n(gifted$fatheriq - gifted$motheriq) |&gt; \n  hist(breaks = 8, main = '', xlab = 'father IQ - mother IQ')\n\n\n\n\n\n\n\n\n\n[L5] Physiological indicators of schizophrenia. The dataset Sleuth3::case0202 contains data on volumes of the left hippocampus in cubic centimeters for 15 pairs of monozygotic twins; one twin in each pair was schizophrenic and the other was not.\n\nCheck the assumptions for a nonparametric test of whether hippocampus volume differs in center between the schizophrenic and non-schizophrenic twins. Show the graphic(s) you examined and comment on whether test assumptions seem plausible.\nPerform the test in (a) and interpret the results. Write a full narrative summary and include a 90% confidence interval for the difference in centers.\n\nANSWERS:\n\nThe plot is shown below; pairwise differences appear to be unimodal and not too asymmetrically distributed. Test assumptions seem plausible.\nResults suggest brain anatomy differs with schizophrenia. We used data on twins in which one twin was affected by schizophrenia and one was not to test the hypothesis that left hippocampal volume differed between the affected and unaffected twin. The data provide sufficiently strong evidence to reject the hypothesis that typical left hippocampal volume does not differ between affected and unaffected twins in favor of the alternative of a difference (p-value = 0.002014). With 90% confidence, the difference in central values of left hippocampal volume is estimated to be between 0.075 and 0.315 cubic centimeters.\n\n\n\n# part a\n(case0202$Unaffected - case0202$Affected) |&gt; \n  hist(breaks = 5, main = '', xlab = 'unaffected volume - affected volume')\n\n\n\n\n\n\n\n# part b\nwilcox.test(Pair(Unaffected, Affected) ~ 1, data = case0202, \n            conf.int = T, conf.level = 0.9)\n\n\n    Wilcoxon signed rank exact test\n\ndata:  Pair(Unaffected, Affected)\nV = 111, p-value = 0.002014\nalternative hypothesis: true location shift is not equal to 0\n90 percent confidence interval:\n 0.075 0.315\nsample estimates:\n(pseudo)median \n        0.1575 \n\n\n\nVu and Harrington exercise 5.48. Determine if the following statements are true or false, and explain your reasoning for statements you identify as false. If the null hypothesis that the means of four groups are all the same is rejected using ANOVA at a 5% significance level, then…\n\nwe can then conclude that all the means are different from one another.\nthe standardized variability between groups is higher than the standardized variability within groups.\na pairwise analysis will identify at least one pair of means that are significantly different.\n\n[L9] Consider an experiment in which overweight subjects were randomly allocated to one of three diets: low-fat, low-carb, and Mediterranean. After two years, each subject’s weight loss was measured. The output below shows the result of an ANOVA model fitted to this data.\n\nConstruct the ANOVA table.\nTest the hypothesis that mean weight loss does not differ among the three diets. Write a narrative summary of the result. (Hint: the \\(p\\)-value from an F model can be computed as pf(fstat, num.df, denom.df, lower.tail = F).)\n\nANSWERS:\n\nThe table is shown below.\nThe data provide sufficiently strong evidence to reject the null hypothesis of no effect of diet on weight loss (F = 3.236 on 2 and 269 df, p = 0.0409).\n\n\n\nweightloss &lt;- ex0623\naov(WtLoss24 ~ Group, data = weightloss) |&gt; summary()\n\n             Df Sum Sq Mean Sq F value Pr(&gt;F)  \nGroup         2    217  108.43   3.236 0.0409 *\nResiduals   269   9014   33.51                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nVu and Harrington exercise 5.40. A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam.\n\nWhat are the hypotheses for evaluating if the average test scores are different for the different teaching methods?\nWhat are the degrees of freedom associated with the F-test for evaluating these hypotheses?\nSuppose the p-value for this test is 0.0168. What is the conclusion?\n\n[L9] The dataset Sleuth3::ex0722 contains measurements of closing force and propodus height of the claws of crabs from three predatory species.\n\nProduce side-by-side boxplots of claw height by species, ordering species by increasing median claw height.\nProduce a table of grouped summaries of claw heights showing means, standard deviations, and sample sizes for each species.\nComment on whether the assumptions for analysis of variance seem to be met.\nTest whether mean claw height differs among the three species. Write a short narrative summary of the results.\nConduct post-hoc pairwise comparisons to determine which means differ.\n\nANSWERS:\n\nBoxplots are shown below.\nTable is shown below.\nThe standard deviations of each group are close enough; measurements are independent since they are taken on distinct individuals.\nThe data provide sufficiently strong evidence to reject the null hypothesis of no difference in mean claw height among the three species of crab (F = 5.898 on 2 and 35 df, p = 0.0062).\nPost-hoc tests for pairwise comparisons are shown below. It is estimated that mean claw height differs between cancer productus and each of the other two species (hemigraspus nudus and lophapanopeus bellus), but not between hemigraspus nudus and lophapanopeus bellus. Student answers should include p-values if a table is not provided.\n\n\n\n# part a\nboxplot(Height ~ Species, data = ex0722)\n\n\n\n\n\n\n\n# part b\nex0722 |&gt;\n  group_by(Species) |&gt;\n  summarize(mean = mean(Height),\n            sd = sd(Height),\n            n = n()) |&gt; pander()\n\n\n\n\n\n\n\n\n\n\nSpecies\nmean\nsd\nn\n\n\n\n\nCancer productus\n10.43\n1.987\n12\n\n\nHemigrapsus nudus\n7.921\n2.074\n14\n\n\nLophopanopeus bellus\n8.242\n1.853\n12\n\n\n\n\n# part d\nfit &lt;- aov(Height ~ Species, data = ex0722)\nsummary(fit) |&gt; pander()\n\n\nAnalysis of Variance Model\n\n\n\n\n\n\n\n\n\n\n \nDf\nSum Sq\nMean Sq\nF value\nPr(&gt;F)\n\n\n\n\nSpecies\n2\n46.23\n23.11\n5.898\n0.0062\n\n\nResiduals\n35\n137.2\n3.919\nNA\nNA\n\n\n\n\n# part e\nemmeans(fit, 'Species') |&gt; pairs(adjust = 'tukey') |&gt; test() |&gt; pander()\n\n\n\n\n\n\n\n\n\n\n\n\ncontrast\nestimate\nSE\ndf\nt.ratio\np.value\n\n\n\n\nCancer productus - Hemigrapsus nudus\n2.504\n0.7788\n35\n3.215\n0.007706\n\n\nCancer productus - Lophopanopeus bellus\n2.183\n0.8082\n35\n2.702\n0.02782\n\n\nHemigrapsus nudus - Lophopanopeus bellus\n-0.3202\n0.7788\n35\n-0.4112\n0.9112"
+  },
+  {
+    "objectID": "content/hw/hw5-soln.html",
+    "href": "content/hw/hw5-soln.html",
+    "title": "Homework 5: Categorical data analysis",
+    "section": "",
+    "text": "[L6] Vu and Harrington 8.6. Greece has faced a severe economic crisis since the end of 2009. A Gallup poll surveyed 1,000 randomly sampled Greeks in 2011 and found that 25% of them said they would rate their lives poorly enough to be considered “suffering”.\n\nDescribe the population parameter of interest. What is the value of the point estimate of this parameter?\nCheck if the conditions required for constructing a confidence interval based on these data are met.\nConstruct a 95% confidence interval for the proportion of Greeks who are “suffering”.\nWithout doing any calculations, describe what would happen to the confidence interval if we decided to use a higher confidence level.\nWithout doing any calculations, describe what would happen to the confidence interval if we used a larger sample.\n\nVu and Harrington 8.14. On June 28, 2012 the U.S. Supreme Court upheld the much debated 2010 healthcare law, declaring it constitutional. A Gallup poll released the day after this decision indicates that 46% of 1,012 Americans agree with this decision. At a 95% confidence level, this sample has a 3% margin of error. Based on this information, determine if the following statements are true or false, and explain your reasoning.\n\nWe are 95% confident that between 43% and 49% of Americans in this sample support the decision of the U.S. Supreme Court on the 2010 healthcare law.\nWe are 95% confident that between 43% and 49% of Americans support the decision of the U.S.Supreme Court on the 2010 healthcare law.\nIf we considered many random samples of 1,012 Americans, and we calculated the sample proportions of those who support the decision of the U.S. Supreme Court, 95% of those sample proportions will be between 43% and 49%.\nThe margin of error at a 90% confidence level would be higher than 3%.\n\n[L7, L8] Vu and Harrington 8.24. Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development. The table vitamin shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period).\n\nState appropriate hypotheses to test for association between use of prenatal vitamins during the three months before pregnancy and autism.\nComplete the hypothesis test and state an appropriate conclusion.\nEstimate the association between use of prenatal vitamins and autism using an appropriate measure (relative risk or odds ratio). Produce a point estimate and a confidence interval.\nWrite a narrative summary of your results from (a) – (c).\nA New York Times article reporting on this study was titled “Prenatal Vitamins May Ward Off Autism”. Do you find the title of this article to be appropriate? Explain your answer. Additionally, propose an alternative title.\n\n\n\nVu and Harrington 8.27. Determine if the statements below are true or false. For each false statement, suggest an alternative wording to make it a true statement.\n\nThe chi-square model, just like the normal model, has two parameters, mean and standard deviation.\nThe chi-square model is always right skewed, regardless of the value of the degrees of freedom parameter.\nThe chi-square statistic is always positive.\nAs the degrees of freedom increases, the shape of the chi-square model becomes more skewed.\n\n[L7, L8] Vu and Harrington 8.45. In a study examining the association between green tea consumption and esophageal carcinoma, researchers recruited 300 patients with carcinoma and 571 without carcinoma and administered a questionnaire about tea drinking habits. Out of the 47 individuals who reported that they regularly drink green tea, 17 had carcinoma. Out of the 824 individuals who reported they never drink green tea, 283 had carcinoma. These data are stored in the table tea.\n\nAnalyze the data to assess evidence for an association between green tea consumption and esophageal carcinoma from these data.\nReport and interpret a point estimate and conficence interval for an appropriate measure of association.\nWrite a narrative summary of your results in (a)-(b).\n\n\n\n[L8] Volunteer patients were randomized into one of two experiment groups where they would receive an experimental vaccine or a placebo. They were subsequently exposed to a drug-sensitive strain of malaria and observed to see whether they came down with an infection. The raw data from the trial are stored as the dataset openintro::malaria.\n\nTest for association between the vaccination and the probability of infection. (Hint: take note of the small counts.)\nEstimate the difference in probability of infection between the vaccine group and the placebo group. Provide a 95% confidence interval and interpret the interval in context.\nEstimate the relative risk of infection in the vaccine group compared with the placebo group. Provide a 95% confidence interval and interpret the interval in context.\nVaccine efficacy is often measured by the relative reduction in risk, estimated by \\(\\frac{\\hat{p}_\\text{ctrl} - \\hat{p}_\\text{trt}}{\\hat{p}_\\text{ctrl}}\\). Provide a point estimate of vaccine efficacy from the trial data.\nProvide a 95% confidence interval for vaccine efficacy based on your answers in (c)-(d). (Hint: if \\((a, b)\\) are a confidence interval for parameter \\(\\gamma\\), then an interval for \\(\\gamma + c\\) is given by \\((a + c, b + c)\\).)"
+  },
+  {
+    "objectID": "content/week10-slr.html#todays-agenda",
+    "href": "content/week10-slr.html#todays-agenda",
+    "title": "Simple linear regression",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda"
+  },
+  {
+    "objectID": "content/week10-slr.html#reframing-inferences-for-means",
+    "href": "content/week10-slr.html#reframing-inferences-for-means",
+    "title": "Simple linear regression",
+    "section": "Reframing inferences for means",
+    "text": "Reframing inferences for means\nThink of the inferences for means we’ve discussed so far in terms of models:\n\none-sample inference: no explanatory variable\ntwo-sample inference: categorical explanatory variable with two categories\nANOVA: categorical explanatory variable with multiple categories\n\n\\[\\text{population mean of } Y = \\begin{cases}\n\\mu &\\quad\\text{one-sample}\\\\\n\\mu_1 \\;\\text{or}\\; \\mu_2 &\\quad\\text{two-sample} \\\\\n\\mu_1 \\;\\text{or}\\; \\dots \\;\\text{or}\\; \\mu_k &\\quad\\text{ANOVA}\n\\end{cases}\\]"
+  },
+  {
+    "objectID": "content/week10-slr.html#situations-to-use-regression",
+    "href": "content/week10-slr.html#situations-to-use-regression",
+    "title": "Simple linear regression",
+    "section": "Situations to use regression",
+    "text": "Situations to use regression"
+  },
+  {
+    "objectID": "content/week10-slr.html#the-slr-model",
+    "href": "content/week10-slr.html#the-slr-model",
+    "title": "Simple linear regression",
+    "section": "The SLR model",
+    "text": "The SLR model\nIn simple linear regression we consider a model with a continuous explanatory variable \\(x\\).\n\\[Y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i \\qquad (i = 1, \\dots, n)\\]\nMinimal assumptions for the error model:\n\nerrors are independent\nerrors have mean zero\ncommon standard deviation \\(\\sigma\\)\n\nSince we assume the mean error is zero, the model entails that the mean response is linear in the explanatory variable:\n\\[\\mathbb{E}(Y|x) = \\beta_0 + \\beta_1 x\\]"
+  },
+  {
+    "objectID": "content/week10-slr.html#explanatory-variables",
+    "href": "content/week10-slr.html#explanatory-variables",
+    "title": "Simple linear regression",
+    "section": "Explanatory variables",
+    "text": "Explanatory variables\n\nAn explanatory variable is one that is not of direct interest beyond its ability to explain another variable\n\n\n\nYou have seen this concept even if you didn’t recognize it.\n\nRainfall is the variable of interest\nTreatment is an explanatory variable\n\nIn this case, treatment is a categorical variable that potentially explains the amount of rainfall.\n\n\n\n\nData rows from cloud seeding experiment\n\n\n\n\n\n\nRainfall\nTreatment\n\n\n\n\n1656\nSeeded\n\n\n129.6\nSeeded\n\n\n163\nUnseeded\n\n\n47.3\nUnseeded"
+  },
+  {
+    "objectID": "content/week10-slr.html#models",
+    "href": "content/week10-slr.html#models",
+    "title": "Simple linear regression",
+    "section": "Models",
+    "text": "Models\n\n\nWhen we estimate the population means, we’re really using a model:\n\\[\\text{mean rainfall} = \\begin{cases}\n  \\mu_1\\;, &\\text{if seeded} \\\\\n  \\mu_2\\;, &\\text{if unseeded}\n\\end{cases}\\]\n\n\n\n\nEstimates\n\n\n\n\n\n\nTreatment\nSample mean\n\n\n\n\nSeeded\n442\n\n\nUnseeded\n164.6"
+  },
+  {
+    "objectID": "content/week10-slr.html#simple-models",
+    "href": "content/week10-slr.html#simple-models",
+    "title": "Simple linear regression",
+    "section": "Simple models",
+    "text": "Simple models\n\n\nWhen we estimate the population means, we’re really using a model:\n\\[\\text{mean rainfall } Y = \\begin{cases}\n  \\mu_1\\;, &\\text{if } x = \\text{seeded} \\\\\n  \\mu_2\\;, &\\text{if } x = \\text{unseeded}\n\\end{cases}\\]\n\n\n\n\n\n\n\n\n\n\nTreatment\nSample mean\n\n\n\n\nSeeded\n442\n\n\nUnseeded\n164.6\n\n\n\n\n\n\n\nInference is based on the sampling distributions of estimators \\(\\hat{\\mu}_1 = \\bar{y}_1\\) and \\(\\hat{\\mu}_2 = \\bar{y}_2\\)."
+  },
+  {
+    "objectID": "content/week10-slr.html#error-models",
+    "href": "content/week10-slr.html#error-models",
+    "title": "Simple linear regression",
+    "section": "Error models",
+    "text": "Error models\n\nAn error model describes how observations deviate from expected values\n\n\n\nIf we want a model to describe the actual observations rather than a population mean, we need to include an error model:\n\\[\\text{rainfall } Y = \\mu_i + \\epsilon\\]\n\nerror is a random quantity\nassume mean error is zero\n\n\n\n\n\n\n\n\n\n\n\n\n\nTreatment\nRainfall\nEstimate\nError\n\n\n\n\nSeeded\n2746\n442\n2304\n\n\nSeeded\n118.3\n442\n-323.7\n\n\nSeeded\n7.7\n442\n-434.3\n\n\nUnseeded\n87\n164.6\n-77.59\n\n\nUnseeded\n372.4\n164.6\n207.8\n\n\nUnseeded\n830.1\n164.6\n665.5"
+  },
+  {
+    "objectID": "content/week10-slr.html#the-slr-model-1",
+    "href": "content/week10-slr.html#the-slr-model-1",
+    "title": "Simple linear regression",
+    "section": "The SLR model",
+    "text": "The SLR model\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week10-slr.html#framework-for-inference-of-means",
+    "href": "content/week10-slr.html#framework-for-inference-of-means",
+    "title": "Simple linear regression",
+    "section": "Framework for inference of means",
+    "text": "Framework for inference of means\nThe model framework we’ve employed in the inference of one, two, and many means is:\n\\[Y_{ij} = \\mu_i + \\epsilon_{ij}\n\\quad\\begin{cases}\n  i = 1, \\dots, k  &\\quad\\text{($k$ groups)}\\\\\n  j = 1, \\dots, n_i &\\quad\\text{($n_i$ observations per group)}\n\\end{cases}\\]\nAll of the inferences we’ve developed follow when we assume of the error model:\n\nmean error is zero\nerrors are independent\nerrors have fixed standard deviations \\(\\sigma_i\\)\nerrors follow a normal model"
+  },
+  {
+    "objectID": "content/week10-slr.html#example-prevend",
+    "href": "content/week10-slr.html#example-prevend",
+    "title": "Simple linear regression",
+    "section": "Example: PREVEND",
+    "text": "Example: PREVEND\n\n\nPrevention of REnal and Vascular END-stage Disease (PREVEND) study.\n\nsmall subsample of 35 respondents from 2003-2006 survey\nRuff Figural Fluency Test (RFFT) is a cognitive assessment\n\nmeasures nonverbal capacity for initiation, planning, and divergent reasoning on 0 (worst) to 175 (best) scale\n\n\n\n\n\n\n\n\n\n\n\n\nAge\nRFFT\n\n\n\n\n75.6\n39\n\n\n75.6\n36\n\n\n64.8\n53\n\n\n54.9\n31\n\n\n59.6\n76\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow does average cognitive ability as measured by RFFT decline with age?\n\nThis is (subtly) a question about means."
+  },
+  {
+    "objectID": "content/week10-slr.html#estimating-coefficients",
+    "href": "content/week10-slr.html#estimating-coefficients",
+    "title": "Simple linear regression",
+    "section": "Estimating coefficients",
+    "text": "Estimating coefficients\n\n\nThe model residuals are estimates of the errors: \\[\\textcolor{red}{e_i} = \\textcolor{grey}{y_i} - \\textcolor{blue}{\\hat{y}_i} \\quad\\text{where}\\quad \\textcolor{blue}{\\hat{y}_i} = \\hat{\\beta}_0 + \\hat{\\beta}_1x_i\\] Coefficient estimates are the values of \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_2\\) that minimize \\(\\sum_i e_i^2\\):\n\\[\\begin{align*}\n\\hat{\\beta}_1 &= \\frac{s_y}{s_x}\\times r_{xy} \\\\\n\\hat{\\beta}_0 &= \\bar{y} - \\hat{\\beta}_1 \\bar{x}\n\\end{align*}\\]\nThese are called the least squares estimates.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvariable\nmean\nsd\n\n\n\n\nAge\n58.08\n14.5\n\n\nRFFT\n65.14\n31.02\n\n\n\n\n\nCorrelation coefficient \\(r_{xy}\\) = -0.787"
+  },
+  {
+    "objectID": "content/week10-slr.html#estimating-the-error-model",
+    "href": "content/week10-slr.html#estimating-the-error-model",
+    "title": "Simple linear regression",
+    "section": "Estimating the error model",
+    "text": "Estimating the error model\nThe error model has an additional parameter: the shared standard deviation \\(\\sigma\\). An estimate for this parameter is:\n\\[\\hat{\\sigma} = \\sqrt{\\frac{1}{n - 2} \\sum_i e_i^2}\\]\nRemember that the residual \\(e_i\\) depends on the coefficient estimates."
+  },
+  {
+    "objectID": "content/week10-slr.html#inference-for-the-coefficients",
+    "href": "content/week10-slr.html#inference-for-the-coefficients",
+    "title": "Simple linear regression",
+    "section": "Inference for the coefficients",
+    "text": "Inference for the coefficients\n\\[T = \\frac{\\hat{\\beta}_1}{SE\\left(\\hat{\\beta}_1\\right)}\\] \\[\\hat{\\beta}_1 \\pm c\\times SE\\left(\\hat{\\beta}_1\\right)\\]"
+  },
+  {
+    "objectID": "content/week10-slr.html#checking-model-assumptions",
+    "href": "content/week10-slr.html#checking-model-assumptions",
+    "title": "Simple linear regression",
+    "section": "Checking model assumptions",
+    "text": "Checking model assumptions"
+  },
+  {
+    "objectID": "content/week10-slr.html#warm-up",
+    "href": "content/week10-slr.html#warm-up",
+    "title": "Simple linear regression",
+    "section": "Warm-up",
+    "text": "Warm-up\nI’ve written a function hand.fit for you that draws a line through the PREVEND data.\n\n\n\n# fit a line by hand\nhand.fit(b0 = 80, b1 = -0.2)\n\n\n\n\n\n\n\n\n\n\n\nEquation of the line in slope-intercept form:\n\\[RFFT = b_0 + b_1 \\times Age\\]\n\n\\(b_0\\) gives the intercept\n\\(b_1\\) gives the slope\n\nThink of this as a model for mean RFFT.\n\n\nYour job: find a b0 and b1 that you think best fit the data. Write them down."
+  },
+  {
+    "objectID": "content/week10-slr.html#your-turn",
+    "href": "content/week10-slr.html#your-turn",
+    "title": "Simple linear regression",
+    "section": "Your turn",
+    "text": "Your turn\nThe hand.fit function also has an option to plot residuals and show the sum of squared residuals (SSR).\n\n\n\nAdd .resid = T to the hand.fit function and continue to adjust the slope and intercept until SSR is as small as you can make it. Write down your final b0 and b1.\nThen calculate the coefficient estimates using the formula on the previous slide.\n\n\nWhat were your initial estimates and SSR?\nWhat were they after adjustment?\nHow close did you get to the least squares estimates in the end?"
+  },
+  {
+    "objectID": "content/week10-slr.html#setting-the-stage",
+    "href": "content/week10-slr.html#setting-the-stage",
+    "title": "Simple linear regression",
+    "section": "Setting the stage",
+    "text": "Setting the stage\nRegression can be viewed as a line-fitting method, but it’s more than that: it facilitates estimation and statistical inference of relationships.\nBefore discussing further, we will contextualize the notion of a statistical model by re-examining inference for means in new terms\n\nexplanatory variables\nmodels for means\nerror models"
+  },
+  {
+    "objectID": "content/week10-slr.html#interpreting-parameter-estimates",
+    "href": "content/week10-slr.html#interpreting-parameter-estimates",
+    "title": "Simple linear regression",
+    "section": "Interpreting parameter estimates",
+    "text": "Interpreting parameter estimates\nAccording to the model, incrementing \\(x\\) by one unit changes the mean response by \\(\\beta_1\\):\n\\[\\underbrace{\\beta_0 + \\beta_1 (x + 1)}_{\\mathbb{E}(Y| x + 1)}\n= \\underbrace{(\\beta_0 + \\beta_1 x) + \\beta_1}_{\\mathbb{E}(Y|x) + \\beta_1}\\]\nThis leads to the parameter interpretation:\n\nA one-unit increase in [explanatory variable] is associated with a change in mean [response variable] of \\(\\beta_1\\)\n\nAnd thus, the estimate is interpreted:\n\nA one-unit increase in [explanatory variable] is associated with an estimated change in mean [response variable] of \\(\\hat{\\beta}_1\\)"
+  },
+  {
+    "objectID": "content/week10-slr.html#mean-response",
+    "href": "content/week10-slr.html#mean-response",
+    "title": "Simple linear regression",
+    "section": "Mean response",
+    "text": "Mean response\nThe model entails that the mean response is linear in the explanatory variable:\n\\[\\mathbb{E}(Y|x) = \\beta_0 + \\beta_1 x\\]\n\n\\(\\mathbb{E}(Y|x)\\) denotes the mean of \\(Y\\) given \\(x\\); \\(\\mathbb{E}\\) stands for “expected value”\nno error term here because we assume the mean error is zero"
+  },
+  {
+    "objectID": "content/week10-slr.html#fitting-slr-models-in-r",
+    "href": "content/week10-slr.html#fitting-slr-models-in-r",
+    "title": "Simple linear regression",
+    "section": "Fitting SLR models in R",
+    "text": "Fitting SLR models in R\n\n\n\n# fit model\nfit &lt;- lm(RFFT ~ Age, data = prevend)\n\n# inspect\nfit\n\n\nCall:\nlm(formula = RFFT ~ Age, data = prevend)\n\nCoefficients:\n(Intercept)          Age  \n    162.973       -1.684  \n\n\n\n\nEach additional year of age is associated with an estimated decrease in mean RFFT score of 1.684.\n\n\n\nThe output above indicates that the least squares estimates are:\n\\[\\begin{align*} \\hat{\\beta}_0 &= 162.973 \\\\\n\\hat{\\beta}_1 &= -1.684 \\end{align*}\\]\nThe intercept lacks a natural interpretation since RFFT cannot be observed for Age = 0."
+  },
+  {
+    "objectID": "content/week10-slr.html#the-big-bang",
+    "href": "content/week10-slr.html#the-big-bang",
+    "title": "Simple linear regression",
+    "section": "The big bang",
+    "text": "The big bang\n\n\n\n\nSTAT218"
   }
 ]

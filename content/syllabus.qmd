@@ -32,7 +32,7 @@ This class aims to provide a hands-on introduction to common statistical methods
 
 Class meetings will comprise a mixture of lecture, lab activities, class activities, and discussion.
 
-**Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/stat218)\].
+**Office hours:** 12:10pm — 2:00pm MW 25-236 or Zoom \[[by appointment](https://calendly.com/tdruiz/office-hour)\].
 
 These times are partitioned into 10 minute intervals that you can schedule via the appointment link above; this system is intended to minimize waiting times and guarantee one-on-one availability. Slots can be scheduled anywhere from 7 calendar days to 10 minutes in advance. While drop-ins are welcome, I can't guarantee availability outside of scheduled times.
 
@@ -121,7 +121,7 @@ Please note that these definitions are tentative and potentially subject to chan
 Subject to change.
 
 | Week             | Topics                                                   | Readings (V&H) | Assignments |
-|----------------|------------------------|----------------|----------------|
+|-----------------|----------------------|-----------------|-----------------|
 | 1 (1/8/24)       | Introduction to statistical thinking and study design    | 1.1            | HW1         |
 | 2 (1/15/24)      | Data, data types, and data collection                    | 1.2            | None        |
 | 3 (1/22/24)      | Descriptive statistics and graphical summaries           | 1.4 – 1.6      | ~~HW2~~     |
