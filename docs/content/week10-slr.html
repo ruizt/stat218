@@ -400,6 +400,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Simple linear regression</h1>
+  <p class="subtitle">Model specification, parameter estimation, inference, and diagnostics</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -407,6 +408,11 @@
 </section>
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
+<ol type="1">
+<li>Reading quiz. [<a href="https://forms.office.com/r/EXg3rK5zgv">2pm section</a>] [<a href="https://forms.office.com/r/xsfN6CaHBZ">4pm section</a>]</li>
+<li>[lecture/discussion] Model specification, estimation and diagnostics for SLR</li>
+<li>[lab] Estimating the age of the universe</li>
+</ol>
 </section>
 <section id="example-prevend" class="slide level2">
 <h2>Example: PREVEND</h2>
@@ -717,8 +723,8 @@
 <li>errors have mean zero</li>
 <li>common standard deviation <span class="math inline">\(\sigma\)</span></li>
 </ul>
-<p>Since we assume the mean error is zero, the model entails that the mean response is linear in the explanatory variable:</p>
-<p><span class="math display">\[\mathbb{E}(Y|x) = \beta_0 + \beta_1 x\]</span></p>
+<p>Since we assume the mean error is zero, the model entails that the <strong>mean response is linear in the explanatory variable</strong>:</p>
+<p><span class="math display">\[\mathbb{E}(Y_i|x_i) = \beta_0 + \beta_1 x_i\]</span></p>
 </section>
 <section id="estimating-coefficients" class="slide level2">
 <h2>Estimating coefficients</h2>
@@ -846,21 +852,265 @@ Coefficients:
 \hat{\beta}_1 &amp;= -1.684 \end{align*}\]</span></p>
 <p>The intercept lacks a natural interpretation since RFFT cannot be observed for <code>Age = 0</code>.</p>
 </section>
+<section id="residual-diagnostics" class="slide level2">
+<h2>Residual diagnostics</h2>
+<blockquote>
+<p>We can use residual diagnostics to assess certain of the model assumptions.</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>A scatterplot of residuals against fitted values can be used to assess:</p>
+<ol type="1">
+<li><p>[model specification] the <span class="math inline">\(x\)</span>-<span class="math inline">\(y\)</span> relationship is approximately linear</p>
+<ul>
+<li>trend indicates misspecification</li>
+</ul></li>
+<li><p>[constant variance] error variability is the same regardless of <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span></p>
+<ul>
+<li>uneven spread indicates nonconstant variance</li>
+</ul></li>
+</ol>
+<p><em>You should hope to see no pattern in these plots.</em></p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="img/resid-fit.png" height="450"></p>
+</div>
+</div>
+</section>
 <section id="estimating-the-error-model" class="slide level2">
 <h2>Estimating the error model</h2>
-<p>The error model has an additional parameter: the shared standard deviation <span class="math inline">\(\sigma\)</span>. An estimate for this parameter is:</p>
-<p><span class="math display">\[\hat{\sigma} = \sqrt{\frac{1}{n - 2} \sum_i e_i^2}\]</span></p>
-<p>Remember that the residual <span class="math inline">\(e_i\)</span> depends on the coefficient estimates.</p>
+<p>If model assumptions seem plausible, one should estimate the error model parameter <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math display">\[\hat{\sigma} = \sqrt{\frac{1}{n - 2} \sum_i e_i^2} \qquad\text{(estimated error variability)}\]</span></p>
+<ul>
+<li><p>used to compute standard errors for the coefficient estimates</p></li>
+<li><p>but not meaningful if either…</p>
+<ul>
+<li>model is ill-specified</li>
+<li>residual variability is uneven</li>
+</ul></li>
+</ul>
+<p>Standard error formulae are:</p>
+<p><span class="math display">\[SE\left(\hat{\beta}_0\right) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{\bar{x}^2}{(n - 1)s_x^2}} \qquad\text{and}\qquad
+SE\left(\hat{\beta}_1\right) = \hat{\sigma}\sqrt{\frac{1}{(n - 1)s_x^2}}\]</span></p>
 </section>
-<section id="checking-model-assumptions" class="slide level2">
-<h2>Checking model assumptions</h2>
+<section id="fitted-model-summary" class="slide level2">
+<h2>Fitted model summary</h2>
+<blockquote>
+<p>A fitted model consists of point estimates for the model parameters <span class="math inline">\(\beta_0, \beta_1, \sigma\)</span>.</p>
+</blockquote>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:58%;">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Std. Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">163</td>
+<td style="text-align: center;">13.73</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Age</strong></td>
+<td style="text-align: center;">-1.684</td>
+<td style="text-align: center;">0.2295</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>SD</strong></td>
+<td style="text-align: center;">19.4</td>
+<td style="text-align: center;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week10-slr_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Each year of age is associated with an estimated decrease in mean RFFT score of 1.684 points.</li>
+<li>The standard deviation of RFFT scores after accounting for age is estimated to be 19.4 points.</li>
+</ul>
 </section>
 <section id="inference-for-the-coefficients" class="slide level2">
 <h2>Inference for the coefficients</h2>
-<p><span class="math display">\[T = \frac{\hat{\beta}_1}{SE\left(\hat{\beta}_1\right)}\]</span> <span class="math display">\[\hat{\beta}_1 \pm c\times SE\left(\hat{\beta}_1\right)\]</span></p>
+<blockquote>
+<p>Statistical inference for the coefficients assumes errors follow a normal model.</p>
+</blockquote>
+<p>Typically inference is only performed on the slope parameter.</p>
+<ul>
+<li>Significance tests: <span class="math inline">\(T = \frac{\hat{\beta}_1}{SE\left(\hat{\beta}_1\right)}\)</span></li>
+<li>Intervals: <span class="math inline">\(\hat{\beta}_1 \pm c\times SE\left(\hat{\beta}_1\right)\)</span></li>
+</ul>
+<p>Both inferences utilize a <span class="math inline">\(t\)</span> model with <span class="math inline">\(n - 2\)</span> degrees of freedom.</p>
 </section>
-<section id="the-big-bang" class="slide level2">
-<h2>The big bang</h2>
+<section id="checking-normality" class="slide level2">
+<h2>Checking normality</h2>
+<p>There are two residual diagnostics used to assess normality.</p>
+
+<img data-src="week10-slr_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"><p>Neither of these indicate problems. What to look for to detect <em>non</em>-normality:</p>
+<ul>
+<li>[histogram] substantial deviation from bell curve shape</li>
+<li>[QQ plot] substantial deviation from <span class="math inline">\(y=x\)</span> line</li>
+</ul>
+</section>
+<section id="inference-for-the-prevend-study" class="slide level2">
+<h2>Inference for the PREVEND study</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># fit model</span></span>
+<span id="cb4-2"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(RFFT <span class="sc">~</span> Age, <span class="at">data =</span> prevend)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="co"># model summary</span></span>
+<span id="cb4-5"><a></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = RFFT ~ Age, data = prevend)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-51.437  -6.502   3.162   9.785  38.501 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 162.9731    13.7266   11.87 1.86e-13 ***
+Age          -1.6844     0.2295   -7.34 1.99e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 19.4 on 33 degrees of freedom
+Multiple R-squared:  0.6201,    Adjusted R-squared:  0.6086 
+F-statistic: 53.87 on 1 and 33 DF,  p-value: 1.995e-08</code></pre>
+</div>
+</div>
+</div><div class="column">
+<p>The coefficient table reports estimates, standard errors, and significance tests.</p>
+<p>Details:</p>
+<ul>
+<li><p>Significance tests pertain to the hypotheses: <span class="math display">\[\begin{cases}
+H_0: \beta_j = 0 \\
+H_A: \beta_j \neq 0
+\end{cases}\]</span></p></li>
+<li><p><code>Residual standard error</code> gives <span class="math inline">\(\hat{\sigma}\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="confidence-intervals-for-the-coefficients" class="slide level2">
+<h2>Confidence intervals for the coefficients</h2>
+<p>Confidence intervals are obtained separately using <code>confint()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">confint</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="sc">|&gt;</span> <span class="fu">pander</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table style="width:50%;">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">&nbsp;</th>
+<th style="text-align: center;">2.5 %</th>
+<th style="text-align: center;">97.5 %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(Intercept)</strong></td>
+<td style="text-align: center;">135</td>
+<td style="text-align: center;">190.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Age</strong></td>
+<td style="text-align: center;">-2.151</td>
+<td style="text-align: center;">-1.217</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<blockquote>
+<p>With 95% confidence, the decrease in mean RFFT score with each additional year of age is estimated to be between 1.217 points and 2.151 points.</p>
+</blockquote>
+</section>
+<section id="estimating-the-age-of-the-universe" class="slide level2">
+<h2>Estimating the age of the universe</h2>
+<p>The Hubble constant <span class="math inline">\(H\)</span> is a fundamental cosmological constant that pertains to the size and age of the universe.</p>
+<ul>
+<li>relative velocity of and distance to a galaxy are related as <span class="math inline">\(H\times d = v\)</span></li>
+<li>age of the universe in years is <span class="math inline">\(\frac{978440076094}{H}\)</span></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><code>hubble</code> gives velocities and distances to 24 galaxies. Strategy:</p>
+<ol type="1">
+<li>Fit an SLR model <em>without an intercept</em> to estimate <span class="math inline">\(\frac{1}{H}\)</span></li>
+<li>Compute a confidence interval for <span class="math inline">\(\frac{1}{H}\)</span></li>
+<li>Use the conversion factor to get an interval for the age of the universe</li>
+</ol>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:31%;">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">velocity</th>
+<th style="text-align: center;">distance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">133</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">664</td>
+<td style="text-align: center;">9.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1794</td>
+<td style="text-align: center;">16.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1594</td>
+<td style="text-align: center;">17.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1473</td>
+<td style="text-align: center;">21.88</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="img/poly-logo-2.jpg" class="slide-logo"></p>
