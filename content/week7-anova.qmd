@@ -1,0 +1,578 @@
+---
+title: "Analysis of Variance"
+subtitle: "Inferences for multiple population means"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(Sleuth3)
+library(pander)
+library(RColorBrewer)
+means.plot <- function(groups, means, ses, crit = 2, ang = 90, 
+                       xlab = '', ylab = '', main = '', 
+                       l = 0.1, ylim = NULL, col = 'black'){
+  interval.lwr <- means - crit*ses
+  interval.upr <- means + crit*ses
+  if(is.null(ylim)){yl <- c(min(interval.lwr), max(interval.upr))}else{yl <- ylim}
+  plot(x = groups, 
+       y = means, 
+       ylim = yl,
+       xlim = c(0.75, max(groups) + 0.25),
+       xlab = xlab, ylab = ylab, main = main,
+       xaxt = 'n',
+       pch = 16)
+  axis(1, at = groups)
+  arrows(groups, interval.lwr, groups, interval.upr, length = l, angle = ang, code = 3)
+}
+```
+
+
+## Following up on last time
+
+Case | Problem type | Hypotheses | Test | $p$-value
+---|---|---|---|---
+Cholesterol | two-sample | $\begin{cases}H_0: c_\text{OB} = c_\text{CF} \\ H_A: c_\text{OB} \neq c_\text{CF}\end{cases}$ | rank sum | 0.2063
+Zinc | two-sample | $\begin{cases}H_0: c_\text{A} = c_\text{B} \\ H_A: c_\text{A} < c_\text{B}\end{cases}$ | permutation | 0.1351
+Sleep | paired differences | $\begin{cases}H_0: c_\text{drug1} - c_\text{drug2}  = -1 \\ H_A: c_\text{drug1} - c_\text{drug2} < -1 \end{cases}$ | signed rank | 0.04609
+
+R commands:
+```{r, eval = F, echo = T}
+# cholesterol
+wilcox.test(Cholesterol ~ Diet, data = cholesterol, mu = 0, alternative = 'two.sided')
+
+# zinc
+permTS(Zinc ~ Group, data = zinc, mu = 0, alternative = 'less')
+
+# sleep
+wilcox.test(sleep$diff, mu = -1, alternative = 'less')
+```
+
+## Zinc example: why permutation?
+
+::: {.columns}
+
+::: {.column width="40%"}
+
+```{r, fig.width = 4, fig.height = 6}
+zinc <- Sleuth3::ex0125
+par(mfrow = c(2, 1),
+    mar = c(4, 4, 4, 1),
+    cex = 1)
+hist(zinc$Zinc[zinc$Group == 'A'], breaks = 5, xlim = c(1, 1.8), main = 'group A', xlab = 'zinc')
+hist(zinc$Zinc[zinc$Group == 'B'], breaks = 6, main = 'group B', xlab = 'zinc')
+```
+:::
+
+::: {.column width="55%"}
+> The rank sum test assumes population distributions differ only in location
+
+These histograms suggest:
+
+- different sperad
+- different shape
+
+If assumptions aren't met, the permutation test should be used instead.
+:::
+
+:::
+
+## Today's agenda
+
+1. \[lecture/discussion\] inference for several means with ANOVA
+2. \[lab\] ANOVA in R
+3. \[practice problem\] diet restriction and longevity
+
+## Chicks
+
+::: columns
+::: column
+On the test, you considered this data on chick weights by diet:
+
+```{r, fig.width=4, fig.height = 3}
+chicks <- ChickWeight |>
+  filter(Time == 20) |>
+  select(weight, Chick, Diet) |>
+  rename(chick = Chick) |>
+  mutate(diet = as.numeric(Diet))
+
+par(mar = c(4, 4, 1, 1),
+    cex = 1.5)
+boxplot(weight ~ diet, data = chicks, xlab = 'diet', ylab = 'weight (g)')
+```
+
+Are observed differences sufficiently large to conclude diets cause growth differences?
+:::
+
+::: column
+Here we have *four means* to compare rather than just two.
+
+Point estimates (which you computed) are:
+
+```{r}
+chicks.summary <- chicks |>
+  group_by(diet) |>
+  summarize(mean = mean(weight),
+            se = sd(weight)/sqrt(n()))
+
+chicks.summary |>
+  pander()
+```
+
+> Do the population means differ by diet? How do you test this?
+:::
+:::
+
+## An *ad hoc* approach
+
+::: columns
+::: column
+One option is to make confidence intervals and check for overlap:
+
+```{r, fig.width = 4, fig.height = 3}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+means.plot(chicks.summary$diet, 
+           chicks.summary$mean,
+           chicks.summary$se, 
+           xlab = 'diet', ylab = 'weight')
+```
+
+Idea: if any of the intervals *don't* overlap, then there's a difference.
+
+-   *e.g.*, diet 1 differs from diets 3 and 4
+:::
+
+::: column
+Not satisfactory, because interval coverage is not simultaneous:
+
+-   intervals won't always cover or not cover all four means at the same time
+-   so the "joint" coverage is less than 95%
+
+> There is extra uncertainty due to the multiplicity; inferences must account for this.
+
+Strategy:
+
+-   first test for *any* group differences
+-   then determine *which* groups differ
+:::
+:::
+
+## A hypothesis to test
+
+Let $\mu_i = \text{mean weight on diet } i$. Consider testing the hypotheses:
+
+$$\begin{align*}
+&H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 \quad &(\text{all means are the same}) \\
+&H_A: \mu_i \neq \mu_j \quad &(\text{at least one pair differs})
+\end{align*}$$
+
+Consider this hypothetical scenario:
+
+::: columns
+::: {.column width="70%"}
+```{r, fig.width = 8, fig.height= 3}
+set.seed(22124)
+par(mfrow = c(1, 2), mar = c(3, 3, 1, 1))
+means.plot(1:4, rnorm(4, mean = 1, sd = 2), 2 + rnorm(4, sd = 0.1), ylim = c(-10, 8))
+means.plot(1:4, rnorm(4, mean = 1, sd = 4), 2 + rnorm(4, sd = 0.1), ylim = c(-10, 8))
+```
+:::
+
+::: {.column width="30%"}
+> The means differ more at right, but is it "enough"?
+:::
+:::
+
+*How variable are the means? How variable are the groups (i.e., error bars)?*
+
+## Partitioning variation
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width = 5, fig.height = 4}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+greys <- brewer.pal(8, "Greys")
+blues <- brewer.pal(8, "Blues")
+reds <- brewer.pal(8, 'Reds')
+fit <- lm(weight ~ Diet, data = chicks)
+fit.av <- anova(fit)
+rmsg <- fit.av$`Mean Sq`[1] |> sqrt()
+rmse <- fit.av$`Mean Sq`[2] |> sqrt()
+rmst <- fit.av$`Mean Sq` |> sum() |> sqrt()
+obs.lwr <- mean(chicks$weight) - rmst
+obs.upr <- mean(chicks$weight) + rmst
+
+plot(chicks$diet + rnorm(46, sd = 0.1), chicks$weight,
+     xaxt = 'n', ylab = 'weight(g)', xlab = 'diet',
+     col = greys[3], xlim = c(0.25, 4.75), cex = 0.7,
+     ylim = c(obs.lwr, obs.upr))
+axis(1, at = chicks$diet)
+arrows(4.6, obs.lwr, 
+       4.6, obs.upr, 
+       col = greys[5], length = 0.1, code = 3)
+points(chicks.summary$diet, chicks.summary$mean,
+       pch = 16, col = blues[6], cex = 0.7)
+abline(h = mean(chicks$weight), lty = 2, col = reds[6])
+
+grp.lwr <- chicks.summary$mean - rmse
+grp.upr <- chicks.summary$mean + rmse
+arrows(1:4, grp.lwr, 1:4, grp.upr, 
+       code = 3, length = 0.1, col = blues[6])
+
+btwn.lwr <- mean(chicks$weight) - rmsg*0.7
+btwn.upr <- mean(chicks$weight) + rmsg*0.7
+arrows(2.5, btwn.lwr, 2.5, btwn.upr,
+       code = 3, length = 0.1, col = reds[6])
+```
+:::
+
+::: {.column width="55%"}
+Two sources of variability:
+
+-   [group]{style="color:red"} variability between diets (systematic)
+
+-   [error]{style="color:blue"} variability between chicks (random)
+
+A model:
+
+$$\color{grey}{\text{total variation}} = \color{red}{\text{group variation}} + \color{blue}{\text{error variation}}$$
+:::
+:::
+
+
+An idea: use the ratio $\frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}}$ to measure how much means differ.
+
+> *Partitioning variation and taking ratios is called the "analysis of variance"*
+
+## Analysis of variance
+
+> The analysis of variance is based on a type of summary called an $F$ statistic. 
+
+$F$ statistics measure ratios of variance components. In our case, we will use:
+$$F = \frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}}$$
+
+- a large $F$ indicates that grouping accounts for relatively more variation 
+
+    <!-- $\Rightarrow$ significant differences in means -->
+    
+- a small $F$ indicates that grouping accounts for relatively little variation
+
+    <!-- $\Rightarrow$ insignificant differences in means -->
+
+*To implement this idea, we need measures of group and error variation*
+
+## The $F$ statistic
+
+> If the means vary a lot *relative to the observations in each group* we should reject $H_0$
+
+
+::: columns
+::: column
+Notation:
+
+-   $\bar{x}$: "grand" mean of all observations
+-   $\bar{x}_i$: mean of observations in group $i$
+-   $s_i$: SD of observations in group $i$
+-   $k$ groups
+-   $n$ total observations
+-   $n_i$ observations per group
+
+Assumption: variability is the same within each group.
+:::
+
+::: column
+Measures of variability:
+
+$$\color{red}{MSG} = \frac{1}{k - 1}\sum_i n_i(\bar{x}_i - \bar{x})^2 \quad(\color{red}{\text{group}})$$ 
+$$\color{blue}{MSE} = \frac{1}{n - k}\sum_i (n_i - 1)s_i^2 \quad(\color{blue}{\text{error}})$$ Ratio:
+
+$$F = \frac{\color{red}{MSG}}{\color{blue}{MSE}} \quad\left(\frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}}\right)$$
+:::
+:::
+
+<!-- ## Example calculation -->
+
+<!-- ::: columns -->
+<!-- ::: {.column width="45%"} -->
+<!-- Grouped summaries: -->
+
+<!-- ```{r} -->
+<!-- chicks |> -->
+<!--   mutate(diet = as.numeric(Diet)) |> -->
+<!--   group_by(diet) |> -->
+<!--   summarize(mean = mean(weight), -->
+<!--             sd = sd(weight), -->
+<!--             n = n()) |> -->
+<!--   pander() -->
+<!-- ``` -->
+
+<!-- Ungrouped summaries: -->
+
+<!-- ```{r} -->
+<!-- chicks |> -->
+<!--   summarize(mean = mean(weight), -->
+<!--             n = n()) |> -->
+<!--   pander() -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ::: {.column width="55%"} -->
+<!-- $$\begin{align*} -->
+<!-- MSG &= \frac{1}{k - 1}\sum_i n_i(\bar{x}_i - \bar{x})^2 \\ -->
+<!-- &= \hspace{10cm}\\\\ -->
+<!-- &= 18627 \\\\ -->
+<!-- MSE &= \frac{1}{n - k}\sum_i (n_i - 1)s_i^2 \\ -->
+<!-- &= \hspace{10cm} \\\\ -->
+<!-- &= 3409.3\\\\ -->
+<!-- F &= \frac{MSG}{MSE} = \hspace{5cm} = 5.4636  -->
+<!-- \end{align*}$$ -->
+<!-- ::: -->
+<!-- ::: -->
+
+## Analysis of variance table
+
+The results of an analysis of variance are traditionally displayed in a table.
+
+Source | degrees of freedom | Sum of squares | Mean square | F statistic
+---|---|---|---|---
+Group | $k - 1$ | SSG | $MSG = \frac{SSG}{k - 1}$ | $\frac{MSG}{MSE}$ 
+Error | $n - k$ | SSE | $MSE = \frac{SSG}{n - k}$ | 
+
+- the sum of square terms are 'raw' measures of variability
+- the mean square terms are averages adjusted for the amount of data available to estimate variability due to each source
+
+Formally, the ANOVA model says $(n - 1)s^2 = SSG + SSE$.
+
+## ANOVA in R
+
+::: {.columns}
+
+::: {.column}
+There are two steps to performing an ANOVA in R:
+
+1. Fit an ANOVA model
+2. Generate the table
+
+```{r, echo = T, results = 'hide'}
+# fit anova model
+fit <- aov(weight ~ Diet, data = chicks)
+
+# generate table
+summary(fit)
+```
+:::
+
+::: {.column}
+> The data provide sufficiently strong evidence to reject the null hypothesis that diets do not cause differences in growth in favor of the alternative that at least two diets differ significantly (*F = 5.464* on *3* and *42* df, *p = 0.0029*).
+
+:::
+
+:::
+
+```{r}
+summary(fit) |> pander()
+```
+
+## Interpreting the $F$ statistic
+
+> *F = 5.4636* means the proportion of variation in weight attributable to diets is 5.46 times greater than the proportion of variation attributable to chicks.
+
+The *significance* of this result is measured by a $p$ value:
+
+- if there is in fact no difference in means, then `r round(pf(5.4636, 3, 42, lower.tail = F), 5)*100`% of samples (*i.e.*, 2 in 1000) would produce more diet-to-diet variability than what we observed.
+
+The $p$-value is based on an $F$ model for the sampling distribution. This is a parametric model.
+
+- parameters are numerator and denominator degrees of freedom
+- assumes underlying population distributions for each group are well-approximated by a normal model
+
+
+
+## Summing up
+
+> The ANOVA setup (for us) is comparing $k$ population means.
+
+Hypotheses:
+
+$$\begin{align*}
+&H_0: \mu_1 = \mu_2 = \cdots = \mu_k \quad &(\text{all means are the same}) \\
+&H_A: \mu_i \neq \mu_j \quad &(\text{at least one pair differs})
+\end{align*}$$
+
+Assumptions:
+
+- population standard deviations are the same for every group
+- groupwise population distributions follow a normal model
+
+Model and approach:
+
+- partition total variation into group and error components $(SST = SSG + SSE)$
+- reject $H_0$ if group variation is sufficiently large relative to error variation
+
+## Another example: treating anorexia
+
+::: {.columns}
+
+::: {.column}
+Weight change was measured for 72 young female anorexia patients randomly allocated to three treatment groups:
+
+- cognitive behavioral therapy (CBT)
+- family treatment (FT)
+- a control (Cont)
+
+Grouped summary statistics:
+
+```{r}
+anorexia <- MASS::anorexia |>
+  mutate(treat = as.numeric(Treat),
+         change = Postwt - Prewt)
+write_csv(anorexia, 'labs/data/anorexia.csv')
+
+anorexia.summary <- anorexia |>
+  group_by(Treat) |>
+  summarize(`post - pre` = mean(change),
+            sd = sd(change),
+            n = n())
+
+anorexia.summary |>
+  pander()
+```
+:::
+
+::: {.column}
+```{r, fig.width = 6, fig.height=4}
+par(mar = c(4, 3, 1, 1), cex = 1.5)
+boxplot(change ~ Treat, data = anorexia, horizontal = T,
+        xlab = 'weight change (lbs)', ylab = '', range = 2)
+```
+
+> Were any of the treatments more effective than others?
+:::
+
+:::
+
+## Another example: treating anorexia
+
+```{r, echo = T, results = 'hide'}
+# fit anova model
+fit <- aov(change ~ Treat, data = anorexia)
+
+# generate table
+summary(fit)
+```
+
+```{r}
+summary(fit) |> pander()
+```
+
+> The data provide sufficiently strong evidence to reject the null hypothesis of no effect of therapeutic treatment on mean weight change among young women with anorexia (*F = 5.422* on *2* and *69* degrees of freedom, *p = 0.0065*).
+
+## Checking assumptions
+
+ANOVA assumes that populations are normal with the same standard deviation across groups. The sample SD's can be compared for any big differences.
+
+::: {.columns}
+
+::: {.column}
+Anorexia treatment data:
+```{r}
+anorexia.summary |>
+  pander()
+```
+
+> all SD's are fairly close to 7
+:::
+
+::: {.column}
+ANOVA is fairly robust to violations of the normality and equal variance assumptions. Consequences of each:
+
+- non-normality: type I error rate is not exact
+- unequal variances: loss of power
+
+In practice there's not much need to worry about these unless the assumptions are very obviously untenable (e.g., binary or highly discrete variable of interest).
+:::
+
+:::
+
+## Lab: ANOVA in R
+
+::: {.columns}
+
+::: {.column width="45%"}
+Lab 11 demonstrates the basic process of performing an analysis of variance:
+
+1. Prepare a graphical display of the data 
+2. Calculate grouped summaries 
+3. Fit an ANOVA model and construct an ANOVA table
+:::
+
+::: {.column width="55%"}
+Here is a basic template for these steps
+```{r, echo = T, eval = F}
+# graphical display: boxplot
+boxplot([VARIABLE] ~ [GROUPS], data = [DATASET])
+
+# grouped summaries
+[DATASET] |>
+  group_by([GROUPS]) |>
+  summarize([SUMMARY1 NAME] = fn1([VARIABLE]),
+            [SUMMARY2 NAME] = fn2([VARIABLE]))
+
+# fit ANOVA model
+fit <- aov([VARIABLE] ~ [GROUPS], data = [DATASET])
+
+# generate ANOVA table
+summary(fit)
+```
+:::
+
+:::
+
+*Your task is simply to recreate examples from lecture by executing provided commands.*
+
+## Practice problem
+ 
+::: {.columns}
+::: {.column width="60%"}
+Female mice were randomly assigned to six treatment groups to investigate whether restricting dietary intake increases life expectancy:
+
+- \[NP\] mice ate unlimited amount of nonpurified, standard diet
+
+- \[N/N85\] normal diet before weaning and normal diet after weaning (85 kcal/wk)
+
+- \[N/R50\] normal diet before weaning and reduced calorie diet after weaning (50 kcal/wk)
+
+- \[N/R40\] normal diet before weaning and reduced diet after weaning (40 Kcal/wk)
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+longevity <- case0501 |> filter(str_sub(Diet, 1, 1) == 'N')
+write_csv(longevity, 'labs/data/longevity.csv')
+longevity |> 
+  group_by(Diet) |> 
+  summarize(life.mean = mean(Lifetime),
+            life.sd = sd(Lifetime),
+            n = n()) |>
+  arrange(life.mean) |>
+  pander()
+```
+
+> Test whether diet restriction has an effect on longevity. Make a boxplot of the data, write the hypotheses you are testing, produce an ANOVA table, and write a narrative summary of the test result.
+:::
+
+
+:::

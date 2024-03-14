@@ -1,0 +1,234 @@
+---
+title: "Introduction to data"
+subtitle: "Data semantics, data types, and data structures"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Today's agenda
+
+1.  Reading quiz
+2.  Loose ends from last time: LEAP case study; experimental design basics
+3.  Data basics: data semantics and data types
+4.  Lab: data types and data structures in R
+
+## Case study: LEAP
+
+Learning early about peanut allergy (LEAP) study:
+
+-   640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy
+
+-   each infant randomly assigned to peanut consumption and peanut avoidance groups
+
+    -   peanut consumption: fed 6g peanut protein daily until 5 years old
+
+    -   peanut avoidance: no peanut consumption until 5 years old
+
+-   at 5 years old, oral food challenge (OFC) allergy test administered
+
+    -   PASS: no allergy detected
+
+    -   FAIL: allergy detected
+
+Review questions from last time:
+
+1.  *Experiment or observational study?*
+2.  *Retrospective, prospective, or neither?*
+
+## Case study: LEAP
+
+![](img/leaps-2.png){fig-align="center" width="400"} ![](img/leap-1.png){fig-align="center" width="400"}
+
+A greater proportion of children in the avoidance group developed an allergy (11.8% specifically). Given the type of study, which is a more accurate interpretation of this result?
+
+a.  Compared with consumption, peanut avoidance early in life *was associated with* more frequent occurrence of peanut allergies among children in the study.
+
+b.  Compared with consumption, peanut avoidance early in life *led to* more frequent occurrence of peanut allergies among children in the study.
+
+## Experimental design
+
+The LEAP study exemplifies the simple kind of design we will consider for much of STAT218:
+
+-   two "treatments" (peanut consumption and peanut avoidance)
+-   treatments are allocated completely at random among all study units
+
+The design of an experiment refers to how treatments (experimental interventions) are allocated to study units.
+
+-   the number of **replicates** of a treatment refers to the number of study units receiving that treatment
+-   a design is **balanced** if all treatments have equal numbers of replicates
+-   treatment allocation should always be randomized; different designs use different randomization schemes
+
+*Check your understanding: is the experimental design of the LEAP study balanced?*
+
+## Data semantics
+
+-   **Data** are a set of measurements.
+
+-   A **variable** is any measured attribute of study units.
+
+-   An **observation** is a measurement of one or more variables taken on one particular study unit.
+
+It is usually expedient to arrange data values in a table in which each row is an observation and each column is a variable:
+
+![](img/data-matrix.png)
+
+## LEAP example
+
+A table showing the observations and variables for the LEAP study would look like this:
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+data(LEAP)
+LEAP %>% 
+  select(participant.ID, treatment.group, overall.V60.outcome) %>%
+  rename(ofc.test.result = overall.V60.outcome) %>%
+  head(4) %>%
+  pander()
+```
+
+The table you saw earlier was a **summary** of the data (not the data itself):
+
+```{r}
+LEAP %>%
+  rename(ofc.test.result = overall.V60.outcome) %>%
+  select(treatment.group, ofc.test.result) %>%
+  table() %>%
+  pander()
+```
+
+## Numeric and categorical variables
+
+Variables are classified according to their values. The broadest distinction made is between **numeric** and **categorical** variables.
+
+-   A variable is numeric if its value is a number
+-   A variable is categorical if its value is a category, usually recorded as a name or label
+
+For example:
+
+-   the value of `sex` can be male or female, so it is categorical
+-   whereas `age` (in years) can be any positive integer, so it is numeric
+
+*Check your understanding: in the LEAP study...*
+
+-   *treatment group is \[numeric/categorical\]*
+-   *OFC test result is \[numeric/categorical\]*
+
+## Variable subtypes
+
+Further distinctions are made based on the type of number or type of category used to measure an attribute. *Can you match the subtypes to the variables at right?*
+
+::: columns
+::: {.column width="0.65"}
+![](img/variable-types.png)
+:::
+
+::: {.column width="0.35"}
+```{r, echo = F}
+set.seed(11824)
+data(yrbss)
+yrbss %>%
+  select(age, hispanic, grade, weight) %>%
+  sample_n(size = 4) %>%
+  pander::pander()
+```
+:::
+:::
+
+-   a numerical variable is **discrete** if there are 'gaps' between its *possible* values
+-   a numerical variable is **continuous** if there are no such gaps
+-   a categorical variable is **nominal** if its levels are not ordered
+-   a categorical variable is **ordinal** if its levels are ordered
+
+## Many ways to measure attributes
+
+Variable type (or subtype) is not an inherent quality --- attributes can often be measured in many different ways.
+
+For instance, `age` might be measured as either a discrete, continuous, or ordinal variable, depending on the situation:
+
+| Age (years) | Age (minutes) | Age (brackets) |
+|-------------|---------------|----------------|
+| 12          | 6307518.45    | 10-18          |
+| 8           | 4209187.18    | 5-10           |
+| 21          | 11258103.08   | 18-30          |
+
+> Numeric variables can always be represented as categorical, *but not the other way around*.
+
+## Your turn: identifying data types I
+
+Classify each variable as nominal, ordinal, discrete, or continuous:
+
+```{r}
+data(famuss)
+set.seed(11324)
+famuss %>% sample_n(size = 4) %>% pander()
+```
+
+Data are from an observational study investigating demographic, physiological, and genetic characteristics associated with muscle strength.
+
+-   `ndrm.ch` and `drm.ch` are change in strength in nondominant and dominant arms before and after training
+-   `actn3.r577x` gives genotype at a particular location within the ACTN3 gene (so-called "sports gene")
+
+## Your turn: identifying data types II
+
+Recall the kimchi/prediabetes study from last time:
+
+> A total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity ... Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.
+
+-   list the minimal collection of variables measured
+-   determine a likely type for each variable
+-   invent a few example observations to sketch what the data table might look like
+
+## Describing studies
+
+Let's put some pieces together. The "essential information" to report when explaining/presenting a study comprises:
+
+1.  Research question or hypothesis
+2.  Type of study
+3.  Number and type of study units
+4.  If applicable, experimental design
+5.  Observations and variables measured
+
+## Lab: data types and structures in R
+
+The simplest data structure in R is a **vector**: a collection of values of a single "type". This lab will introduce you to data types, vectors, and a few other common data structures.
+
+::: columns
+::: {.column width="0.5"}
+![](img/data-types.png)
+:::
+
+::: {.column width="0.5"}
+The variable types we just discussed map pretty neatly (but not perfectly) onto the main "data types" in R:
+
+-   numeric ➜ integer, numeric
+-   categorical ➜ character, logical
+
+Your objectives in this lab are: 
+
+1. learn to perform simple calculations
+2. learn to recognize data types and data structures
+:::
+:::
+
+## Up next: descriptive statistics
+
+So far we've discussed study designs and the basics of data.
+
+**Descriptive statistics** refers to techniques for summarizing data:
+
+- numerical summaries
+- tables
+- graphical summaries
+
+Such summaries are essential first steps in any data analysis, as they convey what was directly observed in the study.

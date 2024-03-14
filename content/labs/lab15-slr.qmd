@@ -1,0 +1,194 @@
+---
+title: "Lab 15: Simple linear regression"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+    fig-width: 4
+    fig-height: 3
+  docx:
+    toc: false
+    fig-width: 4
+    fig-height: 3
+prefer-html: true
+embed-resources: true
+---
+
+```{r load packages}
+library(tidyverse)
+library(oibiostat)
+library(openintro)
+library(Sleuth3)
+load('data/prevend.RData')
+```
+
+## Hand fitting a regression model
+
+### Warm-up
+
+The plot below shows RFFT score (a cognitive assessment) against age for 35 respondents from the Prevention of REnal and Vascular END-stage Disease (PREVEND) study.
+
+```{r prevend data, fig.width=4, fig.height=3}
+# scatterplot
+plot(prevend)
+```
+
+We will be using this dataset as an example to learn how to implement simple linear regression (SLR). An SLR model specifies that the mean response is linear in one explanatory variable, in this case:
+$$\text{mean RFFT} = b_0 + b_1 \times\text{age}$$
+This is the equation of a line in slope-intercpet form. So, as a warm up, we'll explore "hand fitting" a line to the PREVEND data.
+
+::: callout-note
+## Your turn
+
+Use the `hand.fit()` function to draw a line through the RFFT-Age scatterplot by specifying an intercept `b0` and a slope `b1`. Adjust until you obtain a line that you think best fits the data. Write down the values that give your 'best' fit.
+
+```{r your turn 1, echo = T}
+hand.fit(b0 = 80, b1 = -0.2)
+```
+:::
+
+### Hand fitting a model
+
+No model is perfect; there will always be some error. The model residuals are the differences between observed values and the values indicated by the model:
+$$e_i = y_i - \hat{y}_i$$
+The residuals represent the model errors. The least squares estimates are the values of the slope and intercept parameters that minimize the sum of squared residuals $\sum_i e_i^2$, which is a measure of total error. Before we learn how to compute these estimates directly, it is instructive to try and find them by hand.
+
+::: callout-note
+## Your turn
+
+Adding the argument `.resid = T` will show the magnitude of the residuals on the plot as red vertical lines indicating the distance from each observation to the fitted line. It will also add a title giving the sum of squared residuals (SSR):
+
+$$SSR = \sum_i e_i^2$$
+Input your 'best' values from before and look at the SSR value. Adjust until you make the SSR as low as you can.
+
+```{r your turn 2, echo = T}
+hand.fit(b0 = 80, b1 = -0.2, .resid = T)
+```
+:::
+
+## Least squares estimation
+
+We will continue to use the PREVEND data to illustrate estimation, residual diagnostics, and inference for SLR models. We'll fit the model
+
+$$\text{RFFT}_i = \beta_0 + \beta_1 \times\text{age}_i + \epsilon_i$$
+Remember that the error model has an additional parameter: the standard deviation $\sigma$.
+
+### The `lm()` function
+
+Models are fit using the `lm()` function (short for `l`inear `m`odel), which uses a formula for the model specification. Most of the time, data are supplied as a data frame.
+
+```{r fitting an SLR model, echo = T}
+# fit the model
+fit <- lm(RFFT ~ Age, data = prevend)
+
+# inspect output
+fit
+```
+
+The print behavior of a stored `lm` object shows only the call (command executed) and the least squares coefficient estimates. 
+
+### Parameter estimates
+
+The least squares estimates can be retrieved either directly from the `lm` object, or using the `coef()` function. The estimate of the error standard deviation $\sigma$ can be retrieved with the `sigma()` function. These are shown below.
+
+```{r parameter estimates, echo = T}
+# retrieve coefficients
+coef(fit)
+
+# retrieve estimate of error SD
+sigma(fit)
+```
+
+To visualize the model, make a scatterplot and draw a line using the coefficient estimates:
+```{r model visualization, echo = T}
+# scatterplot
+plot(prevend)
+
+# add line
+abline(a = coef(fit)[1], b = coef(fit)[2])
+```
+
+### Residual diagnostics
+
+The fitted values and residuals can be retrieved from the output of `lm()` and used to generate the three common diagnostic plots:
+
+- residual-fit plot
+- residual histogram
+- quantile-quantile plot
+
+The residual-fit plot is used to check for model misspecification (*e.g.*, a nonlinear relationship or nonconstant residual variability). The residual histogram and QQ plot are used to check for non-normality.
+
+```{r fitted values and residuals, echo = T}
+# fitted values
+fit.fitted <- fit$fitted.values
+
+# residuals
+fit.resid <- fit$residuals
+
+# residual vs fit
+plot(fit.resid, fit.fitted)
+abline(h = 0)
+
+# residual histogram
+hist(fit.resid)
+
+# quantile-quantile plot
+qqnorm(fit.resid)
+qqline(fit.resid)
+```
+
+In this case, each of the diagnostic plots looks acceptable:
+
+- no patterns in residual-fit plot
+- residual histogram is close enough to a bell curve shape
+- residual quantile-quantile plot places most points on or near the line
+
+### Inference
+
+While it is not really a separate calculation to obtain significance tests for the coefficients, it is good practice to check the diagnostic plots first.
+
+To view the significance tests, simply print the model summary. To obtain interval estimates, use `confint()`.
+```{r inferences, echo = T}
+# model summary
+summary(fit)
+
+# confidence intervals
+confint(fit, level = 0.95)
+```
+
+## Age of the universe
+
+The `hubble` data comprise relative velocities and distances for each of 24 galaxies. We'll use this to first estimate the inverse of the hubble constant and subsequently obtain a confidence interval for the age of the universe.
+
+Steps:
+
+1. Fit the model $\text{distance}_i = \beta \times \text{velocity}_i + \epsilon_i$. In this model, $\beta$ is the inverse of the Hubble constant.
+2. Check residual diagnostics
+3. Obtain a confidence interval for $\beta$.
+4. Multiply by a conversion factor to obtain a confidence interval for the age of the universe.
+
+You will want to fit the model in step (1) without an intercept. This can be done using a formula of the type `y ~ x - 1`.
+
+```{r age of the universe, echo = T}
+# load data
+load('data/hubble.RData')
+
+# make a plot
+
+# fit model
+
+# residual diagnostics
+
+# CI for inverse of hubble constant
+
+# conversion
+c <- 978440076094
+
+```

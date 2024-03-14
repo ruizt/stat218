@@ -1,0 +1,163 @@
+---
+title: "Lab 10: nonparametric inference"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+The goal of this lab is to learn how and when to implement nonparametric alternatives to one- and two-sample $t$ tests. There are three alternatives we will consider:
+
+-   signed rank test (one-sample or paired differences)
+-   rank sum test (two-sample inference for independent data)
+-   permutation test (two-sample inference for independent data)
+
+We will illustrate the implementation of these tests using the following datasets:
+
+-   `ddt` contains 15 measurements of DDT in kale
+-   `sleep` contains 10 paired measurements of extra hours of sleep on two different drugs
+-   `cancer` contains observations of cancer rates in CT and whether sunspot activity was higher or lower than average in each of 35 years, along with the deviation of the cancer rate from expectation each year
+
+```{r load example data}
+# load example datasets
+ddt <- MASS::DDT
+sleep <- read.csv('data/sleep.csv')
+load('data/cancer.RData')
+```
+
+To determine whether the rank procedures are appropriate, histograms should be inspected for:
+
+-   symmetry in the one-sample or paired inference case
+-   group similarity in the two-sample case
+
+Examples of these histograms are shown below for each dataset.
+
+```{r checking assumptions}
+# for one-sample inference, check histogram for symmetry
+hist(ddt, breaks = 5)
+
+# for paired inference, check histogram *of differences* for symmetry
+hist(sleep$diff, breaks = 10)
+
+# for two-sample inference, check groupwise histograms for similar shape
+par(mfrow = c(1, 2))
+hist(cancer$delta[cancer$sunspot.activity == 'High'], main = 'high activity', xlab = 'delta')
+hist(cancer$delta[cancer$sunspot.activity == 'Low'], main = 'low activity', xlab = 'delta')
+```
+
+Notice that due to the small sample sizes, symmetry/similarity is hard to assess. As a result, you should only look for *obviously* asymmetric/different shapes. Each of these is acceptable.
+
+The signed rank test and rank sum tests are implemented using `wilcox.test()`.
+
+```{r rank procedure implementations}
+# signed rank test
+wilcox.test(ddt, mu = 3, alternative = 'greater')
+
+# signed rank test, paired differences
+wilcox.test(sleep$diff, mu = 0, alternative = 'less')
+
+# rank sum test
+wilcox.test(delta ~ sunspot.activity, data = cancer, alternative = 'greater')
+```
+
+Permutation tests, by contrast, are implemented using `permTS()`. Note that these are only applicable for two-sample inference with independent (*i.e.*, not paired) data.
+
+```{r permutation test implementation}
+# permutation test
+library(perm)
+permTS(delta ~ sunspot.activity, data = cancer, alternative = 'greater')
+```
+
+Permutation tests provide an alternative nonparametric inference procedure with minimal assumptions.
+
+## Sleep data revisited
+
+To start, let's extend the sleep data example above by trying something a little different than usual. Notice that the estimated difference in means is `r mean(sleep$diff)`, and every subject experienced more extra sleep on drug 2.
+
+::: callout-note
+## Your turn
+
+Can you work out how to test, using a rank procedure, whether drug 2 is associated with at least one more hour of extra sleep than drug 1?
+
+Write the hypotheses, perform the test, and interpret the result.
+
+```{r your turn 1}
+# use rank procedure to test whether difference exceeds 1 hour
+
+```
+
+:::
+
+This is not a scenario specific to nonparametric methods, but just an exercise in testing a less typical set of hypotheses with paired data.
+
+Once you've determined and performed your test, write a short report interpreting the result.
+
+## Cholesterol and cereal
+
+Your goal is to test whether cereal is associated with a difference in cholesterol using a nonparametric method. The data are as follows:
+
+```{r cholesterol data}
+# load cholesterol data
+cholesterol <- read.csv('data/cholesterol.csv')
+head(cholesterol, 4)
+```
+
+Diets were randomly allocated to 28 participants in equal proportion; there are 14 subjects in each diet group.
+
+::: callout-note
+## Your turn
+
+Test whether oat bran significantly lowers cholesterol relative to corn flakes using a nonparametric method.
+
+Use an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.
+
+```{r your turn 2}
+# check assumptions
+
+# determine and perform appropriate test
+
+```
+
+Once you've determined and performed your test, write a short report interpreting the result.
+
+:::
+
+## Zinc and dietary supplements
+
+Your goal is to test whether taking a dietary supplement lowers zinc concentrations among rats using the following data.
+
+```{r zinc data}
+# load cholesterol data
+zinc <- Sleuth3::ex0125
+head(zinc, 3)
+```
+
+The data come from an experiment in which 39 rats were randomly assigned a dietary supplement (group A) or no dietary supplement (group B). After a period of time, the zinc concentration in each rat's blood was measured.
+
+::: callout-note
+## Your turn
+
+Test whether the dietary supplement lowers zinc concentrations among rats using a nonparametric method.
+
+Use an appropriate graphic to check whether the assumptions for a rank procedure are appropriate; if so, use the appropriate rank procedure; if not, use a permutation test.
+
+```{r your turn 3}
+# check assumptions
+
+# determine and perform appropriate test
+
+```
+
+Once you've determined and performed your test, write a short report interpreting the result.
+
+:::

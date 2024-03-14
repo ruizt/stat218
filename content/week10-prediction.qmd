@@ -1,0 +1,407 @@
+---
+title: "Predictions"
+subtitle: "Confidence intervals and prediction intervals in simple linear regression"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+library(Sleuth3)
+library(epitools)
+data("prevend.samp")
+set.seed(31024)
+prevend <- prevend.samp |> 
+  group_by(cut_width(Age, 5)) |> 
+  sample_n(size = 5) |>
+  mutate(Age = Age + round(runif(1, 0, 1), 1)) |>
+  ungroup() |>
+  sample_n(size = 35) |>
+  select(Age, RFFT)
+kleiber <- ex0826 |>
+  select(Mass, Metab) |>
+  rename_with(tolower)
+```
+
+## Today's agenda
+
+1.  Reading quiz. \[[2pm section](https://forms.office.com/r/05yFLwTERq)\] \[[4pm section](https://forms.office.com/r/Td8EHTZcD9)\]
+2.  \[lecture/discussion\] Another SLR example
+3.  \[lecture/discussion\] Quality of fit; predictions and interval estimates
+4.  \[lab\] two SLR practice problems
+
+## From last time
+
+Relative velocity of and distance to a galaxy are related as $H\times d = v$; age of the universe in years is $\frac{1}{H}\times\frac{km}{Mpc}\times\frac{yr}{s}$.
+
+::: columns
+::: {.column width="65%"}
+`hubble` gives velocities (km/sec) and distances (Mpc) to 24 galaxies. Strategy:
+
+1.  Fit an SLR model *without an intercept* to estimate $\frac{1}{H}$
+2.  Compute a confidence interval for $\frac{1}{H}$, convert to
+:::
+
+::: {.column width="35%"}
+```{r}
+library(gamair)
+data(hubble)
+hubble <- hubble |> 
+  rename(velocity = y,
+         distance = x)
+save(hubble, file = 'labs/data/hubble.RData')
+hubble |> select(-Galaxy) |> head(3) |> pander()
+```
+:::
+:::
+
+```{r, echo = T}
+# fit model
+fit <- lm(distance ~ velocity - 1, data = hubble)
+
+# conversion
+km.mpc <- 3.09e19
+yr.sec <- 1/(60*60*24*365)
+
+# interval, in billions of years
+((confint(fit)*km.mpc*yr.sec)/1e9) |> pander(row.names = 'age', col.names = c('lower', 'upper'))
+```
+
+## Hubble's initial data
+
+The result on the previous slide used data from the Hubble telescope from 2001. What estimate would we get using Hubble's data on nebulae from 1929?
+
+```{r, echo = T}
+# fit model
+fit <- lm(Distance ~ Velocity - 1, data = case0701)
+
+# conversion
+km.mpc <- 3.09e19
+yr.sec <- 1/(60*60*24*365)
+
+# interval, in billions of years
+((confint(fit)*km.mpc*yr.sec)/1e9) |> pander(row.names = 'age', col.names = c('lower', 'upper'))
+```
+
+The estimate is smaller by an order of magnitude, because nearer galaxies were observed!
+
+> Aside: In general, this approach gives very crude estimates of $\frac{1}{H}$. The actual method of estimation is a bit more sophisticated and leads to larger estimates, yielding the more familiar 13.8B number.
+
+## Another example: Kleiber's law
+
+[Kleiber's law](https://en.wikipedia.org/wiki/Kleiber%27s_law): an animal's metabolic rate is proportional to the 3/4 power of its body mass.
+
+$$\text{metabolic rate} \propto \text{mass}^\frac{3}{4}$$ There is some debate over the exponent. Can we estimate it?
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width = 5, fig.height = 4}
+#| fig-cap: "Figure: mass and metabolism for 95 mammal species"
+#| fig-cap-location: top
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(log(kleiber$mass), log(kleiber$metab), 
+     xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)')
+```
+:::
+
+::: {.column width="55%"}
+Technically this is a nonlinear relationship, but consider the SLR model:
+
+$$\log(\text{metabolism}) = \beta_0 + \beta_1 \times \log(\text{mass}) + \epsilon$$ Exponentiating both sides yields:
+
+$$\text{metabolism} = e^{\beta_0} \times \text{mass}^{\beta_1} \times e^\epsilon$$
+:::
+:::
+
+## Diagnostic checks
+
+```{r, echo = T}
+fit <- lm(log(metab) ~ log(mass), data = kleiber)
+```
+
+```{r, fig.width = 14, fig.height = 5}
+par(mfrow = c(1, 4), mar = c(4, 4, 4, 1), cex = 1.5)
+
+plot(log(kleiber$mass), log(kleiber$metab), 
+     xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)',
+     main = 'fitted model')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+
+plot(fit$fitted.values, fit$residuals, 
+     xlab = 'fitted', ylab = 'residual', main = 'residual-fit plot')
+abline(h = 0)
+
+hist(fit$residuals, xlab = 'residual', main = 'residual histogram')
+
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+```
+
+No apparent issues with model specification or error model.
+
+## Inference
+
+$$\text{metabolism} = e^{\beta_0} \times \text{mass}^{\beta_1} \times e^\epsilon$$
+
+```{r}
+broom::tidy(fit, conf.int = T) |> 
+  select(term, estimate, std.error, conf.low, conf.high, p.value) |>
+  pander()
+```
+
+From the table:
+
+-   $p$ values indicate both parameters are nonzero at the 5% significance level
+-   point estimate for $\beta_1$ is about the hypothesized exponent
+
+Exact interpretation of $\beta_1$ is tricky, but here's an easy out:
+
+> With 95% confidence, the exponent in Kleiber's law is estimated to be between 0.71 and 0.77.
+
+## Model interpretation
+
+```{r}
+ci.kleiber <- 2^confint(fit)[2, ] |> round(3)
+```
+
+Note that doubling mass yields:
+
+$$(2\times\text{mass})^{\beta_1} = \text{mass}^{\beta_1}\times 2^{\beta_1}$$ Then, from the fitted model, $2^{\hat{\beta}_1}$ = `r 2^coef(fit)[2] |> round(2)`. When the response is log-transformed, the model captures the median, rather than mean, of the response. So:
+
+> Every doubling of body mass is associated with an estimated 67% increase in *median* metabolism.
+
+And:
+
+> With 95% confidence, every doubling of body mass is associated with an estimated percent increase in median metabolism between `r ci.kleiber[1]` and `r ci.kleiber[2]`.
+
+## Quality of fit
+
+> Quality of fit is measured by the *reduction in variation* attributable to the model.
+
+::: columns
+::: column
+Consider the ratio $\frac{\textcolor{blue}{\text{residual variability}}}{\textcolor{red}{\text{total variability}}}$
+
+```{r, fig.width=6, fig.height = 5}
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(log(kleiber), xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+arrows(x0 = 0.5, y0 = min(log(kleiber$metab)),
+       x1 = 0.5, y1 = max(log(kleiber$metab)),
+       code = 3, col = 'red')
+for(x in seq(-2, 4, by = 2)){
+arrows(x0 = x, y0 = predict(fit, newdata = data.frame(mass = exp(x))) - 2.5*sigma(fit),
+       x1 = x, y1 = predict(fit, newdata = data.frame(mass = exp(x))) + 2.5*sigma(fit),
+       code = 3, length = 0.1,
+       col = 'blue')
+}
+```
+:::
+
+::: column
+A measure of the reduction in variation is:
+
+$$R^2 = 1 - \frac{(n - 2)\textcolor{blue}{\hat{\sigma}^2}}{(n - 1)\textcolor{red}{s_y^2}}$$
+
+This is interpreted as the *percentage of variability explained by the model*.
+
+$R^2$ = `r summary(fit)$r.squa |> round(4)` indicates that 96.5% of the total variability in log metabolic rate is explained by body mass.
+:::
+:::
+
+## Predictions
+
+```{r}
+set.seed(31324)
+newx <- runif(n = 1, min = min(kleiber$mass), max = max(kleiber$mass))
+```
+
+Consider predicting the metabolism of an animal with body mass `r newx |> round(2)` grams.
+
+The fitted model equation yields a prediction for the log-metabolism:
+
+$$\underbrace{5.6383}_{\hat{\beta}_0} + \underbrace{0.7387}_{\hat{\beta}_1} \times \log(2412.87) = 11.3921$$
+
+::: {.columns}
+
+::: {.column}
+We can interpret this in one of two ways:
+
+1. Estimate of the *mean* log-metabolism *among all animals* with body mass 2412.87 grams.
+2. Estimate of an *observed* log-metabolism *for a specific animal* with body mass 2412.87 grams. 
+:::
+
+::: {.column}
+```{r, fig.width=6, fig.height = 4}
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(log(kleiber), xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+points(x = log(newx), y = predict(fit, newdata = data.frame(mass = newx)),
+       pch = 18, col = 'red')
+abline(v = log(newx), lty = 2, col = 'red')
+```
+:::
+
+:::
+
+## Prediction uncertainty
+
+> The amount of uncertainty depends on whether we are estimating a mean or an observation.
+
+Standard errors for estimated means and observations are:
+$$\begin{align*}
+SE\left(\widehat{\mathbb{E}(Y|x)}\right) &= \hat{\sigma}\sqrt{\frac{1}{n} + \frac{(x - \bar{x})^2}{(n - 1)s_x^2}} \qquad\text{SE for the mean response}\\
+SE\left(\widehat{(Y|x)}\right) &= \hat{\sigma}\sqrt{\textcolor{red}{1} + \frac{1}{n} + \frac{(x - \bar{x})^2}{(n - 1)s_x^2}} \qquad\text{SE for a specific response}
+\end{align*}$$
+
+Estimates for specific responses are [more variable]{style="color:red"} due to estimation uncertainty *and* error variability.
+
+## Interval estimates
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width=6, fig.height = 5}
+newx.ci <- predict(fit, newdata = data.frame(mass = newx), interval = 'confidence')
+newx.pi <- predict(fit, newdata = data.frame(mass = newx), interval = 'prediction')
+
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(log(kleiber), xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+arrows(x0 = log(newx), y0 = newx.ci[2], x1 = log(newx), y1 = newx.ci[3],
+       angle = 90, code = 3, length = 0.05, col = 'blue')
+arrows(x0 = log(newx) + 0.02, y0 = newx.pi[2], x1 = log(newx) + 0.02, y1 = newx.pi[3],
+       angle = 90, code = 3, length = 0.05, col = 'red', lty = 1)
+legend(x = 'topleft', 
+       legend = c('prediction interval', 'confidence interval'), 
+       col = c('red', 'blue'), lty = 1)
+```
+:::
+
+::: {.column}
+A [confidence interval]{style="color:blue"} for the [mean]{style="color:blue"} response is:
+$$\hat{Y} \pm c \times SE\left(\widehat{\mathbb{E}(Y|x)}\right)$$
+
+A [prediction interval]{style="color:red"} for an [individual]{style="color:red"} response is:
+$$\hat{Y} \pm c \times SE\left(\widehat{(Y|x)}\right)$$
+:::
+
+:::
+
+Both interval estimates use a $t_{n - 2}$ model to obtain the critical value.
+
+## Pointwise intervals
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width=6, fig.height = 5}
+x <- modelr::seq_range(kleiber$mass, n = 100)
+fit.ci <- predict(fit, newdata = data.frame(mass = x), interval = 'confidence')
+fit.pi <- predict(fit, newdata = data.frame(mass = x), interval = 'prediction')
+
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(log(kleiber), xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)',
+     col = 'grey')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+lines(x = log(x), y = fit.ci[,2], lty = 2, col = 'blue')
+lines(x = log(x), y = fit.ci[,3], lty = 2, col = 'blue')
+lines(x = log(x), y = fit.pi[,2], lty = 2, col = 'red')
+lines(x = log(x), y = fit.pi[,3], lty = 2, col = 'red')
+legend(x = 'topleft', 
+       legend = c('prediction interval', 'confidence interval'), 
+       col = c('red', 'blue'), lty = 2)
+```
+:::
+
+::: {.column}
+It is common to draw uncertainty bands showing pointwise intervals.
+
+- usually confidence intervals are used in model visualizations
+- neither is intended to show the spread of the data
+- intervals are for the (unobserved) true mean or true observation
+:::
+
+:::
+
+## A closer look at standard errors
+
+::: {.columns}
+
+::: {.column}
+Consider the standard error for the mean:
+$$SE\left(\widehat{\mathbb{E}(Y|x)}\right) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{\textcolor{red}{(x - \bar{x})^2}}{(n - 1)s_x^2}}$$
+
+- magnitude increases with distance from mean $x$
+- farther from center $\Rightarrow$ more uncertainty
+:::
+
+::: {.column}
+```{r, fig.width=6, fig.height = 6}
+fit <- lm(RFFT ~ Age, data = prevend)
+
+x <- modelr::seq_range(prevend$Age, n = 100)
+fit.ci <- predict(fit, newdata = data.frame(Age = x), interval = 'confidence')
+fit.pi <- predict(fit, newdata = data.frame(Age = x), interval = 'prediction')
+
+par(mar = c(4, 4, 3, 0.1), cex = 1.5)
+plot(prevend, xlab = 'age', ylab = 'RFFT', main = 'PREVEND example',
+     col = 'grey')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+lines(x = x, y = fit.ci[,2], lty = 2, col = 'blue')
+lines(x = x, y = fit.ci[,3], lty = 2, col = 'blue')
+legend(x = 'topright', 
+       legend = 'confidence interval', 
+       col = 'blue', lty = 2)
+```
+:::
+
+:::
+
+## Practice problems
+
+::: {.columns}
+
+::: {.column width="40%"}
+```{r, fig.width = 4, fig.height = 6}
+par(mar = c(4, 4, 3, 0.1), cex = 1.5, mfrow = c(2, 1))
+ex0722 |>
+  rename_with(tolower) |>
+  select(height, force) |>
+  plot(main = 'crab claws')
+
+ex1220 |>
+  rename_with(tolower) |>
+  select(area, total) |>
+  log() |>
+  plot(main = 'galapagos', xlab = 'log island area', ylab = 'log species count')
+```
+:::
+
+::: {.column width="60%"}
+
+Prompts:
+
+1. Estimate the association between claw height and closing force. Predict the closing force for an individual crab with claw height 12.2; provide both point and interval estimates.
+
+2. Estimate the relationship between island area and the number of observed species and indicate how well your model fits the data. Provide a 95% confidence interval for the model parameter that captures the relationship and interpret the interval in context.
+
+Be sure to check diagnostics for each model you fit, even though the prompts do not ask you to do this.
+
+:::
+
+:::

@@ -1,0 +1,139 @@
+---
+title: "Homework 4: Analysis of variance"
+author: "STAT218"
+author-title: "Course"
+date: "2/22/24"
+published-title: "Due date"
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r packages, eval = T}
+library(oibiostat)
+library(openintro)
+library(Sleuth3)
+library(tidyverse)
+library(pander)
+library(emmeans)
+```
+
+1. [L5] Gifted children. The dataset `openintro::gifted` contains data on 36 children identified as gifted in a large city. This problem will consider only the father's and mother's IQ: you'll perform inference on the difference in IQ between the mother and father. Assume the population is gifted children in the metropolitan region where the data were collected.
+
+    a. Conduct an appropriate $t$ test to determine whether mean IQ differs between the father and mother. Interpret the results in context.
+    b. Use a nonparametric rank procedure to test for a difference in IQ center between the father and mother. Interpret the results in context.
+    c. Explain how the hypotheses differ between the test in parts (a) and (b).
+    d. Make the appropriate histogram(s) to check whether the assumptions for the rank test are reasonable. Do you think the rank test is appropriate in this case?
+
+    ANSWER: 
+    
+    a. The data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same mean IQ in favor of the alternative hypothesis that the mean IQ differs (t = -2.7279, df = 35, p-value = 0.009898).
+    b. The data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same typical IQ in favor of the alternative hypothesis that the typical IQ differs (p-value = 0.009677).
+    c. The hypothesis in (a) pertains to a difference in mean IQ; the hypothesis in (b) pertains to a difference in central or typical IQ.
+    d. The differences don't look especially symmetric; the rank test is probably not appropriate. 
+
+```{r problem 1}
+# part a
+t.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part b
+wilcox.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part d
+(gifted$fatheriq - gifted$motheriq) |> 
+  hist(breaks = 8, main = '', xlab = 'father IQ - mother IQ')
+```
+
+2. [L5] Physiological indicators of schizophrenia. The dataset `Sleuth3::case0202` contains data on volumes of the left hippocampus in cubic centimeters for 15 pairs of monozygotic twins; one twin in each pair was schizophrenic and the other was not. 
+
+    a. Check the assumptions for a nonparametric test of whether hippocampus volume differs in center between the schizophrenic and non-schizophrenic twins. Show the graphic(s) you examined and comment on whether test assumptions seem plausible.
+    b. Perform the test in (a) and interpret the results. Write a full narrative summary and include a 90% confidence interval for the difference in centers.
+    
+    ANSWERS:
+    
+    a. The plot is shown below; pairwise differences appear to be unimodal and not too asymmetrically distributed. Test assumptions seem plausible.
+    b. Results suggest brain anatomy differs with schizophrenia. We used data on twins in which one twin was affected by schizophrenia and one was not to test the hypothesis that left hippocampal volume differed between the affected and unaffected twin. The data provide sufficiently strong evidence to reject the hypothesis that typical left hippocampal volume does not differ between affected and unaffected twins in favor of the alternative of a difference (p-value = 0.002014). With 90% confidence, the difference in central values of left hippocampal volume is estimated to be between 0.075 and 0.315 cubic centimeters.
+
+```{r problem 2}
+# part a
+(case0202$Unaffected - case0202$Affected) |> 
+  hist(breaks = 5, main = '', xlab = 'unaffected volume - affected volume')
+
+# part b
+wilcox.test(Pair(Unaffected, Affected) ~ 1, data = case0202, 
+            conf.int = T, conf.level = 0.9)
+```
+
+3. **Vu and Harrington exercise 5.48.** Determine if the following statements are true or false, and explain your reasoning for statements you identify as false.
+If the null hypothesis that the means of four groups are all the same is rejected using ANOVA at a 5% significance level, then...
+
+    a. we can then conclude that all the means are different from one another.
+    b. the standardized variability between groups is higher than the standardized variability within groups. 
+    c. a pairwise analysis will identify at least one pair of means that are significantly different.
+
+4. [L9] Consider an experiment in which overweight subjects were randomly allocated to one of three diets: low-fat, low-carb, and Mediterranean. After two years, each subject's weight loss was measured. The output below shows the result of an ANOVA model fitted to this data. 
+
+    a. Construct the ANOVA table.
+    b. Test the hypothesis that mean weight loss does not differ among the three diets. Write a narrative summary of the result. 
+    (*Hint:* the $p$-value from an F model can be computed as `pf(fstat, num.df, denom.df, lower.tail = F)`.)
+    
+    ANSWERS:
+    
+    a. The table is shown below.
+    b. The data provide sufficiently strong evidence to reject the null hypothesis of no effect of diet on weight loss (F = 3.236 on 2 and 269 df, p = 0.0409).
+
+```{r problem 4, eval = T}
+weightloss <- ex0623
+aov(WtLoss24 ~ Group, data = weightloss) |> summary()
+```
+
+5. **Vu and Harrington exercise 5.40.** A study compared five different methods for teaching descriptive statistics. The five methods were traditional lecture and discussion, programmed textbook instruction, programmed text with lectures, computer instruction, and computer instruction with lectures. 45 students were randomly assigned, 9 to each method. After completing the course, students took a 1-hour exam.
+
+    a. What are the hypotheses for evaluating if the average test scores are different for the different teaching methods?
+    b. What are the degrees of freedom associated with the F-test for evaluating these hypotheses? 
+    c. Suppose the p-value for this test is 0.0168. What is the conclusion?
+    
+6. [L9] The dataset `Sleuth3::ex0722` contains measurements of closing force and propodus height of the claws of crabs from three predatory species. 
+
+    a. Produce side-by-side boxplots of claw height by species, ordering species by increasing median claw height.
+    b. Produce a table of grouped summaries of claw heights showing means, standard deviations, and sample sizes for each species.
+    c. Comment on whether the assumptions for analysis of variance seem to be met.
+    d. Test whether mean claw height differs among the three species. Write a short narrative summary of the results.
+    e. Conduct post-hoc pairwise comparisons to determine which means differ.
+    
+    ANSWERS:
+    
+    a. Boxplots are shown below.
+    b. Table is shown below.
+    c. The standard deviations of each group are close enough; measurements are independent since they are taken on distinct individuals.
+    d. The data provide sufficiently strong evidence to reject the null hypothesis of no difference in mean claw height among the three species of crab (F = 5.898 on 2 and 35 df, p = 0.0062).
+    e. Post-hoc tests for pairwise comparisons are shown below. It is estimated that mean claw height differs between *cancer productus* and each of the other two species (*hemigraspus nudus* and *lophapanopeus bellus*), but not between *hemigraspus nudus* and *lophapanopeus bellus*. Student answers should include p-values if a table is not provided.
+    
+    
+```{r}
+# part a
+boxplot(Height ~ Species, data = ex0722)
+
+# part b
+ex0722 |>
+  group_by(Species) |>
+  summarize(mean = mean(Height),
+            sd = sd(Height),
+            n = n()) |> pander()
+
+# part d
+fit <- aov(Height ~ Species, data = ex0722)
+summary(fit) |> pander()
+
+# part e
+emmeans(fit, 'Species') |> pairs(adjust = 'tukey') |> test() |> pander()
+```

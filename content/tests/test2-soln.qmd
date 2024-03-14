@@ -1,0 +1,206 @@
+---
+title: "Test 2"
+author: "STAT218"
+author-title: "Course"
+date: "3/2/24"
+published-title: "Due date"
+execute: 
+  echo: false
+  warning: false
+  message: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r}
+library(tidyverse)
+library(Sleuth3)
+library(oibiostat)
+library(openintro)
+library(emmeans)
+library(pander)
+```
+
+### Instructions
+
+You have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but **must complete this assignment on your own**. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers. Please use the word document provided (download from the class website) and write in your answers below each prompt. Please ensure that question numbering is preserved in your document. Submit your work via Gradescope.
+
+The test comprises two parts: concepts, containing short-answer and multiple-choice questions; and applications, which requires some data analysis. Revisions will be allowed for the applications part, but not for the concepts part.
+
+## Part I: Concepts
+
+1. [L9] In an analysis of variance, the $F$ statistic measures:
+
+    a. the variability between groups relative to the variability within groups
+    b. the proportion of total variability due to differences in means
+    c. the statistic isn't directly interpretable
+    d. the ratio of unexplained variability to total variability
+    e. the sum of the squared differences in group means for all pairs of groups
+    
+    Answer: A.
+    
+2. [L4] A 95% confidence interval for a population mean is given as (18.985, 21.015). This confidence interval is based on a simple random sample of 36 observations. Calculate the sample mean and standard deviation. Assume that all conditions necessary for inference are satisfied. Use the t-distribution in any calculations.
+
+    Answer: the sample mean is the midpoint, and the standard deviation is half the width, multiplied by $\frac{\sqrt{n}}{c}$, where $c$ is a $t$-critical value.
+    
+```{r, echo = T}
+# sample mean
+(21.015 + 18.985)/2
+
+# sample SD
+6*(21.015 - 18.985)/(2*qt(0.975, df = 34))
+```
+
+3. [L5] In each of the following scenarios, determine if the data are paired.
+
+    a. Compare pre- (beginning of semester) and post-test (end of semester) scores of students.
+    b. Assess gender-related salary gap by comparing salaries of randomly sampled men and women.
+    c. Compare artery thicknesses at the beginning of a study and after 2 years of taking Vitamin E for the same group of patients.
+    d. Assess effectiveness of a diet regimen by comparing the before and after weights of subjects.
+    
+    Answer:
+    
+    a. Paired
+    b. Not paired
+    c. Paired
+    d. Paired
+    
+    
+4. [L9] In post-hoc significance tests for pairwise comparisons between groups $i$ and $j$, ordinarily the hypotheses tested are...
+
+    a. $H_0: \mu_i = \mu_j$ vs. $H_A: \mu_i < \mu_j$
+    b. $H_0: \mu_i - \mu_j = \delta_0$ vs. $H_A: \mu_i - \mu_j \neq \delta_0$
+    c. $H_0: \mu_i = \mu_j$ vs. $H_A: \mu_i \neq \mu_j$
+    d. $H_0: \mu_i - \mu_j \leq 0$ vs. $H_A: \mu_i - \mu_j > 0$
+    
+    Answer: C
+    
+5. [L9] Determine if the following statements are true or false in ANOVA, and explain your reasoning for statements you identify as false.
+
+    a. As the number of groups increases, the modified significance level for pairwise tests increases as well. 
+    b. As the total sample size increases, the error degrees of freedom increases as well.
+    c. As the number of groups increases, the error degrees of freedom increases as well, provided the sample size remains fixed.
+
+    Answer: 
+    
+    a. False. The tests become more stringent, so significance level $\alpha$ decreases.
+    b. True. Error df are $n - k$, which increases in $n$.
+    c. False. Error df are $n - k$, which decreases in $k$.
+
+6. [L9] For post-hoc comparisons relative to a control, the most appropriate multiple inference correction method is...
+
+    a. Scheffe's method
+    b. Bonferroni correction
+    c. Tukey's method
+    d. Sidak's method
+    e. Dunnett's method
+    
+    Answer: E.
+    
+7. [L5] Suppose you conducted a hypothesis test to determine whether mean ice thickness differs significantly between two nearby creeks during a two-week period in winter, and obtained a $p$-value of 0.37. Select the correct interpretation of this result.
+
+    a. With 95% confidence, there is no difference in mean ice thickness between the two creeks.
+    b. The data do not provide sufficient evidence to reject the null hypothesis that mean ice thickness differs between the two creeks.
+    c. The data indicate that mean ice thickness is the same between the two creeks.
+    d. The data provide sufficient evidence of a difference in mean ice thickness between the two creeks.
+    e. The mean ice thickness is estimated to be at least 0.37.
+
+    Answer: B.
+    
+## Part II: Applications
+
+1. [L4] The `tuition` dataset contains in-state and out-of-state tuition at 25 public universities from 2011-2012. Calculate and interpret a 95% confidence interval for the mean difference between in-state and out-of-state tuition at U.S. public universities in 2011-2012.
+
+```{r}
+tuition <- ex0332 |>
+  filter(Type == 'Public') |>
+  select(ends_with('State'))
+save(tuition, file = 'data/tuition.RData')
+
+tuition.ci <- t.test(Pair(OutOfState, InState) ~ 1, data = tuition)$conf
+```
+
+With 95% confidence, the mean out-of-state 2011-2012 tuition at U.S. public universities is estimated to be between \$`r tuition.ci[1] |> round(2)` and \$`r tuition.ci[2] |> round(2)` more expensive than mean in-state tuition.
+
+2. [L9] The `anorexia` dataset contains observations of weight change after therapeutic treatment for 72 female anorexia patients. Each patient was prescribed one of two therapies, cognitive behavioral therapy (CBT) and family therapy (FT), or assigned to a control group. Treatment allocations were random. Quantify the effect of each therapy relative to the control by estimating the difference in mean weight change between each of the two treatment groups and the control group. Provide simultaneous 95% confidence intervals for each difference.
+
+```{r}
+anorexia <- MASS::anorexia |>
+  rename_with(tolower) |>
+  mutate(weight.change = postwt - prewt) 
+save(anorexia, file = 'data/anorexia.RData')
+
+anorexia$treat <- factor(anorexia$treat, levels = c('Cont', 'CBT', 'FT'))
+emm.out <- aov(weight.change ~ treat, data = anorexia) |> emmeans(trt.vs.ctrl ~ treat)
+emm.out$contrasts |> confint() |> pander(caption = 'Numerical answers are sufficient here; a plot is also acceptable.')
+```
+
+3. [L4, L5] The dataset `lizards` contains running speeds measured in a laboratory race track for two species of lizards, Western Fence (WF) and Sagebrush (S) lizards. Speeds are recorded in meters per second. Compute point estimates and standard errors for the mean top speed for each species, and test for a difference in mean top speed between species at significance level 0.01. Write a narrative summary of the test result and, if a difference is identified, construct and interpret a 99% confidence interval for the difference in mean top speed.
+
+```{r}
+lizards <- lizard_run |>
+  mutate(type = factor(common_name, labels = c('WF', 'S'))) |>
+  select(top_speed, type) |>
+  rename(top.speed = top_speed)
+save(lizards, file = 'data/lizards.RData')
+
+lizards |>
+  group_by(type) |>
+  summarize(mean = mean(top.speed),
+            mean.se = sd(top.speed)/sqrt(n())) |>
+  pander()
+
+t.test(top.speed ~ type, data = lizards, conf.level = 0.99)
+```
+
+    Answer: Results suggest that sagebrush lizards run faster than western fence lizards. We tested the hypothesis that mean top speed differs between the two species; the data provide sufficiently strong evidence to reject the null hypothesis of no difference in mean speed in favor of the alternative of a difference (*T = -5.2217* on 32.57 degrees of freedom, *p = 0.00000994*). With 99% confidence, the mean top speed for sagebrush lizards is estimated to be between 0.33 and 1.07 meters per second faster than the mean top speed for western fence lizards.
+
+4. [L9] The `salinity` dataset contains replicate measurements of salinity in parts per thousand for three water masses in Bahamas. Is the mean salinity different among the sites, and if so, how? Carry out a full analysis, and provide graphical and tabular data summaries, inference and estimates for site means, and comparisons between sites. Write a short summary of the results, interpreting inferences in context using technically appropriate language.
+
+```{r}
+salinity |> rename_with(~gsub('_', '.', .x)) |> write_csv('data/salinity.csv')
+
+boxplot(salinity_ppt ~ site_number, data = salinity, horizontal = T)
+
+salinity |>
+  group_by(site_number) |>
+  summarize(mean.salinity = mean(salinity_ppt),
+            mean.salinity.se = sd(salinity_ppt)/sqrt(n())) |>
+  pander()
+
+salinity.fit <- aov(salinity_ppt ~ site_number, data = salinity)
+summary(salinity.fit) |> pander()
+
+emmeans(salinity.fit, pairwise ~ site_number) |> confint()
+```
+
+    Results suggest a difference in salinity between sites. The data provide sufficient evidence to reject the null hypothesis of no difference in mean salninity among the sites (*F =  56.51* on 2 and 27 degrees of freedom, *p < 0.0001*). Site II had the highest estimated mean salinity, followed by site III, followed by site I. Post-hoc comparisons indicated that all three sites differ significantly from one another.
+
+5. [L9] In the FAMuSS study, test for a difference in mean percent change in nondominant arm strength *and* in dominant arm strength according to genotype and estimate means of each variable for each group. If differences are identified for either response variable, determine which groups differ. Conduct significance tests at the 0.05 significance level and interpret the results of the test. Briefly, discuss the strength of evidence associated with your findings. If differences were identified, how convincing are the results?
+
+```{r}
+data(famuss)
+
+fit.ndrm <- aov(ndrm.ch ~ actn3.r577x, data = famuss)
+fit.drm <- aov(drm.ch ~ actn3.r577x, data = famuss)
+summary(fit.ndrm) |> pander(caption = 'ANOVA table for nondominant arm strengths')
+summary(fit.drm) |> pander(caption = 'ANOVA table for dominant arm strengths')
+
+emmeans(fit.ndrm, pairwise ~ actn3.r577x) |> pairs() |> test() |> pander(caption = 'Pairwise comparisons for nondominant arm strength')
+emmeans(fit.drm, pairwise ~ actn3.r577x) |> pairs() |> test() |> pander(caption = 'Pairwise comparisons for dominant arm strength')
+```
+
+    Differences were identified for both variables; for nondominant arm strength, the data suggest mean change in strength differs between genotypes CC and TT; for dominant arm strength, the data suggest mean change in strength differs between genotypes CT and TT. Significance tests for each of these findings produced only moderate evidence; in particular, the ANOVA tests both yielded $p$-values around 0.04. Considering these were not adjusted for multiplicity, the evidence is rather weak.
+
+6. [L5] The `Sleuth3::case0101` dataset contains data from an experiment on the effect of intrinsic vs. extrinsic motivation on creativity. 47 creative writing students were randomly assigned to one of two groups, extrinsic and intrinsic; each subject was instructed to write two short poems, but those in the extrinsic motivation group were primed on the task in a way that oriented them to external motivations for writing, and those in the intrinsic group were primed on the task in a way that oriented them to internal motivations for writing. Poems were scored by judges for creativity on a 40-point scale, and each subject received an average score. Test whether the framing led to differences in creativity; if so, which type of motivation was more effective with respect to eliciting creativity?
+
+```{r}
+t.test(Score ~ Treatment, data = case0101)
+```
+
+    The data provide sufficiently strong evidence to reject the null hypothesis of no difference in mean creativity scores between motivation-type groups (*T = -2.9153* on 43.11 degrees of freedom, *p = 0.005618*). With 95% confidence, the mean creativity score for the intrinsic group is estimated to be between 1.28 and 7.01 higher than the mean creativity score for the extrinsic group. This suggests intrinsic motivation improves creativity relative to extrinsic motivation.

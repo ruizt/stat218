@@ -1,0 +1,624 @@
+---
+title: "Descriptive statistics"
+subtitle: "Quantitative and graphical techniques for summarizing data"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+## Last time
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+1. Data semantics
+
+- **categorical** data: ordinal (ordered) or nominal (unordered)
+- **numeric** data: continuous (no 'gaps') or discrete ('gaps')
+
+2. Data types and data structures in R
+
+- basic types: numeric, character, logical, integer
+- a **vector** is a collection of values of one type
+- a **data frame** is a type-heterogeneous list of vectors of equal length
+
+:::
+
+::: {.column width="40%"}
+
+Vectors can store observations of one variable:
+```{r, echo = T}
+# 4 observations of age
+ages <- c(18, 22, 18, 12)
+ages
+```
+
+Data frames can store observations of many variables:
+```{r, echo = T}
+# 3 observations of 2 variables
+data.frame(subject.id = c(11, 2, 31),
+           age = c(24, 31, 17),
+           sex = c('m', 'm', 'f'))
+```
+
+:::
+
+:::
+
+*Techniques for summarizing data depend on the data type*
+
+## Today's agenda
+
+1. Graphical and tabular summaries for numeric and categorical data
+
+    - frequency distributions
+    - barplots
+    - histograms
+    
+2. Quantitative summaries for numeric data
+
+    - percentiles
+    - measures of center
+    - measures of spread
+
+3. Lab exploring descriptive statistics and robustness
+
+## What are descriptive statistics?
+
+**Descriptive statistics** are quantitative summaries of the observations of one or more variables. They usually serve one of three aims:
+
+1.  Identify typical or "central" values
+2.  Characterize the variability or "spread" of values
+3.  Characterize relationships between variables
+
+Descriptive statistics are often accompanied by **graphical summaries** that aid in visualizing these same characteristics.
+
+## Today's example data: FAMuSS
+
+Observational study of 595 individuals comparing change in arm strength before and after resistance training between genotypes for a region of interest on the ACTN3 gene.
+
+> Pescatello, L. S., *et al.* (2013). Highlights from the functional single nucleotide polymorphisms associated with human muscle size and strength or FAMuSS study. BioMed research international, 2013.
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+data(famuss)
+head(famuss, 4) %>% pander(caption = 'Example data rows')
+```
+
+## Categorical frequency distributions
+
+*For categorical variables, the frequency distribution is simply an observation count by category. For example:*
+
+::: columns
+::: {.column width="0.2"}
+```{r}
+set.seed(11424)
+famuss %>% 
+  mutate(participant.id = row_number()) %>%
+  rename(genotype = actn3.r577x) %>%
+  select(participant.id, genotype) %>% 
+  sample_n(size = 6) %>% 
+  pander(caption = 'Data table')
+```
+:::
+
+::: {.column width="0.8"}
+```{r}
+tbl <- famuss %>% 
+  mutate(participant = row_number()) %>%
+  rename(genotype = actn3.r577x) %>%
+  select(genotype) %>%
+  table() 
+
+tbl %>%
+  pander(caption = 'Frequency distribution')
+```
+
+```{r}
+par(mar = c(5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex = 1.5)
+famuss %>% 
+  mutate(participant = row_number()) %>%
+  rename(genotype = actn3.r577x) %>%
+  pull(genotype) %>%
+  plot(xlab = 'genotype', ylab = 'frequency')
+```
+:::
+:::
+
+## Numeric frequency distributions
+
+Frequency distributions of numeric variables are observation counts by *range*.
+
+::: columns
+::: {.column width="0.3"}
+```{r}
+famuss %>%
+  mutate(participant.id = row_number()) %>%
+  select(participant.id, bmi) %>%
+  sample_n(size = 6) %>%
+  pander(caption = 'Data table')
+```
+:::
+
+::: {.column width="0.7"}
+```{r}
+par(mar = c(4, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex = 1.5)
+famuss %>%
+  transmute(bmi.range = cut(bmi, breaks = seq(10, 50, by = 10))) %>%
+  table() %>%
+  pander(caption = 'Frequency distribution')
+hist(famuss$bmi, 
+     breaks = 3, 
+     main = '', 
+     xlab = 'bmi',
+     ylab = 'frequency')
+```
+:::
+:::
+
+The operation of dividing a numeric variable into interval ranges is called **binning**.
+
+## Histograms
+
+The graphical display of a frequency distribution for a numeric variable is called a **histogram**. Binning has a big effect on the visual impression.
+
+```{r}
+layout(matrix(1:4, nrow = 2, byrow = T))
+par(mar = c(5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+hist(famuss$bmi, 
+     breaks = 4,
+     xlab = 'bmi',
+     ylab = 'frequency',
+     main = '4 bins',
+     xlim = c(10, 50),
+     ylim = c(0, 450))
+hist(famuss$bmi, 
+     breaks = 6,
+     ylim = c(0, 450),
+     xlim = c(10, 50),
+     xlab = 'bmi',
+     ylab = 'frequency',
+     main = '6 bins')
+hist(famuss$bmi, 
+     xlim = c(10, 50),
+     ylim = c(0, 450),
+     breaks = 15,
+     xlab = 'bmi',
+     ylab = 'frequency',
+     main = '15 bins')
+hist(famuss$bmi, 
+     xlim = c(10, 50),
+     ylim = c(0, 450),
+     breaks = 58,
+     xlab = 'bmi',
+     ylab = 'frequency',
+     main = '58 bins')
+```
+
+## Shapes
+
+For numeric variables, the histogram reveals the **shape** of the distribution:
+
+-   **symmetric** if it shows left-right symmetry about a central value
+-   **skewed** if it stretches farther in one direction from a central value
+
+```{r, fig.height=3}
+par(mfrow = c(1, 3))
+curve(dgamma(abs(10 - x), shape = 3, scale = 1), 
+      from = 0, 
+      to = 10,
+      xlab = '', 
+      ylab = '', 
+      main = 'left skew', 
+      cex.main = 3, 
+      xaxt = 'n', 
+      yaxt = 'n')
+curve(dnorm, 
+      from = -3, 
+      to = 3,
+      xlab = '', 
+      ylab = '', 
+      main = 'symmetric', 
+      cex.main = 3,
+      xaxt = 'n', 
+      yaxt = 'n')
+curve(dgamma(x, shape = 3, scale = 1), 
+      from = 0, 
+      to = 10,
+      xlab = '', 
+      ylab = '', 
+      main = 'right skew', 
+      cex.main = 3, 
+      xaxt = 'n', 
+      yaxt = 'n')
+```
+
+## Modes
+
+Histograms also reveal the number of **modes** or local peaks of frequency distributions.
+
+-   **uniform** if there are zero peaks
+-   **unimodal** if there is one peak
+-   **bimodal** if there are two peaks
+-   **multimodal** if there are two or more peaks
+
+```{r, fig.height=3}
+par(mfrow = c(1, 4))
+
+curve(dunif, 
+      from = -1, 
+      to = 2,
+      xlab = '', 
+      ylab = '', 
+      main = 'uniform', 
+      cex.main = 3, 
+      xaxt = 'n', 
+      yaxt = 'n')
+curve(0.4*dnorm(x, mean = 0) + 0.6*dnorm(x, mean = 2), 
+      from = -3, 
+      to = 6,
+      xlab = '', 
+      ylab = '', 
+      main = 'unimodal', 
+      cex.main = 3,
+      xaxt = 'n', 
+      yaxt = 'n')
+curve(0.4*dnorm(x, mean = -2) + 0.6*dnorm(x, mean = 2), 
+      from = -5, 
+      to = 5,
+      xlab = '', 
+      ylab = '', 
+      main = 'bimodal', 
+      cex.main = 3, 
+      xaxt = 'n', 
+      yaxt = 'n')
+curve(0.2*dnorm(x, mean = -2) + 
+        0.5*dnorm(x, mean = 2) + 
+        0.3*dnorm(x, mean = 6), 
+      from = -5, 
+      to = 10,
+      xlab = '', 
+      ylab = '', 
+      main = 'multimodal', 
+      cex.main = 3, 
+      xaxt = 'n', 
+      yaxt = 'n')
+```
+
+## Your turn: characterizing distributions
+
+Consider four variables from the FAMuSS study. Describe the shape and modality.
+
+```{r}
+par(mfrow = c(2, 2),
+    mar = c(5, 5, 2, 2), 
+    cex.lab = 2, 
+    cex.axis = 1.5, 
+    cex.main = 2)
+hist(famuss$height, 
+     main = '', 
+     xlab = 'height',
+     ylab = 'frequency')
+hist(famuss$weight, 
+     main = '', 
+     xlab = 'weight',
+     ylab = 'frequency')
+hist(famuss$age, 
+     main = '', 
+     xlab = 'age',
+     ylab = 'frequency')
+hist(famuss$bmi, 
+     main = '', 
+     xlab = 'bmi',
+     ylab = 'frequency')
+```
+
+## Your turn: characterizing distributions
+
+Here are some made-up data. Describe the shape and modality.
+
+```{r}
+par(mfrow = c(2, 2))
+par(mar = c(5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+set.seed(11524)
+runif(1000, min = -5, max = 2) %>% 
+  hist(main = '', xlab = 'x', ylab = 'frequency')
+-rpois(1000, lambda = 2) %>% 
+  hist(main = '', xlab = 'x', ylab = 'frequency', breaks = 6)
+c(rnorm(400, mean = -4, sd = 2), rnorm(600, mean = 8, sd = 5)) %>%
+  hist(main = '', xlab = 'x', ylab = 'frequency', breaks = 20)
+c(rexp(500, rate = 1), 10 - rexp(600, rate = 2))  %>%
+  hist(main = '', xlab = 'x', ylab = 'frequency', breaks = 20)
+```
+
+
+## Descriptive measures
+
+Frequency distributions are great for many purposes but they have limitations:
+
+-   minimal "data reduction", especially for many bins/categories
+-   sensitive to choice of binning
+-   perception of pattern is subjective
+
+Descriptive measures, by contrast, reduce all observations of a variable down to just one number. There are two common types of measures:
+
+-   **measures of center**: mean, median, mode
+-   **measures of spread**: absolute deviation, standard deviation, interquartile range, range
+
+## Measures of center
+
+A measure of center is a statistic that reflects the typical value of one or more variables.
+
+::: columns
+::: {.column width="0.5"}
+There are three common measures of center, each of which corresponds to a slightly different meaning of "typical":
+
+| Measure | Definition          |
+|---------|---------------------|
+| Mode    | Most frequent value |
+| Mean    | Average value       |
+| Median  | Middle value        |
+:::
+
+::: {.column width="0.5"}
+Suppose your data consisted of the following observations of age in years:
+
+```{r}
+c(19, 19, 21, 25, 31) %>% pander()
+```
+
+-   the **mode** or most frequent value is 19
+-   the **median** or middle value is 21
+-   the **mean** or average value is $\frac{19 + 19 + 21 + 25 + 31}{5}$ = 23
+:::
+:::
+
+*These measures are only used with numeric variables.* 
+
+<!-- Other clarifications: -->
+
+<!-- -   for continuous variables, mode will be computed subject to binning -->
+<!-- -   for an even number of observations, the median is defined as the midpoint between the two middle values -->
+
+## Your turn
+
+Consider the first 8 observations of change in nondominant arm strength from the FAMuSS study data:
+
+```{r}
+famuss$ndrm.ch[1:8] %>% pander()
+```
+
+Compute the mean, median, and mode.
+
+## Comparing measures of center
+
+Each statistic is a little different, but often they roughly agree; for example, all are between 20 and 25, which seems to capture the typical age well enough.
+
+```{r, fig.width = 10, fig.height = 4}
+makehist <- function(x, b, t, xlab, leg, nmodes){
+h <- hist(x, 
+          main = b, 
+          breaks = t, 
+          xlab = xlab,
+          ylab = 'frequency')
+abline(v = mean(x), 
+       col = 2, 
+       lty = 2, 
+       lwd = 2)
+abline(v = median(x),
+       col = 4, 
+       lty = 3, 
+       lwd = 2)
+x_mode <- h$mids[which(h$counts %in% 
+                         sort(h$counts, 
+                              decreasing = T)[1:nmodes])]
+abline(v = x_mode, 
+       col = 6, 
+       lty = 4, 
+       lwd = 2)
+if(leg){
+legend(quantile(h$mids, 0.7), 
+       max(h$counts), 
+       legend = c("Mean", "Median", "Mode"), 
+       col = c(2, 4, 6), 
+       lty = c(2, 3, 4))
+}
+}
+par(mar = c(4, 5, 2, 2), 
+    cex.lab = 2, 
+    cex.axis = 1.5,
+    cex.legend = 1.5,
+    cex.main = 2)
+makehist(famuss$bmi, '', 15, 'bmi', T, 1)
+```
+
+*How do you think the frequency distribution affects which one is "best"?*
+
+<!-- ## When to use what -->
+
+<!-- Usually either mean or median are used, unless extreme skewness or multiple modes are present. -->
+
+<!-- ```{r, fig.width = 12, fig.height = 4} -->
+
+<!-- set.seed(11524) -->
+
+<!-- x_skew <- c(rgamma(n = 1000, shape = 4, rate = 1/10),  -->
+
+<!--             runif(n = 500, min = 70, max = 300)) -->
+
+<!-- x_bi <- c(rnorm(1000, mean = -3), -->
+
+<!--           rnorm(1000, mean = 3)) -->
+
+<!-- par(mfrow = c(1, 2)) -->
+
+<!-- makehist(x_skew, '', 20, '', T, 1) -->
+
+<!-- makehist(x_bi, '', 20, '', F, 2) -->
+
+<!-- ``` -->
+
+## Percentiles
+
+The median is an example of a **percentile**: a value with specified proportions of data lying both above and below. For example, the 20th percentile is the value with 20% of observations below and 80% of observations above.
+
+*Ranking* observations helps to find this number. Suppose we have 5 observations:
+
+```{r}
+x <- c(19, 20, 21, 25, 31)
+rbind(age = x, rank=rank(x)) %>% pander()
+```
+
+The 20th percentile is 20 since it is ranked second when observations are listed in order:
+
+-   20% below (19, 20)
+-   80% above (20, 21, 25, 31)
+
+> Software implementations have a variety of ways for calculating percentiles when an exact solution isn't available due to ties (repeated values) or sample size.
+
+## Cumulative frequency distribution
+
+The *cumulative frequency distribution* is a function showing all percentiles with an exact solution. Think of it as percentile (y) against value (x).
+
+::: columns
+::: {.column width="0.6"}
+```{r, fig.height = 5, fig.width = 5, fig.align='center'}
+par(mar = c(5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+famuss$age[famuss$age < 30] %>%
+  # sample(size = 50) %>%
+  ecdf() %>% 
+  plot(main = '', 
+       xlab = 'age', 
+       ylab = 'cumulative frequency')
+```
+:::
+
+::: {.column width="0.4"}
+Interpretation of some specific values:
+
+-   about 40% of the subjects are 20 or younger
+-   about 80% of the subjects are 24 or younger
+
+*Your turn*:
+
+1.  Roughly what percentage of subjects are 22 or younger?
+2.  About what age is the 10th percentile?
+:::
+:::
+
+
+## Common percentiles
+
+::: columns
+::: {.column width="50%"}
+The **five-number summary** is a collection of five percentiles that succinctly describe the frequency distribution:
+
+| Statistic name     | Meaning          |
+|--------------------|------------------|
+| **minimum**        | 0th percentile   |
+| **first quartile** | 25th percentile  |
+| **median**         | 50th percentile  |
+| **third quartile** | 75th percentile  |
+| **maximum**        | 100th percentile |
+:::
+
+::: {.column width="50%"}
+Boxplots provide a graphical display of the five-number summary.
+
+![](img/boxplot-anatomy.png)
+:::
+
+:::
+
+
+
+## Boxplots vs. histograms
+
+Notice how the two displays align, and also how they differ. The histogram shows shape in greater detail, but the boxplot is much more compact.
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=5}
+par(mar = c(4.5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+layout(matrix(1:2, nrow = 2), height = c(3, 2))
+hist(famuss$ndrm.ch, 
+     main = 'nondominant arm', 
+     xlab = 'percent change',
+     ylab = 'frequency')
+boxplot(famuss$ndrm.ch, 
+        range = 3, 
+        horizontal = T)
+```
+
+:::
+
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=5}
+par(mar = c(4.5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+layout(matrix(1:2, nrow = 2), height = c(3, 2))
+hist(famuss$drm.ch, 
+     main = 'dominant arm', 
+     xlab = 'percent change',
+     ylab = 'frequency')
+boxplot(famuss$drm.ch, 
+        range = 3, 
+        horizontal = T,
+        ylim = c(-40, 100))
+```
+:::
+:::
+
+## Boxplots vs. histograms
+
+Suppose we wanted to compare the change in dominant arm strength with the change in nondominant arm strength in the FAMuSS (sports gene) study. 
+
+The boxplot is a cleaner display due to its compactness.
+
+```{r, fig.width = 6, fig.height = 4}
+par(mar = c(4.5, 5, 2, 2), cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+famuss %>%
+  select(ends_with('.ch')) %>%
+  rename(d = drm.ch,
+         nd = ndrm.ch) %>%
+  as.list() %>%
+  boxplot(horizontal = T, range = 3, 
+          xlab = 'percent change',
+          ylab = 'arm')
+```
+
+
+
+## Lab: robustness
+
+For this lab we'll continue to work with the FAMuSS data as we have throughout lecture.
+
+This lab has two objectives:
+
+1.  Teach you to compute descriptive statistics and prepare graphical summaries for a single variable in R
+2.  Learn when and why to use certain descriptive statistics in place of others
+
+
+## Up next: multivariate summaries
+
+Today we discussed numeric and graphical summaries for a *single* variable. These are **univariate** techniques.
+
+- **Will** reveal basic statistical properties (shape, skew, outliers)
+- **Won't** reveal relationships
+
+What if you wish to understand relationships? The fact is, most data are **multivariate** because several variables are measured together.
+
+Next time we'll discuss
+
+1. Measures of spread/variability 
+2. Bivariate descriptive and graphical techniques

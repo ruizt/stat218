@@ -1,0 +1,544 @@
+---
+title: "Simple linear regression"
+subtitle: "Model specification, parameter estimation, inference, and diagnostics"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+library(Sleuth3)
+library(epitools)
+data("prevend.samp")
+set.seed(31024)
+prevend <- prevend.samp |> 
+  group_by(cut_width(Age, 5)) |> 
+  sample_n(size = 5) |>
+  mutate(Age = Age + round(runif(1, 0, 1), 1)) |>
+  ungroup() |>
+  sample_n(size = 35) |>
+  select(Age, RFFT)
+hand.fit <- function(b0 = 150, b1 = -1.6, .resid = F){
+  plot(RFFT ~ Age, data = prevend)
+  abline(a = b0, b = b1, col = 'blue')
+  if(.resid == T){
+    x <- prevend$Age
+    y <- prevend$RFFT
+    yhat <- b0 + b1*x
+    e <- y - yhat
+    segments(x0 = x, y0 = y, 
+             x1 = x, y1 = yhat,
+             col = 'red')
+    title(main = paste("SSR = ", round(sum(e^2), 2)))
+  }
+}
+save(list = c('prevend', 'hand.fit'), file = 'labs/data/prevend.RData')
+```
+
+
+## Today's agenda
+
+1. Reading quiz. \[[2pm section](https://forms.office.com/r/EXg3rK5zgv)\] \[[4pm section](https://forms.office.com/r/xsfN6CaHBZ)\]
+2. [lecture/discussion] Model specification, estimation and diagnostics for SLR
+3. [lab] Estimating the age of the universe
+
+## Example: PREVEND
+
+::: {.columns}
+
+::: {.column width="70%"}
+Prevention of REnal and Vascular END-stage Disease (PREVEND) study.
+
+- small subsample of 35 respondents from 2003-2006 survey
+- Ruff Figural Fluency Test (RFFT) is a cognitive assessment
+
+    - measures nonverbal capacity for initiation, planning, and divergent reasoning on 0 (worst) to 175 (best) scale
+    
+
+:::
+
+::: {.column width="30%"}
+```{r}
+prevend |>
+  head(5) |>
+  pander()
+```
+
+:::
+
+::: 
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=3, fig.align='center'}
+par(mar = c(4, 4, 0.1, 1), cex = 1.25)
+plot(prevend)
+```
+
+:::
+
+::: {.column width="50%"}
+
+> How does average cognitive ability as measured by RFFT decline with age?
+
+*This is (subtly) a question about means.*
+:::
+
+:::
+
+## Warm-up
+
+I've written a function `hand.fit` for you that draws a line through the PREVEND data.
+
+::: {.columns}
+
+::: {.column width="60%"}
+```{r, echo = T, eval = F}
+# fit a line by hand
+hand.fit(b0 = 80, b1 = -0.2)
+```
+
+```{r, fig.width=6, fig.height=4}
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+hand.fit(b0 = 80, b1 = -0.2)
+```
+:::
+
+::: {.column width="40%"}
+Equation of the line in slope-intercept form:
+
+$$RFFT = b_0 + b_1 \times Age$$
+
+- $b_0$ gives the intercept
+- $b_1$ gives the slope
+
+Think of this as a model for mean RFFT.
+:::
+
+:::
+
+Your job: find a `b0` and `b1` that you think best fit the data. Write them down.
+
+## Explanatory variables
+
+> An explanatory variable is one that is not of direct interest beyond its ability to explain another variable
+
+::: {.columns}
+
+::: {.column}
+You have seen this concept even if you didn't recognize it.
+
+- `Rainfall` is the variable of interest
+- `Treatment` is an explanatory variable
+
+In this case, treatment is a categorical variable that potentially explains the amount of rainfall.
+:::
+
+::: {.column}
+```{r}
+case0301 |>
+  group_by(Treatment) |>
+  sample_n(size = 2) |>
+  pander(caption = 'Data rows from cloud seeding experiment')
+```
+:::
+
+:::
+
+## Simple models
+
+::: {.columns}
+
+::: {.column}
+When we estimate the population means, we're really using a model:
+
+$$\text{mean rainfall } Y = \begin{cases} 
+  \mu_1\;, &\text{if } x = \text{seeded} \\ 
+  \mu_2\;, &\text{if } x = \text{unseeded}
+\end{cases}$$ 
+:::
+
+::: {.column}
+```{r}
+case0301 |>
+  group_by(Treatment) |>
+  summarize(`Sample mean` = mean(Rainfall)) |>
+  pander()
+```
+:::
+
+:::
+
+Inference is based on the sampling distributions of estimators $\hat{\mu}_1 = \bar{y}_1$ and $\hat{\mu}_2 = \bar{y}_2$.
+
+## Reframing inferences for means
+
+Think of the inferences for means we've discussed so far in terms of models:
+
+- one-sample inference: no explanatory variable
+- two-sample inference: categorical explanatory variable with two categories
+- ANOVA: categorical explanatory variable with multiple categories
+
+$$\text{population mean of } Y = \begin{cases}
+\mu &\quad\text{one-sample}\\
+\mu_1 \;\text{or}\; \mu_2 &\quad\text{two-sample} \\
+\mu_1 \;\text{or}\; \dots \;\text{or}\; \mu_k &\quad\text{ANOVA}
+\end{cases}$$
+
+## Error models
+
+> An error model describes how observations deviate from expected values
+
+::: {.columns}
+
+::: {.column}
+If we want a model to describe the *actual observations* rather than a population mean, we need to include an error model:
+
+$$\text{rainfall } Y = \mu_i + \epsilon$$ 
+
+- error is a random quantity
+- assume mean error is zero
+:::
+
+::: {.column}
+```{r}
+case0301 |>
+  group_by(Treatment) |>
+  summarize(Estimate = mean(Rainfall)) |> 
+  right_join(case0301, by = 'Treatment') |>
+  mutate(Error = Rainfall - Estimate) |>
+  select(Treatment, Rainfall, Estimate, Error) |>
+  group_by(Treatment) |>
+  sample_n(size = 3) |>
+  pander()
+```
+:::
+
+:::
+
+## Framework for inference of means
+
+The model framework we've employed in the inference of one, two, and many means is:
+
+$$Y_{ij} = \mu_i + \epsilon_{ij} 
+\quad\begin{cases} 
+  i = 1, \dots, k  &\quad\text{($k$ groups)}\\ 
+  j = 1, \dots, n_i &\quad\text{($n_i$ observations per group)}
+\end{cases}$$
+
+All of the inferences we've developed follow when we assume of the error model:
+
+- mean error is zero
+- errors are independent
+- errors have fixed standard deviations $\sigma_i$
+- errors follow a normal model
+
+## The SLR model
+
+In simple linear regression we consider a model with a continuous explanatory variable $x$.
+
+$$Y_i = \beta_0 + \beta_1 x_i + \epsilon_i \qquad (i = 1, \dots, n)$$
+
+Minimal assumptions for the error model:
+
+- errors are independent
+- errors have mean zero
+- common standard deviation $\sigma$
+
+Since we assume the mean error is zero, the model entails that the **mean response is linear in the explanatory variable**:
+
+$$\mathbb{E}(Y_i|x_i) = \beta_0 + \beta_1 x_i$$
+
+## Estimating coefficients
+
+::: {.columns}
+
+::: {.column}
+The model **residuals** are estimates of the errors:
+$$\textcolor{red}{e_i} = \textcolor{grey}{y_i} - \textcolor{blue}{\hat{y}_i} \quad\text{where}\quad \textcolor{blue}{\hat{y}_i} = \hat{\beta}_0 + \hat{\beta}_1x_i$$
+Coefficient estimates are the values of $\hat{\beta}_1$ and $\hat{\beta}_2$ that minimize $\sum_i e_i^2$:
+
+$$\begin{align*}
+\hat{\beta}_1 &= \frac{s_y}{s_x}\times r_{xy} \\
+\hat{\beta}_0 &= \bar{y} - \hat{\beta}_1 \bar{x}
+\end{align*}$$
+
+These are called the **least squares estimates**.
+:::
+
+::: {.column}
+```{r, fig.width=6, fig.height=4}
+par(mar = c(4,4,1,1),
+    cex = 1.5)
+fit <- lm(RFFT ~ Age, data = prevend)
+plot(RFFT ~ Age, data = prevend, col = 'grey')
+segments(x0 = fit$model$Age, y0 = fit$fitted.values, 
+         x1 = fit$model$Age, y1 = fit$model$RFFT,
+         col = 'red')
+abline(a = coef(fit)[1], b = coef(fit)[2], col = 'blue')
+```
+
+```{r}
+prevend |>
+  ungroup() |>
+  summarize(across(.cols = c(Age, RFFT), .fns = list(mean = mean, sd = sd))) |>
+  gather() |>
+  separate(key, into = c('variable', 'stat'), sep = '_') |>
+  pivot_wider(values_from = value, names_from = stat) |>
+  pander()
+```
+Correlation coefficient $r_{xy}$ = `r cor(prevend$Age, prevend$RFFT) |> round(3)`
+
+:::
+
+:::
+
+## Your turn
+
+The `hand.fit` function also has an option to plot residuals and show the sum of squared residuals (SSR).
+
+::: {.columns}
+
+::: {.column}
+1. Add `.resid = T` to the `hand.fit` function and continue to adjust the slope and intercept until SSR is as small as you can make it. Write down your final `b0` and `b1`.
+
+2. Then calculate the coefficient estimates using the formula on the previous slide. 
+
+- *What were your initial estimates and SSR?* 
+- *What were they after adjustment?*
+- *How close did you get to the least squares estimates in the end?*
+
+:::
+
+::: {.column}
+```{r, fig.width=6, fig.height=5}
+par(mar = c(4, 4, 3, 0.1), cex = 1.5)
+hand.fit(b0 = 80, b1 = -0.2, .resid = T)
+```
+:::
+
+:::
+
+
+## Interpreting parameter estimates
+
+According to the model, incrementing $x$ by one unit changes the mean response by $\beta_1$:
+
+$$\underbrace{\beta_0 + \beta_1 (x + 1)}_{\mathbb{E}(Y| x + 1)}
+= \underbrace{(\beta_0 + \beta_1 x) + \beta_1}_{\mathbb{E}(Y|x) + \beta_1}$$
+
+This leads to the parameter interpretation:
+
+> A one-unit increase in \[explanatory variable\] is associated with a change in mean \[response variable\] of $\beta_1$
+
+And thus, the estimate is interpreted:
+
+> A one-unit increase in \[explanatory variable\] is associated with an *estimated* change in mean \[response variable\] of $\hat{\beta}_1$
+
+## Fitting SLR models in R
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+# fit model
+fit <- lm(RFFT ~ Age, data = prevend)
+
+# inspect
+fit
+```
+:::
+
+::: {.column}
+> Each additional year of age is associated with an estimated decrease in mean RFFT score of `r -coef(fit)[2] |> round(3)`.
+
+:::
+
+:::
+
+The output above indicates that the least squares estimates are:
+
+$$\begin{align*} \hat{\beta}_0 &= 162.973 \\ 
+\hat{\beta}_1 &= -1.684 \end{align*}$$
+
+The intercept lacks a natural interpretation since RFFT cannot be observed for `Age = 0`.
+
+## Residual diagnostics
+
+> We can use residual diagnostics to assess certain of the model assumptions. 
+
+::: {.columns}
+
+::: {.column width="55%"}
+A scatterplot of residuals against fitted values can be used to assess:
+
+1. [model specification] the $x$-$y$ relationship is approximately linear
+
+    + trend indicates misspecification
+    
+2. [constant variance] error variability is the same regardless of $x$ or $y$
+
+    + uneven spread indicates nonconstant variance
+    
+*You should hope to see no pattern in these plots.*
+:::
+
+::: {.column width="45%"}
+![](img/resid-fit.png){height=450}
+:::
+
+:::
+
+
+## Estimating the error model
+
+If model assumptions seem plausible, one should estimate the error model parameter $\sigma$. 
+
+$$\hat{\sigma} = \sqrt{\frac{1}{n - 2} \sum_i e_i^2} \qquad\text{(estimated error variability)}$$
+
+- used to compute standard errors for the coefficient estimates
+- but not meaningful if either...
+    
+    + model is ill-specified
+    + residual variability is uneven
+
+Standard error formulae are:
+
+$$SE\left(\hat{\beta}_0\right) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{\bar{x}^2}{(n - 1)s_x^2}} \qquad\text{and}\qquad
+SE\left(\hat{\beta}_1\right) = \hat{\sigma}\sqrt{\frac{1}{(n - 1)s_x^2}}$$
+
+## Fitted model summary
+
+> A fitted model consists of point estimates for the model parameters $\beta_0, \beta_1, \sigma$.
+
+::: {.columns}
+
+::: {.column}
+```{r}
+rbind(summary(fit)$coef[, 1:2], SD = c(sigma(fit), NA)) |> pander()
+```
+:::
+
+::: {.column}
+```{r, fig.width=6, fig.height=3.5}
+par(mar = c(4,4,0.1,0.1), cex = 1.5)
+hand.fit(b0 = coef(fit)[1], b1 = coef(fit)[2])
+```
+:::
+
+:::
+
+- Each year of age is associated with an estimated decrease in mean RFFT score of 1.684 points.
+- The standard deviation of RFFT scores after accounting for age is estimated to be 19.4 points.
+
+## Inference for the coefficients
+
+> Statistical inference for the coefficients assumes errors follow a normal model.
+
+Typically inference is only performed on the slope parameter. 
+
+- Significance tests: $T = \frac{\hat{\beta}_1}{SE\left(\hat{\beta}_1\right)}$
+- Intervals: $\hat{\beta}_1 \pm c\times SE\left(\hat{\beta}_1\right)$
+
+Both inferences utilize a $t$ model with $n - 2$ degrees of freedom.
+
+## Checking normality
+
+There are two residual diagnostics used to assess normality.
+
+```{r, fig.width=10, fig.height=4}
+par(mfrow = c(1, 2), mar = c(4, 4, 3, 1), cex = 1.5)
+hist(fit$residuals, main = 'Residual histogram', xlab = 'residual')
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+```
+
+Neither of these indicate problems. What to look for to detect *non*-normality:
+
+- [histogram] substantial deviation from bell curve shape
+- [QQ plot] substantial deviation from $y=x$ line
+
+## Inference for the PREVEND study
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+# fit model
+fit <- lm(RFFT ~ Age, data = prevend)
+
+# model summary
+summary(fit)
+```
+:::
+
+::: {.column}
+The coefficient table reports estimates, standard errors, and significance tests. 
+
+Details: 
+
+- Significance tests pertain to the hypotheses:
+$$\begin{cases}
+H_0: \beta_j = 0 \\
+H_A: \beta_j \neq 0
+\end{cases}$$
+
+- `Residual standard error` gives $\hat{\sigma}$.
+:::
+
+:::
+
+## Confidence intervals for the coefficients
+
+Confidence intervals are obtained separately using `confint()`:
+```{r, echo = T}
+confint(fit, level = 0.95) |> pander()
+```
+
+> With 95% confidence, the decrease in mean RFFT score with each additional year of age is estimated to be between 1.217 points and 2.151 points.
+
+## Estimating the age of the universe
+
+The Hubble constant $H$ is a fundamental cosmological constant that pertains to the size and age of the universe.
+
+- relative velocity of and distance to a galaxy are related as $H\times d = v$
+- age of the universe in years is $\frac{978440076094}{H}$
+
+::: {.columns}
+
+::: {.column width="65%"}
+`hubble` gives velocities and distances to 24 galaxies. Strategy:
+
+1. Fit an SLR model *without an intercept* to estimate $\frac{1}{H}$
+2. Compute a confidence interval for $\frac{1}{H}$
+3. Use the conversion factor to get an interval for the age of the universe
+:::
+
+::: {.column width="35%"}
+```{r}
+library(gamair)
+data(hubble)
+hubble <- hubble |> 
+  rename(velocity = y,
+         distance = x)
+save(hubble, file = 'labs/data/hubble.RData')
+hubble |> select(-Galaxy) |> head(5) |> pander()
+```
+:::
+
+:::
