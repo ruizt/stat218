@@ -1,0 +1,202 @@
+---
+title: "Lab 15: Prediction in SLR; practice problems"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: false
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+    fig-width: 4
+    fig-height: 3
+  docx:
+    toc: false
+    fig-width: 4
+    fig-height: 3
+prefer-html: true
+embed-resources: true
+---
+
+```{r packages and data}
+library(modelr)
+library(Sleuth3)
+load('data/prevend.RData')
+```
+
+This activity has three objectives:
+
+1. Review basic SLR analysis
+2. Demonstrate how to compute and visualize confidence intervals for the mean response and prediction intervals
+3. Provide an opportunity to practice using SLR
+
+## SLR Review
+
+Previously, we covered how to do the following:
+
+- fit a model in R
+- check residual diagnostics
+- perform inference for model parameters
+
+These steps are illustrated below
+
+```{r slr review, echo = T}
+# fit model and check summary
+fit <- lm(RFFT ~ Age, data = prevend)
+summary(fit)
+
+# residual diagnostics: residual-fit plot
+plot(fit$fitted.values, fit$residuals)
+abline(h = 0)
+
+# residual diagnostics: residual histogram
+hist(fit$residuals)
+
+# residual diagnostics: qq plot
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+
+# significance tests
+summary(fit)$coef
+
+# confidence intervals for parameter estimates
+confint(fit, level = 0.95)
+
+# model visualization
+coefs <- coef(fit)
+plot(prevend)
+abline(a = coefs[1], b = coefs[2])
+```
+
+We would interpret the output as indicating: 
+
+- age is significantly associated with mean RFFT (*p = 0.0000000199*)
+- with 95% confidence, each year of age is associated with a decline in mean RFFT estimated to be between 1.22 and 2.15 points
+- age explains 62% of variability in RFFT scores ($R^2$ = 0.6201)
+
+## Predictions and interval estimates
+
+While predictions *could* be computed manually from the fitted model equation, the `predict()` function will do the job given only the fitted model object and new data, formatted as a data frame. To add interval estimates, simply include either:
+
+- `interval = 'confidence'` for an interval for the mean response
+- `interval = 'prediction'` for an interval for a specific response
+
+For example, to predict the RFFT score for a 55 year old:
+
+```{r predictions, echo = T}
+# point prediction
+predict(fit, newdata = data.frame(Age = 55))
+
+# prediction interval for an observation
+predict(fit, newdata = data.frame(Age = 55), interval = 'prediction')
+
+# confidence interval for the mean
+predict(fit, newdata = data.frame(Age = 55), interval = 'confidence')
+```
+
+To visualize a specific prediction, one can simply add the prediction as a point on the plot:
+
+```{r visualizing one prediction, echo = T}
+# store prediction
+pred <- predict(fit, newdata = data.frame(Age = 55))
+
+# plot data, add line, add point
+plot(prevend)
+abline(a = coefs[1], b = coefs[2])
+points(x = 55, y = pred, pch = 18, col = 'red')
+```
+
+Visualizing intervals is done by:
+
+1. generate a grid of evenly-spaced points along the range of the explanatory variable
+2. compute predictions with uncertainty quantification for each point on the grid
+3. plotting a path through the upper and lower bounds
+
+For example, to include 95% confidence intervals in the plot:
+
+```{r visualizing intervals, echo = T}
+# generate a grid of 100 points spanning the range of ages
+x <- seq_range(prevend$Age, n = 100)
+
+# compute predictions
+preds <- predict(fit, newdata = data.frame(Age = x), 
+                 interval = 'confidence', level = 0.95)
+
+# add to plot
+plot(prevend)
+abline(a = coefs[1], b = coefs[2], col = 'blue')
+lines(x = x, y = preds[, 2], lty = 2, col = 'blue')
+lines(x = x, y = preds[, 3], lty = 2, col = 'blue')
+```
+
+::: callout-note
+## Your turn
+
+Modify the example above to...
+
+- visualize 99% intervals for the mean
+- visualize 90% prediction intervals
+
+```{r your turn 1, echo = T, result = 'hide', fig.show = 'hide'}
+# generate a grid of 100 points spanning the range of ages
+x <- seq_range(prevend$Age, n = 100)
+
+# compute predictions
+preds <- predict(fit, newdata = data.frame(Age = x), 
+                 interval = 'confidence', level = 0.95)
+
+# add to plot
+plot(prevend)
+abline(a = coefs[1], b = coefs[2], col = 'blue')
+lines(x = x, y = preds[, 2], lty = 2, col = 'blue')
+lines(x = x, y = preds[, 3], lty = 2, col = 'blue')
+```
+
+:::
+
+## Practice problems
+
+### Crab claws
+
+Estimate the association between claw height and closing force. Predict the closing force for an individual crab with claw height 12.2; provide both point and interval estimates.
+
+```{r practice problem 1, results = 'hide', echo = T}
+# claw data
+head(ex0722)
+
+# fit model of closing force (response) against height (explanatory)
+
+# check diagnostics
+
+# model summary
+
+# interval estimate for association
+
+# prediction for claw height 12.2
+
+```
+
+### Galapagos Islands
+
+Estimate the relationship between island area and the number of observed species and indicate how well your model fits the data. Provide a 95% confidence interval for the model parameter that captures the relationship and interpret the interval in context.
+
+```{r practice problem 2, results = 'hide', echo = T}
+# galapagos data
+head(ex1220)
+
+# plot total species count against area
+
+# same, but log-transformed
+
+# fit a model of log-total count against log-area
+
+# check diagnostics
+
+# check model summary for quality of fit
+
+# compute and interpret CI for association parameter
+
+```
