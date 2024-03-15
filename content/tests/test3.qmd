@@ -30,7 +30,7 @@ library(pander)
 
 You have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but **must complete this assignment on your own**. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers. Please use the word document provided (download from the class website) and write in your answers below each prompt. Please ensure that question numbering is preserved in your document. Submit your work via Gradescope.
 
-The test comprises two parts: concepts, containing short-answer and multiple-choice questions; and applications, which requires some data analysis. Revisions will be allowed for the applications part, but not for the concepts part.
+The test comprises two parts: concepts, containing short-answer and multiple-choice questions; and applications, which requires some data analysis.
 
 ## Part I: Concepts
 
@@ -53,25 +53,23 @@ The test comprises two parts: concepts, containing short-answer and multiple-cho
     c. Odds ratio
     d. All of the above
     
-4. [L8] Suppose you perform a study to measure association between 
-
-5. [L6] A study asked 1,924 male and 3,666 female undergraduate college students their favorite color. A 95% confidence interval for the difference between the proportions of males and females whose favorite color is black ($p_\text{male} − p_\text{female}$) was calculated to be (0.02, 0.06). Select the proper interpretation of this interval.
+4. [L6] A study asked 1,924 male and 3,666 female undergraduate college students their favorite color. A 95% confidence interval for the difference between the proportions of males and females whose favorite color is black ($p_\text{male} − p_\text{female}$) was calculated to be (0.02, 0.06). Select the proper interpretation of this interval.
 
     a. With 95% confidence, it is estimated that between 2% and 6% more men prefer the color black compared with women.
     b. With 95% confidence, the percentage of men whose favorite color is black is estimated to be between 2 and 6 percentage points higher than the corresponding percentage of women.
     c. With 95% confidence, the probability that a man's favorite color is black is estimated to be between 2% and 6% higher than the probability that a woman's favorite color is black.
     d. With 95% confidence, men are between 2% and 6% more likely to prefer black than women.
 
-6. [L6] It is believed that large doses of acetaminophen (the active ingredient in over the counter pain relievers like Tylenol) may cause damage to the liver. A researcher conducts a study to estimate the proportion of acetaminophen users who have liver damage, and estimates that the proportion is between 0.05 and 0.15 with 95% confidence. What was the sample size?
+5. [L6] It is believed that large doses of acetaminophen (the active ingredient in over the counter pain relievers like Tylenol) may cause damage to the liver. A researcher conducts a study to estimate the proportion of acetaminophen users who have liver damage, and estimates that the proportion is between 0.05 and 0.15 with 95% confidence. What was the sample size?
 
     a. 54
     b. 144
     c. 20
     d. 87
 
-7. [L7] Three treatments were compared to test their relative efficacy (effectiveness) in treating Type 2 Diabetes in patients aged 10-17 who were being treated with metformin. The primary outcome was lack of glycemic control (or not); lacking glycemic control means the patient still needed insulin, which is not the preferred outcome for a patient. The outcome was considered a 'success' if glycemic control was achieved. The chi-square test of association produced a $p$-value of 0.01687. Interpret this result in context.
+6. [L7] Three treatments were compared to test their relative efficacy (effectiveness) in treating Type 2 Diabetes in patients aged 10-17 who were being treated with metformin. The primary outcome was lack of glycemic control (or not); lacking glycemic control means the patient still needed insulin, which is not the preferred outcome for a patient. The outcome was considered a 'success' if glycemic control was achieved. The chi-square test of association produced a $p$-value of 0.01687. Interpret this result in context.
 
-8. [L7] Continuing the previous problem, the residuals from the chi-square test are shown below. Identify which treatment(s) performed *better* than would be expected had there been no effect of treatment.
+7. [L7] Continuing the previous problem, the residuals from the chi-square test are shown below. Identify which treatment(s) performed *better* than would be expected had there been no effect of treatment.
 
 ```{r, eval = T}
 test.out <- diabetes2 |> table() |> chisq.test()
@@ -101,7 +99,7 @@ head(ex0817)
 
 3. [L6] Suppose that among a random sample of 144 U.S. adults 65 and older, 16 have diagnosed Alzheimer's disease. Calculate and interpret a 95% confidence interval for the prevalence of Alzheimer's based on the sample.
 
-```{problem 3}
+```{r problem 3}
 prop.alzheimer <- 16/144
 n <- 144
 ```
