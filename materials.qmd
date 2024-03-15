@@ -232,7 +232,7 @@ Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https:/
 
 \[[2pm reading quiz responses](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=sRjmPSy5iihOKNgVyRqVq6R4SFlaZ9HB&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUM1BHSjdaWDNZWTA2VkdKOE4wM0ZLWUcyTy4u)\] \[[4pm reading quiz responses](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gPrfnXYdTJLaHMccvFjTYVWECpMznLA9&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNUk1QzNJSTQwM1EyMTE1VlI0N0dKWkdUQy4u)\]
 
-***Assignment***: Test 3 due Friday 3/15 11:59pm PST \[L6, L7, L8, L10\]
+***Assignment***: \[[Test 3](content/tests/test3.qmd)\] due Saturday 3/16 11:59pm PST \[L6, L7, L8, L10\]
 
 ### Finals week (3/18/24)
 

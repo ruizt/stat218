@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.4.550">
 
   <title>STAT218 - Introduction to data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -164,7 +164,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -373,7 +374,7 @@
 </section>
 <section id="case-study-leap-1" class="slide level2">
 <h2>Case study: LEAP</h2>
-<p><img data-src="img/leaps-2.png" data-fig-align="center" width="400"> <img data-src="img/leap-1.png" data-fig-align="center" width="400"></p>
+<p><img data-src="img/leaps-2.png" class="quarto-figure quarto-figure-center" width="400"> <img data-src="img/leap-1.png" class="quarto-figure quarto-figure-center" width="400"></p>
 <p>A greater proportion of children in the avoidance group developed an allergy (11.8% specifically). Given the type of study, which is a more accurate interpretation of this result?</p>
 <ol type="a">
 <li><p>Compared with consumption, peanut avoidance early in life <em>was associated with</em> more frequent occurrence of peanut allergies among children in the study.</p></li>
@@ -733,9 +734,11 @@
 </ul>
 <p>Such summaries are essential first steps in any data analysis, as they convey what was directly observed in the study.</p>
 
-
-<img src="img/poly-logo-2.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="img/poly-logo-2.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 <p>STAT218</p>
+</div>
 </div>
 </section>
     </div>
@@ -764,7 +767,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1063,10 +1065,9 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1076,8 +1077,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
