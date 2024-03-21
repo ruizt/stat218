@@ -2,7 +2,7 @@
 title: "Project guidelines"
 author: "STAT218"
 author-title: "Course"
-date: "Final "
+date: "3/21/24"
 published-title: "Due date"
 execute: 
   eval: false

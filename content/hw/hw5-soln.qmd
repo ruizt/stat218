@@ -32,6 +32,14 @@ library(openintro)
     d. Without doing any calculations, describe what would happen to the confidence interval if we decided to use a higher confidence level.
     e. Without doing any calculations, describe what would happen to the confidence interval if we used a larger sample.
     
+    ANSWERS:
+    
+    a. Proportion of Greeks who are suffering. Point estimate is 0.25.
+    b. Conditions are met. Don't evaluate this question, as we did not emphasize checking conditions in class.
+    c. CI: (0.223, 0.277). Lower bound might be 0.222 if empirical rule is used instead of 1.96.
+    d. It would be wider because a larger critical value would be used.
+    e. Assuming the point estimate is similar, it would be narrower because the standard error and therefore the margin of error is inversely proportional to the sample size. 
+    
 2. **Vu and Harrington 8.14**. On June 28, 2012 the U.S. Supreme Court upheld the much debated 2010 healthcare law, declaring it constitutional. A Gallup poll released the day after this decision indicates that 46% of 1,012 Americans agree with this decision. At a 95% confidence level, this sample has a 3% margin of error. Based on this information, determine if the following statements are true or false, and explain your reasoning. 
 
     a. We are 95% confident that between 43% and 49% of Americans in this sample support the decision of the U.S. Supreme Court on the 2010 healthcare law.
@@ -48,6 +56,14 @@ library(openintro)
     d. Write a narrative summary of your results from (a) -- (c).
     e. A New York Times article reporting on this study was titled “Prenatal Vitamins May Ward Off Autism". Do you find the title of this article to be appropriate? Explain your answer. Additionally, propose an alternative title.
     
+    ANSWERS:
+    
+    a. $H_0$: taking prenatal vitamins and autism are independent. $H_A$: taking prenatal vitamins and autism are not independent. Hypotheses could also be stated as association/nonassociation.
+    b. The data provide sufficient evidence against the null hypothesis of no association between taking prenatal vitamins and autism ($\chi^2$ = 8.865 on 1 degree of freedom, $p$ = 0.002907). Students need only provide the $p$-value.
+    c. With 95% confidence, the odds of autism are estimated to be 18.5% to 61.1% lower when prenatal vitamins are taken during the periconceptional period, with a point estimate of 43.2%. (The CI for the OR is (0.389, 0.825); the point estimate is 0.568.)
+    d. Evidence suggests that taking prenatal vitamins during the periconceptional period may be associated with a lower likelihood of child autism. Data on prenatal vitamin use among mothers of a random sample of autistic children aged 24-60 months and mothers of a random sample of non-autistic children aged 24-60 months provide sufficient evidence to reject the null hypothesis of no association between vitamin use and the odds of autism ($\chi^2$ = 8.865 on 1 degree of freedom, $p$ = 0.002907). With 95% confidence, the odds of autism are estimated to be 18.5% to 61.1% lower when prenatal vitamins are taken during the periconceptional period, with a point estimate of 43.2%.
+    e. The title is misleading because it implies a causal relationship. A better title would be something causally neutral such as "Evidence suggests an association between prenatal vitamin use and likelihood of autism".
+    
 ```{r prenatal vitamins and autism}
 vitamin <- matrix(data = c(111, 70, 143, 159),
                   nrow = 2, byrow = T,
@@ -55,6 +71,8 @@ vitamin <- matrix(data = c(111, 70, 143, 159),
                                   autism = c('autism', 'no autism')))
 
 oddsratio(vitamin, rev = 'columns')
+
+chisq.test(vitamin, correct = F)
 ```
 
 4. **Vu and Harrington 8.27**. Determine if the statements below are true or false. For each false statement, suggest an alternative wording to make it a true statement.
@@ -70,12 +88,19 @@ oddsratio(vitamin, rev = 'columns')
     b. Report and interpret a point estimate and conficence interval for an appropriate measure of association.
     c. Write a narrative summary of your results in (a)-(b).
     
+    ANSWERS:
+    
+    a. The data do not provide sufficient evidence to reject the null hypothesis of no association between green tea consumption and esophageal carcinoma ($\chi^2$ *= 0.065626* on 1 degree of freedom, *p = 0.7978155*).
+    b. With 95% confidence, the odds of esophageal carcinoma among green tea drinkers are estimated to be between 49.8% lower and 73% higher than the odds among non-tea-drinkers, with a point estimate that the odds are 8.1% lower. (CI for OR is (0.5028, 1.7364), point estimate is 0.9196.)
+    c. There is not sufficient evidence to suggest an association between green tea consumption and the likelihood of esophageal cancer. Data on 47 tea drinkers and 824 non-tea-drinkers do not provide sufficient evidence to reject the null hypothesis of no association ($\chi^2$ *= 0.065626* on 1 degree of freedom, *p = 0.7978155*). Although it is estimated that the odds of esophageal carcinoma are 8.1% lower among tea drinkers, at the 95% confidence level, the odds are estimated to be anywhere between 49.8% lower and 73% higher.
+    
 ```{r tea and esophageal carcinoma}
 tea <- matrix(data = c(47 - 17, 17, 824 - 283, 283),
               nrow = 2, byrow = T,
               dimnames = list(tea = c('tea', 'no tea'),
                               carcinoma = c('no carcinoma', 'carcinoma')))
 
+chisq.test(tea, correct = F)
 oddsratio(tea)
 ```
 
@@ -87,10 +112,21 @@ oddsratio(tea)
     d. Vaccine efficacy is often measured by the relative *reduction* in risk, estimated by $\frac{\hat{p}_\text{ctrl} - \hat{p}_\text{trt}}{\hat{p}_\text{ctrl}}$. Provide a point estimate of vaccine efficacy from the trial data.
     e. Provide a 95% confidence interval for vaccine efficacy based on your answers in (c)-(d). (*Hint*: if $(a, b)$ are a confidence interval for parameter $\gamma$, then an interval for $\gamma + c$ is given by $(a + c, b + c)$.)
     
+    ANSWERS:
+    
+    a. The data provide sufficient evidence to reject the null hypothesis of no association between vaccination and infection after exposure to malaria (Fisher's exact test, *p = 0.01408669*).
+    b. With 95% confidence, the probability of infection among vaccinated individuals is estimated to be between 0.3919 and 0.8939 less than the probability of infection among unvaccinated individuals, with point estimate of 0.6429.
+    c. With 95% confidence, the risk of infection among vaccinated individuals is estimated to be between 27.1% and 82.3% lower than among unvaccinated individuals, with a point estimate of 64.3%. Alternatively: with 95% confidence, the relative risk of infection after exposure to malaria among vaccinated individuals compared with unvaccinated individuals is estimated to be between 0.177 and 0.721 with a point estimate of 0.357. If students give a relative risk comparing unvaccinated to vaccinated, this is acceptable, but a comment should be left.
+    d. The malaria vaccine is estimated to be 64.3% effective at preventing infection.
+    e. With 95% confidence, the malaria vaccine is estimated to be between 27.1% and 82.3% effective at preventing infection.
+    
 ```{r}
 malaria.tbl <- xtabs(~ treatment + outcome, data = malaria)
 
+malaria.prop <- prop.test(malaria.tbl, correct = F)
+malaria.prop$estimate |> diff()
 malaria.est <- riskratio(malaria.tbl, rev = 'columns')
+malaria.est
 1 - malaria.est$measure[2, 1]
 ```
 

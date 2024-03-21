@@ -5,8 +5,8 @@ author-title: "Course"
 date: "3/16/24"
 published-title: "Due date"
 execute: 
-  echo: false
-  eval: false
+  echo: true
+  eval: true
   warning: false
   message: false
 format: 
@@ -24,6 +24,7 @@ library(Sleuth3)
 library(oibiostat)
 library(openintro)
 library(pander)
+library(epitools)
 ```
 
 ### Instructions
@@ -39,12 +40,18 @@ The test comprises two parts: concepts, containing short-answer and multiple-cho
     a. (89.7, 92.2)
     b. (78.5, 100.6)
 
+    ANSWER: 
+    a. CI
+    b. PI
+
 2. [L10] Continuing the example above, suppose your estimate for the slope parameter is -0.7. Select the correct interpretation of this parameter.
 
     a. Every 1% increase in tree cover is associated with an estimated 0.7-degree decrease in mean summer high temperature.
     b. Every doubling of percent tree cover is associated with an estimated 0.7-degree decrease in mean summer high temperature.
     c. Every 1% increase in tree cover is associated with an estimated 0.7-degree increase in mean summer high temperature.
     d. Every 1% increase in tree cover is associated with a 0.7-degree decrease in mean summer high temperature.
+    
+    ANSWER: (a)
     
 3. [L8] Suppose you are interested in studying whether dairy consumption is linked to a rare disease, so you sample 40 individuals with the disease and 50 individuals without the disease, and determine whether each individual has a high or low level of dairy consumption. Which measure(s) of association are appropriate for analyzing the association between dairy consumption and disease risk?
 
@@ -53,6 +60,8 @@ The test comprises two parts: concepts, containing short-answer and multiple-cho
     c. Odds ratio
     d. All of the above
     
+    ANSWER: (c)
+    
 4. [L6] A study asked 1,924 male and 3,666 female undergraduate college students their favorite color. A 95% confidence interval for the difference between the proportions of males and females whose favorite color is black ($p_\text{male} − p_\text{female}$) was calculated to be (0.02, 0.06). Select the proper interpretation of this interval.
 
     a. With 95% confidence, it is estimated that between 2% and 6% more men prefer the color black compared with women.
@@ -60,16 +69,24 @@ The test comprises two parts: concepts, containing short-answer and multiple-cho
     c. With 95% confidence, the probability that a man's favorite color is black is estimated to be between 2% and 6% higher than the probability that a woman's favorite color is black.
     d. With 95% confidence, men are between 2% and 6% more likely to prefer black than women.
 
+    ANSWER: (b)
+
 5. [L6] It is believed that large doses of acetaminophen (the active ingredient in over the counter pain relievers like Tylenol) may cause damage to the liver. A researcher conducts a study to estimate the proportion of acetaminophen users who have liver damage, and estimates that the proportion is between 0.05 and 0.15 with 95% confidence. What was the sample size?
 
     a. 54
     b. 144
     c. 20
     d. 87
+    
+    ANSWER: (b)
 
 6. [L7] Three treatments were compared to test their relative efficacy (effectiveness) in treating Type 2 Diabetes in patients aged 10-17 who were being treated with metformin. The primary outcome was lack of glycemic control (or not); lacking glycemic control means the patient still needed insulin, which is not the preferred outcome for a patient. The outcome was considered a 'success' if glycemic control was achieved. The chi-square test of association produced a $p$-value of 0.01687. Interpret this result in context.
 
+    ANSWER: The data provide sufficiently strong evidence to reject the null hypothesis of no association between achiving between glycemic control and the treatments in the experiment among 10-17 year-olds.
+
 7. [L7] Continuing the previous problem, the residuals from the chi-square test are shown below. Identify which treatment(s) performed *better* than would be expected had there been no effect of treatment.
+
+    ANSWER: the 'rosi' treatment performs better than expected.
 
 ```{r, eval = T}
 test.out <- diabetes2 |> table() |> chisq.test()
@@ -80,8 +97,25 @@ test.out$residuals |> pander(caption = 'Chi-square test residuals')
 
 1. [L10] The dataset `Sleuth3::ex1220` contains species counts for 30 islands in the Galapagos, along with information about the island geography. Estimate the relationship between island area and the number of observed species. You should include a summary of your fitted model, diagnostic plots, and a visualization of the model. Provide a 95% confidence interval for the model parameter that captures the relationship and interpret the interval in context.
 
+    EITHER IS ACCEPTABLE:
+    
+    a. With 95% confidence, a 1-unit increase in log island area is associated with an estimated increase in mean log total number of species between 0.0416 and 0.1223.
+    b. With 95% confidence, every doubling of island area is associated with an estimated 2.92 -- 8.85% increase in median total number of species.
+
 ```{r problem 1}
 head(ex1220)
+
+ex1220 |> select(Area, Total) |> log() |> plot()
+fit <- lm(log(Total) ~ log(Area), data = ex1220)
+
+par(mfrow = c(1, 3))
+plot(fit$fitted.values, fit$residuals)
+hist(fit$residuals)
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+
+rbind(log.scale = confint(fit)[2, ],
+      back.transformed = 2^confint(fit)[2, ])
 ```
 
 2. [L10] The dataset `Sleuth3::ex0817` contains measurements from a study on the effectiveness of biological control of the weed tansy ragwort using flea beetles. Each observation is made on a plot that was planted with high density of ragwort; flea beetles were introduced at different levels on each plot and the average dry mass after harvest in the following season was measured. The objective is to determine whether dry mass decreases for plots with a higher flea beetle load.
@@ -92,16 +126,51 @@ head(ex1220)
     d. Show and comment on the diagnostic plots for the model you fit.
     e. Interpret the significance test on the slope parameter.
     f. Compute and interpret a 95% confidence interval for the slope parameter.
+    
+    ANSWERS:
+    
+    a. There is a negative association but the relationship is not linear.
+    b. The relationship between load and log dry mass is roughly linear.
+    c. Students should show the fit summary indicated below, or report the parameter estimates (including $\hat{\sigma}$).
+    d. The fitted-residual plot indicates no trend or uneven spread; the residual histogram and Q-Q plot indicate some small deviations from normality, but overall residuals appear symmetric and unimodal. Overall, the plots show no obvious violations of model assumptions.
+    e. Either: (i) each additional beetle per gram of dry mass is associated with an estiamted decrease in mean log dry mass of 0.006539; (ii) each additional beetle per gram of dry mass is associated with an estimated 0.652% decrease in median dry mass.
+    f. Either: (i) With 95% confidence, each additional beetle per gram of dry mass is associated with an estiamted decrease in mean log dry mass between 0.00432 and 0.00878; (ii) With 95% confidence, each additional beetle per gram of dry mass is associated with an estimated decrease in median dry mass between 0.431% and 0.872%.
 
 ```{r problem 2}
 head(ex0817)
+
+# a
+plot(ex0817)
+
+# b 
+plot(ex0817$Load, log(ex0817$Mass))
+
+# c
+fit <- lm(log(Mass) ~ Load, data = ex0817)
+summary(fit)
+
+# d
+par(mfrow = c(1, 3))
+plot(fit$fitted.values, fit$residuals)
+hist(fit$residuals, breaks = 5)
+qqnorm(fit$residuals)
+qqline(fit$residuals)
+
+# f
+confint(fit)[2,]
 ```
 
 3. [L6] Suppose that among a random sample of 144 U.S. adults 65 and older, 16 have diagnosed Alzheimer's disease. Calculate and interpret a 95% confidence interval for the prevalence of Alzheimer's based on the sample.
 
+    ANSWER: With 95% confidence, the prevalence of Alzheimer's among U.S. adults 65 and older is estimated to be between 5.87% and 16.35%.
+
 ```{r problem 3}
 prop.alzheimer <- 16/144
 n <- 144
+
+# solution
+prop.alzheimer.se <- sqrt(prop.alzheimer*(1 - prop.alzheimer)/n)
+prop.alzheimer + c(-1, 1)*2*prop.alzheimer.se
 ```
 
 4. [L7, L8] The dataset `openintro::migraine` contains observations from an experiment evaluating the effectiveness of acupuncture, relative to sham acupuncture, in treating migraines.
@@ -109,24 +178,43 @@ n <- 144
     a. Test for a treatment effect using an appropriate method. (*Hint*: if there's no effect, we'd observe no association between treatment groups and pain outcomes.)
     b. Estimate the effecct of the acupuncture treatment relative to the control group. Choose an appropriate measure of association and provide a point estimate and 95% confidence interval.
     
+    ANSWERS:
+    
+    a. The data provide sufficient evidence to reject the null hypothesis that acupuncture has no pain relief effect relative to sham acupuncture (Fisher's exact test, *p = 0.01212*).
+    b. With 95% confidence, the probability of pain relief from acupuncture is estimated to be between 1.24 and 23.04 times greater than the probability of pain relief from sham acupuncture, with a point estiamte of 5.349. 
+    
 ```{r problem 4}
 head(migraine)
+
+# a-b
+table(migraine) |> riskratio()
 ```
 
 5. [L8] An observational study of 227,571 Medicare beneficiaries who initiated treatment with one of two diabetes medications recorded whether each patient reported cardiovascular problems. Determine which medication is linked to a higher probability of cardiovascular problems, and provide a point and interval estimate for an appropriate measure of comparison.
 
+    ANSWER: The probability of cardiovascular problems is estimated to be 0.0337 among patients on Pioglitazone, and 0.0383 among patients on Rosiglitazone; it appears that Rosiglitazone is associated with a higher rate of cardiovascular problems. With 95% confidence, the risk of cardiovascular problems is estimated to be between 8.82% and 19.31% higher for patients on Rosiglitazone compared with Pioglitazone.
+
 ```{r problem 5}
 diabetes <- avandia |> table()
-diabetes 
+
+diabetes |> prop.table(margin = 1)
+riskratio(diabetes)$measure
 ```
 
 6. [L7] The dataset `openintro::census` contains a random subsample of 500 respondents in the 2000 U.S. Census. Construct a contingency table of marital status by sex, and test for an association. Interpret the results of your test.
 
+    ANSWER: The data do not provide sufficient evidence to reject the null hypothesis of no association between sex and marital status ($\chi^2$ = 8.1315 on 5 degrees of freedom, *p = 0.1491*).
+
 ```{r problem 6}
 head(census)
+
+census |> select(marital_status, sex) |> table() 
+census |> select(marital_status, sex) |> table() |> chisq.test()
 ```
 
 7. [L6] A random sample of 1629 U.S. adults obtained from NHANES data was used to investigate whether asthma is more common in women than in men. Estimate the difference in asthma prevalence between women and men; provide both a point estimate and an interval estimate.
+
+    ANSWER: With 95% confidence, the prevalence of asthma among women is estimated to be between 0.04 percentage points lower and 4.35 percentage points higher than the prevalence of asthma among men, with a point estimate of 2.15 percentage points in difference (women - men).
 
 ```{r problem 7}
 asthma <- matrix(data = c(49, 781, 30, 769), 
@@ -135,7 +223,10 @@ asthma <- matrix(data = c(49, 781, 30, 769),
                dimnames = list(sex = c('female', 'male'),
                                asthma = c('yes', 'no'))
                 )
-asthma 
+
+asthma |> prop.table(margin = 1)
+asthma |> prop.test()
+prop.test(asthma)$estimate |> diff()
 ```
 
 8. [L10] The dataset `openintro::babies_crawl` contains observations of average crawling ages for babies born in each month of the year, along with the average outdoor temperature at six months of age. Fit a simple linear regression model to the data and respond to the following prompts.
@@ -144,16 +235,33 @@ asthma
     b. Estimate the association between average temperature at 6 months old and average crawling age.
     c. Predict the average crawling age for babies when the average outdoor temperature at 6 months is 70 degrees.
 
+    ANSWERS:
+    
+    a. 48.96% of variability in average crawling age is explained by average outdoor temperature at 6 months old.
+    b. With each one-degree increase in average outdoor temperature at six months, average crawling age is estimated to decrease by 0.07774 months (approximately 2.33 days).
+    c. For an average outdoor temperature of 70 degrees at six months of age, the average crawling age is predicted to be 30.236 months.
+
 ```{r problem 8}
 head(babies_crawl)
+
+# a-b
+fit <- lm(avg_crawling_age ~ temperature, data = babies_crawl)
+summary(fit)
+
+# c
+predict(fit, newdata = data.frame(temperature = 70))
 ```
 
 9. [L8] Suppose a retrospective study is done in which data are collected on men ages 50-54 who died over a 1-month period. Of 185 men who died from CVD, 15 had a diet with high salt intake before they died, while of the 196 men who died from other causes, 6 had a diet with high salt intake. Test for an association between salt intake and CVD mortality, and use an appropriate measure of association to estimate the relationship; provide both point and interval estimates.
 
+    ANSWER: The data provide sufficient evidence to reject the null hypothesis of no association between salt intake and cardiovascular disease mortality among men aged 50-54 ($\chi^2$ = 4.6545 on 1 degree of freedom, *p = 0.031*). With 95% confidence, the odds of dying from cardiovascular disease are estimated to be between 1.078 and 7.977 times greater among men aged 50-54 with high dietary salt intake compared with men of the same age with low dietary salt intake.
+
 ```{r problem 10}
 salt <- matrix(data = c(15, 170, 6, 190), 
                nrow = 2, byrow = T,
-               dimnames = list(salt = c('high', 'low'),
-                               cause = c('cvd', 'other')))
+               dimnames = list(cause = c('cvd', 'other'),
+                               salt = c('high', 'low')))
+
+oddsratio(salt, rev = 'both')
 ```
 
