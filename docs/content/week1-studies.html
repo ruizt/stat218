@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
-  <title>STAT218 - Introduction to data</title>
+  <title>STAT218 - Welcome to STAT218</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,14 +328,17 @@
       margin-right: 0; 
     }
   </style>
+  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to data</h1>
-  <p class="subtitle">Data semantics, data types, and data structures</p>
+  <h1 class="title">Welcome to STAT218</h1>
+  <p class="subtitle">Applied Statistics for Life Sciences</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -344,361 +347,409 @@
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
 <ol type="1">
-<li>Reading quiz</li>
-<li>Loose ends from last time: LEAP case study; experimental design basics</li>
-<li>Data basics: data semantics and data types</li>
-<li>Lab: data types and data structures in R</li>
+<li>Course logistics</li>
+<li>[lecture] Study designs</li>
+<li>[activity, if time] Distinguishing study types</li>
 </ol>
 </section>
-<section id="data-semantics" class="slide level2">
-<h2>Data semantics</h2>
-<ul>
-<li><p><strong>Data</strong> are a set of measurements.</p></li>
-<li><p>A <strong>variable</strong> is any measured attribute of study units.</p></li>
-<li><p>An <strong>observation</strong> is a measurement of one or more variables taken on one particular study unit.</p></li>
-</ul>
-<p>It is usually expedient to arrange data values in a table in which each row is an observation and each column is a variable:</p>
+<section>
+<section id="course-logistics" class="title-slide slide level1 center">
+<h1>Course logistics</h1>
 
-<img data-src="img/data-matrix.png" class="r-stretch"></section>
-<section id="leap-example" class="slide level2">
-<h2>LEAP example</h2>
-<p>A table showing the observations and variables for the LEAP study would look like this:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:78%;">
+</section>
+<section id="icebreakers" class="slide level2">
+<h2>Icebreakers</h2>
+<p>By show of hands…</p>
+<div>
+<ol type="1">
+<li class="fragment">First statistics class ever?</li>
+<li class="fragment">Last statistics class ever?</li>
+<li class="fragment">Expect to take STAT313?</li>
+<li class="fragment">Expect to use statistics for your degree coursework or senior project?</li>
+<li class="fragment">Considering a statistics or data science minor?</li>
+</ol>
+</div>
+</section>
+<section id="class-composition" class="slide level2">
+<h2>Class composition</h2>
+<p>By the numbers…</p>
+
+<img data-src="week1-studies_files/figure-revealjs/class info-1.png" width="960" class="r-stretch"></section>
+<section id="statistics-and-uncertainty" class="slide level2">
+<h2>Statistics and uncertainty</h2>
+<blockquote>
+<p>Life is full of uncertainty, and this can make a lot of questions hard to answer, because similar situations do not always result in the same outcome.</p>
+</blockquote>
+<p>Statistical thinking: <strong>uncertainty is measurable</strong>.</p>
+<p>What statistics can offer:</p>
+<ul>
+<li>principles for designing studies and collecting data in order to capture outcome variability</li>
+<li>data analytic tools to distinguish random from systematic variability</li>
+<li>heuristics to make inferences that account for uncertainty</li>
+</ul>
+</section>
+<section id="course-goal-and-scope" class="slide level2">
+<h2>Course goal and scope</h2>
+<p>The overarching goal of 218 is to introduce you to statistics in a hands-on way that is relevant to your major.</p>
+<p>So we will focus on:</p>
+<ul>
+<li>statistical thinking, study design, and data analysis</li>
+<li>classical methods, mostly developed 1900-1940</li>
+<li>case studies from life sciences</li>
+</ul>
+</section>
+<section id="materials" class="slide level2">
+<h2>Materials</h2>
+<p><strong>Computer/tablet.</strong> You’ll need a laptop (preferred) or tablet with keyboard (workable).</p>
+<p><strong>Course website</strong>. All materials are hosted/linked on the course website. I <em>won’t</em> be using Canvas.</p>
+<p><strong>Textbook</strong>. Vu and Harrington (2020). <a href="https://www.openintro.org/book/biostat/">Introdutory Statistics for the Life and Biomedical Sciences</a>. I suggest a $5-15 donation.</p>
+<p><strong>Statistical software</strong>. R/RStudio hosted online via posit.cloud workspace. You will need to create an account and purchase a $5/month student subscription.</p>
+</section>
+<section id="class-meetings" class="slide level2">
+<h2>Class meetings</h2>
+<p>Class meetings will usually consist of a reading quiz, a lecture, a break, and a lab.</p>
+<p><strong>Preparing for class meetings:</strong></p>
+<ol type="1">
+<li>Check the course website for posted reading, materials, and assignments.</li>
+<li>Complete readings <em>in advance</em> of the class meetings for which they are listed.</li>
+<li>Write down one question you have about the reading and bring it to class.</li>
+<li>Download and/or print a copy of the posted course notes (slides) for you to annotate and bring them to class.</li>
+</ol>
+</section>
+<section id="assignments" class="slide level2">
+<h2>Assignments</h2>
+<p>You will have three categories of assignments:</p>
+<ul>
+<li><strong>homework</strong> problems: two per class due by next class</li>
+<li><strong>tests</strong>: every 2-3 weeks, distributed Wednesday, due Friday</li>
+<li>a <strong>project</strong>: find and present a case study</li>
+</ul>
+<p>Deadline policies:</p>
+<ul>
+<li>one-hour grace period on all deadlines</li>
+<li>four homework problem sets can be turned in up to 48 hours late without notice</li>
+<li>besides free lates, extensions must be arranged 24 hours in advance of the deadline</li>
+</ul>
+</section>
+<section id="grades" class="slide level2">
+<h2>Grades</h2>
+<p>Every graded question/problem is matched to one or more of the 11 course learning outcomes.</p>
+<ul>
+<li><p>Questions/problems are evaluated as satisfactory (S), needs improvement (NI), or missing (M).</p></li>
+<li><p>For each outcome, the percentage of questions/problems awarded a satisfactory mark is used to determine whether that outcome is fully met, partly met, or not met:</p>
+<ul>
+<li>fully met: 80% or more of matched questions satisfactory</li>
+<li>partly met: 50% – 80% of matched questions satisfactory</li>
+<li>not met: less than 50% of matched questions satisfactory</li>
+</ul></li>
+</ul>
+<p>Your course grade is based on how many learning outcomes are fully met. To pass, you must partly or fully meet at least 6 outcomes; for a C-, you must fully meet at least 3 outcomes.</p>
+</section>
+<section id="important-policies" class="slide level2">
+<h2>Important policies</h2>
+<ul>
+<li><p>extensions must be confirmed (not simply requested) 24 hours in advance</p></li>
+<li><p>collaboration on homework is encouraged, but everyone involved needs to…</p>
+<ul>
+<li>make a contribution</li>
+<li>write up their own work</li>
+</ul></li>
+<li><p>submitting AI-generated content in place of your own work is not acceptable</p>
+<ul>
+<li>responsible use is okay, but not recommended (GPT outputs are misleading)</li>
+<li>penalties for AI plagiarism depend on precedent and severity</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Minor offense</th>
+<th>Major offense</th>
+<th>Penalty</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First</td>
+<td></td>
+<td>loss of credit and warning</td>
+</tr>
+<tr class="even">
+<td>Second</td>
+<td>First</td>
+<td>loss of credit and OSRR report</td>
+</tr>
+<tr class="odd">
+<td>Third</td>
+<td>Second</td>
+<td>course failure and second OSRR report</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="study-design" class="title-slide slide level1 center">
+<h1>Study design</h1>
+
+</section>
+<section id="what-is-a-study" class="slide level2">
+<h2>What is a study?</h2>
+<p>A <strong>study</strong> is an effort to collect data in order to answer one or more research questions.</p>
+<ul>
+<li><p>studies must be well-matched to research questions to provide good answers</p></li>
+<li><p>how data are obtained is just as important as how the resulting data are analyzed</p></li>
+<li><p>no analysis, no matter how sophisticated will rescue a poorly conceived study</p></li>
+</ul>
+<p>A <strong>study unit</strong> is the smallest object or entity that is measured in a study; also called <em>experimental unit</em> or <em>observational unit.</em></p>
+</section>
+<section id="two-types-of-studies" class="slide level2">
+<h2>Two types of studies</h2>
+<p><strong>Observational studies</strong> collect data from an existing situation without intervention.</p>
+<ul>
+<li><p>Aim is to detect associations and patterns</p></li>
+<li><p>Can’t be used to establish causal links</p></li>
+</ul>
+<p><strong>Experiments</strong> collect data from a situation in which one or more interventions have been introduced by the investigator.</p>
+<ul>
+<li>Aim is to draw conclusions about the causal effect of interventions</li>
+<li>Stronger form of scientific evidence than an observational study</li>
+</ul>
+<p>Often, observational studies are used to explore/generate hypotheses prior to designing an experiment.</p>
+</section>
+<section id="comparing-study-types" class="slide level2">
+<h2>Comparing study types</h2>
+<p>Either type of study can be used to address a question.</p>
+<table style="width:100%;">
 <colgroup>
 <col style="width: 23%">
-<col style="width: 29%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 42%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">participant.ID</th>
-<th style="text-align: center;">treatment.group</th>
-<th style="text-align: center;">ofc.test.result</th>
+<th>Question</th>
+<th>Observational study</th>
+<th>Experiment</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">LEAP_100522</td>
-<td style="text-align: center;">Peanut Consumption</td>
-<td style="text-align: center;">PASS OFC</td>
+<td>Are diet and mood related?</td>
+<td>Conduct surveys on diet, lifestyle, and affect</td>
+<td>Recruit study participants, assign diets, measure affect</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">LEAP_103358</td>
-<td style="text-align: center;">Peanut Consumption</td>
-<td style="text-align: center;">PASS OFC</td>
+<td>Is vaping safer than smoking?</td>
+<td>Follow groups of vapers and smokers over time and record health outcomes</td>
+<td>Among a group of smokers, assign some to switch to vaping; compare health outcomes over time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">LEAP_105069</td>
-<td style="text-align: center;">Peanut Avoidance</td>
-<td style="text-align: center;">PASS OFC</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">LEAP_105328</td>
-<td style="text-align: center;">Peanut Consumption</td>
-<td style="text-align: center;">PASS OFC</td>
+<td>Do insecticide applications affect soil microbes?</td>
+<td>Analyze soil samples from farms using different insecticides</td>
+<td>[<strong>Your turn</strong>]</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<p>The table you saw earlier was a <strong>summary</strong> of the data (not the data itself):</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:65%;">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 15%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">&nbsp;</th>
-<th style="text-align: center;">FAIL OFC</th>
-<th style="text-align: center;">PASS OFC</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>Peanut Avoidance</strong></td>
-<td style="text-align: center;">36</td>
-<td style="text-align: center;">227</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>Peanut Consumption</strong></td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">262</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p>Can you think of pros and cons for each study type?</p>
 </section>
-<section id="numeric-and-categorical-variables" class="slide level2">
-<h2>Numeric and categorical variables</h2>
-<p>Variables are classified according to their values. The broadest distinction made is between <strong>numeric</strong> and <strong>categorical</strong> variables.</p>
-<ul>
-<li>A variable is numeric if its value is a number</li>
-<li>A variable is categorical if its value is a category, usually recorded as a name or label</li>
-</ul>
-<p>For example:</p>
-<ul>
-<li>the value of <code>sex</code> can be male or female, so it is categorical</li>
-<li>whereas <code>age</code> (in years) can be any positive integer, so it is numeric</li>
-</ul>
-<p><em>Check your understanding: in the LEAP study…</em></p>
-<ul>
-<li><em>treatment group is [numeric/categorical]</em></li>
-<li><em>OFC test result is [numeric/categorical]</em></li>
-</ul>
-</section>
-<section id="variable-subtypes" class="slide level2">
-<h2>Variable subtypes</h2>
-<p>Further distinctions are made based on the type of number or type of category used to measure an attribute. <em>Can you match the subtypes to the variables at right?</em></p>
+<section id="why-does-intervention-matter" class="slide level2">
+<h2>Why does intervention matter?</h2>
+<p>Control over conditions allows a researcher to study causal effects resulting from interventions. This is not possible in observational studies due to the potential for <strong>confounding</strong>.</p>
 <div class="columns">
-<div class="column" style="width:0.65;">
-<p><img data-src="img/variable-types.png"></p>
-</div><div class="column" style="width:0.35;">
-<div class="cell">
+<div class="column" style="width:60%;">
+<p>Confounding: an unobserved condition is associated with both the study condition and the outcome.</p>
+<ul>
+<li>Failure to measure and account for confounders potentially distorts observed associations</li>
+<li>Example: a study finds that dog owners live longer, but doesn’t measure exercise; so it might just be the daily walks.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
-<table style="width:47%;">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 15%">
-<col style="width: 11%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">age</th>
-<th style="text-align: center;">hispanic</th>
-<th style="text-align: center;">grade</th>
-<th style="text-align: center;">weight</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">not</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">78.02</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">hispanic</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">78.47</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">not</td>
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">95.26</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">not</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">95.26</td>
-</tr>
-</tbody>
-</table>
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved variable) --- B(study variable) &amp; C(study outcome) 
+</pre>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 </div>
+</div>
+<p>This is very common in observational studies, because you can’t measure every study condition.</p>
+</section>
+<section id="antidote-randomization" class="slide level2">
+<h2>Antidote: randomization</h2>
+<p>The ability to control study conditions allows researchers to randomly allocate interventions among study subjects.</p>
+<div class="columns">
+<p><strong>Randomization eliminates confounding</strong> by isolating the condition(s) of interest:</p><div class="column" style="width:60%;">
 <ul>
-<li>a numerical variable is <strong>discrete</strong> if there are ‘gaps’ between its <em>possible</em> values</li>
-<li>a numerical variable is <strong>continuous</strong> if there are no such gaps</li>
-<li>a categorical variable is <strong>nominal</strong> if its levels are not ordered</li>
-<li>a categorical variable is <strong>ordinal</strong> if its levels are ordered</li>
+<li><p>interventions are independent of extraneous conditions ⟹ no association possible</p></li>
+<li><p>if outcomes differ systematically according to the intervention, you can be certain that it is not an artifact</p></li>
 </ul>
-</section>
-<section id="many-ways-to-measure-attributes" class="slide level2">
-<h2>Many ways to measure attributes</h2>
-<p>Variable type (or subtype) is not an inherent quality — attributes can often be measured in many different ways.</p>
-<p>For instance, <code>age</code> might be measured as either a discrete, continuous, or ordinal variable, depending on the situation:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Age (years)</th>
-<th>Age (minutes)</th>
-<th>Age (brackets)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>12</td>
-<td>6307518.45</td>
-<td>10-18</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>4209187.18</td>
-<td>5-10</td>
-</tr>
-<tr class="odd">
-<td>21</td>
-<td>11258103.08</td>
-<td>18-30</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Numeric variables can always be represented as categorical, <em>but not the other way around</em>.</p>
-</blockquote>
-</section>
-<section id="your-turn-identifying-data-types-i" class="slide level2">
-<h2>Your turn: identifying data types I</h2>
-<p>Classify each variable as nominal, ordinal, discrete, or continuous:</p>
-<div class="cell">
+</div><div class="column" style="width:40%;">
+<div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
-<table>
-<colgroup>
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 6%">
-<col style="width: 13%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 16%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">ndrm.ch</th>
-<th style="text-align: center;">drm.ch</th>
-<th style="text-align: center;">sex</th>
-<th style="text-align: center;">age</th>
-<th style="text-align: center;">race</th>
-<th style="text-align: center;">height</th>
-<th style="text-align: center;">weight</th>
-<th style="text-align: center;">actn3.r577x</th>
-<th style="text-align: center;">bmi</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">33.3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Female</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">Caucasian</td>
-<td style="text-align: center;">65.7</td>
-<td style="text-align: center;">129</td>
-<td style="text-align: center;">CT</td>
-<td style="text-align: center;">21.01</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">71.4</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Female</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">Other</td>
-<td style="text-align: center;">67</td>
-<td style="text-align: center;">148</td>
-<td style="text-align: center;">CT</td>
-<td style="text-align: center;">23.18</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">37.5</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Female</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">Caucasian</td>
-<td style="text-align: center;">66.7</td>
-<td style="text-align: center;">183</td>
-<td style="text-align: center;">CC</td>
-<td style="text-align: center;">28.92</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">50</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Female</td>
-<td style="text-align: center;">28</td>
-<td style="text-align: center;">Asian</td>
-<td style="text-align: center;">61</td>
-<td style="text-align: center;">112</td>
-<td style="text-align: center;">CC</td>
-<td style="text-align: center;">21.16</td>
-</tr>
-</tbody>
-</table>
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A(unobserved condition) x-.-x B(study condition)
+  A --- C(outcome)
+</pre>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
-<p>Data are from an observational study investigating demographic, physiological, and genetic characteristics associated with muscle strength.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="practical-consequences" class="slide level2">
+<h2>Practical consequences</h2>
+<p>The ability to randomize interventions in experiments means:</p>
 <ul>
-<li><code>ndrm.ch</code> and <code>drm.ch</code> are change in strength in nondominant and dominant arms before and after training</li>
-<li><code>actn3.r577x</code> gives genotype at a particular location within the ACTN3 gene (so-called “sports gene”)</li>
+<li><p>observed associations are independent of extraneous factors</p></li>
+<li><p>results can support causal inferences</p></li>
+</ul>
+<p>The absence of randomization in observational studies means:</p>
+<ul>
+<li><p>confounding is always possible</p></li>
+<li><p>results may be misleading</p></li>
 </ul>
 </section>
-<section id="your-turn-identifying-data-types-ii" class="slide level2">
-<h2>Your turn: identifying data types II</h2>
-<p>Recall the kimchi/prediabetes study from last time:</p>
-<blockquote>
-<p>A total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity … Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.</p>
-</blockquote>
+<section id="experimental-designs" class="slide level2">
+<h2>Experimental designs</h2>
+<p>A <strong>treatment</strong> is an experimental intervention; the <strong>design</strong> of an experiment refers to how treatments are allocated to study units.</p>
+<p>The most basic design is:</p>
 <ul>
-<li>list the minimal collection of variables measured</li>
-<li>determine a likely type for each variable</li>
-<li>invent a few example observations to sketch what the data table might look like</li>
+<li><p>[balanced] each treatment is replicated an equal number of times</p></li>
+<li><p>[randomized] treatments are allocated completely at random to study units</p></li>
+<li><p>[no crossover] each study unit receives exactly one treatment</p></li>
 </ul>
+<p>We’ll call this a <strong>completely randomized design</strong>. It’s the only kind of experimental design we’re going to consider in STAT218.</p>
+<p>There are many other designs that we won’t discuss (but see STAT313); these are all about improving experimental efficiency by controlling extraneous variation.</p>
 </section>
-<section id="describing-studies" class="slide level2">
-<h2>Describing studies</h2>
-<p>Let’s put some pieces together. The “essential information” to report when explaining/presenting a study comprises:</p>
+<section id="data-collection" class="slide level2">
+<h2>Data collection</h2>
+<p>Study units should be chosen so as to represent a larger collection.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/srs.png"></p>
+</div><div class="column" style="width:50%;">
+<p>A study <strong>population</strong> is a collection of all study units of interest.</p>
+<p>A <strong>sample</strong> is a subcollection from a population:</p>
+<ul>
+<li><em>random</em> if study units have a known chance of inclusion in the sample</li>
+<li><em>nonrandom</em> or <em>convenience</em> otherwise</li>
+</ul>
+</div>
+</div>
+<p>The gold standard is the <strong>simple random sample</strong>: each study unit in the population has an equal chance of inclusion in the sample.</p>
+</section>
+<section id="leap-study" class="slide level2">
+<h2>LEAP Study</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Learning early about peanut allergy (LEAP) study:</p>
+<ul>
+<li><p>640 infants in UK with eczema or egg allergy but no peanut allergy enrolled</p></li>
+<li><p>each infant randomly assigned to peanut consumption and peanut avoidance groups</p>
+<ul>
+<li><p>peanut consumption: fed 6g peanut protein daily until 5 years old</p></li>
+<li><p>peanut avoidance: no peanut consumption until 5 years old</p></li>
+</ul></li>
+<li><p>at 5 years old, oral food challenge (OFC) allergy test administered</p></li>
+<li><p>13.3% of the avoidance group developed allergies, compared with 1.9% of the consumption group</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Study characteristics</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Study type:</strong> experiment</p>
+<p><strong>Study population:</strong> UK infants with eczema or egg allergy</p>
+<p><strong>Sample:</strong> 640 infants</p>
+<p><strong>Study design:</strong> completely randomized design</p>
+<p><strong>Treatments:</strong> peanut consumption; peanut avoidance</p>
+<p><strong>Study outcome:</strong> development of peanut allergy by 5 years of age</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Study results</strong></p>
+</div>
+<div class="callout-content">
+<p>Moderated peanut consumption causes a reduction in the likelihood of developing an allergy.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>:::</p>
+</section>
+<section id="checklist-for-next-time" class="slide level2">
+<h2>Checklist for next time</h2>
 <ol type="1">
-<li>Research question or hypothesis</li>
-<li>Type of study</li>
-<li>Number and type of study units</li>
-<li>If applicable, experimental design</li>
-<li>Observations and variables measured</li>
+<li>Obtain a copy of the textbook.</li>
+<li>Create a posit.cloud account and purchase a student subscription. Ensure you can access the <code>stat218-s24</code> workspace.</li>
+<li>Complete practice problems and reading before class.</li>
+<li>Write down one question about the reading.</li>
+<li>Print a paper or virtual copy of the slides.</li>
 </ol>
-</section>
-<section id="working-groups" class="slide level2">
-<h2>Working groups</h2>
-<p>For labs and in class activities, you’ll work in groups. Let’s form those now.</p>
-<p>Icebreakers:</p>
-<ul>
-<li><p>Name, major, class standing</p></li>
-<li><p>Hometown</p></li>
-<li><p>One personal interest</p></li>
-</ul>
-</section>
-<section id="opening-the-lab-activity" class="slide level2">
-<h2>Opening the lab activity</h2>
-<p>Navigate to posit.cloud. Then:</p>
+</section></section>
+<section>
+<section id="extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
 
-<img data-src="img/posit-landing.png" class="quarto-figure quarto-figure-center r-stretch"><ol type="1">
-<li>Make sure the class workspace “stat218-s24” is highlighted at left. If “Your Workspace” is highlighted, you won’t see the example assignment.</li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li>Click on the <code>lab1-rbasics</code>, then wait.</li>
-</ol>
-<p>Once everyone is ready, we’ll have a look at the example files together.</p>
 </section>
-<section id="lab-data-types-and-structures-in-r" class="slide level2">
-<h2>Lab: data types and structures in R</h2>
-<p>The simplest data structure in R is a <strong>vector</strong>: a collection of values of a single “type”. This lab will introduce you to data types, vectors, and a few other common data structures.</p>
-<div class="columns">
-<div class="column" style="width:0.5;">
-<p><img data-src="img/data-types.png"></p>
-</div><div class="column" style="width:0.5;">
-<p>The variable types we just discussed map pretty neatly (but not perfectly) onto the main “data types” in R:</p>
-<ul>
-<li>numeric ➜ integer, numeric</li>
-<li>categorical ➜ character, logical</li>
-</ul>
-<p>Your objectives in this lab are:</p>
-<ol type="1">
-<li>learn to perform simple calculations</li>
-<li>learn to recognize data types and data structures</li>
-</ol>
+<section id="posit-cloud-account" class="slide level2">
+<h2>Posit cloud account</h2>
+<p>Go to: course webpage &gt; syllabus &gt; materials. Then look for the link to join the class workspace:</p>
+
+<img data-src="img/posit-syllabus.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="posit-cloud-account-1" class="slide level2">
+<h2>Posit cloud account</h2>
+<p>Follow prompts to create an account. Use your Cal Poly email.</p>
+
+<img data-src="img/posit-signup.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="posit-cloud-account-2" class="slide level2">
+<h2>Posit cloud account</h2>
+<p>Once your email is verified, return to posit.cloud (or click the link in the syllabus again), and join the class workspace.</p>
+
+<img data-src="img/posit-join.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="posit-cloud-account-3" class="slide level2">
+<h2>Posit cloud account</h2>
+<p>Upgrade your account to the student plan. Input payment details.</p>
+
+<img data-src="img/posit-upgrade.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="printing-slides" class="slide level2">
+<h2>Printing slides</h2>
+
+<img data-src="img/printing-slides-1.png" class="r-stretch quarto-figure-center"><p class="caption">Open menu from lower left</p></section>
+<section id="printing-slides-1" class="slide level2">
+<h2>Printing slides</h2>
+
+<img data-src="img/printing-slides-2.png" class="r-stretch quarto-figure-center"><p class="caption">Navigate to tools</p></section>
+<section id="printing-slides-2" class="slide level2">
+<h2>Printing slides</h2>
+
+<img data-src="img/printing-slides-3.png" class="r-stretch quarto-figure-center"><p class="caption">Select PDF export mode</p></section>
+<section id="printing-slides-3" class="slide level2">
+<h2>Printing slides</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/printing-slides-4.png" class="quarto-figure quarto-figure-center" width="550"></p>
+<figcaption>Then print from browser to PDF</figcaption>
+</figure>
 </div>
-</div>
+<p>I suggest landscape layout and either 1, 2 or 4 slides per page</p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="img/poly-logo-2.jpg" class="slide-logo"></p>
@@ -706,7 +757,7 @@
 <p>STAT218</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

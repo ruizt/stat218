@@ -1,0 +1,482 @@
+---
+title: "Problems"
+author: "STAT218"
+author-title: "Course"
+date: today
+published-title: "SOLUTION"
+execute: 
+  eval: true
+  echo: false
+format: html
+---
+
+
+\[L3\] The `oibiostat::frog` dataset contains measurements on samples of frog egg clutches collected at various study sites in early 2013 to investigate the effect of altitude on relative investment in egg size versus clutch size (number of eggs). Visualize the frequency distributions of clutch volume, egg size, and clutch size. For each variable, describe the shape and modality of the distribution and calculate appropriate measures of spread and center.
+
+```{r q1, fig.width=10, fig.height=3}
+library(oibiostat)
+data(frog)
+
+par(mfrow = c(1, 3))
+# clutch volume
+hist(frog$clutch.volume,
+     xlab = 'clutch volume',
+     ylab = 'frequency', 
+     main = 'Clutch volume')
+
+# clutch size
+hist(frog$clutch.size,
+     breaks = 20,
+     xlab = 'clutch size',
+     ylab = 'frequency', 
+     main = 'Clutch size')
+
+# egg size
+hist(frog$egg.size,
+     breaks = 20,
+     xlab = 'egg size',
+     ylab = 'frequency', 
+     main = 'Egg size')
+```
+
+**Clutch volume** is right-skewed and unimodal with a few potential outliers over 2000. Students should choose median to measure center in light of skew and IQR in light of outliers. 
+```{r}
+c(median = median(frog$clutch.volume),
+  iqr = IQR(frog$clutch.volume)) |>
+  pander::pander()
+```
+
+**Clutch size** is unimodal and symmetric, though students might perceive a slight right skew, which is an acceptable answer. Any measures of center and spread are acceptable.
+```{r}
+c(mean = mean(frog$clutch.size), 
+  median = median(frog$clutch.size),
+  iqr = IQR(frog$clutch.size),
+  sd = sd(frog$clutch.size)) |>
+  pander::pander()
+```
+
+**Egg size** is bimodal and neither symmetric nor skewed. The only acceptable measure of center is mode (for each mode), which can be visually located at 1.9 and 2.3 (or thereabouts, depending on the binning resolution used). As there are no obvious outliers, any measure of spread is acceptable.
+```{r}
+c(iqr = IQR(frog$egg.size),
+  sd = sd(frog$egg.size)) |>
+  pander::pander()
+```
+
+\[L2\] Vu and Harrington exercise 1.17. The following scatterplot shows life expectancies and percentages of internet users for 208 countries.
+
+    a.  Describe the relationship between life expectancy and percentage of internet users. Specifically: is there an apparent association, and if so, is it positive or negative and linear or nonlinear?
+    b.  State a possible confounding variable that might explain this relationship and describe how the confounder might relate to both the percentage of internet users and the life expectancy of a country.
+    c.  Are these data experimental or observational? 
+    
+![](hw/img/hw2-vh1-17.png)
+
+
+**Answers**:
+
+a. There is a positive and nonlinear association between percentage of internet users and life expectancy.
+
+b. Any development indicators are acceptable answers: more developed countries have better infrastructure, including internet access, and also higher life expectancies.
+
+c. Observational.
+
+\[L3\] The `oibiostat::yrbss` dataset contains measurements on a small collection of variables from 13,583 survey responses collected as part of the CDC's Youth Risk Behavior Surveillance System (YRBSS) from 1991-2013. The objective of the survey program is to track behaviors with potential negative physical and mental health impacts among adolescents.
+
+    a.  Summarize the racial composition of survey respondents by academic grade. Produce both a contingency table and a proportional bar plot. Make sure to choose the correct (row or column) normalization for your bar plot so that it shows the racial composition by grade (not the grade composition by race). Are there apparent differences in racial composition across grades?
+    b.  Make a bar plot showing the frequency distribution of hours of sleep on school nights. Based on the summary, what is the typical amount of sleep respondents get on school nights?
+    c.  Produce a tabular or graphical summary that addresses the question: do older students sleep more on school nights than younger students?
+    d.  Visualize the frequency distribution of the number of days per week that survey participants are physically active. Describe the distribution and indicate whether the variable is discrete or continuous. Is the mean an appropriate measure of center for this data? Why or why not?
+    e.  Produce side-by-side boxplots visualizing the number of days per week that survey participants are physically active *by grade*. Based on the graphical summary, do there appear to be differences in physical activity by grade? Explain.
+
+
+**Answers**:
+
+a. The contingency table and plot are shown below. Students need only produce these plots; no commentary is necessary. However, if table is cut off or organized poorly, which will happen if race is put in columns due to label length, students should be asked to revise and change the orientation of the table for readability. 
+
+```{r q6, fig.width = 8, fig.height = 4}
+data(yrbss)
+
+tbl <- table(yrbss$race, yrbss$grade)[, c(4, 1, 2, 3, 5)]
+tbl |> pander::pander()
+
+par(mar = c(3, 3, 1, 18))
+t(t(tbl)/colSums(tbl)) |> 
+  barplot(legend.text = T,
+          args.legend = list(
+            x = 12, y = 1))
+```
+
+b. Most students seem to get 7 hours per night. This is the most frequent category.
+
+```{r}
+table(yrbss$school.night.hours.sleep)[c(1, 3, 4, 5, 6, 7, 2)] |>
+      barplot()
+```
+
+c. Students may do this either using age (treated as categorical), or using grade as a proxy for age. Both possible plots are shown below. Older students do indeed seem to get less sleep, reflected by the decreasing proportions of students in each grade/age getting over 6 hours per night.
+
+```{r, fig.width = 8, fig.height=6}
+tbl <- table(yrbss$age, yrbss$school.night.hours.sleep)[, c(1, 3, 4, 5, 6, 7, 2)] 
+
+par(mar = c(3, 3, 1, 8))
+t(tbl/rowSums(tbl)) |> 
+  barplot(legend.text = T, 
+          args.legend = list(x = 10, y = 1))
+
+tbl <- table(yrbss$grade, yrbss$school.night.hours.sleep)[c(4, 1, 2, 3, 5), c(1, 3, 4, 5, 6, 7, 2)] 
+
+par(mar = c(3, 3, 1, 10))
+t(tbl/rowSums(tbl)) |> 
+  barplot(legend.text = T, 
+          args.legend = list(x = 7, y = 1))
+```
+
+d. Number of days per week of physical activity is a discrete variable. Students should choose an appropriate number of breaks so that there are no gaps in the histogram. The distribution is bimodal and symmetric; because of the shape, mean is a poor choice for measuring the center of the distribution, as it will locate the least frequent values.
+
+```{r, fig.width=4, fig.height = 3}
+hist(yrbss$physically.active.7d,
+     breaks = 5,
+     xlab = 'number of days per week of physical activity',
+     ylab = 'frequency',
+     main = '')
+```
+
+e. The plot is shown below. Ignoring the 'other' category, which comprises only a handful of respondents, days of physical activity do not seem to differ by grade substantially, except possibly in grade 12 -- medians are the same across grades and interquartile ranges are similar for all grades except 12.
+
+```{r, fig.width = 3, fig.height = 4}
+boxplot(physically.active.7d ~ grade, 
+        data = yrbss, 
+        ylab = 'physically active days')
+```
+
+\[L3\] Vu and Harrington exercise 1.39. Trait anger is defined as a relatively stable personality trait that is manifested in the frequency, intensity, and duration of feelings associated with anger. People with high trait anger have rage and fury more often, more intensely, and with long-laster episodes than people with low trait anger. It is thought that people with high trait anger might be particularly susceptible to coronary heart disease; 12,986 participants were recruited for a study examining this hypothesis. Participants were followed for five years. The following table shows data for the participants identified as having normal blood pressure (normotensives).
+
+    a.  What percentage of participants have moderate anger scores?
+    b.  What percentage of participants who experienced a CHD event have moderate anger scores?
+    c.  What percentage of participants with high trait anger scores experienced a CHD event?
+    d.  What percentage of participants with low trait anger scores experienced a CHD event?
+    e.  What is the ratio of the percentages in (c) and (d)? (This is called a "relative risk" of CHD events.) Based on this, does it appear that the risk of a CHD event is higher in the high trait anger group?
+    f.  Produce a proportional bar plot that substantiates your answer in (e).
+
+![](img/hw2-vh1-39.png){width="300"}
+
+```{r}
+anger <- matrix(data = c(53, 110, 27, 3057, 4704, 606), 
+                nrow = 2, 
+                byrow = T, 
+                dimnames = list(chd = c('yes', 'no'),
+                                anger = c('low', 'moderate', 'high'))
+                )
+```
+
+Students should give answers in complete sentences.
+
+a. `r (colSums(anger)[2]/sum(anger))*100`% of participants have moderate anger scores.
+
+b. `r (anger/rowSums(anger))[1,2]*100`% of participants who experienced a CHD event have moderate anger scores.
+
+c. `r t(t(anger)/colSums(anger))[1, 3]*100`% of participants with high anger scores experienced a CHD event.
+
+d. `r t(t(anger)/colSums(anger))[1, 1]*100`% of participants with low anger scores experienced a CHD event.
+
+e. The percentage of participants who experienced a CHD event was `r (t(t(anger)/colSums(anger))[1, 3])/(t(t(anger)/colSums(anger))[1, 1])` times higher in the high anger group compared with the low anger group.
+
+f. A proportional bar plot of the percentage of participants who experienced a CHD event by trait anger group does the trick.
+
+```{r}
+t(t(anger)/colSums(anger)) |> 
+  barplot(legend.text = c('no CHD', 'CHD'))
+```
+
+ \[L3, L5\] Cancer rates and sunspot activity. The dataset `cancer` contains skin cancer rates per 100,000 people in Connecticut each year from 1938 to 1972. Each year is also classified as following a period of higher than average or lower than average sunspot activity.
+
+    a.  Plot the skin cancer rates over time.
+    b.  Because rates are generally increasing over time, the variable `delta` measures the deviation of skin cancer rate from the trend. Test the hypothesis that higher-than-average sunspot activity is associated with higher-than-expected skin cancer rates relative to the long term trend. Write a full narrative summary of the test result: state the conclusion; interpret the test result in context; provide supporting statistics; and report and interpret interval and point estimates. Do not provide any R output.
+    c.  Identify, in words, the population parameter of interest in the test from part (b).
+
+```{r, fig.show = T}
+cancer <- bind_cols(year = ex0323$Year,
+                    sunspot.activity = ex0323$SunspotActivity,
+                    cancer.rate = ex0323$CancerRate,
+                    delta = lm(CancerRate ~ Year, data = ex0323)$resid)
+# save(cancer, file = 'data/cancer.RData')
+
+# a
+plot(cancer$year, cancer$cancer.rate, type = 'b', 
+     ylab = 'cancer rate (per 100K)', xlab = 'year')
+
+# b
+t.test(delta ~ sunspot.activity, alternative = 'greater', data = cancer)
+```
+
+Answers:
+
+a. Plot shown above.
+b. Results suggest an association between sunspot activity and cancer rates. We tested the hypothesis that mean deviation of skin cancer rates from long-term trends in Connecticut is the same following years with higher than average and lower than average sunspot activity against the alternative that the mean deviation is higher in years following increased sunspot activity. The data provide strong evidence against the hypothesis of no difference and in favor of the hypothesis that increased sunspot activity is associated with increased cancer rates (*T = 5.0329* on 31.612 degrees of freedom, *p = 0.000009307*). With 95% confidence, the mean deviation following years with high sunspot activity is estimated to be at least 0.294 per 100K greater than the mean deviation following years with low sunspot activity, with a point estimate of 0.443 for the difference.
+c. The parameter is mean deviation in cancer rate in CT from the long-term trend.
+
+
+6.  \[L4, L5\] Comparing self-fertilization with cross-fertilization. The dataset `plants` contains measurements of plant heights in inches for 15 pairs of plants of the same age; one plant in the pair was grown from a seed from a cross-fertilized flower, and the other was grown from a seed from a self-fertilized flower.
+
+    a.  Calculate and interpret an interval estimate for the difference in mean height between plants produced from cross-fertilization and plants produced from self-fertilization.
+    b.  Test the hypothesis that plants produced from cross-fertilization are taller on average than those produced from self-fertilization. Write a full narrative summary of the test result: state the conclusion; interpret the test result in context; provide supporting statistics; and report and interpret interval and point estimates. Do not provide any R output.
+
+```{r}
+plants <- Sleuth3::ex0428
+# save(plants, file =  'data/plants.RData')
+
+# a
+t.test(Pair(Cross, Self) ~ 1, data = plants)$conf
+
+# b
+t.test(Pair(Cross, Self) ~ 1, data = plants, alternative = 'greater')
+```
+
+Answers:
+
+a. With 95% confidence, the mean height of plants from cross-fertilized seeds is estimated to be between `r round(t.test(Pair(Cross, Self) ~ 1, data = plants)$conf[1], 4)` and `r round(t.test(Pair(Cross, Self) ~ 1, data = plants)$conf[2], 4)` centimeters greater than the mean height of plants from self-fertilized seeds.
+b. Results suggest that plants from cross-fertilized seeds grow taller. We tested the hypothesis that the mean height of plants grown from cross-fertilized seeds is no greater than the mean height of plants grown from self-fertilized seeds against the alternative that the mean height of plants grown from cross-fertilized seeds is greater than the mean height of plants grown from self-fertilized seeds. The data provide sufficiently strong evidence to reject the hypothesis that the mean height of plants from cross-fertilized seeds is no greater than the mean height of plants from self-fertilized seeds in favor of a positive difference (*T = 2.1474* on 14 degrees of freedom, *p = 0.02488*). With 95% confidence, the difference in mean height between plants from cross-fertilized seeds and plants from self-fertilized seeds is estimated to be at least 0.4704 centimeters, with a point estimate of 2.62 cm.
+
+7.  \[L4, L5\] Tuberculuosis and survival in guinea pigs. The dataset `tubercle` contains survival times in days of guinea pigs that were randomly assigned to receive a dose of tubercle bacilli, the bacterial pathogen that causes tuberculosis, or to a control group.
+
+    a.  Test the hypothesis that exposure to tubercle bacilli causes a decrease in survival time. Interpret the result of the test in context and provide supporting statistics.
+    b.  Estimate the decrease in survival time using a 99% confidence interval. Interpret the interval in context.
+
+```{r}
+tubercle <- ex0211
+# save(tubercle, file = 'data/tubercle.RData')
+
+# a. 
+t.test(Lifetime ~ Group, data = tubercle, mu = 0, alternative = 'less')
+
+# b.
+int <- t.test(Lifetime ~ Group, data = tubercle, mu = 0, alternative = 'two.sided', conf.level = 0.99)$conf
+```
+
+Answers:
+
+a. The data provide sufficiently strong evidence to reject the null hypothesis that mean survival time is no less among rats that received a dose of tubercle bacilli than rats that did not receive a dose against the alternative that survival time decreased (*T = -3.2296* on 97.81 degrees of freedom, *p = 0.0008443*). 
+b. With 99% confidence, the mean decrease in survival time among rats attributable to the tubercle bacilli dose is estimated to be between `r round(-int[2], 3)` and `r round(-int[1], 3)` days.
+
+8.  \[L5\] Medical marijuana. To investigate the capacity of marijuana to reduce the side effects of cancer chemotherapy, researchers performed a double-blind, randomized, crossover trial. Fifteen cancer patients on chemotherapy were randomly assigned to receive either a marijuana treatment or a placebo treatment after their first three sessions of chemotherapy. They were then crossed over to the opposite treatment for their next 3 sessions. The dataset `marijuana` conatins the resulting measurements.
+
+    a.  Test the hypothesis that marijuana treatments cause a reduction in vomiting and retching episodes for cancer patients receiving chemotherapy. Write a full narrative summary of the test results. Do not include any R output.
+
+    b.  Assume that you found evidence that medical marijuana caused a reduction in part (a), regardless of your actual result. Would it be advisable to assure a patient that medical marijuana will reduce their vomiting and retching episodes? Why or why not?
+
+```{r}
+marijuana <- Sleuth3::ex0432
+# save(marijuana, file = 'data/marijuana.RData')
+
+# a
+t.test(Pair(Marijuana, Placebo) ~ 1, data = marijuana, alternative = 'less')
+```
+
+Answers:
+
+a. Results suggest that marijuana decreases vomiting and retching episodes among cancer patients receiving chemotherapy. We tested the null hypothesis that the mean number of vomiting and retching episodes was no less while patients were receiving a marijuana treatment compared with a placebo against the alternative that the mean number of episodes was less while patients were receiving the treatment. The data provide sufficiently strong evidence to reject the null hypothesis that the treatments did not decrease vomiting and retching episodes in favor of the alternative of a decrease (*T = -3.4397* on 14 degrees of freedom, *p = 0.001993*). With 95% confidence, the mean decrease in the number of vomiting and retching episodes attributable to the marijuana treatment compared with the placebo is estimated to be at least 15.549 episodes, with a point estimate of 31.867 episodes.
+b. No: while we've concluded the mean number of episodes decreases due to the treatment for the population, this does not mean that every individual will experience a decrease. While every patient in the study experienced a decrase, and this is highly encouraging, patients cannot be guaranteed a treatment effect.
+
+ **Vu and Harrington exercise 5.37.** A large farm wants to try out a new type of fertilizer to evaluate whether it will improve the farm’s corn production. The land is broken into plots that produce an average of 1,215 pounds of corn with a standard deviation of 94 pounds per plot. The owner is interested in detecting any average difference of at least 40 pounds per plot.
+
+    a.  How many plots of land would be needed for the experiment if the desired power level is 90%? Assume fertilizer treatments (current and new) are allocated in equal proportion among the plots.
+
+    b.  Explain in words the meaning of the power level guarantee.
+
+    c.  If the experiment will cost \$250 per plot and the owner wants to limit the total cost to \$10,000, what average difference will they be able to detect at the desired power level?
+
+```{r}
+# a
+power.t.test(delta = 40, sd = 94, power = 0.9)$n
+
+# c
+power.t.test(power = 0.9, sd = 94, n = 40)$delta
+```
+
+[L5] Gifted children. The dataset `openintro::gifted` contains data on 36 children identified as gifted in a large city. This problem will consider only the father's and mother's IQ: you'll perform inference on the difference in IQ between the mother and father. Assume the population is gifted children in the metropolitan region where the data were collected.
+
+    a. Conduct an appropriate $t$ test to determine whether mean IQ differs between the father and mother. Interpret the results in context.
+    b. Use a nonparametric rank procedure to test for a difference in IQ center between the father and mother. Interpret the results in context.
+    c. Explain how the hypotheses differ between the test in parts (a) and (b).
+    d. Make the appropriate histogram(s) to check whether the assumptions for the rank test are reasonable. Do you think the rank test is appropriate in this case?
+
+    ANSWER: 
+    
+    a. The data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same mean IQ in favor of the alternative hypothesis that the mean IQ differs (t = -2.7279, df = 35, p-value = 0.009898).
+    b. The data provide sufficient evidence to reject the null hypothesis that parents of gifted children have the same typical IQ in favor of the alternative hypothesis that the typical IQ differs (p-value = 0.009677).
+    c. The hypothesis in (a) pertains to a difference in mean IQ; the hypothesis in (b) pertains to a difference in central or typical IQ.
+    d. The differences don't look especially symmetric; the rank test is probably not appropriate. 
+
+```{r problem 1}
+# part a
+t.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part b
+wilcox.test(Pair(fatheriq, motheriq) ~ 1, data = gifted)
+
+# part d
+(gifted$fatheriq - gifted$motheriq) |> 
+  hist(breaks = 8, main = '', xlab = 'father IQ - mother IQ')
+```
+
+2. [L5] Physiological indicators of schizophrenia. The dataset `Sleuth3::case0202` contains data on volumes of the left hippocampus in cubic centimeters for 15 pairs of monozygotic twins; one twin in each pair was schizophrenic and the other was not. 
+
+    a. Check the assumptions for a nonparametric test of whether hippocampus volume differs in center between the schizophrenic and non-schizophrenic twins. Show the graphic(s) you examined and comment on whether test assumptions seem plausible.
+    b. Perform the test in (a) and interpret the results. Write a full narrative summary and include a 90% confidence interval for the difference in centers.
+    
+    ANSWERS:
+    
+    a. The plot is shown below; pairwise differences appear to be unimodal and not too asymmetrically distributed. Test assumptions seem plausible.
+    b. Results suggest brain anatomy differs with schizophrenia. We used data on twins in which one twin was affected by schizophrenia and one was not to test the hypothesis that left hippocampal volume differed between the affected and unaffected twin. The data provide sufficiently strong evidence to reject the hypothesis that typical left hippocampal volume does not differ between affected and unaffected twins in favor of the alternative of a difference (p-value = 0.002014). With 90% confidence, the difference in central values of left hippocampal volume is estimated to be between 0.075 and 0.315 cubic centimeters.
+
+```{r problem 2}
+# part a
+(case0202$Unaffected - case0202$Affected) |> 
+  hist(breaks = 5, main = '', xlab = 'unaffected volume - affected volume')
+
+# part b
+wilcox.test(Pair(Unaffected, Affected) ~ 1, data = case0202, 
+            conf.int = T, conf.level = 0.9)
+```
+
+[L9] Consider an experiment in which overweight subjects were randomly allocated to one of three diets: low-fat, low-carb, and Mediterranean. After two years, each subject's weight loss was measured. The output below shows the result of an ANOVA model fitted to this data. 
+
+    a. Construct the ANOVA table.
+    b. Test the hypothesis that mean weight loss does not differ among the three diets. Write a narrative summary of the result. 
+    (*Hint:* the $p$-value from an F model can be computed as `pf(fstat, num.df, denom.df, lower.tail = F)`.)
+    
+    ANSWERS:
+    
+    a. The table is shown below.
+    b. The data provide sufficiently strong evidence to reject the null hypothesis of no effect of diet on weight loss (F = 3.236 on 2 and 269 df, p = 0.0409).
+
+```{r problem 4, eval = T}
+weightloss <- ex0623
+aov(WtLoss24 ~ Group, data = weightloss) |> summary()
+```
+
+[L9] The dataset `Sleuth3::ex0722` contains measurements of closing force and propodus height of the claws of crabs from three predatory species. 
+
+    a. Produce side-by-side boxplots of claw height by species, ordering species by increasing median claw height.
+    b. Produce a table of grouped summaries of claw heights showing means, standard deviations, and sample sizes for each species.
+    c. Comment on whether the assumptions for analysis of variance seem to be met.
+    d. Test whether mean claw height differs among the three species. Write a short narrative summary of the results.
+    e. Conduct post-hoc pairwise comparisons to determine which means differ.
+    
+    ANSWERS:
+    
+    a. Boxplots are shown below.
+    b. Table is shown below.
+    c. The standard deviations of each group are close enough; measurements are independent since they are taken on distinct individuals.
+    d. The data provide sufficiently strong evidence to reject the null hypothesis of no difference in mean claw height among the three species of crab (F = 5.898 on 2 and 35 df, p = 0.0062).
+    e. Post-hoc tests for pairwise comparisons are shown below. It is estimated that mean claw height differs between *cancer productus* and each of the other two species (*hemigraspus nudus* and *lophapanopeus bellus*), but not between *hemigraspus nudus* and *lophapanopeus bellus*. Student answers should include p-values if a table is not provided.
+    
+    
+```{r}
+# part a
+boxplot(Height ~ Species, data = ex0722)
+
+# part b
+ex0722 |>
+  group_by(Species) |>
+  summarize(mean = mean(Height),
+            sd = sd(Height),
+            n = n()) |> pander()
+
+# part d
+fit <- aov(Height ~ Species, data = ex0722)
+summary(fit) |> pander()
+
+# part e
+emmeans(fit, 'Species') |> pairs(adjust = 'tukey') |> test() |> pander()
+```
+
+[L6] **Vu and Harrington 8.6**. Greece has faced a severe economic crisis since the end of 2009. A Gallup poll surveyed 1,000 randomly sampled Greeks in 2011 and found that 25% of them said they would rate their lives poorly enough to be considered “suffering”.
+
+    a. Describe the population parameter of interest. What is the value of the point estimate of this parameter?
+    b. Check if the conditions required for constructing a confidence interval based on these data are met.
+    c. Construct a 95% confidence interval for the proportion of Greeks who are “suffering".
+    d. Without doing any calculations, describe what would happen to the confidence interval if we decided to use a higher confidence level.
+    e. Without doing any calculations, describe what would happen to the confidence interval if we used a larger sample.
+    
+    ANSWERS:
+    
+    a. Proportion of Greeks who are suffering. Point estimate is 0.25.
+    b. Conditions are met. Don't evaluate this question, as we did not emphasize checking conditions in class.
+    c. CI: (0.223, 0.277). Lower bound might be 0.222 if empirical rule is used instead of 1.96.
+    d. It would be wider because a larger critical value would be used.
+    e. Assuming the point estimate is similar, it would be narrower because the standard error and therefore the margin of error is inversely proportional to the sample size. 
+    
+[L7, L8] **Vu and Harrington 8.24**. Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development. The table `vitamin` shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period).
+
+    a. State appropriate hypotheses to test for association between use of prenatal vitamins during the three months before pregnancy and autism.
+    b. Complete the hypothesis test and state an appropriate conclusion.
+    c. Estimate the association between use of prenatal vitamins and autism using an appropriate measure (relative risk or odds ratio). Produce a point estimate and a confidence interval.
+    d. Write a narrative summary of your results from (a) -- (c).
+    e. A New York Times article reporting on this study was titled “Prenatal Vitamins May Ward Off Autism". Do you find the title of this article to be appropriate? Explain your answer. Additionally, propose an alternative title.
+    
+    ANSWERS:
+    
+    a. $H_0$: taking prenatal vitamins and autism are independent. $H_A$: taking prenatal vitamins and autism are not independent. Hypotheses could also be stated as association/nonassociation.
+    b. The data provide sufficient evidence against the null hypothesis of no association between taking prenatal vitamins and autism ($\chi^2$ = 8.865 on 1 degree of freedom, $p$ = 0.002907). Students need only provide the $p$-value.
+    c. With 95% confidence, the odds of autism are estimated to be 18.5% to 61.1% lower when prenatal vitamins are taken during the periconceptional period, with a point estimate of 43.2%. (The CI for the OR is (0.389, 0.825); the point estimate is 0.568.)
+    d. Evidence suggests that taking prenatal vitamins during the periconceptional period may be associated with a lower likelihood of child autism. Data on prenatal vitamin use among mothers of a random sample of autistic children aged 24-60 months and mothers of a random sample of non-autistic children aged 24-60 months provide sufficient evidence to reject the null hypothesis of no association between vitamin use and the odds of autism ($\chi^2$ = 8.865 on 1 degree of freedom, $p$ = 0.002907). With 95% confidence, the odds of autism are estimated to be 18.5% to 61.1% lower when prenatal vitamins are taken during the periconceptional period, with a point estimate of 43.2%.
+    e. The title is misleading because it implies a causal relationship. A better title would be something causally neutral such as "Evidence suggests an association between prenatal vitamin use and likelihood of autism".
+    
+```{r prenatal vitamins and autism}
+vitamin <- matrix(data = c(111, 70, 143, 159),
+                  nrow = 2, byrow = T,
+                  dimnames = list(vitamin = c('no vitamin', 'vitamin'), 
+                                  autism = c('autism', 'no autism')))
+
+oddsratio(vitamin, rev = 'columns')
+
+chisq.test(vitamin, correct = F)
+```
+
+[L7, L8] **Vu and Harrington 8.45**. In a study examining the association between green tea consumption and esophageal carcinoma, researchers recruited 300 patients with carcinoma and 571 without carcinoma and administered a questionnaire about tea drinking habits. Out of the 47 individuals who reported that they regularly drink green tea, 17 had carcinoma. Out of the 824 individuals who reported they never drink green tea, 283 had carcinoma. These data are stored in the table `tea`.
+
+    a. Analyze the data to assess evidence for an association between green tea consumption and esophageal carcinoma from these data.
+    b. Report and interpret a point estimate and conficence interval for an appropriate measure of association.
+    c. Write a narrative summary of your results in (a)-(b).
+    
+    ANSWERS:
+    
+    a. The data do not provide sufficient evidence to reject the null hypothesis of no association between green tea consumption and esophageal carcinoma ($\chi^2$ *= 0.065626* on 1 degree of freedom, *p = 0.7978155*).
+    b. With 95% confidence, the odds of esophageal carcinoma among green tea drinkers are estimated to be between 49.8% lower and 73% higher than the odds among non-tea-drinkers, with a point estimate that the odds are 8.1% lower. (CI for OR is (0.5028, 1.7364), point estimate is 0.9196.)
+    c. There is not sufficient evidence to suggest an association between green tea consumption and the likelihood of esophageal cancer. Data on 47 tea drinkers and 824 non-tea-drinkers do not provide sufficient evidence to reject the null hypothesis of no association ($\chi^2$ *= 0.065626* on 1 degree of freedom, *p = 0.7978155*). Although it is estimated that the odds of esophageal carcinoma are 8.1% lower among tea drinkers, at the 95% confidence level, the odds are estimated to be anywhere between 49.8% lower and 73% higher.
+    
+```{r tea and esophageal carcinoma}
+tea <- matrix(data = c(47 - 17, 17, 824 - 283, 283),
+              nrow = 2, byrow = T,
+              dimnames = list(tea = c('tea', 'no tea'),
+                              carcinoma = c('no carcinoma', 'carcinoma')))
+
+chisq.test(tea, correct = F)
+oddsratio(tea)
+```
+
+[L8] Volunteer patients were randomized into one of two experiment groups where they would receive an experimental vaccine or a placebo. They were subsequently exposed to a drug-sensitive strain of malaria and observed to see whether they came down with an infection. The raw data from the trial are stored as the dataset `openintro::malaria`.
+
+    a. Test for association between the vaccination and the probability of infection. (*Hint*: take note of the small counts.)
+    b. Estimate the difference in probability of infection between the vaccine group and the placebo group. Provide a 95% confidence interval and interpret the interval in context.
+    c. Estimate the relative risk of infection in the vaccine group compared with the placebo group. Provide a 95% confidence interval and interpret the interval in context.
+    d. Vaccine efficacy is often measured by the relative *reduction* in risk, estimated by $\frac{\hat{p}_\text{ctrl} - \hat{p}_\text{trt}}{\hat{p}_\text{ctrl}}$. Provide a point estimate of vaccine efficacy from the trial data.
+    e. Provide a 95% confidence interval for vaccine efficacy based on your answers in (c)-(d). (*Hint*: if $(a, b)$ are a confidence interval for parameter $\gamma$, then an interval for $\gamma + c$ is given by $(a + c, b + c)$.)
+    
+    ANSWERS:
+    
+    a. The data provide sufficient evidence to reject the null hypothesis of no association between vaccination and infection after exposure to malaria (Fisher's exact test, *p = 0.01408669*).
+    b. With 95% confidence, the probability of infection among vaccinated individuals is estimated to be between 0.3919 and 0.8939 less than the probability of infection among unvaccinated individuals, with point estimate of 0.6429.
+    c. With 95% confidence, the risk of infection among vaccinated individuals is estimated to be between 27.1% and 82.3% lower than among unvaccinated individuals, with a point estimate of 64.3%. Alternatively: with 95% confidence, the relative risk of infection after exposure to malaria among vaccinated individuals compared with unvaccinated individuals is estimated to be between 0.177 and 0.721 with a point estimate of 0.357. If students give a relative risk comparing unvaccinated to vaccinated, this is acceptable, but a comment should be left.
+    d. The malaria vaccine is estimated to be 64.3% effective at preventing infection.
+    e. With 95% confidence, the malaria vaccine is estimated to be between 27.1% and 82.3% effective at preventing infection.
+    
+```{r}
+malaria.tbl <- xtabs(~ treatment + outcome, data = malaria)
+
+malaria.prop <- prop.test(malaria.tbl, correct = F)
+malaria.prop$estimate |> diff()
+malaria.est <- riskratio(malaria.tbl, rev = 'columns')
+malaria.est
+1 - malaria.est$measure[2, 1]
+```

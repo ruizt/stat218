@@ -21,53 +21,6 @@ execute:
 3.  Data basics: data semantics and data types
 4.  Lab: data types and data structures in R
 
-## Case study: LEAP
-
-Learning early about peanut allergy (LEAP) study:
-
--   640 infants in UK with eczema, egg allergy, or both enrolled; 530 passed a skin test showing no peanut allergy
-
--   each infant randomly assigned to peanut consumption and peanut avoidance groups
-
-    -   peanut consumption: fed 6g peanut protein daily until 5 years old
-
-    -   peanut avoidance: no peanut consumption until 5 years old
-
--   at 5 years old, oral food challenge (OFC) allergy test administered
-
-    -   PASS: no allergy detected
-
-    -   FAIL: allergy detected
-
-Review questions from last time:
-
-1.  *Experiment or observational study?*
-2.  *Retrospective, prospective, or neither?*
-
-## Case study: LEAP
-
-![](img/leaps-2.png){fig-align="center" width="400"} ![](img/leap-1.png){fig-align="center" width="400"}
-
-A greater proportion of children in the avoidance group developed an allergy (11.8% specifically). Given the type of study, which is a more accurate interpretation of this result?
-
-a.  Compared with consumption, peanut avoidance early in life *was associated with* more frequent occurrence of peanut allergies among children in the study.
-
-b.  Compared with consumption, peanut avoidance early in life *led to* more frequent occurrence of peanut allergies among children in the study.
-
-## Experimental design
-
-The LEAP study exemplifies the simple kind of design we will consider for much of STAT218:
-
--   two "treatments" (peanut consumption and peanut avoidance)
--   treatments are allocated completely at random among all study units
-
-The design of an experiment refers to how treatments (experimental interventions) are allocated to study units.
-
--   the number of **replicates** of a treatment refers to the number of study units receiving that treatment
--   a design is **balanced** if all treatments have equal numbers of replicates
--   treatment allocation should always be randomized; different designs use different randomization schemes
-
-*Check your understanding: is the experimental design of the LEAP study balanced?*
 
 ## Data semantics
 
@@ -199,6 +152,33 @@ Let's put some pieces together. The "essential information" to report when expla
 4.  If applicable, experimental design
 5.  Observations and variables measured
 
+## Working groups
+
+For labs and in class activities, you'll work in groups. Let's form those now.
+
+Icebreakers:
+
+-   Name, major, class standing
+
+-   Hometown
+
+-   One personal interest
+
+## Opening the lab activity
+
+Navigate to posit.cloud. Then:
+
+![](img/posit-landing.png){fig-align="center"}
+
+1.  Make sure the class workspace "stat218-s24" is highlighted at left. If "Your Workspace" is highlighted, you won't see the example assignment.
+
+<!-- -->
+
+2.  Click on the `lab1-rbasics`, then wait.
+
+Once everyone is ready, we'll have a look at the example files together.
+
+
 ## Lab: data types and structures in R
 
 The simplest data structure in R is a **vector**: a collection of values of a single "type". This lab will introduce you to data types, vectors, and a few other common data structures.
@@ -221,14 +201,3 @@ Your objectives in this lab are:
 :::
 :::
 
-## Up next: descriptive statistics
-
-So far we've discussed study designs and the basics of data.
-
-**Descriptive statistics** refers to techniques for summarizing data:
-
-- numerical summaries
-- tables
-- graphical summaries
-
-Such summaries are essential first steps in any data analysis, as they convey what was directly observed in the study.

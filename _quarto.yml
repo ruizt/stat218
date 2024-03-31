@@ -12,9 +12,6 @@ website:
     background: dark
     foreground: light
     search: true
-    left:
-      - content/syllabus.qmd
-      - materials.qmd
 
 format:
   html:
