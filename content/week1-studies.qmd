@@ -318,9 +318,9 @@ Learning early about peanut allergy (LEAP) study:
 
 **Study type:** experiment
 
-**Study population:** UK infants with eczema or egg allergy
+**Study population:** UK infants with eczema or egg allergy but no peanut allergy
 
-**Sample:** 640 infants
+**Sample:** 640 infants from population
 
 **Study design:** completely randomized design
 
@@ -332,8 +332,6 @@ Learning early about peanut allergy (LEAP) study:
 ::: {.callout-tip icon=false}
 ## Study results
 Moderated peanut consumption causes a reduction in the likelihood of developing an allergy.
-:::
-
 :::
 
 :::

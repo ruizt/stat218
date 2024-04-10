@@ -1,6 +1,6 @@
 ---
-title: "Introduction to data"
-subtitle: "Data semantics, data types, and data structures"
+title: "Data semantics and data types"
+subtitle: "Observations and variables; categorical and numeric variables"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
@@ -17,9 +17,8 @@ execute:
 ## Today's agenda
 
 1.  Reading quiz
-2.  Loose ends from last time: LEAP case study; experimental design basics
-3.  Data basics: data semantics and data types
-4.  Lab: data types and data structures in R
+2.  [lecture] data semantics and data types
+3.  [lab] R basics
 
 
 ## Data semantics
@@ -50,7 +49,7 @@ LEAP %>%
   pander()
 ```
 
-The table you saw earlier was a **summary** of the data (not the data itself):
+The table you saw in the reading was a **summary** of the data (not the data itself):
 
 ```{r}
 LEAP %>%
@@ -62,20 +61,20 @@ LEAP %>%
 
 ## Numeric and categorical variables
 
-Variables are classified according to their values. The broadest distinction made is between **numeric** and **categorical** variables.
+Variables are classified according to their values. Values can be one of two different types:
 
--   A variable is numeric if its value is a number
--   A variable is categorical if its value is a category, usually recorded as a name or label
+-   A variable is **numeric** if its value is a number
+-   A variable is **categorical** if its value is a category, usually recorded as a name or label
 
 For example:
 
 -   the value of `sex` can be male or female, so it is categorical
 -   whereas `age` (in years) can be any positive integer, so it is numeric
 
-*Check your understanding: in the LEAP study...*
+<!-- *Check your understanding: in the LEAP study...* -->
 
--   *treatment group is \[numeric/categorical\]*
--   *OFC test result is \[numeric/categorical\]*
+<!-- -   *treatment group is \[numeric/categorical\]* -->
+<!-- -   *OFC test result is \[numeric/categorical\]* -->
 
 ## Variable subtypes
 
@@ -117,52 +116,111 @@ For instance, `age` might be measured as either a discrete, continuous, or ordin
 
 > Numeric variables can always be represented as categorical, *but not the other way around*.
 
-## Your turn: identifying data types I
+## Your turn
 
 Classify each variable as nominal, ordinal, discrete, or continuous:
 
 ```{r}
-data(famuss)
+load('data/famuss.RData')
 set.seed(11324)
-famuss %>% sample_n(size = 4) %>% pander()
+famuss %>% 
+  sample_n(size = 4) %>% 
+  select(ndrm.ch, genotype, sex, age, race, bmi) |>
+  pander()
 ```
 
 Data are from an observational study investigating demographic, physiological, and genetic characteristics associated with muscle strength.
 
--   `ndrm.ch` and `drm.ch` are change in strength in nondominant and dominant arms before and after training
--   `actn3.r577x` gives genotype at a particular location within the ACTN3 gene (so-called "sports gene")
+-   `ndrm.ch` is change in strength in nondominant arm after resistance training
+-   `genotype` indicates genotype at a particular location within the ACTN3 gene
 
-## Your turn: identifying data types II
+## Common summary statistics
 
-Recall the kimchi/prediabetes study from last time:
+> A **statistic** is a data summary: in mathematical terms, a function of several observations
 
-> A total of 21 participants with prediabetes were enrolled. During the first 8 weeks, they consumed either fresh (1-day-old) or fermented (10-day-old) kimchi. After a 4-week washout period, they switched to the other type of kimchi for the next 8 weeks. Consumption of both types of kimchi significantly decreased body weight, body mass index, and waist circumference. Fermented kimchi decreased insulin resistance, and increased insulin sensitivity ... Systolic and diastolic blood pressure (BP) decreased significantly in the fermented kimchi group. The percentages of participants who showed improved glucose tolerance were 9.5 and 33.3% in the fresh and fermented kimchi groups, respectively.
+::: {.columns}
 
--   list the minimal collection of variables measured
--   determine a likely type for each variable
--   invent a few example observations to sketch what the data table might look like
+::: {.column}
+For numeric variables, the most common summary statistic is the **average value**:
 
-## Describing studies
+$$\text{average} = \frac{\text{sum of values}}{\text{# observations}}$$
 
-Let's put some pieces together. The "essential information" to report when explaining/presenting a study comprises:
+For example, the average percent change in nondominant arm strength was `r famuss$ndrm.ch |> mean() |> round(3)`%.
+:::
 
-1.  Research question or hypothesis
-2.  Type of study
-3.  Number and type of study units
-4.  If applicable, experimental design
-5.  Observations and variables measured
+::: {.column}
+For categorical variables, the most common summary statistic is a **proportion**:
 
-## Working groups
+$$\text{proportion}_i = \frac{\text{# observations in category } i}{\text{# observations}}$$
 
-For labs and in class activities, you'll work in groups. Let's form those now.
+For example:
 
-Icebreakers:
+```{r}
+famuss$genotype |> 
+  table() |> 
+  proportions() |> 
+  pander(caption = 'Genotype proportions')
+```
 
--   Name, major, class standing
 
--   Hometown
+:::
 
--   One personal interest
+:::
+
+## Descriptive analyses
+
+Sometimes, a few clever summary statistics can be used to answer a research question.
+
+> How much does the average change in arm strength differ by genotype, if at all?
+
+Computing *per-genotype* averages provides an answer:
+
+```{r}
+famuss |>
+  group_by(genotype) |>
+  summarize(avg.change = mean(ndrm.ch),
+            n.obs = n()) |>
+  ungroup() |>
+  mutate(prop.obs = n.obs/sum(n.obs)) |>
+  arrange(desc(avg.change)) |>
+  pander()
+```
+
+Number of observations and proportions are included because they provide information about genotype frequencies in the sample.
+
+- conveys how many individuals were measured
+- also provides an estimate of genotype frequencies in the population
+
+## Common mathematical notation
+
+While we won't use mathematical expressions too often in STAT218, it's useful to be aware of some common notations.
+
+Typically, a set of observations is written as:
+
+$$x_1, x_2, \dots, x_n$$
+
+- $x$ represents the variable (*e.g.*, genotype, age, percent change, etc.)
+- subscript indexes observations: $x_i$ is the $i$th observation
+- $n$ is the total **n**umber of observations
+
+The sum of the observations is written $\sum_i x_i$, where the symbol $\sum$ stands for 'summation'. This is useful for writing the formula for computing an average:
+
+$$\bar{x} = \frac{1}{n}\sum_i x_i$$
+
+## Lab: data basics in R
+
+The variable types we just discussed map pretty neatly (but not perfectly) onto the main "data types" in R:
+
+-   numeric ➜ integer, numeric
+-   categorical ➜ character, factor, logical
+
+The primary way data are arranged in R is in a **data frame**. This lab will show you how to load, inspect, and use data frames.
+
+Your objectives in this lab are: 
+
+1. learn to load and inspect datasets
+2. learn to recognize data types
+3. learn to perform simple calculations (averages, etc.)
 
 ## Opening the lab activity
 
@@ -172,32 +230,10 @@ Navigate to posit.cloud. Then:
 
 1.  Make sure the class workspace "stat218-s24" is highlighted at left. If "Your Workspace" is highlighted, you won't see the example assignment.
 
-<!-- -->
-
 2.  Click on the `lab1-rbasics`, then wait.
 
 Once everyone is ready, we'll have a look at the example files together.
 
 
-## Lab: data types and structures in R
 
-The simplest data structure in R is a **vector**: a collection of values of a single "type". This lab will introduce you to data types, vectors, and a few other common data structures.
-
-::: columns
-::: {.column width="0.5"}
-![](img/data-types.png)
-:::
-
-::: {.column width="0.5"}
-The variable types we just discussed map pretty neatly (but not perfectly) onto the main "data types" in R:
-
--   numeric ➜ integer, numeric
--   categorical ➜ character, logical
-
-Your objectives in this lab are: 
-
-1. learn to perform simple calculations
-2. learn to recognize data types and data structures
-:::
-:::
 

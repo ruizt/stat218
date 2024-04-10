@@ -40,7 +40,7 @@ These times are partitioned into 15 minute intervals that you can schedule via t
 
 You'll need an internet-connected laptop or tablet (a keyboard is necessary since we will do some web-hosted computation and you will be expected to type assignments). You should expect to bring your laptop or tablet to every class meeting.
 
-**Computing**: use of R/RStudio will be hosted online via a posit.cloud workspace \[[link to join](https://posit.cloud/spaces/497811/join?access_code=UXcfuEu2vkl3e2KOA4d4IU3UejqhsSqMMcqbyLT7)\]. To access the workspace, you'll need to create a posit.cloud account and purchase a $5/month student plan.
+**Computing**: use of R/RStudio will be hosted online via a posit.cloud workspace \[[link to join](https://posit.cloud/spaces/497811/join?access_code=UXcfuEu2vkl3e2KOA4d4IU3UejqhsSqMMcqbyLT7)\]. To access the workspace, you'll need to create a posit.cloud account and purchase a \$5/month student plan.
 
 **Textbook**: Vu and Harrington (2020). [Introdutory Statistics for the Life and Biomedical Sciences](https://www.openintro.org/book/biostat/), First edition. A PDF and tablet-friendly version are available for free online at the link above. This will be our primary reference and we will cover chapters 1 – 2, 4 – 6, and 8.
 
@@ -120,7 +120,7 @@ You will receive periodic email summaries of your progress on each learning outc
 | D     | 1                            |
 | D-    | 0                            |
 
-Please note that these definitions are tentative and potentially subject to change; however, I will not make the grading requirements more stringent under any circumstances. 
+Please note that these definitions are tentative and potentially subject to change; however, I will not make the grading requirements more stringent under any circumstances.
 
 Please also note that failure to adhere to course policies may result in a lower letter grade than would otherwise be assigned.
 
@@ -152,7 +152,6 @@ STAT218 is a four-credit course, which corresponds to a minimum time commitment 
 
 Regular attendance is essential for success in the course and required per University policy. Each student may miss two class meetings without notice but additional absences should be [excusable](https://academicprograms.calpoly.edu/content/academicpolicies/class-attendance) and students should notify the instructor. Unexcused absences may negatively impact course grades.
 
-
 #### Deadlines and extensions
 
 A one-hour grace period is applied to all deadlines. Work submitted more than one hour after a deadline is considered late. Policies regarding late work are as follows:
@@ -167,27 +166,26 @@ Extensions may be arranged as needed if warranted by the circumstances and shoul
 
 These policies are intended to provide you with some flexibility to work around unforeseen circumstances while maintaining accountability for completing coursework in a timely manner. That said, if any circumstances arise that the policies do not accommodate well, please let me know and I will do my best to work with you to keep you on track in the course.
 
-
 #### Academic integrity
 
 You are expected to be aware of and adhere to University policy regarding academic integrity and conduct. Detailed information on these policies, and potential repercussions of policy violations, can be found via the [Office of Student Rights & Responsibilities](https://osrr.calpoly.edu) (OSRR). Particularly important course policies related to academic integrity are discussed below.
 
 **Collaboration.** Collaboration among enrolled students is allowed and encouraged on homework assignments subject to the condition that every collaborator must make material contributions. Material contributions might include participation in group discussions, critique or presentation of a proposed solution, comparing numerical answers, and the like. However, group submissions are not allowed and you are expected to write up your own work. Copying the work of another student outright, knowingly allowing another student to copy your work, or submitting a copy of a shared set of answers is not acceptable and amounts to a violation of University policy on academic integrity. The best way to adhere to this policy and ensure your collaborations are productive is to:
 
-- attempt problems individually before consulting others
-- write up your own solutions in private 
+-   attempt problems individually before consulting others
+-   write up your own solutions in private
 
 Collaboration is not permitted on tests and will result in loss of credit.
 
-**Use of AI.** Learning to use AI effectively and responsibly for problem-solving in an academic context is a skill unto itself. Submitting problem prompts directly to ChatGPT will, most of the time, return superfluous, tangential, and erroneous answers that do not meet assessment criteria for satisfactory work. Furthermore, even when AI-generated material is technically accurate, outputs rarely conform to the examples set forth in class or the solution strategies that you have been taught. 
+**Use of AI.** Learning to use AI effectively and responsibly for problem-solving in an academic context is a skill unto itself. Submitting problem prompts directly to ChatGPT will, most of the time, return superfluous, tangential, and erroneous answers that do not meet assessment criteria for satisfactory work. Furthermore, even when AI-generated material is technically accurate, outputs rarely conform to the examples set forth in class or the solution strategies that you have been taught.
 
 So in the best-case scenario, AI-generated material might be useful but only if you expend additional effort refine the prompts you use and subsequently to parse, understand, and integrate outputs with class content. In the worst-case scenario, AI-generated material will be wrong or irrelevant and simply confuse you. Considering you are learning material that is new to you, you will most likely not be able to distinguish correct from incorrect outputs -- if you could, you would have had no need to query in the first place -- and it will therefore be difficult if not impossible to use AI effectively. Thus, **using AI is more likely to hinder than to help your learning**, and for this reason I do not recommend it.
 
 Should you choose to use AI you must use it as an aid only and not as a substitute for doing your own work. You will be responsible for using it thoughtfully and judiciously. That means critically assessing any outputs and continuing to prepare work to be submitted in your own words and using your own analyses. Submitting AI-generated outputs directly is never acceptable --- doing so amounts to falsely representing material that you did not create as your own work and is a violation of University academic integrity policy. I will respond to such violations as follows.
 
-- some AI-generated content detected: loss of credit and warning
-- flagrant AI plagiarism, first offense: loss of credit and report to OSRR
-- flagrant AI plagiarism, second offense: automatic course failure and report to OSRR
+-   some AI-generated content detected: loss of credit and warning
+-   flagrant AI plagiarism, first offense: loss of credit and report to OSRR
+-   flagrant AI plagiarism, second offense: automatic course failure and report to OSRR
 
 If you are unsure about where the line is between acceptable and unacceptable use in any particular situation, please discuss the situation with me -- I'd much rather help you learn to navigate the issue without the use of penalties wherever possible.
 

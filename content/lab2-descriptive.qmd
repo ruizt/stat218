@@ -1,0 +1,382 @@
+---
+title: "Lab 2: Descriptive statistics and simple graphics"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  message: false
+  warning: false
+format: 
+  html:
+    fig-width: 5
+    fig-height: 4
+    fig-align: 'center'
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+
+The objectives of this lab are to learn to:
+
+- make basic statistical graphics for visualizing frequency distributions
+- compute common measures of location and spread
+- discern appropriate measures of location and spread based on presence of outliers and skewness
+
+We'll use the FAMuSS dataset, as in lecture.
+
+```{r packages and data}
+library(tidyverse)
+
+# load famuss dataset 
+load('data/famuss.RData')
+
+# inspect data frame
+head(famuss)
+```
+
+As a quick refresher, you can extract a vector of the observations for any particular variable from the dataframe as follows: `famuss$[variable name]`.
+
+While not strictly necessary, I recommend retrieving and storing the variable(s) you'll use as separate objects, at least while you're still a beginner. For example:
+
+```{r refresher on retrieving variables, results = 'hide'}
+# extract the age variable
+famuss$age
+
+# store the age column as a vector
+age <- famuss$age
+```
+
+### Basic statistical graphics
+
+#### Categorical variables
+
+For categorical variables, as you saw in the last lab, `table(...)` will tabulate counts of the number of occurrences of each unique values of a categorical variable. The result can be passed to `barplot(...)` for a simple **barplot** to visualize the frequency distribution:
+
+```{r barplots}
+# retrieve genotype
+genotype <- famuss$genotype
+
+# make a table, generate a barplot
+table(genotype) |> barplot()
+```
+
+::: callout-tip
+
+## Your turn
+
+Make a barplot to visualize the frequency distribution of racial groups in the FAMuSS study.
+
+```{r your turn 1}
+# retrieve race
+
+# make a table, generate a barplot
+
+```
+:::
+
+#### Numerical variables
+
+If a numeric variable is discrete without too many values, the frequency distribution could be visualized without any binning as a barplot. However, this is **not recommended** because it will result in a plot that is not scaled properly.
+
+Instead, it is better to make a histogram with one bin per unique possible value; this will scale the axis properly. However, it is also acceptable to make a histogram with binning that will result in aggregating some values. Both are shown below.
+
+The approximate number of bins, and thus the amount of aggregation, is controlled by the argument `breaks = ...`:
+
+```{r histograms}
+# retrieve age
+age <- famuss$age
+
+# effectively, a bar plot of ages
+hist(age, breaks = 25)
+
+# fewer bins
+hist(age, breaks = 10)
+```
+
+For continuous variables, binning is a necessity. The second plot is better, because it shows the shape more clearly without obscuring too much detail.
+
+::: callout-note
+## Your turn
+
+Make a histogram of percent change in dominant arm strength. Experiment to see how the shape of the distribution appears at various binning resolutions; then pick a number of breaks that you feel reflects the data best.
+
+```{r your turn 2}
+# retrieve dominant arm percent change
+
+# make a histogram; find a binning that captures the shape well
+
+```
+:::
+
+To store a graphic as a separate file for use in other documents, find the 'export' icon in the plot panel and select the 'Save as image' option; then follow prompts. Try this for the plot you just made.
+
+### Descriptive statistics
+
+In class we discussed several descriptive statistics for numeric variables. These statistics are so commonly used that they have their own functions in R.
+
+#### Measures of location
+
+The following functions return common measures of location for numeric variables:
+
+-   `mean(...)` returns an average
+-   `median(...)` returns a median
+-   `quantile(...)` returns a quantile
+-   `min(...)` and `max(...)` return a minimum and a maximum, respectively
+
+```{r location measures}
+# average age
+mean(age)
+
+# median age (middle value)
+median(age)
+
+# 25th percentile of age ("quantile" is another term for percentile)
+quantile(age, probs = 0.25)
+
+# 25th *and* 75th percentile of age
+quantile(age, probs = c(0.25, 0.75))
+
+# minimum age
+min(age)
+
+# maximum age
+max(age)
+```
+
+Notice how the `probs = ...` argument to the `quantile()` function, which specifies *which* percentile R will calculate, can be used to calculate multiple percentiles at once.
+
+If you want to inspect *all* of the location measures above (the five-number summary plus the mean) the `summary(...)` function will do just that.
+
+```{r five number summary plus mean}
+# all common location measures
+summary(age)
+```
+
+::: callout-note
+## Your turn
+
+Try computing the location measures above for percent change in dominant arm strength. Compare the mean and median. What does the comparison tell you about the skewness of this variable? Is this consistent with the histogram from the previous 'your turn'?
+
+```{r your turn 3}
+# compute the five-number summary for change in dominant arm strength
+
+```
+
+
+:::
+
+#### Measures of spread
+
+The following functions return common measures of spread for numeric variables:
+
+-   `range(...)` returns the range (min, max)
+- `IQR(...)` returns the interquartile range (middle 50% of data)
+- `var(...)` returns the variance (average squared deviations from mean)
+- `sd(...)` returns the standard deviation (variance, on original scale)
+
+```{r measures of spread}
+# age range
+range(age)
+
+# interquartile range of ages (width of interval containing middle 50% of data)
+IQR(age)
+
+# variance of age
+var(age)
+
+# standard deviation of age
+sd(age)
+```
+
+::: callout-note
+## Your turn
+
+Compute the standard deviation of percent change in dominant arm strength.
+
+```{r your turn 4}
+# standard deviation of percent change in dominant arm strength
+
+```
+
+Interpret the value in context.
+:::
+
+#### Robustness
+
+When would you use median instead of mean? IQR instead of standard deviation? The answer has to do with **robustness**, which in statistics means sensitivity to outliers or extreme values.
+
+To explore this idea, recall first the actual mean and median ages for the participants in the FAMuSS study as well as the age range:
+
+```{r original mean and median age}
+# average age
+mean(age)
+
+# median age
+median(age)
+
+# range
+range(age)
+```
+
+Now let's add an artificial outlier -- a few hypothetical participant who are in their 80's and 90's -- and compute the measures of location again:
+
+```{r mean and median age with artificial outliers included}
+# average age
+mean(c(age, 96, 92, 87, 91))
+
+# median age
+median(c(age, 96, 92, 87, 91))
+```
+
+The mean increases while the median does not. More broadly, statistics based on percentiles are in general insensitive to outliers, unless there's a large group of outlying observations. In this sense they are robust statistics.
+
+A similar difference can be observed between deviation-based measures and interquartile range. The original measures were:
+
+```{r original iqr and variance}
+# variance of ages
+var(age)
+
+# interquartile range of ages
+IQR(age)
+```
+
+Now adding in our artificial outliers:
+
+```{r iqr and variance with artificial outliers included}
+# age variance
+var(c(age, 96, 92, 87, 91))
+
+# age iqr
+IQR(c(age, 96, 92, 87, 91))
+```
+
+### Grouped summaries
+
+What if you wish to find the mean percent change in dominant arm strength *separately* for each genotype?
+
+The `tidyverse` package loaded at the outset has a pair of functions, `group_by` and `summarize`, that allow you to do this efficiently. The steps are:
+
+1. Start with the *data frame* `famuss`
+2. `group by` the genotype variable
+3. `summarize`
+
+```{r grouped summaries}
+# average dominant arm change by genotype
+famuss |>
+  group_by(genotype) |>
+  summarize(avg.drm.ch = mean(drm.ch))
+```
+
+The `summarize` function can actually compute multiple summaries: each argument should specify a name for the summary and the calculation to perform in the format `<NAME> = <FUNCTION>(<COLUMN NAME>)`:
+
+```{r multiple grouped summaries}
+# average dominant and nondominant arm change by genotype
+famuss |>
+  group_by(genotype) |>
+  summarize(avg.drm.ch = mean(drm.ch),
+            avg.ndrm.ch = mean(ndrm.ch))
+```
+
+::: callout-note
+## Your turn
+
+Calculate the median percent change in dominant arm strength separately for each genotype by modifying the first example above.
+
+```{r your turn 5}
+# median percent change in dominant arm strength by genotype
+```
+:::
+
+### Practice problems
+
+These problems may look lengthy at face value, but the calculations are rather brief. A suggestion is: determine which calculations are required for each part and focus on doing those calculations first; then look back over your results to interpret them and answer the prompts.
+
+1. \[L3\] Use the `census` data again from the previous problem set and carry out the following descriptive summaries.
+
+    a. Make a histogram of total personal income. Choose the binning so as to capture the shape well but not obscure too much detail. Are there outliers?
+    b. Compute the mean and five-number summary of total personal income. Which measure of location is most appropriate and why?
+    c. Compute the interquartile range and standard deviation of total personal income and interpret them in context. Which measure is more appropriate and why?
+    d. Compute the median total personal income separately for men and women.
+    
+```{r practice problem 1, eval = F, echo = F}
+# load dataset
+load('data/census.RData')
+
+# inspect
+head(census)
+
+# part a: histogram of total personal income
+hist(census$total_personal_income, breaks = 20)
+
+# part b: measures of location for total personal income
+summary(census$total_personal_income)
+
+# part c: iqr and sd; which is better?
+IQR(census$total_personal_income)
+sd(census$total_personal_income)
+
+# part d: median total personal income by sex
+census |>
+  group_by(sex) |>
+  summarize(med.income = median(total_personal_income))
+```
+
+2. \[L3\] Data from *Chen, W., et al., Maternal investment increases with altitude in a frog on the Tibetan Plateau. Journal of Evolutionary Biology 26-12 (2013)* includes measurements pertaining to egg clutches of several populations of frog at breeding ponds (sites) in the eastern Tibetan Plateau.
+
+    a. How many samples were collected at each site?
+    b. Compute the frequency distribution of site altitudes among samples collected in the study.
+    c. Make a barplot of the frequency distribution from (a). Are samples collected more or less uniformily across altitudes? If not, which altitudes are most represented in the sample?
+    d. Make a histogram of clutch volumes. Describe the shape and number of modes.
+    e. Calculate the mean and five-number summary of clutch volume.
+    f. Calculate and interpret the standard deviation, variance, and interquartile range.
+    g. Calculate the average clutch volume *separately* for each altitude. Does average clutch volume seem to differ by altitude?
+    h. \[optional\] Devise a way to calculate the average absolute deviation.
+
+```{r data processing, echo = F}
+data(frog, package = 'oibiostat')
+
+frog <- frog |>
+  mutate(site = interaction(altitude, latitude),
+         site = fct_anon(site),
+         site = fct_drop(site),
+         altitude = fct_relabel(altitude, ~gsub('\\..*', '', .x))) |>
+  select(site, altitude, clutch.size, clutch.volume)
+
+save(frog, file = 'data/frog.RData')
+```
+
+```{r practice problem 2, eval = F, echo = F}
+# load frog data
+load('data/frog.RData')
+
+# part a: number of samples at each site
+table(frog$site)
+
+# part b: frequency distribution of altitude (table)
+table(frog$altitude) |> proportions()
+
+# part c: frequency distribution of altitude (barplot)
+table(frog$altitude) |> proportions() |> barplot()
+
+# part d: histogram of clutch volume
+hist(frog$clutch.volume)
+
+# part e: measures of location
+summary(frog$clutch.volume)
+
+# part f: standard deviation, iqr, variance
+sd(frog$clutch.volume)
+IQR(frog$clutch.volume)
+var(frog$clutch.volume)
+
+# part g: average clutch volume by altitude (grouped summary)
+frog |>
+  group_by(altitude) |>
+  summarize(avg.clutch.vol = mean(clutch.volume))
+
+# part h (optional): average absolute deviation of clutch volumes
+clutch.vol.dev <- frog$clutch.volume - mean(frog$clutch.volume)
+mean(abs(clutch.vol.dev))
+```
