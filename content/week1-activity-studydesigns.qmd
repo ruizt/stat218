@@ -18,14 +18,6 @@ For each example, identify the following:
 - sample characteristics
 - study outcome(s)
 
-<!-- ### Example 1: long COVID -->
-
-<!-- Long COVID is a multi-systemic and often debilitating condition that develops in at least 10% of patients following a COVID infection. The following is an excerpt of the abstract from a recent study seeking to identify symptoms and risk factors associated with long COVID and published in *Nature Medicine*: -->
-
-<!-- > We undertook a ... study using a UK-based primary care database, Clinical Practice Research Datalink Aurum, to determine symptoms that are associated with confirmed SARS-CoV-2 infection beyond 12 weeks in non-hospitalized adults and the risk factors associated with developing persistent symptoms. We selected 486,149 adults with confirmed SARS-CoV-2 infection ... Outcomes included 115 individual symptoms, as well as long COVID, defined as a composite outcome of 33 symptoms by the World Health Organization clinical case definition ... Among the patients infected with SARS-CoV-2, risk factors for long COVID included female sex, belonging to an ethnic minority, socioeconomic deprivation, smoking, obesity and a wide range of comorbidities. The risk of developing long COVID was also found to be increased along a gradient of decreasing age. -->
-
-<!-- Subramanian *et al.* (2022). Symptoms and risk factors for long COVID in non-hospitalized adults. *Nature medicine*, *28*(8), 1706-1714. -->
-
 ### Example 1: selenium exposure and Mediterranean diet
 
 The following is from the abstract of a study investigating dietary mitigation of selenium exposure:
@@ -42,10 +34,4 @@ The following is from an abstract of a study investigating possible benefits of 
 
 An, S. Y., *et al.* (2013). Beneficial effects of fresh and fermented kimchi in prediabetic individuals. *Annals of Nutrition and Metabolism*, *63*(1-2), 111-119.
 
-<!-- ### Example 4: Moderna vaccine efficacy -->
 
-<!-- From the journal publication reporting clinical trial results for the Moderna COVID vaccine: -->
-
-<!-- > Vaccines are needed to prevent coronavirus disease 2019 (Covid-19) and to protect persons who are at high risk for complications. The mRNA-1273 vaccine is a lipid nanoparticle–encapsulated mRNA-based vaccine that encodes the prefusion stabilized full-length spike protein of the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), the virus that causes Covid-19. This \[study\] was conducted at 99 centers across the United States ... The trial enrolled 30,420 volunteers who were randomly assigned in a 1:1 ratio to receive either vaccine or placebo (15,210 participants in each group) ... Symptomatic Covid-19 illness was confirmed in 185 participants in the placebo group and in 11 participants in the mRNA-1273 group; vaccine efficacy was 94.1%. -->
-
-<!-- Baden, L. R., *et al*. (2021). Efficacy and safety of the mRNA-1273 SARS-CoV-2 vaccine. *New England journal of medicine*, *384*(5), 403-416. -->

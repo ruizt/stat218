@@ -17,12 +17,11 @@ prefer-html: true
 embed-resources: true
 ---
 
-
 The objectives of this lab are to learn to:
 
-- make basic statistical graphics for visualizing frequency distributions
-- compute common measures of location and spread
-- discern appropriate measures of location and spread based on presence of outliers and skewness
+-   make basic statistical graphics for visualizing frequency distributions
+-   compute common measures of location and spread
+-   discern appropriate measures of location and spread based on presence of outliers and skewness
 
 We'll use the FAMuSS dataset, as in lecture.
 
@@ -63,7 +62,6 @@ table(genotype) |> barplot()
 ```
 
 ::: callout-tip
-
 ## Your turn
 
 Make a barplot to visualize the frequency distribution of racial groups in the FAMuSS study.
@@ -163,8 +161,6 @@ Try computing the location measures above for percent change in dominant arm str
 # compute the five-number summary for change in dominant arm strength
 
 ```
-
-
 :::
 
 #### Measures of spread
@@ -172,9 +168,9 @@ Try computing the location measures above for percent change in dominant arm str
 The following functions return common measures of spread for numeric variables:
 
 -   `range(...)` returns the range (min, max)
-- `IQR(...)` returns the interquartile range (middle 50% of data)
-- `var(...)` returns the variance (average squared deviations from mean)
-- `sd(...)` returns the standard deviation (variance, on original scale)
+-   `IQR(...)` returns the interquartile range (middle 50% of data)
+-   `var(...)` returns the variance (average squared deviations from mean)
+-   `sd(...)` returns the standard deviation (variance, on original scale)
 
 ```{r measures of spread}
 # age range
@@ -258,9 +254,9 @@ What if you wish to find the mean percent change in dominant arm strength *separ
 
 The `tidyverse` package loaded at the outset has a pair of functions, `group_by` and `summarize`, that allow you to do this efficiently. The steps are:
 
-1. Start with the *data frame* `famuss`
-2. `group by` the genotype variable
-3. `summarize`
+1.  Start with the *data frame* `famuss`
+2.  `group by` the genotype variable
+3.  `summarize`
 
 ```{r grouped summaries}
 # average dominant arm change by genotype
@@ -293,13 +289,13 @@ Calculate the median percent change in dominant arm strength separately for each
 
 These problems may look lengthy at face value, but the calculations are rather brief. A suggestion is: determine which calculations are required for each part and focus on doing those calculations first; then look back over your results to interpret them and answer the prompts.
 
-1. \[L3\] Use the `census` data again from the previous problem set and carry out the following descriptive summaries.
+1.  \[L3\] Use the `census` data again from the previous problem set and carry out the following descriptive summaries.
 
-    a. Make a histogram of total personal income. Choose the binning so as to capture the shape well but not obscure too much detail. Are there outliers?
-    b. Compute the mean and five-number summary of total personal income. Which measure of location is most appropriate and why?
-    c. Compute the interquartile range and standard deviation of total personal income and interpret them in context. Which measure is more appropriate and why?
-    d. Compute the median total personal income separately for men and women.
-    
+    a.  Make a histogram of total personal income. Choose the binning so as to capture the shape well but not obscure too much detail. Are there outliers?
+    b.  Compute the mean and five-number summary of total personal income. Which measure of location is most appropriate and why?
+    c.  Compute the interquartile range and standard deviation of total personal income and interpret them in context. Which measure is more appropriate and why?
+    d.  Compute the median total personal income separately for men and women.
+
 ```{r practice problem 1, eval = F, echo = F}
 # load dataset
 load('data/census.RData')
@@ -323,26 +319,26 @@ census |>
   summarize(med.income = median(total_personal_income))
 ```
 
-2. \[L3\] Data from *Chen, W., et al., Maternal investment increases with altitude in a frog on the Tibetan Plateau. Journal of Evolutionary Biology 26-12 (2013)* includes measurements pertaining to egg clutches of several populations of frog at breeding ponds (sites) in the eastern Tibetan Plateau.
+2.  \[L3\] Data from *Chen, W., et al., Maternal investment increases with altitude in a frog on the Tibetan Plateau. Journal of Evolutionary Biology 26-12 (2013)* includes measurements pertaining to egg clutches of several populations of frog at breeding ponds (sites) in the eastern Tibetan Plateau.
 
-    a. How many samples were collected at each site?
-    b. Compute the frequency distribution of site altitudes among samples collected in the study.
-    c. Make a barplot of the frequency distribution from (a). Are samples collected more or less uniformily across altitudes? If not, which altitudes are most represented in the sample?
-    d. Make a histogram of clutch volumes. Describe the shape and number of modes.
-    e. Calculate the mean and five-number summary of clutch volume.
-    f. Calculate and interpret the standard deviation, variance, and interquartile range.
-    g. Calculate the average clutch volume *separately* for each altitude. Does average clutch volume seem to differ by altitude?
-    h. \[optional\] Devise a way to calculate the average absolute deviation.
+    a.  How many samples were collected at each site?
+    b.  Compute the frequency distribution of site altitudes among samples collected in the study.
+    c.  Make a barplot of the frequency distribution from (a). Are samples collected more or less uniformily across altitudes? If not, which altitudes are most represented in the sample?
+    d.  Make a histogram of clutch volumes. Describe the shape and number of modes.
+    e.  Calculate the mean and five-number summary of clutch volume.
+    f.  Calculate and interpret the standard deviation, variance, and interquartile range.
+    g.  Calculate the average clutch volume *separately* for each altitude. Does average clutch volume seem to differ by altitude?
+    h.  \[optional\] Devise a way to calculate the average absolute deviation.
 
 ```{r data processing, echo = F}
 data(frog, package = 'oibiostat')
-
+set.seed(41324)
 frog <- frog |>
   mutate(site = interaction(altitude, latitude),
          site = fct_anon(site),
          site = fct_drop(site),
          altitude = fct_relabel(altitude, ~gsub('\\..*', '', .x))) |>
-  select(site, altitude, clutch.size, clutch.volume)
+  select(site, altitude, clutch.size, clutch.volume, egg.size, body.size)
 
 save(frog, file = 'data/frog.RData')
 ```

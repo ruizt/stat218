@@ -1,0 +1,478 @@
+---
+title: "Bivariate summaries"
+subtitle: "Quantitative and graphical techniques for summarizing two variables"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(oibiostat)
+library(tidyverse)
+library(pander)
+data(famuss)
+load('data/census.RData')
+ages <- c(16, 18, 19, 20, 21, 22, 25, 26, 28, 29, 30, 34)
+```
+
+## Today's agenda
+
+1. Reading quiz
+2. Loose end: robustness
+3. Bivariate numeric and graphical summaries
+4. Lab: bivariate graphics in R
+
+## Robustness
+
+> Percentile-based measures of location and spread are less sensitive to outliers
+
+Consider adding an observation of 94 to our 12 ages from last time. This is an outlier.
+
+::: columns
+::: {.column width="60%"}
+
+```{r, echo = T}
+# append an outlier
+ages_add <- c(ages, 94)
+
+# means
+c(original = mean(ages), with.outlier = mean(ages_add))
+
+# medians
+c(original = median(ages), with.outlier = median(ages_add))
+
+# IQR
+c(original = IQR(ages), with.outlier = IQR(ages_add))
+
+# SD
+c(original = sd(ages), with.outlier = sd(ages_add))
+```
+:::
+
+::: {.column width="40%"}
+The effect of this outlier on each statistic is:
+
+- mean increases by `r round(100*(mean(ages_add) - mean(ages))/mean(ages), 2)`%
+- median increases by `r round(100*(median(ages_add) - median(ages))/median(ages), 2)`%
+- IQR increases by `r round(100*(IQR(ages_add) - IQR(ages))/IQR(ages), 2)`%
+- SD increases by `r round(100*(sd(ages_add) - sd(ages))/sd(ages), 2)`%
+
+**Robustness** refers to sensitivity to outliers. Mean and SD are less robust than median and IQR.
+
+:::
+:::
+
+## Choosing appropriate measures
+
+> When outliers are present, use percentile-based measures; otherwise, use mean and standard deviation or variance
+
+```{r, fig.width=8, fig.height=2.5}
+par(mar = c(4, 4, 0.1, 0.1),
+    cex = 1.5,
+    mfrow = c(1, 2))
+hist(census$total_personal_income, 
+     main = '', xlab = 'total personal income', ylab = 'frequency')
+hist(census$age, 
+     main = '', xlab = 'age', ylab = 'frequency')
+```
+
+*Check your understanding: which measures are most appropriate for each variable above?*
+
+## Limitations of univariate summaries
+
+> Univariate summaries aim to capture the distribution of values of a single variable.
+
+::: columns
+::: {.column width="70%"}
+```{r, fig.width=8, fig.height = 4}
+library(oibiostat)
+data(famuss)
+height <- famuss$height
+weight <- famuss$weight
+
+par(mfrow = c(1, 2))
+par(mar = c(5, 5, 3, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+hist(height)
+abline(v = mean(height), col = 2, lwd = 2)
+hist(weight)
+abline(v = mean(weight), col = 2, lwd = 2)
+```
+:::
+
+::: {.column width="30%"}
+-   both unimodal, no obvious outliers
+-   heights symmetric
+-   weights right-skewed
+-   but these observations actually come in *pairs*
+:::
+:::
+
+Univariate summaries don't reflect how the variables might be related.
+
+## Bivariate summaries
+
+> Bivariate summaries aim to capture a relationship between two variables.
+
+::: columns
+::: {.column width="60%"}
+A simple example is a scatterplot:
+
+```{r, fig.width=5, fig.height=4}
+par(mar = c(5, 5, 1, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+plot(height, weight)
+points(mean(height), mean(weight), col = 2, pch = 17, cex = 2)
+abline(v = mean(height), h = mean(weight), col = 2, lwd = 2, lty = 2)
+```
+:::
+
+::: {.column width="40%"}
+Each point represents a pair of values $(h, w)$ for one study participant.
+
+-   Reveals a relationship: taller participants tend to be heavier
+-   But no longer shows individual distributions clearly
+
+Notice, though, that the marginal means (dashed red lines) still capture the center well.
+:::
+:::
+
+## Summary types
+
+> Bivariate summary techniques differ depending on the data types of the variables.
+
+| Question                                                                                                   | Comparison  type            |
+|------------------------------------------------------------------------------------------------------------|-------------------------|
+| Did genotype frequencies differ by race or sex among study participants?                                   | categorical/categorical |
+| Were differential changes in arm strength observed according to genotype?                                  | numeric/categorical     |
+| Did change in arm strength appear related in any way to body size among study participants?                | numeric/numeric         |
+| Did study participants experience similar or different changes in arm strength depending on arm dominance? | *??*                    |
+
+## Categorical/categorical
+
+<!-- *Did genotype frequencies differ by sex among study participants?* -->
+
+A **contingency table** is a bivariate tabular summary of two categorical variables; it shows the frequency of each pair of values. Usually the marginal totals are also shown.
+
+```{r}
+tbl <- table(famuss$sex, famuss$actn3.r577x) 
+
+cbind(tbl, total = rowSums(tbl)) %>%
+  rbind(total = c(colSums(tbl), sum(tbl))) %>%
+  pander()
+```
+
+There are multiple ways to convert to proportions by using different denominators, and these yield proportions with distinct interpretations:
+
+-   grand total -- frequency of genotype/sex combination
+-   row total -- genotype frequency by sex
+-   column total -- sex frequency by genotype
+
+## Categorical/categorical
+
+*Did genotype frequencies differ by sex among study participants?*
+
+For this question, the **row totals** should be used to convert to proportions.
+
+::: columns
+::: {.column width="50%"}
+As a table:
+
+```{r}
+tbl_rowsums <- (tbl/rowSums(tbl)) 
+cbind(tbl_rowsums, total = rowSums(tbl_rowsums)) %>% pander()
+```
+:::
+
+::: {.column width="50%"}
+As a stacked bar plot:
+
+```{r, fig.width = 4.5, fig.height = 3}
+par(mar = c(3, 2, 1, 5), cex = 1.5)
+barplot(t(tbl_rowsums), 
+        horiz = T, 
+        legend = T,
+        args.legend = list(x = 1.6, y = 2))
+```
+:::
+:::
+
+The proportions are quite close, suggesting minimal sex differences.
+
+## Categorical/categorical
+
+*Did sex frequencies differ by genotype among study participants?*
+
+For this question, the **column totals** should be used to compute proportions.
+
+::: columns
+::: {.column width="50%"}
+As a table:
+
+```{r}
+tbl_colsums <- (t(tbl)/colSums(tbl))  %>% t() 
+rbind(tbl_colsums, total = colSums(tbl_colsums)) %>% pander()
+```
+:::
+
+::: {.column width="50%"}
+As a stacked bar plot:
+
+```{r, fig.width=5, fig.height=3}
+par(mar = c(3, 2, 1, 6), cex = 1.5)
+barplot(tbl_colsums, 
+        legend.text = c('M', 'F'),
+        args.legend = list(x = 5.5, y = 1))
+```
+:::
+:::
+
+The proportions are close, suggesting minimal genotype differences.
+
+## Numeric/categorical
+
+Side-by-side boxplots are usually a good option. Avoid stacked histograms.
+
+*Were differential changes in arm strength observed according to genotype?*
+
+::: columns
+::: {.column width="80%"}
+```{r, fig.width = 8, fig.height = 4}
+par(mfrow = c(1, 2),
+    mar = c(5, 5, 3, 1),
+    cex = 1.25)
+boxplot(ndrm.ch ~ actn3.r577x, 
+        data = famuss, 
+        horizontal = T,
+        range = 2,
+        main = 'nondominant',
+        xlab = 'percent change', 
+        ylab = 'genotype')
+boxplot(drm.ch ~ actn3.r577x, 
+        data = famuss, 
+        horizontal = T,
+        range = 2,
+        main = 'dominant',
+        xlab = 'percent change', 
+        ylab = 'genotype')
+```
+:::
+
+::: {.column width="20%"}
+Look for differences:
+
+-   location shift
+-   spread
+-   center
+
+*What do you think? Any notable relationships?*
+:::
+:::
+
+## Numeric/numeric
+
+*Did change in arm strength appear related in any way to body size among study participants?*
+
+```{r}
+par(mfrow = c(2, 3),
+    mar = c(2, 5, 1, 1),
+    cex = 1.5)
+plot(famuss$height, famuss$ndrm.ch, xlab = '', ylab = 'nondominant', main = 'height')
+plot(famuss$weight, famuss$ndrm.ch, xlab = '', ylab = '', main = 'weight')
+plot(famuss$bmi, famuss$ndrm.ch, xlab = '', ylab = '', main = 'bmi')
+plot(famuss$height, famuss$drm.ch, xlab = '', ylab = 'dominant', main = '')
+plot(famuss$weight, famuss$drm.ch, xlab = '', ylab = '', main = '')
+plot(famuss$bmi, famuss$drm.ch, xlab = '', ylab = '', main = '')
+
+```
+
+Pairwise scatterplots indicate no apparent relationships.
+
+## Interpreting scatterplots
+
+> Scatterplots show the presence or absence of an **association**.
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=5}
+par(mar = c(5, 5, 1, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+plot(height, weight)
+fit <- lm(log(weight) ~ height)
+pred <- predict(fit, interval = 'prediction') |> 
+  exp() |>
+  as_data_frame() |>
+  mutate(height = height) |>
+  arrange(height)
+lines(x = pred$height, y = pred$fit, col = 'blue')
+lines(x = pred$height, y = pred$lwr, col = 'blue', lty = 2)
+lines(x = pred$height, y = pred$upr, col = 'blue', lty = 2)
+```
+:::
+
+::: {.column width="50%"}
+If there is an association (*i.e.,* discernible pattern), it can be:
+
+- linear or nonlinear
+
+    + linear if scatter roughly follows a straight line, nonlinear otherwise
+    
+- positive or negative
+
+    + positive if scatter is increasing from left to right, negative otherwise
+
+The plot at left is an example of a positive and (slightly) nonlinear relationship.
+:::
+
+:::
+
+## Practice interpreting scatterplots
+
+![](img/hw2-vh1-36.png)
+
+
+## Correlation
+
+In addition to graphical techniques, for numeric/numeric comparisons, there are also quantiative measures of relationship.
+
+::: columns
+::: {.column width="60%"}
+![](img/correlations.png){width="600"}
+:::
+
+::: {.column width="40%"}
+**Correlation** measures the strength of linear relationship, and is defined as: $$r_{xy} = \frac{1}{n - 1}\frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{s_x s_y}$$
+
+-   $r \rightarrow 1$: *positive* relationship
+-   $r \rightarrow -1$: *negative* relationship
+-   $r \rightarrow 0$: no relationship
+:::
+:::
+
+
+## Interpreting correlations
+
+*Did change in arm strength appear related in any way to body size among study participants?*
+
+Here are the correlations corresponding to the plots we checked earlier.
+
+```{r}
+cor_mx <- famuss %>%
+  select(drm.ch, ndrm.ch, height, weight, bmi) %>%
+  cor()
+
+cor_mx[3:5, 1:2] %>%
+  t() %>%
+  pander()
+```
+
+So there aren't any linear relationships here. A rule of thumb:
+
+-   $|r| < 0.3$: no relationship
+-   $0.3 \leq |r| < 0.6$: weak to moderate relationship
+-   $0.6 \leq |r| < 1$: moderate to strong relationship
+-   $|r| = 1$: either a mistake or not real data
+
+## Data transformations
+
+Sometimes a simple transformation can reveal a linear relationship on an alternate scale.
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r, fig.width=4, fig.height=4}
+par(mar = c(5, 5, 3, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+plot(height, weight, main = 'original scale')
+fit <- lm(log(weight) ~ height)
+pred <- predict(fit, interval = 'prediction') |> 
+  exp() |>
+  as_data_frame() |>
+  mutate(height = height) |>
+  arrange(height)
+lines(x = pred$height, y = pred$fit, col = 'blue')
+lines(x = pred$height, y = pred$lwr, col = 'blue', lty = 2)
+lines(x = pred$height, y = pred$upr, col = 'blue', lty = 2)
+```
+
+```{r, echo = T}
+# correlation coefficient
+cor(height, weight)
+```
+:::
+
+::: {.column width="50%"}
+```{r, fig.width=4, fig.height=4}
+par(mar = c(5, 5, 3, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+plot(height, log(weight), main = 'transformed scale')
+fit <- lm(log(weight) ~ height)
+pred <- predict(fit, interval = 'prediction') |> 
+  as_data_frame() |>
+  mutate(height = height) |>
+  arrange(height)
+lines(x = pred$height, y = pred$fit, col = 'blue')
+lines(x = pred$height, y = pred$lwr, col = 'blue', lty = 2)
+lines(x = pred$height, y = pred$upr, col = 'blue', lty = 2)
+```
+
+```{r, echo = T}
+# correlation coefficient
+cor(height, log(weight))
+```
+:::
+
+:::
+
+## Interpretation
+
+::: {.columns}
+
+
+::: {.column width="50%"}
+```{r, fig.width=4.5, fig.height=4.5}
+par(mar = c(5, 5, 1, 1),
+    cex.main = 2, cex.lab = 2, cex.axis = 1.5)
+plot(height, log(weight), main = '')
+fit <- lm(log(weight) ~ height)
+pred <- predict(fit, interval = 'prediction') |> 
+  as_data_frame() |>
+  mutate(height = height) |>
+  arrange(height)
+lines(x = pred$height, y = pred$fit, col = 'blue')
+lines(x = pred$height, y = pred$lwr, col = 'blue', lty = 2)
+lines(x = pred$height, y = pred$upr, col = 'blue', lty = 2)
+```
+
+```{r, echo = T}
+# correlation coefficient
+cor(height, log(weight))
+```
+:::
+
+::: {.column width="50%"}
+Applying these rules of thumb:
+
+-   $|r| < 0.3$: minimal association
+-   $0.3 \leq |r| < 0.6$: weak to moderate
+-   $0.6 \leq |r| < 1$: moderate to strong
+
+And:
+
+- $r > 0$: positive association
+- $r < 0$: negative association
+
+The interpretation is:
+
+*There is a moderately strong positive linear relationship between height and log weight.*
+:::
+:::

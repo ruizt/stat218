@@ -1,0 +1,485 @@
+---
+title: "Introduction to inference"
+subtitle: "Relating population statistics to sample statistics"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+load('data/nhanes.RData')
+```
+
+## Today's agenda
+
+1. Test 1 discussion
+2. [lecture] Inference vs. description, point estimation, interval estimation
+3. [lab] Exploring interval coverage
+
+## Description vs. inference
+
+> **Statistical inferences** are statements about population statistics based on samples. 
+
+To appreciate the meaning of this, consider the contrast with descriptive findings, which are statements about sample statistics:
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.height = 3, fig.width = 5}
+data(famuss)
+par(mar = c(5, 5, 3, 1),
+    cex = 1.25)
+boxplot(ndrm.ch ~ actn3.r577x, 
+        data = famuss, 
+        horizontal = T,
+        range = 2,
+        main = 'nondominant arm strength',
+        xlab = 'percent change', 
+        ylab = 'genotype')
+```
+:::
+
+::: {.column width="50%"}
+Median percent change by genotype:
+
+```{r}
+famuss %>% 
+  group_by(actn3.r577x) %>%
+  summarize(median.change = median(ndrm.ch)) %>%
+  pivot_wider(names_from = actn3.r577x, values_from = median.change) %>%
+  pander()
+```
+
+A descriptive finding is:
+
+*Subjects with genotype TT exhibited the largest median percent change in strength*
+:::
+:::
+
+The corresponding inference would be:
+
+*The median percent change in strength is highest among adults with genotype TT.*
+
+## Inference or description?
+
+See if you can tell the difference:
+
+1. The proportion of children who developed a peanut allergy was 0.133 in the avoidance group.
+2. The proportion of children who develop peanut allergies is estimated to be 0.133 when peanut protein is avoided in infancy.
+3. The average lifetime of mice on normal 85kCal diets is estimated to be 32.7 months.
+4. The 57 mice on the normal 85kCal diet lived 32.7 months on average.
+5. The relative risk of a CHD event in the high trait anger group compared with the low trait anger group was 2.5.
+6. The relative risk of a CHD event among adults with high trait anger compared with adults with low trait anger is estimated to be 2.5.
+
+## Random sampling
+
+> Sampling establishes the link (or lack thereof) between a sample and a population.
+
+::: columns
+::: {.column width="50%"}
+![](img/srs.png)
+:::
+
+::: {.column width="50%"}
+In a **simple random sample**, units are chosen in such a way that every individual in the population has an equal probability of inclusion. For the SRS:
+
+- sample statistics mirror population statistics (sample is *representative*)
+- sampling variability depends only on population variability and sample size
+
+:::
+:::
+
+
+## Population models
+
+> Inference consists in using statistics of a random sample to ascertain population statistics under a population model.
+
+A population model represents the distribution of values you'd see if you measured every individual in the study population. We think of the sample values as a random draw.
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=3}
+totchol <- pull(nhanes, totchol)
+mle <- MASS::fitdistr(totchol, 'gamma')$est |> round(1)
+names(mle) <- NULL
+# c(`Population mean` = mle[1]/mle[2],
+#   `Population SD` = mle[1]/(mle[2]^2)) |> 
+#   pander()
+
+par(mar = c(4, 4, 1, 1),
+    cex = 1.5)
+curve(dgamma(x, shape = mle[1], rate = mle[2]), 
+      from = 2, to = 14,
+      xlab = 'total cholesterol',
+      ylab = 'density', axes = F,
+      ylim = c(0, 0.4),
+      main = 'population model')
+axis(side = 1, at = seq(2, 14, by = 2))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+```
+:::
+::: {.column width="50%"}
+```{r, fig.width = 5, fig.height = 3}
+# nhanes %>% 
+#   summarize(across(totchol, 
+#                    .fns = list(mean = mean, SD = sd), 
+#                    .names = "Sample {.fn}")) %>%
+#   # t() %>%
+#   pander()
+
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+nhanes %>% pull(totchol) %>% 
+  hist(breaks = 30, main = 'sample values', 
+       xlab = 'total cholesterol', 
+       ylab = 'frequency')
+```
+:::
+:::
+
+(Density is an alternative scale to frequency that is independent of population size.)
+
+## Point estimates
+
+> Sample statistics, viewed as guesses for the values of population statistics, are called 'point estimates'.
+
+We'll focus on inferences involving the following:
+
+| Population statistic     | Parameter | Point estimate |
+|--------------------|--------------------|----------------|
+| Mean               | $\mu$              | $\bar{x}$      |
+| Standard deviation | $\sigma$           | $s_x$          |
+
+## A difficulty
+
+> Different samples yield different estimates.
+
+::: {.columns}
+
+::: {.column width="40%"}
+```{r, fig.width=4, fig.height = 5}
+set.seed(42024)
+samp1 <- sample(totchol, size = 20)
+samp2 <- sample(totchol, size = 20)
+
+par(mfrow = c(2, 1), mar = c(4, 4, 3, 1),
+    cex = 1.25)
+
+hist(samp1,
+     breaks = 3:8,
+     xlab = 'total cholesterol',
+     main = 'sample 1')
+abline(v = mean(samp1), lty = 4, lwd = 2)
+hist(samp2,
+     breaks = 3:8,
+     xlab = 'total cholesterol',
+     main = 'sample 2',
+     xlim = c(3, 8))
+abline(v = mean(samp2), lty = 4, lwd = 2)
+```
+:::
+
+::: {.column width="60%"}
+Sample means:
+```{r}
+c(sample.1 = mean(samp1),
+  sample.2 = mean(samp2)) |> 
+  pander()
+```
+
+- estimates are close but not identical
+- the population mean can't be both `r mean(samp1) |> round(3)` *and* `r mean(samp2) |> round(3)`
+- probably neither estimate is exactly correct
+
+*Estimation error and sample-to-sample variability are inherent to point estimation.*
+:::
+
+:::
+
+
+## Simulating sampling variability
+
+```{r, cache = T}
+set.seed(12524)
+nsamp <- 10000
+samps <- tibble(samp.id = 1:nsamp,
+                samp = map(samp.id, ~slice_sample(nhanes, n = 20, replace = F)))
+```
+
+::: columns
+::: {.column width="\"55%"}
+```{r, fig.width = 6, fig.height = 7}
+samps %>%
+  slice_head(n = 20) %>%
+  unnest(samp) %>%
+  group_by(samp.id) %>%
+  mutate(sample = paste('sample', samp.id, sep = ' '),
+         mean.totchol = mean(totchol)) |>
+  mutate(sample = ordered(sample, levels = paste('sample', 1:20, sep = ' '))) |>
+  ggplot(aes(x = totchol, y = ..density..)) +
+  facet_wrap(~sample, nrow = 5, ncol = 4) +
+  geom_histogram(bins = 10, alpha = 0.5) +
+  geom_vline(aes(xintercept = mean.totchol), 
+             linetype = 'dotdash') +
+  geom_vline(xintercept = mle[1]/mle[2], 
+             color = 'red', alpha = 0.5) +
+  theme_minimal(base_size = 18) +
+  labs(x = 'cholesterol', y = '') +
+  geom_function(fun = ~dgamma(.x, shape = mle[1], rate = mle[2]),
+                inherit.aes = F,
+                color = 'red',
+                alpha = 0.5) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid = element_blank()) +
+  scale_x_continuous(breaks = c(2, 4, 6, 8))
+```
+:::
+
+::: {.column width="45%"}
+These are 20 random samples with the sample mean indicated by the dashed line and the population distribution and mean overlaid in red.
+
+-   sample size $n = 20$
+-   frequency distributions differ a lot
+-   sample means differ some
+
+We can actually measure this variability!
+
+:::
+:::
+
+## Simulating sampling variability
+
+If we had means calculated from a much larger number of samples, we could make a frequency distribution for the values of the sample mean.
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width=4, fig.height = 3.5}
+samp_means <- samps %>%
+  mutate(chol.mean = map(samp, ~mean(.x$totchol))) %>%
+  unnest(chol.mean) %>%
+  pull(chol.mean) 
+
+par(mar = c(4, 4, 3, 1), cex = 1.2)
+hist(samp_means,
+     breaks = 25, 
+     main = 'distribution of 10,000 means', 
+     xlab = expr(paste('sample mean ', bar(x))), 
+     ylab = 'no. of samples')
+# abline(v = mean(totchol),
+#        col = 2, lwd = 3, lty = 2)
+```
+
+------------ ------- ------- ---------- ---------
+ **sample**     1       2     $\cdots$   10,000   
+
+  **mean**    4.957   5.039   $\cdots$   5.24 
+------------ ------- ------- ---------- ---------
+
+
+:::
+
+::: {.column width="55%"}
+We could then use the usual measures of center and spread to characterize the distribution of sample means.
+
+-   mean of $\bar{x}$: `r mean(samp_means)`
+-   standard deviation of $\bar{x}$: `r sd(samp_means)`
+
+> *Across 10,000 random samples of size 20, the typical sample mean was `r mean(samp_means) |> round(2)` and the root average squared distance of the sample mean from its typical value was `r sd(samp_means) |> round(3)`.*
+:::
+:::
+
+
+## Sampling distributions
+
+What we are simulating is known as a **sampling distribution**: the frequency of values of a statistic across all possible random samples.
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width=5, fig.height = 3.5}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+hist(samp_means,
+     freq = T,
+     breaks = 25,  
+     main = '',
+     xlab = expr(paste('sample mean ', bar(x))), 
+     ylab = 'no. of samples')
+# abline(v = mean(totchol),
+#        col = 2, lwd = 3, lty = 2)
+
+curve(0.1*10000*dgamma(x + 0.05, shape = 20*mle[1], rate = 20*mle[2]),
+      from = 4, to = 6, add = T, col = 2, lwd = 2)
+```
+
+:::
+::: {.column width="55%"}
+
+
+
+Provided data are from a random sample, the sample mean $\bar{x}$ has a sampling distribution with
+
+- mean $\color{red}{\mu}$ (population mean)
+- standard deviation $\color{red}{\frac{\sigma}{\sqrt{n}}}$
+
+regardless of its exact form.
+
+:::
+
+:::
+
+In other words, across all random samples of a fixed size...
+
+1. The average value of the sample mean is the population mean.
+2. The average squared error (sample mean - population mean)$^2$ is $\frac{\sigma^2}{n}$ 
+
+## Effect of sample size
+
+The standard deviation of the sampling distribution of $\bar{x}$ is inversely proportional to sample size.
+
+::: {.columns}
+::: {.column width="60%"}
+```{r, fig.width=8, fig.height = 5}
+library(RColorBrewer)
+n.vec <- c(5, 10, 20, 40, 80, 160)
+reds <- brewer.pal(6, 'Reds')
+
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+curve(dgamma(x, shape = n.vec[6]*mle[1], rate = n.vec[6]*mle[2]),
+      from = 4, to = 6.5, col = reds[6], n = 500,
+      ylab = '', 
+      xlab = expr(paste('sample mean ', bar(x))),
+      xaxt = 'n',
+      yaxt = 'n',
+      axes = F)
+axis(side = 1, at = seq(4, 6.5, by = 0.5))
+
+for(i in 5:1){
+curve(dgamma(x, shape = n.vec[i]*mle[1], rate = n.vec[i]*mle[2]),
+      from = 4, to = 6.5, col = reds[i], add = T, n = 500)
+}
+legend('topright', col = reds, lty = 1, legend = n.vec,
+       title = 'sample size')
+```
+:::
+
+::: {.column width="40%"}
+
+As sample size increases...
+
+- accuracy remains the same
+- estimates get more precise
+- skewness vanishes
+
+:::
+:::
+
+## Measuring sampling variability
+
+In practice $\sigma$ is not known so we use an estimate of sampling variability known as a **standard error**: 
+$$
+SE(\bar{x}) = \frac{s_x}{\sqrt{n}} 
+\qquad \left(\frac{\text{sample SD}}{\sqrt{\text{sample size}}}\right)
+$$
+
+For example:
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.height = 3.5, fig.width = 5}
+set.seed(12824)
+one_samp <- sample(nhanes$totchol, size = 20)
+par(mar = c(5, 5, 3, 1), cex = 1.25)
+hist(one_samp,
+     breaks = 10, 
+     xlab = 'cholesterol',
+     ylab = 'frequency', 
+     main = 'mean = 5.38, sd = 1.073, n = 20')
+```
+:::
+
+::: {.column width="50%"}
+$$
+SE(\bar{x}) = \frac{1.073}{\sqrt{20}} = 0.240
+$$
+
+> The root average squared error of the sample mean is estimated to be 0.240 mmol/L.
+
+:::
+:::
+
+<!-- ## Interpreting standard errors -->
+
+<!-- The standard error is a point estimate of the (population) standard deviation of sample means across all possible random samples: -->
+
+<!-- $$ -->
+<!-- SE(\bar{x}) \text{ estimates } \sqrt{\text{average value of } (\bar{x} - \mu)^2} -->
+<!-- $$ -->
+<!-- Two phrasings for an interpretation: -->
+
+<!-- 1. Estimated root average squared deviation of the sample mean from the population mean. -->
+<!-- 2. Estimated root mean square error. -->
+
+## Reporting point estimates
+
+It is common style to report the value of a point estimate with a standard error given parenthetically.
+
+::: columns
+::: {.column width="50%"}
+Statistics from full NHANES sample:
+```{r, fig.height = 3.5, fig.width = 5}
+c(mean = mean(totchol),
+  sd = sd(totchol),
+  n = length(totchol)) |> 
+  pander()
+```
+:::
+
+::: {.column width="50%"}
+
+
+> The mean total cholesterol among the population is estimated to be 5.043 mmol/L (SE `r (sd(totchol)/sqrt(length(totchol))) |> round(3)`)
+
+:::
+:::
+
+This style of report communicates:
+
+- parameter of interest
+- value of point estimate
+- error/variability of point estimate
+
+## Interval estimation
+
+> An interval estimate is **a range of plausible values** for a population parameter.
+
+The general form of an interval estimate is: $$\text{point estimate} \pm \text{margin of error}$$
+
+A common interval for the population mean is:
+$$\bar{x} \pm 2\times SE(\bar{x}) \qquad\text{where}\quad SE(\bar{x}) = \left(\frac{s_x}{\sqrt{n}}\right)$$
+
+::: {.columns}
+
+::: {.column}
+By hand:
+$$5.043 \pm 2\times 0.0191 = (5.005, 5.081)$$
+:::
+
+::: {.column}
+In R:
+```{r, echo = T}
+avg.totchol <- mean(totchol)
+se.totchol <- sd(totchol)/sqrt(length(totchol))
+avg.totchol + c(-2, 2)*se.totchol
+```
+:::
+
+:::

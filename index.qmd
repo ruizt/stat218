@@ -7,11 +7,10 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-Assignment reminders:
+Week 4 outlines posted.
 
-1. PS2 due one hour before class Wednesday.
-2. PS1 corrections due by 5pm on Friday.
-3. PS3 due one hour before class next Monday (4/15).
+No pending assignments.
+
 :::
 
 ### Course information
@@ -34,76 +33,98 @@ Read the \[[course syllabus](content/syllabus.qmd)\] for detailed information on
 3.  Write down one question you have about the reading and bring it to class.
 4.  Download and/or print a copy of the posted course notes (slides) for you to annotate and bring them to class.
 
+**Completing assignments:**
+
+One set of practice problems is included at the end of each lab; these problem sets are your homework assignments. You will often have some time to work on them during class, and they will be due by the following class period. To complete these assignments:
+
+1.  Review the prompts included with the lab.
+2.  Do your work (calculations, making plots, etc.) in the lab script provided in Posit Cloud.
+3.  Follow the link that appears as \[[problem set]{style="color:blue"}\] with the class meeting outline for the period in which the problem set was assigned. This will direct you to a form where you'll fill out select answers. Refer to your work in Posit Cloud as you complete the form.
+
+Some general remarks:
+
+-   problem sets are due one hour before the next class meeting
+-   late submissions are accepted until 5pm two days after the due date
+-   score summaries will be posted once all deadlines pass
+-   once scores are posted, you can see your individual responses using the link that you used to access the form
+
 ### Week 1 (4/1/24)
 
 *Academic holiday 4/1/24*
 
 *Introduction to statistical thinking and study designs*
 
-***Wednesday class meeting***: \[[slides](content/week1-studies.qmd)\] \[[activity](content/week1-activity-studydesigns.qmd)\] \[[problem set](https://forms.office.com/r/Dx84ZpQRj8)\] \[[problem set corrections](https://forms.office.com/r/w9zT40gg0g)\]
+***Wednesday class meeting***
 
 -   \[reading\] Vu and Harrington 1.1
--   \[lecture/discussion\] course introduction; study designs
--   \[activity\] distinguishing types of studies
+-   \[[lecture](content/week1-studies.qmd)\] course introduction; study designs
+-   \[[activity](content/week1-activity-studydesigns.qmd)\] distinguishing types of studies
+-   \[[problem set 1](https://forms.office.com/r/Dx84ZpQRj8)\] due Monday 4/8; late submissions until Wednesday 4/10 5pm
+-   \[[problem set 1 corrections](https://forms.office.com/r/w9zT40gg0g)\] due by 5pm Friday 4/12
+
+Response summary \[[PS1](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=Ls9MDkAdjEwov16Rhl5hC6g8qYc2kNye&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNjhQUEwxNDUwTlI4QTZXUVRDR0ZTQ1Y2Ti4u)\] \[[PS1 corrections](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=R5lQ4BfrgZtLcY64A3Upay0e1TUB9Vf8&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQk9HUjlGWjNPRTNVUDVXTjVUQ0RRM1pZSC4u)\]
 
 ### Week 2 (4/8/24)
 
 *Data types and descriptive statistics*
 
-***Monday class meeting*** \[[slides](content/week2-datatypes.qmd)\] \[[lab](content/lab1-rbasics.qmd)\] \[[problem set](https://forms.office.com/r/B3rki1eexc)\]
+***Monday class meeting***
 
 -   reading quiz \[[12pm section](https://forms.office.com/r/wf75D6mp8N)\] \[[2pm section](https://forms.office.com/r/RvZeF8pHq5)\]
 -   \[reading\] Vu and Harrington 1.2
--   \[lecture/discussion\] data types
--   \[lab\] R basics
+-   \[[lecture](content/week2-datatypes.qmd)\] data types
+-   \[[lab](content/lab1-rbasics.qmd)\] R basics
+-   \[[problem set 2](https://forms.office.com/r/B3rki1eexc)\] due Wednesday 4/10; late submissions until Friday 4/12 5pm
 
-***Wednesday class meeting*** \[[slides](content/week2-descriptive.qmd)\] \[[lab](content/lab2-descriptive.qmd)\] \[[problem set](https://forms.office.com/r/SPrm6BsYmH)\]
+Response summary \[[PS2](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=gIw2RyBFskdA3YcQL8X8OydyYiJc3zzt&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNDlBN1RKUlNZTlZSSVcwUTRYMk02TVlBRS4u)\]
+
+***Wednesday class meeting***
 
 -   \[reading\] Vu and Harrington 1.4 - 1.5
--   \[lecture/discussion\] descriptive statistics
--   \[lab\] descriptive statistics in R
+-   \[[lecture](content/week2-descriptive.qmd)\] descriptive statistics
+-   \[[lab](content/lab2-descriptive.qmd)\] descriptive statistics in R
+-   \[[problem set 3](https://forms.office.com/r/SPrm6BsYmH)\] due Monday 4/15; late submissions until Wednesday 4/17 5pm
+
+Response summary \[[PS3](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=uj2KuL0OkeyQb3vNCdNs0Yh74aX20K7g&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMjg4RTJVQjA5R0NPVU03UTJOR1dQRllLRi4u)\]
 
 ### Week 3 (4/15/24)
 
 *Descriptive statistics and graphical summaries*
 
+***Monday class meeting***
 
+-   \[[reading quiz](https://forms.office.com/r/WtbJpaLeF6)\] Vu and Harrington 1.6
+-   \[[lecture](content/week3-bivariate.qmd)\] descriptive statistics for relationships between two variables
+-   \[[lab](content/lab3-bivariate.qmd)\] bivariate summaries in R
+-   \[[problem set 4](https://forms.office.com/r/nhkHSubQya)\] due Wednesday 4/17; late submissions until Friday 4/19 5pm
 
-<!-- ***Thursday class meeting*** \[[slides](content/week3-multivariate.qmd)\] \[[lab](content/labs/lab3-multivariate.qmd)\] -->
+Response summary \[[PS4](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=eChGDBUbsnnIQMmqnZyTbApHFbeiPva2&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUNUlINFVJVFc2WlM2M0xJSDBWMkpRNEo1SS4u)\]
 
-<!-- -   \[reading\] Vu and Harrington 1.6 -->
+***Wednesday class meeting***
 
-<!-- -   \[lecture/discussion\] descriptive statistics for relationships between two variables -->
+-   \[reading\] review course notes and PS1, PS2, PS3 in detail
+-   \[[review](content/week3-review.qmd)\] recap and Q&A
+-   \[[R cheatsheet](content/r-cheatsheet.qmd)\] for easy reference
+-   \[[practice problems](content/test1-practice.qmd)\] in groups with short solution presentations
 
-<!-- -   \[lab\] bivariate summaries in R -->
-
-<!-- -   \[case study\] FAMUSS -->
-
-**Test 1** due Friday 4/19 11:59pm PDT
+**Test 1** available Wednesday 4/17 5pm and due Friday 4/19 5:00pm PDT \[[prompts](content/test1.qmd)\] \[[submission](https://forms.office.com/r/MSsz35jkyk)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/En0PZq0Nx9VCsKlZfHnHuWwBCX_GqLPfm25qFnD-v1skKQ)\]
 
 ### Week 4 (4/22/24)
 
 *Foundations for inference*
 
-<!-- **Tuesday class meeting** \[[slides](content/week4-sampling.qmd)\] \[[lab](content/labs/lab4-sampling.qmd)\] -->
+**Monday class meeting**
 
-<!-- -   \[reading\] Vu and Harrington 4.1 -->
+-   \[reading\] Vu and Harrington 4.1
+-   \[[lecture](content/week4-inference.qmd)\] point estimation, sampling variability, and interval estimation
+-   \[[lab](content/lab4-estimation.qmd)\] point and interval estimation for a population mean
+-   \[[problem set 5](https://forms.office.com/r/PCFv67h4N2)\] due Wednesday 4/24; late submissions until Friday 4/26 5pm
 
-<!-- -   \[lecture/discussion\] sampling and sampling distributions -->
+***Wednesday class meeting***
 
-<!-- -   \[lab\] exploring sampling variability -->
-
-<!-- -   \[case study\] National health and nutrition examination survey (NHANES) -->
-
-<!-- ***Thursday class meeting*** \[[slides](content/week4-intervals.qmd)\] \[[lab](content/labs/lab5-intervals.qmd)\] -->
-
-<!-- -   \[reading\] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2 -->
-
-<!-- -   \[lecture/discussion\] interval estimation for a population mean -->
-
-<!-- -   \[lab\] computing confidence intervals in R -->
-
-<!-- -   \[case study\] NHANES -->
+-   \[reading\] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2
+-   \[lecture\] interval estimation for a population mean
+-   \[lab\] computing confidence intervals
 
 ### Week 5 (4/29/24)
 
@@ -151,7 +172,7 @@ Read the \[[course syllabus](content/syllabus.qmd)\] for detailed information on
 
 <!-- -   \[lab\] post hoc and study design power analyses in R -->
 
-**Test 2** due Friday 5/10 11:59pm PDT
+**Test 2** due Friday 5/10 5:00pm PDT
 
 ### Week 7 (5/13/24)
 
@@ -195,7 +216,7 @@ Read the \[[course syllabus](content/syllabus.qmd)\] for detailed information on
 
 <!-- -   \[lab\] three case studies -->
 
-**Test 3** due Friday 5/24 11:59pm PDT
+**Test 3** due Friday 5/24 5:00pm PDT
 
 ### Week 9 (5/27/24)
 
@@ -243,7 +264,7 @@ Read the \[[course syllabus](content/syllabus.qmd)\] for detailed information on
 
 <!-- - [miscellany] scheduling oral exam times -->
 
-**Test 3** due Friday 6/7 11:59pm PDT
+**Test 4** due Friday 6/7 5:00pm PDT
 
 ### Finals week (6/10/24)
 

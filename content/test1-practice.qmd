@@ -1,0 +1,160 @@
+---
+title: "Extra practice problems"
+subtitle: "Study design, data types, and descriptive statistics [L1, L2, L3]"
+author: "STAT218"
+author-title: "Course"
+execute: 
+  eval: true
+  echo: false
+  warning: false
+  message: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+## Test information
+
+The test will consist of four questions with multiple parts, and one less structured question in which your task is to explore and summarize a dataset based on descriptive statistics. You'll have 48 hours to work on the test, and will submit your answers via a fillable form exactly as in the homework assignment. You can use any class resources (notes, textbook, lecture slides, past homeworks) but are required to work alone. You'll be provided with a Posit cloud project in which to carry out your analyses, and will be expected to upload your script as a supporting document when you fill out the submission form. The practice problems below provide a sample of questions that approximate the test problems (but are slightly shorter).
+
+## Practice problems
+
+```{r packages and data}
+library(tidyverse)
+```
+
+1.  Another version of the `frog` dataset from earlier also includes measurements of egg size and body size. Use this dataset to practice visualizing and describing distributions of numeric variables.
+
+    a. Make histograms of each of the four numeric variables, with appropriate numbers of bins, and describe the shape and number of modes. 
+    b. For each variable, suggest an appropriate measure of center and measure spread and identify any measures that would *not* be appropriate.
+    c. Make pairwise scatterplots of each of the four numeric variables and describe the association, if any. (*Hint: try `pairs(frog)` for a more efficient way to generate these plots.*)
+    d. For linear associations in (c), compute and interpret the correlation.
+    
+```{r frog data}
+data(frog, package = 'oibiostat')
+set.seed(41324)
+frog <- frog |>
+  mutate(site = interaction(altitude, latitude),
+         site = fct_anon(site),
+         site = fct_drop(site),
+         altitude = fct_relabel(altitude, ~gsub('\\..*', '', .x))) |>
+  select(site, altitude, clutch.size, clutch.volume, egg.size, body.size) 
+
+save(frog, file = 'data/frog.RData')
+```
+
+```{r more frog clutch measurements, eval = T, echo = T}
+# load and inspect data
+load('data/frog.RData')
+head(frog)
+
+# part a: histograms of each numeric variable; describe shape and modes
+par(mfrow = c(2, 2), mar = c(4, 4, 4, 1))
+hist(frog$clutch.size)
+hist(frog$clutch.volume)
+hist(frog$egg.size)
+hist(frog$body.size)
+
+# part c: pairwise scatterplots of clutch volume, egg size, body size, clutch size
+pairs(frog)
+
+# part d: correlations for linear associations
+cor(frog$clutch.size, frog$clutch.volume)
+cor(frog$clutch.volume, frog$egg.size)
+cor(frog$body.size, frog$clutch.volume, use = 'complete.obs')
+cor(frog$body.size, frog$clutch.size, use = 'complete.obs')
+```
+
+2.  The `chick` data data come from a study investigating the early growth of chicks on different diets. In the study, 47 chicks were randomly assigned one of four diets at birth and researchers measured body weight in grams daily. The data below show body weights at 18 days since birth for each chick. The question of interest is: which diet is best?
+
+    a.  Is this observational or experimental data? Explain your reasoning.
+    b.  Produce a visualization that compares body weight distributions by diet. For which diet have chicks grown the most? The least? Explain the statistic(s) or features of the distribution you used to make this determination.
+    c.  Based on your plot in (b), suggest a measure of center and measure of spread that would be appropriate for summarizing the data.
+    d.  Calculate the measures you suggested in (c) separately for each diet group.
+    e.  Assume that in the previous question you found that chicks on diet 3 grew the most, regardless of your actual answer. Can you conclude that diet 3 caused the fastest growth? Explain why or why not.
+
+```{r chick weight data}
+chick <- read_csv('data/chick.csv') |>
+  mutate(diet = factor(diet))
+
+save(chick, file = 'data/chick.RData')
+```
+
+```{r chick weight problem, echo = T}
+# load and inspect data
+load('data/chick.RData')
+head(chick)
+
+# part b: visualize body weights by diet
+boxplot(weight ~ diet, data = chick)
+
+# part c-d: determine and compute appropriate measures of spread and center
+chick |>
+  group_by(diet) |>
+  summarize(avg.weight = mean(weight),
+            sd.weight = sd(weight))
+```
+
+3.  The `gss` dataset contains observations for 500 respondents in the General Social Survey on a small number of demographic categorical variables. Use this to practice tabular and graphical summaries for categorical variables.
+
+    a.  For each variable, determine whether the variable is nominal or ordinal.
+    b.  Make a contingency table of age bracket and whether participants have obtained a college degree.
+    c.  Visualize the relationship between age and having obtained a college degree.
+    d.  Does the proportion of respondents with a college degree differ by sex?
+    e.  By political party?
+    f.  By socioeconomic class?
+    g.  Make one additional comparison of your choice and interpret the result.
+
+```{r gss data}
+gss <- read_csv('data/gss.csv') |>
+  mutate(across(where(is.character), factor),
+         age = cut_number(age, n = 4)) |>
+  select(where(is.factor))
+
+save(gss, file = 'data/gss.RData')
+```
+
+```{r gss, echo = T, eval = T}
+# load and inspect data
+load('data/gss.RData')
+head(gss)
+
+# part b: contingency table of age and college degree
+table(gss$college.degree, gss$age)
+
+# part c: visualize relationship between age and college degree
+table(gss$college.degree, gss$age) |> 
+  proportions(margin = 2) |>
+  barplot(legend = T)
+
+# part d: does the proportion of respondents with a degree differ by sex?
+table(gss$college.degree, gss$sex) |>
+  proportions(margin = 2) |>
+  barplot(legend = T)
+
+# part e: by political party?
+table(gss$college.degree, gss$political.party) |>
+  proportions(margin = 2) |>
+  barplot(legend = T)
+
+# part f: by class?
+table(gss$college.degree, gss$class) |>
+  proportions(margin = 2) |>
+  barplot(legend = T)
+
+# part g: one additional comparison of your choosing
+```
+
+4.  Long COVID is a multi-systemic and often debilitating condition that develops in at least 10% of patients following a COVID infection. The following is an excerpt of the abstract from a recent study seeking to identify symptoms and risk factors associated with long COVID and published in *Nature Medicine*[^1]: *"We undertook a ... study using a UK-based primary care database, Clinical Practice Research Datalink Aurum, to determine symptoms that are associated with confirmed SARS-CoV-2 infection beyond 12 weeks in non-hospitalized adults and the risk factors associated with developing persistent symptoms. We selected 486,149 adults with confirmed SARS-CoV-2 infection ... Outcomes included 115 individual symptoms, as well as long COVID, defined as a composite outcome of 33 symptoms by the World Health Organization clinical case definition ... Among the patients infected with SARS-CoV-2, risk factors for long COVID included female sex, belonging to an ethnic minority, socioeconomic deprivation, smoking, obesity and a wide range of comorbidities. The risk of developing long COVID was also found to be increased along a gradient of decreasing age."*
+
+    a. Identify the type of study.
+    b. Identify the study population.
+    c. Describe the sample.
+    d. List the study outcomes of interest.
+    e. Identify any non-outcome variables.
+
+[^1]: Subramanian *et al.* (2022). Symptoms and risk factors for long COVID in non-hospitalized adults. *Nature medicine*, *28*(8), 1706-1714.
