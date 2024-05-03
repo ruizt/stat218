@@ -1,0 +1,248 @@
+---
+title: "Lab 6: Directional $t$-tests"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+This lab has two objectives:
+
+1.  Learn to use the `t.test(...)` function
+2.  Learn to discern the appropriate direction for a $t$ test
+
+We'll use two familiar datasets: body temperature and heart rate measurements for 39 individuals; and data on birth weights and weeks at birth for a sample of 100 births in North Carolina in 2004.
+
+```{r data and packages}
+library(tidyverse)
+load('data/temps.RData')
+load('data/nhanes.RData')
+ncbirths <- read_csv('data/ncbirths.csv')
+```
+
+### The `t.test(...)` function
+
+The `t.test(...)` function produces both a hypothesis test and an confidence interval, and can be used to obtain either or both in practice.
+
+Let's demonstrate with the practice problem you completed most recently: inference on the mean nightly hours of sleep among U.S. adults based on NHANES data.
+
+The default behavior of `t.test(...)` if given no arguments besides a vector of data is to test $H_0: \mu = 0$ against a two-sided alternative ($H_A: \mu \neq 0$) and provide a 95% confidence interval. There are three key arguments that allow you to adjust this behavior:
+
+-   `mu = ...` adjusts the value for the mean in the null hypothesis $H_0$
+
+    -   default `mu = 0`
+
+-   `alternative = ...` adjusts the direction of the alternative, with options
+
+    -   `'less'` for a lower-sided alternative
+    -   `'greater'` for an upper-sided alternative
+    -   `'two.sided'` (default) for a two-sided alternative
+
+-   `conf.level = ...` adjusts the confidence level for the interval estimate
+
+    -   default `conf.level = 0.95`
+
+The examples below illustrate this usage. Run each command and **look at the output closely to determine what changes**.
+
+```{r the t.test function}
+# extract sleep variable
+sleep <- nhanes$sleephrsnight
+
+# default behavior (these are equivalent)
+t.test(sleep)
+t.test(sleep, mu = 0, alternative = 'two.sided', conf.level = 0.95)
+
+# change null value to 7 hours of sleep
+t.test(sleep, mu = 7, alternative = 'two.sided', conf.level = 0.95)
+
+# change the confidence level
+t.test(sleep, mu = 7, alternative = 'two.sided', conf.level = 0.99)
+
+# change the direction of the alternative
+t.test(sleep, mu = 7, alternative = 'less', conf.level = 0.99)
+```
+
+Focus for a moment on the last example. In detail, this tests, at the 1% significance level, the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\mu = 7 \\
+H_A: &\mu < 7
+\end{cases}
+$$
+
+While the `conf.level` argument doesn't affect the $p$-value, it does imply a significance level -- in this case, $\alpha = 0.01$. So, even though the $p$-value is less than the conventional level ($p < 0.05$), it is not less than the implied significance level (here $p > 0.01$), so **the test output implies we'd fail to reject the hypothesis that adults sleep less than 7 hours**.
+
+In general, it's important to set the confidence level to correspond to the significance level of the test you wish to perform, so that the test interpretation and interval provided match.
+
+::: callout-note
+## Your turn 1
+
+Adjust the arguments of the `t.test(...)` function to achieve the following:
+
+-   find a 90% CI for the mean
+-   test whether mean sleep is 6.9 at the 5% level
+-   test whether mean sleep is 6.9 at the 1% level
+-   test whether mean sleep exceeds 6.9 at the 5% level
+-   test whether mean sleep exceeds 6.9 at the 1% level
+
+```{r your turn 1}
+# obtain a 90% confidence interval for the mean hours of sleep
+
+# test whether mean sleep is 6.9 at the 5% level
+
+# test whether mean sleep is 6.9 at the 1% level
+
+# test whether mean sleep exceeds 6.9 at the 5% level
+
+# test whether mean sleep exceeds 6.9 at the 1% level
+
+```
+
+For extra practice, write a short interpretation of the results of each test following the style introduced in class.
+:::
+
+### Distinguishing directional alternatives
+
+Here we'll use the temperature/heartrate data to illustrate a variety of directional tests based on questions of interest.
+
+As you're looking over the examples, focus on the correspondence between the questions and the direction of the alternative.
+
+```{r distinguishing directions, echo = T, results = 'hide'}
+# extract body temperature variable
+bodytemps <- temps$body.temp
+
+# is mean temperature different from 98.6 at the 5% significance level?
+t.test(bodytemps, mu = 98.6, alternative = 'two.sided', conf.level = 0.95)
+
+# is mean temperature less than 98.6 at the 5% significance level?
+t.test(bodytemps, mu = 98.6, alternative = 'less', conf.level = 0.95)
+
+# is mean temperature greater than 98.1 at the 5% significance level?
+t.test(bodytemps, mu = 98.1, alternative = 'greater', conf.level = 0.95)
+
+# is mean temperature greater than 98.1 at the 1% significance level?
+t.test(bodytemps, mu = 98.1, alternative = 'greater', conf.level = 0.99)
+
+# is mean temperature less than 98.9 at the 5% significance level?
+t.test(bodytemps, mu = 98.9, alternative = 'less', conf.level = 0.95)
+```
+
+As an aside (but an important one!), performing all of these tests together is only meant to illustrate how the function works, **not how to perform an analysis**. Trying out many tests until you obtain significant results is known as "$p$ hacking", and is not an acceptable practice.
+
+::: callout-note
+## Your turn 2
+
+Using the `heart.rate` variable, test the following hypotheses:
+
+-   Is mean heart rate 65bpm at the 5% level?
+-   Is mean heart rate 70bpm at the 1% level?
+-   Is mean heart rate greater than 70bpm at the 1% level?
+-   Is mean heart rate less than 75bpm at the 10% level?
+-   Is mean heart rate greater than 75bpm at the 10% level?
+
+```{r your turn 2}
+# extract heart rate variable
+
+# is mean heart rate 65bpm at the 5% level?
+
+# is mean heart rate 70bpm at the 1% level?
+
+# is mean heart rate greater than 70bpm at the 1% level?
+
+# is mean heart rate less than 75bpm at the 10% level?
+
+# is mean heart rate greater than 75bpm at the 10% level?
+
+```
+:::
+
+### A brief analysis
+
+Now that you're familiar with using the `t.test(...)` function, let's do something a bit more realistic. Suppose that, using the `ncbirths` data, you want to perform inference on the number of weeks at birth. We're told that 40 weeks is typical.
+
+#### Advance decisions
+
+In advance of looking at the data (or perhaps even having data) we should determine:
+
+1.  the hypotheses to test
+2.  the level at which we'll perform the test
+
+To make these choices, first note that there's no obvious directional question to ask here. So, we'll test whether the mean number of weeks at birth is 40. A 5% significance level is conventional, so we'll stick with that.
+
+#### Assessing assumptions
+
+Before going ahead, let's inspect the data.
+
+```{r analysis example: checking assumptions}
+# extract variable of interest
+weeks <- ncbirths$weeks
+
+# inspect distribution
+hist(weeks, breaks = 15)
+```
+
+This is an interesting case, because we do have a left-skewed distribution *and* there are a few outliers below 30 weeks. However, the sample size is large ($n = 100$), so the test should still work well regardless.
+
+#### Performing the test
+
+For inference we'll want to report a test result and interval estimate. Both of these are obtained using `t.test(...)` as above, but of course we only perform *one* test/interval calculation.
+
+```{r analysis example: performing the test}
+# inference
+t.test(weeks, mu = 40, alternative = 'two.sided', conf.level = 0.95)
+```
+
+Take a moment to inspect the results.
+
+#### Interpreting results
+
+Following the format in class, a report of the results should interpret the test and interval in context, providing supporting statistics parenthetically:
+
+> Data from North Carolina in 2004 provide strong evidence that the mean number of weeks at birth differs from 40 (*T* = -5.0421 on 99 degrees of freedom, *p* \< 0.0001). With 95% confidence, the mean number of weeks at birth is estimated to be between 37.98 and 39.12 weeks, with a point estimate of 38.55 weeks (SE `r round(sd(weeks)/sqrt(99), 4)`).
+
+### Practice problems
+
+1.  Perform and interpret the results of inference on the mean birth weight to investigate the claim that the typical birth weight is at least 7 lbs. Carry out inference at the 5% significance level.
+
+    a.  Determine your hypotheses.
+    b.  Check test assumptions.
+    c.  Perform the calculations.
+    d.  Write a short report of the results.
+
+```{r practice problem 1, echo = F, eval = F}
+# extract variable of interest
+bweight <- ncbirths$birth.weight
+
+# inspect distribution to check assumptions
+hist(bweight, breaks = 20)
+
+# perform test
+t.test(bweight, mu = 7, alternative = 'greater')
+```
+
+2.  \[[REVISED]{style="color:red"}\] Using the BRFSS data, test whether [actual body weight exceeds desired body weight]{style="color:red"} and estimate the difference. Perform the test at the 1% level.
+
+```{r practice problem 2, echo = F, eval = F}
+# load data
+load('data/brfss.RData')
+
+# extract variable of interest
+weightdiff <- brfss$wtdesire - brfss$weight
+
+# inspect distribution to check assumptions
+hist(weightdiff, breaks = 10)
+
+# perform test
+t.test((-weightdiff), mu = 0, alternative = 'greater', conf.level = 0.99)
+```

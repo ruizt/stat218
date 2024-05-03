@@ -1,0 +1,652 @@
+---
+title: "Introduction to hypothesis testing"
+subtitle: "One-sample $t$ test for a population mean"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r}
+library(tidyverse)
+library(pander)
+library(RColorBrewer)
+load('data/temps.RData')
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+reds <- red.grad(6)
+```
+
+## Today's agenda
+
+1. Loose end: working backwards to determine interval coverage
+2. [lecture] the $t$-test for a population mean
+3. [lab] computing test statistics, critical values, and $p$-values
+
+## Body temperatures
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width = 4, fig.height = 3.6}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+hist(temps$body.temp, breaks = 8, ylim = c(0, 11.1),
+     xlab = 'body temperature (°F)', ylab = 'frequency', main = '')
+abline(v = mean(temps$body.temp), lty = 4)
+text(x = mean(temps$body.temp) + 1.4, y = 11, expr(paste(bar(x), ' = 98.405')))
+
+temps |>
+  summarize(mean = mean(body.temp),
+            sd = sd(body.temp),
+            n = n(),
+            se = sd/sqrt(n)) |>
+  pander()
+```
+:::
+
+::: {.column width="55%"}
+*Is the true mean body temperature actually 98.6°F?*
+
+Seems plausible given our data.
+
+But what if the sample mean were instead...
+
+| $\bar{x}$ | consistent with $\mu = 98.6$? |
+|-----------|-------------------------------|
+| 98.30     | probably still yes            |
+| 98.15     | maybe                         |
+| 98.00     | hesitating                    |
+| 97.85     | skeptical                     |
+| 97.40     | unlikely                      |
+:::
+:::
+
+> If the estimation error is "big enough" the hypothesis seems
+> implausible.
+
+## How much error is too much?
+
+Consider how many standard errors away from the hypothesized value we'd be:
+
+| $\bar{x}$ | estimation error | no. SE's | interpretation           |
+|-----------|------------------|----------|--------------------------|
+| 98.30     | -0.3             | 2        | double the average error |
+| 98.15     | -0.45            | 3        | triple the average error |
+| 98.00     | -0.6             | 4        | quadruple                |
+| 97.85     | -0.75            | 5        | quintuple                |
+| 97.40     | -1.2             | 8        | octuple!                 |
+
+We know from discussing confidence intervals that we'd estimate the mean
+temperature to be within about 2SE of the sample mean, and from interval
+coverage that:
+
+-   an error less than 2SE occurs for about 95% of samples
+-   an error greater than 2SE occurs for only about 5% of samples
+
+*Exactly how often would we see the error we did if the population mean
+is in fact 98.6°F?*
+
+## Applying the $t$ model
+
+::: columns
+::: column
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+
+# polygon(c(min(x), x[x<=t.val], t.val), c(y[x<=t.val] - 0.001, 0, 0), col=reds[1], border = NA)
+# polygon(c(x[x>=t.val], max(x), t.val), c(y[x>=t.val], 0, 0), col = 'red')
+
+# legend('topright', fill = reds[1], 
+#        legend = paste(round(pt(t.val, df = 19), 3)*100, "% of samples", sep = ''),
+#        cex = 0.7)
+```
+:::
+:::
+
+## Applying the $t$ model
+
+```{r}
+tstat <- (mean(temps$body.temp) - 98.6)/(sd(temps$body.temp)/sqrt(nrow(temps)))
+```
+
+::: columns
+::: column
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+
+-   actual summary statistics give $T$ = `r round(tstat, 3)`
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+# polygon(c(min(x), x[x<=t.val], t.val), c(y[x<=t.val] - 0.001, 0, 0), col=reds[1], border = NA)
+# polygon(c(x[x>=t.val], max(x), t.val), c(y[x>=t.val], 0, 0), col = 'red')
+
+# legend('topright', fill = reds[1], 
+#        legend = paste(round(pt(t.val, df = 19), 3)*100, "% of samples", sep = ''),
+#        cex = 0.7)
+```
+:::
+:::
+
+## Applying the $t$ model
+
+```{r}
+tstat <- (mean(temps$body.temp) - 98.6)/(sd(temps$body.temp)/sqrt(nrow(temps)))
+```
+
+::: columns
+::: column
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+
+-   actual summary statistics give $T$ = `r round(tstat, 3)`
+-   underestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+# polygon(c(x[x>=-tstat], max(x), -tstat), c(y[x>=-tstat], 0, 0), 
+#         col = reds[1], border = NA)
+
+legend('topright', fill = reds[1],
+       legend = paste(round(pt(tstat, df = 38), 3)*100, "% of samples", sep = ''),
+       cex = 0.7)
+```
+:::
+:::
+
+## Applying the $t$ model
+
+```{r}
+tstat <- (mean(temps$body.temp) - 98.6)/(sd(temps$body.temp)/sqrt(nrow(temps)))
+```
+
+::: columns
+::: column
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+
+-   actual summary statistics give $T$ = `r round(tstat, 3)`
+-   underestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+-   overestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+polygon(c(x[x>=-tstat], max(x), -tstat), c(y[x>=-tstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[c(1, 3)],
+       legend = c(paste(round(pt(tstat, df = 38), 3)*100, "% of samples", sep = ''),
+                  paste(round(pt(tstat, df = 38), 3)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+:::
+:::
+
+## Applying the $t$ model
+
+```{r}
+tstat <- (mean(temps$body.temp) - 98.6)/(sd(temps$body.temp)/sqrt(nrow(temps)))
+```
+
+::: columns
+::: column
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+
+-   actual summary statistics give $T$ = `r round(tstat, 3)`
+-   underestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+-   overestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+polygon(c(x[x>=-tstat], max(x), -tstat), c(y[x>=-tstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[c(1, 3)],
+       legend = c(paste(round(pt(tstat, df = 38), 3)*100, "% of samples", sep = ''),
+                  paste(round(pt(tstat, df = 38), 3)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+$$P(|T| > 1.328) = 0.192$$
+:::
+:::
+
+> We'd see at least as much (absolute) estimation error
+> `r round(100*2*pt(tstat, nrow(temps) - 1), 2)`% of the time, assuming
+> the hypothesis is true. So this amount of error isn't surprising.
+
+## A more extreme scenario
+
+```{r}
+tstat <- (98.2-98.6)/(sd(temps$body.temp)/sqrt(nrow(temps)))
+```
+
+::: columns
+::: column
+
+***If the population mean is in fact 98.6°F*** then $$
+T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}}
+\qquad\left(\frac{\text{estimation error}}{\text{standard error}}\right)
+$$ has a sampling distribution that is well-approximated by a
+$t_{39 - 1}$ model.
+
+- suppose instead $\bar{x} = 98.2$ so $T$ = `r round(tstat, 3)`
+-   underestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+-   overestimate more in `r round(100*pt(tstat, nrow(temps) - 1), 2)`%
+    of samples
+:::
+
+::: column
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 19)
+t.val <- 0
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 20), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[39 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 98.6, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat + 1, 0.32, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+polygon(c(x[x>=-tstat], max(x), -tstat), c(y[x>=-tstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[c(1, 3)],
+       legend = c(paste(round(pt(tstat, df = 38), 4)*100, "% of samples", sep = ''),
+                  paste(round(pt(tstat, df = 38), 4)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+$$P(|T| > 2.726) = 0.0096$$
+:::
+:::
+
+> We'd see at least as much estimation error only
+> `r round(100*2*pt(tstat, nrow(temps) - 1), 2)`% of the time. So if the
+> hypothesis were true, this sample would be really unusual.
+
+## Evaluating the hypothesis
+
+To evaluate the hypothesis that $\mu = 98.6$, we assume it is true and then consider whether the estimation error would be unusually large purely by chance according to the $t$ model:
+
+-   unusually large error $\longrightarrow$ hypothesis is implausible
+    $\longrightarrow$ can be rejected
+-   not unusually large error $\longrightarrow$ hypothesis is plausible
+    $\longrightarrow$ can't be rejected
+
+We just made these assessments:
+
+```{r}
+temps |>
+  summarize(sample.mean = mean(body.temp),
+            se = sd(body.temp)/sqrt(length(body.temp))) |>
+  bind_rows(c(sample.mean = 98.2, se = NA)) |>
+  fill(se) |>
+  mutate(t.stat = (sample.mean - 98.6)/se,
+         how.often = 2*pt(t.stat, 38),
+         evaluation = cut(how.often, breaks = c(0, 0.05, 1), labels = c('unusual', 'not unusual'))) |>
+  pander()
+```
+
+*Seems reasonable, but why exactly isn't 19.2% of the time 'unusual'?*
+
+## Decisions, decisions
+
+> What would happen if we decided that $T = -1.328$ was unusual?
+
+```{r}
+temps |>
+  summarize(sample.mean = mean(body.temp),
+            se = sd(body.temp)/sqrt(length(body.temp))) |>
+  bind_rows(c(sample.mean = 98.2, se = NA)) |>
+  fill(se) |>
+  mutate(t.stat = (sample.mean - 98.6)/se,
+         how.often = 2*pt(t.stat, 38)) |>
+  pander()
+```
+
+Suppose we drew a line at 20%. Then if in fact $\mu = 98.6$:
+
+- errors in the 'reject' regime occur by chance 20% of the time
+- so we'll reach the wrong conclusion for 1 in 5 samples
+
+This error rate is too high.
+
+## Formalizing a test for the mean
+
+A **statistical hypothesis** is a statement about a population
+parameter. For every hypothesis there is an opposing or "alternative"
+hypothesis.
+
+A **hypothesis test** is a procedure for deciding between a hypothesis
+and its alternative.
+
+::: columns
+::: {.column width="60%"}
+We just tested the hypotheses: 
+
+$$
+\begin{cases}
+H_0: &\mu = 98.6 \quad(\text{"null" hypothesis}) \\
+H_A: &\mu \neq 98.6 \quad(\text{"alternative" hypothesis})
+\end{cases}
+$$
+
+Our decision was based on the "test statistic":
+
+$$
+T = \frac{\bar{x} - 98.6}{SE(\bar{x})}
+$$
+
+If $H_0$ is true, the sampling distribution of $T$ is well-approximated
+by a $t_{n-1}$ model.
+:::
+
+::: {.column width="40%"}
+We reject $H_0$ if it entails that the estimation error is unusually large relative to the standard error.
+
+- 'unusual' determined by considering error rate
+- two equivalent approaches: 
+
+    1. critical values 
+    2. $p$-values
+:::
+:::
+
+## The critical value approach
+
+> Reject $H_0$ if $|T|$ exceeds the $1 - \frac{\alpha}{2}$ quantile of the $t_{n - 1}$ model
+
+::: {.columns}
+::: {.column width="45%"}
+Steps:
+
+1. Decide on an error tolerance $\alpha$.
+2. Find the $1 - \frac{\alpha}{2}$ quantile $q$.
+3. Reject if $|T| > q$.
+
+:::
+
+::: {.column width="55%"}
+```{r}
+temp.mean <- mean(temps$body.temp)
+temp.mean.se <- sd(temps$body.temp)/sqrt(nrow(temps))
+```
+
+```{r, echo = T}
+# compute test statistic
+tstat <- (temp.mean - 98.6)/temp.mean.se
+tstat
+
+# compute critical value for a 5% error tolerance
+crit.val <- qt(p = 0.975, df = 38)
+crit.val
+
+# compare
+abs(tstat) > crit.val 
+```
+
+:::
+
+:::
+
+Rationale: if $H_0$ is true...
+
+- $|T|$ will be smaller than the quantile for $(1 - \alpha)\times 100$% of samples
+- so using this rule you'll only make a mistake $\alpha\times 100$% of the time
+
+
+## The $p$-value approach
+
+> Reject $H_0$ if $T$ exceeds the observed value for less than $\alpha\times 100$% of samples: $$2\times P(T > |T_\text{obs}|) < \alpha$$
+
+::: {.columns}
+
+::: {.column width="45%"}
+Steps:
+
+1. Decide on an error tolerance $\alpha$.
+2. Compute the proportion $p$ of samples for which $T$ exceeds observed value.
+3. Reject if $p < \alpha$.
+:::
+
+::: {.column width="55%"}
+```{r, echo = T}
+# compute test statistic
+tstat <- (temp.mean - 98.6)/temp.mean.se
+tstat
+
+# proportion of samples where T exceeds observed value
+p.val <- 2*pt(abs(tstat), df = 38, lower.tail = F)
+p.val
+
+# decision with error rate controlled at 5%
+p.val < 0.05
+```
+:::
+
+:::
+
+Rationale: 
+
+- $p$-value conveys exactly how unusual the test statistic is
+- $p < \alpha$ exactly when $|T| > q$, so this rule controls the error rate at $\alpha$
+
+## Test outcomes
+
+There are two possible findings for a test:
+
+-   \[crosses decision threshold\] reject $H_0$ in favor of $H_A$
+-   \[doesn't cross decision threshold\] fail to reject $H_0$ in favor of $H_A$
+
+A **reject** decision is interpreted as:
+
+> The data provide evidence that... \[against $H_0$/favoring $H_A$\]
+
+A **fail to reject** decision is interpreted as:
+
+> The data *do not* provide evidence that... \[against $H_0$/favoring
+> $H_A$\]
+
+## Interpreting results
+
+::: columns
+::: {.column width="55%"}
+Calculations in R:
+
+```{r, echo = T}
+# compute test statistic
+tstat <- (temp.mean - 98.6)/temp.mean.se
+tstat
+
+# compute critical value for a 5% error tolerance
+crit.val <- qt(p = 0.975, df = 38)
+crit.val
+
+# test decision
+abs(tstat) > crit.val
+
+# p-value
+2*pt(abs(tstat), df = 38, lower.tail = F)
+```
+:::
+
+::: {.column width="45%"}
+Conventional narrative summary style:
+
+> The data do not provide evidence that the mean body temperature differs from 98.6°F (*T* = -1.328 on 38 degrees of freedom, *p* = 0.192).
+
+Conveys a lot of info succinctly:
+
+- test conclusion
+- hypotheses tested
+- number of standard errors from hypothesized value ($T$)
+- sample size (degrees of freedom + 1)
+- strength of evidence ($p$-value)
+:::
+:::
+
+<!-- ## Significance conventions -->
+
+<!-- ::: {.columns} -->
+
+<!-- ::: {.column width="43%"} -->
+
+<!-- **Convention 1:** statistical significance -->
+
+<!-- - $p < 0.05$: reject $H_0$ -->
+
+<!-- - $p \geq 0.05$: fail to reject $H_0$ -->
+
+<!-- > "The data provide **significant evidence at level $\alpha$ = 0.05** against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (*T* = -5.4548 on 129 degrees of freedom, *p* = .0000002411)." -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="57%"} -->
+
+<!-- **Convention 2:** weight of evidence against $H_0$ -->
+
+<!-- - $p < 0.01$: strong evidence -->
+
+<!-- - $0.01 \leq p < 0.05$: moderate evidence -->
+
+<!-- - $0.05 \leq p < 0.1$: weak evidence  -->
+
+<!-- - $0.1 \leq p$: no evidence -->
+
+<!-- > "The data **provide strong evidence** against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (*T* = -5.4548 on 129 degrees of freedom, *p* = .0000002411)." -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+<!-- You may use either convention to interpret test results. -->
+
+## Components of a test
+
+| Component              | Explanation                                                                  | Example                                                     |
+|----------------|--------------------------------|-------------------------|
+| Population parameter   | The quantity of interest                                                     | Mean body temp $\mu$                                        |
+| Null hypothesis        | The claim to be tested                                                       | $\mu = 98.6$                                                |
+| Alternative hypothesis | The alternative claim                                                        | $\mu \neq 98.6$                                             |
+| Test statistic         | A function of the sample data and the hypothetical parameter value | $T = \frac{\bar{x} - 98.6}{s_x/\sqrt{n}} = -1.328$          |
+| Model                  | Sampling distribution of the test statistic under $H_0$                      | $t_{38}$ model                                              |
+| $p$-value              | Probability under $H_0$ of obtaining a result at least as favorable to $H_A$ | 19.2% of samples produce a test statistic at least as large |
+| Decision               | Reject or fail to reject $H_0$ in favor of $H_A$                             | Fail to reject                                              |

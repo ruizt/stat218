@@ -1,0 +1,274 @@
+---
+title: "Lab 6: Hypothesis testing basics"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+In class we discussed the $t$ test for the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\mu = \mu_0 \\
+H_A: &\mu \neq \mu_0
+\end{cases}
+$$
+
+The objective of this lab is to learn to perform the basic calculations involved in this $t$ test "by hand" (without the use of the function that we'll apply later):
+
+-   calculating the test statistic $T = \frac{\bar{x} - \mu_0}{SE(\bar{x})}$
+-   calculating a critical value for a level $\alpha$ test
+-   calculating a $p$-value
+
+We'll use the `temps` dataset to illustrate.
+
+```{r packages and data}
+library(tidyverse)
+load('data/temps.RData')
+head(temps)
+```
+
+### Checking test assumptions
+
+The $t$ test only makes sense for unimodal populations; otherwise, the population mean isn't an interpretable parameter. 
+
+Beyond that, the test is based on the assumption that either the underlying population distribution is symmetric or the sample size is not too small. "Too small" is relative to just how much funny business you see in the distribution of values: more pronounced skewness or outliers means that more data are required for the test to work well.[^1]
+
+[^1]: I usually think in the following terms for the $t$-test:
+
+    -   small: $n \leq 20$
+    -   modest: $20 < n \leq 50$
+    -   large: $50 < n$
+
+    Unless I'm in the 'small' regime, I'm not too worried about skew or outliers. In the 'modest' regime, I'm not concerned unless I spot very pronounced skew or outliers. In the 'large' regime, I'm really only concerned about (strong) multimodality. Interestingly, in the latter case, the $t$ test still works for multimodal populations, but the population mean isn't meaningful.
+
+Focusing on the mean body temperature as the parameter of interest, we'll start by checking data summaries of the `body.temp` variable to assess the properties mentioned above: unimodality and subsequently symmetry and presence of outliers. Here, we have 39 observations, which is neither small nor large but modest. So, we don't need to be *too* sensitive unless strong skewness or extreme outliers are present.
+
+```{r checking test assumptions, fig.width = 4, fig.height = 3}
+# extract temperature variable
+bodytemp <- temps$body.temp
+
+# location measures
+summary(bodytemp)
+
+# histogram
+hist(bodytemp, breaks = 10)
+```
+
+The histogram suggests a unimodal population, so conceptually the test is sensible; moreover, there's no indication of strong skewness or outliers, so the test should work just fine. 
+
+::: callout-note
+## Your turn 1
+
+Check the `heart.rate` variable for any skewness or outliers. Assess whether the $t$ test is appropriate, taking account of the sample size.
+
+```{r your turn 1}
+# extract heartrate variable
+
+# location measures
+
+# histogram
+
+```
+:::
+
+### Calculating the test statistic
+
+To test the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\mu = \mu_0 \\
+H_A: &\mu \neq \mu_0
+\end{cases}
+$$ We use the test statistic:
+
+$$
+T = \frac{\bar{x} - \mu_0}{SE(\bar{x})}
+$$ 
+
+In these expressions, $\mu_0$ is a placeholder for the hypothesized value of $\mu$ in any particular problem. To test whether the mean body temperature is 98.6°F, set $\mu_0 = 98.6$ and follow the formula:
+
+```{r calculating the t statistic}
+# store sample mean and standard error
+bodytemp.mean <- mean(bodytemp)
+bodytemp.mean.se <- sd(bodytemp)/sqrt(length(bodytemp))
+
+# calculate t statistic
+bodytemp.tstat <- (bodytemp.mean - 98.6)/bodytemp.mean.se
+bodytemp.tstat
+```
+
+Notice that this matches the value obtained in class. The interpretation is:
+
+> If mean body temperature were 98.6°F, the estimation error would be -1.328 standard errors.
+
+::: callout-note
+## Your turn 2
+
+Calculate the test statistic to test the hypothesis that mean heart rate is 75 beats per minute (bpm).
+
+```{r your turn 2}
+# store sample mean and standard error for heart rate
+
+# calculate t statistic to test whether the mean is 75bpm
+
+```
+:::
+
+### Critical values
+
+One way to make a test decision is to determine a threshold $q$ for the absolute value of $T$: 
+
+- for any larger $|T| > q$, you'll reject the null hypothesis in favor of the alternative
+- for any smaller value $|T| \leq q$, you'll fail to reject the null hypothesis in favor of the alternative 
+
+The threshold is chosen to control the error rate $\alpha$: how often you make the mistake of rejecting $H_0$ when it's true. To do this, we use the $1 - \frac{\alpha}{2}$ quantile of the $t_{n - 1}$ model, *i.e.*, the value such that:
+
+$$
+P(T < q) = 1 - \frac{\alpha}{2}
+$$
+
+We use this specific quantile so that $P(|T| > q) = \alpha$, meaning, if $H_0$ is true, the proportion of samples for which $T$ exceeds the decision threshold -- and thus an error is made -- is $\alpha$. 
+
+Several examples follow to help you get the hang of determining the correct inputs to obtain critical values based on controlling the error rate at $\alpha$:
+
+```{r computing critical values}
+# to control error rate at 10%, use this critical value
+qt(0.95, df = 38)
+
+# to control error rate at 5%, use this critical value
+qt(0.975, df = 38)
+
+# to control error rate at 1%, use this critical value
+qt(0.995, df = 38)
+```
+
+::: callout-note
+## Your turn 3
+
+Calculate the critical value you'd use to control error rate at 20%.
+
+```{r your turn 3}
+# to control error rate at 20%, use this critical value
+
+```
+:::
+
+The error rate $\alpha$ is also called a "significance level", leading to the following interpretations:
+
+- at the 20% significance level, we reject the null hypothesis $\mu = 98.6$
+- at the 10% significance level, we fail to reject the null hypothesis $\mu = 98.6$
+- at the 5% significance level, we fail to reject the null hypothesis $\mu = 98.6$
+- at the 1% significance level, we fail to reject the null hypothesis $\mu = 98.6$
+
+You'll notice that the thresholds get more stringent as the significance level decreases; so we'll reject for every significance level below 10%.
+
+A 5% significance level is conventional. We'd report the test result as follows:
+
+> At the 5% significance level, the data do not provide evidence that mean body temperature differs from 98.6°F.
+
+::: callout-note
+## Your turn 4
+
+Test the hypothesis that mean heart rate is 75 bpm at the 5% significance level and report the test result following the language above.
+
+```{r your turn 4}
+# to control error rate at 5%, use this critical value
+
+# decision whether mean heart rate is 75bpm?
+
+```
+:::
+
+### $p$-values
+
+A $p$-value quantifies exactly how unusual a particular $T$ statistic is. Technically, it's the proportion $p$ of samples for which $T$ exceeds the observed value; you can also think of it as the *minimum significance level at which the test rejects the null hypothesis*.
+
+To calculate a $p$-value, we compute:
+
+$$
+p = 2\times P(T > |T_\text{observed}|)
+$$
+
+In R, the $p$-value for the test of mean body temperature is:
+
+```{r computing a p value}
+2*pt(abs(bodytemp.tstat), df = 38, lower.tail = F)
+```
+
+The interpretation of this quantity:
+
+> If mean body temperature is in fact 98.6°F then 19.2% of samples would produce a $T$ statistic as large or larger than the observed value.
+
+::: callout-note
+## Your turn 5
+
+Compute the $p$-value for the test of whether mean heart rate is 75 bpm. Interpret the value in context.
+
+```{r your turn 5}
+# p value for test of whether mean heart rate is 75bpm
+
+```
+:::
+
+### Reporting test results
+
+The conventional style for reporting a test is to include a statement of the outcome, interpreted in context, with supporting statistics provided parenthetically:
+
+> The data do not provide evidence that the mean body temperature differs from 98.6°F (*T* = -1.328 on 38 degrees of freedom, *p* = 0.192).
+
+::: callout-note
+## Your turn 6
+
+Write a report of your test of whether mean heart rate is 75bpm following the convention above.
+
+:::
+
+### Practice problems
+
+1.  Use the `nhanes` dataset to test the hypothesis that the average U.S. adult gets 8 hours of sleep per night.
+
+    a.  Produce a histogram of the observations and assess, considering the sample size, whether the $t$ test is appropriate based on its shape and the presence or absence of outliers.
+    b.  Calculate a point estimate and standard error for the mean nightly hours of sleep among U.S. adults.
+    c.  Write the hypotheses to test in notation.
+    d.  Calculate the test statistic, critical value for a 5% significance level test, and $p$-value.
+    e.  Report the test result following the conventional style introduced in class.
+    f. Calculate and interpret a 95% confidence interval for the mean nightly hours of sleep among U.S. adults.
+
+```{r practice problems, echo = F, eval = F}
+# nhanes data
+load('data/nhanes.RData')
+
+# extract sleep variable
+sleep <- nhanes$sleephrsnight
+
+# part a: assess assumptions
+summary(sleep)
+hist(sleep)
+
+# part b: point estimate and se
+sleep.mean <- mean(sleep)
+sleep.mean.se <- sd(sleep)/sqrt(length(sleep))
+c(estimate = sleep.mean, se = sleep.mean.se)
+
+# part d: calculate the test stat, critical value (5%), and p-value
+sleep.tstat <- (sleep.mean-8)/sleep.mean.se
+sleep.tstat
+crit.val <- qt(0.975, df = 3178)
+p.val <- 2*pt(abs(sleep.tstat), df = 3178, lower.tail = F)
+
+# part f: calculate a 95% confidence interval
+sleep.mean + c(-1, 1)*crit.val*sleep.mean.se
+```

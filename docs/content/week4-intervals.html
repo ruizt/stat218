@@ -400,7 +400,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Confidence intervals</h1>
-  <p class="subtitle">Adjusting estimates for sampling variation</p>
+  <p class="subtitle">Constructing interval estimates to attain a specified coverage rate</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -408,12 +408,10 @@
 </section>
 <section id="todays-agenda" class="slide level2">
 <h2>Today’s agenda</h2>
-<ol type="1">
-<li>HW2 remarks/discussion</li>
-<li>[Lecture] A basic interval estimate for the mean</li>
-<li>[Lecture/lab] Exploring interval coverage</li>
-<li>[Lecture/lab] Comparing normal and <span class="math inline">\(t\)</span> models</li>
-</ol>
+<ul>
+<li>[lecture] <span class="math inline">\(t\)</span> confidence intervals for the mean</li>
+<li>[lab] computing and interpreting confidence intervals</li>
+</ul>
 </section>
 <section id="from-last-time" class="slide level2">
 <h2>From last time</h2>
@@ -508,41 +506,34 @@ T = \frac{\bar{x} - \mu}{s_x/\sqrt{n}}
 </div>
 </div>
 </section>
-<section id="model-interpretation" class="slide level2">
-<h2>Model interpretation</h2>
+<section id="t-model-interpretation" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
 <blockquote>
 <p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
 </blockquote>
 <p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
 <div class="columns">
 <div class="column">
+<p>For example:</p>
 <ul>
-<li>50% of samples give negative values of <span class="math inline">\(T\)</span></li>
+<li>for 50% of samples, <span class="math inline">\(T &lt; 0\)</span></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pt</span>(<span class="dv">0</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># area less than 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># area less than 0</span></span>
+<span id="cb1-2"><a></a><span class="fu">pt</span>(<span class="dv">0</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
 </div>
 <ul>
-<li>83.5% of samples give values of <span class="math inline">\(T\)</span> under 1</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">pt</span>(<span class="dv">1</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># area less than 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8350616</code></pre>
-</div>
-</div>
-<ul>
-<li>33.5% of samples give values of <span class="math inline">\(T\)</span> between 0 and 1</li>
+<li>written as <span class="math inline">\(P(T &lt; 0) = 0.5\)</span></li>
 </ul>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
 </figure>
 </div>
 </div>
@@ -550,337 +541,439 @@ T = \frac{\bar{x} - \mu}{s_x/\sqrt{n}}
 </div>
 </div>
 </section>
-<section id="precision-and-coverage" class="slide level2">
-<h2>Precision and coverage</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p>Intervals have two main and attributes:</p>
-<ul>
-<li><strong>precision</strong> refers to how wide or narrow the interval is</li>
-<li><strong>coverage</strong> refers to how often, under random sampling, the interval captures the parameter of interest</li>
-</ul>
-</div><div class="column" style="width:55%;">
-<p>These properties are inversely related:</p>
-<ul>
-<li>if I say mean cholesterol is between 0 and 50 I’m almost certainly right, but the estimate is useless</li>
-<li>if I say mean cholesterol is between 5.0299 and 5.0301, I’ve made a very precise guess, but I’m likely wrong (think about sampling variability)</li>
-</ul>
-</div>
-</div>
+<section id="t-model-interpretation-1" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
 <blockquote>
-<p>An accurate interval should maintain high coverage while achieving practically useful precision. <em>This isn’t always possible!</em></p>
+<p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
 </blockquote>
-</section>
-<section id="an-interval-for-the-mean" class="slide level2">
-<h2>An interval for the mean</h2>
-<p>A common interval for the population mean is: <span class="math display">\[\bar{x} \pm 2\times SE(\bar{x}) \qquad\text{where}\quad SE(\bar{x}) = \left(\frac{s_x}{\sqrt{n}}\right)\]</span></p>
+<p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
 <div class="columns">
 <div class="column">
-<p>By hand: <span class="math display">\[5.031 \pm 2\times 0.1396 = (4.75, 5.31)\]</span></p>
-</div><div class="column">
-<p>In R:</p>
+<p>For example:</p>
+<ul>
+<li>for 83.5% of samples, <span class="math inline">\(T &lt; 1\)</span></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">c</span>(<span class="at">lwr =</span> <span class="fu">mean</span>(cholesterol) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(cholesterol)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">50</span>), </span>
-<span id="cb5-2"><a></a>  <span class="at">upr =</span> <span class="fu">mean</span>(cholesterol) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(cholesterol)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># area less than 1</span></span>
+<span id="cb3-2"><a></a><span class="fu">pt</span>(<span class="dv">1</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     lwr      upr 
-4.738974 5.346902 </code></pre>
+<pre><code>[1] 0.8350616</code></pre>
+</div>
+</div>
+<ul>
+<li>written as <span class="math inline">\(P(T &lt; 1) = 0.835\)</span></li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
 </div>
 </div>
 </div>
 </div>
-<p>The precision is evident from the interval width (0.5611). But what about coverage?</p>
+</div>
 </section>
-<section id="exploring-interval-coverage" class="slide level2">
-<h2>Exploring interval coverage</h2>
-<p>Let’s carry on pretending that the NHANES data comprise a population.</p>
-<p>The first section of <code>lab5-intervals</code> contains some simple commands to draw a sample and calculate an interval estimate.</p>
-<ol type="1">
-<li>Each of you will generate an interval <em>based on a different sample</em></li>
-<li>We’ll tally how many of you obtained intervals capturing the population mean</li>
-</ol>
-<p>Our tally will give an approximate idea of the coverage.</p>
+<section id="t-model-interpretation-2" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
+<blockquote>
+<p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
+</blockquote>
+<p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
+<div class="columns">
+<div class="column">
+<p>For example:</p>
+<ul>
+<li>for 97% of samples, <span class="math inline">\(T &lt; 2\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># area less than 2</span></span>
+<span id="cb5-2"><a></a><span class="fu">pt</span>(<span class="dv">2</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.969999</code></pre>
+</div>
+</div>
+<ul>
+<li>written as <span class="math inline">\(P(T &lt; 2) = 0.97\)</span></li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="more-simulation" class="slide level2">
-<h2>More simulation</h2>
+<section id="t-model-interpretation-3" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
+<blockquote>
+<p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
+</blockquote>
+<p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
+<div class="columns">
+<div class="column">
+<p>For example:</p>
+<ul>
+<li>for 3% of samples, <span class="math inline">\(T &gt; 2\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># area greater than 2</span></span>
+<span id="cb7-2"><a></a><span class="fu">pt</span>(<span class="dv">2</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> F) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03000102</code></pre>
+</div>
+</div>
+<ul>
+<li>notice: <span class="math display">\[
+\begin{align*}
+P(T &gt; 2) &amp;= 1 - P(T &lt; 2) \\
+(0.03) &amp;= 1 - (0.97)
+\end{align*}
+\]</span></li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t-model-interpretation-4" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
+<blockquote>
+<p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
+</blockquote>
+<p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
+<div class="columns">
+<div class="column">
+<p>For example:</p>
+<ul>
+<li>for 13.5% of samples, <span class="math inline">\(1 &lt; T &lt; 2\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># area between 1 and 2</span></span>
+<span id="cb9-2"><a></a><span class="fu">pt</span>(<span class="dv">2</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pt</span>(<span class="dv">1</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1349374</code></pre>
+</div>
+</div>
+<ul>
+<li>notice: <span class="math display">\[
+\begin{align*}
+P(1 &lt; T &lt; 2) &amp;= P(T &lt; 2) - P(T &lt; 1) \\
+(0.135) &amp;= (0.97) - (0.835)
+\end{align*}
+\]</span></li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t-model-interpretation-5" class="slide level2">
+<h2><span class="math inline">\(t\)</span> model interpretation</h2>
+<blockquote>
+<p>The <em>area under the density curve</em> between any two values <span class="math inline">\((a, b)\)</span> gives the proportion of random samples for which <span class="math inline">\(a &lt; T &lt; b\)</span>.</p>
+</blockquote>
+<p><span class="math display">\[(\text{proportion of area between } a, b) = (\text{proportion of samples where } a &lt; T &lt; b)\]</span></p>
+<div class="columns">
+<div class="column">
+<p>For example:</p>
+<ul>
+<li>for 94% of samples, <span class="math inline">\(-2 &lt; T &lt; 2\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># area between 1 and 2</span></span>
+<span id="cb11-2"><a></a><span class="fu">pt</span>(<span class="dv">2</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pt</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.939998</code></pre>
+</div>
+</div>
+<ul>
+<li>written <span class="math inline">\(P(-2 &lt; T &lt; 2) = 0.94\)</span></li>
+</ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-closer-look-at-interval-construction" class="slide level2">
+<h2>A closer look at interval construction</h2>
+<p>So where did that 2 come from in the margin of error for our interval estimate?</p>
+<p><span class="math display">\[
+\bar{x} \pm \color{blue}{2}\times SE(\bar{x})
+\]</span></p>
+<p>Well:</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><span class="math display">\[
+\begin{align*}
+0.94 &amp;= P(-\color{blue}{2} &lt; T &lt; \color{blue}{2}) \\
+&amp;= P\left(-\color{blue}{2} &lt; \frac{\bar{x} - \mu}{s_x/\sqrt{n}} &lt; \color{blue}{2}\right) \\
+&amp;= P(\underbrace{\bar{x} - \color{blue}{2}\times SE(\bar{x}) &lt; \mu &lt; \bar{x} + \color{blue}{2}\times SE(\bar{x})}_{\text{interval covers population mean}})
+\end{align*}
+\]</span></p>
+</div><div class="column" style="width:30%;">
+<blockquote>
+<p>For 94% of all random samples, the interval covers the population mean.</p>
+</blockquote>
+</div>
+</div>
+<p>So the number 2 determines the proportion of samples for which the interval covers the mean, known as its <strong>coverage</strong>.</p>
+</section>
+<section id="effect-of-sample-size" class="slide level2">
+<h2>Effect of sample size</h2>
+<blockquote>
+<p>The sample size determines the exact shape of the <span class="math inline">\(t\)</span> model through its ‘degrees of freedom’ <span class="math inline">\(n - 1\)</span>. This changes the areas slightly.</p>
+</blockquote>
+<p>The exact coverage quickly converges to just over 95% as the sample size increases.</p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<table style="width:24%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">n</th>
+<th style="text-align: center;">coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.8607</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0.9144</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">0.9361</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">0.9457</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">0.9502</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">0.9524</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">0.9534</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-17-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="changing-the-coverage" class="slide level2">
+<h2>Changing the coverage</h2>
+<p>Consider a slightly more general expression for an interval for the mean:</p>
+<p><span class="math display">\[
+\bar{x} \pm c\times SE(\bar{x})
+\]</span></p>
+<p>The number <span class="math inline">\(c\)</span> is called a <strong>critical value</strong>. It determines the coverage.</p>
+<ul>
+<li>larger <span class="math inline">\(c\)</span> <span class="math inline">\(\longrightarrow\)</span> higher coverage</li>
+<li>smaller <span class="math inline">\(c\)</span> <span class="math inline">\(\longrightarrow\)</span> lower coverage</li>
+</ul>
+<p>The so-called “empirical rule” is that:</p>
+<ul>
+<li><span class="math inline">\(c = 1 \longrightarrow\)</span> approximately 68% coverage</li>
+<li><span class="math inline">\(c = 2 \longrightarrow\)</span> approximately 95% coverage</li>
+<li><span class="math inline">\(c = 3 \longrightarrow\)</span> approximately 99.7% coverage</li>
+</ul>
+</section>
+<section id="interpreting-critical-values" class="slide level2">
+<h2>Interpreting critical values</h2>
+<div class="columns">
+<div class="column">
+<p><span class="math display">\[
+P(\color{#FF6459}{-2 &lt; T &lt; 2}) = 1 - 2\times P(\color{blue}{T &gt; 2})
+\]</span></p>
+<p>Look at how the areas add up so that: <span class="math display">\[
+P(\color{blue}{T &gt; 2}) = 0.03
+\]</span> Moreover: <span class="math display">\[
+P(T &lt; 2) = 1 - 0.03 = 0.97
+\]</span></p>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><em>So the critical value 2 is actually the 97th percentile of the sampling distribution of <span class="math inline">\(T\)</span>.</em></p>
+<ul>
+<li>also called the 0.97 “quantile”</li>
+<li>(percentiles expressed in proportions are called quantiles)</li>
+</ul>
+</section>
+<section id="exact-coverage-using-t-quantiles" class="slide level2">
+<h2>Exact coverage using <span class="math inline">\(t\)</span> quantiles</h2>
+<p>To engineer an interval with a specific coverage, use the <span class="math inline">\(p\)</span>th quantile where:</p>
+<p><span class="math display">\[p = \left[1 - \left(\frac{1 - \text{coverage}}{2}\right)\right]\]</span> In R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># coverage 95% using t quantile</span></span>
+<span id="cb13-2"><a></a>coverage <span class="ot">&lt;-</span> <span class="fl">0.95</span></span>
+<span id="cb13-3"><a></a>q.val <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb13-4"><a></a>crit.val <span class="ot">&lt;-</span> <span class="fu">qt</span>(q.val, <span class="at">df =</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb13-5"><a></a>crit.val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.093024</code></pre>
+</div>
+</div>
+<p>The effect of increasing/decreasing coverage on the quantile is:</p>
+<ul>
+<li>increase coverage <span class="math inline">\(\longrightarrow\)</span> larger quantile <span class="math inline">\(\longrightarrow\)</span> wider interval</li>
+<li>decrease coverage <span class="math inline">\(\longrightarrow\)</span> smaller quantile <span class="math inline">\(\longrightarrow\)</span> narrower interval</li>
+</ul>
+</section>
+<section id="contrasting-coverage-with-precision" class="slide level2">
+<h2>Contrasting coverage with precision</h2>
+<blockquote>
+<p><strong>Precision</strong> refers to how wide or narrow the interval is.</p>
+</blockquote>
+<p>Precision depends on every component of the margin of error:</p>
+<ul>
+<li>critical value used</li>
+<li>sample size</li>
+<li>variability of values</li>
+</ul>
+<p>By contrast, coverage depends only on the critical value used.</p>
+</section>
+<section id="confidence-intervals" class="slide level2">
+<h2>Confidence intervals</h2>
+<p>Interval estimates constructed to achieve a specified coverage are called “confidence intervals”; the coverage is interpreted and reported as a “confidence level”.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># ingredients</span></span>
+<span id="cb15-2"><a></a>cholesterol.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(cholesterol)</span>
+<span id="cb15-3"><a></a>cholesterol.sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(cholesterol)</span>
+<span id="cb15-4"><a></a>cholesterol.n <span class="ot">&lt;-</span> <span class="fu">length</span>(cholesterol)</span>
+<span id="cb15-5"><a></a>cholesterol.se <span class="ot">&lt;-</span> cholesterol.sd<span class="sc">/</span><span class="fu">sqrt</span>(cholesterol.n)</span>
+<span id="cb15-6"><a></a>crit.val <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> cholesterol.n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb15-7"><a></a></span>
+<span id="cb15-8"><a></a><span class="co"># interval</span></span>
+<span id="cb15-9"><a></a>cholesterol.mean <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span>crit.val<span class="sc">*</span>cholesterol.se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.005566 5.080310</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<blockquote>
+<p>With 95% confidence, the mean total cholesterol among U.S. adults is estimated to be between 5.0056 and 5.0803 mmol/L.</p>
+</blockquote>
+</div>
+</div>
+<p>The general formula for a confidence interval for the population mean is</p>
+<p><span class="math display">\[
+\bar{x} \pm c\times SE(\bar{x})
+\]</span></p>
+<p>where <span class="math inline">\(c\)</span> is a critical value, obtained as a quantile of the <span class="math inline">\(t_{n - 1}\)</span> model and chosen to ensure a specific coverage.</p>
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<p>The “common” interval estimate for the mean is actually an approximate 95% confidence interval:</p>
+<p><span class="math display">\[
+\bar{x} \pm 2 \times SE(\bar{x})
+\]</span></p>
+<ul>
+<li><p>captures the population mean <span class="math inline">\(\mu\)</span> for roughly 95% of random samples</p></li>
+<li><p>replacing 2 with a <span class="math inline">\(t_{n - 1}\)</span> quantile allows the analyst to adjust coverage</p></li>
+<li><p>the <span class="math inline">\(t_{n - 1}\)</span> model is an approximation for the sampling distribution of <span class="math inline">\(\frac{\bar{x} - \mu}{SE(\bar{x})}\)</span></p>
+<ul>
+<li>approximation improves with increasing sample size or symmetry</li>
+<li>usually good quality except in “extreme” situations</li>
+</ul></li>
+</ul>
+<p>Interval interpretation:</p>
+<blockquote>
+<p>With [XX]% confidence, the mean [population parameter] is estimated to be between [lower bound] and [upper bound] [units].</p>
+</blockquote>
+</section>
+<section>
+<section id="extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
+
+</section>
+<section id="simulation-of-coverage" class="slide level2">
+<h2>Simulation of coverage</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
-<p>Artificially simulating a larger number of intervals provides a slightly better approximation of coverage.</p>
+<p>Artificially simulating a large number of intervals provides an empirical approximation of coverage.</p>
 <ul>
-<li>at right, 100 intervals</li>
-<li>97% cover the population mean (vertical dashed line)</li>
+<li>at right, 200 intervals</li>
+<li>94% cover the population mean (vertical dashed line)</li>
+<li>pretty close to nominal coverage level 95%</li>
 </ul>
-<p>What do you expect would happen to coverage if, for the same samples…</p>
-<ul>
-<li>a wider margin of error (say, <span class="math inline">\(3\times SE\)</span>) were used?</li>
-<li>a narrower margin of error (say, <span class="math inline">\(1\times SE\)</span>) were used?</li>
-</ul>
+<p>This is also a handy way to remember the proper interpretation:</p>
+<blockquote>
+<p>If I made a lot of intervals from independent samples, 95% of them would ‘get it right’.</p>
+</blockquote>
 </div><div class="column" style="width:35%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-8-1.png" width="384"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="so-why-2-standard-errors" class="slide level2">
-<h2>So why 2 standard errors?</h2>
-<div class="columns">
-<div class="column">
-<p>The margin of error of <span class="math inline">\(2\times SE\)</span> comes from the so-called “empirical rule”.</p>
-<ul>
-<li>under the normal model, 95% of values are within 2SD of center</li>
-<li>so for 95% of samples, the sample mean is within 2SD of the population mean</li>
-</ul>
-<p>So in theory, according to the normal model, <span class="math inline">\(\bar{x} \pm 2\times SD\)</span> achieves 95% coverage.</p>
-</div><div class="column">
-<p><img data-src="img/empirical-rule.png" width="500"></p>
-</div>
-</div>
-<p><em>But we are using standard error (SE), not standard deviation (SD). Do we still get the same coverage using the normal model?</em></p>
-</section>
-<section id="normal-model-coverage" class="slide level2">
-<h2>Normal model coverage</h2>
-<div class="columns">
-<div class="column">
-<p>At right, the misses are compared between intervals calculated with SD (left) and SE (right) using the multiplier from the normal model on the same 10,000 simulated datasets with sample size <span class="math inline">\(n = 15\)</span>.</p>
-<ul>
-<li>SE misses more often</li>
-<li>so the normal model produces <em>under-coverage</em></li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:25%;">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">type</th>
-<th style="text-align: center;">coverage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">sd</td>
-<td style="text-align: center;">0.954</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">se</td>
-<td style="text-align: center;">0.9294</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><em>What do you think: the multiplier should be [smaller/larger] to ensure 95% coverage.</em></p>
-</div><div class="column">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-closer-look-at-the-normal-model" class="slide level2">
-<h2>A closer look at the normal model</h2>
-<p>An alternate but equivalent way to understand the normal model for the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is in terms of deviations. The following are equivalent:</p>
-
-<img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><p>The expression <span class="math inline">\(\frac{\bar{x} - \mu}{\sigma/\sqrt{n}}\)</span> measures the number of standard deviations from center.</p>
-</section>
-<section id="simulating-deviations" class="slide level2">
-<h2>Simulating deviations</h2>
-<p>Another way to check normal model coverage is to use deviations:</p>
-<ol type="1">
-<li>Simulate many samples</li>
-<li>Compute scaled deviations</li>
-<li>Tally how many scaled deviations are between -2 and 2</li>
-</ol>
-<p>The proportion of samples for which the scaled deviation is between -2 and 2 approximates the coverage.</p>
-<p>We’ll try it in the next part of the <code>lab5-intervals</code>. Hypotheses:</p>
-<ul>
-<li>deviations scaled by SD should be between -2 and 2 95% of the time</li>
-<li>deviations scaled by SE should be between -2 and 2 [<em>more/less</em>] than 95% of the time</li>
-</ul>
-</section>
-<section id="the-t-model-1" class="slide level2">
-<h2>The <span class="math inline">\(t\)</span> model</h2>
-<p>We’re <em>actually</em> using <span class="math inline">\(\frac{\bar{x} - \mu}{s_x/\sqrt{n}}\)</span> to construct intervals, because we don’t know <span class="math inline">\(\sigma\)</span>.</p>
-<p>These deviations are better approximated by a <span class="math inline">\(t\)</span> model, which adjusts the normal model for the extra uncertainty that comes from estimating the standard deviation.</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p>The difference between models depends mainly on sample size:</p>
-<ul>
-<li>behaves almost exactly the same for moderate to large samples</li>
-<li>larger deviations from center for small samples</li>
-<li>leads to larger multipliers for computing margin of error</li>
-</ul>
-</div><div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/normal-t.png"></p>
-<figcaption>Comparison of <span class="math inline">\(t\)</span> model with normal model for various degrees of freedom.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="model-specification" class="slide level2">
-<h2>Model specification</h2>
-<p>The <span class="math inline">\(t\)</span> model is characterized by its <em>degrees of freedom</em>.</p>
-<ul>
-<li>for interval estimates for the mean, <span class="math inline">\(n - 1\)</span> is used</li>
-<li>depending on the degrees of freedom (<em>i.e.</em>, sample size), a different multiplier is applied to the standard error to obtain the margin of error</li>
-</ul>
-<p>The multiplier is called a <strong>critical value</strong>, and can be found in R via:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># pseudo code -- replace coverage with desired level, e.g., 0.95</span></span>
-<span id="cb7-2"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> (n <span class="sc">-</span> <span class="dv">1</span>), <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>chosen to ensure a specified <strong>nominal coverage level</strong> (usually 95%)</li>
-<li>higher nominal coverage levels utilize larger critical values, producing wider intervals</li>
-</ul>
-</section>
-<section id="model-validation" class="slide level2">
-<h2>Model validation</h2>
-<p>Using the <span class="math inline">\(t\)</span> model should produce coverage closer to the nominal level compared with the normal model. Let’s check through simulation.</p>
-<div class="columns">
-<div class="column">
-<p>At right, misses are compared between intervals using SE and critical values from the normal model (left) and <span class="math inline">\(t\)</span> model (right) constructed on the same 10,000 simulated datasets with sample size <span class="math inline">\(n = 10\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:28%;">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">model</th>
-<th style="text-align: center;">coverage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">normal</td>
-<td style="text-align: center;">0.9219</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">t</td>
-<td style="text-align: center;">0.9461</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The <span class="math inline">\(t\)</span> model produces coverage much closer to the nominal level.</p>
-</div><div class="column">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="calculations" class="slide level2">
-<h2>Calculations</h2>
-<p>So, to sum up, the general formula for an interval for a population mean is: <span class="math display">\[\bar{x} \pm c \times SE(\bar{x}) \quad\text{where}\quad SE(\bar{x}) = \frac{s_x}{\sqrt{n}}\]</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Rules of thumb:</p>
-<ul>
-<li>for moderate to large samples, use the normal model
-<ul>
-<li><span class="math inline">\(c = 1\)</span> for 68% coverage</li>
-<li><span class="math inline">\(c = 2\)</span> for 95% coverage</li>
-<li><span class="math inline">\(c = 3\)</span> for 99.7% coverage</li>
-</ul></li>
-<li>for small sample sizes, use the <span class="math inline">\(t\)</span> model</li>
-<li>when in doubt, use the <span class="math inline">\(t\)</span> model</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p>Exact critical values in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># normal critical value</span></span>
-<span id="cb8-2"><a></a>c <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">lower.tail =</span> F)</span>
-<span id="cb8-3"><a></a></span>
-<span id="cb8-4"><a></a><span class="co"># t critical value</span></span>
-<span id="cb8-5"><a></a>c <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> coverage)<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Interval calculation:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># pseudo code</span></span>
-<span id="cb9-2"><a></a><span class="fu">mean</span>(data_vec) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span>c<span class="sc">*</span><span class="fu">sd</span>(data_vec)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="interpretation" class="slide level2">
-<h2>Interpretation</h2>
-<p>As we’ve seen, coverage pertains to how often an interval of a particular form captures the population parameter of interest across samples of a fixed size. Loosely speaking, this represents how often you’d be right if you were to fully replicate your study <em>ad infinitum</em>.</p>
-<p>This leads to the following interpretation:</p>
-<blockquote>
-<p>With [XX]% confidence, the mean [population parameter] is estimated to be between [lower bound] and [upper bound] [units].</p>
-</blockquote>
-<p>For this reason, statisticians call interval estimates <strong>confidence intervals</strong>.</p>
-</section>
-<section id="revisiting-initial-example" class="slide level2">
-<h2>Revisiting initial example</h2>
-<div class="columns">
-<div class="column">
-<p>So in the example we began with:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># calculate 95% interval</span></span>
-<span id="cb10-2"><a></a><span class="fu">mean</span>(cholesterol) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(cholesterol)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.738974 5.346902</code></pre>
-</div>
-</div>
-<p><em>With 95% confidence, the mean total HDL cholesterol is estimated to be between 4.739 and 5.347 mmol/L.</em></p>
-<p>Remember, “95% confidence” refers to coverage under sampling variation.</p>
-</div><div class="column">
-<div class="cell">
-<div class="cell-output-display">
-<table style="width:25%;">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">mean</th>
-<th style="text-align: center;">se</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">5.043</td>
-<td style="text-align: center;">0.01906</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="week4-intervals_files/figure-revealjs/unnamed-chunk-22-1.png" width="384"></p>
 </figure>
 </div>
 </div>
@@ -894,7 +987,7 @@ T = \frac{\bar{x} - \mu}{s_x/\sqrt{n}}
 <p>STAT218</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

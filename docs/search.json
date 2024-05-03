@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Applied Statistics for Life Sciences",
     "section": "",
-    "text": "Announcements\n\n\n\nWeek 4 outlines posted.\nNo pending assignments.\n\n\n\nCourse information\nRead the [course syllabus] for detailed information on content, materials, learning outcomes, assessments, and course policies.\nInstructor: Trevor Ruiz (he/him/his) [email]\nClass meetings:\n\n[Section 05] 12:10pm — 2:00pm MW Construction Innovations Center Room C100\n[Section 06] 2:10pm — 4:00pm MW Construction Innovations Center Room C100\n\nOffice hours: 8:10am — 11:00am Mondays 25-236 or Zoom [by appointment]\nPreparing for class meetings:\n\nCheck the course website for posted reading, materials, and assignments.\nComplete readings in advance of the class meetings for which they are listed.\nWrite down one question you have about the reading and bring it to class.\nDownload and/or print a copy of the posted course notes (slides) for you to annotate and bring them to class.\n\nCompleting assignments:\nOne set of practice problems is included at the end of each lab; these problem sets are your homework assignments. You will often have some time to work on them during class, and they will be due by the following class period. To complete these assignments:\n\nReview the prompts included with the lab.\nDo your work (calculations, making plots, etc.) in the lab script provided in Posit Cloud.\nFollow the link that appears as [problem set] with the class meeting outline for the period in which the problem set was assigned. This will direct you to a form where you’ll fill out select answers. Refer to your work in Posit Cloud as you complete the form.\n\nSome general remarks:\n\nproblem sets are due one hour before the next class meeting\nlate submissions are accepted until 5pm two days after the due date\nscore summaries will be posted once all deadlines pass\nonce scores are posted, you can see your individual responses using the link that you used to access the form\n\n\n\nWeek 1 (4/1/24)\nAcademic holiday 4/1/24\nIntroduction to statistical thinking and study designs\nWednesday class meeting\n\n[reading] Vu and Harrington 1.1\n[lecture] course introduction; study designs\n[activity] distinguishing types of studies\n[problem set 1] due Monday 4/8; late submissions until Wednesday 4/10 5pm\n[problem set 1 corrections] due by 5pm Friday 4/12\n\nResponse summary [PS1] [PS1 corrections]\n\n\nWeek 2 (4/8/24)\nData types and descriptive statistics\nMonday class meeting\n\nreading quiz [12pm section] [2pm section]\n[reading] Vu and Harrington 1.2\n[lecture] data types\n[lab] R basics\n[problem set 2] due Wednesday 4/10; late submissions until Friday 4/12 5pm\n\nResponse summary [PS2]\nWednesday class meeting\n\n[reading] Vu and Harrington 1.4 - 1.5\n[lecture] descriptive statistics\n[lab] descriptive statistics in R\n[problem set 3] due Monday 4/15; late submissions until Wednesday 4/17 5pm\n\nResponse summary [PS3]\n\n\nWeek 3 (4/15/24)\nDescriptive statistics and graphical summaries\nMonday class meeting\n\n[reading quiz] Vu and Harrington 1.6\n[lecture] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[problem set 4] due Wednesday 4/17; late submissions until Friday 4/19 5pm\n\nResponse summary [PS4]\nWednesday class meeting\n\n[reading] review course notes and PS1, PS2, PS3 in detail\n[review] recap and Q&A\n[R cheatsheet] for easy reference\n[practice problems] in groups with short solution presentations\n\nTest 1 available Wednesday 4/17 5pm and due Friday 4/19 5:00pm PDT [prompts] [submission] [upload R script]\n\n\nWeek 4 (4/22/24)\nFoundations for inference\nMonday class meeting\n\n[reading] Vu and Harrington 4.1\n[lecture] point estimation, sampling variability, and interval estimation\n[lab] point and interval estimation for a population mean\n[problem set 5] due Wednesday 4/24; late submissions until Friday 4/26 5pm\n\nWednesday class meeting\n\n[reading] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture] interval estimation for a population mean\n[lab] computing confidence intervals\n\n\n\nWeek 5 (4/29/24)\nOne-sample inference for numerical data\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6 (5/6/24)\nTwo-sample inference for numerical data\n\n\n\n\n\n\n\n\n\nTest 2 due Friday 5/10 5:00pm PDT\n\n\nWeek 7 (5/13/24)\nNonparametric tests; analysis of variance\n\n\n\n\n\n\n\n\n\n\n\nWeek 8 (5/20/24)\nPost-hoc inference in ANOVA; introduction to inference for categorical data\n\n\n\n\n\n\n\n\nTest 3 due Friday 5/24 5:00pm PDT\n\n\nWeek 9 (5/27/24)\nAcademic holiday 5/27/24\nCategorical data analysis for contingency tables\n\n\n\n\n\n\n\n\n\n\n\nWeek 10 (6/3/24)\nSimple linear regression\n\n\n\n\n\n\n\n\n\nTest 4 due Friday 6/7 5:00pm PDT\n\n\nFinals week (6/10/24)\nOral exams to be held during scheduled exam time\nScheduled exam times:\n\n[12pm section] Wednesday 6/12 10:10am – 1:00pm\n[2pm section] Monday 6/10 1:10pm – 4:00pm"
+    "text": "Announcements\n\n\n\nWeek 6 outlines posted.\nAssignment reminders:\n\nproblem set 7 due Monday 5/6; late submissions until Wednesday 5/8 5pm\n\npractice problem 2 edited slightly!\n\ntest 2 upcoming: will be released Wednesday 5/8 5pm and due Friday 5/10 5pm\n\n\n\n\nCourse information\nRead the [course syllabus] for detailed information on content, materials, learning outcomes, assessments, and course policies.\nInstructor: Trevor Ruiz (he/him/his) [email]\nClass meetings:\n\n[Section 05] 12:10pm — 2:00pm MW Construction Innovations Center Room C100\n[Section 06] 2:10pm — 4:00pm MW Construction Innovations Center Room C100\n\nOffice hours: 8:10am — 11:00am Mondays 25-236 or Zoom [by appointment]\nPreparing for class meetings:\n\nCheck the course website for posted reading, materials, and assignments.\nComplete readings in advance of the class meetings for which they are listed.\nWrite down one question you have about the reading and bring it to class.\nDownload and/or print a copy of the posted course notes (slides) for you to annotate and bring them to class.\n\nCompleting assignments:\nOne set of practice problems is included at the end of each lab; these problem sets are your homework assignments. You will often have some time to work on them during class, and they will be due by the following class period. To complete these assignments:\n\nReview the prompts included with the lab.\nDo your work (calculations, making plots, etc.) in the lab script provided in Posit Cloud.\nFollow the link that appears as [problem set N] with the class meeting outline for the period in which the problem set was assigned. This will direct you to a form where you’ll fill out select answers. Refer to your work in Posit Cloud as you complete the form.\n\nSome general remarks:\n\nproblem sets are due one hour before the next class meeting\nlate submissions are accepted until 5pm two days after the due date\nscore summaries will be posted once all deadlines pass\nonce scores are posted, you can see your individual responses using the link that you used to access the form\n\n\n\nWeek 1 (4/1/24)\nAcademic holiday 4/1/24\nIntroduction to statistical thinking and study designs\nWednesday class meeting\n\n[reading] Vu and Harrington 1.1\n[lecture] course introduction; study designs\n[activity] distinguishing types of studies\n[problem set 1] due Monday 4/8; late submissions until Wednesday 4/10 5pm\n[problem set 1 corrections] due by 5pm Friday 4/12\n\nResponse summary [PS1] [PS1 corrections]\n\n\nWeek 2 (4/8/24)\nData types and descriptive statistics\nMonday class meeting\n\nreading quiz [12pm section] [2pm section]\n[reading] Vu and Harrington 1.2\n[lecture] data types\n[lab] R basics\n[problem set 2] due Wednesday 4/10; late submissions until Friday 4/12 5pm\n\nResponse summary [PS2]\nWednesday class meeting\n\n[reading] Vu and Harrington 1.4 - 1.5\n[lecture] descriptive statistics\n[lab] descriptive statistics in R\n[problem set 3] due Monday 4/15; late submissions until Wednesday 4/17 5pm\n\nResponse summary [PS3]\n\n\nWeek 3 (4/15/24)\nDescriptive statistics and graphical summaries\nMonday class meeting\n\n[reading quiz] Vu and Harrington 1.6\n[lecture] descriptive statistics for relationships between two variables\n[lab] bivariate summaries in R\n[problem set 4] due Wednesday 4/17; late submissions until Friday 4/19 5pm\n\nResponse summary [PS4]\nWednesday class meeting\n\n[reading] review course notes and PS1, PS2, PS3 in detail\n[review] recap and Q&A\n[R cheatsheet] for easy reference\n[practice problems] in groups with short solution presentations\n\nTest 1 available Wednesday 4/17 5pm and due Friday 4/19 5:00pm PDT [prompts] [submission] [upload R script]\n\n\nWeek 4 (4/22/24)\nFoundations for inference\nMonday class meeting\n\n[reading] Vu and Harrington 4.1\n[lecture] point estimation, sampling variability, and interval estimation\n[lab] point and interval estimation for a population mean\n[problem set 5] due Wednesday 4/24; late submissions until Friday 4/26 5pm\n\nWednesday class meeting\n\n[reading quiz] Vu and Harrington 3.3.1, 3.3.2, and 3.3.3; and 4.2\n[lecture] constructing and interpreting confidence intervals\n[lab] computing confidence intervals\n\nTest 1 corrections due Friday 4/26 5pm [submit corrections]\n\n\nWeek 5 (4/29/24)\nOne-sample inference for numerical data\nMonday class meeting\n\n[reading] Vu and Harrington 4.3.1 & 4.3.2\n[lecture] the \\(t\\)-test for a population mean\n[lab] computing test statistics, critical values, and \\(p\\)-values\n[problem set 6] due Wednesday 5/1; late submissions until Friday 5/3 5pm\n\nWednesday class meeting\n\n[reading] Vu and Harrington 4.3.3 & 4.3.4\n[lecture] directional tests\n[lab] directional tests\n[problem set 7] due Monday 5/6; late submissions until Wednesday 5/8 5pm\n\n\n\nWeek 6 (5/6/24)\nTwo-sample inference for numerical data\nMonday class meeting\n\n[reading] Vu and Harrington 5.2 and 5.3\n[review quiz] test 2 prep and discussion\n[lecture] two-sample inference\n[lab] two-sample t tests in R\n[problem set 8] due Wednesday 5/8; late submissions until Friday 5/10\n\nWednesday class meeting\n\n[reading] Vu and Harrington 5.4; van Belle et al. 8.4 and 8.5 up to 8.5.4\n[lecture] decision errors; statistical power\n[lab] post hoc and study design power analyses\n\nTest 2 available Wednesday 5/8 5pm and due Friday 5/10 5pm\n\n\nWeek 7 (5/13/24)\nNonparametric inference\n\n\n\n\n\n\n\n\n\n\n\nWeek 8 (5/20/24)\nAnalysis of variance\n\n\n\n\n\n\n\n\nTest 3 due Friday 5/24 5:00pm PDT\n\n\nWeek 9 (5/27/24)\nAcademic holiday 5/27/24\nInference for categorical data\n\n\n\n\n\n\n\n\n\n\n\nWeek 10 (6/3/24)\nSimple linear regression\n\n\n\n\n\n\n\n\n\nTest 4 due Friday 6/7 5:00pm PDT\n\n\nFinals week (6/10/24)\nOral exams to be held during scheduled exam time\nScheduled exam times:\n\n[12pm section] Wednesday 6/12 10:10am – 1:00pm\n[2pm section] Monday 6/10 1:10pm – 4:00pm"
   },
   {
     "objectID": "content/syllabus.html",
@@ -1264,7 +1264,7 @@
     "href": "content/week4-intervals.html#todays-agenda",
     "title": "Confidence intervals",
     "section": "Today’s agenda",
-    "text": "Today’s agenda\n\nHW2 remarks/discussion\n[Lecture] A basic interval estimate for the mean\n[Lecture/lab] Exploring interval coverage\n[Lecture/lab] Comparing normal and \\(t\\) models"
+    "text": "Today’s agenda\n\n[lecture] \\(t\\) confidence intervals for the mean\n[lab] computing and interpreting confidence intervals"
   },
   {
     "objectID": "content/week4-intervals.html#from-last-time",
@@ -1488,6 +1488,755 @@
     "href": "content/week4-intervals.html#model-interpretation",
     "title": "Confidence intervals",
     "section": "Model interpretation",
-    "text": "Model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\n\n50% of samples give negative values of \\(T\\)\n\n\npt(0, df = 20 - 1) # area less than 0\n\n[1] 0.5\n\n\n\n83.5% of samples give values of \\(T\\) under 1\n\n\npt(1, df = 20 - 1) # area less than 1\n\n[1] 0.8350616\n\n\n\n33.5% of samples give values of \\(T\\) between 0 and 1"
+    "text": "Model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\n50% of samples give negative values of \\(T\\)\n\n\npt(0, df = 20 - 1) # area less than 0\n\n[1] 0.5"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation",
+    "href": "content/week4-intervals.html#t-model-interpretation",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 50% of samples, \\(T &lt; 0\\)\n\n\n# area less than 0\npt(0, df = 20 - 1) \n\n[1] 0.5\n\n\n\nwritten as \\(P(T &lt; 0) = 0.5\\)"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation-1",
+    "href": "content/week4-intervals.html#t-model-interpretation-1",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 83.5% of samples, \\(T &lt; 1\\)\n\n\n# area less than 1\npt(1, df = 20 - 1) \n\n[1] 0.8350616\n\n\n\nwritten as \\(P(T &lt; 1) = 0.835\\)"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation-2",
+    "href": "content/week4-intervals.html#t-model-interpretation-2",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 97% of samples, \\(T &lt; 2\\)\n\n\n# area less than 2\npt(2, df = 20 - 1) \n\n[1] 0.969999\n\n\n\nwritten as \\(P(T &lt; 2) = 0.97\\)"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation-3",
+    "href": "content/week4-intervals.html#t-model-interpretation-3",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 3% of samples, \\(T &gt; 2\\)\n\n\n# area greater than 2\npt(2, df = 20 - 1, lower.tail = F) \n\n[1] 0.03000102\n\n\n\nnotice: \\[\n\\begin{align*}\nP(T &gt; 2) &= 1 - P(T &lt; 2) \\\\\n(0.03) &= 1 - (0.97)\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation-4",
+    "href": "content/week4-intervals.html#t-model-interpretation-4",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 13.5% of samples, \\(1 &lt; T &lt; 2\\)\n\n\n# area between 1 and 2\npt(2, df = 20 - 1) - pt(1, df = 20 - 1) \n\n[1] 0.1349374\n\n\n\nnotice: \\[\n\\begin{align*}\nP(1 &lt; T &lt; 2) &= P(T &lt; 2) - P(T &lt; 1) \\\\\n(0.135) &= (0.97) - (0.835)\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-interpretation-5",
+    "href": "content/week4-intervals.html#t-model-interpretation-5",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model interpretation",
+    "text": "\\(t\\) model interpretation\n\nThe area under the density curve between any two values \\((a, b)\\) gives the proportion of random samples for which \\(a &lt; T &lt; b\\).\n\n\\[(\\text{proportion of area between } a, b) = (\\text{proportion of samples where } a &lt; T &lt; b)\\]\n\n\nFor example:\n\nfor 94% of samples, \\(-2 &lt; T &lt; 2\\)\n\n\n# area between 1 and 2\npt(2, df = 20 - 1) - pt(-2, df = 20 - 1) \n\n[1] 0.939998\n\n\n\nwritten \\(P(-2 &lt; T &lt; 2) = 0.94\\)"
+  },
+  {
+    "objectID": "content/week4-intervals.html#revisiting-intervals",
+    "href": "content/week4-intervals.html#revisiting-intervals",
+    "title": "Confidence intervals",
+    "section": "Revisiting intervals",
+    "text": "Revisiting intervals\nSo where did that 2 come from in the margin of error for our interval estimate?\n\\[\n\\bar{x} \\pm \\color{blue}{2}\\times SE(\\bar{x})\n\\]\nWell:\n\\[\n\\begin{align*}\n0.94 &= P(-\\color{blue}{2} &lt; T &lt; \\color{blue}{2}) \\\\\n&= P\\left(-\\color{blue}{2} &lt; \\frac{\\bar{x} - \\mu}{s_x/\\sqrt{n}} &lt; \\color{blue}{2}\\right) \\\\\n&= P(\\underbrace{\\bar{x} - \\color{blue}{2}\\times SE(\\bar{x}) &lt; \\mu &lt; \\bar{x} + \\color{blue}{2}\\times SE(\\bar{x})}_{\\text{interval covers population mean}})\n\\end{align*}\n\\] So for 94% of all random samples, the interval covers the population mean."
+  },
+  {
+    "objectID": "content/week4-intervals.html#a-closer-look-at-interval-construction",
+    "href": "content/week4-intervals.html#a-closer-look-at-interval-construction",
+    "title": "Confidence intervals",
+    "section": "A closer look at interval construction",
+    "text": "A closer look at interval construction\nSo where did that 2 come from in the margin of error for our interval estimate?\n\\[\n\\bar{x} \\pm \\color{blue}{2}\\times SE(\\bar{x})\n\\]\nWell:\n\n\n\\[\n\\begin{align*}\n0.94 &= P(-\\color{blue}{2} &lt; T &lt; \\color{blue}{2}) \\\\\n&= P\\left(-\\color{blue}{2} &lt; \\frac{\\bar{x} - \\mu}{s_x/\\sqrt{n}} &lt; \\color{blue}{2}\\right) \\\\\n&= P(\\underbrace{\\bar{x} - \\color{blue}{2}\\times SE(\\bar{x}) &lt; \\mu &lt; \\bar{x} + \\color{blue}{2}\\times SE(\\bar{x})}_{\\text{interval covers population mean}})\n\\end{align*}\n\\]\n\n\nFor 94% of all random samples, the interval covers the population mean.\n\n\n\nSo the number 2 determines the proportion of samples for which the interval covers the mean, known as its coverage."
+  },
+  {
+    "objectID": "content/week4-intervals.html#coverage",
+    "href": "content/week4-intervals.html#coverage",
+    "title": "Confidence intervals",
+    "section": "Coverage",
+    "text": "Coverage\nConsider a slightly more general expression for an interval for the mean:\n\\[\n\\bar{x} \\pm c\\times SE(\\bar{x})\n\\]\nThe value of \\(c\\) determines the coverage rate, or simply “coverage”.\nA common empirical rule:\n\n\\(c = 1 \\longrightarrow\\) approximately 68% coverage\n\\(c = 2 \\longrightarrow\\) approximately 95% coverage\n\\(c = 3 \\longrightarrow\\) approximately 99.7% coverage"
+  },
+  {
+    "objectID": "content/week4-intervals.html#effect-of-sample-size",
+    "href": "content/week4-intervals.html#effect-of-sample-size",
+    "title": "Confidence intervals",
+    "section": "Effect of sample size",
+    "text": "Effect of sample size\n\nThe sample size determines the exact shape of the \\(t\\) model through its ‘degrees of freedom’ \\(n - 1\\). This changes the areas slightly.\n\nThe exact coverage quickly converges to just over 95% as the sample size increases.\n\n\n\n\n\n\n\n\n\n\n\nn\ncoverage\n\n\n\n\n4\n0.8607\n\n\n8\n0.9144\n\n\n16\n0.9361\n\n\n32\n0.9457\n\n\n64\n0.9502\n\n\n128\n0.9524\n\n\n256\n0.9534"
+  },
+  {
+    "objectID": "content/week4-intervals.html#empirical-rule",
+    "href": "content/week4-intervals.html#empirical-rule",
+    "title": "Confidence intervals",
+    "section": "Empirical rule",
+    "text": "Empirical rule\nConsider a slightly more general expression for an interval for the mean:\n\\[\n\\bar{x} \\pm c\\times SE(\\bar{x})\n\\]\nThe value of \\(c\\) determines the coverage.\n\nlarger \\(c\\) \\(\\longrightarrow\\) higher coverage\nsmaller \\(c\\) \\(\\longrightarrow\\) lower coverage\n\nThe so-called “empirical rule” is that:\n\n\\(c = 1 \\longrightarrow\\) approximately 68% coverage\n\\(c = 2 \\longrightarrow\\) approximately 95% coverage\n\\(c = 3 \\longrightarrow\\) approximately 99.7% coverage"
+  },
+  {
+    "objectID": "content/week4-intervals.html#effect-of-sample-size-on-coverage",
+    "href": "content/week4-intervals.html#effect-of-sample-size-on-coverage",
+    "title": "Confidence intervals",
+    "section": "Effect of sample size on coverage",
+    "text": "Effect of sample size on coverage\n\nThe sample size determines the exact shape of the \\(t\\) model through its ‘degrees of freedom’ \\(n - 1\\). This changes the areas slightly, but not by much.\n\nThe exact coverage rate, or simply “coverage”, quickly converges to just over 95%.\n\n\n\n\n\n\n\n\n\n\n\nn\ncoverage\n\n\n\n\n4\n0.8607\n\n\n8\n0.9144\n\n\n16\n0.9361\n\n\n32\n0.9457\n\n\n64\n0.9502\n\n\n128\n0.9524\n\n\n256\n0.9534"
+  },
+  {
+    "objectID": "content/week4-intervals.html#changing-the-coverage",
+    "href": "content/week4-intervals.html#changing-the-coverage",
+    "title": "Confidence intervals",
+    "section": "Changing the coverage",
+    "text": "Changing the coverage\nConsider a slightly more general expression for an interval for the mean:\n\\[\n\\bar{x} \\pm c\\times SE(\\bar{x})\n\\]\nThe number \\(c\\) is called a critical value. It determines the coverage.\n\nlarger \\(c\\) \\(\\longrightarrow\\) higher coverage\nsmaller \\(c\\) \\(\\longrightarrow\\) lower coverage\n\nThe so-called “empirical rule” is that:\n\n\\(c = 1 \\longrightarrow\\) approximately 68% coverage\n\\(c = 2 \\longrightarrow\\) approximately 95% coverage\n\\(c = 3 \\longrightarrow\\) approximately 99.7% coverage"
+  },
+  {
+    "objectID": "content/week4-intervals.html#contrasting-coverage-with-precision",
+    "href": "content/week4-intervals.html#contrasting-coverage-with-precision",
+    "title": "Confidence intervals",
+    "section": "Contrasting coverage with precision",
+    "text": "Contrasting coverage with precision\n\nPrecision refers to how wide or narrow the interval is.\n\nPrecision depends on every component of the margin of error:\n\ncritical value used\nsample size\nvariability of values\n\nBy contrast, coverage depends only on the critical value used."
+  },
+  {
+    "objectID": "content/week4-intervals.html#exact-coverage-using-t-quantiles",
+    "href": "content/week4-intervals.html#exact-coverage-using-t-quantiles",
+    "title": "Confidence intervals",
+    "section": "Exact coverage using \\(t\\) quantiles",
+    "text": "Exact coverage using \\(t\\) quantiles\nTo engineer an interval with a specific coverage, use the \\(p\\)th quantile where:\n\\[p = \\left[1 - \\left(\\frac{1 - \\text{coverage}}{2}\\right)\\right]\\] In R:\n\n# coverage 95% using t quantile\ncoverage &lt;- 0.95\nq.val &lt;- 1 - (1 - coverage)/2\ncrit.val &lt;- qt(q.val, df = 20 - 1)\ncrit.val\n\n[1] 2.093024\n\n\nThe effect of increasing/decreasing coverage on the quantile is:\n\nincrease coverage \\(\\longrightarrow\\) larger quantile \\(\\longrightarrow\\) wider interval\ndecrease coverage \\(\\longrightarrow\\) smaller quantile \\(\\longrightarrow\\) narrower interval"
+  },
+  {
+    "objectID": "content/week4-intervals.html#t-model-quantiles",
+    "href": "content/week4-intervals.html#t-model-quantiles",
+    "title": "Confidence intervals",
+    "section": "\\(t\\) model quantiles",
+    "text": "\\(t\\) model quantiles\n\n\n\\[\nP(\\color{#FF6459}{-2 &lt; T &lt; 2}) = 1 - 2\\times P(\\color{blue}{T &gt; 2})\n\\]\nLook at how the areas add up so that: \\[\nP(\\color{blue}{T &gt; 2}) = 0.03\n\\] Moreover: \\[\nP(T &lt; 2) = 1 - 0.03 = 0.97\n\\]"
+  },
+  {
+    "objectID": "content/week4-intervals.html#interpreting-critical-values",
+    "href": "content/week4-intervals.html#interpreting-critical-values",
+    "title": "Confidence intervals",
+    "section": "Interpreting critical values",
+    "text": "Interpreting critical values\n\n\n\\[\nP(\\color{#FF6459}{-2 &lt; T &lt; 2}) = 1 - 2\\times P(\\color{blue}{T &gt; 2})\n\\]\nLook at how the areas add up so that: \\[\nP(\\color{blue}{T &gt; 2}) = 0.03\n\\] Moreover: \\[\nP(T &lt; 2) = 1 - 0.03 = 0.97\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nSo the critical value 2 is actually the 97th percentile of the sampling distribution of \\(T\\).\n\nalso called the 0.97 “quantile”\n(percentiles expressed in proportions are called quantiles)"
+  },
+  {
+    "objectID": "content/week4-intervals.html#simulation-of-coverage",
+    "href": "content/week4-intervals.html#simulation-of-coverage",
+    "title": "Confidence intervals",
+    "section": "Simulation of coverage",
+    "text": "Simulation of coverage\n\n\nArtificially simulating a large number of intervals provides an empirical approximation of coverage.\n\nat right, 200 intervals\n94% cover the population mean (vertical dashed line)\npretty close to nominal coverage level 95%\n\nThis is also a handy way to remember the proper interpretation:\n\nIf I made a lot of intervals from independent samples, 95% of them would ‘get it right’.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week4-intervals.html#confidence-intervals",
+    "href": "content/week4-intervals.html#confidence-intervals",
+    "title": "Confidence intervals",
+    "section": "Confidence intervals",
+    "text": "Confidence intervals\nInterval estimates constructed to achieve a specified coverage are called “confidence intervals”; the coverage is interpreted and reported as a “confidence level”.\n\n\n\n# ingredients\ncholesterol.mean &lt;- mean(cholesterol)\ncholesterol.sd &lt;- sd(cholesterol)\ncholesterol.n &lt;- length(cholesterol)\ncholesterol.se &lt;- cholesterol.sd/sqrt(cholesterol.n)\ncrit.val &lt;- qt(1 - (1 - 0.95)/2, df = cholesterol.n - 1)\n\n# interval\ncholesterol.mean + c(-1, 1)*crit.val*cholesterol.se\n\n[1] 5.005566 5.080310\n\n\n\n\nWith 95% confidence, the mean total cholesterol among U.S. adults is estimated to be between 5.0056 and 5.0803 mmol/L.\n\n\n\nThe general formula for a confidence interval for the population mean is\n\\[\n\\bar{x} \\pm c\\times SE(\\bar{x})\n\\]\nwhere \\(c\\) is a critical value, obtained as a quantile of the \\(t_{n - 1}\\) model and chosen to ensure a specific coverage."
+  },
+  {
+    "objectID": "content/week4-intervals.html#recap",
+    "href": "content/week4-intervals.html#recap",
+    "title": "Confidence intervals",
+    "section": "Recap",
+    "text": "Recap\nThe “common” interval estimate for the mean is actually an approximate 95% confidence interval:\n\\[\n\\bar{x} \\pm 2 \\times SE(\\bar{x})\n\\]\n\ncaptures the population mean \\(\\mu\\) for roughly 95% of random samples\nreplacing 2 with a \\(t_{n - 1}\\) quantile allows the analyst to adjust coverage\nthe \\(t_{n - 1}\\) model is an approximation for the sampling distribution of \\(\\frac{\\bar{x} - \\mu}{SE(\\bar{x})}\\)\n\napproximation improves with increasing sample size or symmetry\nusually good quality except in “extreme” situations\n\n\nInterval interpretation:\n\nWith [XX]% confidence, the mean [population parameter] is estimated to be between [lower bound] and [upper bound] [units]."
+  },
+  {
+    "objectID": "content/lab5-intervals.html",
+    "href": "content/lab5-intervals.html",
+    "title": "Lab 5: Confidence intervals",
+    "section": "",
+    "text": "The objective of this lab is to learn to compute confidence intervals for a population mean, and more specifically, to learn to adjust interval coverage by calculating appropriate critical values. Since you already learned to calculate an interval in the last lab, the basic mechanics of the arithmetic are familiar.\nWe’ll use data from a sample of 100 births in North Carolina in 2004. To change things up a little, the data is stored as a .csv file (not an .RData file). If you were to download and open this file on your computer, it would likely appear as a spreadsheet (try if you’re curious). Read in the data using the command below.\n\n# read in data and preview\nncbirths &lt;- read_csv('data/ncbirths.csv')\nhead(ncbirths)\n\n# A tibble: 6 × 4\n  mother.age weeks birth.weight sex   \n       &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt; \n1         36    39         7.69 male  \n2         35    40         8.88 male  \n3         40    40         9    female\n4         37    40         7.94 male  \n5         35    28         1.63 female\n6         25    40         8.75 female\n\n\nRecall that the general formula for an interval is:\n\\[\n\\bar{x} \\pm c\\times SE(\\bar{x})\n\\] Throughout this lab, you’ll manipulate the coverage by obtaining different values of the critical value \\(c\\). We’ll start the back-of-the-envelope approach following the empirical rule.\n\nIntervals using the empirical rule\nThe empirical rule allows us to construct intervals using whole number multiples of the standard error and obtain the following approximate coverages:\n\n\\(c = 1\\) gives 68% coverage\n\\(c = 2\\) gives 95% coverage\n\\(c = 3\\) gives 99.7% coverage\n\nAn approximate 95% confidence interval for the mean birth weight (lbs) in NC in 2004 is:\n\n# retrieve variable of interest\nbweight &lt;- ncbirths$birth.weight\n\n# interval ingredients\nbweight.mean &lt;- mean(bweight)\nbweight.sd &lt;- sd(bweight)\nbweight.n &lt;- length(bweight)\n\n# standard error\nbweight.se &lt;- bweight.sd/sqrt(bweight.n)\n\n# 95% interval using empirical rule\nbweight.mean + c(-2, 2)*bweight.se\n\n[1] 6.89267 7.46633\n\n\nFollowing class discussion, we’d interpret this as follows:\n\nWith 95% confidence, the mean birth weight of babies born in North Carolina in 2004 is estimated to be between 6.893 and 7.466 lbs.\n\nTo compute a 68% interval, we need only change the critical value. All of the above remains the same except the last command, which we change to:\n\n# 68% interval using empirical rule\nbweight.mean + c(-1, 1)*bweight.se\n\n[1] 7.036085 7.322915\n\n\nNotice that the interval got narrower: a more precise estimate can be given at a reduced coverage rate (which of course means the estimate is wrong more often).\n\nWith 68% confidence, the mean birth weight of babies born in North Carolina in 2004 is estimated to be between 7.036 and 7.323 lbs.\n\n\n\n\n\n\n\nYour turn 1\n\n\n\nCalculate and interpret a 99.7% confidence interval for the mean number of weeks at birth.\n\n# retrieve variable of interest (no. weeks at birth)\n\n# interval ingredients\n\n# standard error\n\n# 99.7% interval for mean number of weeks at birth using empirical rule\n\n\n\nBecause we’re only changing the critical value here, let’s save some work and write a simple function to calculate an interval from a vector of values and a critical value. (You don’t need to understand the syntax or be able to write functions in R, as this is a programming technique, but it may interest you to see how it can be done.)\n\n# run this before continuing, but ignore unless interested\nmake_ci &lt;- function(vec, cval){\n  vec.mean &lt;- mean(vec)\n  vec.mean.se &lt;- sd(vec)/sqrt(length(vec) - 1)\n  interval &lt;- vec.mean + c(-1, 1)*cval*vec.mean.se \n  names(interval) &lt;- c('lwr', 'upr')\n  return(interval)\n}\n\nWe can use this function to compute an interval a bit more efficiently. Check that the following give the same intervals as obtained above using fully manual calculations.\n\n# 95% interval\nmake_ci(bweight, cval = 2)\n\n     lwr      upr \n6.891225 7.467775 \n\n# 68% interval\nmake_ci(bweight, cval = 1)\n\n     lwr      upr \n7.035362 7.323638 \n\n\nTry it yourself to get the hang of using this function.\n\n\n\n\n\n\nYour turn 2\n\n\n\nUse make_ci(...) to compute 95% and 99.7% confidence intervals for the mean number of weeks at birth.\n\n# 99.7% interval for mean number of weeks at birth, using make_ci(...)\n\n# 95% interval for mean number of weeks at birth, using make_ci(...)\n\n\n\n\n\nIntervals using \\(t\\) critical values\nIf you want to construct an interval with a coverage other than 68%, 95%, or 99.7%, you’ll need to use a different critical value. Instead of a whole number, you’ll need the \\(p\\)th quantile from the \\(t_{n-1}\\) model where:\n\\[p = \\left[1 - \\left(\\frac{1 - \\text{coverage}}{2}\\right)\\right]\\] This is perhaps a little more complex than it looks. You could probably determine which quantile to use in your head – the quantile you want is just the midpoint between your coverage level and 1. Consider the following examples:\n\nfor a 95% interval, use \\(p = 0.975\\)\nfor an 80% interval, use \\(p = 0.9\\)\nfor a 99% interval, use \\(p = 0.995\\)\n\n\n\n\n\n\n\nYour turn 3\n\n\n\nWhich quantile would you use for…\n\nA 96% confidence interval?\nAn 85% confidence interval?\nA 98% confidence interval?\n\n\n\n\nCalculating quantiles\nThe qt(...) function in R will calculate quantiles for you. It takes two arguments: which quantile you want (\\(p\\)) and the degrees of freedom for the \\(t_{n - 1}\\) model. The degrees of freedom is one less than the sample size in this case (\\(n - 1\\)). The following commands illustrate the calculation.\n\n# for 80% interval from n = 15 observations, use this quantile\nqt(p = 0.9, df = 14)\n\n[1] 1.34503\n\n# for a 92% interval from n = 30 observations, use this quantile\nqt(p = 0.96, df = 29)\n\n[1] 1.814238\n\n\n\n\n\n\n\n\nYour turn 4\n\n\n\nCalculate \\(t\\) quantiles for the following scenarios:\n\n90% interval from 27 observations\n95% interval from 18 observations\n99% interval from 51 observations\n\n\n# quantile for a 90% interval from 27 observations\n\n# quantile for a 95% interval from 18 observations\n\n# quantile for a 99% interval from 51 observations\n\n\n\nThese quantiles are the critical values you’d use to construct an interval with the specified coverage and number of observations.\n\n\nConstructing intervals\nIf we want a confidence interval for the mean with a specific coverage, first determine which quantile is needed as above and compute it, and then construct the interval as usual using that quantile as the critical value.\nFor example, if we want confidence intervals for the mean birth weight:\n\n# 98% ci for mean birth weight\ncrit.val &lt;- qt(p = 0.99, df = 99)\nmake_ci(bweight, cval = crit.val)\n\n     lwr      upr \n6.838671 7.520329 \n\n# 95% ci for mean birth weight\ncrit.val &lt;- qt(p = 0.975, df = 99)\nmake_ci(bweight, cval = crit.val)\n\n     lwr      upr \n6.893499 7.465501 \n\n# 90% ci for mean birth weight\ncrit.val &lt;- qt(p = 0.95, df = 99)\nmake_ci(bweight, cval = crit.val)\n\n     lwr      upr \n6.940175 7.418825 \n\n\nAs a matter of interest, note that the critical value for the 95% interval is 1.9842. Technically, this is the value that provides an interval with 95% coverage; the approximation of 2 provided by the empirical rule is just that – an approximation.\n\n\n\n\n\n\nYour turn 5\n\n\n\nConstruct and interpret a 99% confidence interval for the mean number of weeks at birth.\n\n# 99% ci for mean number of weeks at birth\n\n\n\nNow that you have a sense of the critical value calculation, it’s helpful to remind yourself how to make the interval fully from scratch.\n\n\n\n\n\n\nYour turn 6\n\n\n\nRepeat the previous calculation, but without using the make_ci(...) function. You should obtain exactly the same numerical result.\n\n## repeat last calculation but fully 'by hand'\n\n# point estimate and standard error\n\n# critical value\n\n# interval\n\n\n\n\n\n\nWorking backwards to determine coverage\nNow let’s try doing the above backwards. If you’re given a confidence interval and you know the summary statistics, you can figure out the interval coverage by solving for the critical value and using the pt(...) function. Really, you only need to know the standard error (or sample size and standard deviation) to do this.\nFirst, find the margin of error by taking half the interval width.\n\\[\n\\text{margin of error} = \\frac{\\text{upr} - \\text{lwr}}{2}\n\\]\nThen, divide by the standard error to solve for the critical value:\n\\[\nc = \\frac{\\text{margin of error}}{SE(\\bar{x})}\n\\] Lastly, find the coverage as the area of the sampling distribution below the critical value: \\[\n\\text{coverage} = P(T &lt; c)\n\\]\nIn R:\n\n# example interval for mean birth weight\nbweight.ci &lt;- c(7.030077, 7.328923)\n\n# margin of error (half the width)\nbweight.ci.me &lt;- diff(bweight.ci)/2\n\n# divide out standard error to get critical value\ncrit.val &lt;- bweight.ci.me/bweight.se\n\n# coverage\npt(q = crit.val, df = bweight.n - 1)\n\n[1] 0.85\n\n\nTake a moment to align the R commands with the calculations shown above and check to make sure you see how this is consistent with the way we formed the interval in the first place. Then try it on your own.\n\n\n\n\n\n\nYour turn 7\n\n\n\nDetermine the coverage for the interval below for the mean number of weeks at birth.\n\n# interval for mean number of weeks at birth\nbweeks.ci &lt;- c(37.79485, 39.30515)\n\n# margin of error (half the width)\n\n# divide out standard error to get critical value\n\n# coverage"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#todays-agenda",
+    "href": "content/week5-hypothesis.html#todays-agenda",
+    "title": "Introduction to hypothesis testing",
+    "section": "",
+    "text": "Loose end: working backwards to determine interval coverage\n[lecture] the \\(t\\)-test for a population mean\n[lab] computing test statistics, critical values, and \\(p\\)-values"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#ddt-data",
+    "href": "content/week5-hypothesis.html#ddt-data",
+    "title": "Hypothesis testing",
+    "section": "DDT data",
+    "text": "DDT data\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm). Each measurement was taken by a different laboratory.\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.\n\\[\n\\begin{cases}\nH_0: &\\mu \\leq 3 \\quad(\\text{null hypothesis})\\\\\nH_A: &\\mu &gt; 3 \\quad(\\text{alternative hypothesis})\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#hypothesis-testing",
+    "href": "content/week5-hypothesis.html#hypothesis-testing",
+    "title": "Hypothesis testing",
+    "section": "Hypothesis testing",
+    "text": "Hypothesis testing\nThis is an example of a hypothesis testing problem: we want to test the hypothesis that mean DDT in kale is within safe limits. Hypothesis testing is another form of statistical inference.\nThe general pattern for performing a hypothesis test is:\n\nFormulate the hypothesis to test in terms of the values of a population parameter.\nAssess the likelihood of the data under the hypothesis through use of a “test statistic”.\nConclude whether the data provide evidence favoring an alternative.\n\nToday we’ll cover each step in turn in the context of tests for a population mean."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#formulating-hypotheses",
+    "href": "content/week5-hypothesis.html#formulating-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "1. Formulating hypotheses",
+    "text": "1. Formulating hypotheses\nHypotheses cannot be tested in isolation, but must be considered relative to a specified alternative.\nTo articulate the hypotheses for a test, we need:\n\npopulation parameter of interest\nnull hypothesis \\(H_0\\): possible value(s) under the claim to be tested\nalternative hypothesis \\(H_A\\): possible value(s) if the claim is found to be false\n\nIn the context of the DDT example…\n\\[H_0:\\hspace{15cm}\\] \\[H_A:\\hspace{15cm}\\]"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#test-statistic",
+    "href": "content/week5-hypothesis.html#test-statistic",
+    "title": "Hypothesis testing",
+    "section": "2. Test statistic",
+    "text": "2. Test statistic\nTest statistics are data summaries that:\n\ndepend on the null value of the population parameter\nhave a known sampling distribution\n\nFor a population mean, we use: \\[T = \\frac{\\bar{x} - \\mu_0}{s_x/\\sqrt{n}}\\]\nThis is well-described by a \\(t_{n - 1}\\) model when \\(\\mu = \\mu_0\\). It is useful for the test because:\n\nlarge (absolute) values of \\(T\\) are unlikely if \\(\\mu = \\mu_0\\)\nsmall (absolute) values of \\(T\\) are expected if \\(\\mu = \\mu_0\\)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#drawing-a-conclusion",
+    "href": "content/week5-hypothesis.html#drawing-a-conclusion",
+    "title": "Hypothesis testing",
+    "section": "3. Drawing a conclusion",
+    "text": "3. Drawing a conclusion\n\n\nIn the DDT example, \\(T\\) = 2.906. This favors \\(H_A\\), but by how much?\nAccording to the \\(t\\) model, less than 1% of samples would produce a result more favorable to \\(H_A\\).\n\n\n\n\n\n\n\n\n\n\nPoint estimate:\n\n\n\n\n\n\n\n\n\nmean\nse\n\n\n\n\n3.328\n0.1129\n\n\n\n\n\nTest statistic:\n\\[T = \\frac{\\bar{x} - \\mu_0}{SE(\\bar{x})} = \\]\n\nThis is strong evidence against the claim that the DDT level is 3ppm or less and in favor of the claim that the DDT level exceeds 3ppm."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#recap-of-ddt-example",
+    "href": "content/week5-hypothesis.html#recap-of-ddt-example",
+    "title": "Hypothesis testing",
+    "section": "Recap of DDT example",
+    "text": "Recap of DDT example\n\nIs the mean DDT level in kale 3ppm or less?\n\n\n\nData are measurements of DDT levels in ppm from 15 labs.\nPopulation parameter:\n\\[H_0:\\hspace{15cm}\\] \\[H_A:\\hspace{15cm}\\] \\[\\mu_0 =\\hspace{15cm}\\] \\[T=\\hspace{15cm}\\] % of samples more favorable to \\(H_A \\approx\\)\n\nSummary statistics:\n\n\n\n\n\n\n\n\n\n\nmean\nsd\nse\n\n\n\n\n3.328\n0.4372\n0.1129\n\n\n\n\n\n\\(t_{14}\\) model:"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#another-example-sleep",
+    "href": "content/week5-hypothesis.html#another-example-sleep",
+    "title": "Hypothesis testing",
+    "section": "Another example: sleep",
+    "text": "Another example: sleep\n\nDoes the average U.S. adult sleep at least 7 hours per night?\n\n\n\nData are reported average hours of sleep per night from 135 NHANES respondents.\nPopulation parameter:\n\\[H_0:\\hspace{15cm}\\] \\[H_A:\\hspace{15cm}\\] \\[\\mu_0 =\\hspace{15cm}\\] \\[T=\\hspace{15cm}\\] % of samples more favorable to \\(H_A \\approx\\)\n\nSummary statistics:\n\n\n\n\n\n\n\n\n\n\nmean\nsd\nse\n\n\n\n\n6.896\n1.394\n0.12\n\n\n\n\n\n\\(t_{134}\\) model:"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#your-turn-body-temperatures",
+    "href": "content/week5-hypothesis.html#your-turn-body-temperatures",
+    "title": "Hypothesis testing",
+    "section": "Your turn: body temperatures",
+    "text": "Your turn: body temperatures\n\nIs mean body temperature actually 98.6 °F, or is it lower?\n\n\n\nData are 130 observations of body temperature (°F) derived from a JAMA study.\nPopulation parameter:\n\\[H_0:\\hspace{15cm}\\] \\[H_A:\\hspace{15cm}\\] \\[\\mu_0 =\\hspace{15cm}\\] \\[T=\\hspace{15cm}\\] % of samples more favorable to \\(H_A \\approx\\)\n\nSummary statistics:\n\n\n\n\n\n\n\n\n\n\nmean\nsd\nse\n\n\n\n\n98.25\n0.7332\n0.0643\n\n\n\n\n\n\\(t_{129}\\) model:"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#strength-of-evidence",
+    "href": "content/week5-hypothesis.html#strength-of-evidence",
+    "title": "Hypothesis testing",
+    "section": "Strength of evidence",
+    "text": "Strength of evidence\nThe result that 0.575% of samples would produce a test statistic more strongly favoring the alternative hypothesis is an example of a p-value:\n\nthe probability under \\(H_0\\) of obtaining a sample for which the test statistic is at least as favorable to \\(H_A\\) as the value actually observed\n\nIn other words, \\(p\\)-values assume the null hypothesis is true, and then ask, “what is the chance I’d obtain data at least as suggestive as what I have that the alternative is more likely than the null?”\n\nsmaller \\(p\\)-values: if \\(H_0\\) is true, equally or more favorable results are not expected often by chance\nlarger \\(p\\)-values: if \\(H_0\\) is true, equally or more favorable results are expected often by chance"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#evidence-thresholds",
+    "href": "content/week5-hypothesis.html#evidence-thresholds",
+    "title": "Hypothesis testing",
+    "section": "Evidence thresholds",
+    "text": "Evidence thresholds\nIt remains to define an evidence threshold above which we decide to reject \\(H_0\\).\nA heuristic is to fix a significance level \\(\\alpha\\) and reject \\(H_0\\) whenever \\(p &lt; \\alpha\\).\n\nrepresents an evidence threshold\nconventionally, \\(\\alpha = 0.05\\)\ncontrols error rates\n\nImagine that indeed mean DDT in kale is 3ppm. Then 0.575% of samples produce test statistics at least as favorable to the alternative as what we saw in the study.\n\nso if we set the evidence threshold for rejecting \\(H_0\\) exactly here (\\(\\alpha = 0.00575\\)) we’ll be wrong 0.575% of the time\nif we set the evidence threshold lower (say \\(\\alpha = 0.01\\)) we’ll be wrong more than 0.575% of the time (in fact 1% of the time)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#interpreting-results",
+    "href": "content/week5-hypothesis.html#interpreting-results",
+    "title": "Introduction to hypothesis testing",
+    "section": "Interpreting results",
+    "text": "Interpreting results\n\n\nCalculations in R:\n\n# compute test statistic\ntstat &lt;- (temp.mean - 98.6)/temp.mean.se\ntstat\n\n[1] -1.328265\n\n# compute critical value for a 5% error tolerance\ncrit.val &lt;- qt(p = 0.975, df = 38)\ncrit.val\n\n[1] 2.024394\n\n# test decision\nabs(tstat) &gt; crit.val\n\n[1] FALSE\n\n# p-value\n2*pt(abs(tstat), df = 38, lower.tail = F)\n\n[1] 0.1920133\n\n\n\nConventional narrative summary style:\n\nThe data do not provide evidence that the mean body temperature differs from 98.6°F (T = -1.328 on 38 degrees of freedom, p = 0.192).\n\nConveys a lot of info succinctly:\n\ntest conclusion\nhypotheses tested\nnumber of standard errors from hypothesized value (\\(T\\))\nsample size (degrees of freedom + 1)\nstrength of evidence (\\(p\\)-value)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#composite-hypotheses",
+    "href": "content/week5-hypothesis.html#composite-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Composite hypotheses",
+    "text": "Composite hypotheses\nThe null hypothesis is a composite of values, so why did we choose just one (\\(\\mu_0 = 3\\)) to perform the test?\nAny null value farther from the alternative will produce stronger results.\n\n\n\n\n\n\n\n\nNull value\nTest statistic numerator\nProportion of samples more favorable to \\(H_A\\)\n\n\n\n\n\\(\\mu_0 = 3\\)\n0.328\n0.00575\n\n\n\\(\\mu_0 = 2.99\\)\n0.338\n0.00483\n\n\n\\(\\mu_0 = 2.95\\)\n0.378\n0.00239\n\n\n\nSo by using \\(\\mu_0 = 3\\), we are choosing the most conservative null value for the test."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#components-of-a-test",
+    "href": "content/week5-hypothesis.html#components-of-a-test",
+    "title": "Introduction to hypothesis testing",
+    "section": "Components of a test",
+    "text": "Components of a test\n\n\n\n\n\n\n\n\nComponent\nExplanation\nExample\n\n\n\n\nPopulation parameter\nThe quantity of interest\nMean body temp \\(\\mu\\)\n\n\nNull hypothesis\nThe claim to be tested\n\\(\\mu = 98.6\\)\n\n\nAlternative hypothesis\nThe alternative claim\n\\(\\mu \\neq 98.6\\)\n\n\nTest statistic\nA function of the sample data and the hypothetical parameter value\n\\(T = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}} = -1.328\\)\n\n\nModel\nSampling distribution of the test statistic under \\(H_0\\)\n\\(t_{38}\\) model\n\n\n\\(p\\)-value\nProbability under \\(H_0\\) of obtaining a result at least as favorable to \\(H_A\\)\n19.2% of samples produce a test statistic at least as large\n\n\nDecision\nReject or fail to reject \\(H_0\\) in favor of \\(H_A\\)\nFail to reject"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#performing-tests-in-r",
+    "href": "content/week5-hypothesis.html#performing-tests-in-r",
+    "title": "Hypothesis testing",
+    "section": "Performing tests in R",
+    "text": "Performing tests in R\n\n\nInputs:\n\ndata vector\nnull value of parameter\nalternative hypothesis\n\nOutputs:\n\ntest statistic\ndegrees of freedom for \\(t\\) model\n\\(p\\)-value\nconfidence interval\npoint estimate\n\n\nt.test performs all calculations. Locate each input (1-3) and output (4-7) below:\n\nt.test(ddt, mu = 3, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  ddt\nt = 2.9059, df = 14, p-value = 0.005753\nalternative hypothesis: true mean is greater than 3\n95 percent confidence interval:\n 3.129197      Inf\nsample estimates:\nmean of x \n    3.328"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#directional-hypotheses",
+    "href": "content/week5-hypothesis.html#directional-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Directional hypotheses",
+    "text": "Directional hypotheses\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm). Each measurement was taken by a different laboratory.\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.\n\\[\n\\begin{cases}\nH_0: &\\mu \\leq 3 \\quad(\\text{null hypothesis})\\\\\nH_A: &\\mu &gt; 3 \\quad(\\text{alternative hypothesis})\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#lab-t-tests-in-r",
+    "href": "content/week5-hypothesis.html#lab-t-tests-in-r",
+    "title": "Hypothesis testing",
+    "section": "Lab: \\(t\\)-tests in R",
+    "text": "Lab: \\(t\\)-tests in R\nOpen up lab6-hypotesting in the class workspace. The goals for this lab are:\n\nLearn how to implement \\(t\\) tests in R and interpret output\nPractice formulating and testing hypotheses from simple research questions\n(If time) Explore decision errors\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#from-last-time",
+    "href": "content/week5-hypothesis.html#from-last-time",
+    "title": "Hypothesis testing",
+    "section": "From last time",
+    "text": "From last time\n\n\nWe developed interval estimates based on the \\(t_{n - 1}\\) model for the sampling distribution of the statistic: \\[\nT = \\frac{\\bar{x} - \\mu}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\]\n\n\\(T = 2\\) means we over-estimated the population mean by 2 standard errors\narea under the curve \\(=\\) proportion of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#body-temperatures",
+    "href": "content/week5-hypothesis.html#body-temperatures",
+    "title": "Introduction to hypothesis testing",
+    "section": "Body temperatures",
+    "text": "Body temperatures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmean\nsd\nn\nse\n\n\n\n\n98.41\n0.9162\n39\n0.1467\n\n\n\n\n\n\nIs the true mean body temperature actually 98.6°F?\nSeems plausible given our data.\nBut what if the sample mean were instead…\n\n\n\n\\(\\bar{x}\\)\nconsistent with \\(\\mu = 98.6\\)?\n\n\n\n\n98.30\nprobably still yes\n\n\n98.15\nmaybe\n\n\n98.00\nhesitating\n\n\n97.85\nskeptical\n\n\n97.40\nunlikely\n\n\n\n\n\n\nIf the estimation error is “big enough” the hypothesis seems implausible."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#an-intution",
+    "href": "content/week5-hypothesis.html#an-intution",
+    "title": "Hypothesis testing",
+    "section": "An intution",
+    "text": "An intution\n\nIf the estimation error from a hypothesized value is “big enough”, the hypothesis seems implausible."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#statistical-hypotheses",
+    "href": "content/week5-hypothesis.html#statistical-hypotheses",
+    "title": "Hypothesis testing",
+    "section": "Statistical hypotheses",
+    "text": "Statistical hypotheses\n“The mean body temperature of adults 98.6°F” is an example of a statistical hypothesis: a definitive statement about the value of a population parameter.\n\\[H_0: \\mu = 98.6 \\qquad(\\text{population mean is 98.6°F})\\]\nAny hypothesis has an opposing or “alternative” hypothesis.\n\\[H_A: \\mu \\neq 98.6 \\qquad(\\text{population mean is not 98.6°F})\\]\n\nHypothesis testing means making a decision between a hypothesis and its alternative on the basis of a sample."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#how-much-error-is-too-much",
+    "href": "content/week5-hypothesis.html#how-much-error-is-too-much",
+    "title": "Introduction to hypothesis testing",
+    "section": "How much error is too much?",
+    "text": "How much error is too much?\nConsider how many standard errors away from the hypothesized value we’d be:\n\n\n\n\\(\\bar{x}\\)\nestimation error\nno. SE’s\ninterpretation\n\n\n\n\n98.30\n-0.3\n2\ndouble the average error\n\n\n98.15\n-0.45\n3\ntriple the average error\n\n\n98.00\n-0.6\n4\nquadruple\n\n\n97.85\n-0.75\n5\nquintuple\n\n\n97.40\n-1.2\n8\noctuple!\n\n\n\nWe know from discussing confidence intervals that we’d estimate the mean temperature to be within about 2SE of the sample mean, and from interval coverage that:\n\nan error less than 2SE occurs for about 95% of samples\nan error greater than 2SE occurs for only about 5% of samples\n\nExactly how often would we see the error we did if the population mean is in fact 98.6°F?"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-formal-test-using-the-t-model",
+    "href": "content/week5-hypothesis.html#a-formal-test-using-the-t-model",
+    "title": "Hypothesis testing",
+    "section": "A formal test using the \\(t\\) model",
+    "text": "A formal test using the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-1",
+    "href": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-1",
+    "title": "Hypothesis testing",
+    "section": "A formal test using the \\(t\\) model",
+    "text": "A formal test using the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-2",
+    "href": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-2",
+    "title": "Hypothesis testing",
+    "section": "A formal test using the \\(t\\) model",
+    "text": "A formal test using the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate by more in 9.6% of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-3",
+    "href": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-3",
+    "title": "Hypothesis testing",
+    "section": "A formal test using the \\(t\\) model",
+    "text": "A formal test using the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate by more in 9.6% of samples\noverestimate by more in 9.6% of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-4",
+    "href": "content/week5-hypothesis.html#a-formal-test-using-the-t-model-4",
+    "title": "Hypothesis testing",
+    "section": "A formal test using the \\(t\\) model",
+    "text": "A formal test using the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate by more in 9.6% of samples\noverestimate by more in 9.6% of samples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe’d see at least as much estimation error 19.2% of the time, assuming the hypothesis is true."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#applying-the-t-model",
+    "href": "content/week5-hypothesis.html#applying-the-t-model",
+    "title": "Introduction to hypothesis testing",
+    "section": "Applying the \\(t\\) model",
+    "text": "Applying the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#applying-the-t-model-1",
+    "href": "content/week5-hypothesis.html#applying-the-t-model-1",
+    "title": "Introduction to hypothesis testing",
+    "section": "Applying the \\(t\\) model",
+    "text": "Applying the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#applying-the-t-model-2",
+    "href": "content/week5-hypothesis.html#applying-the-t-model-2",
+    "title": "Introduction to hypothesis testing",
+    "section": "Applying the \\(t\\) model",
+    "text": "Applying the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate more in 9.6% of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#applying-the-t-model-3",
+    "href": "content/week5-hypothesis.html#applying-the-t-model-3",
+    "title": "Introduction to hypothesis testing",
+    "section": "Applying the \\(t\\) model",
+    "text": "Applying the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate more in 9.6% of samples\noverestimate more in 9.6% of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#applying-the-t-model-4",
+    "href": "content/week5-hypothesis.html#applying-the-t-model-4",
+    "title": "Introduction to hypothesis testing",
+    "section": "Applying the \\(t\\) model",
+    "text": "Applying the \\(t\\) model\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nactual summary statistics give \\(T\\) = -1.328\nunderestimate more in 9.6% of samples\noverestimate more in 9.6% of samples\n\n\n\n\n\n\n\n\n\n\n\n\\[P(|T| &gt; 1.328) = 0.192\\]\n\n\n\nWe’d see at least as much (absolute) estimation error 19.2% of the time, assuming the hypothesis is true. So this amount of error isn’t surprising."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-hypothetical-scenario",
+    "href": "content/week5-hypothesis.html#a-hypothetical-scenario",
+    "title": "Hypothesis testing",
+    "section": "A hypothetical scenario",
+    "text": "A hypothetical scenario\n\n\nNow if instead we had a sample with \\(\\bar{x} = 98.2\\) but all other summary statistics were the same, then if the population mean is in fact 98.6°F\n\n\\(T\\) = -2.726\nunderestimate by more in 0.48% of samples\noverestimate by more in 0.48% of samples\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe’d see at least as much estimation error 0.96% of the time, assuming the hypothesis is true. So the hypothesis seems plausible given our data."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#a-more-extreme-scenario",
+    "href": "content/week5-hypothesis.html#a-more-extreme-scenario",
+    "title": "Introduction to hypothesis testing",
+    "section": "A more extreme scenario",
+    "text": "A more extreme scenario\n\n\nIf the population mean is in fact 98.6°F then \\[\nT = \\frac{\\bar{x} - 98.6}{s_x/\\sqrt{n}}\n\\qquad\\left(\\frac{\\text{estimation error}}{\\text{standard error}}\\right)\n\\] has a sampling distribution that is well-approximated by a \\(t_{39 - 1}\\) model.\n\nsuppose instead \\(\\bar{x} = 98.2\\) so \\(T\\) = -2.726\nunderestimate more in 0.48% of samples\noverestimate more in 0.48% of samples\n\n\n\n\n\n\n\n\n\n\n\n\\[P(|T| &gt; 2.726) = 0.0096\\]\n\n\n\nWe’d see at least as much estimation error only 0.96% of the time. So if the hypothesis were true, this sample would be really unusual."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#decisions-decisions",
+    "href": "content/week5-hypothesis.html#decisions-decisions",
+    "title": "Introduction to hypothesis testing",
+    "section": "Decisions, decisions",
+    "text": "Decisions, decisions\n\nWhat would happen if we decided that \\(T = -1.328\\) was unusual?\n\n\n\n\n\n\n\n\n\n\n\n\nsample.mean\nse\nt.stat\nhow.often\n\n\n\n\n98.41\n0.1467\n-1.328\n0.192\n\n\n98.2\n0.1467\n-2.726\n0.009632\n\n\n\n\n\nSuppose we drew a line at 20%. Then if in fact \\(\\mu = 98.6\\):\n\nerrors in the ‘reject’ regime occur by chance 20% of the time\nso we’ll reach the wrong conclusion for 1 in 5 samples\n\nThis error rate is too high."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#formalizing-a-test-for-the-mean",
+    "href": "content/week5-hypothesis.html#formalizing-a-test-for-the-mean",
+    "title": "Introduction to hypothesis testing",
+    "section": "Formalizing a test for the mean",
+    "text": "Formalizing a test for the mean\nA statistical hypothesis is a statement about a population parameter. For every hypothesis there is an opposing or “alternative” hypothesis.\nA hypothesis test is a procedure for deciding between a hypothesis and its alternative.\n\n\nWe just tested the hypotheses:\n\\[\n\\begin{cases}\nH_0: &\\mu = 98.6 \\quad(\\text{\"null\" hypothesis}) \\\\\nH_A: &\\mu \\neq 98.6 \\quad(\\text{\"alternative\" hypothesis})\n\\end{cases}\n\\]\nOur decision was based on the “test statistic”:\n\\[\nT = \\frac{\\bar{x} - 98.6}{SE(\\bar{x})}\n\\]\nIf \\(H_0\\) is true, the sampling distribution of \\(T\\) is well-approximated by a \\(t_{n-1}\\) model.\n\nWe reject \\(H_0\\) if it entails that the estimation error is unusually large relative to the standard error.\n\n‘unusual’ determined by considering error rate\ntwo equivalent approaches:\n\ncritical values\n\\(p\\)-values"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-critical-value-approach",
+    "href": "content/week5-hypothesis.html#the-critical-value-approach",
+    "title": "Introduction to hypothesis testing",
+    "section": "The critical value approach",
+    "text": "The critical value approach\n\nReject \\(H_0\\) if \\(|T|\\) exceeds the \\(1 - \\frac{\\alpha}{2}\\) quantile of the \\(t_{n - 1}\\) model\n\n\n\nSteps:\n\nDecide on an error tolerance \\(\\alpha\\).\nFind the \\(1 - \\frac{\\alpha}{2}\\) quantile \\(q\\).\nReject if \\(|T| &gt; q\\).\n\n\n\n# compute test statistic\ntstat &lt;- (temp.mean - 98.6)/temp.mean.se\ntstat\n\n[1] -1.328265\n\n# compute critical value for a 5% error tolerance\ncrit.val &lt;- qt(p = 0.975, df = 38)\ncrit.val\n\n[1] 2.024394\n\n# compare\nabs(tstat) &gt; crit.val \n\n[1] FALSE\n\n\n\n\nRationale: if \\(H_0\\) is true…\n\n\\(|T|\\) will be smaller than the quantile for \\((1 - \\alpha)\\times 100\\)% of samples\nso using this rule you’ll only make a mistake \\(\\alpha\\times 100\\)% of the time"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-unusualness-approach",
+    "href": "content/week5-hypothesis.html#the-unusualness-approach",
+    "title": "Hypothesis testing",
+    "section": "The ‘unusualness’ approach",
+    "text": "The ‘unusualness’ approach\n\nReject \\(H_0\\) if the observed value of \\(T\\) occurs for less than \\(100\\times\\alpha\\)% of samples"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#directional-test",
+    "href": "content/week5-hypothesis.html#directional-test",
+    "title": "Hypothesis testing",
+    "section": "Directional test",
+    "text": "Directional test\n\n\nIn the DDT example, \\(T = 2.905\\); if the mean is 3 we overestimated, but how unusual is the error?\nAccording to the \\(t\\) model, less than 1% of samples would produce an error of this magnitude or more.\n\n\n\n\n\n\n\n\n\n\nPoint estimate:\n\n\n\n\n\n\n\n\n\nmean\nse\n\n\n\n\n3.328\n0.1129\n\n\n\n\n\nTest statistic:\n\\[T = \\frac{\\bar{x} - 3}{SE(\\bar{x})} = \\frac{0.328}{0.1129} = 2.905\\]\n\nThis is strong evidence against the claim that the DDT level is 3ppm or less and in favor of the claim that the DDT level exceeds 3ppm."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#directional-hypotheses-1",
+    "href": "content/week5-hypothesis.html#directional-hypotheses-1",
+    "title": "Hypothesis testing",
+    "section": "Directional hypotheses",
+    "text": "Directional hypotheses\nTests for the mean can involve directional or non-directional alternatives. We refer to these as one-sided and two-sided tests, respectively.\n\n\n\n\n\n\n\n\n\nTest type\nNull\nAlternative\nFavors alternative\n\n\n\n\nUpper-sided\n\\(\\mu \\leq \\mu_0\\)\n\\(\\mu &gt; \\mu_0\\)\npositive \\(T\\)\n\n\nLower-sided\n\\(\\mu \\geq \\mu_0\\)\n\\(\\mu &lt; \\mu_0\\)\nnegative \\(T\\)\n\n\nTwo-sided\n\\(\\mu = \\mu_0\\)\n\\(\\mu \\neq \\mu_0\\)\nlarge \\(|T|\\)\n\n\n\nThe direction of the test affects the \\(p\\)-value calculation (and thus decision), but won’t change the test statistic.\n\n# upper-sided\nt.test(ddt, mu = mu_0, alternative = 'greater')\n\n# lower-sided\nt.test(ddt, mu = mu_0, alternative = 'less')\n\n# two-sided (default)\nt.test(ddt, mu = mu_0, alternative = 'two.sided')\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#significance-conventions",
+    "href": "content/week5-hypothesis.html#significance-conventions",
+    "title": "Hypothesis testing",
+    "section": "Significance conventions",
+    "text": "Significance conventions\n\n\nConvention 1: statistical significance\n\n\\(p &lt; 0.05\\): reject \\(H_0\\)\n\\(p \\geq 0.05\\): fail to reject \\(H_0\\)\n\n\n“The data provide significant evidence at level \\(\\alpha\\) = 0.05 against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (T = -5.4548 on 129 degrees of freedom, p = .0000002411).”\n\n\nConvention 2: weight of evidence against \\(H_0\\)\n\n\\(p &lt; 0.01\\): strong evidence\n\\(0.01 \\leq p &lt; 0.05\\): moderate evidence\n\\(0.05 \\leq p &lt; 0.1\\): weak evidence\n\\(0.1 \\leq p\\): no evidence\n\n\n“The data provide strong evidence against the hypothesis that mean body temperature is 98.6 °F in favor of the alternative that mean body temperature differs from 98.6 °F (T = -5.4548 on 129 degrees of freedom, p = .0000002411).”\n\n\n\nYou may use either convention to interpret test results."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#interpreting-results-1",
+    "href": "content/week5-hypothesis.html#interpreting-results-1",
+    "title": "Introduction to hypothesis testing",
+    "section": "Interpreting results",
+    "text": "Interpreting results\n\n\nCalculations in R:\n\n# compute test statistic\ntstat &lt;- (temp.mean - 98.6)/temp.mean.se\ntstat\n\n[1] -1.328265\n\n# compute critical value for a 5% error tolerance\ncrit.val &lt;- qt(p = 0.975, df = 38)\ncrit.val\n\n[1] 2.024394\n\n# test decision\nabs(tstat) &gt; crit.val\n\n[1] FALSE\n\n# p-value\n2*pt(abs(tstat), df = 38, lower.tail = F)\n\n[1] 0.1920133\n\n\n\nConventional narrative summary style:\n\nThe data do not provide evidence that the mean body temperature differs from 98.6°F (T = -1.328 on 38 degrees of freedom, p = 0.192).\n\nConveys:\n\nconclusion\nhypotheses tested\nnumber of standard errors from hypothesized value (\\(T\\))\nsample size (degrees of freedom + 1)\nstrength of evidence (\\(p\\)-value)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#narrative-summary",
+    "href": "content/week5-hypothesis.html#narrative-summary",
+    "title": "Hypothesis testing",
+    "section": "Narrative summary",
+    "text": "Narrative summary\n\n\n\n# retrieve body temp variable\nbody.temp &lt;- temps$body.temp\n\n# perform t test\nt.test(body.temp, mu = 98.6)\n\n\n    One Sample t-test\n\ndata:  body.temp\nt = -1.3283, df = 38, p-value = 0.192\nalternative hypothesis: true mean is not equal to 98.6\n95 percent confidence interval:\n 98.10813 98.70213\nsample estimates:\nmean of x \n 98.40513 \n\n\nLocate above in the output:\n\nvalue of test statistic \\(T\\)\ndegrees of freedom for \\(t_{n - 1}\\) model\n\\(p\\)-value\npoint and interval estimates for \\(\\mu\\)\n\n\n\nThe data do not provide evidence that the mean body temperature differs from 98.6°F (T = -1.328 on 38 degrees of freedom, p = 0.192). With 95% confidence, the mean body temperature is estimated to be between 98.11°F and 98.70°F, with a point estimate of 98.41°F (SE 0.1467)."
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-logic-of-a-hypothesis-test",
+    "href": "content/week5-hypothesis.html#the-logic-of-a-hypothesis-test",
+    "title": "Hypothesis testing",
+    "section": "The logic of a hypothesis test",
+    "text": "The logic of a hypothesis test\nWhat if we want to decide whether mean body temp is 98.6°F?\nA decision can be based on whether the estimation error would be unusually large (i.e., infrequent) if the hypothesis were true.\n\nunusually large error \\(\\longrightarrow\\) hypothesis is implausible \\(\\longrightarrow\\) can be rejected\nnot unusually large error \\(\\longrightarrow\\) hypothesis is plausible \\(\\longrightarrow\\) can’t be rejected\n\nEach scenario we considered supports a different decision"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#evaluating-a-hypothesis",
+    "href": "content/week5-hypothesis.html#evaluating-a-hypothesis",
+    "title": "Hypothesis testing",
+    "section": "Evaluating a hypothesis",
+    "text": "Evaluating a hypothesis\nWhat if we want to decide whether mean body temp is 98.6°F?\nTo evaluate the hypothesis that \\(\\mu = 98.6\\), we assume it is true and then consider whether the estimation error would be unusually large according to the \\(t\\) model:\n\nunusually large error \\(\\longrightarrow\\) hypothesis is implausible \\(\\longrightarrow\\) can be rejected\nnot unusually large error \\(\\longrightarrow\\) hypothesis is plausible \\(\\longrightarrow\\) can’t be rejected\n\nEach scenario we considered supports a different decision\n\n\n\n\n\n\n\n\n\n\n\n\nsample.mean\nse\nt.stat\nhow.often\nevaluation\n\n\n\n\n98.41\n0.1467\n-1.328\n0.192\nnot unusual\n\n\n98.2\n0.1467\n-2.726\n0.009632\nunusual"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#evaluating-the-hypothesis",
+    "href": "content/week5-hypothesis.html#evaluating-the-hypothesis",
+    "title": "Introduction to hypothesis testing",
+    "section": "Evaluating the hypothesis",
+    "text": "Evaluating the hypothesis\nTo evaluate the hypothesis that \\(\\mu = 98.6\\), we assume it is true and then consider whether the estimation error would be unusually large purely by chance according to the \\(t\\) model:\n\nunusually large error \\(\\longrightarrow\\) hypothesis is implausible \\(\\longrightarrow\\) can be rejected\nnot unusually large error \\(\\longrightarrow\\) hypothesis is plausible \\(\\longrightarrow\\) can’t be rejected\n\nWe just made these assessments:\n\n\n\n\n\n\n\n\n\n\n\n\nsample.mean\nse\nt.stat\nhow.often\nevaluation\n\n\n\n\n98.41\n0.1467\n-1.328\n0.192\nnot unusual\n\n\n98.2\n0.1467\n-2.726\n0.009632\nunusual\n\n\n\n\n\nSeems reasonable, but why exactly isn’t 19.2% of the time ‘unusual’?"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#decisions-decisions-1",
+    "href": "content/week5-hypothesis.html#decisions-decisions-1",
+    "title": "Hypothesis testing",
+    "section": "Decisions, decisions",
+    "text": "Decisions, decisions\n\nWhat would happen if we decided that \\(T = -2.726\\) was not unusual?\n\n\n\n\n\n\n\n\n\n\n\n\nsample.mean\nse\nt.stat\nhow.often\n\n\n\n\n98.41\n0.1467\n-1.328\n0.192\n\n\n98.2\n0.1467\n-2.726\n0.009632\n\n\n\n\n\nSuppose we drew a line at 0.5%. Then if in fact \\(\\mu = 98.6\\):\n\nerrors in the ‘reject’ regime occur by chance 0.5% of the time\nso we’ll reach the wrong conclusion for 1 in 200 samples\n\nThis error rate is good,"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#the-p-value-approach",
+    "href": "content/week5-hypothesis.html#the-p-value-approach",
+    "title": "Introduction to hypothesis testing",
+    "section": "The \\(p\\)-value approach",
+    "text": "The \\(p\\)-value approach\n\nReject \\(H_0\\) if \\(T\\) exceeds the observed value for less than \\(\\alpha\\times 100\\)% of samples: \\[2\\times P(T &gt; |T_\\text{obs}|) &lt; \\alpha\\]\n\n\n\nSteps:\n\nDecide on an error tolerance \\(\\alpha\\).\nCompute the proportion \\(p\\) of samples for which \\(T\\) exceeds observed value.\nReject if \\(p &lt; \\alpha\\).\n\n\n\n# compute test statistic\ntstat &lt;- (temp.mean - 98.6)/temp.mean.se\ntstat\n\n[1] -1.328265\n\n# proportion of samples where T exceeds observed value\np.val &lt;- 2*pt(abs(tstat), df = 38, lower.tail = F)\np.val\n\n[1] 0.1920133\n\n# decision with error rate controlled at 5%\np.val &lt; 0.05\n\n[1] FALSE\n\n\n\n\nRationale:\n\n\\(p\\)-value conveys exactly how unusual the test statistic is\n\\(p &lt; \\alpha\\) exactly when \\(|T| &gt; q\\), so this rule controls the error rate at \\(\\alpha\\)"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html#test-outcomes",
+    "href": "content/week5-hypothesis.html#test-outcomes",
+    "title": "Introduction to hypothesis testing",
+    "section": "Test outcomes",
+    "text": "Test outcomes\nThere are two possible findings for a test:\n\n[crosses decision threshold] reject \\(H_0\\) in favor of \\(H_A\\)\n[doesn’t cross decision threshold] fail to reject \\(H_0\\) in favor of \\(H_A\\)\n\nA reject decision is interpreted as:\n\nThe data provide evidence that… [against \\(H_0\\)/favoring \\(H_A\\)]\n\nA fail to reject decision is interpreted as:\n\nThe data do not provide evidence that… [against \\(H_0\\)/favoring \\(H_A\\)]"
+  },
+  {
+    "objectID": "content/lab6-hypothesis.html",
+    "href": "content/lab6-hypothesis.html",
+    "title": "Lab 6: Hypothesis testing basics",
+    "section": "",
+    "text": "In class we discussed the \\(t\\) test for the hypotheses:\n\\[\n\\begin{cases}\nH_0: &\\mu = \\mu_0 \\\\\nH_A: &\\mu \\neq \\mu_0\n\\end{cases}\n\\]\nThe objective of this lab is to learn to perform the basic calculations involved in this \\(t\\) test “by hand” (without the use of the function that we’ll apply later):\nWe’ll use the temps dataset to illustrate.\nlibrary(tidyverse)\nload('data/temps.RData')\nhead(temps)\n\n  body.temp    sex heart.rate\n1      98.8 female         69\n2      98.6 female         85\n3      98.4   male         68\n4      97.2 female         66\n5      99.5   male         75\n6      97.1   male         82"
+  },
+  {
+    "objectID": "content/lab6-hypothesis.html#footnotes",
+    "href": "content/lab6-hypothesis.html#footnotes",
+    "title": "Lab 6: Hypothesis testing basics",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nI usually think in the following terms for the \\(t\\)-test:\n\nsmall: \\(n \\leq 20\\)\nmodest: \\(20 &lt; n \\leq 50\\)\nlarge: \\(50 &lt; n\\)\n\nUnless I’m in the ‘small’ regime, I’m not too worried about skew or outliers. In the ‘modest’ regime, I’m not concerned unless I spot very pronounced skew or outliers. In the ‘large’ regime, I’m really only concerned about (strong) multimodality. Interestingly, in the latter case, the \\(t\\) test still works for multimodal populations, but the population mean isn’t meaningful.↩︎"
+  },
+  {
+    "objectID": "content/week5-hypothesis.html",
+    "href": "content/week5-hypothesis.html",
+    "title": "Introduction to hypothesis testing",
+    "section": "",
+    "text": "Loose end: working backwards to determine interval coverage\n[lecture] the \\(t\\)-test for a population mean\n[lab] computing test statistics, critical values, and \\(p\\)-values"
+  },
+  {
+    "objectID": "content/week5-directional.html#todays-agenda",
+    "href": "content/week5-directional.html#todays-agenda",
+    "title": "Tests for directional hypotheses",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nQuick review of decision criteria for the \\(t\\) test\n[lecture] test-interval relationship; directional \\(t\\) tests\n[lab] upper-sided, lower-sided, and two-sided tests for the population mean"
+  },
+  {
+    "objectID": "content/week5-directional.html#from-last-time",
+    "href": "content/week5-directional.html#from-last-time",
+    "title": "Tests for directional hypotheses",
+    "section": "From last time",
+    "text": "From last time\nPractice problem: test the hypothesis that the average U.S. adult sleeps 8 hours.\n\n\n\n\n\n\n\n\n\n\n\n\n# calculations\nsleep.mean &lt;- mean(sleep) \nsleep.mean.se &lt;- sd(sleep)/sqrt(length(sleep))\ntstat &lt;- (sleep.mean - 8)/sleep.mean.se \ncrit.val &lt;- qt(0.975, df = 3178) \np.val &lt;- 2*pt(abs(tstat), df = 3178, lower.tail = F)\nci &lt;- sleep.mean + c(-1, 1)*crit.val*sleep.mean.se\n\n\n\n\n\n\n\n\n\n\n\n\n\nestimate\nstd.err\ntstat\ncval\npval\n\n\n\n\n6.959\n0.02447\n-42.53\n1.961\n2.622e-313\n\n\n\n\n\n95% confidence interval: (6.91, 7.01)\n\nA complete narrative summary:\n\nThe data provide evidence that the average U.S. adult does not sleep 8 hours per night (T = -42.53 on 3178 degrees of freedom, p &lt; 0.0001). With 95% confidence, the mean nightly hours of sleep among U.S. adults is estimated to be between 6.91 and 7.01 hours, with a point estimate of 6.59 hours (SE: 0.0245)."
+  },
+  {
+    "objectID": "content/week5-directional.html#tests-and-intervals",
+    "href": "content/week5-directional.html#tests-and-intervals",
+    "title": "Tests for directional hypotheses",
+    "section": "Tests and intervals",
+    "text": "Tests and intervals\n\nTests and intervals are usually reported together\n\nConsider how the test and interval provide complementary information:\n\nthe test tells you U.S. adults don’t sleep 8 hours\nthe interval tells you how much they do sleep\n\nIt is reasonable that they should be consistent, and in fact they are.\n\n\n\n# calculations\nsleep.mean &lt;- mean(sleep) \nsleep.mean.se &lt;- sd(sleep)/sqrt(length(sleep))\ntstat &lt;- (sleep.mean - 8)/sleep.mean.se \ncrit.val &lt;- qt(0.975, df = 3178) \np.val &lt;- 2*pt(abs(tstat), df = 3178, lower.tail = F)\nci &lt;- sleep.mean + c(-1, 1)*crit.val*sleep.mean.se\n\n\n\nNotice that the critical value in the 5% significance level test is exactly the same as that used in the 95% confidence interval."
+  },
+  {
+    "objectID": "content/week5-directional.html#the-t.test...-function",
+    "href": "content/week5-directional.html#the-t.test...-function",
+    "title": "Tests for directional hypotheses",
+    "section": "The t.test(...) function",
+    "text": "The t.test(...) function\nSince tests and intervals go together, there is a single R function that computes both.\n\n\n\nt.test(sleep, mu = 8, conf.level = 0.95)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -42.533, df = 3178, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 8\n95 percent confidence interval:\n 6.911123 7.007090\nsample estimates:\nmean of x \n 6.959107 \n\n\n\nNo critical value is reported, so you have to make the decision using the \\(p\\) value:\n\n\\(p &lt; \\alpha\\): reject\n\\(p &gt; \\alpha\\): fail to reject\n\n\n\nTake a moment to locate each component of the test and estimates from the output."
+  },
+  {
+    "objectID": "content/week5-directional.html#decision-errors",
+    "href": "content/week5-directional.html#decision-errors",
+    "title": "Tests for directional hypotheses",
+    "section": "Decision errors",
+    "text": "Decision errors\n\n\nThere are two ways to make a mistake in a hypothesis test:\n\nreject a true \\(H_0\\)\nfail to reject a false \\(H_0\\)\n\nThese are known as type I and type II errors.\nBecause rejecting \\(H_0\\) is a stronger conclusion, type I errors are considered more severe.\n\n\n\nThe significance level of a test is a cap on the type I error rate."
+  },
+  {
+    "objectID": "content/week5-directional.html#directional-hypotheses",
+    "href": "content/week5-directional.html#directional-hypotheses",
+    "title": "Tests for directional hypotheses",
+    "section": "Directional hypotheses",
+    "text": "Directional hypotheses\nTests for the mean can involve directional or non-directional alternatives. We refer to these as one-sided and two-sided tests, respectively.\n\n\n\nTest type\nAlternative\nDirection favoring alternative\n\n\n\n\nUpper-sided\n\\(\\mu &gt; \\mu_0\\)\nlarger \\(T\\)\n\n\nLower-sided\n\\(\\mu &lt; \\mu_0\\)\nsmaller \\(T\\)\n\n\nTwo-sided\n\\(\\mu \\neq \\mu_0\\)\nlarger \\(|T|\\)\n\n\n\nThe direction of the test affects the \\(p\\)-value calculation (and thus decision), but won’t change the test statistic.\nConceptually tricky, but easy in R:\n\n# upper-sided\nt.test(ddt, mu = mu_0, alternative = 'greater')\n\n# lower-sided\nt.test(ddt, mu = mu_0, alternative = 'less')\n\n# two-sided (default)\nt.test(ddt, mu = mu_0, alternative = 'two.sided')"
+  },
+  {
+    "objectID": "content/week5-directional.html#directional-test",
+    "href": "content/week5-directional.html#directional-test",
+    "title": "Tests for directional hypotheses",
+    "section": "Directional test",
+    "text": "Directional test\n\n\nAccording to the \\(t\\) model, 0.58% of samples would produce an error of this magnitude or more in the direction of the alternative if in fact \\(\\mu = 3\\):\n\n\n\n\n\n\n\n\n\n\n\nt.test(ddt, mu = 3, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  ddt\nt = 2.9059, df = 14, p-value = 0.005753\nalternative hypothesis: true mean is greater than 3\n95 percent confidence interval:\n 3.129197      Inf\nsample estimates:\nmean of x \n    3.328 \n\n\n\nThe data provide strong evidence that mean DDT in kale exceeds 3ppm (T = 2.9059 on 14 degrees of freedom, p = 0.0058)."
+  },
+  {
+    "objectID": "content/week5-directional.html#composite-hypotheses",
+    "href": "content/week5-directional.html#composite-hypotheses",
+    "title": "Tests for directional hypotheses",
+    "section": "Composite hypotheses",
+    "text": "Composite hypotheses\nThe null hypothesis is a composite of values, so why did we choose just one (\\(\\mu_0 = 3\\)) to perform the test?\nAny null value farther from the alternative will produce stronger results.\n\n\n\n\n\n\n\n\nNull value\nTest statistic numerator\nProportion of samples more favorable to \\(H_A\\)\n\n\n\n\n\\(\\mu_0 = 3\\)\n0.328\n0.00575\n\n\n\\(\\mu_0 = 2.99\\)\n0.338\n0.00483\n\n\n\\(\\mu_0 = 2.95\\)\n0.378\n0.00239\n\n\n\nSo by using \\(\\mu_0 = 3\\), we are choosing the most conservative null value for the test."
+  },
+  {
+    "objectID": "content/week5-directional.html#directional-hypotheses-1",
+    "href": "content/week5-directional.html#directional-hypotheses-1",
+    "title": "Tests for directional hypotheses",
+    "section": "Directional hypotheses",
+    "text": "Directional hypotheses\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm). Each measurement was taken by a different laboratory.\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.\n\\[\n\\begin{cases}\nH_0: &\\mu \\leq 3 \\quad(\\text{null hypothesis})\\\\\nH_A: &\\mu &gt; 3 \\quad(\\text{alternative hypothesis})\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "content/week5-directional.html#choosing-alternatives",
+    "href": "content/week5-directional.html#choosing-alternatives",
+    "title": "Tests for directional hypotheses",
+    "section": "Choosing alternatives",
+    "text": "Choosing alternatives\n\n\n\nIs the mean body temp less than 98.6?\n\nWhich test should you use? Consider the interpretations:\n\n[lower] evidence favoring lower temp\n[upper] no evidence against lower temp\n\nThe conclusions are consistent but not equivalent – (a) is a better answer.\nYour alternative should be the claim you hope to support with evidence, and your null the claim you hope to refute.\n\n\nt.test(body_temps, \n       mu = 98.6, \n       alternative = 'less')\n\n\n    One Sample t-test\n\ndata:  body_temps\nt = -1.3283, df = 38, p-value = 0.09601\nalternative hypothesis: true mean is less than 98.6\n95 percent confidence interval:\n     -Inf 98.65248\nsample estimates:\nmean of x \n 98.40513 \n\nt.test(body_temps, \n       mu = 98.6, \n       alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  body_temps\nt = -1.3283, df = 38, p-value = 0.904\nalternative hypothesis: true mean is greater than 98.6\n95 percent confidence interval:\n 98.15778      Inf\nsample estimates:\nmean of x \n 98.40513"
+  },
+  {
+    "objectID": "content/week5-directional.html#reporting-test-results",
+    "href": "content/week5-directional.html#reporting-test-results",
+    "title": "Tests for directional hypotheses",
+    "section": "Reporting test results",
+    "text": "Reporting test results\n\n\nTo report the result of a hypothesis test, you should:\n\nLead with your conclusion\nState the hypotheses tested\nInterpret the conclusion of the test in context\nProvide the \\(T\\) statistic, degrees of freedom, and \\(p\\)-value\nState and interpret the point estimate and interval for the mean\n\n\n\nOur results suggest mean body temperature is less than 98.6 °F. We tested the null hypothesis that mean body temperature is 98.6 °F or greater against the alternative that mean body temperature is less than 98.6 °F. The data provide sufficiently strong evidence against the hypothesis that mean body temperature is 98.6 °F or greater in favor of the alternative that mean body temperature is less than 98.6 °F (T = -5.4548 on 129 degrees of freedom, p-value = .0000001205). With 95% confidence, the mean nightly hours of sleep is estimated to be at most 98.36 °F, with a point estimate of 98.23 (SE = 0.0643).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-directional.html#your-turn-sleep-data",
+    "href": "content/week5-directional.html#your-turn-sleep-data",
+    "title": "Tests for directional hypotheses",
+    "section": "Your turn: sleep data",
+    "text": "Your turn: sleep data\nOpen lab7-moretests in the class workspace.\n\n\nWork with your group on just one of the questions below.\n\nDo US adults sleep 7.5 hours per night on average?\nDo US adults sleep less than 7.5 hours per night on average?\nDo US adults sleep more than 7.5 hours per night on average?\nDo US adults sleep more than 6.5 hours per night on average?\n\n\nYour task is to determine and carry out an appropriate test, and then write a complete report of the test outcome:\n\nanswer the question\nhypotheses tested\ntest conclusion, interpreted in context\ntest statistic, degrees of freedom, \\(p\\)-value\nconfidence interval and point estimate, interpreted in context\n\nThese elements should be summarized together in complete sentences."
+  },
+  {
+    "objectID": "content/week5-directional.html#tests-and-intervals-1",
+    "href": "content/week5-directional.html#tests-and-intervals-1",
+    "title": "Tests for directional hypotheses",
+    "section": "Tests and intervals",
+    "text": "Tests and intervals\nThe critical value used in a \\(\\alpha\\) significance level test is identical to the critical value used in a \\((1 - \\alpha)\\) interval. Consequently:\n\\[\n\\underbrace{\\bar{x} - c\\times SE(\\bar{x}) &lt; \\mu_0 &lt; \\bar{x} + c\\times SE(\\bar{x})}_\\text{hypothesized value is in the interval}\n\\quad\\Longleftrightarrow\\quad\n\\underbrace{-c &lt; \\frac{\\bar{x} - \\mu_{0}}{SE(\\bar{x})} &lt; c}_{|T| &lt; c}\n\\]\nMeaning: the interval includes exactly those values that the test fails to reject.\n\nSensible considering both use the same information: the distance between the point estimate and population mean, relative to the variability of the estimate"
+  },
+  {
+    "objectID": "content/week5-directional.html#decision-errors-1",
+    "href": "content/week5-directional.html#decision-errors-1",
+    "title": "Tests for directional hypotheses",
+    "section": "Decision errors",
+    "text": "Decision errors\n\n\nThere are two ways to make a mistake in a hypothesis test:\n\nreject a true \\(H_0\\)\nfail to reject a false \\(H_0\\)\n\nThese are known as type I and type II errors.\nBecause rejecting \\(H_0\\) is a stronger conclusion, type I errors are considered more severe.\n\n\n\nThe significance level of a test is a cap on the type I error rate."
+  },
+  {
+    "objectID": "content/week5-directional.html#exploring-type-i-error-rates",
+    "href": "content/week5-directional.html#exploring-type-i-error-rates",
+    "title": "Tests for directional hypotheses",
+    "section": "Exploring type I error rates",
+    "text": "Exploring type I error rates\nIn lab7-moretests, there are codes to draw a sample from a mock population and test a true null hypothesis. Run these and take note of your \\(p\\)-value.\n\n\nIn this situation, a type I error is rejecting \\(H_0\\).\n\nrule: reject if \\(p &lt; \\alpha\\).\nwe will tally rejections for various \\(\\alpha\\) values\n\n\n\n\n\nSignificance level\nError frequency\n\n\n\n\n\\(\\alpha = 0.2\\)\n\n\n\n\\(\\alpha = 0.1\\)\n\n\n\n\\(\\alpha = 0.05\\)\n\n\n\n\\(\\alpha = 0.02\\)\n\n\n\n\n\n\n\nTakeaway: using larger significance thresholds leads to [more/less] type 1 errors"
+  },
+  {
+    "objectID": "content/week5-directional.html#exploring-type-ii-errors",
+    "href": "content/week5-directional.html#exploring-type-ii-errors",
+    "title": "Tests for directional hypotheses",
+    "section": "Exploring type II errors",
+    "text": "Exploring type II errors\nNow let’s test a false null hypothesis.\n\n\nA type II error is failing to reject \\(H_0\\).\n\nrule: \\(p &lt; 0.05\\)\nuse example commands to test each hypothesis at right\nuse a two-sided test\n\n\n\n\n\nNull value \\(\\mu_0\\)\nError frequency\n\n\n\n\n4.2\n\n\n\n4.6\n\n\n\n4.9\n\n\n\n5.1\n\n\n\n5.4\n\n\n\n5.7\n\n\n\n\n\n\n\nNotice that the type II error is quite high for null values near the true mean; this indicates the test has little power to detect such alternatives."
+  },
+  {
+    "objectID": "content/week5-directional.html#swimsuit-data",
+    "href": "content/week5-directional.html#swimsuit-data",
+    "title": "Tests for directional hypotheses",
+    "section": "Swimsuit data",
+    "text": "Swimsuit data\nLet’s consider our first two-sample problem.\n\nAre swimmers faster in bodysuits than in regular swimsuits?\n\nBelow are the first few observations of the average velocity of competitive swimmers in a 1500m; one measurement was taken in a swimsuit, the other in a bodysuit.\n\n\n\n\n\n\n\n\n\n\nswimmer.number\nwet.suit.velocity\nswim.suit.velocity\n\n\n\n\n1\n1.57\n1.49\n\n\n2\n1.47\n1.37\n\n\n3\n1.42\n1.35\n\n\n\n\n\nCan you formulate a pair of hypotheses to test to answer this question using methods from last time?"
+  },
+  {
+    "objectID": "content/week5-directional.html#comparing-two-means",
+    "href": "content/week5-directional.html#comparing-two-means",
+    "title": "Tests for directional hypotheses",
+    "section": "Comparing two means",
+    "text": "Comparing two means\nWe can formulate the question as a comparison of two means:\n\\[H_0: \\mu_\\text{bodysuit} \\leq \\mu_\\text{swimsuit}\\] \\[H_A: \\mu_\\text{bodysuit} &gt; \\mu_\\text{swimsuit}\\] It is common to express hypotheses of this form in terms of a difference in means: \\[H_0: \\underbrace{\\mu_\\text{bodysuit} - \\mu_\\text{swimsuit}}_\\delta \\leq 0\\] \\[H_A: \\underbrace{\\mu_\\text{bodysuit} - \\mu_\\text{swimsuit}}_\\delta &gt; 0\\]"
+  },
+  {
+    "objectID": "content/week5-directional.html#pairing",
+    "href": "content/week5-directional.html#pairing",
+    "title": "Tests for directional hypotheses",
+    "section": "Pairing",
+    "text": "Pairing\nThe velocities in the swimsuit dataset are paired because every swimmer is measured in both suits.\n\nData are paired just in case the measurements in each group are taken on exactly the same study units or the study units can be placed in one-to-one correspondence.\n\nThis is the easiest situation to handle, because it reduces to a one-sample problem with the observed differences."
+  },
+  {
+    "objectID": "content/week5-directional.html#inference-for-paired-data",
+    "href": "content/week5-directional.html#inference-for-paired-data",
+    "title": "Tests for directional hypotheses",
+    "section": "Inference for paired data",
+    "text": "Inference for paired data\n\nCalculate paired differences.\n\n\n\n\n\n\n\n\n\n\n\n\nswimmer.number\nwet.suit.velocity\nswim.suit.velocity\nvelocity.diff\n\n\n\n\n1\n1.57\n1.49\n0.08\n\n\n2\n1.47\n1.37\n0.1\n\n\n3\n1.42\n1.35\n0.07\n\n\n\n\n\n\n\n\nPerform test as before.\n\n\n# test for paired difference\nt.test(diffs, mu = 0, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  diffs\nt = 12.318, df = 11, p-value = 4.443e-08\nalternative hypothesis: true mean is greater than 0\n95 percent confidence interval:\n 0.06620114        Inf\nsample estimates:\nmean of x \n   0.0775 \n\n\n\n\nReport the result of the test. You try.\n\n\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-directional.html#tests-and-intervals-2",
+    "href": "content/week5-directional.html#tests-and-intervals-2",
+    "title": "Tests for directional hypotheses",
+    "section": "Tests and intervals",
+    "text": "Tests and intervals\n\nThe level-\\(\\alpha\\) test rejects \\(H_0: \\mu = \\mu_0\\) exactly when \\(\\mu_0\\) is outside the \\((1 - \\alpha)\\times 100\\)% confidence interval for \\(\\mu\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeft, \\(p\\)-values for a sequence of tests:\n\n\\(p &gt; 0.05\\) precisely for \\(\\mu_0\\) in 95% CI\n\\(p &gt; 0.01\\) precisely for \\(\\mu_0\\) in 99% CI\n\nIn other words:\n\\[\\text{level $\\alpha$ test rejects} \\Longleftrightarrow \\text{$1 - \\alpha$ CI excludes}\\]"
+  },
+  {
+    "objectID": "content/week5-directional.html#tests-and-intervals-3",
+    "href": "content/week5-directional.html#tests-and-intervals-3",
+    "title": "Tests for directional hypotheses",
+    "section": "Tests and intervals",
+    "text": "Tests and intervals\nNotice that t.test produces a confidence interval.\n\nfor the two-sided test, the interval is exactly the one we calculated before\nfor the one-sided tests, the interval is a lower/upper confidence bound: \\[\\begin{align*}\n\\bar{x} - c \\times SE(\\bar{x}) &\\qquad \\text{lower confidence bound} \\quad\\Longleftrightarrow\\quad \\text{upper-sided test}\\\\\n\\bar{x} + c \\times SE(\\bar{x}) &\\qquad \\text{upper confidence bound} \\quad\\Longleftrightarrow\\quad \\text{lower-sided test}\n\\end{align*}\\] where \\(c\\) is chosen to ensure a specified coverage level\n\nThe tests and intervals correspond in the following sense:\n\nThe level \\(\\alpha\\) test rejects just in case the \\((1 - \\alpha)\\) confidence interval excludes \\(\\mu_0\\)\n\n\n# changing confidence level for interval\nt.test(body_temps, mu = 98.6, alternative = 'less', conf.level = 0.99)"
+  },
+  {
+    "objectID": "content/week5-directional.html#interpreting-p-values",
+    "href": "content/week5-directional.html#interpreting-p-values",
+    "title": "Tests for directional hypotheses",
+    "section": "Interpreting \\(p\\)-values",
+    "text": "Interpreting \\(p\\)-values\n\n\\(p\\)-values measure the strength of evidence against \\(H_0\\) and favoring \\(H_A\\): smaller \\(p\\)-values indicate stronger evidence; larger \\(p\\)-values indicate weaker evidence.\n\n\n\nThe mathematical definition is: \\[p = P(|T| &gt; |T_\\text{observed}|)\\]\n\ntechnically, the probability under \\(H_0\\) that \\(T\\) exceeds the observed value in magnitude\ninformally, how unusual/rare your data are\n\n\nAs a measure of the strength of evidence favoring the alternative:\n\n\n\nvalue\nstrength of evidence\n\n\n\n\n\\(p &lt; 0.001\\)\nvery strong\n\n\n\\(0.001 &lt; p &lt; 0.01\\)\nstrong\n\n\n\\(0.01 &lt; p &lt; 0.05\\)\nmoderate\n\n\n\\(0.05 &lt; p &lt; 0.1\\)\nsuggestive\n\n\n\\(0.1 &lt; p\\)\nno evidence"
+  },
+  {
+    "objectID": "content/week5-directional.html#a-different-test",
+    "href": "content/week5-directional.html#a-different-test",
+    "title": "Tests for directional hypotheses",
+    "section": "A different test",
+    "text": "A different test\n\nDoes the average U.S. adult sleep less than 7 hours?\n\n\n\nThis example leads to a directional test:\n\\[\n\\begin{cases}\nH_0: &\\mu = 8 \\\\\nH_0: &\\mu &lt; 8\n\\end{cases}\n\\]\nThe test statistic is the same as before:\n\\[\nT = \\frac{\\bar{x} - 7}{SE(\\bar{x})} = -1.671\n\\]\n\nThe upper-sided \\(p\\)-value is 0.9526:\n\n\n\n\n\n\n\n\n\n\n\nFor the \\(p\\)-value, we look at how often \\(T\\) is larger in the direction of the alternative."
+  },
+  {
+    "objectID": "content/week5-directional.html#ddt-data",
+    "href": "content/week5-directional.html#ddt-data",
+    "title": "Tests for directional hypotheses",
+    "section": "DDT data",
+    "text": "DDT data\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm).\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.\n\\[\n\\begin{cases}\nH_0: &\\mu = 3 \\quad(\\text{null hypothesis})\\\\\nH_A: &\\mu &gt; 3 \\quad(\\text{alternative hypothesis})\n\\end{cases}\n\\]\nWe choose this direction because we’re concerned with evidence that mean DDT exceeds the threshold."
+  },
+  {
+    "objectID": "content/week5-directional.html#your-turn-interpret-these-p-values",
+    "href": "content/week5-directional.html#your-turn-interpret-these-p-values",
+    "title": "Tests for directional hypotheses",
+    "section": "Your turn: interpret these \\(p\\)-values",
+    "text": "Your turn: interpret these \\(p\\)-values\n\nDon’t just match the value to the table; add context, and state the test outcome.\n\n\n\n\n# example 1\nt.test(sleep, mu = 6.8)$p.value\n\n[1] 9.205865e-11\n\n# example 2\nt.test(sleep, mu = 6.9)$p.value\n\n[1] 0.01578191\n\n# example 3\nt.test(sleep, mu = 7)$p.value\n\n[1] 0.09482291\n\n# example 4\nt.test(sleep, mu = 7.1)$p.value\n\n[1] 9.366935e-09\n\n# example 5\nt.test(sleep, mu = 7.2)$p.value\n\n[1] 1.532371e-22\n\n\n\n\n\n\nvalue\nstrength of evidence\n\n\n\n\n\\(p &lt; 0.001\\)\nvery strong\n\n\n\\(0.001 &lt; p &lt; 0.01\\)\nstrong\n\n\n\\(0.01 &lt; p &lt; 0.05\\)\nmoderate\n\n\n\\(0.05 &lt; p &lt; 0.1\\)\nsuggestive\n\n\n\\(0.1 &lt; p\\)\nno evidence\n\n\n\n\n\nExample: “the data [DO/DO NOT] provide [STRENGTH] evidence that [ALTERNATIVE]”"
+  },
+  {
+    "objectID": "content/week5-directional.html#a-directional-test",
+    "href": "content/week5-directional.html#a-directional-test",
+    "title": "Tests for directional hypotheses",
+    "section": "A directional test",
+    "text": "A directional test\n\nDoes the average U.S. adult sleep less than 7 hours?\n\n\n\nThis example leads to a directional test:\n\\[\n\\begin{cases}\nH_0: &\\mu = 7 \\\\\nH_A: &\\mu &lt; 7\n\\end{cases}\n\\]\nThe test statistic is the same as before:\n\\[\nT = \\frac{\\bar{x} - 7}{SE(\\bar{x})} = -1.671\n\\]\n\nThe lower-sided \\(p\\)-value is 0.0474:\n\n\n\n\n\n\n\n\n\n\n\nFor the \\(p\\)-value, we look at how often \\(T\\) is larger in the direction of the alternative.\n\nin this case, how often \\(T\\) is smaller (underestimate by more)"
+  },
+  {
+    "objectID": "content/week5-directional.html#the-other-direction",
+    "href": "content/week5-directional.html#the-other-direction",
+    "title": "Tests for directional hypotheses",
+    "section": "The other direction",
+    "text": "The other direction\n\nDoes the average U.S. adult sleep more than 7 hours?\n\n\n\nNow the alternative is the opposite direction:\n\\[\n\\begin{cases}\nH_0: &\\mu = 7 \\\\\nH_A: &\\mu &gt; 7\n\\end{cases}\n\\]\nThe test statistic is the same as before:\n\\[\nT = \\frac{\\bar{x} - 7}{SE(\\bar{x})} = -1.671\n\\]\n\nThe upper-sided \\(p\\)-value is 0.9526:\n\n\n\n\n\n\n\n\n\n\n\nFor the \\(p\\)-value, we look at how often \\(T\\) is larger in the direction of the alternative.\n\nin this case, how often \\(T\\) is larger (overestimate by more)"
+  },
+  {
+    "objectID": "content/week5-directional.html#another-example-ddt-data",
+    "href": "content/week5-directional.html#another-example-ddt-data",
+    "title": "Tests for directional hypotheses",
+    "section": "Another example: DDT data",
+    "text": "Another example: DDT data\nThe following are 15 measurements of the pesticide DDT in kale in parts per million (ppm).\n\n\n2.79, 2.93, 3.22, 3.78, 3.22, 3.38, 3.18, 3.33, 3.34, 3.06, 3.07, 3.56, 3.08, 4.64 and 3.34\n\n\n\nC. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.\n\nImagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.\n\\[\n\\begin{cases}\nH_0: &\\mu = 3 \\quad(\\text{null hypothesis})\\\\\nH_A: &\\mu &gt; 3 \\quad(\\text{alternative hypothesis})\n\\end{cases}\n\\]\nWe choose this direction because we’re concerned with evidence that mean DDT exceeds the threshold."
+  },
+  {
+    "objectID": "content/week5-directional.html#another-example-ddt-data-1",
+    "href": "content/week5-directional.html#another-example-ddt-data-1",
+    "title": "Tests for directional hypotheses",
+    "section": "Another example: DDT data",
+    "text": "Another example: DDT data\n\n\nIf in fact \\(\\mu = 3\\), then according to the \\(t\\) model 0.58% of samples would produce an error of this magnitude or more in the direction of the alternative:\n\n\n\n\n\n\n\n\n\n\n\nt.test(ddt, mu = 3, alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  ddt\nt = 2.9059, df = 14, p-value = 0.005753\nalternative hypothesis: true mean is greater than 3\n95 percent confidence interval:\n 3.129197      Inf\nsample estimates:\nmean of x \n    3.328 \n\n\n\nThe data provide strong evidence that mean DDT in kale exceeds 3ppm (T = 2.9059 on 14 degrees of freedom, p = 0.0058). With 95% confidence, the mean DDT is estimated to be at least 3.129, with a point estimate of 3.32 (SE: 0.1168).\n\n\n\nNotice the one-sided interval! (Inf = \\(\\infty\\).) This is called a “lower confidence bound”."
+  },
+  {
+    "objectID": "content/week5-directional.html#your-turn-which-alternative",
+    "href": "content/week5-directional.html#your-turn-which-alternative",
+    "title": "Tests for directional hypotheses",
+    "section": "Your turn: which alternative?",
+    "text": "Your turn: which alternative?\n\nWrite the hypotheses in notation and identify which test (upper/lower/two sided) should be used.\n\nUsing the temperature/heartrate data:\n\nIs mean body temperature less than 98.6°F?\nIs mean heart rate greater than 60 bpm?\nIs mean heart rate 65 bpm?\n\nUsing the NC births data:\n\nIs the mean number of weeks at birth 40?\nIs the mean birth weight at least 7 lbs?\nIs the mean birth weight under 8 lbs?\n\n\n\n\n\nSTAT218"
+  },
+  {
+    "objectID": "content/week5-directional.html#three-t-tests",
+    "href": "content/week5-directional.html#three-t-tests",
+    "title": "Tests for directional hypotheses",
+    "section": "Three \\(t\\)-tests",
+    "text": "Three \\(t\\)-tests\n\n\nDo U.S. adults sleep 7 hours per night?\n\n# two sided test\nt.test(sleep, \n       mu = 7)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.09482\nalternative hypothesis: true mean is not equal to 7\n95 percent confidence interval:\n 6.911123 7.007090\nsample estimates:\nmean of x \n 6.959107 \n\n\n\nSuggestive but insufficient evidence that U.S. adults don’t sleep 7 hours\n\n\nDo U.S. adults sleep less than 7 hours per night?\n\n# lower-sided test\nt.test(sleep, \n       mu = 7, \n       alternative = 'less')\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.04741\nalternative hypothesis: true mean is less than 7\n95 percent confidence interval:\n     -Inf 6.999372\nsample estimates:\nmean of x \n 6.959107 \n\n\n\nModerate evidence that U.S. adults sleep less than 7 hours\n\n\nDo U.S. adults sleep more than 7 hours per night?\n\n# upper-sided test\nt.test(sleep, \n       mu = 7, \n       alternative = 'greater')\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.9526\nalternative hypothesis: true mean is greater than 7\n95 percent confidence interval:\n 6.918841      Inf\nsample estimates:\nmean of x \n 6.959107 \n\n\n\nNo evidence that U.S. adults sleep more than 7 hours"
+  },
+  {
+    "objectID": "content/week5-directional.html#recap-decision-criteria",
+    "href": "content/week5-directional.html#recap-decision-criteria",
+    "title": "Tests for directional hypotheses",
+    "section": "Recap: decision criteria",
+    "text": "Recap: decision criteria\n\nA hypothesis test boils down to deciding whether your estimate is too far from a hypothetical value for that hypothesis to be plausible.\n\n\n\nTo test the hypotheses:\n\\[\n\\begin{cases}\nH_0: &\\mu = \\mu_0 \\\\\nH_A: &\\mu \\neq \\mu_0\n\\end{cases}\n\\]\nWe use the test statistic:\n\\[\nT = \\frac{\\bar{x} - \\mu_0}{SE(\\bar{x})}\n\\quad\\left(\\frac{\\text{estimation error under } H_0}{\\text{standard error}}\\right)\n\\]\n\nWe say \\(H_0\\) is implausible at level \\(\\alpha\\) if either:\n\n\\(|T| &gt; q\\) for the \\(\\alpha\\)-critical value \\(q\\)\n\n\\(q\\) is the \\(1 - \\frac{\\alpha}{2}\\) quantile of the \\(t_{n - 1}\\) model\n\n\\(\\underbrace{P(|T| &gt; |T_\\text{observed}|)}_\\text{p-value} &lt; \\alpha\\)\n\n\n\nThis procedure controls the error rate \\(\\alpha\\): the proportion of samples for which we’d make a false rejection."
+  },
+  {
+    "objectID": "content/lab7-directional.html",
+    "href": "content/lab7-directional.html",
+    "title": "Lab 6: Directional \\(t\\)-tests",
+    "section": "",
+    "text": "This lab has two objectives:\n\nLearn to use the t.test(...) function\nLearn to discern the appropriate direction for a \\(t\\) test\n\nWe’ll use two familiar datasets: body temperature and heart rate measurements for 39 individuals; and data on birth weights and weeks at birth for a sample of 100 births in North Carolina in 2004.\n\nlibrary(tidyverse)\nload('data/temps.RData')\nload('data/nhanes.RData')\nncbirths &lt;- read_csv('data/ncbirths.csv')\n\n\nThe t.test(...) function\nThe t.test(...) function produces both a hypothesis test and an confidence interval, and can be used to obtain either or both in practice.\nLet’s demonstrate with the practice problem you completed most recently: inference on the mean nightly hours of sleep among U.S. adults based on NHANES data.\nThe default behavior of t.test(...) if given no arguments besides a vector of data is to test \\(H_0: \\mu = 0\\) against a two-sided alternative (\\(H_A: \\mu \\neq 0\\)) and provide a 95% confidence interval. There are three key arguments that allow you to adjust this behavior:\n\nmu = ... adjusts the value for the mean in the null hypothesis \\(H_0\\)\n\ndefault mu = 0\n\nalternative = ... adjusts the direction of the alternative, with options\n\n'less' for a lower-sided alternative\n'greater' for an upper-sided alternative\n'two.sided' (default) for a two-sided alternative\n\nconf.level = ... adjusts the confidence level for the interval estimate\n\ndefault conf.level = 0.95\n\n\nThe examples below illustrate this usage. Run each command and look at the output closely to determine what changes.\n\n# extract sleep variable\nsleep &lt;- nhanes$sleephrsnight\n\n# default behavior (these are equivalent)\nt.test(sleep)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = 284.36, df = 3178, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 6.911123 7.007090\nsample estimates:\nmean of x \n 6.959107 \n\nt.test(sleep, mu = 0, alternative = 'two.sided', conf.level = 0.95)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = 284.36, df = 3178, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 6.911123 7.007090\nsample estimates:\nmean of x \n 6.959107 \n\n# change null value to 7 hours of sleep\nt.test(sleep, mu = 7, alternative = 'two.sided', conf.level = 0.95)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.09482\nalternative hypothesis: true mean is not equal to 7\n95 percent confidence interval:\n 6.911123 7.007090\nsample estimates:\nmean of x \n 6.959107 \n\n# change the confidence level\nt.test(sleep, mu = 7, alternative = 'two.sided', conf.level = 0.99)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.09482\nalternative hypothesis: true mean is not equal to 7\n99 percent confidence interval:\n 6.896032 7.022182\nsample estimates:\nmean of x \n 6.959107 \n\n# change the direction of the alternative\nt.test(sleep, mu = 7, alternative = 'less', conf.level = 0.99)\n\n\n    One Sample t-test\n\ndata:  sleep\nt = -1.671, df = 3178, p-value = 0.04741\nalternative hypothesis: true mean is less than 7\n99 percent confidence interval:\n     -Inf 7.016067\nsample estimates:\nmean of x \n 6.959107 \n\n\nFocus for a moment on the last example. In detail, this tests, at the 1% significance level, the hypotheses:\n\\[\n\\begin{cases}\nH_0: &\\mu = 7 \\\\\nH_A: &\\mu &lt; 7\n\\end{cases}\n\\]\nWhile the conf.level argument doesn’t affect the \\(p\\)-value, it does imply a significance level – in this case, \\(\\alpha = 0.01\\). So, even though the \\(p\\)-value is less than the conventional level (\\(p &lt; 0.05\\)), it is not less than the implied significance level (here \\(p &gt; 0.01\\)), so the test output implies we’d fail to reject the hypothesis that adults sleep less than 7 hours.\nIn general, it’s important to set the confidence level to correspond to the significance level of the test you wish to perform, so that the test interpretation and interval provided match.\n\n\n\n\n\n\nYour turn 1\n\n\n\nAdjust the arguments of the t.test(...) function to achieve the following:\n\nfind a 90% CI for the mean\ntest whether mean sleep is 6.9 at the 5% level\ntest whether mean sleep is 6.9 at the 1% level\ntest whether mean sleep exceeds 6.9 at the 5% level\ntest whether mean sleep exceeds 6.9 at the 1% level\n\n\n# obtain a 90% confidence interval for the mean hours of sleep\n\n# test whether mean sleep is 6.9 at the 5% level\n\n# test whether mean sleep is 6.9 at the 1% level\n\n# test whether mean sleep exceeds 6.9 at the 5% level\n\n# test whether mean sleep exceeds 6.9 at the 1% level\n\nFor extra practice, write a short interpretation of the results of each test following the style introduced in class.\n\n\n\n\nDistinguishing directional alternatives\nHere we’ll use the temperature/heartrate data to illustrate a variety of directional tests based on questions of interest.\nAs you’re looking over the examples, focus on the correspondence between the questions and the direction of the alternative.\n\n# extract body temperature variable\nbodytemps &lt;- temps$body.temp\n\n# is mean temperature different from 98.6 at the 5% significance level?\nt.test(bodytemps, mu = 98.6, alternative = 'two.sided', conf.level = 0.95)\n\n# is mean temperature less than 98.6 at the 5% significance level?\nt.test(bodytemps, mu = 98.6, alternative = 'less', conf.level = 0.95)\n\n# is mean temperature greater than 98.1 at the 5% significance level?\nt.test(bodytemps, mu = 98.1, alternative = 'greater', conf.level = 0.95)\n\n# is mean temperature greater than 98.1 at the 1% significance level?\nt.test(bodytemps, mu = 98.1, alternative = 'greater', conf.level = 0.99)\n\n# is mean temperature less than 98.9 at the 5% significance level?\nt.test(bodytemps, mu = 98.9, alternative = 'less', conf.level = 0.95)\n\nAs an aside (but an important one!), performing all of these tests together is only meant to illustrate how the function works, not how to perform an analysis. Trying out many tests until you obtain significant results is known as “\\(p\\) hacking”, and is not an acceptable practice.\n\n\n\n\n\n\nYour turn 2\n\n\n\nUsing the heart.rate variable, test the following hypotheses:\n\nIs mean heart rate 65bpm at the 5% level?\nIs mean heart rate 70bpm at the 1% level?\nIs mean heart rate greater than 70bpm at the 1% level?\nIs mean heart rate less than 75bpm at the 10% level?\nIs mean heart rate greater than 75bpm at the 10% level?\n\n\n# extract heart rate variable\n\n# is mean heart rate 65bpm at the 5% level?\n\n# is mean heart rate 70bpm at the 1% level?\n\n# is mean heart rate greater than 70bpm at the 1% level?\n\n# is mean heart rate less than 75bpm at the 10% level?\n\n# is mean heart rate greater than 75bpm at the 10% level?\n\n\n\n\n\nA brief analysis\nNow that you’re familiar with using the t.test(...) function, let’s do something a bit more realistic. Suppose that, using the ncbirths data, you want to perform inference on the number of weeks at birth. We’re told that 40 weeks is typical.\n\nAdvance decisions\nIn advance of looking at the data (or perhaps even having data) we should determine:\n\nthe hypotheses to test\nthe level at which we’ll perform the test\n\nTo make these choices, first note that there’s no obvious directional question to ask here. So, we’ll test whether the mean number of weeks at birth is 40. A 5% significance level is conventional, so we’ll stick with that.\n\n\nAssessing assumptions\nBefore going ahead, let’s inspect the data.\n\n# extract variable of interest\nweeks &lt;- ncbirths$weeks\n\n# inspect distribution\nhist(weeks, breaks = 15)\n\n\n\n\n\n\n\n\nThis is an interesting case, because we do have a left-skewed distribution and there are a few outliers below 30 weeks. However, the sample size is large (\\(n = 100\\)), so the test should still work well regardless.\n\n\nPerforming the test\nFor inference we’ll want to report a test result and interval estimate. Both of these are obtained using t.test(...) as above, but of course we only perform one test/interval calculation.\n\n# inference\nt.test(weeks, mu = 40, alternative = 'two.sided', conf.level = 0.95)\n\n\n    One Sample t-test\n\ndata:  weeks\nt = -5.0421, df = 99, p-value = 2.084e-06\nalternative hypothesis: true mean is not equal to 40\n95 percent confidence interval:\n 37.97938 39.12062\nsample estimates:\nmean of x \n    38.55 \n\n\nTake a moment to inspect the results.\n\n\nInterpreting results\nFollowing the format in class, a report of the results should interpret the test and interval in context, providing supporting statistics parenthetically:\n\nData from North Carolina in 2004 provide strong evidence that the mean number of weeks at birth differs from 40 (T = -5.0421 on 99 degrees of freedom, p &lt; 0.0001). With 95% confidence, the mean number of weeks at birth is estimated to be between 37.98 and 39.12 weeks, with a point estimate of 38.55 weeks (SE 0.289).\n\n\n\n\nPractice problems\n\nPerform and interpret the results of inference on the mean birth weight to investigate the claim that the typical birth weight is at least 7 lbs. Carry out inference at the 5% significance level.\n\nDetermine your hypotheses.\nCheck test assumptions.\nPerform the calculations.\nWrite a short report of the results.\n\n\n\n[REVISED] Using the BRFSS data, test whether actual body weight exceeds desired body weight and estimate the difference. Perform the test at the 1% level."
   }
 ]

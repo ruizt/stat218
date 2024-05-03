@@ -1,0 +1,579 @@
+---
+title: "Tests for directional hypotheses"
+subtitle: ""
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(Sleuth3)
+library(pander)
+load('data/nhanes.RData')
+load('data/temps.RData')
+body_temps <- temps$body.temp
+ddt <- MASS::DDT
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+blue.grad <- colorRampPalette(c('#6880f7', '#0a1a6e'))
+reds <- red.grad(6)
+blues <- blue.grad(6)
+```
+
+## Today's agenda
+
+1. Quick review of decision criteria for the $t$ test
+2. [lecture] test-interval relationship; directional $t$ tests
+3. [lab] upper-sided, lower-sided, and two-sided tests for the population mean
+
+## Recap: decision criteria
+
+> A hypothesis test boils down to deciding whether your estimate is too far from a hypothetical value for that hypothesis to be plausible.
+
+::: {.columns}
+
+::: {.column width="55%"}
+To test the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\mu = \mu_0 \\
+H_A: &\mu \neq \mu_0
+\end{cases}
+$$
+
+We use the test statistic:
+
+$$
+T = \frac{\bar{x} - \mu_0}{SE(\bar{x})}
+\quad\left(\frac{\text{estimation error under } H_0}{\text{standard error}}\right)
+$$
+:::
+
+::: {.column width="40%"}
+We say $H_0$ is implausible at level $\alpha$ if either:
+
+- $|T| > q$ for the $\alpha$-critical value $q$
+
+    + $q$ is the $1 - \frac{\alpha}{2}$ quantile of the $t_{n - 1}$ model
+
+- $\underbrace{P(|T| > |T_\text{observed}|)}_\text{p-value} < \alpha$
+:::
+
+:::
+
+This procedure controls the error rate $\alpha$: the proportion of samples for which we'd make a false rejection.
+
+## From last time
+
+*Practice problem: test the hypothesis that the average U.S. adult sleeps 8 hours.*
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+```{r}
+# nhanes data
+load('data/nhanes.RData')
+```
+
+```{r, fig.width = 3.5, fig.height = 1.75}
+# assess assumptions
+sleep <- nhanes$sleephrsnight
+par(mar = c(4, 4, 0, 0))
+hist(sleep, main = '', breaks = 10)
+```
+
+```{r, echo = T}
+# calculations
+sleep.mean <- mean(sleep) 
+sleep.mean.se <- sd(sleep)/sqrt(length(sleep))
+tstat <- (sleep.mean - 8)/sleep.mean.se 
+crit.val <- qt(0.975, df = 3178) 
+p.val <- 2*pt(abs(tstat), df = 3178, lower.tail = F)
+ci <- sleep.mean + c(-1, 1)*crit.val*sleep.mean.se
+```
+
+```{r}
+c(estimate = sleep.mean,
+  std.err = sleep.mean.se,
+  tstat = tstat, 
+  cval = crit.val, 
+  pval = p.val) |>
+  pander()
+```
+
+95% confidence interval: (`r round(ci, 2)`)
+:::
+
+::: {.column width="40%"}
+A complete narrative summary:
+
+> The data provide evidence that the average U.S. adult does not sleep 8 hours per night (*T* = -42.53 on 3178 degrees of freedom, *p* < 0.0001). With 95% confidence, the mean nightly hours of sleep among U.S. adults is estimated to be between 6.91 and 7.01 hours, with a point estimate of 6.59 hours (SE: 0.0245).
+:::
+
+:::
+
+## Tests and intervals
+
+> Tests and intervals are usually reported together
+
+Consider how the test and interval provide complementary information:
+
+- the test tells you U.S. adults don't sleep 8 hours
+- the interval tells you how much they *do* sleep
+
+It is reasonable that they should be consistent, and in fact they are.
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{r, echo = T}
+# calculations
+sleep.mean <- mean(sleep) 
+sleep.mean.se <- sd(sleep)/sqrt(length(sleep))
+tstat <- (sleep.mean - 8)/sleep.mean.se 
+crit.val <- qt(0.975, df = 3178) 
+p.val <- 2*pt(abs(tstat), df = 3178, lower.tail = F)
+ci <- sleep.mean + c(-1, 1)*crit.val*sleep.mean.se
+```
+:::
+
+::: {.column width="45%"}
+> Notice that the critical value in the 5% significance level test is exactly the same as that used in the 95% confidence interval.
+:::
+
+:::
+
+## Tests and intervals
+
+The critical value used in a $\alpha$ significance level test is identical to the critical value used in a $(1 - \alpha)$ interval. Consequently:
+
+$$
+\underbrace{\bar{x} - c\times SE(\bar{x}) < \mu_0 < \bar{x} + c\times SE(\bar{x})}_\text{hypothesized value is in the interval}
+\quad\Longleftrightarrow\quad
+\underbrace{-c < \frac{\bar{x} - \mu_{0}}{SE(\bar{x})} < c}_{|T| < c}
+$$
+
+Meaning: the interval includes exactly those values that the test fails to reject.
+
+- Sensible considering both use the same information: the distance between the point estimate and population mean, relative to the variability of the estimate
+
+## Tests and intervals
+
+> The level-$\alpha$ test rejects $H_0: \mu = \mu_0$ exactly when $\mu_0$ is outside the $(1 - \alpha)\times 100$% confidence interval for $\mu$.
+
+
+::: {.columns}
+::: {.column}
+```{r, fig.width=6, fig.height = 5}
+mu_grid <- seq(6.85, 7.05, length = 100)
+ci.95 <- t.test(sleep, conf.level = 0.95)$conf[1:2]
+ci.99 <- t.test(sleep, conf.level = 0.99)$conf[1:2]
+
+tibble(mu = mu_grid) |>
+  mutate(p.value = map(mu, \(x) t.test(sleep, mu = x)$p.value)) |>
+  unnest(p.value) |>
+  ggplot(aes(x = mu, y = p.value)) +
+  geom_path() +
+  geom_hline(yintercept = 0.05, linetype = 'dashed', color = reds[1]) +
+  geom_ribbon(aes(xmin = ci.95[1], xmax = ci.95[2]),
+              fill = reds[4],
+              alpha = 0.3) +
+  geom_hline(yintercept = 0.01, linetype = 'dashed', color = blues[1]) +
+  geom_ribbon(aes(xmin = ci.99[1], xmax = ci.99[2]),
+              fill = blues[4],
+              alpha = 0.2) +
+  theme_minimal(base_size = 20) +
+  labs(x = expr(mu[0]), y = 'p value') +
+  scale_y_sqrt() +
+  annotate('text', x = 7.04, y = 0.07, 
+           size = 5, label = expr(paste(alpha, " = 0.05")), color = reds[1]) +
+  annotate('text', y = 0.92, x = 6.93, label = '95% CI', color = reds[3], size = 5) +
+  annotate('text', x = 7.04, y = 0.02, 
+           size = 5, label = expr(paste(alpha, " = 0.01")), color = blues[1]) +
+  annotate('text', y = 0.7, x = 6.912, label = '99% CI', color = blues[3], size = 5)
+```
+:::
+
+::: {.column}
+Left, $p$-values for a sequence of tests:
+
+- $p > 0.05$ precisely for $\mu_0$ in 95% CI
+- $p > 0.01$ precisely for $\mu_0$ in 99% CI
+
+In other words:
+
+$$\text{level $\alpha$ test rejects} \Longleftrightarrow \text{$1 - \alpha$ CI excludes}$$
+
+::: 
+
+:::
+
+
+## The `t.test(...)` function
+
+Since tests and intervals go together, there is a single R function that computes both.
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r, echo = T}
+t.test(sleep, mu = 8, conf.level = 0.95)
+```
+
+::: 
+
+::: {.column width="50%"}
+No critical value is reported, so you have to make the decision using the $p$ value:
+
+- $p < \alpha$: reject
+- $p > \alpha$: fail to reject
+:::
+
+:::
+
+Take a moment to locate each component of the test and estimates from the output.
+
+## Interpreting $p$-values
+
+> $p$-values measure the strength of evidence against $H_0$ and favoring $H_A$: smaller $p$-values indicate stronger evidence; larger $p$-values indicate weaker evidence.
+
+::: {.columns}
+
+::: {.column width="55%"}
+The mathematical definition is:
+$$p = P(|T| > |T_\text{observed}|)$$ 
+
+- technically, the probability under $H_0$ that $T$ exceeds the observed value in magnitude
+- informally, how unusual/rare your data are
+
+:::
+
+::: {.column width="45%"}
+As a measure of the strength of evidence favoring the alternative:
+
+value | strength of evidence
+---|---
+$p < 0.001$ | very strong
+$0.001 < p < 0.01$ | strong
+$0.01 < p < 0.05$ | moderate
+$0.05 < p < 0.1$ | suggestive
+$0.1 < p$ | no evidence
+:::
+
+:::
+
+## Your turn: interpret these $p$-values
+
+> Don't just match the value to the table; add context, and state the test outcome.
+
+::: {.columns}
+::: {.column}
+```{r, echo = T}
+# example 1
+t.test(sleep, mu = 6.8)$p.value
+
+# example 2
+t.test(sleep, mu = 6.9)$p.value
+
+# example 3
+t.test(sleep, mu = 7)$p.value
+
+# example 4
+t.test(sleep, mu = 7.1)$p.value
+
+# example 5
+t.test(sleep, mu = 7.2)$p.value
+
+```
+:::
+
+::: {.column}
+value | strength of evidence
+---|---
+$p < 0.001$ | very strong
+$0.001 < p < 0.01$ | strong
+$0.01 < p < 0.05$ | moderate
+$0.05 < p < 0.1$ | suggestive
+$0.1 < p$ | no evidence
+:::
+
+:::
+
+Example: "**the data** [DO/DO NOT] **provide** [STRENGTH] **evidence that** [ALTERNATIVE]"
+
+## A directional test
+
+> Does the average U.S. adult sleep *less than* 7 hours?
+
+::: {.columns}
+
+::: {.column width="55%"}
+This example leads to a *directional* test:
+
+$$
+\begin{cases}
+H_0: &\mu = 7 \\
+H_A: &\mu < 7
+\end{cases}
+$$
+
+The test statistic is the same as before:
+
+$$
+T = \frac{\bar{x} - 7}{SE(\bar{x})} = -1.671
+$$
+:::
+
+::: {.column width="45%"}
+The *lower-sided* $p$-value is `r t.test(sleep, mu = 7, alternative = 'less')$p.value |> round(4)`:
+
+```{r, fig.width=6.5, fig.height=4.25, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 3178)
+tstat <- t.test(sleep, mu = 7)$stat
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 3178), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[3179 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 7, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+
+legend('topright', fill = reds[c(1, 3)],
+       legend = c(paste(round(pt(tstat, df = 3178), 3)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+:::
+
+:::
+
+For the $p$-value, we look at how often $T$ is larger *in the direction of the alternative*.
+
+- in this case, how often $T$ is smaller (underestimate by more)
+
+## The other direction
+
+> Does the average U.S. adult sleep ***more** than* 7 hours?
+
+::: {.columns}
+
+::: {.column width="55%"}
+Now the alternative is the opposite direction:
+
+$$
+\begin{cases}
+H_0: &\mu = 7 \\
+H_A: &\mu > 7
+\end{cases}
+$$
+
+The test statistic is the same as before:
+
+$$
+T = \frac{\bar{x} - 7}{SE(\bar{x})} = -1.671
+$$
+:::
+
+::: {.column width="45%"}
+The ***upper**-sided* $p$-value is `r t.test(sleep, mu = 7, alternative = 'greater')$p.value |> round(4)`:
+
+```{r, fig.width=6.5, fig.height=4.25, fig.align='center'}
+x <- seq(-3.5, 3.5, length = 10000)
+y <- dt(x, df = 3178)
+tstat <- t.test(sleep, mu = 7)$stat
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 3178), from = -3.5, to = 3.5, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[3179 - 1], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - 7, s[x]/sqrt(n)))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-3, 3, by = 1))
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat - 1, 0.3, paste("T = ", round(tstat, 3)))
+
+polygon(c(x[x>=tstat], max(x), tstat), c(y[x>=tstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[c(3)],
+       legend = c(paste(round(pt(tstat, df = 3178, lower.tail = F), 3)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+:::
+
+:::
+
+For the $p$-value, we look at how often $T$ is larger *in the direction of the alternative*.
+
+- in this case, how often $T$ is **larger** (**over**estimate by more)
+
+## Directional hypotheses
+
+Tests for the mean can involve directional or non-directional alternatives. We refer to these as one-sided and two-sided tests, respectively.
+
+| Test type   | Alternative      | Direction favoring alternative |
+|-------------|------------------|--------------------|
+| Upper-sided | $\mu > \mu_0$    | larger $T$       |
+| Lower-sided | $\mu < \mu_0$    | smaller $T$       |
+| Two-sided   | $\mu \neq \mu_0$ | larger $|T|$        |
+
+The direction of the test affects the $p$-value calculation (and thus decision), but *won't* change the test statistic.
+
+Conceptually tricky, but easy in R:
+
+```{r, echo = T, eval = F}
+# upper-sided
+t.test(ddt, mu = mu_0, alternative = 'greater')
+
+# lower-sided
+t.test(ddt, mu = mu_0, alternative = 'less')
+
+# two-sided (default)
+t.test(ddt, mu = mu_0, alternative = 'two.sided')
+```
+
+
+## Three $t$-tests
+
+::: {.columns}
+
+::: {.column width="33%"}
+Do U.S. adults sleep 7 hours per night?
+
+```{r, echo = T}
+# two sided test
+t.test(sleep, 
+       mu = 7)
+```
+
+> Suggestive but insufficient evidence that U.S. adults don't sleep 7 hours
+
+:::
+
+::: {.column width="33%"}
+Do U.S. adults sleep less than 7 hours per night?
+```{r, echo = T}
+# lower-sided test
+t.test(sleep, 
+       mu = 7, 
+       alternative = 'less')
+```
+
+> Moderate evidence that U.S. adults sleep less than 7 hours
+
+:::
+
+::: {.column width="34%"}
+Do U.S. adults sleep more than 7 hours per night?
+```{r, echo = T}
+# upper-sided test
+t.test(sleep, 
+       mu = 7, 
+       alternative = 'greater')
+```
+
+> No evidence that U.S. adults sleep more than 7 hours
+:::
+
+:::
+
+
+## Another example: DDT data
+
+The following are 15 measurements of the pesticide DDT in kale in parts per million (ppm).
+
+```{r}
+pander(ddt)
+```
+
+> C. E. Finsterwalder (1976) Collaborative study of an extension of the Mills et al method for the determination of pesticide residues in food. J. Off. Anal. Chem. 59, 169–171.
+
+Imagine the target level for safety considerations is 3ppm or less, and you want to use this data to determine whether the mean DDT level is within safe limits.
+
+$$
+\begin{cases}
+H_0: &\mu = 3 \quad(\text{null hypothesis})\\
+H_A: &\mu > 3 \quad(\text{alternative hypothesis})
+\end{cases}
+$$
+
+*We choose this direction because we're concerned with evidence that mean DDT **exceeds** the threshold.* 
+
+## Another example: DDT data
+
+::: columns
+::: {.column width="45%"}
+**If in fact $\mu = 3$**, then according to the $t$ model 0.58% of samples would produce an error of this magnitude or more in the direction of the alternative:
+
+```{r, fig.width = 6, fig.height = 4.5}
+par(mar = c(5, 4, 1, 1),
+    cex = 1.5)
+x <- seq(-4, 4, length = 10000)
+y <- dt(x, df = 14)
+tstat <- t.test(ddt, mu = 3)$stat
+plot(x, y, type = 'l',
+     ylab = 'density', 
+     xlab = '',
+     main = expr(paste(t[15 - 1], 'model', sep = ' ')),
+     xaxt = 'n',
+     yaxt = 'n',
+     axes = F)
+axis(side = 1, at = seq(-4, 4, 2))
+title(xlab = expression(paste("T = ", frac(bar(x) - 3, s[x]/sqrt(n)))),
+      line = 4)
+axis(side = 2, at = seq(0, 0.4, by = 0.1))
+# polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat], 0, 0), col=reds[1])
+polygon(c(x[x>=tstat], max(x), tstat), c(y[x>=tstat], 0, 0), col = reds[1])
+abline(v = tstat, lty = 4, lwd = 2)
+legend(x = 'topright', 
+       legend = paste(round(1 - pt(tstat, 14), 4)*100, '% of \n samples', sep = ''), 
+       fill = reds[1], box.col = NA)
+```
+:::
+
+::: {.column width="55%"}
+```{r, echo = T}
+t.test(ddt, mu = 3, alternative = 'greater')
+```
+
+> The data provide strong evidence that mean DDT in kale exceeds 3ppm (*T* = 2.9059 on 14 degrees of freedom, *p* = 0.0058). With 95% confidence, the mean DDT is estimated to be at least 3.129, with a point estimate of 3.32 (SE: `r round(sd(ddt)/sqrt(14), 4)`).
+:::
+:::
+
+*Notice the one-sided interval! (`Inf` = $\infty$.) This is called a "lower confidence bound".*
+
+
+## Your turn: which alternative?
+
+> Write the hypotheses in notation and identify which test (upper/lower/two sided) should be used.
+
+Using the temperature/heartrate data:
+
+1. Is mean body temperature less than 98.6°F?
+2. Is mean heart rate greater than 60 bpm? 
+3. Is mean heart rate 65 bpm?
+
+Using the NC births data:
+
+1. Is the mean number of weeks at birth 40?
+2. Is the mean birth weight at least 7 lbs?
+3. Is the mean birth weight under 8 lbs?
