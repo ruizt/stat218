@@ -2,7 +2,7 @@ library(tidyverse)
 library(readxl)library(gmailr)
 library(xtable)
 setwd('~/OneDrive - Cal Poly/stat218-s24-submissions')
-gm_auth_configure(path = '~/documents/courses/stat218/_zz-gradebook-s24/gmail-auth.json')
+gm_auth_configure(path = '~/documents/courses/stat218/_zz-gmail-auth.json')
 
 ## HELPER FUNCTIONS
 
