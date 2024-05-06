@@ -7,14 +7,11 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-Week 6 outlines posted.
+Please complete this short \[[midquarter feedback survey](https://forms.office.com/r/Q1bVRsyRdW)\] by Friday 5/10.
 
 Assignment reminders:
 
 - problem set 7 due Monday 5/6; late submissions until Wednesday 5/8 5pm
-
-    + practice problem 2 edited slightly!
-    
 - test 2 upcoming: will be released Wednesday 5/8 5pm and due Friday 5/10 5pm
 :::
 
@@ -109,8 +106,8 @@ Response summary \[[PS4](https://forms.office.com/Pages/AnalysisPage.aspx?Analyz
 
 -   \[reading\] review course notes and PS1, PS2, PS3 in detail
 -   \[[review](content/week3-review.qmd)\] recap and Q&A
+-   \[[test 1 practice problems](content/test1-practice.qmd)\] in groups with short solution presentations
 -   \[[R cheatsheet](content/r-cheatsheet.qmd)\] for easy reference
--   \[[practice problems](content/test1-practice.qmd)\] in groups with short solution presentations
 
 **Test 1** available Wednesday 4/17 5pm and due Friday 4/19 5:00pm PDT \[[prompts](content/test1.qmd)\] \[[submission](https://forms.office.com/r/MSsz35jkyk)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/En0PZq0Nx9VCsKlZfHnHuWwBCX_GqLPfm25qFnD-v1skKQ)\]
 
@@ -124,6 +121,8 @@ Response summary \[[PS4](https://forms.office.com/Pages/AnalysisPage.aspx?Analyz
 -   \[[lecture](content/week4-inference.qmd)\] point estimation, sampling variability, and interval estimation
 -   \[[lab](content/lab4-estimation.qmd)\] point and interval estimation for a population mean
 -   \[[problem set 5](https://forms.office.com/r/PCFv67h4N2)\] due Wednesday 4/24; late submissions until Friday 4/26 5pm
+
+Response summary \[[PS5](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=QVcRfRBN6S2KgKhuLttFRyDPQOYB5UX1&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUQ0w4QVJJMTFYMVFWSEFYUFdXQlk5RE05Vy4u)\]
 
 ***Wednesday class meeting***
 
@@ -144,6 +143,8 @@ Response summary \[[PS4](https://forms.office.com/Pages/AnalysisPage.aspx?Analyz
 -   \[[lab](content/lab6-hypothesis.qmd)\] computing test statistics, critical values, and $p$-values
 -   \[[problem set 6](https://forms.office.com/r/kRQXphHZvf)\] due Wednesday 5/1; late submissions until Friday 5/3 5pm
 
+Response summary \[[PS6](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=SP4bWIqcd8ErxkPhArkhqRmjHBsR26LU&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMkZWNFVPSzk5RTlVUTNUNDRHMEFFNzBIRi4u)\]
+
 ***Wednesday class meeting***
 
 -   \[reading\] Vu and Harrington 4.3.3 & 4.3.4
@@ -151,25 +152,30 @@ Response summary \[[PS4](https://forms.office.com/Pages/AnalysisPage.aspx?Analyz
 -   \[[lab](content/lab7-directional.qmd)\] directional tests
 -   \[[problem set 7](https://forms.office.com/r/yJUqiKxMB4)\] due Monday 5/6; late submissions until Wednesday 5/8 5pm
 
+Response summary \[PS7\]
+
 ### Week 6 (5/6/24)
 
 *Two-sample inference for numerical data*
 
+Please complete this short \[[midquarter feedback survey](https://forms.office.com/r/Q1bVRsyRdW)\] by Friday 5/10. Responses are anonymous.
+
 ***Monday class meeting***
 
--   \[reading\] Vu and Harrington 5.2 and 5.3
--   \[review quiz\] test 2 prep and discussion
--   \[lecture\] two-sample inference
+-   \[reading\] Vu and Harrington 5.3
+-   \[[lecture](content/week6-twosample.qmd)\] two-sample inference
 -   \[lab\] two-sample *t* tests in R
 -   \[problem set 8\] due Wednesday 5/8; late submissions until Friday 5/10
 
 ***Wednesday class meeting*** 
 
--   \[reading\] Vu and Harrington 5.4; van Belle *et al.* 8.4 and 8.5 up to 8.5.4
+-   \[reading\] Vu and Harrington 5.4
 -   \[lecture\] decision errors; statistical power
 -   \[lab\] post hoc and study design power analyses
+-   \[[test 2 practice problems](content/test2-practice)\] test 2 prep
+-  \[[R cheatsheet](content/r-cheatsheet.qmd)\] for easy reference
 
-**Test 2** available Wednesday 5/8 5pm and due Friday 5/10 5pm
+**Test 2** available Wednesday 5/8 5pm and **due Friday 5/10 5pm** [prompts] [submission form] [upload R script]
 
 ### Week 7 (5/13/24)
 

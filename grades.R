@@ -1,5 +1,6 @@
 library(tidyverse)
-library(readxl)library(gmailr)
+library(readxl)
+library(gmailr)
 library(xtable)
 setwd('~/OneDrive - Cal Poly/stat218-s24-submissions')
 gm_auth_configure(path = '~/documents/courses/stat218/_zz-gmail-auth.json')
@@ -102,6 +103,19 @@ ps5 <- readxl::read_xlsx('PS5.xlsx') |>
          assignment = 'ps5') |>
   select(name, email, outcome, assignment, question, question.number, score)
 
+ps6 <- readxl::read_xlsx('PS6.xlsx') |>
+  rename_with(tolower)  |>
+  select(name, email, starts_with('points')) |>
+  pivot_longer(starts_with('points'), 
+               names_to = 'question', 
+               values_to = 'score') |>
+  separate(question, into = c('outcome', 'question'), sep = '] ') |>
+  group_by(name, email) |>
+  mutate(outcome = str_remove(outcome, '.*\\['),
+         question.number = fact_fn(question),
+         assignment = 'ps6') |>
+  select(name, email, outcome, assignment, question, question.number, score)
+
 
 test1_original <- readxl::read_xlsx('Test1.xlsx') |>
   bind_rows(readxl::read_xlsx('Test1 Extension.xlsx')) |>
@@ -150,7 +164,7 @@ test1 <- test1_joined |>
 
 ## JOIN AND COMPUTE SCORES
 
-scores_long <- bind_rows(ps1, ps2, ps3, ps4, ps5, test1) |>
+scores_long <- bind_rows(ps1, ps2, ps3, ps4, ps5, ps6, test1) |>
   unite('problem', c(assignment, question.number, outcome, question), sep = '_._') |>
   pivot_wider(names_from = problem, values_from = score) |>
   pivot_longer(-c(1:2), names_to = 'problem', values_to = 'score') |>
@@ -183,6 +197,65 @@ scores_long |>
 
 outcomes |> filter(email == 'sashouri@calpoly.edu')
 scores_long |> filter(name == 'Abigail Blair')
+
+## FOR INSTRUCTOR SUMMARIES
+
+# score summary stats by outcome
+outcomes |>
+  group_by(outcome) |>
+  summarize(mean = mean(score),
+            median = median(score),
+            sd = sd(score))
+
+# percentage of students not/partly/fully meeting each outcome
+outcomes |>
+  group_by(outcome) |>
+  count(current.status) |>
+  mutate(prop = n/sum(n)) |>
+  pivot_wider(id_cols = -n, names_from = current.status, values_from = prop)
+
+# pass rate
+outcomes |>
+  group_by(name) |>
+  count(current.status) |>
+  mutate(current.status = fct_collapse(current.status, 
+                                       pass = c('partly met', 'fully met'),
+                                       no.pass = 'not met')) |> 
+  group_by(name, current.status) |>
+  summarize(n = sum(n)) |>
+  filter(current.status == 'pass') |>
+  group_by(n) |>
+  count(name = 'count') |>
+  ungroup() |>
+  mutate(prop = count/sum(count))
+
+# id students not passing
+outcomes |>
+  group_by(name) |>
+  count(current.status) |>
+  filter(current.status != 'not met') |>
+  mutate(current.status = str_replace(current.status, ' ', '.')) |>
+  pivot_wider(names_from = current.status, values_from = n) |>
+  mutate(across(contains('met'), ~replace_na(.x, 0))) |>
+  mutate(n.passing = partly.met + fully.met) |>
+  filter(n.passing < 6) |>
+  mutate(n.short = 6 - n.passing,
+         tentative.grade = cut(fully.met, 
+                               breaks = c(-1, 3, 12), 
+                               labels = paste(c('under', 'at least'), 'C', sep = ' '))) |>
+  arrange(desc(n.short)) |>
+  print(n = 30)
+
+# id students under C
+outcomes |>
+  group_by(name) |>
+  count(current.status) |>
+  filter(current.status == 'fully met') |>
+  mutate(tentative.grade = cut(n, 
+                        breaks = c(-1, 3, 12), 
+                        labels = paste(c('under', 'at least'), 'C', sep = ' '))) |>
+  filter(n < 3) |>
+  mutate(n.short = 3 - n)
 
 ## EMAIL GRADE SUMMARIES
 

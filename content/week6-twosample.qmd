@@ -1,0 +1,475 @@
+---
+title: "Two sample inference"
+subtitle: "Hypothesis tests and intervals for comparing two population means"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  eval: true
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+load('data/brfss.RData')
+load('data/temps.RData')
+data(thermometry)
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+blue.grad <- colorRampPalette(c('#6880f7', '#0a1a6e'))
+reds <- red.grad(6)
+```
+
+## Today's agenda
+
+1. [lecture] two sample inference for means
+2. [lab] two-sample $t$ tests in R
+3. [test prep] practice problems
+
+## From last time
+
+Practice problem: *test whether actual body weight exceeds desired body weight*.
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+brfss |>
+  transmute(subject = row_number(),
+            actual = weight,
+            desired = wtdesire,
+            difference = weight - wtdesire) |>
+  head(5) |>
+  pander()
+```
+::: 
+
+::: {.column width="50%"}
+```{r, echo = T}
+weight.diffs <- brfss$weight - brfss$wtdesire
+t.test(weight.diffs, 
+       mu = 0, 
+       alternative = 'greater')
+```
+:::
+:::
+
+> The data provide very strong evidence that the average U.S. adult's actual weight exceeds their desired weight (*T* = 4.2172 on 59 degrees of freedom, *p* < 0.0001).
+
+Inference is on the mean difference: $H_0: \delta = 0$ vs. $H_A: \delta > 0$.
+
+*Can we also do inference on a difference in means?*
+
+## Evolution of Darwin's finches
+
+::: columns
+::: {.column width="70%"}
+Peter and Rosemary Grant caught and measured birds from more than 20 generations of finches on Daphne Major.
+
+-   severe drought in 1977 limited food to large tough seeds
+
+-   selection pressure favoring larger and stronger beaks
+
+-   hypothesis: beak depth increased in 1978 relative to 1976
+
+:::
+
+::: {.column width="30%"}
+```{r}
+set.seed(50523)
+finch <- Sleuth3::case0201 |> rename_with(tolower) |> sample_n(size = 123)
+finch %>%
+  group_by(year) %>%
+  sample_n(size = 2) %>%
+  pander()
+```
+:::
+:::
+
+To answer this, we need to test a hypothesis involving two means:
+
+$$
+\begin{cases}
+H_0: &\mu_{1976} = \mu_{1978} \\
+H_A: &\mu_{1976} < \mu_{1978}
+\end{cases}
+$$
+
+- can't do inference on a mean difference here (no pairing of observations)
+- treat each year as an independent sample
+
+## Two-sample inference
+
+```{r, eval = F}
+finch |> count(year)
+```
+
+If $x_1, \dots, x_{58}$ are the 1976 observations and $y_1, \dots, y_{65}$ are the 1978 observations:
+
+- $\bar{x}$ is a point estimate for $\mu_{1976}$ with standard error $SE(\bar{x}) = \frac{s_x}{\sqrt{n}}$
+- $\bar{y}$ is a point estimate for $\mu_{1978}$ with standard error $SE(\bar{y}) = \frac{s_y}{\sqrt{n}}$
+
+::: {.columns}
+
+::: {.column}
+
+Inference uses a new $T$ statistic:
+
+$$
+T = \frac{\bar{x} - \bar{y} - \delta_0}{SE(\bar{x} - \bar{y})}
+$$
+
+- $\delta_0$ is the hypothesized difference in means
+-   $SE(\bar{x} - \bar{y}) = \sqrt{SE(\bar{x}) + SE(\bar{y})}$
+-   $t_\nu$ model approximates the sampling distribution when each sample meets assumptions for one-sample inference
+
+:::
+
+::: {.column}
+
+```{r, fig.width=6.5, fig.height=5, fig.align='center'}
+tt.out <- t.test(depth ~ year, data = finch, alternative = 'less')
+df <- tt.out$parameter
+x <- seq(-6, 4, length = 10000)
+y <- dt(x, df) |> sqrt()
+tstat <- tt.out$stat
+
+par(mar = c(5, 4, 2, 1), cex = 1.5)
+curve(sqrt(dt(x, df)), from = -6, to = 4, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[111.79], ' model')))
+title(xlab = expression(paste("T = ", frac(bar(x) - bar(y), SE(bar(x) - bar(y))))), line = 4)
+title(ylab = 'sampling density')
+axis(side = 1, at = seq(-6, 4, by = 2))
+axis(side = 2, at = sqrt(seq(0, 0.4, by = 0.1)) |> round(2))
+abline(v = tstat, lty = 4, lwd = 2)
+text(tstat + 1.4, 0.4, paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+
+legend('topleft', fill = reds[c(1, 3)],
+       legend = c(paste(format(round(pt(tstat, df = df), 6)*100, scientific = F), "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+:::
+
+:::
+
+## Checking assumptions
+
+> The two-sample test is appropriate whenever two one-sample tests would be.
+
+::: {.columns}
+
+::: {.column}
+In other words, the test assumes that *both* samples are either:
+
+- sufficiently large; or
+- have little skew and few outliers
+
+To check, simply inspect each histogram.
+
+- both distributions unimodal
+- both a bit left skewed 
+- no extreme outliers
+- large sample sizes (`r finch |> count(year) |> pull(n)`)
+:::
+
+::: {.column}
+```{r, fig.height = 5, fig.width = 5}
+finch |>
+ggplot(aes(x = depth)) +
+facet_wrap(~ year, ncol = 1) +
+geom_histogram(bins = 10) +
+theme_minimal(base_size = 20) +
+labs(x = 'beak depth (mm)', y = '')
+```
+:::
+
+:::
+
+
+## Checking assumptions (alternative)
+
+> The two-sample test is appropriate whenever two one-sample tests would be.
+
+::: {.columns}
+
+::: {.column}
+In other words, the test assumes that *both* samples are either:
+
+- sufficiently large; or
+- have little skew and few outliers
+
+Could also check side-by-side boxplots for:
+
+- approximate symmetry of boxes
+- outliers far from whiskers
+
+This is also a nice visualization of differences between samples.
+:::
+
+::: {.column}
+```{r, fig.height = 4, fig.width = 5}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+boxplot(depth ~ year, data = finch, horizontal = T,
+xlab = 'beak depth (mm)', y = '')
+```
+:::
+
+:::
+
+## Interpreting outputs and results
+
+::: columns
+::: {.column width="45%"}
+```{r, echo = T}
+t.test(depth ~ year, data = finch,
+       mu = 0, alternative = 'less')
+```
+:::
+
+::: {.column width="55%"}
+> The data provide very strong evidence that mean beak depth increased following the drought (*T* = -4.5727 on 111.79 degrees of freedom, *p* < 0.0001). With 95% confidence, the mean increase is estimated to be at least 0.4699 mm, with a point estimate of `r tt.out$estimate |> diff() |> round(4)` (SE `r tt.out$stderr |> round(4)`).
+:::
+:::
+
+Highly similar, but notice:
+
+- input is a formula `depth ~ year` ("depth depends on year") and data frame `finch`
+- `mu` now indicates hypothesized difference in means
+- decimal degrees of freedom
+- alternative is relative to the order in which groups appear
+
+## Cloud data
+
+> Does seeding clouds with silver iodide increase mean rainfall?
+
+::: columns
+::: {.column width="60%"}
+Data are rainfall measurements in a target area from 26 days when clouds were seeded and 26 days when clouds were not seeded.
+
+-   `rainfall` gives volume of rainfall in acre-feet
+-   `treatment` indicates whether clouds were seeded
+
+Hypotheses to test: 
+$$
+\begin{cases}
+H_0: &\mu_\text{seeded} = \mu_\text{unseeded} \\
+H_A: &\mu_\text{seeded} > \mu_\text{unseeded}
+\end{cases}
+$$
+:::
+
+::: {.column width="40%"}
+```{r}
+cloud <- Sleuth3::case0301 %>% rename_with(tolower) |>
+mutate(treatment = tolower(treatment))
+cloud %>%
+  group_by(treatment) %>%
+  sample_n(size = 4) %>%
+  pander()
+```
+:::
+:::
+
+## Cloud data: which alternative?
+
+> Does seeding clouds with silver iodide increase mean rainfall?
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+t.test(rainfall ~ treatment, data = cloud, 
+       mu = 0, alternative = 'less')
+```
+:::
+
+::: {.column}
+```{r, echo = T}
+t.test(rainfall ~ treatment, data = cloud, 
+       mu = 0, alternative = 'greater')
+```
+:::
+
+:::
+
+R always uses the first observation to determine which group comes first; you can tell from which estimate is printed first.
+
+
+- `'greater'` is interpreted as [FIRST GROUP] > [SECOND GROUP]
+- `'less'` is interpreted as [FIRST GROUP] < [SECOND GROUP]
+
+## Cloud data: interpretation
+
+> Does seeding clouds with silver iodide increase mean rainfall?
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+t.test(rainfall ~ treatment, data = cloud, 
+       mu = 0, alternative = 'greater')
+```
+:::
+
+::: {.column}
+> The data provide moderate evidence that cloud seeding increases mean rainfall (*T* = 1.9982 on 33.855 degrees of freedom, *p* = 0.02689). With 95% confidence, seeding is estimated to increase mean rainfall by at least 42.63 acre-feet, with a point estimate of `r t.test(rainfall ~ treatment, data = cloud)$estimate |> rev() |> diff() |> round(2)` (SE `r t.test(rainfall~treatment, data = cloud)$stderr |> round(4)`).
+:::
+
+:::
+
+## Body temperatures (again)
+
+> Does mean body temperature differ between men and women?
+
+```{r}
+tt.out <- t.test(body.temp ~ sex, data = temps, mu = 0, alternative = 'two.sided')
+```
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width = 5, fig.height = 3}
+par(mar = c(4, 4, 1, 1), cex = 1.25)
+boxplot(body.temp ~ sex, data = temps, horizontal = T, 
+xlab = 'body temperatue (°F)', ylab = '')
+```
+:::
+
+::: {.column}
+Test $H_0: \mu_F = \mu_M$ against $H_A: \mu_F \neq \mu_M$
+
+```{r, echo = T}
+t.test(body.temp ~ sex, data = temps, 
+       mu = 0, alternative = 'two.sided')
+```
+:::
+
+:::
+
+Suggestive but insufficient evidence that mean body temperature differs by sex.
+
+Notice: estimated difference (F - M) is `r tt.out$estimate |> rev() |> diff() |> round(3)` °F (SE `r tt.out$stderr |> round(4)`)
+
+## What if we had more data?
+
+```{r}
+temps.aug <- thermometry |>
+rename(sex = gender) 
+tt.out <- t.test(body.temp ~ sex, data = temps.aug, mu = 0, alternative = 'two.sided')
+```
+
+Here are estimates from two larger samples of 65 individuals each (compared with `r count(temps, sex)$n`):
+```{r}
+temps.aug |>
+group_by(sex) |>
+summarize(mean.temp = mean(body.temp),
+se = sd(body.temp)/sqrt(n()),
+n = n()) |>
+pander()
+```
+
+- estimated difference (F - M) is smaller `r tt.out$estimate |> rev() |> diff() |> round(4)` °F
+- but so is the standard error SE `r tt.out$stderr |> round(4)` (recall more data $\longleftrightarrow$ better precision)
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+t.test(body.temp ~ sex, data = temps.aug, 
+       mu = 0, alternative = 'two.sided')
+```
+:::
+
+::: {.column}
+> The data provide moderate evidence that mean body temperature differs by sex (*T* = 2.29 on 127.51 degrees of freedom, *p* = 0.02394).
+:::
+
+:::
+
+## Power calculations
+
+> How much data do you need to collect in order to detect a difference of $\delta$?
+
+::: {.columns}
+
+::: {.column width="55%"}
+The statistical **power** of a test captures how often it detects a specified alternative.
+
+- measures how often the test correctly rejects (proportion of samples)
+- value depends on...
+
+    a. magnitude of difference between null value and true value of parameter
+    b. significance level
+    c. sample size
+
+:::
+
+::: {.column width="45%"}
+```{r, echo=T}
+power.t.test(power = 0.95, 
+             delta = 0.5, 
+             sig.level = 0.05, 
+             type = 'two.sample',
+             alternative = 'two.sided')
+```
+$\Rightarrow$ need 105 observations in each group to detect a difference of 0.5 standard deviations for 95% of samples with a 5% significance level test
+:::
+
+:::
+
+## A statistical trap
+
+> If you collect enough data, you can detect an arbitrarily small difference in means almost always.
+
+::: {.columns}
+
+::: {.column width="70%"}
+```{r, fig.height=5, fig.width = 8}
+expand_grid(delta = exp(seq(from = -10, to = -3, length = 10)),
+            n = exp(seq(from = 4, to = 15, length = 100))) |>
+mutate(power = map2(n, delta, ~power.t.test(n = .x, delta = .y)$power)) |>
+unnest(power) |>
+ggplot(aes(x = n, y = power, color = delta, group = delta)) +
+geom_path() +
+scale_x_log10() +
+scale_y_log10() +
+scale_color_continuous(trans = 'log10') +
+theme_minimal(base_size = 20) +
+labs(x = 'sample size (n)', y = 'power (detection rate)', color = 'true \ndifference \nin means')
+```
+:::
+
+::: {.column width="30%"}
+So keep in mind:
+
+- statistical significance $\neq$ practical significance
+- always check your point estimates
+:::
+
+:::
+
+# Extras
+
+## The equal-variance $t$-test
+
+If it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power by using a different standard error:
+
+$$SE_\text{pooled}(\bar{x} - \bar{y}) = \sqrt{\frac{\color{red}{s_p^2}}{n_x} + \frac{\color{red}{s_p^2}}{n_y}}
+\quad\text{where}\quad \color{red}{s_p} = \underbrace{\sqrt{\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\text{weighted average of } s_x^2 \;\&\; s_y^2}$$
+
+Implement by adding `var.equal = T` as an argument to `t.test()`.
+
+- larger df is used, hence more frequent rejections
+- avoid unless you have a small sample
+

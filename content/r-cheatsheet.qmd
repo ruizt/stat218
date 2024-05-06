@@ -94,3 +94,5 @@ If `x` is a vector of values of a categorical variable and `y` is a vector of va
 - `boxplot(y ~ x, horizontal = T)` generates a boxplot with `y` on the `x` axis (horizontal orientation)
 
 *See especially [Lab 2: Descriptive statistics](lab2-descriptive.qmd) and [Lab 3: Bivariate summaries](lab3-bivariate.qmd).*
+
+### One- and two-sample inference
