@@ -573,7 +573,7 @@ T = \frac{\bar{x} - \bar{y} - \delta_0}{SE(\bar{x} - \bar{y})}
 \]</span></p>
 <ul>
 <li><span class="math inline">\(\delta_0\)</span> is the hypothesized difference in means</li>
-<li><span class="math inline">\(SE(\bar{x} - \bar{y}) = \sqrt{SE(\bar{x}) + SE(\bar{y})}\)</span></li>
+<li><span class="math inline">\(SE(\bar{x} - \bar{y}) = \sqrt{SE(\bar{x})^2 + SE(\bar{y})^2}\)</span></li>
 <li><span class="math inline">\(t_\nu\)</span> model approximates the sampling distribution when each sample meets assumptions for one-sample inference</li>
 </ul>
 </div><div class="column">
@@ -803,7 +803,7 @@ sample estimates:
 </div>
 </div>
 </div>
-<p>R always uses the first observation to determine which group comes first; you can tell from which estimate is printed first.</p>
+<p>You can tell which group R considers first based on which estimate is printed first.</p>
 <ul>
 <li><code>'greater'</code> is interpreted as [FIRST GROUP] &gt; [SECOND GROUP]</li>
 <li><code>'less'</code> is interpreted as [FIRST GROUP] &lt; [SECOND GROUP]</li>

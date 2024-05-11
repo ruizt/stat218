@@ -96,3 +96,69 @@ If `x` is a vector of values of a categorical variable and `y` is a vector of va
 *See especially [Lab 2: Descriptive statistics](lab2-descriptive.qmd) and [Lab 3: Bivariate summaries](lab3-bivariate.qmd).*
 
 ### One- and two-sample inference
+
+#### Direct calculations for one-sample inference
+
+If `x` is a vector of `n` values of a numeric variable...
+
+- `mean(x) + c(-1, 1)*qt(1 - alpha/2, df = n - 1)*sd(x)/sqrt(n)` computes a $(1 - \alpha)\times 100$% confidence interval
+
+    + `sd(x)/sqrt(n)` is the standard error for the estimate
+    + `qt(1 - alpha/2, df = n - 1)` is the critical value
+    + for a 99% interval, use $\alpha = 0.005$: `qt(0.995, df = n - 1)`
+    + for a 95% interval, use $\alpha = 0.025$: `qt(0.975, df = n - 1)`
+    + for a 90% interval, use $\alpha = 0.05$: `qt(0.95, df = n - 1)`
+
+- `tstat <- (mean(x) - mu_0)/(sd(x)/sqrt(n))` computes the *T* statistic for a hypothesis test of $H_0: \mu = \mu_0$ against any of the three alternatives
+
+    + for $H_A: \mu \neq \mu_0$: `2*pt(abs(tstat), lower.tail = F)` computes a two-sided *p*-value
+    + for $H_A: \mu \neq \mu_0$: `qt(1 - alpha/2, df = n - 1)` computes the critical value for a level $\alpha$ two-sided test
+    + for $H_A: \mu > \mu_0$: `pt(tstat, lower.tail = F)` computes an upper-sided *p*-value
+    + for $H_A: \mu > \mu_0$: `qt(1 - alpha, df = n - 1)` computes the critical value for a level $\alpha$ upper-sided test
+    + for $H_A: \mu < \mu_0$: `pt(tstat, lower.tail = T)` computes a lower-sided *p*-value
+    + for $H_A: \mu < \mu_0$: `qt(alpha, df = n - 1)` computes the critical value for a level $\alpha$ lower-sided test
+
+- to compute quantiles or frequencies directly using the $t_{df}$ model:
+
+    + `pt(q = <QUANTILE>, df = <DEGREES OF FREEDOM>)` computes the frequency of values less than `q` for the $t_{df}$ model
+    + `pt(q = <QUANTILE>, df = <DEGREES OF FREEDOM>, lower.tail = F)` computes the frequency of values greater than `q` for the $t_{df}$ model
+    + `qt(p = <PROPORTION>, df = <DEGREES OF FREEDOM>)` computes the $p$th quantile for the $t_{df}$ model
+
+*See especially [Lab 4: Point estimation](lab4-estimation.qmd), [Lab 5: Intervals](lab5-intervals.qmd), and [Lab 6: Hypothesis testing basics](lab6-hypothesis.qmd).*
+
+#### Using the `t.test(...)` function for one-sample inference
+
+If `x` is a vector of values of a numeric variable then
+
+```
+t.test(x, mu = mu_0, alternative = <DIRECTION>, conf.level = <COVERAGE>)
+``` 
+
+performs a one-sample *t* test at significance level `1 - <COVERAGE>` where:
+
+- `mu_0` is the hypothetical value for the mean
+- direction can be `'less'`, `'greater'`, or `'two.sided'` (in quotes)
+- coverage should be $1 - \alpha$: the 'complement' of the intended significance level $\alpha$ for the test
+
+Outputs are the test statistic, *p*-value, confidence interval, and point estimate.
+
+*See especially [Lab 7: Directional tests](lab7-directional.qmd).*
+
+#### Using the `t.test(...)` function for two-sample inference
+    
+If `DATA` is a dataframe with variables `VARIABLE` (numeric) and `GROUP` (categorical with two categories), where `GROUP` distinguishes two independent samples then
+
+```
+t.test(VARIABLE ~ GROUP, data = DATA, mu = delta_0, 
+       alternative = <DIRECTION>, conf.level = <COVERAGE>)
+``` 
+
+performs a two-sample *t* test at significance level `1 - <COVERAGE>` where:
+
+- `delta_0` is the hypothetical difference in means (often 0 but not always)
+- direction can be `'less'`, `'greater'`, or `'two.sided'` (in quotes)
+- coverage should be $1 - \alpha$: the 'complement' of the intended significance level $\alpha$ for the test
+    
+Returns test statistic, *p*-value, confidence interval for the difference, and point estimates.
+
+*See especially [Lab 8: Two sample inference](lab8-twosample.qmd).*

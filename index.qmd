@@ -12,6 +12,7 @@ Please complete this short \[[midquarter feedback survey](https://forms.office.c
 Assignment reminders:
 
 - problem set 7 due Monday 5/6; late submissions until Wednesday 5/8 5pm
+- problem set 8 due Wednesday 5/8; late submissions until Friday 5/10 5pm
 - test 2 upcoming: will be released Wednesday 5/8 5pm and due Friday 5/10 5pm
 :::
 
@@ -164,40 +165,34 @@ Please complete this short \[[midquarter feedback survey](https://forms.office.c
 
 -   \[reading\] Vu and Harrington 5.3
 -   \[[lecture](content/week6-twosample.qmd)\] two-sample inference
--   \[lab\] two-sample *t* tests in R
--   \[problem set 8\] due Wednesday 5/8; late submissions until Friday 5/10
+-   \[[lab](content/lab8-twosample.qmd)\] two-sample *t* tests in R
+-   \[[problem set 8](https://forms.office.com/r/1Ng8ZivYQr)\] due Wednesday 5/8; late submissions until Friday 5/10
 
 ***Wednesday class meeting*** 
 
 -   \[reading\] Vu and Harrington 5.4
--   \[lecture\] decision errors; statistical power
--   \[lab\] post hoc and study design power analyses
--   \[[test 2 practice problems](content/test2-practice)\] test 2 prep
+-   \[[lecture](content/week6-power.qmd)\] decision errors; statistical power
+-   \[[test 2 practice problems](content/test2-practice.qmd)\] test 2 prep
 -  \[[R cheatsheet](content/r-cheatsheet.qmd)\] for easy reference
 
-**Test 2** available Wednesday 5/8 5pm and **due Friday 5/10 5pm** [prompts] [submission form] [upload R script]
+**Test 2** available Wednesday 5/8 5pm and **due Friday 5/10 5pm** \[[prompts](content/test2.qmd)\] \[[submission form](https://forms.office.com/r/CRwzpweBj3)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmSk3Moe44lOlP40RSzplMsBUuThnHBe_QnW89dbeC6Sgw)\]
 
 ### Week 7 (5/13/24)
 
-*Nonparametric inference*
+*Analysis of variance*
 
-<!-- **Tuesday class meeting** \[[slides](content/week7-nonparametric.qmd)\] \[[lab](content/labs/lab10-nonparametric.qmd)\] -->
+***Monday class meeting*** 
 
-<!-- -   \[reading\] van Belle *et al.* 8.4 and 8.5 up to 8.5.4 -->
+-   \[reading\] Vu and Harrington 5.5
+-   \[lecture\] Introduction to analysis of variance
+-   \[lab\] fitting ANOVA models in R
+-   \[problem set 9\] due Wednesday 5/15; late submissions until Friday 5/17 5pm
 
-<!-- -   \[lecture/discussion\] nonparametric inferences for one- and two-sample problems -->
+***NO Wednesday class meeting** 
 
-<!-- -   \[lab\] three case studies -->
-
-<!-- - Please complete feedback survey by Thursday 2/22 \[[2pm section](https://forms.office.com/r/TaS2EPd6yX)\] \[[4pm section](https://forms.office.com/r/Fw7a8CYQZP)\] -->
-
-<!-- **Thursday class meeting** \[[slides](content/week7-anova.qmd)\] \[[lab](content/labs/lab11-anova.qmd)\] -->
-
-<!-- -   \[reading\] Vu and Harrington 5.5 -->
-
-<!-- -   \[lecture/discussion\] analysis of variance -->
-
-<!-- -   \[lab\] grouped summaries; ANOVA in R -->
+-   \[reading\] van Belle *et al.* 8.4 and 8.5 up to 8.5.4
+-   \[self-paced activity\] nonparametric inferences for one- and two-sample problems
+-   \[problem set 10\] due Monday 5/20; late submissions until Wednesday 5/22 5pm
 
 ### Week 8 (5/20/24)
 

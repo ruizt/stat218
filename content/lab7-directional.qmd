@@ -1,5 +1,5 @@
 ---
-title: "Lab 6: Directional $t$-tests"
+title: "Lab 7: Directional $t$-tests"
 author: "STAT218"
 author-title: "Course activity"
 execute: 

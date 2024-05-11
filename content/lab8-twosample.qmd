@@ -1,0 +1,269 @@
+---
+title: "Lab 8: Two-sample inference"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  eval: true
+  echo: true
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r, echo = F}
+library(tidyverse)
+
+set.seed(50523)
+finch <- Sleuth3::case0201 |> rename_with(tolower) |> sample_n(size = 123)
+save(finch, file = 'data/finch.RData')
+
+data(thermometry, package = 'oibiostat')
+temps <- thermometry |> rename(sex = gender) 
+save(temps, file = 'data/temps2.RData')
+```
+
+This lab focuses on two-sample inference for differences in population means. The main objectives are:
+
+1. Learn to implement two-sample $t$ tests in R
+2. Practice distinguishing directional and nondirectional tests and providing appropriate specifications to the `t.test(...)` function in R
+
+
+The lab uses several datasets for which we will consider two-sample comparisons:
+
+- `finch`: mean finch beak depths in generations before and after a drought on Daphne Major
+- `temps`: body temperatures and heart rates for men and women
+
+```{r packages and data}
+library(tidyverse)
+load('data/finch.RData')
+load('data/temps2.RData')
+```
+
+Examples will utilize the `finch` data; you'll practice using the `temps` data. Here are the summary statistics for the `finch` data for reference:
+
+```{r summary stats for finch data}
+finch |>
+  group_by(year) |>
+  summarize(depth.mean = mean(depth),
+            depth.sd = sd(depth),
+            n = n())
+```
+
+### Checking assumptions for two-sample tests
+
+A two-sample $t$ test can be used whenever two one-sample tests are appropriate. So, to check assumptions, we need to inspect the frequency distributions of the variable of interest in *both* samples.
+
+#### Option A: two histograms
+
+One way to do this is to make two separate histograms. To do that, we'll need to separate the samples. This can be done by 'filtering' observations according to whether year is 1978 or 1976.
+
+```{r checking assumptions option A, fig.width = 4, fig.height = 3}
+# separate samples
+finch.1978 <- finch |> filter(year == 1978)
+finch.1976 <- finch |> filter(year == 1976)
+
+# extract depths
+depth.1978 <- finch.1978$depth
+depth.1976 <- finch.1976$depth
+
+# make histograms
+hist(depth.1978)
+hist(depth.1976)
+```
+
+Both distributions are a bit left-skewed, but each sample is large enough that this isn't a problem for performing the test.
+
+::: callout-note
+## Your turn 1
+
+Filter the `temps` data by sex to separate the samples, and make histograms of the heart rates. Comment on whether assumptions seem to be met.
+
+```{r your turn 1}
+# separate samples
+
+# extract heart rates
+
+# make histograms
+
+```
+:::
+
+#### Option B: side-by-side boxplots
+
+A slightly more efficient alternative is to make side-by-side boxplots. This doesn't involve filtering the data, and will produce just a single graphic. 
+
+However, some details of the distribution (such as multiple modes) may not be evident from the boxplots, so it's not a perfect substitute for checking histograms.
+
+```{r checking assumptions option B, fig.width = 4, fig.height = 3}
+# side-by-side boxplots
+boxplot(depth ~ year, data = finch, horizontal = T)
+```
+
+Here we want to see two things:
+
+- approximate symmetry of boxes
+- few to no large outliers
+
+While there is a bit of left skewness, the sample sizes are large enough that it's not a concern.
+
+::: callout-note
+## Your turn 2
+
+Make side-by-side boxplots for heart rate and reassess test assumptions.
+
+```{r your turn 2}
+# side-by-side boxplots for heart rate
+```
+
+:::
+
+
+### Two-sample $t$-tests
+
+Given that assumptions seem plausible (both samples show little skew and few outliers, and are sufficiently large), we can go ahead with the test. To test whether the drought imposed selection pressure on the finch population, we want to know whether finch beak depth increased after the drought.
+
+Observe, first, which sample appears first in the dataset: 1976. R will treat this as the first sample; to keep track of directions, we'll want to formulate the hypotheses as a comparison between 1976 (first sample) and 1978 (second sample).
+
+We want to test whether the mean of the first sample is less than the mean of the second:
+
+$$
+\begin{cases}
+H_0: &\mu_{1976} = \mu_{1978} \\
+H_A: &\mu_{1976} < \mu_{1978} 
+\end{cases}
+$$
+Let's carry out the test at the 5% significance level. The inputs to `t.test(...)` that implement this test are:
+
+- a formula `<VARIABLE> ~ <SAMPLE>` as the first argument: `formula = depth ~ year`
+- a data frame containing the variable names mentioned in the formula: `data = finch`
+- a null value for the difference: `mu = 0`
+- an alternative: `alternative = 'less'`
+- a confidence level to complement the significance level of the test: `conf.level = 0.95`
+
+```{r two sample t test}
+# perform t test (notice which group comes first)
+t.test(formula = depth ~ year, data = finch, mu = 0, alternative = 'less', conf.level = 0.95)
+```
+
+Take a moment to inspect the output and identify each number appearing. We'd report the test result as follows:
+
+> The data provide very strong evidence that mean beak depth increased in the generation of finches following the drought (*T* = -4.5727 on 111.79 degrees of freedom, *p* < 0.0001). With 95% confidence, the mean beak depth is estimated to have increased by at least 0.4699 mm, with a point estiamte of 0.7373 mm (SE 0.1612).
+
+The point estimate and standard error can be retrieved by storing the output of `t.test(...)`.
+
+```{r retrieving estimate and se for difference in means}
+# store t test result
+tt.rslt <- t.test(formula = depth ~ year, data = finch, mu = 0, alternative = 'less', conf.level = 0.95)
+
+# estimates
+tt.rslt$estimate
+
+# estimate for difference in means
+tt.rslt$estimate |> diff()
+
+# standard error for estimate of difference in means
+tt.rslt$stderr
+```
+
+::: callout-note
+## Your turn 3
+
+Test whether mean heart rate differs between men and women at the 1% significance level. Report the test result, confidence interval, and point estimate and standard error for the difference in means.
+
+```{r your turn 3}
+# perform t test
+
+# store t test result
+
+# estimate for difference in means
+
+# standard error
+
+```
+
+:::
+
+
+### Practice problems
+
+1. Using the `temps2` dataset, test whether mean body temperature is lower for men. 
+
+    a. Check the assumptions for the test by making *both* a pair of histograms *and* side-by-side boxplots.
+    b. Perform the test at the 1% significance level. 
+    c. Report the test result, confidence interval, and point estimate and standard error for the difference in means.
+
+```{r practice problem 1, echo = F}
+# check assumptions via histograms
+temps.f <- temps |> filter(sex == 'female') |> pull(body.temp)
+temps.m <- temps |> filter(sex == 'male') |> pull(body.temp)
+hist(temps.f)
+hist(temps.m)
+
+# ... and via boxplots
+boxplot(body.temp ~ sex, data = temps, horizontal = T)
+
+# perform t test
+t.test(body.temp ~ sex, data = temps, mu = 0, alternative = 'greater', conf.level = 0.99)
+
+# store t test result
+tt.rslt <- t.test(body.temp ~ sex, data = temps, mu = 0, alternative = 'greater', conf.level = 0.99)
+
+# estimate for difference in means
+tt.rslt$est
+tt.rslt$est |> diff()
+
+# standard error
+tt.rslt$stderr
+```
+
+2. Using the `brfss2` data, test whether actual body weight exceeds desired body weight by more for women than for men.
+
+    a. Check the assumptions for the test by making *both* a pair of histograms *and* side-by-side boxplots.
+    b. Perform the test at the 1% significance level. 
+    c. Report the test result, confidence interval, and point estimate and standard error for the difference in means.
+
+```{r, echo = F}
+load('data/brfss.RData')
+brfss |> 
+  transmute(sex = gender, 
+            weight = weight,
+            wtdesire = wtdesire,
+            weight.diff = weight - wtdesire) |>
+write_csv(file = 'data/brfss2.csv')
+```
+
+```{r practice problem 2, echo = F}
+# load data
+brfss <- read_csv('data/brfss2.csv')
+
+# inspect
+head(brfss)
+
+# check assumptions via histograms
+diff.m <- brfss |> filter(sex == 'm') |> pull(weight.diff)
+diff.f <- brfss |> filter(sex == 'f') |> pull(weight.diff)
+hist(diff.m)
+hist(diff.f)
+
+# ... and via boxplots
+boxplot(weight.diff ~ sex, data = brfss, horizontal = T)
+
+# perform t test
+t.test(weight.diff ~ sex, data = brfss, alternative = 'greater', conf.level = 0.99)
+
+# store t test result
+tt.rslt <- t.test(weight.diff ~ sex, data = brfss, alternative = 'greater', conf.level = 0.99)
+
+# estimate for difference in means
+tt.rslt$est |> diff()
+
+# standard error
+tt.rslt$stderr
+```
+

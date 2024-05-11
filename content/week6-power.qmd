@@ -14,150 +14,259 @@ execute:
   message: false
 ---
 
-## Today's agenda
-
 ```{r}
 library(tidyverse)
 library(oibiostat)
 library(Sleuth3)
 library(pander)
-cloud <- case0301
-cloud.test <- t.test(Rainfall ~ Treatment, data = cloud,
+
+type2sim <- function(delta, n, sd, alpha, nsim = 1000){
+  # simulate nsim tests by...
+  sim.pvals <- sapply(1:nsim, function(i){
+    # draw sample with true group difference of delta
+    samp <- data.frame(variable = c(rnorm(n, mean = 0, sd = sd), rnorm(n, mean = delta, sd = sd)),
+                       group = rep(1:2, each = n))
+    # perform test and compute p value
+    pval <- t.test(variable ~ group, data = samp, mu = 0, alternative = 'two.sided')$p.value
+    return(pval)
+  })
+  # compute proportion of tests that failed to reject (made a type ii error)
+  err.rate <- mean(sim.pvals > alpha)
+  return(list(rate = err.rate, p = sim.pvals))
+}
+
+cloud <- Sleuth3::case0301 |> rename_with(tolower) |> mutate(treatment = tolower(treatment))
+cloud.test <- t.test(rainfall ~ treatment, data = cloud,
                      mu = 0, alternative = 'two.sided')
-load('labs/type2sim.RData')
 ```
 
-1.  Reading quiz \[[2pm section](https://forms.office.com/r/URwE52tFbU)\] \[[4pm section](https://forms.office.com/r/V1U6QVAQDP)\]
+## Today's agenda
 
-2.  Type II errors: review and further exploration
+1. [lecture] Statistical power; post-hoc and sample size power analyses.
+2. [review/lab] Test 2 practice problems.
 
-3.  \[lecture/lab\] Power analysis
+## $p$-values and false rejections
 
-    a.  Sample size calculations
-    b.  Post-hoc power analyses
+> A $p$-value captures how often you'd make a mistake **if $H_0$ were true**.
 
-## A thought experiment
+::: {.columns}
 
-::: columns
-::: {.column width="45%"}
-Suppose that for the cloud data you'd performed a two-sided test: $$H_0: \mu_\text{seeded} = \mu_\text{unseeded}$$ $$H_A: \mu_\text{seeded} \neq \mu_\text{unseeded}$$
+::: {.column}
+```{r, echo = T}
+t.test(rainfall ~ treatment, data = cloud, 
+       mu = 0, alternative = 'greater')
+```
 
-```{r}
-t.test(Rainfall ~ Treatment, data = cloud,
+If there is no effect of cloud seeding, then we would see $T > 1.9982$ for 2.689% of samples.
+
+:::
+
+::: {.column}
+The test rejects at the 5% significance level ($p < 0.05$), but that doesn't completely rule out $H_0$.
+
+- while unlikely, our sample could have been one of the 26 in 1000 where $T$ exceeds 1.9982 despite no effect
+- by rejecting here (when $T = 1.9982$) we are willing to be wrong 2.689% of the time
+
+*By rejecting when $p < \alpha$ we are willing to be wrong $\alpha\times 100$% of the time.*
+
+:::
+
+:::
+
+## A different kind of error?
+
+> But you can also make a mistake when $H_0$ is false!
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+t.test(rainfall ~ treatment, data = cloud, 
        mu = 0, alternative = 'two.sided')
 ```
 
-*Almost* below the significance threshold but not quite.
+We'd see $|T| > 1.9982$ for 5.377% of samples if there's no effect. But what if there is an effect?
 :::
 
-::: {.column width="55%"} 
+::: {.column}
+The two-sided test fails to reject at the 5% significance level ($p > 0.05$), but that doesn't completely rule out $H_A$.
 
-> The data **do not provide sufficient evidence to reject** the null hypothesis that seeding has no effect relative to the alternative of an increase or decrease in mean rainfall due to seeding (*T* = 1.998 on 33.86 degrees of freedom, *p* = 0.05377).
+- the estimated effect -- increase of `r cloud.test$est |> rev() |> diff() |> round(2)` acre-feet -- could be too small relative to the variability in rainfall
 
-The point estimate for the difference is `r round(diff(rev(cloud.test$estimate)), 2)` acre-feet. 
+- hard to say how often we'd make this kind of mistake without knowing the real difference
 
-- The test says this observed difference could plausibly be due to sampling variation
-- But is it also plausible that our test result is wrong if the difference is real?
-
-<!-- - So how should we interpret the finding of a positive but not statistically significant difference? Could the difference be real? -->
-<!-- - What is the likelihood that the difference is real, despite our test result? -->
-
-<!-- > Did we make a type II error? -->
-:::
+*The rate of fail-to-reject errors depends on the (unknown) true parameter value.*
 :::
 
-## Type II error rates
+:::
 
-> Recall: a type II error is failing to reject a false null hypothesis.
+## Decision errors
 
-In the context of two-sample inference a type II error occurs when:
+> There are two ways to make a mistake in a hypothesis test -- two "*error types*".
 
--   the true difference is $\delta \neq 0$
--   we test and fail to reject $H_0: \delta \neq 0$
+| | Reject $H_0$ | Fail to reject $H_0$
+---|---|---
+**True $H_0$** | type I error | [correct decision]{style="color:lightgrey"}
+**False $H_0$** | [correct decision]{style='color:lightgrey'} | type II error
 
-The type II error rate depends on both known and unknown factors:
+::: {.columns}
 
--   \[unknown\] magnitude of $\delta$
--   \[unknown\] population variability $\sigma$
--   \[known\] significance level
--   \[known\] sample sizes
+::: {.column}
 
-*What was the type II error rate for the cloud seeding test?*
+Any statistical test will have certain error rates:
+
+- type I error rate is denoted $\alpha$
+- type II error rate is denoted $1 - \beta$
+
+:::
+
+::: {.column}
+
+The significance level of a test is its type I error rate.
+
+- reject when $p < \alpha$ $\Longleftrightarrow$ mistakenly reject $\alpha\times 100$% of the time
+
+But we don't know the type II error rate!
+
+- depends on which alternative parameter value is true
+
+:::
+
+:::
+
 
 ## Simulating type II errors
 
 ::: columns
-::: {.column width="65%"}
+::: {.column width="55%"}
 Summary stats for cloud data:
 
 ```{r}
 set.seed(21524)
-cloud %>% group_by(Treatment) %>% 
-  summarize(mean = mean(Rainfall), sd = sd(Rainfall), n = n()) %>%
+cloud %>% group_by(treatment) %>% 
+  summarize(mean = mean(rainfall), sd = sd(rainfall), n = n()) %>%
   pander()
 ```
 
 We can approximate the type II error rate by:
 
-1.  simulating datasets with matching summary statistics
+1.  simulating datasets with matching statistics
 2.  performing two-sided tests of no difference
 3.  computing the proportion of fail-to-reject decisions
 
-```{r, echo = T}
-type2sim(delta = 277, n = 26, sd = 650, alpha = 0.05)
+
+:::
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+type2sim(delta = 277, n = 26, sd = 650.8, 
+         alpha = 0.05, nsim = 1000)
 ```
-
-$\Rightarrow$ if the true difference were exactly as estimated, our test result would be incorrect nearly 70% of the time!
-:::
-
-::: {.column width="35%"}
-What would happen to the error rate if...
-
-a.  the true difference `delta` were bigger?
-b.  the significance level `alpha` were smaller?
-c.  the sample size `n` was larger?
-d.  the variability of rainfall `sd` were less?
+```{r, fig.width=5, fig.height = 4.5}
+par(mar = c(4, 4, 2, 1), cex = 1.5)
+sim.out <- type2sim(delta = 277, n = 26, sd = 650.8, alpha = 0.05, nsim = 1000)
+hist(sim.out$p, breaks = seq(0, 1, by = 0.05),
+     main = "1000 simulated tests", xlab = 'p value', ylab = 'frequency')
+abline(v = 0.05, lty = 2, lwd = 2, col = 'red')
+text(x = 0.2, y = 300, expr(paste(alpha, " = 0.05")), col = 'red')
+```
 :::
 :::
 
-## Simulating type II errors
+> If in fact the effect size is exactly 277, a level 5% test with similar data will fail to reject ~70% of the time!
+
+## Larger effect size
 
 ::: columns
-::: {.column width="30%"}
-Open the lab and use the simulation function `type2sim` to fill in the table by changing arguments accordingly.
+::: {.column width="55%"}
+Summary stats for cloud data:
 
--   try a few magnitudes of difference for each scenario
--   repeat runs for each setting once or twice to confirm effect
+```{r}
+set.seed(21524)
+cloud %>% group_by(treatment) %>% 
+  summarize(mean = mean(rainfall), sd = sd(rainfall), n = n()) %>%
+  pander()
+```
+
+We can approximate the type II error rate by:
+
+1.  simulating datasets with matching statistics
+2.  performing two-sided tests of no difference
+3.  computing the proportion of fail-to-reject decisions
+
+
 :::
 
-::: {.column width="70%"}
-| Factor                   | Change  | Effect on error rate |
-|--------------------------|---------|----------------------|
-| true difference in means | larger  |                      |
-| true difference in means | smaller |                      |
-| population variability   | larger  |                      |
-| population variability   | smaller |                      |
-| sample size              | larger  |                      |
-| sample size              | smaller |                      |
-| significance level       | larger  |                      |
-| significance level       | smaller |                      |
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+type2sim(delta = 350, n = 26, sd = 650.8, 
+         alpha = 0.05, nsim = 1000)
+```
+```{r, fig.width=5, fig.height = 4.5}
+par(mar = c(4, 4, 2, 1), cex = 1.5)
+sim.out <- type2sim(delta = 400, n = 26, sd = 650.8, alpha = 0.05, nsim = 1000)
+hist(sim.out$p, breaks = seq(0, 1, by = 0.05),
+     main = "1000 simulated tests", xlab = 'p value', ylab = 'frequency')
+abline(v = 0.05, lty = 2, lwd = 2, col = 'red')
+text(x = 0.2, y = 500, expr(paste(alpha, " = 0.05")), col = 'red')
+```
 :::
 :::
 
-> Based on your explorations, do you think our original test decision was erroneous?
+> If in fact the effect size is exactly 400, a level 5% test with similar data will fail to reject ~40% of the time.
+
+## Smaller effect size
+
+::: columns
+::: {.column width="55%"}
+Summary stats for cloud data:
+
+```{r}
+set.seed(21524)
+cloud %>% group_by(treatment) %>% 
+  summarize(mean = mean(rainfall), sd = sd(rainfall), n = n()) %>%
+  pander()
+```
+
+We can approximate the type II error rate by:
+
+1.  simulating datasets with matching statistics
+2.  performing two-sided tests of no difference
+3.  computing the proportion of fail-to-reject decisions
+
+
+:::
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+type2sim(delta = 100, n = 26, sd = 650.8, 
+         alpha = 0.05, nsim = 1000)
+```
+```{r, fig.width=5, fig.height = 4.5}
+par(mar = c(4, 4, 2, 1), cex = 1.5)
+sim.out <- type2sim(delta = 100, n = 26, sd = 650.8, alpha = 0.05, nsim = 1000)
+hist(sim.out$p, breaks = seq(0, 1, by = 0.05),
+     main = "1000 simulated tests", xlab = 'p value', ylab = 'frequency')
+abline(v = 0.05, lty = 2, lwd = 2, col = 'red')
+text(x = 0.2, y = 80, expr(paste(alpha, " = 0.05")), col = 'red')
+```
+:::
+:::
+
+> If in fact the effect size is exactly 100, a level 5% test with similar data will fail to reject ~90% of the time.
+
+
 
 ## Statistical power
 
-The **power** of a test refers to its true rejection rates across alternatives and is defined as: $$\beta(\delta) = \underbrace{(1 - \text{type II error rate}_\delta )}_\text{correct decision rate when null is false}$$
+The **power** of a test refers to its **true rejection rate** across alternatives and is defined as: $$\beta = \underbrace{(1 - \text{type II error rate})}_\text{correct decision rate when null is false}$$
 
-Power is often interpreted as a detection rate for a specified alternative $\delta$:
+Power is often interpreted as a detection rate:
 
 -   high type II error $\longrightarrow$ low power $\longrightarrow$ low detection rate
 -   low type II error $\longrightarrow$ high power $\longrightarrow$ high detection rate
 
 > In general tests have low power for alternatives close to the null value (where "close" is relative to sampling variability).
-
-Theory allows a direct calculation of power, given sample size, significance level, population standard deviation, and population difference in means.
 
 ## Power curves
 
@@ -175,7 +284,7 @@ par(mar = c(4, 4, 1, 1),
 curve(power.t.test(delta = x, n = 26, sd = 650, sig.level = 0.05)$power, 
       from = -1000, to = 1000, 
       xlab = expression(paste('true difference ', delta)),
-      ylab = expression(paste('power function ', beta(delta))))
+      ylab = expression(paste('power ', beta)))
 ```
 :::
 
@@ -190,20 +299,6 @@ All other attributes of the test are fixed to approximate the test performed:
 
 :::
 
-## Factors affecting power
-
-> Power depends on all the same factors as type II error rates
-
-| Factor                   | Change  | Effect on error rate | Effect on power |
-|--------------------------|---------|----------------------|-----------------|
-| true difference in means | larger  |                      |                 |
-| true difference in means | smaller |                      |                 |
-| population variability   | larger  |                      |                 |
-| population variability   | smaller |                      |                 |
-| sample size              | larger  |                      |                 |
-| sample size              | smaller |                      |                 |
-| significance level       | larger  |                      |                 |
-| significance level       | smaller |                      |                 |
 
 ## Two common power analyses
 
@@ -267,93 +362,6 @@ Failure to reject doesn't strongly rule out the alternative.
 :::
 :::
 
-## Your turn: post-hoc analysis
-
-::: columns
-::: {.column width="55%"}
-Consider testing whether body temperature differs by sex.
-
-Summary stats and test result:
-
-```{r}
-data(thermometry)
-set.seed(21424)
-temps <- sample_n(thermometry, size = 39) %>% rename(sex = gender)
-# count(temps, gender)
-save(temps, file = 'labs/data/temps.RData')
-temps %>% group_by(sex) %>% summarize(mean = mean(body.temp), sd = sd(body.temp), n = n()) %>% pander()
-```
-
-```{r, echo = T}
-t.test(body.temp ~ sex, data = temps)
-```
-:::
-
-::: {.column width="45%"}
-Assume the true difference is actually 0.5 °F. Determine the power of the test above when:
-
-1. Population SD is the smaller of the two groups
-2. Population SD is the larger of the two groups
-3. A one-sided test is used instead
-
-> Based on your answers, do you think the negative test result rules out the alternative?
-
-
-```{r, eval = F}
-power.t.test(delta = 0.5, sd = 0.99, n = 19, sig.level = 0.05, alternative = 'two.sided')
-t.test(body.temp ~ sex, data = temps)
-```
-:::
-:::
-
-## Power curve for body temps
-
-::: {.columns}
-
-::: {.column width="55%"}
-
-Assuming we underestimated the population standard deviation a bit, the power curve for a one-sided test would look like this:
-
-```{r, fig.width = 6, fig.height=4}
-par(mar = c(4, 4, 1, 1),
-    cex = 1.5,
-    cex.axis = 0.7)
-curve(power.t.test(delta = x, n = 19, sd = 1.2, sig.level = 0.05, alternative = 'one.sided')$power, 
-      from = 0, to = 2, 
-      xlab = expression(paste('true difference ', delta, ' = ', mu[F] - mu[M])),
-      ylab = expression(paste('power function ', beta(delta))))
-abline(v = 0.5, lty = 2)
-```
-
-:::
-
-::: {.column width="45%"}
-Assumptions:
-
-- *n* = 19 per group
-- $\sigma = 1.2$ per group
-- significance level $\alpha = 0.05$
-- one-sided test
-
-> Fairly low power for alternatives near the estimated difference (dashed line), so failure to reject doesn't strongly rule out the alternative.
-:::
-
-:::
-
-## The equal-variance $t$-test
-
-If it is reasonable to assume the (population) standard deviations are the same in each group, one can gain a bit of power by using a different standard error:
-
-$$SE_\text{pooled}(\bar{x} - \bar{y}) = \sqrt{\frac{\color{red}{s_p^2}}{n_x} + \frac{\color{red}{s_p^2}}{n_y}}
-\quad\text{where}\quad \color{red}{s_p} = \underbrace{\sqrt{\frac{(n_x - 1)s_x^2 + (n_y - 1)s_y^2}{n_x + n_y - 2}}}_{\text{weighted average of } s_x^2 \;\&\; s_y^2}$$
-
-In the case of the body temperature data, $s_p$ = `r sqrt((t.test(body.temp ~ sex, data = temps, var.equal = T)$stderr^2)/(1/19 + 1/20)) |> round(4)`. Check:
-
--   How much power do we gain if we assume a common SD of 0.89?
--   Does it change the outcome of the test (add `var.equal = T`)?
-
-> Produces minimal gains and inflates type I error if not warranted, so better avoided unless you have a small sample size
-
 ## Sample size calculation
 
 > If you were (re)designing the study, how much data should you collect to detect a specified effect size?
@@ -383,24 +391,7 @@ For a conservative estimate, use:
 
 
 
-## Your turn: sample size calculation
-
-Suppose you are designing a follow-up study and wish to detect a difference of 0.4 °F at least 70% of the time. You know women have slightly higher body temperatures than men on average.
-
-| Known direction? | Population SD                                    | Minimum $n$ |
-|------------------|--------------------------------------------------|-------------|
-| No               | larger of prior estimates                        |             |
-| No               | 1.2 times larger than larger of prior estimates |             |
-| Yes              | larger of prior estimates                        |             |
-| Yes              | 1.2 times larger than larger of prior estimates |             |
-
-> If it costs \$10 per participant to run the study, what's the best power achievable within a $2K budget for the target detection magnitude?
-
-```{r eval = F}
-power.t.test(delta = 0.5, sd = 1.2, power = 0.7, sig.level = 0.05, alternative = 'one.sided')
-```
-
-## Power vs. sample size curves
+## Practical constraints
 
 ::: {.columns}
 
@@ -421,7 +412,7 @@ delta.seq <- sapply(seq(from = 0.5, to = 0.9, by = 0.1),
                       sapply(20:300, function(i){
                         del <- power.t.test(n = i, 
                                             power = j, 
-                                            sd = 1.2, 
+                                            sd = 650, 
                                             sig.level = 0.05,
                                             alternative = 'one.sided')$delta
                         return(del)})
@@ -429,7 +420,7 @@ delta.seq <- sapply(seq(from = 0.5, to = 0.9, by = 0.1),
 
 plot(x = 20:300, y = delta.seq[, 5], type = 'l', 
       xlab = 'sample size',
-      ylab = expression(paste('minimum difference ', delta)),
+      ylab = expression(paste('difference ', delta)),
      col = coul[5])
 
 for(j in 4:1){                      
@@ -438,25 +429,25 @@ lines(x = 20:300, y = delta.seq[, j], type = 'l',
      ylab = '',
      col = coul[j])
 }
-abline(h = 0.4, lty = 2, col = 1)
+abline(h = 300, lty = 2, col = 1)
 legend(x = 'topright', legend = paste('power', (5:9)/10), col = coul, fill = coul)
 
 ```
 
-Assumes $\sigma = 1.2$ for a conservative estimate.
+Assumes $\sigma = 650$ for a conservative estimate.
 
 :::
 
 ::: {.column width="40%"}
-The best power achievable within budget for the target detection range is `r power.t.test(delta = 0.4, n = 100, sd = 1.2, sig.level = 0.05, alternative = 'one.sided')$power`.
+It may not be affordable to obtain data for 144 days per treatment group (pilots and planes are expensive). What is achievable within constraints?
 
-- increasing power to 0.8 will require *n* = `r power.t.test(delta = 0.4, power = 0.8, sd = 1.2, sig.level = 0.05, alternative = 'one.sided')$n |> ceiling()` per group
+- power of 0.8 will require *n* = `r power.t.test(delta = 300, power = 0.8, sd = 650, sig.level = 0.05, alternative = 'one.sided')$n |> ceiling()` per group
 
-    + \$240 over budget
+    + 138 days total
 
-- increasing power to 0.9 will require *n* = `r power.t.test(delta = 0.4, power = 0.9, sd = 1.2, sig.level = 0.05, alternative = 'one.sided')$n |> ceiling()` per group
+- decreasing to 0.7 will require *n* = `r power.t.test(delta = 300, power = 0.7, sd = 650, sig.level = 0.05, alternative = 'one.sided')$n |> ceiling()` per group
 
-    + \$1050 over budget
+    + 90 days total
 
 :::
 

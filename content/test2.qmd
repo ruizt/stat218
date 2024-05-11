@@ -96,7 +96,8 @@ boxplot(top.speed ~ species, data = lizards, horizontal = T)
 lizards |>
   group_by(species) |>
   summarize(mean = mean(top.speed),
-            mean.se = sd(top.speed)/sqrt(n())) 
+            mean.se = sd(top.speed)/sqrt(n()),
+            n = n()) 
 
 # part c: 99.5% intervals for mean top speed for each species
 lizards |>
@@ -109,7 +110,10 @@ lizards |>
 # part d: 
 # test for a difference in means at the 1% significance level; 
 # compute a 99% CI for the difference in means
-t.test(top.speed ~ species, data = lizards, conf.level = 0.99)
+rslt <- t.test(top.speed ~ species, data = lizards, conf.level = 0.99)
+rslt
+rslt$estimate |> diff()
+rslt$stderr
 ```
 
 
@@ -118,8 +122,7 @@ t.test(top.speed ~ species, data = lizards, conf.level = 0.99)
 3.  [L3, L4, L5] Does self-fertilization produce less vigorous plants than cross-fertilization? The dataset `plants` contains measurements of plant heights in inches for 15 pairs of plants of the same age; one plant in each pair was grown from a seed from a cross-fertilized flower, and the other was grown from a seed from a self-fertilized flower.
 
     a. [L3] Visualize the distribution of differences in plant heights between the cross-fertilized and self-fertilized individuals. Does the plot alone suggest an answer to the question of interest?
-    b. [L4, L5] Test, at the 2% level, whether mean height of plants grown from cross-fertilized seeds exceeds that of plants grown from self-fertilized seeds and provide a confidence bound for the difference at the level corresponding to your test. Report the results of your analysis in context following the narrative style introduced in class. 
-    c. [LX] Do the data provide any evidence of a difference? Explain.
+    b. [L4, L5] Test, at the 2% level, whether mean height of plants grown from cross-fertilized seeds exceeds that of plants grown from self-fertilized seeds and provide a confidence bound for the difference at the level corresponding to your test. Report the results of your analysis in context following the narrative style introduced in class.
 
 
 ```{r plants data}
@@ -153,9 +156,8 @@ t.test(height.diffs, alternative = 'greater', conf.level = 0.98)
     a. [L1] What is the study population? Based on the study description, is the sample representative, and if so, why?
     b. [L2] What type of study is this? Based on the study description, can the data support causal inferences about motivation and creativity, and if so, why?
     c. [L3] Construct an appropriate graphical summary comparing the distributions of average scores by treatment group.
-    d. [L3] Provide appropriate summary statistics indicating the center, spread, and number of observations of average scores in each group.
-    e. [L5] Test the hypothesis that motivational framing has no effect on creativity at the 1% significance level. Compute an interval estimate for the difference in mean scores at the level corresponding to your test. Use your results from (c)-(d) to check assumptions.
-    f. [LX] Write a short narrative summary of your results in (e)-(f) following the style introduced in class. (Don't forget to include a point estimate and standard error.)
+    d. [L4] Provide point estimates and standard errors for the mean creativity score in each group.
+    e. [L5] Test the hypothesis that motivational framing has no effect on creativity at the 1% significance level. Compute an interval estimate for the difference in mean scores at the level corresponding to your test. Use your results from (c)-(d) to check assumptions. Write a short narrative summary of your results following the style introduced in class. (Don't forget to include a point estimate and standard error.)
     
 
 ```{r creativity data}
@@ -179,9 +181,10 @@ creativity |>
             mean.score = mean(score),
             sd.score = sd(score),
             median.score = median(score),
-            iqr.score = IQR(score))
+            iqr.score = IQR(score),
+            mean.se = sd.score/sqrt(n.obs))
 
-# part e: test whether motivational framing has an effect on creativity at the 5% level and provide a CI for the difference in means
+# part e: test whether motivational framing has an effect on creativity at the 1% level and provide a CI for the difference in means
 t.test(score ~ treatment, data = creativity, conf.level = 0.99)
 ```
 

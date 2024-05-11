@@ -40,13 +40,13 @@ The problems below are intended to help you practice the skills and concepts tha
     c. [L4] Interpret your interval in context following the style introduced in class.
 
 ```{r tuition data}
-tuition <- Sleuth3::ex0332 |>
+Sleuth3::ex0332 |>
   filter(Type == 'Public') |>
   select(College, ends_with('State')) |>
   rename_with(tolower) |>
   rename(in.state = instate,
-         out.of.state = outofstate)
-save(tuition, file = 'data/tuition.RData')
+         out.of.state = outofstate) |>
+  write_csv('data/tuition.csv')
 ```
 
 ```{r problem 1, echo = T, eval = F}
@@ -62,7 +62,7 @@ t.test(tuition.diffs)$conf.int
 ```
 
 
-3. [L3, L4, L5] [challenge problem] The dataset `cancer` contains skin cancer rates per 100,000 people in Connecticut each year from 1938 to 1972. Each year is also classified as following a period of higher than average or lower than average sunspot activity. The `delta` variable is the change in cancer rate relative to the previous year. In this problem, you'll perform inference on the mean delta by sunspot activity level to determine whether higher than average sunspot activity is associated with an increase in mean skin cancer rates from the prior year.
+3. [L3, L4, L5] The dataset `cancer` contains skin cancer rates per 100,000 people in Connecticut each year from 1938 to 1972. Each year is also classified as following a period of higher than average or lower than average sunspot activity. The `delta` variable is the change in cancer rate relative to the previous year. In this problem, you'll perform inference on the mean delta by sunspot activity level to determine whether higher than average sunspot activity is associated with an increase in mean skin cancer rates from the prior year.
 
     a. [L4] Estimate the mean delta (irrespective of sunspot activity level). Provide both a point estimate and standard error, and interpret the estimate in context. Does the estimate suggest that the cancer rate is increasing or decreasing? Explain.
     b. [L4, L5] Perform a test for mean delta to determine whether the mean cancer rate is increasing. Use a 5% significance level, and report your test result together with an interval estimate following the narrative style introduced in class.
@@ -71,19 +71,18 @@ t.test(tuition.diffs)$conf.int
     e. [L5] Test whether the mean change in cancer rate is higher in years with higher than average sunspot activity. Carry out inference at the 5% significance level.
 
 ```{r cancer data, fig.show = T, fig.width = 5, fig.height = 4}
-cancer <- Sleuth3::ex0323 |>
+Sleuth3::ex0323 |>
   rename_with(tolower) |>
   rename(rate = cancerrate,
          sunspot = sunspotactivity) |>
   mutate(delta = rate - lag(rate)) |>
-  drop_na()
-
-save(cancer, file = 'data/cancer.RData')
+  drop_na() |>
+  write_csv('data/cancer.csv')
 ```
 
 ```{r problem 2, echo = T, eval = F}
 # load data
-load('data/cancer.RData')
+cancer <- read_csv('data/cancer.csv')
 
 # part a: point estimate of mean delta and standard error
 mean(cancer$delta)
@@ -113,18 +112,18 @@ Sleuth3::case0202 |>
   rename_with(tolower) |>
   mutate(pair = row_number()) |>
   select(pair, unaffected, affected) |>
-  write_csv(file = 'data/hippocampus.RData')
+  write_csv(file = 'data/hippocampus.csv')
 ```
 
 ```{r, echo = T, eval = F}
 # load and inspect data
-twins <- read_csv('data/hippocampus.RData')
+twins <- read_csv('data/hippocampus.csv')
 head(twins)
 
 # part a: compute differences; check distribution for t inference assumptions
 hvolume.diff <- twins$affected - twins$unaffected
 hist(hvolume.diff, breaks = 5)
 
-# part b:
+# part c: carry out test at 1% significance level
 t.test(hvolume.diff, mu = 0, alternative = 'less', conf.level = 0.99)
 ```
