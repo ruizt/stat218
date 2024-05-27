@@ -1,0 +1,750 @@
+---
+title: "Inference for population proportions"
+subtitle: "An introduction to categorical data analysis"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(pander)
+library(Sleuth3)
+library(emmeans)
+```
+
+## Today's agenda
+
+1. [lecture] Inference for binomial proportions
+2. [lab] Tests for proportions in R
+
+## Binomial proportions
+
+> A binomial variable is a nominal categorical variable with two unique values.
+
+::: columns
+::: {.column width="65%"}
+Usually, binomial data record the presence/absence of an event, trait, or property of interest.
+
+Inference for binomial data has a different flavor:
+
+-   non-numeric values $\Rightarrow$ can't compute usual statistics (mean, variance, etc.)
+-   focus on proportions instead
+
+Example: prevalence of diabetes among US adults?
+
+-   estimate and standard error?
+-   confidence interval?
+-   hypothesis test?
+:::
+
+::: {.column width="35%"}
+```{r, fig.width = 4, fig.height = 5}
+data(nhanes.samp.adult.500)
+nhanes <- nhanes.samp.adult.500 |> 
+  rename_with(tolower) |>
+  mutate(diabetes = fct_rev(diabetes),
+         sleeptrouble = fct_rev(sleeptrouble))
+save(nhanes, file = 'data/nhanes500.RData')
+
+par(mar = c(4, 4, 3, 1), cex = 1.5)
+table(nhanes$diabetes) |> 
+  prop.table() |> 
+  barplot(density = T, xlab = 'diabetic', ylab = 'sample proportion', main = 'nhanes data', ylim = c(0, 1))
+```
+:::
+:::
+
+## Estimating proportions
+
+::: columns
+::: {.column width="50%"}
+```{r}
+counts <- nhanes$diabetes |> table()
+props <- nhanes$diabetes |> table() |> prop.table()  
+diabetes.tbl <- rbind(count = counts, proportion = props)  
+cbind(diabetes.tbl, total = rowSums(diabetes.tbl)) |>
+  pander(caption = '*Diabetes data summary*')
+```
+
+Estimated diabetes prevalence: 11.4%.
+
+-   NHANES data are a random sample of the U.S. adult population
+-   sample statistics should approximate population statistics
+:::
+
+::: {.column width="50%"}
+We'll formalize this as estimating the **population proportion** $$p = \frac{\# \text{ individuals with diabetes}}{\text{total population size } N}$$ Using the **sample proportion** $$\hat{p} = \frac{\# \text{ respondents with diabetes}}{\text{sample size } n}$$
+:::
+:::
+
+The first step towards inference is a measure of precision for $\hat{p}$. What is $SE(\hat{p})$?
+
+## SE for a sample proportion
+
+> Binomial data are most variable when $p = 0.5$ and least variable when $p \approx 0$ or $1$
+
+::: columns
+::: {.column width="45%"}
+Measure of spread for binomial data: $$\sqrt{\hat{p}(1 - \hat{p})}$$
+
+-   highest when $\hat{p} \approx 0.5$
+-   lowest when $\hat{p} \approx 0 \text{ or } 1$
+
+Analogous to estimating a mean: $$
+SE\left(\hat{p}\right) 
+= \frac{\text{spread}}{\sqrt{\text{sample size}}} 
+= \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+$$
+:::
+
+::: {.column width="55%"}
+```{r, fig.width = 5, fig.height = 4, fig.align='center'}
+par(mar = c(4, 5, 1, 1), cex = 1.5)
+curve(sqrt(x*(1 - x)), from = 0, to = 1, n = 200,
+      xlab = expr(hat(p)), 
+      ylab = expr(sqrt(hat(p) (1 - hat(p)))))
+```
+:::
+:::
+
+## Sampling distribution of $\hat{p}$
+
+::: columns
+::: column
+The sample proportion $\hat{p}$ has a sampling distribution that can be approximated by a normal model, provided:
+
+-   $\hat{p}$ isn't too close to 0 or 1
+-   $n$ is sufficiently large
+
+A common condition to check:
+
+$$n\hat{p} \geq 10\text{ and }n(1 - \hat{p}) \geq 10$$
+:::
+
+::: column
+```{r, fig.width=5, fig.height = 4}
+par(mar = c(6, 3, 1, 1),
+    cex = 1.5)
+curve(dnorm, from = -4, to = 4, main = 'Normal model',
+      yaxt = 'n', xlab = '', ylab = '', axes = F)
+title(xlab = expression(frac(hat(p) - p, SE(hat(p)))), 
+      line = 4.5)
+title(ylab = 'sampling frequency', line = 1)
+axis(1, at = seq(-4, 4, by = 2))
+```
+:::
+:::
+
+This model can be used to construct hypothesis tests and confidence intervals for $p$.
+
+## Confidence interval for $p$
+
+A confidence interval for a binomial proportion $p$ is:
+
+$$\hat{p} \pm c \times SE(\hat{p})$$
+
+The critical value $c$ comes from the normal model.
+
+-   empirical rule:
+
+    -   $c = 1$ gives a 68% interval
+    -   $c = 2$ gives a 95% interval
+    -   $c = 3$ gives a 99.7% interval
+
+-   for a $(1 - \alpha)\times 100 \%$ confidence interval use the $1 - \frac{\alpha}{2}$ quantile of the normal model
+
+```{r, echo = T, eval = F}
+qnorm(1 - 0.1/2) # c for 90% interval
+qnorm(1 - 0.05/2) # c for 95% interval
+qnorm(1 - 0.01/2) # c for 99% interval
+```
+
+## Example: diabetes prevalence
+
+::: columns
+::: column
+```{r}
+nhanes |>
+  summarize(p.hat = mean(diabetes == 'Yes'),
+            se = sqrt((p.hat*(1 - p.hat))/n()),
+            n = n()) |>
+  pander(caption = 'Point estimate for diabetes prevalence')
+```
+:::
+
+::: column
+> It is estimated that the proportion of the U.S. adult population with diagnosed diabetes is 11.4% (*SE = 1.42%*).
+:::
+:::
+
+Check assumptions for the normal model:
+
+$$
+500\times 0.114 = `r 500*0.114` \geq 10
+\quad\text{and}\quad 500\times 0.886 = `r 500*0.886` \geq 10
+$$
+
+::: columns
+::: column
+95% confidence interval for diabetes prevalence:
+
+$$
+0.114 \pm 2\times 0.01421 = (0.0881, 0.1459)
+$$
+:::
+
+::: column
+> With 95% confidence, the proportuion of U.S. adults with diagnosed diabetes is estimated to be between 8.81% and 14.59%.
+:::
+:::
+
+## Hypothesis tests for $p$
+
+::: columns
+::: {.column width="45%"}
+To test whether true prevalence is 10%: 
+$$
+\begin{cases}
+H_0: &p = 0.1 \\ 
+H_A: &p \neq 0.1
+\end{cases}
+$$
+
+We can use the test statistic:
+
+$$
+Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}}
+= \frac{\hat{p} - 0.1}{\sqrt{\frac{0.1 (0.9)}{500}}}
+$$
+Under $H_0$, the sampling distribution of $Z$ is approximated by a normal model, provided:
+
+- $np_0 \geq 10$
+- $n(1 - p_0) \geq 10$
+:::
+
+::: {.column width="55%"}
+
+```{r, fig.width = 6.5, fig.height = 4.5}
+test.out <- nhanes$diabetes |> 
+  table() |> 
+  prop.test(p = 0.1, correct = F)
+zstat <- test.out$stat |> sqrt()
+pval <- test.out$p.value
+x <- seq(-4, 3.25, length = 10000)
+y <- dnorm(x)
+
+par(mar = c(6, 4, 3, 1),
+    cex = 1.5)
+
+curve(dnorm, from = -4, to = 6, main = 'Normal model',
+      yaxt = 'n', xlab = '', ylab = '', axes = F, lwd = 2)
+axis(1, at = seq(-4, 6, by = 2))
+title(xlab = expression(paste("Z = ", 
+                              frac(hat(p) - 0.1, 
+                                   sqrt(frac(0.1(0.9), 500))))),
+      line = 4.5)
+
+abline(v = c(-1, 1)*zstat, lty = 2, lwd = 2)
+polygon(c(min(x), x[x<=-zstat], -zstat), c(y[x<=-zstat] - 0.0025, 0, 0), col="red", border = NA)
+polygon(c(x[x>=zstat], max(x), zstat), c(y[x>=zstat] - 0.0025, 0, 0), col="red", border = NA)
+
+legend(x = 'topright', 
+       legend = paste(round(pval*100, 2), '% of \n samples', sep = ''), 
+       fill = 'red', box.lwd = 0)
+```
+
+Here $p = P(|Z| > `r round(zstat, 3)`) = `r round(pval, 4)`$, so:
+
+> the data provide no evidence that prevalence differs from 10%.
+
+
+
+:::
+:::
+
+## Hypothesis tests for $p$
+
+::: columns
+::: {.column width="45%"}
+To test whether true prevalence is 15%: 
+$$
+\begin{cases}
+H_0: &p = 0.15 \\ 
+H_A: &p \neq 0.15
+\end{cases}
+$$
+
+We can use the test statistic:
+
+$$
+Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}}
+= \frac{\hat{p} - 0.15}{\sqrt{\frac{0.15 (0.85)}{500}}}
+$$
+Under $H_0$, the sampling distribution of $Z$ is approximated by a normal model, provided:
+
+- $np_0 \geq 10$
+- $n(1 - p_0) \geq 10$
+:::
+
+::: {.column width="55%"}
+
+```{r, fig.width = 6.5, fig.height = 4.5}
+test.out <- nhanes$diabetes |> 
+  table() |> 
+  prop.test(p = 0.15, correct = F)
+zstat <- test.out$stat |> sqrt()
+pval <- test.out$p.value
+x <- seq(-4, 3.25, length = 10000)
+y <- dnorm(x)
+
+par(mar = c(6, 4, 3, 1),
+    cex = 1.5)
+
+curve(dnorm, from = -4, to = 6, main = 'Normal model',
+      yaxt = 'n', xlab = '', ylab = '', axes = F, lwd = 2)
+axis(1, at = seq(-4, 6, by = 2))
+title(xlab = expression(paste("Z = ", 
+                              frac(hat(p) - 0.15, 
+                                   sqrt(frac(0.15(0.85), 500))))),
+      line = 4.5)
+
+abline(v = c(-1, 1)*zstat, lty = 2, lwd = 2)
+polygon(c(min(x), x[x<=-zstat], -zstat), c(y[x<=-zstat] - 0.0025, 0, 0), col="red", border = NA)
+polygon(c(x[x>=zstat], max(x), zstat), c(y[x>=zstat] - 0.0025, 0, 0), col="red", border = NA)
+
+legend(x = 'topright', 
+       legend = paste(round(pval*100, 2), '% of \n samples', sep = ''), 
+       fill = 'red', box.lwd = 0)
+```
+
+Here $p = P(|Z| > `r round(zstat, 3)`) = `r round(pval, 4)`$, so:
+
+> the data provide moderate evidence that prevalence differs from 15%.
+
+:::
+:::
+
+## Hypothesis tests for $p$
+
+::: columns
+::: {.column width="45%"}
+To test if prevalence is below 14%: 
+$$
+\begin{cases}
+H_0: &p = 0.14 \\ 
+H_A: &p < 0.14
+\end{cases}
+$$
+
+We can use the test statistic:
+
+$$
+Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}}
+= \frac{\hat{p} - 0.14}{\sqrt{\frac{0.14 (0.86)}{500}}}
+$$
+
+Under $H_0$, the sampling distribution of $Z$ is approximated by a normal model, provided:
+
+- $np_0 \geq 10$
+- $n(1 - p_0) \geq 10$
+:::
+
+::: {.column width="55%"}
+
+```{r, fig.width = 6.5, fig.height = 4.5}
+test.out <- nhanes$diabetes |> 
+  table() |> 
+  prop.test(p = 0.14, correct = F, alternative = 'less')
+zstat <- test.out$stat |> sqrt()
+pval <- test.out$p.value
+x <- seq(-4, 3.25, length = 10000)
+y <- dnorm(x)
+
+par(mar = c(6, 4, 3, 1),
+    cex = 1.5)
+
+curve(dnorm, from = -4, to = 6, main = 'Normal model',
+      yaxt = 'n', xlab = '', ylab = '', axes = F, lwd = 2)
+axis(1, at = seq(-4, 6, by = 2))
+title(xlab = expression(paste("Z = ", 
+                              frac(hat(p) - 0.14, 
+                                   sqrt(frac(0.14(0.86), 500))))),
+      line = 4.5)
+
+abline(v = -zstat, lty = 2, lwd = 2)
+polygon(c(min(x), x[x<=-zstat], -zstat), c(y[x<=-zstat] - 0.0025, 0, 0), col="red", border = NA)
+
+legend(x = 'topright', 
+       legend = paste(round(pval*100, 2), '% of \n samples', sep = ''), 
+       fill = 'red', box.lwd = 0)
+```
+
+Here $p = P(Z < `r round(zstat, 3)`) = `r round(pval, 4)`$, so:
+
+> the data provide moderate evidence that prevalence is less than 14%.
+
+
+
+:::
+:::
+
+## Inference for a proportion in R
+
+::: columns
+::: {.column width="45%"}
+Inference using the normal model in R:
+
+1.  Construct a table of the frequency distribution
+2.  Pass the table to `prop.test()`
+
+Remarks about output:
+
+-   `X-squared` gives $Z^2$
+-   `correct = F` performs the test without continuity correction
+:::
+
+::: {.column width="55%"}
+```{r, echo = T}
+#| code-line-numbers: "5-7"
+# variable of interest
+dia <- nhanes$diabetes
+
+# pass table to prop.test
+table(dia) |> 
+  prop.test(p = 0.1, alternative = 'two.sided',
+            conf.level = 0.95, correct = F)
+```
+:::
+:::
+
+> The data provide no evidence that diabetes prevalence among U.S. adults differs from 10%. With 95% confidence, prevalence is estimated to be between 8.90% and 14.48%, with a point estimate of 11.4% (SE = 1.42%).
+
+## `correct = F`?
+
+> A "continuity correction" reduces approximation error for the normal model.
+
+::: columns
+::: column
+```{r, echo = T}
+#| code-line-numbers: "5"
+
+table(dia) |> 
+  prop.test(p = 0.1, 
+            alternative = 'two.sided',
+            conf.level = 0.95, 
+            correct = F)
+```
+:::
+
+::: column
+```{r, echo = T}
+#| code-line-numbers: "5"
+
+table(dia) |> 
+  prop.test(p = 0.1, 
+            alternative = 'two.sided',
+            conf.level = 0.95, 
+            correct = T)
+```
+:::
+:::
+
+Omitting the `correct` argument implements the correction by default.
+
+## Exact inference for a proportion
+
+The test can also be performed using the *exact* sampling distribution obtained from a binomial probability model.
+
+```{r, echo = T}
+binom.test(x = 57, n = 500, p = 0.1, alternative = 'two.sided')
+```
+
+Inputs:
+
+-   `x` gives the number of occurrences of the category of interest
+-   `n` gives the sample size
+
+
+
+<!-- ## Your turn: sleep trouble -->
+
+<!-- > Use the NHANES data to estimate the proportion of U.S. adults reporting sleep trouble. Test whether at least 20% of U.S. adults report sleep trouble. -->
+
+<!-- ::: columns -->
+<!-- ::: column -->
+<!-- 1.  Compute point estimate and standard error -->
+
+<!-- 2.  Perform the hypothesis test -->
+
+<!--     -   write the hypotheses -->
+<!--     -   calculate the value of the test statistic -->
+<!--     -   record the $p$-value -->
+
+<!-- 3.  Construct an interval estimate -->
+<!-- ::: -->
+
+<!-- ::: column -->
+<!-- ```{r, echo = T} -->
+<!-- # to get you started -->
+<!-- trouble <- factor(nhanes$SleepTrouble,  -->
+<!--                   levels = c('Yes', 'No')) -->
+<!-- trouble.tbl <- table(trouble) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- trouble.tbl |>  -->
+<!--   pander(caption = 'Having sleep trouble?') -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+## Two-way tables
+
+> Two-way tables or "contingency" tables compare two categorical variables.
+
+::: columns
+::: column
+```{r}
+cold <- case1802 |> column_to_rownames("Treatment") |> as.matrix() |> as.table() 
+cold |> cbind(n = rowSums(cold)) |> pander('Vitamin C experiment')
+```
+
+:::
+
+::: column
+
+```{r, fig.height = 2.75, fig.width = 6}
+par(mar = c(3, 4, 0.1, 6), cex = 1.5)
+cold |> 
+  t() |> 
+  prop.table(margin = 2) |>
+  barplot(legend = T, 
+          args.legend = list(x = 3.75),
+          ylab = 'proportion')
+```
+
+:::
+:::
+
+-   vitamin C and placebo treatments were randomly allocated to 818 volunteers
+-   volunteers took treatments daily for a cold season
+-   study recorded how many volunteers came down with a cold
+
+*Is vitamin C effective at preventing common cold?*
+
+## Inference for two proportions
+
+We can first consider inferences on the difference in proportions:
+
+$$\delta = p_\text{placebo} - p_\text{vitC}$$
+
+<!-- $$\begin{cases}H_0: p_\text{placebo} - p_\text{vitamin C} \leq 0 \\ H_A: p_\text{placebo} - p_\text{vitamin C} > 0 \end{cases}$$ -->
+
+Inferences are based on groupwise estimates:
+
+-   point estimate: $\hat{p}_\text{placebo} - \hat{p}_\text{vitC}$
+
+-   standard error: $\sqrt{SE^2(\hat{p}_\text{placebo}) + SE^2(\hat{p}_\text{vitC})}$
+
+When both groups meet the conditions for inference for one proportion, the statistic
+
+$$
+Z = \frac{\hat{p}_1 - \hat{p}_2 - \delta}{SE(\hat{p}_1 - \hat{p}_2)}
+$$
+has a sampling distribution well-approximated by a normal model.
+
+## Confidence interval for the difference
+
+
+$$
+\hat{p}_\text{placebo} - \hat{p}_\text{vitC} \pm c\times SE(\hat{p}_\text{placebo} - \hat{p}_\text{vitC})
+$$
+For a $(1 - \alpha)\times 100\%$ confidence interval the critical value $c$ is chosen to be the $\left(1 - \frac{\alpha}{2}\right)$ quantile of the normal model.
+
+-   point estimate: $\hat{p}_\text{placebo} - \hat{p}_\text{vitC} = `r prop.table(cold, margin = 1)[,1] |> rev() |> diff() |> round(4)`$
+
+-   standard error: $\sqrt{SE^2(\hat{p}_\text{placebo}) + SE^2(\hat{p}_\text{vitC})} = `r sum(apply(prop.table(cold, margin = 1), 1, prod)/rowSums(cold)) |> sqrt() |> round(4)`$
+
+- critical value for 95% interval: `qnorm(1 - 0.05/2) = `r qnorm(0.975)``
+
+95% confidence interval: (`r round(-diff(prop.table(cold, margin = 1)[,1]) + c(-1, 1)*qnorm(0.975)*sqrt(sum(apply(prop.table(cold, margin = 1), 1, prod)/rowSums(cold))), 4)`)
+
+> With 95% confidence, the prevalence of common cold is estimated to be between 1.64% and 12.98% lower among adults who take daily vitamin C supplements.
+
+## Tests for a difference in proportions
+
+::: columns
+::: column
+We can also test whether vitamin C prevents common cold:
+
+$$
+\begin{cases} 
+H_0: &p_\text{placebo} - p_\text{vitC} = 0\\ 
+H_A: &p_\text{placebo} - p_\text{vitC} > 0 
+\end{cases}
+$$
+
+Hypothesis tests use the test statistic:
+
+$$Z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1 - \hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}$$
+
+With a slightly different SE where: 
+$$\hat{p} = \frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1 + n_2}$$
+:::
+
+::: column
+
+```{r, fig.width = 6.5, fig.height = 4}
+test.out <- prop.test(cold, correct = F, alternative = 'greater')
+zstat <- test.out$stat |> sqrt()
+pval <- test.out$p.value
+
+x <- seq(-4, 4, length = 10000)
+y <- dnorm(x)
+
+par(mar = c(4, 4, 3, 1),
+    cex = 1.75)
+curve(dnorm, from = -4, to = 8, n = 200,
+     ylab = '', 
+     xlab = 'Z',
+     main = 'Normal model',
+     xaxt = 'n', yaxt = 'n', 
+     axes = F, lwd = 2)
+axis(1, at = seq(-4, 6, by = 2))
+title(ylab = 'sampling frequency', line = 1)
+
+polygon(c(x[x>=zstat], max(x), zstat), c(y[x>=zstat] - 0.001, 0, 0), col="red", border = NA)
+
+abline(v = zstat, lty = 2, lwd = 2)
+
+legend(x = 'topright', 
+       legend = paste(100*round(pval, 4), 
+                      '% of \nsamples', sep = ''), 
+       fill = 'red', box.lwd = 0)
+```
+
+Here $p = P(Z > `r round(zstat, 3)`) = `r round(pval, 4)`$, so:
+
+> the data provide strong evidence that vitamin C prevents common cold.
+
+:::
+:::
+
+
+## Inference in R
+
+```{r}
+vitamin <- case1802 |>
+  rename_with(tolower) |>
+  pivot_longer(-treatment, names_to = 'outcome', values_to = 'n') |>
+  group_by(treatment, outcome) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, treatment, outcome)
+save(vitamin, file = 'data/vitamin.RData')
+```
+
+::: columns
+::: column
+Three steps:
+
+1.  Construct a table of the frequency distribution by group
+
+    -   outcomes should be columns
+    -   groups should be rows
+
+2.  Pass to `prop.test()`
+
+The alternative reads the same way as in `t.test`.
+:::
+
+::: column
+```{r, echo = T}
+#| code-line-numbers: "6-8"
+# variables of interest
+treatment <- vitamin$treatment
+outcome <- vitamin$outcome
+
+# pass table to prop.test
+table(treatment, outcome) |>
+  prop.test(alternative = 'greater', 
+            correct = F)
+```
+:::
+:::
+
+> The data provide strong evidence that vitamin C prevents common cold (Z = 2.517, *p* = 0.0059). With 95% confidence, the reduction in probability is estimated to be at least 0.0255, with a point estimate of `r prop.table(cold, margin = 1)[,1] |> rev() |> diff() |> round(4)` (SE = `r sum(apply(prop.table(cold, margin = 1), 1, prod)/rowSums(cold)) |> sqrt() |> round(4)`).
+
+
+## Sampling and two-way tables
+
+::: {.columns}
+
+::: {.column width="55%"}
+Consider this case-control study:
+
+```{r}
+smoking <- case1803 |> column_to_rownames('Smoking') |> as.matrix() |> as.table() |> t()
+cbind(smoking, n = rowSums(smoking)) |> pander()
+```
+This is an example of *outcome-based* sampling:
+
+- 86 lung cancer patients and 86 controls 
+- can't estimate cancer prevalence
+
+::: 
+
+::: {.column width="45%"}
+A different approach to inference is needed to analyze this data. Next time:
+
+- tests of association in two-way tables
+- inference for risk and odds ratios
+
+:::
+
+:::
+
+
+<!-- ## Your turn: two cases -->
+
+<!-- ```{r} -->
+<!-- obesity <- case1801 |> column_to_rownames('Obesity') |> as.matrix() |> as.table() -->
+<!-- smoking <- case1803 |> column_to_rownames('Smoking') |> as.matrix() |> as.table() |> t() -->
+
+<!-- save(list = c('obesity', 'smoking', 'cold'), file = 'data/prop-cases.RData') -->
+<!-- ``` -->
+
+<!-- ::: columns -->
+<!-- ::: column -->
+<!-- Researchers categorized 3,112 individuals in American Samoa according to whether they were obese and recorded whether subjects had cardiovascular disease (CVD). -->
+
+<!-- ```{r} -->
+<!-- obesity |> pander() -->
+<!-- ``` -->
+
+<!-- *Test for a difference in disease rates between obese and non-obese populations, and produce an interval estimate for the difference in proportions.* -->
+<!-- ::: -->
+
+<!-- ::: column -->
+<!-- Researchers identified 86 lung cancer patients and 86 controls (without lung cancer), and categorized them according to whether they were smokers or non-smokers. -->
+
+<!-- ```{r} -->
+<!-- smoking |> pander() -->
+<!-- ``` -->
+
+<!-- *Test for a difference in the proportion of smokers among cancer patients compared with controls, and produce an interval estimate for the difference.* -->
+<!-- ::: -->
+<!-- ::: -->

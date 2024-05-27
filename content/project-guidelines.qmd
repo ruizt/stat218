@@ -1,0 +1,86 @@
+---
+title: "Project guidelines"
+author: "STAT218"
+author-title: "Course"
+date: "6/10/24"
+published-title: "Due date"
+execute: 
+  eval: false
+  echo: false
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+In place of a final exam, you will work with a partner to find a case study relevant to one of your major fields of study that employs a method from the class (or a method closely related) to answer a research question. You'll prepare a short summary and meet with me in person during the final exam time to briefly present your case study and field a few questions.
+
+## Expectations
+
+Your case study should meet the following criteria:
+
+-   address a research question in your field of study
+-   use a statistical method we have discussed in class
+-   be included in a published paper or report
+
+Most papers report multiple findings. Thus, you can expect to focus for your case study on a small portion of the full publication; you do *not* need to summarize a published study in its entirety. Rather, you are expected to identify **one inferential analysis**. 
+
+Keep it simple in terms of the analysis -- a few intervals/tests/estimates are fine, but don't overcomplicate things by trying to summarize too many results at once. Keep in mind that you'll need to be able to explain your case study in just a few minutes.
+
+You have two options for the project deliverable:
+
+- [option 1] prepare a written summary of the case study
+- [option 2] replicate the analysis for the case study
+
+## Evaluation criteria
+
+You will be evaluated on the appropriateness of the example you choose, the clarity of your summary/presentation, and your understanding of the statistical method(s) you discuss. Satisfactory work should:
+
+-   demonstrate an understanding of the case study and its relevance
+-   demonstrate an adequate understanding of the data and statistical method(s) involved
+-   be free of obvious errors/misconceptions
+
+## Deliverables
+
+Your deliverable should be submitted via file upload 24 hours in advance of your scheduled exam time.
+
+Choose **ONE** of the options below.
+
+### Option 1: written summary
+
+Prepare a short 1-2 page summary addressing the following:
+
+1.  What is the research question that the analysis addresses?
+2.  What inference(s) are used to answer the question?
+3.  What data were utilized for the inference(s)?
+4.  What statistical method(s) are used to perform the inference(s)?
+5.  What are the results?
+
+Your deliverable for this option should be uploaded as a `.docx` or `.pdf` file.
+
+### Option 2: replicate an analysis
+
+Prepare an R script, data file, and 1-page summary of results. Your summary should include the following:
+
+1. A data description
+2. A data summary (plot or table)
+3. Relevant R output
+4. Interpretation of inference(s) in context
+
+Your deliverable for this option should be a `.zip` file containing one R script, one data file, and your written summary (as a `.docx` or `.pdf` file).
+
+## Logistics
+
+Exam times are held in the usual classroom (186-C100) at:
+
+-   \[12pm section\] Wednesday 6/12 10:10am -- 1:00pm
+-   \[2pm section\] Monday 6/10 1:10pm -- 4:00pm
+
+You can expect to schedule a 10-minute time slot in the window of the scheduled exam. A scheduling link will be provided at the end of week 10. Requests for alternate times must be made by the end of week 10 and include a motivation for the request. We will be on a tight schedule, so once you have your time slot, you should plan on arriving five minutes in advance.
+
+A few of you may be scheduled outside of the regular times at a location TBD. I will check with you first before scheduling you outside of the exam time.

@@ -129,7 +129,7 @@ Please also note that failure to adhere to course policies may result in a lower
 Subject to change.
 
 | Week             | Topics                                                          | Readings (V&H)     | Assessments                     |
-|------------------|-------------------|------------------|------------------|
+|------------------|-----------------------------------------------------------------|--------------------|---------------------------------|
 | 1 (4/1/24)       | Introduction to statistical thinking and study design           | 1.1                |                                 |
 | 2 (4/8/24)       | Data, data types, and data collection                           | 1.2                |                                 |
 | 3 (4/15/24)      | Descriptive statistics and graphical summaries                  | 1.4, 1.5, 1.6      | Test 1 \[L1, L2, L3\]           |

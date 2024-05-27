@@ -1,0 +1,569 @@
+---
+title: "Post-hoc inference in ANOVA"
+subtitle: "Estimating group means and contrasts"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    tbl-colwidths: [50, 30, 30, 50]
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(pander)
+library(Sleuth3)
+library(emmeans)
+```
+
+## Today's agenda
+
+1. [lecture] inference on group means and contrasts after performing ANOVA
+2. [lab] estimates, tests, and intervals using `emmeans`
+
+## From before: diet restriction
+```{r}
+load('data/longevity.RData')
+```
+
+::: {.columns}
+
+::: {.column width="40%"}
+**Data summaries**:
+```{r, fig.width = 5.5, fig.height = 3}
+par(mar = c(2, 4, 1, 1),
+    cex = 1.5)
+boxplot(lifetime ~ diet, data = longevity, 
+        xlab = '', ylab = 'lifetime (months)')
+longevity |> 
+  group_by(diet) |> 
+  summarize(mean = mean(lifetime),
+            sd = sd(lifetime),
+            n = n()) |>
+  # arrange(mean) |>
+  pander()
+```
+:::
+
+::: {.column width="60%"}
+**Inference using ANOVA**:
+
+$$
+\begin{align*}
+&H_0: \mu_\text{NP} = \mu_\text{N/N85} = \mu_\text{N/R50} = \mu_\text{N/R40} \\
+&H_A: \text{at least two means differ}
+\end{align*}
+$$
+
+
+```{r, echo = T}
+fit <- aov(lifetime ~ diet, data = longevity)
+summary(fit)
+```
+
+> The data provide strong evidence that diet restriction has an effect on mean lifetime among mice (*F = 87.41* on *3* and *233* degrees of freedom, *p < 0.0001*).
+:::
+
+:::
+
+## Follow-up questions
+
+The ANOVA tells us there's evidence of an effect of diet restriction on lifespan. 
+
+So now we'd want to know:
+
+1. What are the mean lifespans for each level of restriction?
+2. For which levels of dietary restriction do mean lifespans differ?
+3. What are the gains in mean lifespan for each level of restriction relative to an unrestricted diet?
+4. For which levels of restriction are gains in mean lifespan significant?
+
+Answers require *post-hoc* inferences (done after-the-fact) on:
+
+- group means $\mu_i$ (question 1)
+- "contrasts" $\mu_i - \mu_j$ (questions 2-4)
+
+## Estimates for group means
+
+> Interval estimates for group means in ANOVA use a model-based standard error.
+
+::: {.columns}
+
+::: {.column width="60%"}
+```{r, echo = T, eval = F}
+emmeans(object = fit, spec = ~ diet) |> 
+  confint(level = 0.95)
+```
+
+```{r}
+emmeans(fit, ~ diet) |>
+  confint(level = 0.95) |> 
+  as.tibble() |>
+  rename(estimate = emmean) |>
+  select(-df) |>
+  mutate(across(ends_with('CL'), ~round(.x, 2))) |>
+  unite('95% CI', ends_with('CL'), sep = ', ') |>
+  mutate(`95% CI` = paste('(', `95% CI`, ')', sep = '')) |>
+  pander()
+```
+:::
+
+::: {.column width="40%"}
+Interval estimates use a "pooled" standard deviation:
+
+$$SE_i = \frac{s_\text{pooled}}{\sqrt{n_i}} = \frac{\sqrt{MSE}}{\sqrt{n_i}}$$
+
+Otherwise identical to $t_{n - k}$ confidence intervals.
+:::
+
+:::
+
+Rationale: 
+
+- the ANOVA model assumes equal variability (standard deviations) across groups
+- better precision (for variability estimates, not means) when assumption holds
+
+## Bonferroni adjustment
+
+> Problem: several 95% intervals don't have simultaneous 95% coverage.
+
+- *individual* coverage: how often *one* interval covers the population mean
+- *simultaneous* coverage: how often *all* intervals cover population means *at the same time*
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width = 6, fig.height = 4}
+emm.unadjusted <- emmeans(fit, ~ diet) |>
+  confint(level = 0.95) |>
+  tibble() |>
+  mutate(level = 0.95)
+
+emm.adjusted <- emmeans(fit, ~ diet) |>
+  confint(level = 1 - 0.05/4) |>
+  tibble() |>
+  mutate(level = 0.9875)
+
+bind_rows(emm.adjusted, emm.unadjusted) |>
+  mutate(coverage = factor(level, labels = c('individual', 'simultaneous'))) |>
+  ggplot(aes(y = diet, x = emmean, color = coverage)) +
+  geom_errorbar(aes(x = emmean,
+                    xmin = lower.CL, 
+                    xmax = upper.CL), 
+                width = 0.3,
+                position = position_dodge(width = 0.2)) +
+  geom_point(position = position_dodge(width = 0.2)) +
+  theme_minimal(base_size = 20) +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey', linewidth = 0.1),
+        legend.position = 'top') +
+  labs(y = '', x = 'estimated mean lifetime (months)') +
+  guides(color = guide_legend(title = ''))
+```
+:::
+
+::: {.column}
+The **Bonferroni correction** for $k$ intervals consists in changing the individual coverage level to $\left(1 - \frac{\alpha}{k}\right)\%$.
+
+- Effectively a width increase
+- Guarantees joint coverage $(1 - \alpha)\%$
+- Tends to be over conservative with many means (large $k$)
+:::
+
+:::
+
+## Implementation in R
+
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T, fig.width = 5, fig.height = 4}
+# table
+emmeans(object = fit, spec = ~ diet) |>
+  confint(level = 0.95, adjust = 'bonferroni')
+```
+
+- note Bonferroni adjustment
+- these are model-based estimates that depend on the fitted ANOVA model
+
+:::
+
+::: {.column}
+```{r, echo = T, eval = F}
+# visualization
+emmeans(object = fit, spec = ~ diet) |>
+  confint(level = 0.95, adjust = 'bonferroni') |>
+  plot(xlab = 'mean lifespan (months)', 
+       ylab = 'diet')
+```
+
+```{r, echo = F, fig.width = 5, fig.height = 3}
+# visualization
+emmeans(object = fit, spec = ~ diet) |>
+  confint(level = 0.95, adjust = 'bonferroni') |>
+  plot(xlab = 'mean lifespan (months)', ylab = 'diet') +
+  theme_minimal(base_size = 18)
+```
+
+:::
+
+:::
+
+*Caution: these intervals do NOT indicate which means differ significantly.*
+
+## Pairwise comparisons
+
+> Pairwise comparisons are inferences made on "contrasts" between pairs of means.
+
+The difference $\mu_{NP} - \mu_{N/N85}$ is an example of a contrast. It is common to perform inference on all pairwise contrasts to determine which means differ and by how much.
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{r, echo = T, eval = F}
+emmeans(object = fit, specs = ~ diet) |> 
+  contrast('pairwise')
+```
+```{r}
+emmeans(fit, ~ diet) |> 
+  pairs(adjust = 'bonferroni') |>
+  as_tibble() |> 
+  select(contrast, estimate, SE) |>
+  rename(difference = contrast) |>
+  pander(style = 'simple')
+```
+
+```{r, include = F}
+sigma(fit)*sqrt(1/49 + 1/57)
+```
+:::
+
+::: {.column width="45%"}
+
+- estimates are $\bar{x}_i - \bar{x}_j$
+- $SE_{ij} = SE(\bar{x}_i - \bar{x}_j) = s_\text{pooled}\sqrt{\frac{1}{n_i} + \frac{1}{n_j}}$
+- inference based on a $t_{n - k}$ model
+    
+    + degrees of freedom: $n - k$
+    + tests: $T_{ij} = \frac{\bar{x}_i - \bar{x}_j}{SE_{ij}}$
+    + intervals: $\bar{x}_i - \bar{x}_j \pm c\times SE_{ij}$
+:::
+
+:::
+
+*Multiplicity corrections must adjust for the number of contrasts (6), not means (4).*
+
+
+## Pairwise comparisons: tests
+
+> Which means differ significantly? All except R50 and R40.
+
+::: {.columns}
+
+::: {.column}
+`emmeans` *then* `contrast` *then* `test`:
+```{r, echo = T}
+emmeans(object = fit, specs = ~ diet) |>
+  contrast('pairwise') |>
+  test(adjust = 'bonferroni')
+```
+- *p*-values are adjusted for multiplicity
+- reject if *adjusted* *p*-value is below the significance threshold
+:::
+
+::: {.column}
+Hypotheses for pairwise tests:
+
+$$\begin{cases} H_0: \mu_i - \mu_j = 0 \\ H_A: \mu_i - \mu_j \neq 0 \end{cases}$$
+Test statistic:
+
+$$T_{ij} = \frac{\bar{x}_i - \bar{x}_j}{SE_{ij}}$$
+
+$p$-values are obtained from a $t_{n - k}$ model for the sampling distribution of $T_{ij}$.
+
+:::
+
+:::
+
+## Pairwise comparisons: tests
+
+> Which means differ significantly? All except R50 and R40.
+
+::: {.columns}
+
+::: {.column}
+`emmeans` *then* `contrast` *then* `test`:
+```{r, echo = T}
+emmeans(object = fit, specs = ~ diet) |>
+  contrast('pairwise') |>
+  test(adjust = 'bonferroni')
+```
+:::
+
+::: {.column}
+Interpretation:
+
+> The data provide evidence at the 5% significance level that mean lifespan differs among all levels of diet restriction except the N/R40 and N/R50 groups (*p* = 0.0937), for which the evidence is suggestive but inconclusive.
+:::
+
+:::
+
+## Multiple testing correction matters
+
+> Using unadjusted $p$-values will inflate type I error rates.
+
+::: {.columns}
+
+::: {.column}
+setting `adjust = 'none'`:
+```{r, echo = T}
+emmeans(object = fit, specs = ~ diet) |>
+  contrast('pairwise') |>
+  test(adjust = 'none')
+```
+:::
+
+::: {.column}
+Failure to adjust for multiple inferences leads to a different conclusion:
+
+> The data provide evidence at the 5% significance levelthat mean lifespan differs among all levels of diet restriction.
+
+:::
+
+:::
+
+This is *incorrect*, because the joint significance level is not 5%.
+
+Without adjustment, type I error could be as high as $k\times\alpha = 6\times 0.05 = 0.3$!
+
+## Pairwise comparisons: intervals
+
+> How much do means differ? Anywhere from 2 - 21 months, depending.
+
+::: {.columns}
+
+::: {.column width="55%"}
+`emmeans` *then* `contrast` *then* `confint`:
+```{r, echo = T}
+emmeans(object = fit, specs = ~ diet) |> 
+  contrast('pairwise') |>
+  confint(level = 0.95, adjust = 'bonferroni')
+```
+
+- `level` specifies *joint* coverage after adjustment
+:::
+
+::: {.column width="45%"}
+Intervals are for the parameter $\mu_i - \mu_j$:
+
+$$\bar{x}_i - \bar{x}_j \pm c\times SE_{ij}$$
+
+The critical value $c$ is obtained from the $t_{n - k}$ model.
+
+For a $(1 - \alpha)\times 100\%$ confidence interval with Bonferroni correction: 
+
+$$c = \left(1 - \frac{\alpha}{2k}\right) \;\text{quantile}$$
+
+:::
+
+:::
+
+## Pairwise comparisons: intervals
+
+> How much do means differ? Anywhere from 2 - 21 months, depending.
+
+::: {.columns}
+
+::: {.column width="55%"}
+`emmeans` *then* `contrast` *then* `confint`:
+```{r, echo = T}
+emmeans(object = fit, specs = ~ diet) |> 
+  contrast('pairwise') |>
+  confint(level = 0.95, adjust = 'bonferroni')
+```
+:::
+
+::: {.column width="45%"}
+Interpretations are the same as usual:
+
+> With 95% confidence, mean lifespan on a normal diet is estimated to exceed mean lifespan on an unrestricted diet by between 1.87 and 8.71 months, with a point estimate of 5.29 months difference (SE 1.29).
+:::
+
+:::
+
+## Pairwise comparisons: visualizations
+
+::: {.columns}
+
+::: {.column width="45%"}
+Another option is to visualize the pairwise comparison inferences by displaying simultaneous 95% intervals.
+
+Easy to spot significant contrasts:
+
+- intervals exclude 0 $\Leftrightarrow$ tests reject
+:::
+
+::: {.column width="55%"}
+`emmeans` *then* `contrast` *then* `confint` *then* `plot`:
+```{r, echo=T, eval = F}
+emmeans(object = fit, specs = ~ diet) |>
+  contrast('pairwise') |>
+  confint(level = 0.95, adjust = 'bonferroni') |>
+  plot(xlab = 'difference in mean lifetime (months)', 
+       ylab = 'contrast')
+```
+
+```{r, fig.width = 6, fig.height = 4}
+emmeans(fit, ~ diet) |>
+  pairs(level = 0.95, adjust = 'bonferroni') |> 
+  plot() + geom_vline(xintercept = 0) +
+  theme_minimal(base_size = 18) +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = 'grey', linewidth = 0.1)) +
+  labs(x = 'difference in mean lifetime (months)', y = 'contrast')
+```
+
+:::
+
+
+:::
+
+
+
+## Comparisons with a control
+
+> Does diet restriction increase mean lifespan, and if so by how much?
+
+::: {.columns}
+
+::: {.column width="60%"}
+Specify `contrast('trt.vs.ctrl')`:
+```{r, echo = T, eval = F}
+emmeans(object = fit, specs = ~ diet) |> 
+  contrast('trt.vs.ctrl') |>
+  confint(level = 0.95, adjust = 'dunnett')
+```
+
+```{r}
+emmeans(fit, trt.vs.ctrl ~ diet)$contrasts |> 
+  confint() |>
+  as_tibble() |> 
+  select(contrast, estimate, SE, lower.CL, upper.CL) |>
+  mutate(across(ends_with('CL'), ~round(.x, 2))) |>
+  unite('95% CI', ends_with('CL'), sep = ', ') |>
+  mutate(`95% CI` = paste('(', `95% CI`, ')', sep = '')) |>
+  pander(style = 'simple')
+```
+:::
+
+::: {.column width="40%"}
+
+- Multiple inference adjustment uses Dunnett's method 
+    
+    + specialized correction for comparisons with a control
+    + `adjust = 'dunnett'`
+    
+- Comparisons will be relative to first group in R
+:::
+
+:::
+
+With 95% confidence, relative to an unrestricted diet...
+
+- a 85kcal/day diet increases lifespan by an estimated 2.23 to 8.34 months
+- a 50kcal/day diet increases lifespan by an estimated 11.98 to 17.81 months
+- a 40kcal/day diet increases lifespan by an estimated 14.70 to 20.73 months
+
+
+# Extras
+
+## Log contrasts: relative change
+
+> Can we instead estimate a *percent change* in lifespan relative to the control?
+
+::: {.columns}
+
+::: {.column width="44%"}
+The contrast in log-lifetimes would be:
+
+$$
+\log(\mu_{N85}) - \log(\mu_{NP}) = \log\left(\frac{\mu_{N85}}{\mu_{NP}}\right)
+$$
+So to answer the question:
+
+1. refit the ANOVA model with *log* lifetimes
+2. compute contrasts with control group using Dunnett's method
+3. exponentiate estimates to obtain ratios (and hence percentages)
+:::
+
+::: {.column width="56%"}
+```{r, echo = T, eval = F}
+fit.log <- aov(log(lifetime) ~ diet, data = longevity)
+```
+
+```{r}
+aov(log(lifetime) ~ diet, data = longevity) |>
+  emmeans(specs = ~ diet) |>
+  contrast('trt.vs.ctrl') |>
+  confint(level = 0.95, adjust = 'dunnett') |>
+  as_tibble() |> 
+  select(contrast, estimate, lower.CL, upper.CL) |>
+  mutate(across(ends_with('CL'), ~round(exp(.x), 2))) |>
+  unite('95% CI', ends_with('CL'), sep = ', ') |>
+  mutate(`95% CI` = paste('(', `95% CI`, ')', sep = ''),
+         contrast = str_replace(contrast, ' - ', '/'),
+         estimate = exp(estimate)) |>
+  slice(-1) |>
+  pander(style = 'simple')
+```
+
+Fact: mean log lifetime = log median lifetime.
+
+> With 95% confidence, diet restriction to 40kcal (a 52.9% reduction) is estimated to increase median lifespan in mice by 52% to 87%, with a point estimate of 68.8%.
+
+*Extra credit: work out and interpret the interval estimate for the contrast not shown above.*
+:::
+
+:::
+
+
+## Power calculations for ANOVA
+
+> How much data should we collect to detect a difference in mean lifespan of 1 month?
+
+::: {.columns}
+
+::: {.column}
+To perform sample size power calculations, one needs:
+
+- number of groups
+- target significance level ($\alpha$)
+- target power level
+- guess or prior estimate of variance ratio $\frac{\text{group variation}}{\text{error variation}}$
+
+```{r, eval = F}
+1/sigma(fit)
+```
+
+From the existing study, $\sqrt{MSE} = `r sigma(fit) |> round(2)`$
+:::
+
+::: {.column}
+So to detect effects on the order of one month at 90% power:
+```{r, echo = T}
+power.anova.test(groups = 4, 
+                 sig.level = 0.05, 
+                 power = 0.9, 
+                 within.var = 6.633, 
+                 between.var = 1)
+```
+... we need 33 mice per treatment group.
+:::
+
+:::

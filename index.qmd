@@ -7,13 +7,17 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-Please complete this short \[[midquarter feedback survey](https://forms.office.com/r/Q1bVRsyRdW)\] by Friday 5/10.
+Recently posted:
 
-Assignment reminders:
+- scores and response summaries for PS9 & PS10
+- outlines for weeks 9-10 (note NO class meeting Monday 6/3)
+- final project guidelines
 
-- problem set 7 due Monday 5/6; late submissions until Wednesday 5/8 5pm
-- problem set 8 due Wednesday 5/8; late submissions until Friday 5/10 5pm
-- test 2 upcoming: will be released Wednesday 5/8 5pm and due Friday 5/10 5pm
+Upcoming assignments:
+
+- problem set 11 due Wednesday 5/29; late submissions until Friday 5/31 5pm
+- test 3 corrections due Friday 5/31 5pm
+- problem set 12 due Monday 6/3; late submissions until Wednesday 6/5 5pm
 :::
 
 ### Course information
@@ -153,7 +157,7 @@ Response summary \[[PS6](https://forms.office.com/Pages/AnalysisPage.aspx?Analyz
 -   \[[lab](content/lab7-directional.qmd)\] directional tests
 -   \[[problem set 7](https://forms.office.com/r/yJUqiKxMB4)\] due Monday 5/6; late submissions until Wednesday 5/8 5pm
 
-Response summary \[PS7\]
+Response summary \[[PS7](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=fOTcCJw2uloFlsCwZsHFr79jKLoe2KnC&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOUFKMTRWMFMxRUU2WUlUOUJUSzA1SllBRC4u)\]
 
 ### Week 6 (5/6/24)
 
@@ -168,6 +172,8 @@ Please complete this short \[[midquarter feedback survey](https://forms.office.c
 -   \[[lab](content/lab8-twosample.qmd)\] two-sample *t* tests in R
 -   \[[problem set 8](https://forms.office.com/r/1Ng8ZivYQr)\] due Wednesday 5/8; late submissions until Friday 5/10
 
+Response summary \[[PS8](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=SUI1bDv0qCPbd7eHHhT9yGstkXzXLO8H&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JURFMxSVMzNzNYQ1JBRVExSFVCM1RBQlMwUC4u)\]
+
 ***Wednesday class meeting*** 
 
 -   \[reading\] Vu and Harrington 5.4
@@ -175,7 +181,7 @@ Please complete this short \[[midquarter feedback survey](https://forms.office.c
 -   \[[test 2 practice problems](content/test2-practice.qmd)\] test 2 prep
 -  \[[R cheatsheet](content/r-cheatsheet.qmd)\] for easy reference
 
-**Test 2** available Wednesday 5/8 5pm and **due Friday 5/10 5pm** \[[prompts](content/test2.qmd)\] \[[submission form](https://forms.office.com/r/CRwzpweBj3)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmSk3Moe44lOlP40RSzplMsBUuThnHBe_QnW89dbeC6Sgw)\]
+**Test 2** available Wednesday 5/8 5pm and **due Friday 5/10 5pm** \[[prompts](content/test2.qmd)\] \[[submission form](https://forms.office.com/r/CRwzpweBj3)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmSk3Moe44lOlP40RSzplMsBUuThnHBe_QnW89dbeC6Sgw)\] \[[submit corrections](https://forms.office.com/r/pegkk8F7Ky)\]
 
 ### Week 7 (5/13/24)
 
@@ -183,84 +189,76 @@ Please complete this short \[[midquarter feedback survey](https://forms.office.c
 
 ***Monday class meeting*** 
 
--   \[reading\] Vu and Harrington 5.5
--   \[lecture\] Introduction to analysis of variance
--   \[lab\] fitting ANOVA models in R
--   \[problem set 9\] due Wednesday 5/15; late submissions until Friday 5/17 5pm
+-   \[reading\] Vu and Harrington 5.5.1 & 5.5.2
+-   \[[lecture](content/week7-anova.qmd)\] Introduction to analysis of variance
+-   \[[lab](content/lab9-anova.qmd)\] fitting ANOVA models in R
 
-***NO Wednesday class meeting** 
+***NO Wednesday class meeting***
 
 -   \[reading\] van Belle *et al.* 8.4 and 8.5 up to 8.5.4
--   \[self-paced activity\] nonparametric inferences for one- and two-sample problems
--   \[problem set 10\] due Monday 5/20; late submissions until Wednesday 5/22 5pm
+-   \[[self-paced activity](content/week7-activity-nonparametric.qmd)\] nonparametric inferences for one- and two-sample problems
+-   \[[problem set 9](https://forms.office.com/r/mwb8DCkjAH)\] due Monday 5/20; late submissions until Wednesday 5/22 5pm
+
+Response summary \[[PS9](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=99Gk18qGZyH7amO75sdNmG5EA7XOTHC4&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOTNCQVNLRkZLN0U1Wkw4VTJVS0FNWVVZSS4u)\]
 
 ### Week 8 (5/20/24)
 
-*Analysis of variance*
+*Post hoc inference in ANOVA; inference for a population proportion*
 
-<!-- **Tuesday class meeting** \[[slides](content/week8-pairwise.qmd)\] \[[lab](content/labs/lab12-pairwise.qmd)\] -->
+***Monday class meeting***
 
-<!-- -   \[reading\] Vu and Harrington 5.5.3 -->
+-   \[reading\] Vu and Harrington 5.5.3 & 5.5.4
+-   \[[lecture](content/week8-posthoc.qmd)\] post hoc inference in ANOVA
+-   \[[lab](content/lab10-posthoc.qmd)\] pairwise comparisons in R
+-   \[[problem set 10](https://forms.office.com/r/9aNk6EdFH3)\] due Wednesday 5/22; late submissions until Friday 5/24 5pm
 
-<!-- -   \[lecture/discussion\] pairwise comparisons from ANOVA -->
+Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=t6uf4scBfMi73nO9R1Mik8HcyOB6Ec2p&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUMFVWM0FVTUlYTFdMOUNZVzI1QUQxSTlPRS4u)\]
 
-<!-- -   \[lab\] pairwise comparisons in R; morphological differences in mussel populations -->
+***Wednesday class meeting***
 
-<!-- **Thursday class meeting** \[[slides](content/week8-proportions.qmd)\] \[[lab](content/labs/lab13-proportions.qmd)\] -->
+-   \[reading\] Vu and Harrington 8.1 & 8.2
+-   \[[lecture](content/week8-proportions.qmd)\] inference for population proportions
+-   \[[lab](content/lab11-proportions.qmd)\] tests and intervals for proportions in R
 
-<!-- -   \[reading\] Vu and Harrington 8.1 -->
-
-<!-- -   \[lecture/discussion\] one- and two-sample inference for population proportions -->
-
-<!-- -   \[lab\] three case studies -->
-
-**Test 3** due Friday 5/24 5:00pm PDT
+**Test 3** available Wednesday 5/22 5pm PDT and due Friday 5/24 5:00pm PDT \[[prompts](content/test3.qmd)\] \[[submission](https://forms.office.com/r/ZPv3rH7ApW)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmXT2uLj-BdIhi6xGpcEzsQBEl-SLY_YJbpM1opHddTDow)\]
 
 ### Week 9 (5/27/24)
 
-*Academic holiday 5/27/24*
+*Academic holiday 5/27/24; Tuesday follows Monday schedule*
 
-*Inference for categorical data*
+*Analysis of two-way contingency tables*
 
-<!-- **Tuesday class meeting** \[[slides](content/week9-contingency.qmd)\] \[[lab](content/labs/lab14-contingency.qmd)\] -->
+***Tuesday class meeting*** 
 
-<!-- - [reading] Vu and Harrington 8.5.1 and 8.5.3 -->
+- [reading] Vu and Harrington 8.3 (excluding 8.3.5)
+- [lecture] tests of association in two-way tables
+- [lab] $\chi^2$ tests in R
+- [problem set 11] due Wednesday 5/29; late submissions until Friday 5/31 5pm 
 
-<!-- - [lecture/discussion] inference for relative risk and odds ratios -->
 
-<!-- - [lab] distinguishing prospective and retrospective studies -->
+***Wednesday class meeting*** 
 
-<!-- Please fill out *before class* Thursday 3/7: \[[partner assignments 2pm](https://forms.office.com/r/pbMNAG1GuT)\] \[[partner assignments 4pm](https://forms.office.com/r/G12TfmnUxK)\] -->
-
-<!-- **Thursday class meeting** \[[slides](content/week9-association.qmd)\] \[[project guidelines](content/hw/project-guidelines)\] -->
-
-<!-- - [reading] Vu and Harrington 8.3 -->
-
-<!-- - [lecture/discussion] tests of association in contingency tables -->
-
-<!-- - [activity] final project discussion and planning -->
+- [reading] Vu and Harrington 8.5
+- [lecture] inference for odds ratios and relative risk
+- [lab] measures of association in R
+- [problem set 12] due Monday 6/3; late submissions until Wednesday 6/5 5pm
 
 ### Week 10 (6/3/24)
 
 *Simple linear regression*
 
-<!-- **Tuesday class meeting** \[[slides](content/week10-slr.qmd)\] \[[lab](content/labs/lab15-slr.qmd)\] -->
+**NO Monday class meeting** 
 
-<!-- - [reading] Vu and Harrington 6.1 and 6.2 -->
+- [reading] Vu and Harrington 6.1 & 6.2
+- [activity] simple linear regression warm-up
+- [problem set 13] due Wednesday 6/5; late submissions until Friday 6/7 5pm
 
-<!-- - [lecture/discussion] model specification and estimation for simple linear regression -->
+**Wednesday class meeting** 
 
-<!-- - [lab] estimating the age of the universe -->
-
-<!-- **Thursday class meeting** \[[slides](content/week10-prediction.qmd)\] \[[lab](content/labs/lab16-slrpractice.qmd)\] -->
-
-<!-- - [reading] Vu and Harrington 6.4 and 6.5 -->
-
-<!-- - [lecture/discussion] confidence and prediction intervals -->
-
-<!-- - [lab] prediction in SLR -->
-
-<!-- - [miscellany] scheduling oral exam times -->
+- [reading] Vu and Harrington 6.4
+- [lecture] inference in simple linear regression
+- [lab] estimating the age of the universe
+- [miscellany] scheduling oral exam times
 
 **Test 4** due Friday 6/7 5:00pm PDT
 
@@ -273,6 +271,6 @@ Scheduled exam times:
 -   \[12pm section\] Wednesday 6/12 10:10am -- 1:00pm
 -   \[2pm section\] Monday 6/10 1:10pm -- 4:00pm
 
-<!-- \[[project guidelines](content/hw/project-guidelines)\] -->
+\[[project guidelines](content/project-guidelines.qmd)\]
 
 <!-- \[[time slot assignments](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/ERQD3BDdaL5HphebiraGMO4BGlYKr7k4g3KPh5QP1RdLlA?e=LdDJrx)\] -->

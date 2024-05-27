@@ -1,0 +1,179 @@
+---
+title: "Test 3"
+subtitle: "Analysis of variance [L9]"
+author: "STAT218"
+author-title: "Course"
+date: "5/24/24"
+published-title: "Due date"
+execute: 
+  echo: false
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+## Instructions
+
+You have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but must complete this assignment on your own. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers or generated your answers or analyses using AI. Failure to adhere to this expectation will be considered an act of academic dishonesty and result in loss of credit.
+
+You will find a project with a mostly empty script in the class Posit cloud workspace; use this to complete your analyses where required. Note that not all parts require you to perform any calculations; some questions are purely qualitative. Use the prompts as your guide, not the script.
+
+Once you have completed your analyses for the portions requiring use of statistical software, submit your work by filling out the test 2 form posted on the course website. The form will automatically save your work, so you can return to it over the course of the 48-hour test window.
+
+The form will stop accepting responses at the deadline, so **make sure you submit by 5pm on Friday 5/24**. Lastly, keep in mind that you will be given the opportunity to revise problems that you miss the first time around to earn back credit.
+
+## Problems
+
+```{r setup, echo = F}
+library(tidyverse)
+library(emmeans)
+```
+
+
+1. [L9] Recall that the FAMuSS study, which we have used for several in-class examples, sought to determine whether the ACTN3 gene is associated with differential physical response to strength training. Here you'll answer that question.
+
+    a. Use an appropriate graphical summary to check whether assumptions are met for an ANOVA to test for differences in mean change in nondominant arm strength by genotype.
+    b. Fit the ANOVA model, construct the ANOVA table, and determine whether the study provides evidence that mean change in nondominant arm strength differs by genotype. Carry out your inference at the 5% significance level.
+    c. If your test in (b) indicated significant differences at the 5% level, carry out tests for pairwise differences to determine which genotypes differ. Provide interval estimates for any significant differences.
+    d. Check whether there are any significant differences in mean change in *dominant* arm strength by genotype at the 5% significance level and use pairwise comparisons to identify any such differences; do your conclusions match the analysis of change in nondominant arm strength?
+
+```{r problem 1 famuss, include = F}
+load('data/famuss.RData')
+head(famuss)
+
+# part a: plot change in nondominant arm strength by genotype
+boxplot(ndrm.ch ~ genotype, data = famuss, horizontal = T)
+
+# part b: fit ANOVA model and construct table
+aov(ndrm.ch ~ genotype, data = famuss) |> summary()
+
+# part c: if ANOVA indicates differences by genotype, test for pairwise differences and provide interval estimates for any significant differences
+aov(ndrm.ch ~ genotype, data = famuss) |>
+  emmeans(~ genotype) |>
+  contrast('pairwise') |>
+  test(adjust = 'bonferroni')
+
+aov(ndrm.ch ~ genotype, data = famuss) |>
+  emmeans(~ genotype) |>
+  contrast('pairwise') |>
+  confint(level = 0.95, adjust = 'bonferroni') |>
+  slice(2)
+
+# part d: check whether conclusions from the analysis are the same if inference is instead on mean change in dominant arm strength
+boxplot(drm.ch ~ genotype, data = famuss, horizontal = T) 
+aov(drm.ch ~ genotype, data = famuss) |>
+  emmeans(~ genotype) |>
+  contrast('pairwise') |>
+  test(adjust = 'bonferroni')
+```
+
+
+
+2. [L9] The output below shows: (1) an ANOVA model fit to data on the average number of flowers per meadowfoam plant grown in an experimental plot and the light intensity (μmol/m^2/sec) that the plot received during the experiment; (2) tests for contrasts with the lowest intensity level. The intensity levels were randomly allocated among the plots.
+
+    a. Construct the ANOVA table to test for an effect of light intensity on meadowfoam flowering. Interpret the result of the test in context.
+    b. How many observations and treatments were there in the expriment?
+    c. What is the estimated standard deviation of the average number of flowers per plant across plots?
+    d. Based on the output beneath the model fit summary, what is the effect of increasing intensity on flowering? Explain.
+
+```{r problem 2 prompt, echo = F}
+meadow <- Sleuth3::case0901 |>
+  rename_with(tolower) |>
+  select(flowers, intensity) |>
+  mutate(intensity = ordered(intensity))
+
+aov(flowers ~ intensity, data = meadow)
+
+aov(flowers ~ intensity, data = meadow) |>
+  emmeans(~intensity) |>
+  contrast('trt.vs.ctrl') |>
+  test()
+```
+    
+```{r problem 2, include = F}
+## NOTE: there is no data associated with this problem
+
+# part a: calculations for ANOVA table (MS, F, p)
+aov(flowers ~ intensity, data = meadow) |>
+  summary()
+```
+
+3. [L9] To study the influence of ocean grazers on regeneration rates of seaweed in the intertidal zone, a researcher scraped rock plots free of seaweed and observed the degree of regeneration when certain types of seaweed-grazing animals were denied access. The grazers were limpets (L), small fishes (f) and large fishes (F). Each plot received one of six treatments named by which grazers were allowed access, or a control (C) in which no grazers were allowed access. The `grazers` dataset contains observations of percent of regenerated seaweed for 96 plots along with which treatment the plot received.
+
+    a. Construct boxplots to inspect the distributions of percent cover regeneration among plots by treatment group. Assess whether assumptions for ANOVA seem to be met.
+    b. How many replicates (*i.e.*, plots) per treatment group are there?
+    c. Fit an ANOVA model to test for an effect of grazers on seaweed regeneration. Carry out your inference at the 1% significance level.
+    d. Test the appropriate contrasts to determine which grazers have a significant effect (at the 1% level) on seaweed regeneration relative to no grazers.
+    e. Estimate any significant effects identified in (d) with confidence intervals at the appropriate confidence level for the tests you performed.
+
+
+```{r grazer data, echo = F}
+grazers <- Sleuth3::case1301 |>
+  rename_with(tolower) |>
+  select(cover, treat) |>
+  filter(treat != 'LfF') |>
+  mutate(treat = treat |> fct_drop() |> fct_reorder(.x = cover, .desc = T))
+save(grazers, file = 'data/grazers.RData')
+```
+
+```{r, include = F}
+# load and inspect data
+load('data/grazers.RData')
+head(grazers)
+
+# part a: construct boxplots and check assumptions
+boxplot(cover ~ treat, data = grazers)
+
+# part b: how many replicates (plots) per group?
+grazers |> count(treat)
+
+# part c: fit anova model and generate table
+aov(cover ~ treat, data = grazers) |> summary()
+
+# part d: test contrasts to determine which grazers affect regeneration at 1% level
+aov(cover ~ treat, data = grazers) |>
+  emmeans(~ treat) |>
+  contrast('trt.vs.ctrl') |>
+  test(adjust = 'dunnett')
+
+# part e: estimate effect of grazers with significant impacts at 1% level
+aov(cover ~ treat, data = grazers) |>
+  emmeans(~ treat) |>
+  contrast('trt.vs.ctrl') |>
+  confint(level = 0.99, adjust = 'dunnett') |>
+  slice(3:4)
+```
+
+### Extra credit
+
+1. [L5] The `logging` dataset contains measurements on the number of tree seedlings lost per transect in nine logged (L) and seven unlogged (U) plots affected by the Oregon Biscuit Fire.
+
+    a. Use an appropriate nonparametric rank test to assess whether the percentage of seedlings lost differed between logged and unlogged areas.
+    b. Which type of area saw the lesser impact of the fire? Support your answer quantitatively with the inference from (a).
+
+```{r logging data, echo = F}
+logging <- Sleuth3::ex0429 |> 
+  rename_with(tolower) |>
+  select(action, percentlost)
+save(logging, file = 'data/logging.RData')
+```
+
+```{r, include = F}
+# load and inspect data
+load('data/logging.RData')
+logging
+
+# make a plot to compare logged and unlogged areas
+boxplot(percentlost ~ action, data = logging)
+
+# part a: nonparametric test to compare percent loss between area types
+wilcox.test(percentlost ~ action, 
+            data = logging, conf.int = T, level = 0.95)
+```
+

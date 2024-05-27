@@ -1,0 +1,531 @@
+---
+title: "Analysis of Variance"
+subtitle: "Inference comparing multiple population means"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(oibiostat)
+library(Sleuth3)
+library(pander)
+library(RColorBrewer)
+means.plot <- function(groups, means, ses, crit = 2, ang = 90, 
+                       xlab = '', ylab = '', main = '', 
+                       l = 0.1, ylim = NULL, col = 'black'){
+  interval.lwr <- means - crit*ses
+  interval.upr <- means + crit*ses
+  if(is.null(ylim)){
+    yl <- c(min(interval.lwr), max(interval.upr))
+  }else{
+      yl <- ylim
+  }
+  plot(x = groups, 
+       y = means, 
+       ylim = yl,
+       xlim = c(0.75, max(groups) + 0.25),
+       xlab = xlab, ylab = ylab, main = main,
+       xaxt = 'n',
+       yaxt = 'n',
+       pch = 16)
+  # axis(1, at = groups)
+  arrows(groups, interval.lwr, groups, interval.upr, length = l, angle = ang, code = 3)
+}
+
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+blue.grad <- colorRampPalette(c('#6880f7', '#0a1a6e'))
+reds <- red.grad(6)
+blues <- blue.grad(6)
+```
+
+
+## Today's agenda
+
+1. \[lecture\] inference comparing several population means
+2. \[lab\] fitting ANOVA models in R
+
+## More than two means?
+
+::: columns
+::: column
+You previously considered this data on chick weights at 20 days of age by diet:
+
+```{r, fig.width=4, fig.height = 3}
+chicks <- ChickWeight |>
+  filter(Time == 20) |>
+  select(weight, Chick, Diet) |>
+  rename(chick = Chick, diet = Diet) |>
+  mutate(chick = as.numeric(chick))
+save(chicks, file = 'data/chicks-20d.RData')
+
+par(mar = c(4, 4, 1, 1),
+    cex = 1.5)
+boxplot(weight ~ diet, data = chicks, xlab = 'diet', ylab = 'weight (g)')
+```
+
+:::
+
+::: column
+Here we have *four means* to compare rather than just two. 
+
+```{r}
+chicks.summary <- chicks |>
+  group_by(diet) |>
+  summarize(mean = mean(weight),
+            se = sd(weight)/sqrt(n()),
+            sd = sd(weight),
+            n = n())
+
+chicks.summary |>
+  pander()
+```
+
+:::
+:::
+
+> Does mean weight at 20 days differ by diet? How do you test this?
+
+## Hypotheses for a difference in means
+
+Let $\mu_i = \text{mean weight on diet } i = 1, 2, 3, 4$.
+
+The hypothesis that there are **no differences** in means by diet is:
+
+$$
+H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4 \quad (\text{no difference in means})
+$$
+
+The alternative, if this is false, is that there is **at least one difference**:
+
+$$
+H_A: \mu_i \neq \mu_j \quad (\text{at least one difference})
+$$
+
+## How much difference is enough?
+
+Here are two made-up examples of four sample means.
+
+::: columns
+::: {.column width="70%"}
+```{r, fig.width = 8, fig.height= 3}
+set.seed(22124)
+par(mfrow = c(1, 2), mar = c(3, 3, 0.1, 0.1))
+means.plot(1:4, rnorm(4, mean = 1, sd = 2), 2 + rnorm(4, sd = 0.1), ylim = c(-10, 8), ang = 45)
+means.plot(1:4, rnorm(4, mean = 1, sd = 4), 2 + rnorm(4, sd = 0.1), ylim = c(-10, 8), ang = 45)
+```
+:::
+
+::: {.column width="30%"}
+
+> Why does it look like there's a difference at right but not at left?
+
+:::
+:::
+
+Think about the $t$-test: we say there's a difference if $T = \frac{\text{estimate} - \text{hypothesis}}{\text{variability}}$ is large.
+
+Same idea here: we see differences if they are big *relative to the variability in estimates*.
+
+## Partitioning variation
+
+> Partitioning variation into two or more components is called "analysis of variance"
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width = 5, fig.height = 4}
+par(mar = c(4, 4, 1, 1), cex = 1.5)
+fit <- lm(weight ~ diet, data = chicks)
+fit.av <- anova(fit)
+rmsg <- fit.av$`Mean Sq`[1] |> sqrt()
+rmse <- fit.av$`Mean Sq`[2] |> sqrt()
+rmst <- fit.av$`Mean Sq` |> sum() |> sqrt()
+obs.lwr <- mean(chicks$weight) - rmst
+obs.upr <- mean(chicks$weight) + rmst
+
+plot(as.numeric(chicks$diet) + rnorm(46, sd = 0.1), chicks$weight,
+     xaxt = 'n', ylab = 'weight(g)', xlab = 'diet',
+     col = 'darkgrey', xlim = c(0.25, 4.75), cex = 0.7,
+     ylim = c(obs.lwr, obs.upr))
+axis(1, at = as.numeric(chicks$diet))
+arrows(4.6, obs.lwr, 
+       4.6, obs.upr, 
+       col = 'darkgrey', length = 0.1, code = 3)
+points(chicks.summary$diet, chicks.summary$mean,
+       pch = 16, col = blues[3], cex = 0.7)
+abline(h = mean(chicks$weight), lty = 2, col = reds[3])
+
+grp.lwr <- chicks.summary$mean - rmse
+grp.upr <- chicks.summary$mean + rmse
+arrows(1:4, grp.lwr, 1:4, grp.upr, 
+       code = 3, length = 0.1, col = blues[3])
+
+btwn.lwr <- mean(chicks$weight) - rmsg*0.7
+btwn.upr <- mean(chicks$weight) + rmsg*0.7
+arrows(2.5, btwn.lwr, 2.5, btwn.upr,
+       code = 3, length = 0.1, col = reds[3])
+points(2.5, mean(chicks$weight), col = reds[3], pch = 16)
+```
+:::
+
+::: {.column width="55%"}
+For the chick data, two sources of variability:
+
+-   [group]{style="color:red"} variability between diets
+
+-   [error]{style="color:blue"} variability among chicks
+
+The analysis of variance (ANOVA) model:
+
+$$\color{grey}{\text{total variation}} = \color{red}{\text{group variation}} + \color{blue}{\text{error variation}}$$
+:::
+:::
+
+
+We'll base the test on the ratio $F = \frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}}$.
+
+
+## The $F$ statistic: a variance ratio
+
+> The $F$ statistic measures variability attributable to group differences relative to variability attributable to individual differences.
+
+
+::: columns
+::: column
+Notation:
+
+-   $\bar{x}$: "grand" mean of all observations
+-   $\bar{x}_i$: mean of observations in group $i$
+-   $s_i$: SD of observations in group $i$
+-   $k$ groups
+-   $n$ total observations
+-   $n_i$ observations per group
+
+:::
+
+::: column
+Measures of variability:
+
+$$\color{red}{MSG} = \frac{1}{k - 1}\sum_i n_i(\bar{x}_i - \bar{x})^2 \quad(\color{red}{\text{group}})$$ 
+$$\color{blue}{MSE} = \frac{1}{n - k}\sum_i (n_i - 1)s_i^2 \quad(\color{blue}{\text{error}})$$ Ratio:
+
+$$F = \frac{\color{red}{MSG}}{\color{blue}{MSE}} \quad\left(\frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}}\right)$$
+:::
+:::
+
+## Sampling distribution for $F$
+
+::: {.columns}
+
+::: {.column width="55%"}
+If the data satisfy these conditions:
+
+1. the distribution of values is symmetric and unimodal within each group
+2. the variability (standard deviation) is roughly the same across groups
+
+Then the $F$ statistic has a sampling distribution well-approximated by an $F_{k - 1, n - k}$ model.
+
+- numerator degrees of freedom $k - 1$
+- denominator degrees of freedom $n - k$
+:::
+
+::: {.column width="45%"}
+```{r, fig.width=10, fig.height=7}
+#| fig-cap: $F$ models for several different numerator degrees of freedom $k - 1$ with fixed $n = 30$.
+reds <- red.grad(7)
+par(mar = c(4, 4, 2, 1), cex = 2.5)
+n <- 30
+k <- 10
+curve(sqrt(df(x, k - 1, n - k)), from = 0, to = 5,
+      xlab = expr(paste("F = ", frac(MSG, MSE))),
+      ylab = '',
+      main = expr(paste(F[paste(k - 1, ',', n - k)], ' model')),
+      xaxt = 'n', yaxt = 'n', axes = F,
+      col = reds[7], lwd = 2)
+axis(1, at = 0:5)
+title(ylab = 'sampling frequency', line = 1)
+
+for(k in 4:9){
+curve(sqrt(df(x, k - 1, n - k)), from = 0, to = 5,
+      xlab = '', ylab = '', main = '',
+      xaxt = 'n', yaxt = 'n',
+      col = reds[k/2], add = T, lwd = 2)
+}
+
+legend('topright', 
+       legend = paste("k = ", 4:10, sep = ''),
+       col = reds, lwd = 2, cex = 0.75)
+```
+:::
+
+:::
+
+## $p$-values for the $F$ test
+
+::: {.columns}
+
+::: {.column}
+To test the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\mu_1 = \mu_2 = \mu_3 = \mu_4 \\
+H_0: &\mu_i \neq \mu_j \quad\text{for some}\quad i \neq j
+\end{cases}
+$$
+Calculate the $F$ statistic:
+
+```{r, echo = T}
+# ingredients of mean squares
+k <- nrow(chicks.summary)
+n <- nrow(chicks)
+n.i <- chicks.summary$n
+xbar.i <- chicks.summary$mean
+s.i <- chicks.summary$sd
+xbar <- mean(chicks$weight)
+
+# mean squares
+msg <- sum(n.i*(xbar.i - xbar)^2)/(k - 1)
+mse <- sum((n.i - 1)*s.i^2)/(n - k)
+
+# f statistic
+fstat <- msg/mse
+fstat
+```
+
+And reject $H_0$ when $F$ is large. 
+:::
+
+::: {.column}
+
+For a significance level $\alpha$ test, reject $H_0$ when $\underbrace{P(F > F_\text{obs})}_\text{p-value} < \alpha$.
+
+```{r, fig.height = 3, fig.width=5}
+par(mar = c(4, 4, 2, 1), cex = 1.5)
+n <- nrow(chicks)
+k <- nrow(chicks.summary)
+curve(sqrt(df(x, k - 1, n - k)), from = 0, to = 6, n = 500,
+      xlab = expr(paste("F = ", frac(MSG, MSE))),
+      ylab = '',
+      main = expr(paste(F[paste(3, ',', 42)], ' model')),
+      xaxt = 'n', yaxt = 'n', axes = F,
+      col = "black", lwd = 2)
+axis(1, at = 0:6)
+title(ylab = 'sampling frequency', line = 1)
+
+abline(v = fstat, lty = 4, lwd = 2, col = reds[3])
+x <- seq(from = 5, to = 6, length = 100)
+y <- df(x, k - 1, n - k) |> sqrt()
+
+polygon(c(x[x>=fstat], max(x), fstat), c(y[x>=fstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[3],
+       legend = paste(round(pf(fstat, k - 1, n - k, lower.tail = F), 4)*100, "% of samples", sep = ''),
+       cex = 0.7)
+```
+
+```{r, echo = T}
+pf(fstat, 4 - 1, 46 - 4, lower.tail = F)
+```
+:::
+
+:::
+
+## Interpreting $F$ statistics and $p$-values
+
+::: {.columns}
+
+::: {.column}
+$$
+\begin{cases}
+H_0: &\mu_1 = \mu_2 = \mu_3 = \mu_4 \\
+H_0: &\mu_i \neq \mu_j \quad\text{for some}\quad i \neq j
+\end{cases}
+$$
+
+$F = \frac{\color{red}{\text{group variation}}}{\color{blue}{\text{error variation}}} = \frac{MSG}{MSE} = `r round(fstat, 4)`$.
+
+```{r, fig.height = 3, fig.width=5}
+par(mar = c(4, 4, 2, 1), cex = 1.5)
+n <- nrow(chicks)
+k <- nrow(chicks.summary)
+curve(sqrt(df(x, k - 1, n - k)), from = 0, to = 6, n = 500,
+      xlab = expr(paste("F = ", frac(MSG, MSE))),
+      ylab = '',
+      main = expr(paste(F[paste(3, ',', 42)], ' model')),
+      xaxt = 'n', yaxt = 'n', axes = F,
+      col = "black", lwd = 2)
+axis(1, at = 0:6)
+title(ylab = 'sampling frequency', line = 1)
+
+abline(v = fstat, lty = 4, lwd = 2, col = reds[3])
+x <- seq(from = 5, to = 6, length = 100)
+y <- df(x, k - 1, n - k) |> sqrt()
+
+polygon(c(x[x>=fstat], max(x), fstat), c(y[x>=fstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[3],
+       legend = paste(round(pf(fstat, k - 1, n - k, lower.tail = F), 4)*100, "% of samples", sep = ''),
+       cex = 0.7)
+```
+
+```{r, echo = T}
+pf(fstat, 4 - 1, 46 - 4, lower.tail = F)
+```
+:::
+
+::: {.column}
+
+> *F = 5.4636* means the proportion of variation in weight attributable to diets is 5.46 times greater than the proportion of variation attributable to chicks.
+
+The statistical significance of this result is measured by the $p$-value:
+
+- if there is in fact no difference in means, then only `r round(pf(5.4636, 3, 42, lower.tail = F), 4)*100`% of samples (*i.e.*, 2 in 1000) would produce at least as much diet-to-diet variability as we observed.
+
+- so in this case we reject $H_0$ at the 1% level
+
+:::
+
+:::
+
+## ANOVA in R
+
+The `aov(...)` function fits ANOVA models using a formula/dataframe specification:
+
+```{r, echo = T, results = 'hide'}
+# fit anova model
+fit <- aov(weight ~ diet, data = chicks)
+
+# generate table
+summary(fit)
+```
+
+```{r}
+summary(fit) |> pander()
+```
+
+The typical style for interpretation closely follows that of previous inferences for the mean:
+
+> The data provide strong evidence of an effect of diet on mean weight (*F = 5.464* on *3* and *42* df, *p = 0.0029*).
+
+## Analysis of variance table
+
+The results of an analysis of variance are traditionally displayed in a table.
+
+Source | degrees of freedom | Sum of squares | Mean square | F statistic | *p*-value
+---|---|---|---|---|---
+Group | $k - 1$ | SSG | $MSG = \frac{SSG}{k - 1}$ | $\frac{MSG}{MSE}$  | $P(F > F_\text{obs})$
+Error | $n - k$ | SSE | $MSE = \frac{SSE}{n - k}$ | 
+
+- the sum of square terms are 'raw' measures of variability
+- the mean square terms are averages adjusted for the amount of data available to estimate variability due to each source
+
+Formally, the ANOVA model says $(n - 1)s^2 = SSG + SSE$.
+
+## Checking assumptions
+
+::: {.columns}
+
+::: {.column}
+The ANOVA test assumes:
+
+1. the distribution of values is symmetric and unimodal within each group
+2. the variability (standard deviation) is roughly the same across groups
+
+To check these assumptions:
+
+- compare group standard deviations for similarity
+- visually inspect distributions within each group for approximate symmetry
+
+Similar to the $t$ test, greater departures from these assumptions are allowable for larger sample sizes.
+:::
+
+::: {.column}
+
+```{r, fig.width=4, fig.height = 3}
+chicks <- ChickWeight |>
+  filter(Time == 20) |>
+  select(weight, Chick, Diet) |>
+  rename(chick = Chick, diet = Diet)
+
+par(mar = c(4, 4, 1, 1),
+    cex = 1.5)
+boxplot(weight ~ diet, data = chicks, xlab = 'diet', ylab = 'weight (g)')
+
+chicks.summary |> pander()
+```
+
+:::
+
+:::
+
+## Another example: treating anorexia
+
+::: {.columns}
+
+::: {.column}
+Weight change was measured for 72 young female anorexia patients randomly allocated to three treatment groups:
+
+- cognitive behavioral therapy (CBT)
+- family treatment (FT)
+- a control (Cont)
+
+Grouped summary statistics:
+
+```{r}
+anorexia <- MASS::anorexia |>
+  rename_with(tolower) |>
+  mutate(treat.id = as.numeric(treat),
+         change = postwt - prewt)
+write_csv(anorexia, 'data/anorexia.csv')
+
+anorexia.summary <- anorexia |>
+  group_by(treat) |>
+  summarize(`post - pre` = mean(change),
+            sd = sd(change),
+            n = n())
+
+anorexia.summary |>
+  pander()
+```
+:::
+
+::: {.column}
+```{r, fig.width = 6, fig.height=4}
+par(mar = c(4, 3, 1, 1), cex = 1.5)
+boxplot(change ~ treat, data = anorexia, horizontal = T,
+        xlab = 'weight change (lbs)', ylab = '', range = 2)
+```
+
+> Were any of the treatments more effective than others?
+:::
+
+:::
+
+## Another example: treating anorexia
+
+```{r, echo = T, results = 'hide'}
+# fit anova model
+fit <- aov(change ~ treat, data = anorexia)
+
+# generate table
+summary(fit)
+```
+
+```{r}
+summary(fit) |> pander()
+```
+
+> The data provide strong evidence of an effect of therapeutic treatment on mean weight change among young women with anorexia (*F = 5.422* on *2* and *69* degrees of freedom, *p = 0.0065*).
+

@@ -26,7 +26,7 @@ You have 48 hours from the release of this assignment to complete and submit you
 
 You will find a project with a mostly empty script in the class Posit cloud workspace; use this to complete your analyses where required. Note that not all parts require you to perform any calculations; some questions are purely qualitative. Use the prompts as your guide, not the script.
 
-Once you have completed your analyses for the portions requiring use of statistical software, submit your work by filling out the \[[test 2 form]()\] (also posted on the course website). The form will automatically save your work, so you can return to it over the course of the 48-hour test window.
+Once you have completed your analyses for the portions requiring use of statistical software, submit your work by filling out the test 2 form posted on the course website. The form will automatically save your work, so you can return to it over the course of the 48-hour test window.
 
 The form will stop accepting responses at the deadline, so **make sure you submit by 5pm on Friday 5/10**. Lastly, keep in mind that you will be given the opportunity to revise problems that you miss the first time around to earn back credit.
 

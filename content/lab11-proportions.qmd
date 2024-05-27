@@ -1,0 +1,320 @@
+---
+title: "Lab 11: Inference for binomial proportions"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r data processing, echo = F}
+library(tidyverse)
+obesity <- Sleuth3::case1801 |>
+  rename_with(tolower) |>
+  pivot_longer(-obesity, names_to = 'chd.death', values_to = 'n') |>
+  group_by(obesity, chd.death) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, obesity, chd.death)
+save(obesity, file = 'data/obesity.RData')
+```
+
+The goal of this lab is to learn how to implement:
+
+1. tests and intervals for binomial proportions from one sample
+2. tests and intervals comparing two proportions from independent samples
+
+The activity represents our first foray into categorical data analysis. You'll reproduce examples from lecture using the NHANES data to estimate diabetets prevalence and the Vitamin C experiment; you'll practice on a few additional datasets.
+
+```{r setup}
+library(tidyverse)
+load('data/vitamin.RData')
+load('data/nhanes500.RData')
+load('data/obesity.RData')
+```
+
+
+### Inference for one proportion
+
+#### Refresher: categorical frequency distributions
+
+Inference for proportions -- and for that matter, future material on inference for categorical data -- will leverage frequency distributions to perform calculations. 
+
+You learned how to make these descriptive summaries at the beginning of the quarter, but a refresher may be helpful. Recall that a frequency distribution, for a categorical variable, is simply a set of counts of observations of each unique value of the variable. We made these using `table(...)`.
+
+```{r frequency distribution refresher}
+# extract variable of interest
+dia <- nhanes$diabetes
+
+# construct table of counts (frequency distribution)
+table(dia)
+
+# render as proportions (still frequency distribution, but normalized)
+table(dia) |> prop.table()
+
+# barplot
+table(dia) |> prop.table() |> barplot()
+```
+
+::: callout-note
+## Your turn 1
+
+Compute the frequency distribution, in both counts and proportions, for the `sleeptrouble` variable in the NHANES dataset, which records whether the participant experiences sleep trouble. Also construct a barplot to visualize the frequency distribution
+
+```{r your turn 1, echo = F}
+# extract variable of interest
+
+# construct table of counts
+
+# render as proportions
+
+# barplot
+
+```
+:::
+
+#### Point estimation
+
+The point estimate for a population proportion is simply the corresponding sample proportion:
+
+$$
+\hat{p} = \frac{\#\text{ observations of category of interest}}{\text{sample size }n}
+$$
+This can be ascertained directly from the frequency distribution. In the diabetes example, $\hat{p}=`r table(dia)[1] |> round(4)`$.
+
+The standard error for $\hat{p}$ is:
+$$
+SE(\hat{p}) = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+$$
+This measures the sample-to-sample variability of $\hat{p}$. To compute the standard error for a binomial proportion, take the product of the two proportions and divide by the sample size, as shown below.
+
+```{r point estimate and standard error}
+# point estimates *are* sample proportions in the frequency distribution table
+dia.p <- table(dia) |> prop.table()
+
+# point estimate (sample proportion of interest)
+dia.p.hat <- dia.p[1]
+dia.p.hat
+
+# standard error
+dia.n <- length(dia)
+dia.p.hat.se <- sqrt(prod(dia.p)/dia.n)
+dia.p.hat.se
+```
+
+This is interpreted as follows:
+
+> The proportion of U.S. adults with diagnosed diabetes is estimated to be 0.114 (SE = 0.0142).
+
+::: callout-note
+## Your turn 2
+
+Using the NHANES data, compute a point estimate and standard error for the proportion of U.S. adults who have sleep trouble. Interpret the estimate in context as shown above.
+
+```{r your turn 2, echo = F}
+# store frequency distribution table (proportions)
+
+# point estimate (sample proportion of interest)
+
+# standard error
+
+```
+
+:::
+
+#### Confidence intervals (manually)
+
+The confidence interval is straightforward to compute by hand:
+$$
+\hat{p} \pm c\times SE(\hat{p})
+$$
+Once estimates are in hand, the calculation requires only finding an appropriate critical value $c$. For a $1 - \alpha$ confidence interval, this is the $1 - \frac{\alpha}{2}$ quantile of the normal model, *i.e.*, the value satisfying:
+
+$$
+P(Z \leq c) = 1 - \frac{\alpha}{2}
+$$
+
+Here are several examples:
+
+```{r confidence intervals}
+# 90% interval
+cval <- qnorm(1 - 0.10/2)
+dia.p.hat + c(-1, 1)*cval*dia.p.hat.se
+
+# 95% interval
+cval <- qnorm(1 - 0.05/2)
+dia.p.hat + c(-1, 1)*cval*dia.p.hat.se
+
+# 99% interval
+cval <- qnorm(1 - 0.01/2)
+dia.p.hat + c(-1, 1)*cval*dia.p.hat.se
+
+# 99.9% interval
+cval <- qnorm(1 - 0.001/2)
+dia.p.hat + c(-1, 1)*cval*dia.p.hat.se
+```
+
+To interpret the last interval:
+
+> With 99.9% confidence, the proportion of U.S. adults with diagnosed diabetes is estimated to be between 0.067 and 0.161, with a point estimate of 0.114 (SE 0.0142).
+
+::: callout-note
+## Your turn 3
+
+Using the NHANES data, construct and interpret a 98% confidence interval for the proportion of U.S. adults who have sleep trouble.
+
+```{r your turn 3, echo = F}
+# 98% interval for the proportion of us adults who are physically active
+
+```
+:::
+
+#### Hypothesis tests
+
+To test the hypothesis that a population proportion is some null value $p_0$ against a non-directional (two-sided) alternative, *i.e.*,
+
+$$
+\begin{cases}
+H_0: &p = p_0 \\
+H_A: &p \neq p_0
+\end{cases}
+$$
+
+we use a test statistic that is *almost* the estimation error divided by the standard error, but we substitute the hypothetical value for the estimate in the standard error:
+
+$$
+Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}}
+$$
+
+The $p$-value is simply the proportion of the normal model for the sampling distribution of $Z$ that exceeds the observed statistic in either direction: $P(|Z| > Z_obs)$. This can be computed by hand as shown below.
+
+```{r two sided test by hand}
+# test stat
+dia.z <- (dia.p.hat - 0.1)/sqrt(0.1*0.9/dia.n)
+
+# two sided p value
+dia.pval <- 2*pnorm(abs(dia.z), lower.tail = F)
+dia.pval
+```
+
+The result is interpreted as follows in standard narrative style:
+
+> The data provide no evidence that the proportion of U.S. adults with diagnosed diabetes differs from 0.1 (Z = `r round(dia.z, 2)`, *p* = `r round(dia.pval, 4)`).
+
+::: callout-note
+## Your turn 4
+
+Test the hypothesis that the proportion of U.S. adults who have sleep trouble is 0.3 against a two-sided alternative at the 5% significance level. Interpret the result in context.
+
+```{r your turn 4}
+# test stat
+
+# two sided p value
+
+```
+
+:::
+
+A more straightforward way to perform the inference -- both the test and interval -- utilizes `prop.test(...)`. The command below matches our prior results:
+
+```{r using proptest for inference}
+# pass table (counts) to prop.test
+table(dia) |> 
+  prop.test(p = 0.1, alternative = 'two.sided', 
+            conf.level = 0.95, correct = F)
+```
+
+The resulting test and interval would be reported jointly:
+
+> The data provide no evidence that the proportion of U.S. adults with diagnosed diabetes differs from 0.1 (Z = `r round(dia.z, 2)`, *p* = `r round(dia.pval, 4)`). > With 95% confidence, the proportion of U.S. adults with diagnosed diabetes is estimated to be between 0.089 and 0.145, with a point estimate of 0.114 (SE 0.0142).
+
+The `prop.test(...)` function also makes doing directional tests easier. Below are two examples:
+
+```{r directional inference}
+# upper sided test/interval: does p exceed 0.09?
+table(dia) |> 
+  prop.test(p = 0.09, alternative = 'greater', 
+            conf.level = 0.95, correct = F)
+
+# upper sided test/interval: is p under 0.14?
+table(dia) |> 
+  prop.test(p = 0.14, alternative = 'less', 
+            conf.level = 0.95, correct = F)
+```
+
+::: callout-note
+## Your turn 5
+
+Test whether the proportion of U.S. adults who experience sleep trouble is under 0.3 at the 1% significance level. Provide an upper confidence bound along with your test.
+
+```{r your turn 5}
+# test whether the proportion with sleep trouble is under 0.3
+
+```
+
+:::
+
+The default approach is to apply the continuity correction (set `correct = T` or omit this argument). We omitted it so that results would match the manual calculations above. You should apply the correction in practice.
+
+### Inference for two proportions
+
+Inference comparing two proportions proceeds from a two-way table or "contingency" table. You may recall that this is a bivariate frequency distribution of two categorical variables. Take a moment to refresh your memory on how to construct these tables:
+
+```{r contingency table}
+# variables of interest
+trt <- vitamin$treatment
+out <- vitamin$outcome
+
+# construct contingency table
+vitamin.tbl <- table(trt, out)
+vitamin.tbl
+```
+
+For inference to work appropriately with `prop.test(...)`, it is important that the outcome be shown in the column dimension and the groups be shown in the row dimension. Further, the outcome of interest should be the first column (not the second).
+
+::: callout-note
+## Your turn 6
+
+Construct a contingency table for the `obesity` data.
+
+```{r your turn 6}
+# variables of interest
+
+# contingency table
+
+```
+
+:::
+
+The contingency table can be used directly to perform inference on a difference in proportions:
+
+```{r}
+# test for difference in proportions
+prop.test(vitamin.tbl, 
+          alternative = 'two.sided', 
+          conf.level = 0.95)
+```
+
+::: callout-note
+## Your turn 7
+
+Test whether the rate of CHD deaths differs among obese and non-obese populations.
+
+```{r your turn 7}
+
+```
+
+:::

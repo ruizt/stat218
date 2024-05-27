@@ -16,189 +16,174 @@ max_na <- function(x){
   }
 }
 
-## READ IN RAW ASSIGNMENT DATA
+read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
+  correction_path <- paste(assignment_name, 'Corrections.xlsx', sep = ' ')
+  
+  if(!file.exists(correction_path)){
+    out <- paste(assignment_name, '.xlsx', sep = '') |>
+      readxl::read_xlsx() |>
+      rename_with(tolower)  |>
+      select(name, email, starts_with('points')) |>
+      pivot_longer(starts_with('points'), 
+                   names_to = 'question', 
+                   values_to = 'score') |>
+      separate(question, into = c('outcome', 'question'), sep = '] ') |>
+      group_by(name, email) |>
+      mutate(outcome = str_remove(outcome, '.*\\['),
+             question.number = fact_fn(question),
+             assignment = assignment_name |> str_split_i(' ', 1) |> tolower(),
+             optional = question.number %in% optional_qnum) |>
+      select(name, email, outcome, assignment, 
+             question, question.number, optional, score)
+  }else{
+    original <- paste(assignment_name, '.xlsx', sep = '') |>
+      readxl::read_xlsx() |>
+      rename_with(tolower)  |>
+      select(name, email, starts_with('points')) |>
+      pivot_longer(starts_with('points'), 
+                   names_to = 'question', 
+                   values_to = 'score') |>
+      separate(question, into = c('outcome', 'question'), sep = '] ') |>
+      group_by(name, email) |>
+      mutate(outcome = str_remove(outcome, '.*\\['),
+             question.number = fact_fn(question),
+             assignment = assignment_name |> str_split_i(' ', 1) |> tolower(),
+             optional = question.number %in% optional_qnum) |>
+      select(name, email, outcome, assignment, 
+             question, question.number, optional, score)
+    
+    revised <- paste(assignment_name,  'Corrections.xlsx', sep = ' ') |>
+      readxl::read_xlsx() |>
+      rename_with(tolower)  |>
+      select(name, email, starts_with('points')) |>
+      pivot_longer(starts_with('points'), 
+                   names_to = 'question', 
+                   values_to = 'score') |>
+      separate(question, into = c('outcome', 'question'), sep = '] ') |>
+      group_by(name, email) |>
+      mutate(outcome = str_remove(outcome, '.*\\['),
+             question.number = fact_fn(question),
+             assignment = assignment_name |> str_split_i(' ', 1) |> tolower(),
+             optional = question.number %in% optional_qnum) |>
+      select(name, email, outcome, assignment, 
+             question, question.number, optional, score)
+    
+    out <- full_join(original, revised, 
+                     by = c('name', 'email', 'outcome', 'question', 'question.number', 'optional', 'assignment'),
+                     suffix = c('.original', '.revised')) |>
+      rowwise() |>
+      mutate(score = if_else(question.number %in% manual_qnum,
+                             max_na(c(score.original, score.revised)),
+                             max_na(c(score.original, mean(c(score.original, score.revised), na.rm = T))))) |>
+      mutate(score = if_else(score == 0.5, w[1], w[2]*score)) |>
+      ungroup() |>
+      select(-score.original, -score.revised) |>
+      select(name, email, outcome, assignment, question, question.number, optional, score)
+  }
+  
+  return(out)
+}
 
-ps1_revised <- readxl::read_xlsx('PS1 Corrections.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  # group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps1')
+## READ IN ASSIGNMENT DATA
 
-ps1_original <- readxl::read_xlsx('PS1.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question), 
-         assignment = 'ps1')
+# assignment names
+names <- c(paste('PS', 1:10, sep = ''), paste('Test', 1:2, sep = ''), 'Test1 Extension')
 
-ps1 <- full_join(ps1_original, ps1_revised, 
-          by = c('name', 'email', 'outcome', 'question', 'question.number', 'assignment'),
-          suffix = c('.original', '.revised')) |>
-  mutate(score = max_na(c(score.original, score.revised))) |>
-  select(-score.original, -score.revised) |>
-  select(name, email, outcome, assignment, question, question.number, score)
+# optional questions
+optional_qnums <- list(
+  ps3 = c(23),
+  test1 = c(38, 39),
+  test3 = c(32, 33, 34, 35)
+)
 
-ps2 <- readxl::read_xlsx('PS2.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps2') |>
-  select(name, email, outcome, assignment, question, question.number, score) |>
-  filter(question.number != 7)
+# manual questions
+manual_qnums <- list(
+  ps1 = 1:8,
+  test1 = c(2, 3, 7, 9, 10, 12, 17, 18, 19, 20, 23, 24, 25, 26, 28, 40, 41),
+  test2 = c(1, 4, 8, 15, 18, 22, 23, 36, 38, 47, 48, 51, 53, 57),
+  test3 = c(9, 12, 19, 23, 24, 30, 31, 35)
+)
 
-ps3 <- readxl::read_xlsx('PS3.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps3') |>
-  select(name, email, outcome, assignment, question, question.number, score) |>
-  filter(question.number != 11)
+# correction credit (autograded, manual)
+correction_weights <- c(0.3, 0.9)
 
-ps4 <- readxl::read_xlsx('PS4.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps4') |>
-  select(name, email, outcome, assignment, question, question.number, score)
-
-ps5 <- readxl::read_xlsx('PS5.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps5') |>
-  select(name, email, outcome, assignment, question, question.number, score)
-
-ps6 <- readxl::read_xlsx('PS6.xlsx') |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'ps6') |>
-  select(name, email, outcome, assignment, question, question.number, score)
-
-
-test1_original <- readxl::read_xlsx('Test1.xlsx') |>
-  bind_rows(readxl::read_xlsx('Test1 Extension.xlsx')) |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'test1') |>
-  select(name, email, outcome, assignment, question, question.number, score) |>
-  filter(str_starts(outcome, 'l')) 
-
-test1_revised <- readxl::read_xlsx('Test1 Corrections.xlsx') |>
-  bind_rows(readxl::read_xlsx('Test1 Extension Corrections.xlsx')) |>
-  rename_with(tolower)  |>
-  select(name, email, starts_with('points')) |>
-  pivot_longer(starts_with('points'), 
-               names_to = 'question', 
-               values_to = 'score') |>
-  separate(question, into = c('outcome', 'question'), sep = '] ') |>
-  group_by(name, email) |>
-  mutate(outcome = str_remove(outcome, '.*\\['),
-         question.number = fact_fn(question),
-         assignment = 'test1') |>
-  select(name, email, outcome, assignment, question, question.number, score) |>
-  filter(str_starts(outcome, 'l')) 
-
-test1_manual_questions <- c(2, 3, 7, 9, 10, 12, 17, 18, 19, 20, 23, 24, 25, 26, 28, 40, 41)
-
-test1_joined <- full_join(test1_original, test1_revised, 
-                 by = c('name', 'email', 'outcome', 'question', 'question.number', 'assignment'),
-                 suffix = c('.original', '.revised')) |>
-  rowwise() |>
-  mutate(score = if_else(question.number %in% test1_manual_questions,
-                         max_na(c(score.original, score.revised)),
-                         max_na(c(score.original, mean(c(score.original, score.revised), na.rm = T))))) |>
-  mutate(score = if_else(score == 0.5, 0.2, score))
-
-test1 <- test1_joined |>
-  select(-score.original, -score.revised) |>
-  select(name, email, outcome, assignment, question, question.number, score)
-
-## JOIN AND COMPUTE SCORES
-
-scores_long <- bind_rows(ps1, ps2, ps3, ps4, ps5, ps6, test1) |>
-  unite('problem', c(assignment, question.number, outcome, question), sep = '_._') |>
+# read in assignments
+scores_long <- lapply(names, function(.x){
+  read_assignment(assignment_name = .x, 
+                  optional_qnum = eval(parse(text = paste('optional_qnums$', tolower(str_split_i(.x, ' ', 1)), sep = ''))),
+                  manual_qnum = eval(parse(text = paste('manual_qnums$', tolower(str_split_i(.x, ' ', 1)), sep = ''))),
+                  w = correction_weights)
+}) |>
+  bind_rows() |>
+  unite('problem', c(assignment, question.number, outcome, question, optional), sep = '_._') |>
   pivot_wider(names_from = problem, values_from = score) |>
   pivot_longer(-c(1:2), names_to = 'problem', values_to = 'score') |>
   separate_wider_delim(problem, 
-                       names = c('assignment', 'question.number', 'outcome', 'question'), 
+                       names = c('assignment', 'question.number', 'outcome', 'question', 'optional'), 
                        delim = '_._') |>
+  mutate(optional = as.logical(optional))
+
+dropped <- scores_long |>
+  group_by(name, email) |>
+  summarize(prop.na = mean(is.na(score))) |>
+  arrange(desc(prop.na)) |>
+  filter(prop.na > 0.9) |>
+  pull(name)
+ 
+# # weighted learning outcome scores
+# outcomes <- scores_long |>
+#   filter(!(name %in% dropped)) |>
+#   mutate(score = replace_na(score, 0)) |>
+#   mutate(score = if_else(optional == T,
+#                          na_if(score, 0),
+#                          score),
+#          category = str_trunc(assignment, width = 1, side = 'right', ellipsis = '')) |>
+#   group_by(name, email, outcome, category) |>
+#   summarize(score = mean(score, na.rm = T),
+#             n.questions = n()) |>
+#   left_join(tibble(category = c('t', 'p'), weight = c(0.5, 0.5)), by = 'category') |>
+#   mutate(weighted.score = score*weight) |>
+#   group_by(name, email, outcome) |>
+#   summarize(score = sum(weighted.score)) |>
+#   mutate(current.status = cut(score, 
+#                               breaks = c(0, 0.5, 0.8, 1.1), 
+#                               right = F, 
+#                               labels = c('not met', 'partly met', 'fully met'))) |>
+#   mutate(outcome = toupper(outcome)) |>
+#   filter(str_starts(outcome, 'L'))
+
+# unweighted learning outcome scores
+outcomes <- scores_long |>
+  filter(!(name %in% dropped)) |>
   mutate(score = replace_na(score, 0)) |>
-  mutate(score = if_else((assignment == 'test1') & (question.number%in%c(38, 39)),
+  mutate(score = if_else(optional == T,
                          na_if(score, 0),
                          score)) |>
-  mutate(score = if_else((assignment == 'ps3') & (question.number == 23),
-                          na_if(score, 0),
-                          score)) 
-
-outcomes <- scores_long |>
   group_by(name, email, outcome) |>
   summarize(score = mean(score, na.rm = T)) |>
   mutate(current.status = cut(score, 
                               breaks = c(0, 0.5, 0.8, 1.1), 
                               right = F, 
                               labels = c('not met', 'partly met', 'fully met'))) |>
-  mutate(outcome = toupper(outcome))
+  mutate(outcome = toupper(outcome)) |>
+  filter(str_starts(outcome, 'L'))
 
-scores_long |>
-  group_by(name, email) |>
-  summarize(n.na = mean(is.na(score))) |>
-  arrange(desc(n.na))
+
 
 ## FOR CHECKING INDIVIDUAL RECORDS
 
-outcomes |> filter(email == 'sashouri@calpoly.edu')
-scores_long |> filter(name == 'Abigail Blair')
+outcomes |> filter(name == 'XX')
+scores_long |> filter(name == 'XX')
+
 
 ## FOR INSTRUCTOR SUMMARIES
+
+# distribution of questions across assignments
+scores_long |>
+  distinct(assignment, question.number, outcome) |>
+  group_by(assignment, outcome) |>
+  count() |>
+  spread(outcome, n)
 
 # score summary stats by outcome
 outcomes |>
@@ -230,55 +215,38 @@ outcomes |>
   mutate(prop = count/sum(count))
 
 # id students not passing
-outcomes |>
-  group_by(name) |>
+notify_list <- outcomes |>
+  group_by(name, email) |>
   count(current.status) |>
-  filter(current.status != 'not met') |>
-  mutate(current.status = str_replace(current.status, ' ', '.')) |>
-  pivot_wider(names_from = current.status, values_from = n) |>
-  mutate(across(contains('met'), ~replace_na(.x, 0))) |>
+  spread(current.status, n) |>
+  rename_with(~str_replace(.x, ' ', '.')) |>
+  mutate(across(ends_with('met'), ~replace_na(.x, 0))) |>
   mutate(n.passing = partly.met + fully.met) |>
-  filter(n.passing < 6) |>
-  mutate(n.short = 6 - n.passing,
-         tentative.grade = cut(fully.met, 
-                               breaks = c(-1, 3, 12), 
-                               labels = paste(c('under', 'at least'), 'C', sep = ' '))) |>
-  arrange(desc(n.short)) |>
+  filter(n.passing < 6, fully.met < 3) |>
+  mutate(n.short.passing = 6 - n.passing,
+         n.short.c = 3 - fully.met) |>
+  select(n.short.passing, n.short.c) |>
+  arrange(desc(n.short.passing)) |>
   print(n = 30)
 
-# id students under C
-outcomes |>
-  group_by(name) |>
-  count(current.status) |>
-  filter(current.status == 'fully met') |>
-  mutate(tentative.grade = cut(n, 
-                        breaks = c(-1, 3, 12), 
-                        labels = paste(c('under', 'at least'), 'C', sep = ' '))) |>
-  filter(n < 3) |>
-  mutate(n.short = 3 - n)
 
 ## EMAIL GRADE SUMMARIES
 
 students <- outcomes |> distinct(name, email)
-names <- pull(students, name)
-emails <- pull(students, email)
+student_names <- pull(students, name)
+student_emails <- pull(students, email)
 
-for(i in 1:length(names)){
+for(i in 1:length(student_names)){
   
-  tbl1 <- filter(outcomes, name == names[i]) |> 
+  tbl1 <- filter(outcomes, name == student_names[i]) |> 
     ungroup() |>
     select(name, outcome, score, current.status) |> 
     xtable() |> 
     print(type = 'html', include.rownames = F)
   
-  tbl2 <- filter(test1_joined, name == names[i]) |>
-    ungroup() |>
-    select(name, question.number, outcome, score.original, score.revised, score) |>
-    mutate(score.revised = na_if(score.revised, 0),
-           score = if_else((question.number%in%c(38, 39)),
-                           na_if(score, 0),
-                           score)) |>
-    rename(score.final = score) |>
+  tbl2 <- filter(scores_long, name == student_names[i], assignment == 'test2') |>
+    select(name, question.number, outcome, optional, score) |>
+    mutate(optional = na_if(optional, F)) |>
     xtable() |> 
     print(type = 'html', include.rownames = F)
   
@@ -298,5 +266,50 @@ for(i in 1:length(names)){
   gm_send_message(email)
 }
 
+## EMAIL NOTIFICATIONS
 
-names
+notify_names <- notify_list$name
+notify_emails <- notify_list$email
+
+for(i in 1:length(notify_names)){
+
+notification <- paste('Tentative estimates indicate that you are ', 
+      notify_list$n.short.passing[i], 
+      ' partly or fully met outcomes short of the six required to pass and, provided you meet the passing requirement, ',
+      notify_list$n.short.c[i],
+      ' fully met outcomes short of the three required to earn a C- or better.',
+      sep = '')
+
+body <- paste('<html>Good afternoon, <br>',
+              notification,
+              '<br> Being one or two outcomes away from targets is not necessarily cause for concern, as there are several remaining outcomes. 
+              However, if you are three or more away from targets, you will need to improve the quality of your work in the remaining weeks of the quarter, and I strongly recommend making a plan now for how to do so. 
+              I am happy to help in this regard, and encourage you to come talk with me during office hours if you would like my input. <br><br>
+              Trevor',
+              sep = '<br>')
+
+
+email <- gm_mime() |>
+  gm_to('truiz01@calpoly.edu') |>
+  gm_from("tdruiz001@gmail.com") |>
+  # gm_cc("truiz01@calpoly.edu") |>
+  gm_subject(paste("STAT218 grade notification (" , notify_names[i], ')', sep = '')) |>
+  gm_html_body(body)
+
+gm_send_message(email)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

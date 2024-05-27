@@ -21,7 +21,7 @@ library(tidyverse)
 library(oibiostat)
 library(Sleuth3)
 library(pander)
-library(perm)
+# library(perm)
 library(RColorBrewer)
 set.seed(21824)
 ddt <- MASS::DDT
@@ -553,34 +553,34 @@ Once you've decided to consider a rank test...
 2. Check symmetry/similarity assumption graphically
 3. Perform test
 
-## Permutation tests
+<!-- ## Permutation tests -->
 
-> Permutation tests are two-sample procedures that provide highly flexible alternatives to parametric tests based on exchangeability.
+<!-- > Permutation tests are two-sample procedures that provide highly flexible alternatives to parametric tests based on exchangeability. -->
 
-**Key idea**: if there is no difference between groups/populations, observations are *exchangeable* between groups.
+<!-- **Key idea**: if there is no difference between groups/populations, observations are *exchangeable* between groups. -->
 
-::: {.columns}
+<!-- ::: {.columns} -->
 
-::: {.column}
+<!-- ::: {.column} -->
 
-Procedure:
+<!-- Procedure: -->
 
-1. Randomly shuffle group assignments among the observations.
-2. Calculate any group comparison.
-3. Repeat many times.
-4. Calculate proportion of shufflings for which the comparison is at least as large as the observed comparison in the direction of the alternative
+<!-- 1. Randomly shuffle group assignments among the observations. -->
+<!-- 2. Calculate any group comparison. -->
+<!-- 3. Repeat many times. -->
+<!-- 4. Calculate proportion of shufflings for which the comparison is at least as large as the observed comparison in the direction of the alternative -->
 
-::: 
+<!-- :::  -->
 
-::: {.column}
-Permutation tests for differences in means are implemented by `permTS()`.
-```{r, echo = T}
-permTS(OutOfState ~ Type, data = ex0332, 
-       alternative = 'greater')
-```
-:::
+<!-- ::: {.column} -->
+<!-- Permutation tests for differences in means are implemented by `permTS()`. -->
+<!-- ```{r, echo = T} -->
+<!-- permTS(OutOfState ~ Type, data = ex0332,  -->
+<!--        alternative = 'greater') -->
+<!-- ``` -->
+<!-- ::: -->
 
-:::
+<!-- ::: -->
 
 ## Lab: three end-to-end analyses
 
