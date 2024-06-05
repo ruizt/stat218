@@ -1,0 +1,561 @@
+---
+title: "Measures of association"
+subtitle: "Inference for relative risk and odds ratios from 2x2 contingency tables"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    tbl-colwidths: [40, 40, 40]
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+library(tidyverse)
+library(pander)
+library(Sleuth3)
+library(epitools)
+load('data/smoking.RData')
+load('data/asthma.RData')
+```
+
+## Today's agenda
+
+1. [lecture] relative risk and odds ratios
+2. [lab] using `epitools` to estimate risk and odds ratios in R
+3. [discussion] final project guidelines
+
+## From last time: smoking
+
+::: {.columns}
+
+::: {.column}
+Researchers sampled 86 lung cancer patients (cases) and 86 healthy individuals (controls) and recorded smoking status:
+```{r}
+smoking |> select(-subj.id) |> table() |> pander()
+```
+
+At the 5% level, association is significant:
+
+```{r, echo = T}
+smoking.tbl <- table(smoking$group, 
+                     smoking$smoking) 
+smoking.tbl |> chisq.test()
+```
+
+:::
+
+::: {.column}
+But there is a difficulty for measuring the association:
+
+- data are really *two* independent samples
+- so can't estimate cancer prevalence
+
+:::
+
+:::
+
+## Case-control studies
+
+> Outcome-based sampling limits which proportions are estimable
+
+![](img/casecontrol.png)
+
+- cases and controls are two independent samples
+- exposure prevalence is estimable (within case and control populations)
+- case prevalence is **not** estimable
+
+## Smoking example
+
+::: {.columns}
+
+::: {.column}
+So due to study design, the only estimable difference in proportions is:
+
+```{r, echo = T}
+smoking.prop.test <- smoking.tbl |> prop.test()
+smoking.prop.test$conf
+```
+:::
+
+::: {.column}
+
+> With 95% confidence, the proportion of smokers among cancer patients is estimated to be betwteen 2.9 and 22.7 percentage points higher than among controls.
+
+:::
+
+:::
+
+This makes for an awkward conclusion:
+
+- we really want to know how smoking affects cancer risk
+- ...not how cancer affects smoking risk
+
+So for this kind of study, we need a different measure of association: ***odds ratios***.
+
+## Odds 
+
+> The odds of an outcome measure its relative likelihood
+
+If $p$ is the true cancer prevalence (a population proportion), then the **odds** of cancer are defined as the ratio:
+$$
+\text{odds} = \frac{p}{1 - p}
+$$
+The odds represent the factor by which cancer is more likely than not, *e.g.*:
+
+- $\text{odds} = 2$ indicates the outcome (cancer) is twice as likely as not
+- $\text{odds} = 1/2$ indicates the outcome (cancer) is half as likely as not
+
+## Odds ratios
+
+> An odds ratio compares the relative likelihood of an outcome between two groups
+
+::: {.columns}
+
+::: {.column width="60%"}
+If $a, b, c, d$ are population proportions:
+
+$\;$ | outcome 1 (O1) | outcome 2 (O2)
+---|:---:|:---:
+group 1 (G1) | [a]{style="color:red"} | [b]{style="color:blue"} 
+group 2 (G2) | [c]{style="color:orange"} | [d]{style="color:purple"}
+
+
+- the odds of outcome 1 in group 1 is $\frac{\textcolor{red}{a}}{\textcolor{blue}{b}}$
+- the odds of outcome 1 in group 2 is $\frac{\textcolor{orange}{c}}{\textcolor{purple}{d}}$
+
+
+:::
+
+::: {.column width="40%"}
+The **odds ratio** of outcome 1 comparing group 1 with group 2 is:
+
+$$
+\frac{\text{odds}_{G1}(O1)}{\text{odds}_{G2}(O1)}
+= \frac{\textcolor{red}{a}/\textcolor{blue}{b}}{\textcolor{orange}{c}/\textcolor{purple}{d}}
+= \frac{\textcolor{red}{a}\textcolor{purple}{d}}{\textcolor{blue}{b}\textcolor{orange}{c}}
+$$
+A surprising algebraic fact is that:
+
+$$
+\frac{\text{odds}_{G1}(O1)}{\text{odds}_{G2}(O1)} 
+=\frac{\text{odds}_{O1}(G1)}{\text{odds}_{O2}(G1)}
+$$
+
+:::
+
+:::
+
+*This means that the ratio of odds of cancer between smokers and nonsmokers can be estimated from the ratio of odds of smoking between cases and controls.*
+
+## Estimating odds ratios
+
+::: {.columns}
+
+::: {.column width="60%"}
+For notation let:
+
+- $\hat{p}_\text{case}$ : proportion of smokers among cases
+- $\hat{p}_\text{control}$ : proportion of smokers among controls
+:::
+
+::: {.column width="40%"}
+```{r}
+smoking.tbl |> pander()
+```
+:::
+
+:::
+
+An estimate of ratio of odds of cancer among smokers compared with nonsmokers ($\omega$) is the estimated ratio of odds of smoking among cancer patients compared with controls:
+$$
+\hat{\omega} 
+=\left(\frac{\hat{p}_\text{case}}{1 - \hat{p}_\text{case}}\right)\Bigg/\left(\frac{\hat{p}_\text{control}}{1 - \hat{p}_\text{control}}\right)
+= \frac{83/3}{72/14} = 5.38
+$$
+
+> It is estimated that the odds of lung cancer are 5.38 times greater for smokers compared with nonsmokers.
+
+## Confidence intervals for odds ratios
+
+The sampling distribution of the log odds ratio can be approximated by a normal model.
+
+$$
+\log\left(\hat{\omega}\right) \pm c \times SE\left(\log\left(\hat{\omega}\right)\right) 
+\quad\text{where}\quad
+SE\left(\log\left(\hat{\omega}\right)\right) = \sqrt{\frac{1}{n_{11}} + \frac{1}{n_{12}} + \frac{1}{n_{21}} + \frac{1}{n_{22}}}
+$$
+
+
+::: {.columns}
+
+::: {.column}
+The `oddsratio(...)` function in the `epitools` package will compute and back-transform the interval for you.
+```{r, echo = T, eval = F}
+oddsratio(smoking.tbl, rev = 'both', 
+          method = 'wald', correction = T)
+```
+```{r}
+oddsratio(smoking.tbl, rev = 'both', 
+          method = 'wald', correction = T)$measure
+```
+
+:::
+
+::: {.column}
+- critical value $c$ from the normal model
+- exponentiate to obtain an interval for $\omega$
+
+> With 95% confidence, the odds of lung cancer are estimated to be between 1.49 and 19.47 times greater for smokers compared with nonsmokers.
+:::
+
+:::
+
+## Implementation details
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+oddsratio(smoking.tbl, rev = 'both',
+          method = 'wald', correction = T)
+```
+
+```{r}
+oddsratio(smoking.tbl, rev = 'both',
+          method = 'wald', correction = T)[1:3]
+```
+
+:::
+
+::: {.column width="55%"}
+
+`oddsratio` is picky about data inputs:
+
+- outcome of interest should be *second* column
+- group of interest should be *second* row
+- the `rev` argument will reverse orders
+    
+    + `rev = neither` keeps original orientation (default)
+    + `rev = rows` reverses order of rows
+    + `rev = columns` reverses order of columns
+    + `rev = both` reverses both
+
+:::
+
+:::
+
+## Interpretation
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+oddsratio(smoking.tbl, rev = 'both',
+          method = 'wald', correction = T)
+```
+
+```{r}
+oddsratio(smoking.tbl, rev = 'both',
+          method = 'wald', correction = T)[1:3]
+```
+
+:::
+
+::: {.column width="55%"}
+First report the test result, then the measure of association:
+
+> The data provide evidence of an association between smoking and lung cancer ($\chi^2$ = 6.53 on 1 degree of freedom, *p* = 0.1062). With 95% confidence, the odds of cancer are estimated to be between 1.49 amd 19.47 times greater among smokers compared with nonsmokers, with a point estimate of 5.38.
+
+
+:::
+
+:::
+
+Comments:
+
+- the `chi.square` $p$-value is from the test of association/independence
+- if assumptions aren't met, can use the `fisher.exact` instead (see V&H 8.3.5)
+
+## Asthma data
+
+::: {.columns}
+
+::: {.column}
+Consider estimating the difference in proportions:
+```{r}
+asthma |> select(-subj.id) |> table() |> pander()
+```
+
+:::
+
+::: {.column}
+```{r, echo = T}
+asthma.tbl <- table(asthma$sex, asthma$asthma)
+prop.test(asthma.tbl, conf.level = 0.9)
+```
+:::
+
+:::
+
+> With 90% confidence, asthma prevalence is estimated to be between 0.28 and 4.01 percentage points higher among women than among men.
+
+Is a difference of up to 4 percentage points practically meaningful? Well, it depends:
+
+- yes if prevalence is very low
+- no if prevalence is very high
+
+
+## Relative risk
+
+If $p_F, p_M$ are the (population) proportions of women and men with asthma, then the **relative risk** of asthma among women compared with men is defined as:
+
+$$
+RR = \frac{p_F}{p_M}
+\qquad
+\left(\frac{\text{risk among women}}{\text{risk among men}}\right)
+$$
+
+An estimate of the relative risk is simply the ratio of estimated proportions. For the asthma data, an estimate is:
+$$
+\widehat{RR} = \frac{\hat{p}_F}{\hat{p}_M} = \frac{0.059}{0.038} = 1.57 
+$$
+
+> It is estimated that the risk of asthma among women is 1.57 times greater than among men.
+
+## Confidence intervals for relative risk
+
+A normal model can be used to approximate the sampling distribution of $\log(RR)$ and construct a confidence interval. If $\hat{p}_1$ and $\hat{p}_2$ are the two estimated proportions:
+
+$$\log\left(\widehat{RR}\right) \pm c \times SE\left(\log\left(\widehat{RR}\right)\right)
+\quad\text{where}\quad SE\left(\log\left(\widehat{RR}\right)\right) = \sqrt{\frac{1 - p_1}{p_1n_1} + \frac{1 - p_2}{p_2n_2}}$$
+
+::: {.columns}
+
+::: {.column width="50%"}
+The `riskratio(...)` function from the `epitools` package will compute and back-transform the interval for you:
+```{r, echo = T, eval = F}
+riskratio(asthma.tbl, 
+          rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)
+```
+```{r}
+riskratio(asthma.tbl, rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)$measure
+```
+:::
+
+::: {.column width="50%"}
+- critical value $c$ from normal model
+- exponentiate for an interval for $RR$
+
+> With 90% confidence, the risk of asthma is estimated to be betwen 1.08 and 2.28 times greater for women than for men, with a point estimate of 1.57.
+:::
+
+:::
+
+
+## Implementation details
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+riskratio(asthma.tbl, 
+          rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)
+```
+
+```{r}
+riskratio(asthma.tbl, rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)[1:3]
+```
+
+:::
+
+::: {.column width="55%"}
+
+Implementation is identical to `oddsratio`:
+
+- outcome of interest should be *second* column
+- group of interest should be *second* row
+- rearrange the input data using `rev`
+
+Also similarly:
+
+- `chi.square` gives the $p$-value for the $\chi^2$ test of association
+- `fisher.exact` gives an exact p-value you can use if assumptions aren't met
+
+:::
+
+:::
+
+## Interpretation
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r, echo = T, eval = F}
+riskratio(asthma.tbl, 
+          rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)
+```
+
+```{r}
+riskratio(asthma.tbl, rev = 'both', conf.level = 0.9,
+          method = 'wald', correction = T)[1:3]
+```
+
+:::
+
+::: {.column width="55%"}
+First report the test result, then the measure of association:
+
+> The data provide evidence at the 10% significance level of an association between asthma and sex ($\chi^2$ = 3.62 on 1 degree of freedom, *p* = 0.057). With 90% confidence, the risk of asthma is estimated to be betwen 1.08 and 2.28 times greater for women than for men, with a point estimate of 1.57.
+
+
+:::
+
+:::
+
+Comments:
+
+- the `chi.square` $p$-value is from the test of association/independence
+- if assumptions aren't met, can use the `fisher.exact` instead
+
+## Further examples: cyclosporiasis {.scrollable}
+
+::: {.columns}
+
+::: {.column}
+An outbreak of cyclosporiasis was detected among residents of New Jersey. In a case-control study, investigators found that 21 of 30 case-patients and 4 of 60 controls had eaten raspberries.
+
+```{r}
+cyclo.tbl <- matrix(data = c(21, 4, 9, 56), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(raspberries = c('raspberries', 'no raspberries'),
+                               cyclosporiasis = c('case', 'control'))
+                )
+
+cyclo.tbl |> t() |> pander()
+```
+
+- outcome-based sampling
+- odds ratio should be used
+
+:::
+
+::: {.column}
+```{r, echo = T}
+# check test assumptions
+chisq.test(cyclo.tbl)$expected
+```
+
+```{r, echo = T, eval = F}
+# compute measure of association and p value
+oddsratio(cyclo.tbl, rev = 'both',
+          method = 'wald', correction = T)
+```
+
+```{r}
+oddsratio(cyclo.tbl, rev = 'both',
+          method = 'wald', correction = T)[2:3]
+```
+
+
+:::
+
+:::
+
+> The data provide very strong evidence of an association between eating raspberries during the outbreak and case incidence ($\chi^2$ = 36.89 on 1 degree of freedom, *p* < 0.0001). With 95% confidence, the odds of indcidence are estimated to be between 9.08 and 117.5 times higher among NJ residents who ate raspberries during the outbreak.
+
+## Further examples: smoking and CHD
+
+::: {.columns}
+
+::: {.column}
+A cohort study of 3,000 smokers and 5,000 nonsmokers investigated the link between smoking and the development of coronary heart disease (CHD) over 1 year.
+
+
+```{r}
+chd.tbl <- matrix(data = c(84, 2916, 87, 4913), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(smoker = c('smoker', 'nonsmoker'),
+                               chd = c('CHD', 'no CHD'))
+                )
+
+chd.tbl |> pander()
+```
+
+- two independent samples, but **not** outcome-based sampling
+:::
+
+::: {.column}
+```{r, echo = T}
+# check test assumptions
+chisq.test(chd.tbl)$expected
+```
+```{r, echo = T, eval = F}
+riskratio(chd.tbl, rev = 'both',
+          method = 'wald', correction = T)
+```
+```{r}
+riskratio(chd.tbl, rev = 'both',
+          method = 'wald', correction = T)[2:3]
+```
+:::
+
+:::
+
+> The data provide very strong evidence that smoking is associated with coronary heart disease ($\chi^2$ = 9.5711 on 1 degree of freedom, *p* = 0.00198). With 95% confidence, the risk of CHD is estimated to be between 1.196 and 2.164 times greater among smokers compared with nonsmokers, with a point estimate of 1.609.
+
+## Further examples: malaria vaccine {.scrollable}
+
+::: {.columns}
+
+::: {.column}
+In a randomized trial for a malaria vaccine, 20 individuals were randomly allocated to receive a dose of the vaccine or a placebo.
+
+
+```{r}
+malaria.tbl <- openintro::malaria |> table()
+
+malaria.tbl |> pander()
+```
+
+- small sample size, so expected counts are likely too small to meet $\chi^2$ test assumptions
+:::
+
+::: {.column}
+```{r, echo = T}
+# check test assumptions
+chisq.test(malaria.tbl)$expected
+```
+```{r, echo = T, eval = F}
+riskratio(malaria.tbl, rev = 'columns',
+          method = 'wald', correction = T)
+```
+```{r}
+riskratio(malaria.tbl, rev = 'columns',
+          method = 'wald', correction = T)[2:3]
+```
+:::
+
+:::
+
+> The data provide moderate evidence that the malaria vaccine is effective (Fisher's exact test, *p* = 0.0141). 
+
+A twist: how to interpret the CI? Answer: $\text{efficacy = 1 - RR}$
+
+> With 95% confidence, the risk of infection is estimated to be between 27.88% and 82.31% lower among vaccinated individuals, with a point estimate of 64.29% efficacy.
+

@@ -7,13 +7,7 @@ execute:
   echo: true
   message: false
   warning: false
-format: 
-  html:
-    toc: true
-  docx:
-    toc: false
-prefer-html: true
-embed-resources: true
+format: html
 ---
 
 This lab has two objectives:

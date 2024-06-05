@@ -8,13 +8,7 @@ execute:
   message: false
   warning: false
   results: 'markup'
-format: 
-  html:
-    toc: true
-  docx:
-    toc: false
-prefer-html: true
-embed-resources: true
+format: html
 ---
 
 ```{r anorexia data prep, include = F}

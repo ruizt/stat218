@@ -1,0 +1,226 @@
+---
+title: "Lab 14: Simple linear regression"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+fig-width: 4
+fig-height: 3
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+The objective of this lab is to learn to fit simple linear regression models in R and use/interpret relevant output to construct intervals and perform significance tests on the slope parameter.
+
+Specifically, the lab covers the following:
+
+- use of `lm` to fit models
+- interpreting the output of `summary.lm`
+- constructing confidence intervals using `confint`
+
+We'll use three now-familiar datsets: 
+
+- `prevend`: cognitive assessment scores and age from the PREVEND study
+- `kleiber`: observations of metabolic rate and body mass among animals
+- `mammals`: observations of brain size and body size among common species of mammal
+
+```{r setup}
+library(tidyverse)
+load('data/prevend.RData')
+load('data/kleiber.RData')
+load('data/mammals.RData')
+```
+
+### Warm-up
+
+Consider constructing a scatterplot using formula-dataframe syntax (rather than vector inputs):
+
+```{r scatterplots with formula input}
+# scatterplot of rfft against age
+plot(rfft ~ age, data = prevend)
+```
+The formula should specify the response variable on the left-hand side and the explanatory variable on the right-hand side, *e.g.*:
+
+```<RESPONSE> ~ <EXPLANATORY>```
+
+The variable names that appear in the formula must match exactly variables contained in the dataframe supplied as the `data = ...` argument.
+
+::: callout-note
+## Your turn 1
+
+Construct a scatterplot of log brain size (response) against log body size (explanatory).
+
+```{r your turn 1}
+# scatterplot of log brain size against log body size
+
+```
+:::
+
+### Fitting SLR models
+
+The general form of a simple linear regression model for a response $y$ in terms of an explanatory varaible $x$ is:
+
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+Above, the coefficients $\beta_0, \beta_1$ are model parameters. Here you'll see how to obtain the 'fitted model' in which estimates are provided for the model parameters:
+
+$$
+y = \hat{\beta}_0 + \hat{\beta}_1 x
+$$
+Note that the fitted model is written without the error term $\epsilon$. 
+
+#### Computing estimates
+
+SLR models are fitted via the function `lm` in R. The syntax for `lm(...)` -- short for **l**inear **m**odel -- is identical to constructing scatterplots using the formula-dataframe syntax:
+```{r fitting linear models with lm}
+# slr model of rfft (response) by age (explanatory)
+fit.rfft <- lm(rfft ~ age, data = prevend)
+```
+The default output shows only the coefficient estimates. Here, the fitted model equation is:
+$$
+\text{RFFT} = `r fit.rfft |> coef() |> abs() |> str_flatten(collapse = ' + ')`\times\text{age}
+$$
+
+The slope parameter on `age` captures the relationship of interest:
+
+> Each year of age is associated with an estimated decrease in mean RFFT score of 1.191.
+
+::: callout-note
+## Your turn 2
+
+Fit a simple linear regression model of log brain size with log body size as the explanatory variable. Write the fitted model equation and interpret the coefficient estimate for the slope parameter in context.
+
+```{r your turn 2}
+# slr model of log brain size by log body size
+
+```
+:::
+
+#### Visualizing a fitted model
+
+The model is easy to visualize using `abline(...)`, which adds a line to an existing plot. Conveniently, the function has a method for the output of an `lm` call:
+```{r model visualization}
+# reproduce the scatterplot, then add a line using abline
+plot(rfft ~ age, data = prevend)
+abline(reg = fit.rfft, col = 'blue', lwd = 2)
+```
+The additional arguments (color `col` and line width `lwd`) make the line easier to distinguish from the data scatter.
+
+::: callout-note 
+## Your turn 3
+
+Add a line showing the fitted SLR model to your scatterplot from before of log brain size against log body size.
+
+```{r your turn 3, include = F}
+# reproduce the scatterplot, then add a line using abline
+
+```
+:::
+
+### Fit summary
+
+The full set of information about a fitted model -- estimates and standard errors, variance explained, significance tests, and the error variability estimate -- are obtained using the `summary(...)` function:
+```{r model summary}
+# inspect model summary for estimates, inference, and measures of fit
+summary(fit.rfft)
+```
+
+Take a moment to locate the following among the output above:
+
+- age explains 40.43% of total variability in RFFT scores
+- $\hat{\beta}_1 = `r coef(fit.rfft)[2] |> round(3)`$
+- $SE\left(\hat{\beta}_1\right) = 0.1007$
+- $\hat{\sigma} = `r sigma(fit.rfft) |> round(3)`$
+
+Inference for simple linear regression models usually focuses on the slope parameter $\beta_1$. The $p$-values you see in the coefficient summary table show the results of *partial significance tests*, which are *t* tests of the hypotheses:
+
+$$
+\begin{cases}
+H_0: &\beta_j = 0 \\
+H_A: &\beta_j \neq 0
+\end{cases}
+$$
+The partial significance test on the slope parameter is typically interpreted as a test of association, since if the slope is zero then, *e.g.*, age and mean RFFT are unrelated. So the small $p$-value for the slope coefficient indicates:
+
+> The data provide very strong evidence that age is associated with RFFT score (*T* = -11.82 on 206 degrees of freedom, *p* < 0.0001).
+
+::: callout-note
+## Your turn 4
+
+Inspect the model summary for your simple linear regression model of log brain and log body size and interpret the inference on the slope parameter in context.
+
+```{r your turn 4, include = F}
+# inspect model summary for estimates, inference, and measures of fit
+
+```
+
+:::
+
+### Confidence intervals
+
+Confidence intervals can be obtained for coefficient estimates using the `confint(...)` function; this takes a fitted `lm` object as input together with a confidence level.
+```{r confidence intervals for coefficients}
+# 95% confidence intervals
+confint(object = fit.rfft, level = 0.95)
+
+# 99% confidence intervals
+confint(object = fit.rfft, level = 0.99)
+
+# for slope only...
+confint(object = fit.rfft, parm = 'age', level = 0.99)
+```
+
+The interpretation is as follows:
+
+> With 99% confidence, each additional year of age is associated with an estimated decrease in mean RFFT score of between `r confint(object = fit.rfft, parm = 'age', level = 0.99) |> rev() |> abs() |> round(3) |> as.character() |> str_flatten(collapse = ' and ')` points.
+
+::: callout-note
+## Your turn 5
+
+Compute a 95% confidence interval for the slope parameter from your SLR model of log brain size. Interpret the interval in context.
+
+```{r your turn 5, include = F}
+# 95% confidence interval
+
+```
+:::
+
+### Practice problem
+
+1. [L10] The `kleiber` dataset contains observations of log-transformed average mass (kg) and log-transformed metabolic rate (kJ/day). Kleiber's law refers to the relationship by which metabolism depends on body mass.
+
+    a. Fit an SLR model of log metabolism (response) against log mass (explanatory). Write the fitted model equation and interpret the coefficient estimate for the slope parameter.
+    b. Construct a scatterplot with a line overlaid to visualize the fitted model.
+    c. Produce the model summary and identify the proportion of variability explained by the model.
+    d. Interpret the partial significance test for the slope parameter.
+    e. Construct a 99% confidence interval for the slope parameter.
+    
+```{r practice problem, include = F}
+# part a: fit model of log metabolism on log mass
+fit.kleiber <- lm(log.metab ~ log.mass, data = kleiber)
+fit.kleiber
+
+# part b: visualize fitted model
+plot(log.metab ~ log.mass, data = kleiber)
+abline(reg = fit.kleiber, col = 'blue', lwd = 2)
+
+# part c-d: inspect model summary
+summary(fit.kleiber)
+
+# part e: 99% confidence interval for slope
+confint(object = fit.kleiber, parm = 'log.mass', level = 0.99)
+```

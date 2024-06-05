@@ -1,11 +1,12 @@
 ---
-title: "Association in two-way contingency tables"
-subtitle: "Chi-square and exact tests for independence in two-way tables"
+title: "Tests of association"
+subtitle: "Chi-square tests for independence and association in two-way tables"
 format: 
   revealjs:
     logo: img/poly-logo-2.jpg
     footer: "STAT218"
     smaller: true
+    tbl-colwidths: [30, 30, 40, 30]
     mermaid:
       theme: neutral
 execute: 
@@ -17,56 +18,65 @@ html-math-method:
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 ---
 
-```{r}
+```{r setup}
 library(tidyverse)
 library(oibiostat)
 library(pander)
-library(Sleuth3)
-library(epitools)
-```
 
-## Today's agenda
-
-1. [lecture/discussion] Tests for association in two-way tables
-2. [discussion] Review project expectations
-2. [activity] Project planning
-
-## From last time: asthma
-
-::: {.columns}
-
-::: {.column}
-A subsample of NHANES data were used to investigate whether asthma is more common in women than in men:
-
-```{r practice problem 8}
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+add.totals <- function(tbl){
+  rbind(tbl, total = colSums(tbl)) |>
+  cbind(total = c(rowSums(tbl), sum(tbl)))
+}
 asthma <- matrix(data = c(49, 781, 30, 769), 
                nrow = 2, 
                byrow = T, 
                dimnames = list(sex = c('female', 'male'),
-                               asthma = c('asthma', 'no asthma'))
-                )
-asthma |> pander()
+                               asthma = c('asthma', 'no asthma'))) |>
+as.data.frame() |>
+rownames_to_column('sex') |>
+pivot_longer(-sex, names_to = 'asthma', values_to = 'n') |>
+  group_by(sex, asthma) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, sex, asthma)
 ```
 
-Possible inferences, so far:
+## Today's agenda
 
-- difference in proportions
-- relative risk
-- odds ratio
+1. [lecture] tests of association in contingency tables
+2. [lab] $\chi^2$ tests and residual analysis in R
 
+## Do asthma rates differ by sex?
+
+::: {.columns}
+
+::: {.column width="45%"}
+From a subsample of NHANES data:
+
+```{r}
+asthma.tbl <- table(asthma$sex, asthma$asthma)
+asthma.tbl |> pander()
+```
+
+Inference for the difference in proportions:
+
+```{r, echo = T}
+table(asthma$sex, asthma$asthma) |>
+  prop.test(alternative = 'two.sided', 
+            conf.level = 0.95,
+            correct = F)
+```
 :::
 
-::: {.column}
-Point estimates:
+::: {.column width="55%"}
+Interpretation:
 
-- $\hat{p}_F - \hat{p}_M$ = `r prop.test(asthma)$est |> rev() |> diff() |> round(3)`
-- $\widehat{RR}_\text{F:M}$ = `r riskratio(asthma, rev = 'both')$measure[2, 1] |> round(3)`
-- $\widehat{OR}_\text{F:M}$ = `r oddsratio(asthma, rev = 'both')$measure[2, 1] |> round(3)`
+> There is moderate evidence that asthma prevalence differs between men and women (*Z* = 2.108, *p* = 0.0436). With 95% confidence, the difference in prevalence (F - M) is estimated to be between 0.07% and 4.22%, with a point estimate of 2.15%.
 
-Each measures association between sex and asthma differently.
+This inference relies on a specific measure of association (difference in prevalence) that we can't always estimate.
 
-> Can we develop a more general procedure to test for association?
-
+*Could we test for association between sex and asthma without relying on a specific measure?*
 :::
 
 :::
@@ -75,40 +85,62 @@ Each measures association between sex and asthma differently.
 
 ::: {.columns}
 
-::: {.column}
-Two events are **statistically independent** if
-$$Pr(A \text{ and } B) = Pr(A)Pr(B)$$
-Association between variables is a form of dependence.
+::: {.column width="59%"}
+Consider the hypotheses:
 
-Estimates of the probabilities of each outcome (M, F, asthma, no asthma) are:
+$$
+\begin{cases}
+H_0: &\text{asthma}\perp\text{sex} \; &(\text{independence})\\
+H_A: &\neg(\text{asthma}\perp\text{sex}) \; &(\text{association})
+\end{cases}
+$$
+
+Consider also the proportions:
 ```{r}
-asthma.aug <- rbind(asthma, total = colSums(asthma)) |>
-  cbind(total = c(rowSums(asthma), sum(asthma)))
+data.frame(row = c(2, 2, 3), col = c(2, 3, 2)) |>
+  as.matrix() |>
+  emphasize.strong.cells()
 
-(asthma.aug/sum(asthma)) |> pander()
+asthma.tbl |>
+  prop.table() |>
+  add.totals() |>
+  pander()
 ```
 
-:::
+- $p_{ij}$: proportion of observations in cell $ij$ 
+- $p_i$, $p_j$: marginal proportions in row $i$ or column $j$
 
-::: {.column}
-> If sex and asthma were independent variables, the (true) probabilities in the table would be the product of the (true) marginal probabilities. 
-
-<!-- For instance: -->
-<!-- $$Pr(\text{asthma and female}) = Pr(\text{asthma})\times Pr(\text{female})$$ -->
-
-If there is no association between sex and asthma, we would expect, *e.g.*:
-$$\begin{align*}
-\hat{p}_{FA} &\approx \hat{p}_F \times\hat{p}_A \\
-0.03008 &\approx 0.5095 \times 0.0485
-\end{align*}$$
 
 :::
 
+::: {.column width="41%"}
+
+If sex and asthma are independent:
+
+$$
+p_{ij} \approx p_i \times p_j
+$$
+
+For example, we'd expect: 
+
+$$
+0.4721 \approx 0.4905 \times 0.9515
+$$
+
+In other words:
+
+- 49% of respondents are men
+- 95% of respondents don't have asthma
+- so roughly 49% of 95% would be men without asthma
+
+
 :::
 
-## Expected counts
+:::
 
-If the row and column variables are independent, then we would expect 
+## Basis for a test: expected counts
+
+Expected proportions translate directly to expected counts:
 $$p_{ij} = p_i \times p_j 
 \quad\Longleftrightarrow\quad n_{ij} = \frac{n_{i\cdot} \times n_{\cdot j}}{n}$$
 
@@ -136,60 +168,69 @@ Expected counts under independence:
 :::
 
 :::
+Idea for a test of independence: 
 
+- reject $H_0$ if actual and expected counts differ enough across the table
+- *i.e.*, reject $H_0$ when $n_{ij} - \hat{n}_{ij}$ is large across $i, j$
 
-## Expected counts: asthma example
+## Computing expected counts
+
+::: {.columns}
+
+::: {.column width="40%"}
+Actual counts:
+
+&nbsp; | O1 | O2 | total
+---+---+---+---
+**G1** | $n_{11}$ | $n_{12}$ | $\color{red}{n_{1\cdot}}$
+**G2** | $n_{21}$ | $n_{22}$ | $\color{orange}{n_{2\cdot}}$
+**total** | $\color{blue}{n_{\cdot 1}}$ | $\color{green}{n_{\cdot 2}}$ | $n$
+:::
+
+::: {.column width="60%"}
+Expected counts under independence:
+
+&nbsp; | O1 | O2 | total
+---+---+---+---
+**G1** | $\hat{n}_{11} = \frac{\color{red}{n_{1\cdot}} \color{black}{\times} \color{blue}{n_{\cdot 1}}}{n}$ | $\hat{n}_{12} = \frac{\color{red}{n_{1\cdot}} \color{black}{\times} \color{green}{n_{\cdot 2}}}{n}$ | $\color{red}{n_{1\cdot}}$
+**G2** | $\hat{n}_{21} = \frac{\color{orange}{n_{2\cdot}} \color{black}{\times} \color{blue}{n_{\cdot 1}}}{n}$ | $\hat{n}_{22} = \frac{\color{orange}{n_{2\cdot}} \color{black}{\times} \color{green}{n_{\cdot 2}}}{n}$ | $\color{orange}{n_{2\cdot}}$
+**total** | $\color{blue}{n_{\cdot 1}}$ | $\color{green}{n_{\cdot 2}}$ | $n$
+
+:::
+
+:::
+
+For the asthma example:
 
 ::: {.columns}
 
 ::: {.column}
-Actual counts:
 ```{r}
-asthma.aug |> pander()
+asthma.tbl |> add.totals() |> pander(caption = 'Actual')
 ```
 :::
 
 ::: {.column}
-Expected counts under $H_0$:
-
 ```{r}
-asthma.exp <- ((asthma.aug[1:2,3]%*%t(asthma.aug[3, 1:2]))/sum(asthma))
-rownames(asthma.exp) <- rownames(asthma)
-asthma.exp.aug <- rbind(asthma.exp, total = colSums(asthma.exp)) |>
-  cbind(total = c(rowSums(asthma.exp), sum(asthma.exp)))
-asthma.exp.aug |> pander()
+rslt <- chisq.test(asthma.tbl, correct = F)
+rslt$expected |> 
+  add.totals() |>
+  pander(caption = 'Expected')
 ```
 
 :::
 
 :::
 
-> How should we quantify the overall difference of the expected counts from actual counts?
 
-## The chi-square statistic
+## The chi-square ($\chi^2$) statistic
 
 A measure of the amount by which actual counts differ from expected counts under independence is the **chi** (pronounced /ˈkaɪ ) **square statistic**:
 
-$$\chi^2 = \sum_{ij} \frac{\left(n_{ij} - \hat{n}_{ij}\right)^2}{\hat{n}_{ij}} 
-\qquad\left(\sum_\text{all cells} \frac{(\text{observed} - \text{expected})^2}{\text{expected}}\right)$$
-
-::: {.columns}
-
-::: {.column}
-Under $H_0$, and provided that no expected counts are too small:
-
-- the $\chi^2$ statistic has a sampling distribution that can be approximated 
-- approximation is by a chi-square model with 1 degree of freedom
-:::
-
-::: {.column}
-
-![Figure: chi-square models](img/chisq.png)
-:::
-
-:::
-
-## Computing the chi-square statistic
+$$
+\chi^2 = \sum_{ij} \frac{\left(n_{ij} - \hat{n}_{ij}\right)^2}{\hat{n}_{ij}} 
+\qquad\left(\sum_\text{all cells} \frac{(\text{observed} - \text{expected})^2}{\text{expected}}\right)
+$$
 
 ::: {.columns}
 
@@ -208,108 +249,243 @@ Cell-wise calculation:
 ::: {.column}
 Result:
 ```{r}
-pander((asthma - asthma.exp)^2/asthma.exp)
+rslt$residuals^2 |> pander()
 ```
 :::
 
 :::
 
 Chi-square statistic: 
-$$\chi^2 = 1.901 + 0.09691 + 1.975 + 0.1007 = 4.074$$
+$$
+\chi^2 
+= `r rslt$residuals^2 |> as.numeric() |> round(4) |> str_flatten(collapse = ' + ')` 
+= `r rslt$statistic |> round(4)`
+$$
 
-> If this statistic is sufficiently large relative to the model, the data are unlikely to have come from independent variables
-
-## A test for independence
-
-By comparing expected and actual counts, we can test the hypotheses:
-$$\begin{cases} H_0: \text{asthma} \perp \text{sex} \quad\text{(no association)} \\ 
-H_A: \neg(\text{asthma} \perp \text{sex}) \quad\text{(association)}\end{cases}$$
+## Sampling distribution for $\chi^2$
 
 ::: {.columns}
 
 ::: {.column}
+Under $H_0$, the $\chi^2$ statistic has a sampling distribution that can be approximated by a $\chi^2_1$ model.
 
-$p$-value calculation: 
+- subscript indicates degrees of freedom parameter
 
-$$P(\chi^2_1 > \chi^2_\text{obs})$$
-Interpretation: the frequency with which we'd see a chi-square statistic at least as large as observed if in fact the row and column variables are independent.
+The model assumes no expected counts are too small.
+
+- rule of thumb: at least 10 ($\hat{n}_{ij} \geq 10$)
+- consequences: if $\hat{n}_{ij}$ are too small, the statistic is inflated relative to the model, leading to a higher type I error rate
 :::
 
 ::: {.column}
-```{r, echo = T}
-pchisq(4.074, df = 1, lower.tail = F)
+
+```{r, fig.width = 10, fig.height = 6.5}
+reds <- red.grad(5)
+par(mar = c(4, 4, 2, 1), cex = 2.5)
+k <- 1
+curve(sqrt(dchisq(x, k)), from = 0, to = 15, n = 200,
+      xlab = expr(paste(chi^2, ' statistic')),
+      ylab = '',
+      main = expr(paste(chi[df]^2, ' model')),
+      xaxt = 'n', yaxt = 'n', axes = F,
+      col = reds[1], lwd = 2)
+axis(1, at = seq(0, 15, by = 2))
+title(ylab = 'sampling frequency', line = 1)
+
+for(k in 2:5){
+curve(sqrt(dchisq(x, k)), from = 0, to = 15, n = 200,
+      xlab = '', ylab = '', main = '',
+      xaxt = 'n', yaxt = 'n',
+      col = reds[k], add = T, lwd = 2)
+}
+
+legend('topright', 
+       legend = (paste("df = ", 1:5, sep = '')),
+       col = reds, lwd = 2, cex = 0.75)
 ```
-```{r, fig.width=8, fig.height=5}
-par(mar = c(4, 4, 1, 1),
+
+:::
+
+:::
+
+
+## Computing $p$ values
+
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+$$
+\begin{cases}
+H_0: &\text{asthma}\perp\text{sex} \; &(\text{independence})\\
+H_A: &\neg(\text{asthma}\perp\text{sex}) \; &(\text{association})
+\end{cases}
+$$
+
+To determine the test outcome, find the $p$-value: 
+
+$$
+P(\chi^2_1 > \chi^2_\text{obs}) = P(\chi^2_1 > 4.074) = 0.0435
+$$
+
+So if asthma and sex were independent, only 4% of random samples would produce a table that deviates from expected counts by more than what we observed.
+
+:::
+
+::: {.column width="40%"}
+```{r, fig.width=6, fig.height=5}
+par(mar = c(4, 4, 3, 1),
     cex = 1.75)
-x <- seq(0.1, 6, length = 1000)
-y <- dchisq(x, df = 1)
+x <- seq(0.1, 10, length = 1000)
+y <- sqrt(dchisq(x, df = 1))
 chistat <- 4.074
-curve(dchisq(x, df = 1), from = 0.1, to = 6, n = 500,
-xlab = expression(chi[1]^2), ylab = '',
+curve(sqrt(dchisq(x, df = 1)), from = 0.1, to = 10, n = 500, lwd = 2,
+xlab = expression(chi^2), ylab = '', main = expr(paste(chi^2, ' model')),
 yaxt = 'n', axes = F)
-axis(side = 1, at = (0:6))
+axis(side = 1, at = (0:10))
 title(ylab = 'frequency', line = 0.5)
-polygon(c(chistat, x[x>chistat], max(x)), c(0, y[x>chistat], 0), col="red", border = NA)
-abline(v = 4.074, lty = 2, col = 'red')
+polygon(c(chistat, x[x>chistat], max(x)), c(0, y[x>chistat] - 0.005, 0), col="red", border = NA)
+abline(v = 4.074, lty = 2, col = 'red', lwd = 2)
 legend(x = 'topright', 
        legend = c('4.35% of samples', '95.65% of samples'), 
        fill = c('red', 'white'))
 ```
-:::
+
+```{r, echo = T}
+pchisq(4.074, df = 1, lower.tail = F)
+```
 
 :::
 
-## Putting together a few pieces
+:::
 
-The chi-square test indicates whether the data provide evidence of an association between row and column variables. We may wish to combine this with inferences from last time, *e.g.*,
+## Implementation in R
 
-1. Test for independence
-2. Estimate relative risk, odds ratio, or differences in probability
+The R implementation is `chisq.test(...)`.
+
+- input: contingency table
+- no constraints on row/column arrangement
 
 ::: {.columns}
 
 ::: {.column}
 ```{r, echo = T}
-riskratio(asthma, rev = 'both')[1:3]
+# construct table and pass to chisq.test
+table(asthma$sex, asthma$asthma) |> 
+  chisq.test(correct = F)
 ```
 :::
 
 ::: {.column}
-- `chi.square = 0.0435`: the data provide sufficient evidence to reject the null hypothesis of no association
-- `$measure`: it is estimated that women are 57.2% more likely than men to have asthma 
-
-    + 95% CI: 0.9% -- 145.1% more likely
+> The data provide moderate evidence that asthma prevalence is associated with sex ($\chi^2$ = 4.074 on 1 degree of freedom, *p* = 0.0435).
 :::
 
 :::
 
-## Interpreting results
+## Residuals in $\chi^2$ tests
+
+::: {.columns}
+
+::: {.column}
+The **residual** for each cell is defined as a standardized difference between the observed and expected count:
+
+$$r_{ij} = \frac{n_{ij} - \hat{n}_{ij}}{\sqrt{\hat{n}_{ij}}} $$
+
+Examining residuals can indicate the source(s) of an inferred association. 
+
+- $r_{ij} > 0$: observation exceeds expectation
+- $r_{ij} < 0$: observation is under expectation
+- large $|r_{ij}|$ explain the association
+
+:::
+
+::: {.column}
+```{r, echo = T, eval = F}
+# store test result
+rslt <- chisq.test(asthma.tbl, correct = F)
+
+# examine residuals
+rslt$residuals
+```
+```{r}
+rslt <- chisq.test(asthma.tbl, correct = F)
+rslt$residuals |> pander()
+```
+
+Look for the largest residuals:
+
+> Asthma prevalence is higher-than-expected among women and lower-than-expected among men.
+:::
+
+:::
+
+## Continuity correction
+
+The $\chi^2$ test for independence is typically applied with Yates' continuity correction.
+
+::: {.columns}
+
+::: {.column}
+This consists in using a modified version of the test statistic:
+
+$$
+\chi^2_\text{Yates} = \sum_{ij} \frac{\left(|n_{ij} - \hat{n}_{ij}| - 0.5\right)^2}{\hat{n}_{ij}}
+$$
+
+- every other detail of the test is the same
+- doesn't change expected counts
+- residuals are still computed as $\frac{n_{ij} - \hat{n}_{ij}}{\sqrt{\hat{n}_{ij}}}$
+:::
+
+::: {.column}
+Implementation:
+```{r, echo = T}
+# construct table and pass to chisq.test
+table(asthma$sex, asthma$asthma) |> 
+  chisq.test(correct = T)
+```
+
+Note the larger $p$-value -- this changes the conclusion!
+:::
+
+:::
+
+## Spot any similarities?
+
+Compare the $\chi^2$ test with inference on the difference in proportions.
 
 ::: {.columns}
 
 ::: {.column}
 ```{r, echo = T}
-riskratio(asthma, rev = 'both')[2:3]
+# chi square test
+table(asthma$sex, asthma$asthma) |> 
+  chisq.test(correct = T)
 ```
 
-A full narrative summary comprises:
-
-1. General statement of findings
-2. Interpretation of test of association
-3. Interval and point estimate for relative risk, odds ratio, or other measure of association
+```{r, echo = T}
+# difference in proportions
+table(asthma$sex, asthma$asthma) |> 
+  prop.test(alternative = 'two.sided', 
+            conf.level = 0.95, 
+            correct = T)
+```
 :::
 
 ::: {.column}
-> Results suggest a relationship between asthma and sex. Data from a random sample of U.S. adults provides moderate evidence against the null hypothesis that asthma prevalence is independent of sex in favor of the alternative that there is an association ($\chi^2$ = 4.074 on 1 degree of freedom, *p = 0.0435*). With 95% confidence, it is estimated that women are between 1.009 and 2.451 times as likely to have diagnosed asthma compared with men, with a point estimate of 1.57.
+- the tests are identical!
+
+- the difference in proportions $\hat{p}_F - \hat{p}_M$ is one specific measure of association
+
+- next time we'll learn about other measures, which also have the same inference attached
 
 :::
 
 :::
+
 
 ## Extending to $I \times J$ tables
-
-The chi-square test can be used to test for association between categorical variables with an arbitrary number of categories.
 
 ::: {.columns}
 
@@ -318,16 +494,14 @@ FAMuSS data:
 ```{r}
 data(famuss)
 tbl <- xtabs(~ race + actn3.r577x, data = famuss) 
-tbl |> pander()
+tbl |> add.totals() |> pander()
 ```
 :::
 
 ::: {.column}
 Expected counts:
 ```{r}
-tbl.exp <- (rowSums(tbl)%*%t(colSums(tbl))/sum(tbl)) 
-rownames(tbl.exp) <- rownames(tbl)
-tbl.exp |> pander()
+chisq.test(tbl)$expected |> round(2) |> add.totals() |> pander()
 ```
 :::
 
@@ -335,6 +509,7 @@ tbl.exp |> pander()
 
 - expected counts and chi-square statistic are calculated exactly the same way
 - degrees of freedom are now $(I - 1)\times(J - 1)$
+- appropriate provided all $\hat{n}_{ij} > 1$ and most (~80%) $\hat{n}_{ij} \geq 5$
 
 ## Extending to $I\times J$ tables
 
@@ -360,23 +535,21 @@ $$\begin{cases} &\chi^2 = \sum \text{all cells above} = 19.4 \\
 &P(\chi^2_{8} > 19.4) = 0.01286 \end{cases}
 \quad\Longrightarrow\quad \text{reject hypothesis of no association}$$
 
-## $\chi^2$ tests in R
+## Inference for $I\times J$ tables in R
 
 ::: {.columns}
 
 ::: {.column}
-The calculation by hand is lengthy, but in R is simple:
+The implementation is the same as for a $2\times 2$ table:
 ```{r, echo = T}
-# construct table
-tbl <- table(famuss$race, famuss$actn3.r577x)
-
-# compute test statistic and p-value
-chisq.test(tbl)
+# construct table and pass to chisq.test
+table(famuss$race, famuss$actn3.r577x) |>
+  chisq.test()
 ```
 :::
 
 ::: {.column}
-> The data provide sufficiently strong evidence to reject the null hypothesis that genotype is independent of race in favor of the alternative that there is an association ($\chi^2$ = 19.4 on 8 degrees of freedom, *p = 0.01286*).
+> The data provide evidence of an association between race and genotype ($\chi^2$ = 19.4 on 8 degrees of freedom, *p = 0.01286*).
 
 :::
 
@@ -384,66 +557,30 @@ chisq.test(tbl)
 
 *Which genotype/race combinations are contributing most to this inferred association?*
 
-- could still calculate relative risk or odds ratios relative to a single reference group in $I \times 2$ tables
-- for multinomial data, need to look at 'residuals'
-
-## Residuals in $\chi^2$ tests
+## Residual analysis
 
 ::: {.columns}
 
 ::: {.column}
-The **residual** for each cell is defined as a standardized difference between the observed and expected count:
-
-$$r_{ij} = \frac{n_{ij} - \hat{n}_{ij}}{\sqrt{\hat{n}_{ij}}} $$
-
-- $r_{ij} > 0$: observation exceeds expectation
-- $r_{ij} < 0$: observation is under expectation
-- large $|r_{ij}|$ explain the association
-:::
-
-::: {.column}
-```{r, echo = T}
-# store result of test
-out <- chisq.test(tbl)
-
-# display residuals
-out$residuals |> pander()
+```{r, echo = T, eval = F}
+# store result of test; display residuals
+rslt <- chisq.test(tbl)
+rslt$residuals
+```
+```{r}
+# store result of test; display residuals
+rslt <- chisq.test(tbl)
+rslt$residuals |> pander()
 ```
 
 :::
 
-:::
+::: {.column}
+Again look for the largest absolute residuals to explain inferred association.
 
 > African American and Asian populations have higher CC and lower CT frequencies than would be expected if genotype were independent of race.
-
-## Fisher's exact test
-
-> If expected cell counts are small, an exact test should be used
-
-::: {.columns}
-
-::: {.column}
-![](img/infusion.png)
-
-Fisher's exact test provides an alternative approach when expected cell counts are small:
-
-- assigns a probability to *the entire table* under the hypothesis of independence
-- adds up the probabilities of all tables that are less likely than the observed one
-:::
-
-::: {.column}
-![Figure: example of computing a one-sided $p$-value using Fisher's exact method.](img/fisher-onesided.png)
 :::
 
 :::
 
-## Project planning
 
-Review the project guidelines with your partner. Then:
-
-1. Come up with three possible topics that each of you will research independently and write them down.
-2. Identify a means of searching for case studies related to your topics. Where will you look?
-3. Agree on how you'll communicate.
-4. Make a plan to meet outside of class next week (set a time and date).
-
-Your plan for your independent meeting should be to review what each of you found, agree on one case study, and determine who will prepare which parts of the written summary. 

@@ -7,13 +7,7 @@ execute:
   echo: true
   warning: false
   message: false
-format: 
-  html:
-    toc: true
-  docx:
-    toc: false
-prefer-html: true
-embed-resources: true
+format: html
 ---
 
 ```{r packages and data}

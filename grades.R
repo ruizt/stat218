@@ -105,7 +105,7 @@ manual_qnums <- list(
 )
 
 # correction credit (autograded, manual)
-correction_weights <- c(0.3, 0.9)
+correction_weights <- c(0.3, 1)
 
 # read in assignments
 scores_long <- lapply(names, function(.x){
@@ -180,10 +180,13 @@ scores_long |> filter(name == 'XX')
 
 # distribution of questions across assignments
 scores_long |>
+  filter(str_starts(outcome, 'l')) |>
   distinct(assignment, question.number, outcome) |>
   group_by(assignment, outcome) |>
   count() |>
-  spread(outcome, n)
+  spread(outcome, n) |>
+  ungroup() |>
+  slice(c(1, 3:10, 2, 11:12))
 
 # score summary stats by outcome
 outcomes |>
@@ -236,7 +239,7 @@ students <- outcomes |> distinct(name, email)
 student_names <- pull(students, name)
 student_emails <- pull(students, email)
 
-for(i in 1:length(student_names)){
+for(i in 3:length(student_names)){
   
   tbl1 <- filter(outcomes, name == student_names[i]) |> 
     ungroup() |>
@@ -246,21 +249,22 @@ for(i in 1:length(student_names)){
   
   tbl2 <- filter(scores_long, name == student_names[i], assignment == 'test2') |>
     select(name, question.number, outcome, optional, score) |>
-    mutate(optional = na_if(optional, F)) |>
+    # mutate(optional = na_if(optional, F)) |>
+    select(-optional) |>
     xtable() |> 
     print(type = 'html', include.rownames = F)
   
   body <- paste("<html>Good afternoon, <br><br> The table below provides a current estimate of your scores by learning outcome; you may refer to the syllabus to understand how these scores will be utilized in determining letter grades. 
                 <br><br> Please note that these are *estimates only* and will change as further assignments are taken into account. Please also note that the scores are currently unweighted; assignment weights may be used in final grade calculations. In short, these estimates are not final and are intended to give you an *approximate* sense of where you currently stand on the outcomes we have covered based on the assignments you have submitted.<br><br>
-                This summary is based on PS1 through PS5, and Test 1. A summary of your test 1 initial scores, revision scores, and final scores is provided below the signature line. If you received an extension on Test 1, your revision scores are not yet available but will be included in the next grade summary.<br>",
+                This summary is based on PS1 through PS10 and Tests 1-2. A summary of your test 2 scores after revision is provided below the signature line. <br>",
                 tbl1, "<br> Please let me know if you have any questions or notice any potential errors. If so, please reply to my Cal Poly email (on cc).<br><br> Trevor <br>",
-                tbl2, "<br>*Please note that question numbers 38-39 were optional, and only count towards your score if answered correctly.", sep = '<br>')
+                tbl2, sep = '<br>')
   
   email <- gm_mime() |>
-    gm_to(emails[i]) |>
+    gm_to(student_emails[i]) |>
     gm_from("tdruiz001@gmail.com") |>
     gm_cc("truiz01@calpoly.edu") |>
-    gm_subject(paste("STAT218 current score estimates (" , names[i], ')', sep = '')) |>
+    gm_subject(paste("STAT218 current score estimates (" , student_names[i], ')', sep = '')) |>
     gm_html_body(body)
   
   gm_send_message(email)
@@ -271,7 +275,7 @@ for(i in 1:length(student_names)){
 notify_names <- notify_list$name
 notify_emails <- notify_list$email
 
-for(i in 1:length(notify_names)){
+for(i in 3:length(notify_names)){
 
 notification <- paste('Tentative estimates indicate that you are ', 
       notify_list$n.short.passing[i], 
@@ -282,17 +286,18 @@ notification <- paste('Tentative estimates indicate that you are ',
 
 body <- paste('<html>Good afternoon, <br>',
               notification,
-              '<br> Being one or two outcomes away from targets is not necessarily cause for concern, as there are several remaining outcomes. 
-              However, if you are three or more away from targets, you will need to improve the quality of your work in the remaining weeks of the quarter, and I strongly recommend making a plan now for how to do so. 
-              I am happy to help in this regard, and encourage you to come talk with me during office hours if you would like my input. <br><br>
+              '<br> Being one or two outcomes away from targets is not necessarily cause for concern, as there are several remaining outcomes, and current estimates are based on only seven outcomes.<br><br>
+              However, if you are three or more away from targets, you will need to improve the quality of your work in the remaining weeks of the quarter, and I strongly recommend making a plan now for how to do so.<br><br>
+              I am happy to help in this regard, and encourage you to come talk with me during office hours if you would like my input or wish to discuss your work in the class further; you can schedule a time at https://calendly.com/tdruiz/office-hour. <br><br>
               Trevor',
               sep = '<br>')
 
 
 email <- gm_mime() |>
-  gm_to('truiz01@calpoly.edu') |>
+  gm_to(notify_emails[i]) |>
+  # gm_to('truiz01@calpoly.edu') |>
   gm_from("tdruiz001@gmail.com") |>
-  # gm_cc("truiz01@calpoly.edu") |>
+  gm_cc("truiz01@calpoly.edu") |>
   gm_subject(paste("STAT218 grade notification (" , notify_names[i], ')', sep = '')) |>
   gm_html_body(body)
 

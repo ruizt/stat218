@@ -1,0 +1,430 @@
+---
+title: "Simple linear regression"
+subtitle: "Model specification, parameter estimation, inference, and diagnostics"
+format: 
+  revealjs:
+    logo: img/poly-logo-2.jpg
+    footer: "STAT218"
+    smaller: true
+    mermaid:
+      theme: neutral
+execute: 
+  echo: false
+  warning: false
+  message: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+library(tidyverse)
+library(pander)
+load('data/prevend.RData')
+load('data/kleiber.RData')
+prevend <- prevend
+hand.fit <- readRDS('fns/handfit.rds')
+red.grad <- colorRampPalette(c('#ff6459', '#4d0500'))
+reds <- red.grad(6)
+```
+
+
+## Today's agenda
+
+1. [lecture] estimation and inference for simple linear regression
+2. course evaluations
+3. final scheduling
+4. [lab] fitting SLR models in R
+
+## PREVEND data
+
+::: {.columns}
+
+::: {.column width="70%"}
+Ruff Figural Fluency Test (RFFT) is a cognitive assessment.
+
+- measures nonverbal capacity for initiation, planning, and divergent reasoning
+- scale: 0 (worst) to 175 (best)
+    
+
+:::
+
+::: {.column width="30%"}
+```{r}
+prevend |>
+  head(3) |>
+  pander()
+```
+
+:::
+
+::: 
+
+::: {.columns}
+
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=3.5, fig.align='center'}
+age <- prevend$age
+rfft <- prevend$rfft
+par(mar = c(4, 4, 1, 1), cex = 1.25)
+plot(age, rfft)
+```
+
+:::
+
+::: {.column width="50%"}
+
+> How much does cognitive ability as measured by RFFT decline with age on average?
+
+:::
+
+:::
+
+## Best-fitting line
+
+::: {.columns}
+
+::: {.column}
+```{r, fig.width = 5, fig.height = 3.5}
+par(mar = c(4, 4, 1, 1), cex = 1.25)
+b <- cor(age, rfft)*sd(rfft)/sd(age)
+a <- mean(rfft) - b*mean(age)
+plot(age, rfft)
+abline(b = b, a = a, col = 'blue', lwd = 2)
+```
+:::
+
+::: {.column}
+Previously you found the best-fitting line:
+
+$$
+\text{RFFT} = `r round(a, 3)` - `r round(abs(b), 3)` \times \text{age}
+$$
+
+> With each year of age, RFFT decreases by `r round(abs(b), 3)` points on average.
+:::
+
+:::
+
+
+
+$$
+\begin{align}
+\text{slope}: 
+\quad`r round(b, 3)` &= \text{cor}(\text{age}, \text{RFFT})\times\frac{SD(\text{RFFT})}{SD(\text{age})} 
+\\
+\text{intercept}:
+\quad`r round(a, 3)` &= \text{mean}(\text{RFFT}) - (`r round(b, 3)`)\times\text{mean}(\text{age})
+\end{align}
+$$
+
+## Bias and error
+
+::: {.columns}
+
+::: {.column}
+Recall how you found this line:
+
+```{r, fig.width = 5, fig.height = 4, results = 'hide'}
+par(mar = c(4, 4, 2, 1), cex = 1.25)
+hand.fit(age, rfft, b = b, res = T)
+```
+
+:::
+
+::: {.column}
+Bias and error are measured via residuals:
+$$
+\textcolor{red}{e_i} = y_i - \textcolor{blue}{\hat{y}_i}
+$$
+
+- $\text{bias} = -\frac{1}{n}\sum_i \textcolor{red}{e_i}$
+- $\text{SSE} = \sum_i \textcolor{red}{e_i}^2$
+
+We said that the best-fitting line achieved two conditions:
+
+- **no bias**: underestimates and overestimates equally often
+- **minimal error**: as close as possible to as many data points as possible
+
+:::
+
+:::
+
+
+
+
+
+## The SLR model
+
+::: {.columns}
+
+::: {.column}
+The simple linear regression model is:
+
+$$
+Y 
+= \textcolor{blue}{\underbrace{\beta_0 + \beta_1 x}_\text{mean}} + 
+\textcolor{red}{\underbrace{\epsilon}_\text{error}}
+$$
+:::
+
+::: {.column}
+- continuous response $Y$
+- explanatory variable $x$
+- regression coefficients $\beta_0, \beta_1$
+- model error $\epsilon$
+:::
+
+:::
+
+The values that minimize error subject to the model being unbiased are:
+
+$$\begin{align*}
+\hat{\beta}_0 &= \bar{y} - \hat{\beta}_1 \bar{x} &\quad(\text{unbiased}) \\
+\hat{\beta}_1 &= \frac{s_y}{s_x}\times r  &\quad(\text{minimizes SSE})
+\end{align*}$$
+
+These are called the **least squares estimates**.
+
+
+## Least squares estimates in R
+
+According to the model, a one-unit increment in $x$ corresponds to a $\beta_1$-unit change in mean $Y$:
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+# fit model
+fit <- lm(formula = rfft ~ age, data = prevend)
+fit
+```
+:::
+
+::: {.column}
+> With each additional year of age, mean RFFT score decreases by an estimated `r -coef(fit)[2] |> round(3)` points.
+
+:::
+
+:::
+
+- `formula = <RESPONSE> ~ <EXPLANATORY>` specifies the model
+- `data = <DATAFRAME>` specifies the observations
+
+## Error variability and model fit
+
+The residual standard deviation provides an estimate of error variability:
+
+$$\textcolor{\red}{\hat{\sigma}} = \sqrt{\frac{1}{n - 2} \sum_i e_i^2} \qquad\text{(estimated error variability)}$$
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r fig.width = 5, fig.height = 4, results = 'hide'}
+age_seq <- modelr::seq_range(age, 4)[-4]
+preds <- predict(fit, newdata = data.frame(age = age_seq), se = T)
+
+par(mar = c(4, 4, 1, 1), cex = 1.2)
+plot(age, rfft)
+arrows(x0 = age_seq, y0 = preds$fit - 2*sigma(fit), 
+       x1 = age_seq, y1 = preds$fit + 2*sigma(fit), 
+       lwd = 2, code = 3, length = 0.1, angle = 30, col = 'red')
+abline(a = a, b = b, col = 'blue', lwd = 2)
+arrows(x0 = 82.5, y0 = min(rfft), x1 = 82.5, y1 = max(rfft), 
+       lwd = 2, code = 3, length = 0.1, angle = 30, col = 'darkgrey')
+
+n <- nrow(prevend)
+```
+:::
+
+::: {.column width="55%"}
+The proportion of variability explained by the model is:
+$$
+R^2 = 1 - \frac{(n - 2)\textcolor{red}{\hat{\sigma}^2}}{(n - 1)\textcolor{darkgrey}{s_y^2}}
+\quad\left(1 - \frac{\text{error variability}}{\text{total variability}}\right)
+$$
+
+```{r, echo = T}
+1 - (n - 2)*sigma(fit)^2/((n - 1)*var(rfft))
+```
+
+> Age explains 40.43% of variability in RFFT.
+:::
+
+:::
+
+## Standard errors for the coefficients
+
+Standard errors for the coefficients are:
+
+$$SE\left(\hat{\beta}_0\right) = \hat{\sigma}\sqrt{\frac{1}{n} + \frac{\bar{x}^2}{(n - 1)s_x^2}} \qquad\text{and}\qquad
+SE\left(\hat{\beta}_1\right) = \hat{\sigma}\sqrt{\frac{1}{(n - 1)s_x^2}}$$
+
+While you won't need to know these formulae, do notice that:
+
+- more data $\longrightarrow$ less sampling variability
+- more spread in $x$ $\longrightarrow$ less sampling variability
+
+## Inference for the coefficients 
+
+::: {.columns}
+
+::: {.column}
+If the errors are symmetric and unimodal, then the sampling distribution of
+$$
+T = \frac{\hat{\beta}_1 - \beta_1}{SE(\beta_1)}
+$$
+is well-approximated by a $t_{n - 2}$ model.
+
+1. Significance test:
+$\begin{cases} H_0: \beta_1 = 0 \\ H_A: \beta_1 \neq 0 \end{cases}$
+
+2. Confidence interval: 
+$\hat{\beta}_1 \pm c\times SE\left(\hat{\beta}_1\right)$
+:::
+
+::: {.column}
+```{r, fig.width=6.5, fig.height=4, fig.align='center'}
+x <- seq(-14, 14, length = 10000)
+y <- dt(x, df = 206)^(1/12)
+tstat <- -11.82
+
+par(mar = c(5, 4, 1, 1), cex = 1.5)
+curve(dt(x, 206)^(1/12), from = -14, to = 14, n = 500,
+      xaxt = 'n', yaxt = 'n', axes = F, xlab = '', ylab = '', main = expr(paste(t[208 - 2], ' model')))
+title(xlab = expression(paste("T = ", frac(hat(beta)[1], SE(hat(beta)[1])))), line = 4)
+title(ylab = 'sampling density', line = 1)
+axis(side = 1, at = seq(-14, 14, by = 4))
+abline(v = tstat, lty = 4, lwd = 2)
+abline(v = -tstat, lty = 4, lwd = 2)
+text(tstat + 4, 0.05^(1/12), paste("T = ", round(tstat, 3)))
+
+polygon(c(min(x), x[x<=tstat], tstat), c(y[x<=tstat] - 0.001, 0, 0), 
+        col=reds[1], border = NA)
+polygon(c(x[x>=-tstat], max(x), -tstat), c(y[x>=-tstat], 0, 0),
+        col = reds[3], border = NA)
+
+legend('topright', fill = reds[c(1, 3)],
+       legend = c(paste(round(pt(tstat, df = 206), 3)*100, "% of samples", sep = ''),
+                  paste(round(pt(tstat, df = 206), 3)*100, "% of samples", sep = '')),
+       cex = 0.7)
+```
+
+- $P(T > |T_\text{obs}|) \approx 0$: very strong evidence of an association (true slope is not zero)
+- confidence interval using $t_{206}$ critical value: (`r confint(fit)[2, ] |> round(3)`)
+:::
+
+:::
+
+
+
+## Inference for the PREVEND study
+
+::: {.columns}
+
+::: {.column}
+```{r, echo = T}
+fit <- lm(rfft ~ age, data = prevend)
+summary(fit)
+confint(fit)
+```
+:::
+
+::: {.column}
+Fitted model:
+$$
+\text{RFFT} = `r round(a, 3)` - `r round(abs(b), 3)` \times \text{age}
+$$
+
+
+- Age explains an estimated 40.43% of variation in RFFT.
+
+- With each year of age mean RFFT declines by an estimated 1.19 points (SE 0.10).
+
+- There is a significant association between age and mean RFFT score (*T* = -11.82 on 206 degrees of freedom, *p* < 0.0001). 
+
+
+- With 95% confidence, each additional year of age is associated with an estimated decline in mean RFFT between 0.99 and 1.39 points.
+
+:::
+
+:::
+
+## Kleiber's law
+
+[Kleiber's law](https://en.wikipedia.org/wiki/Kleiber%27s_law) refers to the relationship between metabolic rate and body mass.
+
+::: columns
+::: {.column width="45%"}
+```{r, fig.width = 5, fig.height = 4}
+fit <- lm(log.metab ~ log.mass, data = kleiber)
+par(mar = c(4, 4, 0.1, 0.1), cex = 1.5)
+plot(kleiber, xlab = 'log mass (g)', ylab = 'log metabolism (kJ/day)')
+abline(reg = fit, lwd = 2, col = 'blue')
+```
+:::
+
+::: {.column width="55%"}
+We can estimate it via the SLR model: 
+$$
+\log(\text{metabolism}) = \beta_0 + \beta_1 \log(\text{mass}) + \epsilon
+$$ 
+
+Fitted model:
+$$
+\log(\text{metabolism}) = `r coef(fit)[1] |> round(2)` + 
+`r coef(fit)[2] |> round(2)` \times \log(\text{mass})
+$$
+
+```{r, echo = T}
+fit <- lm(log.metab ~ log.mass, data = kleiber)
+```
+
+:::
+:::
+
+## Kleiber's law: inference
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, echo = T}
+fit <- lm(log.metab ~ log.mass, data = kleiber)
+summary(fit)
+```
+:::
+
+::: {.column width="40%"}
+```{r, fig.width = 3, fig.height = 1.8}
+par(mar = c(4, 4, 0.1, 0.1), cex = 0.9)
+plot(kleiber, xlab = 'log(mass)', ylab = 'log(metabolism)')
+abline(reg = fit, lwd = 2, col = 'blue')
+```
+
+- $\hat{\beta}_0 = `r coef(fit)[1] |> round(3)`$
+- $\hat{\beta}_1 = `r coef(fit)[2] |> round(3)`$
+- $\hat{\sigma} = `r sigma(fit) |> round(3)`$
+
+:::
+
+:::
+
+> There is a significant association between body mass and metabolism (*p* < 0.0001): body mass explains 96.49% of variation in metabolism; with 95% confidence, a unit increment in log mass is associated with an estimated increase in mean log metabolism between `r confint(fit)[2, ] |> round(4) |> str_flatten(collapse = ' and ')`, with a point estimate of `r coef(fit)[2] |> round(4)`.
+
+## Kleiber's law: model interpretation
+
+Exponentiating both sides of the fitted SLR model equation:
+
+$$
+\underbrace{\text{metabolism}}_{e^{\log(\text{metabolism})}} = \underbrace{`r coef(fit)[1] |> exp() |> round(2)`}_{e^{`r coef(fit)[1] |> round(2)`}} \times \underbrace{\text{mass}^{`r coef(fit)[2] |> round(2)`}}_{e^{`r coef(fit)[2] |> round(2)` \log(\text{mass})}}
+$$
+
+So we've really estimated what's known as a *power law* relationship: $y = ax^b$.
+
+- multiplicative, not additive, relationship
+- doubling $x$ corresponds to changing $y$ by a factor of $2^b$
+
+The estimate and interval for $\beta_1$ in the SLR model can be transformed appropriately for a more direct interpretation:
+
+> With 95% confidence, every doubling of body mass is associated with an estimated `r round((2^confint(fit)[2, ] - 1)*100, 2) |> str_flatten(collapse = '-')`% increase in median metabolism.

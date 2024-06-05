@@ -1,0 +1,402 @@
+---
+title: "Lab 12: Chi-square tests of association"
+author: "STAT218"
+author-title: "Course activity"
+execute: 
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  results: 'markup'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r data prep, echo = F}
+library(tidyverse)
+library(Sleuth3)
+
+# asthma data
+asthma <- matrix(data = c(49, 781, 30, 769), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(sex = c('female', 'male'),
+                               asthma = c('asthma', 'no asthma'))) |>
+as.data.frame() |>
+rownames_to_column('sex') |>
+pivot_longer(-sex, names_to = 'asthma', values_to = 'n') |>
+  group_by(sex, asthma) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, sex, asthma)
+save(asthma, file = 'data/asthma.RData')
+
+# smoking data
+smoking <- case1803 |> 
+  rename_with(tolower) |>
+  pivot_longer(-smoking, names_to = 'group', values_to = 'n') |>
+  group_by(smoking, group) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, group, smoking) |>
+  mutate(group = factor(group, levels = c('cancer', 'control')),
+         smoking = fct_relevel(smoking, 'Smokers', 'NonSmokers'))
+save(smoking, file = 'data/smoking.RData')
+
+# diabetes medication
+diabetes_meds <- openintro::avandia |> 
+  rename_with(~gsub('_', '.', .x)) |>
+  rename(medication = treatment) |>
+  mutate(cardiovascular.problems = fct_relevel(cardiovascular.problems, 'yes', 'no'))
+save(diabetes_meds, file = 'data/diabetes_meds.RData')
+
+# mammograms
+mammogram <- matrix(data = c(500, 44425, 505, 44405), 
+               nrow = 2, 
+               byrow = T, 
+               dimnames = list(mammogram = c('yes', 'no'),
+                               cancer.death = c('yes', 'no'))) |>
+  as.data.frame() |>
+  rownames_to_column('mammogram') |>
+  pivot_longer(-mammogram, names_to = 'cancer.death', values_to = 'n') |>
+  group_by(mammogram, cancer.death) |>
+  sample_n(size = n, replace = T) |>
+  mutate(subj.id = row_number()) |>
+  select(subj.id, mammogram, cancer.death) |>
+  mutate(cancer.death = factor(cancer.death, levels = c('yes', 'no')),
+         mammogram = factor(mammogram, levels = c('yes', 'no')))
+save(mammogram, file = 'data/mammogram.RData')
+```
+
+The purpose of this lab is to learn to implement $\chi^2$ tests of independence/association for two-way contingency tables:
+
+- inference and residual analysis in $2\times 2$ tables
+- extension to $I\times J$ tables
+
+Much of the focus of the lab activity is on the $2\times 2$ setting. You'll replicate the examples from class using the `asthma` data from an NHANES subsample, and practice using the `diabetes_meds` data. 
+
+The `diabetes_meds` data comes from an observational study of 227,571 Medicare beneficiaries who initiated treatment with one of two diabetes medications. In the study, it was recorded whether each patient reported cardiovascular problems.
+
+Applications in the $I\times J$ case will both use the `famuss` dataset.
+
+```{r setup}
+library(tidyverse)
+load('data/asthma.RData')
+load('data/diabetes_meds.RData')
+load('data/famuss.RData')
+```
+
+### Inference for $2\times 2$ tables
+
+#### Basic implementation and checking assumptions
+
+The test of association/independence in two-way tables pertains to the hypotheses:
+$$
+\begin{cases}
+H_0: &\text{row variable} \perp \text{column variable} \\
+H_A: &\neg(\text{row variable} \perp \text{column variable})
+\end{cases}
+$$
+
+In words, the hypotheses are: (null) the row variable and column variable are independent; (alternative) there is an association between the row and column variables. This is fairly straightforward to implement in R using `prop.test(...)`, which takes a contingency table as input:
+
+```{r basic use of chisq.test}
+# make a two-way table
+table(asthma$sex, asthma$asthma) 
+
+# pass to chisq.test
+table(asthma$sex, asthma$asthma) |>
+  chisq.test()
+```
+
+The test (with Yates' continuity correction) produces $p > 0.05$, so we'd fail to reject $H_0$. The typical narrative style for the report is:
+
+> The data provide suggestive but insufficient evidence at the 5% significance level that sex and asthma prevalence are associated ($\chi^2$ = 3.62 on 1 degree of freedom, *p* = 0.057).
+
+::: callout-note
+## Your turn 1
+
+Test whether diabetes medication is associated with cardiovascular problems. Carry out inference at the 5% significance level and report the result of the test in the narrative style above.
+
+```{r your turn 1}
+# test whether diabetes medication is associated with cardiovascular problems
+
+```
+:::
+
+These inferences rely on the assumption that expected counts are all over 10. The expected counts can be inspected directly by storing the result of the test:
+
+```{r expected counts}
+# store test result
+asthma.rslt <- table(asthma$sex, asthma$asthma) |>
+  chisq.test()
+
+# view expected counts to check assumptions
+asthma.rslt$expected
+```
+
+Each expected count exceeds ten, so the test is appropriate to use.
+
+::: callout-note
+## Your turn 2
+
+Check the expected counts for the inference you performed above to determine whether conditions for the Chi-square test are met.
+
+```{r your turn 2}
+# store test result
+
+# view expected counts to check assumptions
+
+```
+:::
+
+Luckily, `prop.test(...)` will print a warning if the counts are too small. For instance:
+```{r warning if conditions fail, warning = T}
+# example using a dataset with low counts
+openintro::malaria |> table() |> chisq.test()
+```
+
+We can check that indeed the assumptions are not met by inspecting expected counts:
+```{r verify assumptions fail}
+# all expected counts are under ten
+malaria.rslt <- openintro::malaria |> table() |> chisq.test()
+malaria.rslt$expected
+```
+
+#### Residual analysis
+
+If significant results (or suggestive evidence) is obtained from the Chi-square test, it is useful to be able to say which categories account for the association (or possible association).
+
+In this context, residuals are standardized differences in expected and observed counts:
+
+$$
+r_{ij} = \frac{n_{ij} - \hat{n}_{ij}}{\sqrt{\hat{n}_{ij}}}
+$$
+
+These convey information about which value combinations are 'unusual' under the assumption of independence between row and column variables.
+
+- positive residual: larger-than-expected count
+- negative residual: smaller-than-expected count
+
+You can retrieve the residuals from the test and inspect for the largest (absolute) values:
+
+```{r residual analysis}
+# view residuals
+asthma.rslt$residual
+```
+
+Here, the residuals suggest that asthma rates are higher than expected among women and lower than expected among men.
+
+::: callout-note
+## Your turn 3
+
+Check the residuals from your inference of whether diabetes medication is associated with cardiovascular problems. See if you can explain any inferred association.
+
+```{r your turn 3}
+# check residuals from your inference above; what explains the association?
+
+```
+:::
+
+#### Measuring association by a difference in proportions
+
+Once you've inferred an association between two categorical variables, it's helpful to be able to provide a quantitative measure. 
+
+A difference in proportions is one potential measure, though not always possible to compute (*e.g.*, for outcome-based sampling). Here, since data are a random sample from the target population (U.S. adults), we can estimate the difference in the proportion of individuals with asthma between men and women:
+
+```{r measuring association by a difference in proportions}
+# use prop.test to get estimates and confidence interval
+table(asthma$sex, asthma$asthma) |>
+  prop.test(conf.level = 0.90)
+```
+
+For a report, we'd combine this with the inferred association as follows:
+
+> The data provide suggestive but insufficient evidence at the 5% significance level that sex and asthma prevalence are associated ($\chi^2$ = 3.62 on 1 degree of freedom, *p* = 0.057). With 90% confidence, asthma prevalence is estimated to be between 0.28 and 4.01 percentage points higher among women compared with men, with a point estimate of `r 100*prop.test(table(asthma$sex, asthma$asthma), conf.level = 0.90)$estimate |> diff() |> abs() |> round(4)` percentage points.
+
+(A 90% interval is reported, not consistent with the significance level of the test, to point to the direction of possible association.)
+
+::: callout-note
+## Your turn 4
+
+Provide point and interval estimates for the difference in proportions of patients experiencing cardiovascular problems on each diabetes medication as a measure of association. 
+
+(Unlike the example above, your confidence level for the interval should match the significance level of your test, as usual.)
+
+```{r your turn 4}
+# estimate the difference in proportions of patients experiencing cardiovascular problems
+
+```
+
+:::
+
+### Inference for $I \times J$ tables
+
+The implementation of the $\chi^2$ test is identical for larger tables, as are the means of obtaining expected counts and residuals from the test. The only difference is the check on assumptions. For $I\times J$ tables, the following two conditions should be met:
+
+1. All expected counts are at least 1
+2. Roughly 80% or more of expected counts are at least 5
+
+The commands below illustrate the implementation, assumption check, and residual analysis.
+
+```{r chisq test for general twoway tables}
+# perform test
+famuss.rslt <- table(famuss$race, famuss$genotype) |>
+  chisq.test()
+
+# check expected counts to assess assumptions
+famuss.rslt$expected
+
+# interpret test result
+famuss.rslt
+
+# residual analysis
+famuss.rslt$residuals
+```
+
+The interpretation of this result would be:
+
+> The data provide moderate evidence of an association between genotype and race for the ACTN3 gene ($\chi^2$ = 19.4 on 8 degrees of freedom, *p* = 0.01286). 
+
+While there isn't a standard style or language for the residual analysis, and appropriate interpretation would be:
+
+> The data further suggest that African American and Asian populations have higher-than-expected and lower-than-expected CC and CT genotype frequencies, respectively; and Hispanic populations have higher-than-expected and lower-than-expected TT and CC genotype frequencies, respectively.
+
+As an aside, measures of association are trickier for $I\times J$ tables; typically one would calculate a *set* of measures that capture pairwise comparisons.
+
+::: callout-note
+## Your turn 5
+
+Test for an association between genotype and sex.
+
+- check the test assumptions
+- assuming they are met, interpret the test 
+- if the test is significant, carry out a residual analysis to explain the inferred association
+
+```{r your turn 5}
+# perform test
+
+# check expected counts to assess assumptions
+
+# interpret test result
+
+# residual analysis
+
+```
+
+:::
+
+### Practice problems
+
+1. [L7] The `mammogram` dataset contains observations from a 30-year study to investigate the effectiveness of mammograms versus a standard non-mammogram breast cancer exam on survival. The study was conducted in Canada with 89,835 female participants: during a 5-year screening period, each woman was randomized to either receive annual mammograms or standard physical exams for breast cancer; the study recorded the number of breast cancer deaths during a 25-year follow-up period in each group. 
+
+    a. Explain the hypotheses for the Chi-square test of association in words.
+    b. Check assumptions for the test.
+    c. If assumptions are met, test for association at the 5% significance level and report the result; if the test is significant, perform a residual analysis to explain the inferred association.
+    
+
+```{r practice problem 1, include = F}
+# load and inspect data
+load('data/mammogram.RData')
+head(mammogram)
+
+# perform calculations for chi-square test
+mammogram.rslt <- mammogram |> 
+  select(mammogram, cancer.death) |>
+  table() |>
+  chisq.test()
+
+# part b: check assumptions
+mammogram.rslt$expected
+
+# part c: if appropriate, interpret test result
+mammogram.rslt
+
+# part c: if test result is significant, perform a residual analysis
+mammogram.rslt$residual
+```
+
+2. [L7] The `smoking` dataset contains observations from a retrospective case-control study in which smoking status was recorded for 86 lung cancer patients and 86 healthy patients.
+
+    a. Construct a contingency table of the data.
+    b. Which proportions are possible to estimate using data from this study?
+    c. Check assumptions for the $\chi^2$ test of association.
+    d. If assumptions are met, perform the test at the 5% level. Interpret the result in the usual narrative style.
+    e. (Extra credit) Make a plot of the residuals that allows you to identify which group/outcome combinations differ from expectations under independence.
+    
+```{r practice problem 2, include = F}
+# load and inspect data
+load('data/smoking.RData')
+head(smoking)
+
+# part a: construct a contingency table
+smoking |> select(-subj.id) |> table()
+
+# perform chi-square test calculations
+smoking.rslt <- smoking |> select(-subj.id) |> table() |> chisq.test()
+
+# part c: check assumptions
+smoking.rslt$expected
+
+# part d: if appropriate, perform inference at the 5% level
+smoking.rslt
+
+# part e: make a plot of residuals (extra credit)
+smoking.names <- dimnames(smoking.rslt$residuals)
+plot.names <- paste(rep(smoking.names$smoking, each = 2), rep(smoking.names$group, 2))  
+plot.vals <- smoking.rslt$residuals |> as.numeric()
+names(plot.vals) <- plot.names
+barplot(plot.vals, ylab = 'residual')
+```
+
+3. [L6] The `gss` data contains several demographic measurements for a random sample of 500 U.S. adults.
+
+    a. Provide a point estimate for the proportion of U.S. adults with a college degree.
+    b. Provide a 99% confidence interval for the proportion. Interpret the interval in context.
+    c. Test whether at least three in ten U.S. adults have a college degree at the 5% significance level. If the result is significant, provide a corresponding lower confidence bound.
+
+```{r practice problem 3, include = F}
+# load and inspect data
+load('data/gss.RData')
+head(gss)
+
+# extract variable of interest
+degree <- gss$college.degree
+
+# part a: point estimate and standard error for proportion with college degree
+table(degree) |> prop.table()
+(table(degree) |> prop.table() |> prod() |> sqrt())/sqrt(500)
+
+# part b: 99% interval
+table(degree) |> prop.test(conf.level = 0.99)
+
+# part c: test whether proportion exceeds 3 in 10 at 5% level
+table(degree) |> prop.test(p = 0.3, alternative = 'greater', conf.level = 0.95)
+```
+
+4. [LX] (Extra credit) Again using the `gss` data, test whether political party is associated with socioeconomic class.
+
+    a. Check assumptions for the test.
+    b. If appropriate, perform the test at the 1% significance level. Interpret the result in context, and if a significant association is found, perform a residual analysis to explain the inferred association.
+
+```{r practice problem 4, include = F}
+# load and inspect data
+load('data/gss.RData')
+head(gss)
+
+# part a: check assumptions
+gss.rslt <- gss |> select(political.party, class) |> table() |> chisq.test()
+gss.rslt$expected
+
+# part b: if appropriate, perform test and residual analysis at 1% significance level
+gss.rslt
+gss.rslt$residuals
+```

@@ -1,0 +1,227 @@
+---
+title: "Test 4"
+subtitle: "Categorical data analysis [L6, L7, L8]; regression [L10]"
+author: "STAT218"
+author-title: "Course"
+date: "6/7/24"
+published-title: "Due date"
+execute: 
+  echo: false
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
+---
+
+```{r data prep, include = F}
+library(tidyverse)
+greentea <- matrix(data = c(47 - 17, 17, 824 - 283, 283),
+              nrow = 2, byrow = T,
+              dimnames = list(tea = c('tea', 'no tea'),
+                              carcinoma = c('no carcinoma', 'carcinoma'))) |>
+  as.data.frame() |>
+  rownames_to_column('consumption') |>
+  pivot_longer(-consumption, names_to = 'condition', values_to = 'n') |>
+  group_by(consumption, condition) |>
+  sample_n(size = n, replace = T) |>
+  select(-n) |>
+  ungroup() |>
+  mutate(across(everything(), ~factor(.x) |> fct_rev()))
+save(greentea, file = 'data/greentea.RData')
+
+warming <- openintro::global_warming_pew |>
+  rename_with(~gsub('_', '.', .x)) |>
+  mutate(response = fct_recode(response, 
+                               Yes = 'Earth is warming', 
+                               No = 'Not warming',
+                               Other = 'Don\'t know / refuse to answer'),
+         party.or.ideology = fct_recode(party.or.ideology, ConRep = 'Conservative Republican',
+                                        ModRep = 'Mod/Lib Republican',
+                                        ModDem = 'Mod/Cons Democrat',
+                                        LibDem = 'Liberal Democrat'),
+         party.or.ideology = fct_relevel(party.or.ideology, 'LibDem', 'ModDem', 'ModRep', 'ConRep')) |>
+  filter(response != 'Other') |>
+  mutate(response = fct_drop(response))
+save(warming, file = 'data/warming.RData')
+
+sulphin <- openintro::sulphinpyrazone
+save(sulphin, file = 'data/sulphin.RData')
+
+galapagos <- Sleuth3::ex1220 |>
+  rename_with(tolower) |>
+  select(area, total) |>
+  mutate(across(everything(), log)) |>
+  rename(species = total) |>
+  rename_with(~paste('log', .x, sep = '.'))
+save(galapagos, file = 'data/galapagos.RData')
+```
+
+## Instructions
+
+You have 48 hours from the release of this assignment to complete and submit your work. You may refer to all class materials, notes, and textbooks, but must complete this assignment on your own. By submitting your work, you are affirming that your work is your own and you have not consulted with anyone else in preparing your answers or generated your answers or analyses using AI. Failure to adhere to this expectation will be considered an act of academic dishonesty and result in loss of credit.
+
+You will find a project with a mostly empty script in the class Posit cloud workspace; use this to complete your analyses where required. Note that not all parts require you to perform any calculations; some questions are purely qualitative. Use the prompts as your guide, not the script.
+
+Once you have completed your analyses for the portions requiring use of statistical software, submit your work by filling out the test 2 form posted on the course website. The form will automatically save your work, so you can return to it over the course of the 48-hour test window.
+
+The form will stop accepting responses at the deadline, so **make sure you submit by 5pm on Friday 6/7**. Lastly, keep in mind that you will be given the opportunity to revise problems that you miss the first time around to earn back credit.
+
+## Problems
+
+```{r setup, echo = F}
+library(tidyverse)
+library(epitools)
+```
+
+1. [L3, L6, L7, L8] In a study examining the association between green tea consumption and esophageal carcinoma, researchers recruited 300 patients with carcinoma and 571 without carcinoma and administered a questionnaire about tea drinking habits. Out of the 47 individuals who reported that they regularly drink green tea, 17 had carcinoma. Out of the 824 individuals who reported they never drink green tea, 283 had carcinoma. The `greentea` dataset contains the participant-level observations.
+
+    a. [L3] Construct a contingency table of tea consumption by carcinoma status.
+    b. [L6] Estimate the proportion of patients with carcinoma that regularly consume green tea; provide a point estimate and 95% confidence interval and interpret the estimates in context.
+    c. [L6] Estimate the proportion of patients without carcinoma that regularly consume green tea; provide a point estimate and 95% confidence interval and interpret the estimates in context.
+    d. [L7] Check the assumptions for a $\chi^2$ test of association. If they hold, perform the test at the 5% significance level.
+    e. [L8] Compute a point estimate for the appropriate measure of association. What does the estimate suggest about the direction of association?
+
+```{r problem 1, include = F}
+# load and inspect data
+load('data/greentea.RData')
+
+# part a: construct contingency table
+greentea.tbl <- table(greentea)
+
+# part b: estimate proportion of patients with carcinoma that consume tea regularly
+carc <- greentea |> filter(condition == 'carcinoma') 
+carc$consumption |> table() |> prop.test()
+
+# part c: estimate proportion of patients without carcinoma that consume tea regularly
+carc <- greentea |> filter(condition == 'no carcinoma') 
+carc$consumption |> table() |> prop.test()
+
+# part d: check assumptions for chi square test
+chisq.test(greentea.tbl)$expected
+
+# part e: measure of association
+oddsratio(greentea.tbl, rev = 'columns')
+```
+
+2. [L3, L6, L7] A 2010 Pew Research poll asked 1,306 Americans, "From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?" The `warming` dataset contains the observations from this poll: each participant's party or ideology and whether they answered affirmatively or negatively.
+
+    a. [L6] Estimate the proportion of Americans in 2010 who believe there is solid evidence of climate change. Provide both a point estimate and a 95% confidence interval and interpret the estimates in context following the narrative style from class. 
+    b. [L6] What is the margin of error for this poll?
+    c. [L3] Compute the frequency (proportion) of each answer by party/ideology and construct a stacked barplot showing the frequencies.     d. [L7] Test for an association between climate change opinion and party/ideology. Verify assumptions and carry out the test at the 1% significance level. Interpret the result in context following the narrative style from class.
+    e. [L7] If the test is significant, conduct a residual analysis to determine which responses were more or less frequent among each party/ideology than would be expected if opinion and ideology were unrelated.
+    f. [LX] Determine the expected *proportions* of responses by ideology under the assumption that ideology and opinion are unrelated.
+    g. [LX] Using a Bonferroni correction, compute simultaneous 95% confidence intervals for the proportions of Americans in each ideological group in 2010 who believe there is solid evidence of climate change.
+    
+```{r problem 2, include = F}
+# load and inspect data
+load('data/warming.RData')
+head(warming)
+
+# part a: estimate the proportion of americans in 2010 who beleive there is evidence of warming
+warming$response |> table() |> prop.test()
+
+# part b: margin of error?
+qnorm(0.975)*sqrt((warming$response |> table() |> prop.table() |> prod())/nrow(warming))
+
+
+# part b: response frequencies (proportions) by party/ideology (table and barplot)
+party <- warming$party.or.ideology
+reply <- warming$response
+warming.tbl <- table(party, reply)
+warming.tbl |> prop.table(margin = 1)
+table(reply, party) |> prop.table(margin = 2) |> barplot(legend = T)
+
+# part c: check assumptions for chi square test and perform 
+chisq.test(warming.tbl)$expected
+chisq.test(warming.tbl)
+
+# part d: if significant, residual analysis
+chisq.test(warming.tbl)$residual
+
+# part e: expected proportions under independence
+chisq.test(warming.tbl)$expected |> round() |> prop.table(margin = 1)
+
+# part f: simultaneous 95% intervals w/ bonferroni correction
+warming.prop.tbl <- warming.tbl |> prop.table(margin = 1)
+warming.phat <- warming.prop.tbl[, 1]
+warming.phat.se <- sqrt(warming.phat*(1 - warming.phat)/rowSums(warming.tbl))
+cbind(lwr = warming.phat - qnorm(1 - (0.05/4)/2)*warming.phat.se,
+      upr = warming.phat + qnorm(1 - (0.05/4)/2)*warming.phat.se)
+```
+
+3. [L8] The `sulphin` dataset contains observations from an experiment studying the efficacy of Sulphinpyrazone for treating patients who have had a heart attack. 
+
+    a. [L8] At the 10% significance level, test for an effect of treatment and compute an interval estimate for the relative risk of death in the treatment group compered with the control group at the appropriate confidence level. Be sure to check assumptions for the test.
+    b. [LX] (Extra credit) Provide a point estimate and confidence interval for the efficacy of Sulphinpyrazone with respect to reducing the risk of death.
+
+```{r problem 3, include = F}
+# load and inspect data
+load('data/sulphin.RData')
+head(sulphin)
+
+# test for effectiveness at the 10% level and estimate relative risk
+chisq.test(table(sulphin))$expected
+sulphin |> table() |> riskratio(rev = 'columns', conf.level = 0.9)
+
+# point and interval estimate for efficacy
+sulphin.rslt <- sulphin |> table() |> riskratio(rev = 'columns', conf.level = 0.9)
+100*(1 - sulphin.rslt$measure[2, ])
+```
+
+4. [L3, L10] The `galapagos` dataset contains observations of (log-transformed) island area ($km^2$) and (log-transformed) total number of observed species for 30 of the Galapagos islands recorded in 1973.
+
+    a. [L3] Construct a scatterplot of the log total number of species against the log area, and compute the correlation between the two. Based on your results, comment on the apparent linearity, direction, and strength of the relationship.
+    b. [L10] Estimate the relationship between log-species and log-area using a simple linear regression model; write the fitted model equation and add the fitted line to your plot in (a).
+    c. [L10] Following the narrative style from class, report the proprtion of variance explained and significance of the relationship at the 1% level.
+    d. [L10] Provide point and interval estimates at the appropriate confidence level for the model parameter of interest.
+    e. [LX] (Optional extra credit) Write the model equation on the original (*i.e.*, not log-transformed) scale; re-interpret the interval estimate from part (d) in terms of the power law relationship. 
+
+```{r problem 4, include = F}
+# load and inspect data
+load('data/galapagos.RData')
+head(galapagos)
+
+# part a: scatterplot and correlation
+plot(galapagos)
+cor(galapagos)
+
+# parts b-d: fit SLR model
+fit <- lm(log.species ~ log.area, data = galapagos)
+plot(galapagos)
+abline(reg = fit, col = 'blue', lwd = 2)
+summary(fit)
+confint(fit)
+```
+
+## Extra credit
+
+1. [L10] The Hubble constant $H$ is a fundamental cosmological constant that relates a galaxy's relative distance and velocity as $H\times d = v$. The value of the constant can be used to estimate the age of the universe in years is obtained via the conversion $\frac{1}{H}\times\frac{km}{Mpc}\times\frac{yr}{s}$. The `hubble` dataset comprises observations of relative velocities (km/sec) and distances (Mpc) for 24 galaxies.
+
+    a. Use the data provided to estimate the reciprocal of the Hubble constant by fitting a regression model with distance as the response and velocity as the explanatory variable. Fit the model *without an intercept* using the model specification `formula = <RESPONSE> ~ <EXPLANATORY> - 1`. 
+    b. Obtain a 90% confidence interval for the reciprocal of the Hubble constant $\frac{1}{H}$.
+    c. Multiply the endpoints of your interval by the conversion factor $\frac{km}{Mpc}\times\frac{yr}{s}$ to obtain an interval estimate for the age of the universe in years. 
+    d. Report the interval in billions of years and interpret your interval in context.
+    
+```{r extra credit 1, include = F}
+# load and inspect data
+load('data/hubble.RData')
+
+# part a: fit model of distance in terms of velocity, without an intercept
+fit <- lm(distance ~ velocity - 1, data = hubble)
+
+# part b: 90% confidence interval
+ci <- confint(fit, level = 0.9)
+
+# part c: conversion to interval for age of universe in bn yr
+km.mpc <- 3.09e19
+yr.sec <- 1/(60*60*24*365)
+conversion.factor <- km.mpc*yr.sec/1e9
+ci*km.mpc*yr.sec/1e9
+```
+
+

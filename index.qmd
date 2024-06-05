@@ -9,15 +9,14 @@ published-title: 'Updated'
 
 Recently posted:
 
-- scores and response summaries for PS9 & PS10
-- outlines for weeks 9-10 (note NO class meeting Monday 6/3)
-- final project guidelines
+- final exam \[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\]
 
 Upcoming assignments:
 
-- problem set 11 due Wednesday 5/29; late submissions until Friday 5/31 5pm
-- test 3 corrections due Friday 5/31 5pm
-- problem set 12 due Monday 6/3; late submissions until Wednesday 6/5 5pm
+- test 3 corrections due ~~Monday 6/3~~ Wednesday 6/5 5pm
+- problem set 13 due Wednesday 6/5; late submissions until Friday 6/7 5pm
+- test 4 will be available Wednesday 6/5 5pm and due Friday 6/7 5pm
+
 :::
 
 ### Course information
@@ -220,7 +219,7 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 -   \[[lecture](content/week8-proportions.qmd)\] inference for population proportions
 -   \[[lab](content/lab11-proportions.qmd)\] tests and intervals for proportions in R
 
-**Test 3** available Wednesday 5/22 5pm PDT and due Friday 5/24 5:00pm PDT \[[prompts](content/test3.qmd)\] \[[submission](https://forms.office.com/r/ZPv3rH7ApW)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmXT2uLj-BdIhi6xGpcEzsQBEl-SLY_YJbpM1opHddTDow)\]
+**Test 3** available Wednesday 5/22 5pm PDT and due Friday 5/24 5:00pm PDT \[[prompts](content/test3.qmd)\] \[[submission](https://forms.office.com/r/ZPv3rH7ApW)\] \[[upload R script](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EmXT2uLj-BdIhi6xGpcEzsQBEl-SLY_YJbpM1opHddTDow)\] \[[submit corrections](https://forms.office.com/r/Jm0zGxTJ1v)\]
 
 ### Week 9 (5/27/24)
 
@@ -231,17 +230,17 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 ***Tuesday class meeting*** 
 
 - [reading] Vu and Harrington 8.3 (excluding 8.3.5)
-- [lecture] tests of association in two-way tables
-- [lab] $\chi^2$ tests in R
-- [problem set 11] due Wednesday 5/29; late submissions until Friday 5/31 5pm 
+- \[[lecture](content/week9-association.qmd)\] tests of association in two-way tables
+- \[[lab](content/lab12-association.qmd)\] $\chi^2$ tests in R
+- \[[problem set 11](https://forms.office.com/r/M4mrCXPPNV)\] due Wednesday 5/29; late submissions until Friday 5/31 5pm 
 
 
 ***Wednesday class meeting*** 
 
 - [reading] Vu and Harrington 8.5
-- [lecture] inference for odds ratios and relative risk
-- [lab] measures of association in R
-- [problem set 12] due Monday 6/3; late submissions until Wednesday 6/5 5pm
+- \[[lecture](content/week9-measures.qmd)\] inference for odds ratios and relative risk
+- \[[lab](content/lab13-measures.qmd)\] measures of association in R
+- \[[problem set 12](https://forms.office.com/r/8Mj9aZczeh)\] due Monday 6/3; late submissions until Wednesday 6/5 5pm
 
 ### Week 10 (6/3/24)
 
@@ -250,15 +249,15 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 **NO Monday class meeting** 
 
 - [reading] Vu and Harrington 6.1 & 6.2
-- [activity] simple linear regression warm-up
-- [problem set 13] due Wednesday 6/5; late submissions until Friday 6/7 5pm
+- \[[activity](content/week10-activity-linefitting.qmd)\] warm-up for simple linear regression: line fitting
+- \[[problem set 13](https://forms.office.com/r/RjGTLNs4E8)\] due Wednesday 6/5; late submissions until Friday 6/7 5pm
 
 **Wednesday class meeting** 
 
 - [reading] Vu and Harrington 6.4
-- [lecture] inference in simple linear regression
-- [lab] estimating the age of the universe
-- [miscellany] scheduling oral exam times
+- \[[lecture](content/week10-slr.qmd)\] inference in simple linear regression
+- \[[lab](content/lab14-slr.qmd)\] estimating the age of the universe
+- [miscellany] scheduling oral exam times; course evals
 
 **Test 4** due Friday 6/7 5:00pm PDT
 
@@ -273,4 +272,4 @@ Scheduled exam times:
 
 \[[project guidelines](content/project-guidelines.qmd)\]
 
-<!-- \[[time slot assignments](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/ERQD3BDdaL5HphebiraGMO4BGlYKr7k4g3KPh5QP1RdLlA?e=LdDJrx)\] -->
+\[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\]
