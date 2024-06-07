@@ -10,10 +10,10 @@ published-title: 'Updated'
 Recently posted:
 
 - final exam \[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\]
+- test 4
 
 Upcoming assignments:
 
-- test 3 corrections due ~~Monday 6/3~~ Wednesday 6/5 5pm
 - problem set 13 due Wednesday 6/5; late submissions until Friday 6/7 5pm
 - test 4 will be available Wednesday 6/5 5pm and due Friday 6/7 5pm
 
@@ -234,6 +234,7 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 - \[[lab](content/lab12-association.qmd)\] $\chi^2$ tests in R
 - \[[problem set 11](https://forms.office.com/r/M4mrCXPPNV)\] due Wednesday 5/29; late submissions until Friday 5/31 5pm 
 
+Response summary \[[PS11](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=kknTw8zMRFaZSr9ZZYk6rRORNi5zFPrH&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOENCR0hKWk82QlZQNVFURkZHTTlNTDRSRy4u)\]
 
 ***Wednesday class meeting*** 
 
@@ -241,6 +242,8 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 - \[[lecture](content/week9-measures.qmd)\] inference for odds ratios and relative risk
 - \[[lab](content/lab13-measures.qmd)\] measures of association in R
 - \[[problem set 12](https://forms.office.com/r/8Mj9aZczeh)\] due Monday 6/3; late submissions until Wednesday 6/5 5pm
+
+Response summary \[[PS12](https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=4BtgT8kF1FMCz0nLYYBHaYaPWCWvxirO&id=2wING578lUSVNx03nMoq5-gaHVrHunBOktETcNXub2JUOUFOWUJKMjRINUtHUVBERFpVODZGOFFEVy4u)\]
 
 ### Week 10 (6/3/24)
 
@@ -259,7 +262,7 @@ Response summary \[[PS10](https://forms.office.com/Pages/AnalysisPage.aspx?Analy
 - \[[lab](content/lab14-slr.qmd)\] estimating the age of the universe
 - [miscellany] scheduling oral exam times; course evals
 
-**Test 4** due Friday 6/7 5:00pm PDT
+**Test 4** due Friday 6/7 5:00pm PDT \[[prompts](content/test4.qmd)\] \[[submission form](https://forms.office.com/r/7YK3995ZMW)\] \[upload R script\]
 
 ### Finals week (6/10/24)
 

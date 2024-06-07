@@ -105,14 +105,15 @@ carc$consumption |> table() |> prop.test()
 chisq.test(greentea.tbl)$expected
 
 # part e: measure of association
-oddsratio(greentea.tbl, rev = 'columns')
+oddsratio(greentea.tbl, rev = 'rows')
 ```
 
 2. [L3, L6, L7] A 2010 Pew Research poll asked 1,306 Americans, "From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?" The `warming` dataset contains the observations from this poll: each participant's party or ideology and whether they answered affirmatively or negatively.
 
     a. [L6] Estimate the proportion of Americans in 2010 who believe there is solid evidence of climate change. Provide both a point estimate and a 95% confidence interval and interpret the estimates in context following the narrative style from class. 
     b. [L6] What is the margin of error for this poll?
-    c. [L3] Compute the frequency (proportion) of each answer by party/ideology and construct a stacked barplot showing the frequencies.     d. [L7] Test for an association between climate change opinion and party/ideology. Verify assumptions and carry out the test at the 1% significance level. Interpret the result in context following the narrative style from class.
+    c. [L3] Compute the frequency (proportion) of each answer by party/ideology and construct a stacked barplot showing the frequencies.     
+    d. [L7] Test for an association between climate change opinion and party/ideology. Verify assumptions and carry out the test at the 1% significance level. Interpret the result in context following the narrative style from class.
     e. [L7] If the test is significant, conduct a residual analysis to determine which responses were more or less frequent among each party/ideology than would be expected if opinion and ideology were unrelated.
     f. [LX] Determine the expected *proportions* of responses by ideology under the assumption that ideology and opinion are unrelated.
     g. [LX] Using a Bonferroni correction, compute simultaneous 95% confidence intervals for the proportions of Americans in each ideological group in 2010 who believe there is solid evidence of climate change.
@@ -156,7 +157,7 @@ cbind(lwr = warming.phat - qnorm(1 - (0.05/4)/2)*warming.phat.se,
 
 3. [L8] The `sulphin` dataset contains observations from an experiment studying the efficacy of Sulphinpyrazone for treating patients who have had a heart attack. 
 
-    a. [L8] At the 10% significance level, test for an effect of treatment and compute an interval estimate for the relative risk of death in the treatment group compered with the control group at the appropriate confidence level. Be sure to check assumptions for the test.
+    a. [L8] At the 10% significance level, test for an effect of treatment and compute an interval estimate for the relative risk of death in the treatment group compered with the control group at the appropriate confidence level. Be sure to check assumptions and use the appropriate test.
     b. [LX] (Extra credit) Provide a point estimate and confidence interval for the efficacy of Sulphinpyrazone with respect to reducing the risk of death.
 
 ```{r problem 3, include = F}
@@ -195,7 +196,7 @@ fit <- lm(log.species ~ log.area, data = galapagos)
 plot(galapagos)
 abline(reg = fit, col = 'blue', lwd = 2)
 summary(fit)
-confint(fit)
+confint(fit, level = 0.99)
 ```
 
 ## Extra credit

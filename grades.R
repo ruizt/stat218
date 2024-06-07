@@ -87,11 +87,12 @@ read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
 ## READ IN ASSIGNMENT DATA
 
 # assignment names
-names <- c(paste('PS', 1:10, sep = ''), paste('Test', 1:2, sep = ''), 'Test1 Extension')
+names <- c(paste('PS', 1:13, sep = ''), paste('Test', 1:3, sep = ''), 'Test1 Extension')
 
 # optional questions
 optional_qnums <- list(
   ps3 = c(23),
+  ps11 = c(14, 23:27),
   test1 = c(38, 39),
   test3 = c(32, 33, 34, 35)
 )
@@ -108,7 +109,7 @@ manual_qnums <- list(
 correction_weights <- c(0.3, 1)
 
 # read in assignments
-scores_long <- lapply(names, function(.x){
+scores_long_raw <- lapply(names, function(.x){
   read_assignment(assignment_name = .x, 
                   optional_qnum = eval(parse(text = paste('optional_qnums$', tolower(str_split_i(.x, ' ', 1)), sep = ''))),
                   manual_qnum = eval(parse(text = paste('manual_qnums$', tolower(str_split_i(.x, ' ', 1)), sep = ''))),
@@ -121,15 +122,24 @@ scores_long <- lapply(names, function(.x){
   separate_wider_delim(problem, 
                        names = c('assignment', 'question.number', 'outcome', 'question', 'optional'), 
                        delim = '_._') |>
-  mutate(optional = as.logical(optional))
+  mutate(optional = as.logical(optional),
+         outcome = str_trunc(outcome, 3, ellipsis = '') |> str_remove_all(']')) |>
+  filter(str_starts(outcome, 'l')) 
 
-dropped <- scores_long |>
+dropped <- scores_long_raw |>
   group_by(name, email) |>
   summarize(prop.na = mean(is.na(score))) |>
   arrange(desc(prop.na)) |>
   filter(prop.na > 0.9) |>
   pull(name)
- 
+
+scores_long <- scores_long_raw |>
+  filter(!(name %in% dropped)) |>
+  mutate(score = replace_na(score, 0)) |>
+  mutate(score = if_else(optional == T,
+                         na_if(score, 0),
+                         score))  
+
 # # weighted learning outcome scores
 # outcomes <- scores_long |>
 #   filter(!(name %in% dropped)) |>
@@ -154,11 +164,6 @@ dropped <- scores_long |>
 
 # unweighted learning outcome scores
 outcomes <- scores_long |>
-  filter(!(name %in% dropped)) |>
-  mutate(score = replace_na(score, 0)) |>
-  mutate(score = if_else(optional == T,
-                         na_if(score, 0),
-                         score)) |>
   group_by(name, email, outcome) |>
   summarize(score = mean(score, na.rm = T)) |>
   mutate(current.status = cut(score, 
@@ -166,27 +171,36 @@ outcomes <- scores_long |>
                               right = F, 
                               labels = c('not met', 'partly met', 'fully met'))) |>
   mutate(outcome = toupper(outcome)) |>
-  filter(str_starts(outcome, 'L'))
+  ungroup()
 
 
 
 ## FOR CHECKING INDIVIDUAL RECORDS
 
 outcomes |> filter(name == 'XX')
-scores_long |> filter(name == 'XX')
-
+scores_long |> filter(name == 'XX') |>
+  group_by(assignment) |>
+  summarize(score = mean(score, na.rm = T))
+scores_long |> filter(name == 'XX') |>
+  group_by(outcome, assignment) |>
+  summarize(score = mean(score, na.rm = T)) |>
+  spread(outcome, score)
 
 ## FOR INSTRUCTOR SUMMARIES
 
 # distribution of questions across assignments
 scores_long |>
-  filter(str_starts(outcome, 'l')) |>
   distinct(assignment, question.number, outcome) |>
   group_by(assignment, outcome) |>
   count() |>
   spread(outcome, n) |>
   ungroup() |>
-  slice(c(1, 3:10, 2, 11:12))
+  slice(c(1, 5:12, 2:4, 13:15))
+
+scores_long |>
+  group_by(outcome, assignment) |>
+  summarize(score = mean(score, na.rm = T)) |>
+  spread(outcome, score) 
 
 # score summary stats by outcome
 outcomes |>
@@ -239,26 +253,27 @@ students <- outcomes |> distinct(name, email)
 student_names <- pull(students, name)
 student_emails <- pull(students, email)
 
-for(i in 3:length(student_names)){
+for(i in 1:length(student_names)){
   
   tbl1 <- filter(outcomes, name == student_names[i]) |> 
     ungroup() |>
     select(name, outcome, score, current.status) |> 
+    slice(c(1, 3:10, 2, 11)) |>
     xtable() |> 
     print(type = 'html', include.rownames = F)
   
-  tbl2 <- filter(scores_long, name == student_names[i], assignment == 'test2') |>
-    select(name, question.number, outcome, optional, score) |>
-    # mutate(optional = na_if(optional, F)) |>
-    select(-optional) |>
-    xtable() |> 
-    print(type = 'html', include.rownames = F)
+  # tbl2 <- filter(scores_long, name == student_names[i], assignment == 'test2') |>
+  #   select(name, question.number, outcome, optional, score) |>
+  #   # mutate(optional = na_if(optional, F)) |>
+  #   select(-optional) |>
+  #   xtable() |> 
+  #   print(type = 'html', include.rownames = F)
   
   body <- paste("<html>Good afternoon, <br><br> The table below provides a current estimate of your scores by learning outcome; you may refer to the syllabus to understand how these scores will be utilized in determining letter grades. 
                 <br><br> Please note that these are *estimates only* and will change as further assignments are taken into account. Please also note that the scores are currently unweighted; assignment weights may be used in final grade calculations. In short, these estimates are not final and are intended to give you an *approximate* sense of where you currently stand on the outcomes we have covered based on the assignments you have submitted.<br><br>
-                This summary is based on PS1 through PS10 and Tests 1-2. A summary of your test 2 scores after revision is provided below the signature line. <br>",
+                This summary is based on PS1 through PS13 and Tests 1-3, not accounting for Test 3 corrections. <br>",
                 tbl1, "<br> Please let me know if you have any questions or notice any potential errors. If so, please reply to my Cal Poly email (on cc).<br><br> Trevor <br>",
-                tbl2, sep = '<br>')
+                sep = '<br>')
   
   email <- gm_mime() |>
     gm_to(student_emails[i]) |>
