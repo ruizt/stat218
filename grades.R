@@ -2,7 +2,7 @@ library(tidyverse)
 library(readxl)
 library(gmailr)
 library(xtable)
-setwd('~/OneDrive - Cal Poly/stat218-s24-submissions')
+filepath <- '~/OneDrive - Cal Poly/stat218-s24-submissions/'
 gm_auth_configure(path = '~/documents/courses/stat218/_zz-gmail-auth.json')
 
 ## HELPER FUNCTIONS
@@ -17,10 +17,10 @@ max_na <- function(x){
 }
 
 read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
-  correction_path <- paste(assignment_name, 'Corrections.xlsx', sep = ' ')
+  correction_path <- paste(filepath, assignment_name, ' Corrections.xlsx', sep = '')
   
   if(!file.exists(correction_path)){
-    out <- paste(assignment_name, '.xlsx', sep = '') |>
+    out <- paste(filepath, assignment_name, '.xlsx', sep = '') |>
       readxl::read_xlsx() |>
       rename_with(tolower)  |>
       select(name, email, starts_with('points')) |>
@@ -36,7 +36,7 @@ read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
       select(name, email, outcome, assignment, 
              question, question.number, optional, score)
   }else{
-    original <- paste(assignment_name, '.xlsx', sep = '') |>
+    original <- paste(filepath, assignment_name, '.xlsx', sep = '') |>
       readxl::read_xlsx() |>
       rename_with(tolower)  |>
       select(name, email, starts_with('points')) |>
@@ -52,7 +52,7 @@ read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
       select(name, email, outcome, assignment, 
              question, question.number, optional, score)
     
-    revised <- paste(assignment_name,  'Corrections.xlsx', sep = ' ') |>
+    revised <- paste(filepath, assignment_name,  ' Corrections.xlsx', sep = '') |>
       readxl::read_xlsx() |>
       rename_with(tolower)  |>
       select(name, email, starts_with('points')) |>
@@ -87,14 +87,16 @@ read_assignment <- function(assignment_name, optional_qnum, manual_qnum, w){
 ## READ IN ASSIGNMENT DATA
 
 # assignment names
-names <- c(paste('PS', 1:13, sep = ''), paste('Test', 1:3, sep = ''), 'Test1 Extension')
+names <- c(paste('PS', 1:13, sep = ''), paste('Test', 1:4, sep = ''), 'Test1 Extension')
 
 # optional questions
 optional_qnums <- list(
   ps3 = c(23),
   ps11 = c(14, 23:27),
+  ps13 = c(8),
   test1 = c(38, 39),
-  test3 = c(32, 33, 34, 35)
+  test3 = c(32, 33, 34, 35),
+  test4 = c(22, 23, 38:42)
 )
 
 # manual questions
@@ -106,7 +108,7 @@ manual_qnums <- list(
 )
 
 # correction credit (autograded, manual)
-correction_weights <- c(0.3, 1)
+correction_weights <- c(0.5, 1)
 
 # read in assignments
 scores_long_raw <- lapply(names, function(.x){
@@ -140,45 +142,158 @@ scores_long <- scores_long_raw |>
                          na_if(score, 0),
                          score))  
 
-# # weighted learning outcome scores
-# outcomes <- scores_long |>
-#   filter(!(name %in% dropped)) |>
-#   mutate(score = replace_na(score, 0)) |>
-#   mutate(score = if_else(optional == T,
-#                          na_if(score, 0),
-#                          score),
-#          category = str_trunc(assignment, width = 1, side = 'right', ellipsis = '')) |>
-#   group_by(name, email, outcome, category) |>
-#   summarize(score = mean(score, na.rm = T),
-#             n.questions = n()) |>
-#   left_join(tibble(category = c('t', 'p'), weight = c(0.5, 0.5)), by = 'category') |>
-#   mutate(weighted.score = score*weight) |>
-#   group_by(name, email, outcome) |>
-#   summarize(score = sum(weighted.score)) |>
-#   mutate(current.status = cut(score, 
-#                               breaks = c(0, 0.5, 0.8, 1.1), 
-#                               right = F, 
-#                               labels = c('not met', 'partly met', 'fully met'))) |>
-#   mutate(outcome = toupper(outcome)) |>
-#   filter(str_starts(outcome, 'L'))
+# weighted learning outcome scores
+outcomes.weighted <- scores_long |>
+  filter(!(name %in% dropped)) |>
+  mutate(score = replace_na(score, 0)) |>
+  mutate(score = if_else(optional == T,
+                         na_if(score, 0),
+                         score),
+         category = str_trunc(assignment, width = 1, side = 'right', ellipsis = '')) |>
+  group_by(name, email, outcome, category) |>
+  summarize(score = mean(score, na.rm = T),
+            n.questions = n()) |>
+  left_join(tibble(category = c('t', 'p'), weight = c(0.7, 0.3)), by = 'category') |>
+  mutate(weighted.score = score*weight) |>
+  group_by(name, email, outcome) |>
+  summarize(score = sum(weighted.score)) |>
+  mutate(current.status = cut(score,
+                              breaks = c(0, 0.5, 0.7799, 1.1),
+                              right = F,
+                              labels = c('not met', 'partly met', 'fully met'))) |>
+  mutate(outcome = toupper(outcome)) |>
+  filter(str_starts(outcome, 'L'))
 
 # unweighted learning outcome scores
-outcomes <- scores_long |>
+outcomes.unweighted <- scores_long |>
   group_by(name, email, outcome) |>
   summarize(score = mean(score, na.rm = T)) |>
-  mutate(current.status = cut(score, 
-                              breaks = c(0, 0.5, 0.8, 1.1), 
-                              right = F, 
+  mutate(current.status = cut(score,
+                              breaks = c(0, 0.5, 0.8, 1.1),
+                              right = F,
                               labels = c('not met', 'partly met', 'fully met'))) |>
   mutate(outcome = toupper(outcome)) |>
   ungroup()
 
+grade.levels <- expand.grid(c('+', '', '-'), toupper(letters[1:4])) |> 
+  select(Var2, Var1) |>
+  slice(-1) |>
+  unite(grade, sep = '') |>
+  pull(grade) |>
+  rev()
 
+# import project scores and assign grades
+grades.weighted <- paste(filepath, 'Project.xlsx', sep = '') |>
+  read_xlsx() |>
+  select(starts_with('Email'), Assessment) |>
+  pivot_longer(-Assessment, names_to = 'drop', values_to = 'email') |>
+  rename(current.status = Assessment) |>
+  select(email, current.status) |>
+  drop_na() |>
+  mutate(outcome = 'L11',
+         current.status = tolower(current.status) |> 
+           factor(levels = levels(outcomes.weighted$current.status)),
+         score = NA) |>
+  left_join(distinct(outcomes.weighted, name, email), by = c('email')) |>
+  bind_rows(select(outcomes.weighted, email, current.status, outcome, score, name)) |>
+  select(name, email, outcome, score, current.status) |>
+  group_by(name, email, current.status) |>
+  count() |>
+  spread(current.status, n) |>
+  rename_with(~gsub(' ', '.', .x)) |>
+  mutate(across(ends_with('met'), ~replace_na(.x, 0))) |>
+  mutate(tally = if_else(partly.met + fully.met < 6, -1, floor(fully.met + partly.met/3)),
+         grade = cut(tally, breaks = c(-1:10, 13), right = F, labels = c('F', grade.levels))) |>
+  ungroup() 
+
+grades.unweighted <- paste(filepath, 'Project.xlsx', sep = '') |>
+  read_xlsx() |>
+  select(starts_with('Email'), Assessment) |>
+  pivot_longer(-Assessment, names_to = 'drop', values_to = 'email') |>
+  rename(current.status = Assessment) |>
+  select(email, current.status) |>
+  drop_na() |>
+  mutate(outcome = 'L11',
+         current.status = tolower(current.status) |> 
+           factor(levels = levels(outcomes.unweighted$current.status)),
+         score = NA) |>
+  left_join(distinct(outcomes.unweighted, name, email), by = c('email')) |>
+  bind_rows(select(outcomes.unweighted, email, current.status, outcome, score, name)) |>
+  select(name, email, outcome, score, current.status) |>
+  group_by(name, email, current.status) |>
+  count() |>
+  spread(current.status, n) |>
+  rename_with(~gsub(' ', '.', .x)) |>
+  mutate(across(ends_with('met'), ~replace_na(.x, 0))) |>
+  mutate(tally = if_else(partly.met + fully.met < 6, -1, floor(fully.met + partly.met/3)),
+         grade = cut(tally, breaks = c(-1:10, 13), right = F, labels = c('F', grade.levels))) |>
+  ungroup() 
+
+
+full_join(grades.weighted, grades.unweighted, by = c('name', 'email'), suffix = c('.w', '.uw')) |>
+  select(name, email, grade.w, grade.uw) |>
+  mutate(delta = as.numeric(grade.w) - as.numeric(grade.uw)) |>
+  filter(grade.w != grade.uw) |>
+  arrange(delta) |>
+  print(n = 100)
+
+# inspect
+grades.weighted |>
+  arrange(grade) |>
+  view()
+
+# distribution
+grades.weighted |>
+  mutate(grade = str_trunc(grade, 1, ellipsis = '')) |>
+  count(grade)
+
+
+# export
+
+grades.export <- grades.weighted |>
+  select(email, grade) |>
+  left_join(read_csv('_zz-s24/grades-points.csv')) |>
+  rename(`SIS Login ID` = email,
+         `Final Grade` = grade) 
+
+read_csv('_zz-s24/canvas-download-sect05.csv') |>
+  left_join(grades.export, by = 'SIS Login ID') |>
+  # write_csv('_zz-s24/canvas-upload-sect05.csv')
+  select(Student, `Final Grade`) |>
+  view()
+
+read_csv('_zz-s24/canvas-download-sect06.csv') |>
+  left_join(grades.export, by = 'SIS Login ID') |>
+  # write_csv('_zz-s24/canvas-upload-sect06.csv')
+  select(Student, `Final Grade`) |>
+  view()
+
+
+# traditional grading (for comparison)
+scores_long |>
+  group_by(name, email, assignment) |>
+  summarize(score = mean(score, na.rm = T)) |>
+  mutate(category = str_trunc(assignment, 2, ellipsis = '')) |>
+  group_by(name, email, category) |>
+  summarize(score = mean(score)) |>
+  left_join(tibble(category = c('ps', 'te'), weight = c(0.3, 0.7))) |>
+  mutate(weighted.score = score*weight) |>
+  summarize(total = sum(weighted.score)) |>
+  arrange(desc(total)) |>
+  mutate(grade.trad = cut(total, breaks = c(0, 0.6, 0.7, 0.8, 0.9, 1), labels = c('F', 'D', 'C', 'B', 'A'))) |>
+  ungroup() |>
+  left_join(grades.weighted, by = c('name', 'email')) |>
+  select(name, email, starts_with('grade')) |>
+  mutate(grade.outcome = str_trunc(grade, 1, ellipsis = '') |> fct_drop()) |>
+  select(-grade) |>
+  filter(as.numeric(grade.trad) > as.numeric(grade.outcome)) |>
+  print(n = 100)
+  
 
 ## FOR CHECKING INDIVIDUAL RECORDS
 
-outcomes |> filter(name == 'XX')
-scores_long |> filter(name == 'XX') |>
+outcomes.weighted |> filter(name == 'Avery Hughes')
+scores_long_raw |> filter(name == 'Abigail Blair') |>
   group_by(assignment) |>
   summarize(score = mean(score, na.rm = T))
 scores_long |> filter(name == 'XX') |>
@@ -194,8 +309,7 @@ scores_long |>
   group_by(assignment, outcome) |>
   count() |>
   spread(outcome, n) |>
-  ungroup() |>
-  slice(c(1, 5:12, 2:4, 13:15))
+  ungroup()
 
 scores_long |>
   group_by(outcome, assignment) |>
@@ -246,19 +360,39 @@ notify_list <- outcomes |>
   arrange(desc(n.short.passing)) |>
   print(n = 30)
 
-
 ## EMAIL GRADE SUMMARIES
 
-students <- outcomes |> distinct(name, email)
+outcome.summary <- paste(filepath, 'Project.xlsx', sep = '') |>
+  read_xlsx() |>
+  select(starts_with('Email'), Assessment) |>
+  pivot_longer(-Assessment, names_to = 'drop', values_to = 'email') |>
+  rename(current.status = Assessment) |>
+  select(email, current.status) |>
+  drop_na() |>
+  mutate(outcome = 'L11',
+         current.status = tolower(current.status) |> 
+           factor(levels = levels(outcomes.weighted$current.status)),
+         score = NA) |>
+  left_join(distinct(outcomes.weighted, name, email), by = c('email')) |>
+  bind_rows(select(outcomes.weighted, email, current.status, outcome, score, name)) |>
+  select(name, email, outcome, score, current.status) |>
+  arrange(name, outcome) |>
+  mutate(outcome = factor(outcome, levels = paste('L', c(1:11, 'X'), sep = '')))
+
+outcome.summary
+
+students <- outcome.summary |> distinct(name, email)
 student_names <- pull(students, name)
 student_emails <- pull(students, email)
 
-for(i in 1:length(student_names)){
+notify_set <- setdiff(1:length(student_names), c(2, 5, 8, 52))
+
+for(i in notify_set){
   
-  tbl1 <- filter(outcomes, name == student_names[i]) |> 
+  tbl1 <- filter(outcome.summary, name == student_names[i]) |> 
     ungroup() |>
     select(name, outcome, score, current.status) |> 
-    slice(c(1, 3:10, 2, 11)) |>
+    arrange(as.numeric(outcome)) |>
     xtable() |> 
     print(type = 'html', include.rownames = F)
   
@@ -269,10 +403,11 @@ for(i in 1:length(student_names)){
   #   xtable() |> 
   #   print(type = 'html', include.rownames = F)
   
-  body <- paste("<html>Good afternoon, <br><br> The table below provides a current estimate of your scores by learning outcome; you may refer to the syllabus to understand how these scores will be utilized in determining letter grades. 
-                <br><br> Please note that these are *estimates only* and will change as further assignments are taken into account. Please also note that the scores are currently unweighted; assignment weights may be used in final grade calculations. In short, these estimates are not final and are intended to give you an *approximate* sense of where you currently stand on the outcomes we have covered based on the assignments you have submitted.<br><br>
-                This summary is based on PS1 through PS13 and Tests 1-3, not accounting for Test 3 corrections. <br>",
-                tbl1, "<br> Please let me know if you have any questions or notice any potential errors. If so, please reply to my Cal Poly email (on cc).<br><br> Trevor <br>",
+  body <- paste("<html>Good afternoon, <br><br> The table below provides a final estimate of your scores by learning outcome; your final grade for the course will be determined based on these scores. <br><br> This summary accounts for all assignments, and scores are weighted to allocate more importance to tests. In all but a few instances, this benefits the class. Additionally, the 'fully met' threshold was lowered slightly to 0.78. <br><br>",
+                tbl1, 
+                "Regarding assignment of letter grades, I've decided to count every three partly met outcomes as the equivalent of one fully met outcome; this is a (beneficial) change from the syllabus, but otherwise, the assignment of letter grades is exactly as specified. <br><br> 
+                Please also be advised that I may adjust letter grades by one level (e.g., B to either B+ or B-) at my discretion consistent with course policies (e.g., attendance). I'm letting you know this in the interest of transparency, but ask that you not attempt to negotiate grade increases. You can expect to see grades posted by Tuesday of next week.",
+                "<br> It's been a pleasure working with you this quarter, and I hope you'll feel free to be in touch if I can be helpful to you in any way in the future. Best wishes for the summer ahead. <br><br> Trevor <br>",
                 sep = '<br>')
   
   email <- gm_mime() |>

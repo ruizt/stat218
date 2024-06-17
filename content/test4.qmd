@@ -105,7 +105,7 @@ carc$consumption |> table() |> prop.test()
 chisq.test(greentea.tbl)$expected
 
 # part e: measure of association
-oddsratio(greentea.tbl, rev = 'rows')
+oddsratio(greentea.tbl, rev = 'rows', correction = T)
 ```
 
 2. [L3, L6, L7] A 2010 Pew Research poll asked 1,306 Americans, "From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?" The `warming` dataset contains the observations from this poll: each participant's party or ideology and whether they answered affirmatively or negatively.
@@ -167,7 +167,7 @@ head(sulphin)
 
 # test for effectiveness at the 10% level and estimate relative risk
 chisq.test(table(sulphin))$expected
-sulphin |> table() |> riskratio(rev = 'columns', conf.level = 0.9)
+sulphin |> table() |> riskratio(rev = 'columns', conf.level = 0.9, correction = T)
 
 # point and interval estimate for efficacy
 sulphin.rslt <- sulphin |> table() |> riskratio(rev = 'columns', conf.level = 0.9)
@@ -196,7 +196,7 @@ fit <- lm(log.species ~ log.area, data = galapagos)
 plot(galapagos)
 abline(reg = fit, col = 'blue', lwd = 2)
 summary(fit)
-confint(fit, level = 0.99)
+2^confint(fit, level = 0.99)
 ```
 
 ## Extra credit

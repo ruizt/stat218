@@ -7,15 +7,7 @@ published-title: 'Updated'
 ::: callout-note
 ## Announcements
 
-Recently posted:
-
-- final exam \[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\]
-- test 4
-
-Upcoming assignments:
-
-- problem set 13 due Wednesday 6/5; late submissions until Friday 6/7 5pm
-- test 4 will be available Wednesday 6/5 5pm and due Friday 6/7 5pm
+Final grades posted; have a great summer!
 
 :::
 
@@ -273,6 +265,4 @@ Scheduled exam times:
 -   \[12pm section\] Wednesday 6/12 10:10am -- 1:00pm
 -   \[2pm section\] Monday 6/10 1:10pm -- 4:00pm
 
-\[[project guidelines](content/project-guidelines.qmd)\]
-
-\[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\]
+\[[project guidelines](content/project-guidelines.qmd)\] \[[schedule](https://cpslo-my.sharepoint.com/:x:/g/personal/truiz01_calpoly_edu/EdV0eGagGR1InmT9Ii34eugBJYzySTgWxrQ0n1a45uZLgw?e=k41wBc)\] \[[upload deliverable](https://cpslo-my.sharepoint.com/:f:/g/personal/truiz01_calpoly_edu/EhaExyR2xtFKqVLlJm2dy6cB1hTx5xIkRCWRwF2f_CPBSA)\]
