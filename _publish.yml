@@ -2,3 +2,6 @@
   quarto-pub:
     - id: 3df63b54-82c0-4e61-8639-0798837af2fe
       url: 'https://ruizt.quarto.pub/stat218'
+  netlify:
+    - id: 411aa2b5-e036-40ca-bd9f-5586b63debf3
+      url: 'https://curious-biscuit-39e1da.netlify.app'

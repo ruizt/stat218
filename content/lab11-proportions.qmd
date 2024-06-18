@@ -275,8 +275,8 @@ Inference comparing two proportions proceeds from a two-way table or "contingenc
 
 ```{r contingency table}
 # variables of interest
-trt <- vitamin$treatment
-out <- vitamin$outcome
+trt <- vitamin$vitamin
+out <- vitamin$autism
 
 # construct contingency table
 vitamin.tbl <- table(trt, out)
