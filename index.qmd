@@ -2,6 +2,13 @@
 title: "Applied Statistics for Life Sciences"
 date: today
 published-title: 'Updated'
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
 ---
 
 ::: callout-note
