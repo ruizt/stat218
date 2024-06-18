@@ -11,6 +11,10 @@ format:
     fig-height: 4
     fig-align: 'center'
     toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
 ---
 
 The objectives of this lab are to learn to:

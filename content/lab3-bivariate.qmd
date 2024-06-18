@@ -5,7 +5,13 @@ author-title: "Course activity"
 execute: 
   warning: false
   message: false
-format: html
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
 ---
 
 This lab covers descriptive summaries and graphics for two variables. The goal of the activity is to learn to produce joint summaries of two variables for identifying relationships, in particular:

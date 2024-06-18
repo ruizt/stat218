@@ -7,7 +7,13 @@ execute:
   echo: true
   message: false
   warning: false
-format: html
+format: 
+  html:
+    toc: true
+  docx:
+    toc: false
+prefer-html: true
+embed-resources: true
 ---
 
 In class we discussed the $t$ test for the hypotheses:
