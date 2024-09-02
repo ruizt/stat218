@@ -293,7 +293,7 @@ scores_long |>
 ## FOR CHECKING INDIVIDUAL RECORDS
 
 outcomes.weighted |> filter(name == 'Avery Hughes')
-scores_long_raw |> filter(name == 'Abigail Blair') |>
+scores_long_raw |> filter(name == 'Marshall Rottier Johnson') |>
   group_by(assignment) |>
   summarize(score = mean(score, na.rm = T))
 scores_long |> filter(name == 'XX') |>
